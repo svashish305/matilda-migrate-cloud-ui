@@ -15,6 +15,7 @@ import { CommonModule } from "@angular/common";
     TemplatesModule,
     WorkflowsModule,
   ],
+  exports: [],
   providers: [],
   bootstrap: [],
 })

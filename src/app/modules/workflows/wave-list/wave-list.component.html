@@ -1,0 +1,120 @@
+<!-- {{ templateData | json }} -->
+<a (click)="openDialog(addAccountModal)">
+  <div style="padding: 32px 0 0 0;">
+    <img src="assets/imgs/rectangle-copy-2.svg" alt="" />
+    <button mat-button class="new-account-btn">+ Add Account</button>
+  </div>
+</a>
+
+<!-- Tasks Cards (Vertical) -->
+<mat-card
+  *ngFor="let account of accounts"
+  class="mat-elevation-z0"
+  [ngStyle]="toggleHeight(account.id)"
+>
+  <mat-card-title
+    >{{ account.name }}
+    <a (click)="toggleCollapse(account.id)">
+      <img
+        class="collapse-icon"
+        [src]="
+          accountCollapseState[account.id]
+            ? 'assets/imgs/chevron-up.svg'
+            : 'assets/imgs/chevron-down.svg'
+        "
+      />
+    </a>
+  </mat-card-title>
+  <div [ngbCollapse]="!accountCollapseState[account.id]">
+    <mat-card-subtitle>
+      <div class="account-details">
+        <span style="color: var(--primary-light); margin: 32px 0 22px 0;">{{
+          account.data.description
+        }}</span>
+        <mat-label>Provider</mat-label>
+        <span class="account-detail-text">{{ account.data.provider }}</span>
+        <mat-label style="margin-top: 26px;">Region</mat-label>
+        <span class="account-detail-text">{{ account.data.region }}</span>
+        <button
+          mat-button
+          class="edit-account-btn"
+          (click)="openEditAccountModal(editAccountModal, account.id)"
+        >
+          Edit
+        </button>
+      </div>
+    </mat-card-subtitle>
+  </div>
+</mat-card>
+<!-- End of Tasks Cards -->
+
+<ng-template #addAccountModal> </ng-template>
+
+<ng-template #editAccountModal>
+  <div class="modal-header">
+    <h4 class="pull-left">{{ selectedAccount.name }}</h4>
+  </div>
+  <div class="modal-body">
+    <!-- modal body -->
+    <form [formGroup]="editAccountFormGroup">
+      <mat-form-field class="example-full-width">
+        <mat-label>Provider</mat-label>
+        <mat-select
+          [(ngModel)]="accountProvider"
+          [ngModelOptions]="{ standalone: true }"
+        >
+          <mat-option
+            *ngFor="let provider of providers"
+            [value]="provider.value"
+          >
+            {{ provider.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Account Name</mat-label>
+        <input
+          matInput
+          placeholder="Enter account name"
+          value="{{ selectedAccount.name }}"
+          [(ngModel)]="accountName"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Client ID</mat-label>
+        <input
+          matInput
+          placeholder="Enter client ID"
+          value="{{ selectedAccount.clientID }}"
+          [(ngModel)]="accountClientID"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Region</mat-label>
+        <input
+          matInput
+          placeholder="Enter region"
+          value="{{ selectedAccount.region }}"
+          [(ngModel)]="accountRegion"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </mat-form-field>
+    </form>
+    <!-- end of modal body -->
+  </div>
+  <div class="modal-footer">
+    <mat-dialog-actions>
+      <button mat-flat-button (click)="dialog.closeAll()">Cancel</button>
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="editAccount(selectedAccount.id); dialog.closeAll()"
+        cdkFocusInitial
+      >
+        Save
+      </button>
+    </mat-dialog-actions>
+  </div>
+</ng-template>

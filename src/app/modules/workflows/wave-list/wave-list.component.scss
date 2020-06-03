@@ -1,0 +1,139 @@
+.new-account-btn {
+  border: solid 1px var(--btn-gray-border);
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--primary-light);
+  font-family: LatoRegular;
+  font-size: 1.125em;
+  width: 9.438em;
+  height: 2.25em;
+  top: 3px;
+  right: 16rem;
+}
+
+mat-card {
+  width: 336px;
+  height: 99px;
+  border: solid 1px var(--btn-lightgray-border);
+  margin: 17px 16px 0 0;
+}
+
+.account-name {
+  font-family: LatoRegular;
+  font-size: 0.9em;
+  letter-spacing: 0.41px;
+  color: var(--alt-gray-text);
+}
+
+mat-card-title {
+  font-family: LatoMedium;
+  font-size: 1.125em;
+}
+
+mat-card-subtitle {
+  font-family: LatoRegular;
+  font-size: 0.9em;
+  line-height: 1.39;
+  color: var(--alt-gray-text);
+}
+
+.account-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-detail-text {
+  color: var(--blackish-text);
+  font-family: LatoMedium;
+  font-size: 1.125em;
+}
+
+.edit-account-btn {
+  border: solid 1px var(--btn-gray-border);
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--primary-light);
+  font-family: LatoRegular;
+  font-size: 1.125em;
+  width: 4em;
+  height: 2.25em;
+  // margin: 0 0 0 auto;
+  bottom: 16px;
+  right: 16px;
+  position: absolute;
+}
+
+.collapse-icon {
+  cursor: pointer;
+  position: absolute;
+  right: 16px;
+  top: 25px;
+}
+
+.modal-header {
+  color: black;
+  font-family: LatoBold;
+  font-size: 1.406em;
+  letter-spacing: 0.64px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-half-width {
+  width: 50%;
+}
+
+::ng-deep.mat-tab-label,
+::ng-deep.mat-tab-label-active {
+  min-width: 6.063rem !important;
+  padding: 3px !important;
+  margin: 3px !important;
+}
+
+form {
+  overflow: hidden !important;
+}
+
+// .mat-focused .mat-form-field-label {
+//   color: var(--primary-light) !important;
+// }
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-half-width {
+  width: 50%;
+}
+
+::ng-deep.mat-select-arrow {
+  position: relative;
+  right: 14px;
+  height: 24px !important;
+  width: 24px !important;
+  background: url('src/assets/imgs/chevron-down.svg') !important;
+  border: none !important;
+  margin: 0 !important;
+}
+
+::ng-deep.modal-header {
+  padding: 0 0 1rem 0 !important;
+}
+
+::ng-deep.modal-body {
+  padding: 0 !important;
+}
+
+form {
+  height: 48vh;
+}
+
+mat-form-field {
+  padding: 10px;
+}
+
+.mat-dialog-actions {
+  justify-content: flex-end;
+}
