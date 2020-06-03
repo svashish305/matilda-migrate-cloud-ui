@@ -1,0 +1,1076 @@
+{
+  "waves": [
+    {
+      "id": 1,
+      "name": "Wave 1",
+      "data": {
+        "name": "Wave 1",
+        "description": "Wave Description",
+        "waveTypes": [
+          {
+            "id": "1",
+            "name": "Wave1-APP",
+            "triggerType": "Normal",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Tomcat",
+                "description": "Tomcat Install Configuration",
+                "data": {
+                  "id": 1,
+                  "name": "Tomcat",
+                  "description": "Tomcat Install Configuration"
+                },
+                "status": "Done",
+                "startDate": "2 April 2020",
+                "endDate": "14 April 2020"
+              },
+              {
+                "id": 2,
+                "name": "Sqlserver install",
+                "description": "Install Configuration",
+                "data": {
+                  "id": 2,
+                  "name": "Sqlserver install",
+                  "description": "Install Configuration"
+                },
+                "status": "Done",
+                "startDate": "2 April 2020",
+                "endDate": "14 April 2020"
+              },
+              {
+                "id": 3,
+                "name": "Template Name Application VM creation",
+                "description": "Install Configuration",
+                "data": {
+                  "id": 3,
+                  "name": "Template Name Application VM creation",
+                  "description": "Install Configuration"
+                },
+                "status": "Done",
+                "startDate": "31 March 2020",
+                "endDate": "9 April 2020"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Wave1-DB",
+            "triggerType": "Event",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Data factory",
+                "description": "Factory Install Steps",
+                "data": {
+                  "id": 1,
+                  "name": "Data factory",
+                  "description": "Factory Install Steps"
+                },
+                "status": "Working on it",
+                "startDate": "4 April 2020",
+                "endDate": "20 April 2020"
+              },
+              {
+                "id": 2,
+                "name": "Data Warehouse configuration",
+                "description": "DB Install Configuration",
+                "data": {
+                  "id": 2,
+                  "name": "Data Warehouse configuration",
+                  "description": "DB Install Configuration"
+                },
+                "status": "Done",
+                "startDate": "2 April 2020",
+                "endDate": "15 April 2020"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Wave1-Testing",
+            "triggerType": "Schedule | Every Monday 2 PM IST",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "status": "Stuck",
+                "startDate": "Apr 15",
+                "endDate": "Apr 15"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          },
+          {
+            "id": "4",
+            "name": "Wave1-Testing2",
+            "triggerType": "Normal",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "status": "Stuck",
+                "startDate": "Apr 15",
+                "endDate": "Apr 15"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "name": "Wave 2",
+      "data": {
+        "name": "Wave 1",
+        "description": "Wave Description",
+        "waveTypes": [
+          {
+            "id": "1",
+            "name": "Wave1-APP",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Sqlserver install",
+                "description": "SQL Install Config",
+                "data": {
+                  "id": 1,
+                  "name": "Sqlserver install",
+                  "description": "SQL Install Config"
+                },
+                "status": "Done",
+                "startDate": "2 April 2020",
+                "endDate": "14 April 2020"
+              },
+              {
+                "id": 2,
+                "name": "Template Name Application VM creation",
+                "description": "VM Install Config",
+                "data": {
+                  "id": 2,
+                  "name": "Template Name Application VM creation",
+                  "description": "VM Install Config"
+                },
+                "status": "Done",
+                "startDate": "31 March 2020",
+                "endDate": "9 April 2020"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Wave1-DB",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Data factory",
+                "description": "DB Install Config",
+                "data": {
+                  "id": 1,
+                  "name": "Data factory",
+                  "description": "DB Install Config"
+                },
+                "status": "Working on it",
+                "startDate": "4 April 2020",
+                "endDate": "20 April 2020"
+              },
+              {
+                "id": 2,
+                "name": "Data Warehouse configuration",
+                "description": "DB Install Config",
+                "data": {
+                  "id": 2,
+                  "name": "Data Warehouse configuration",
+                  "description": "DB Install Config"
+                },
+                "status": "Done",
+                "startDate": "2 April 2020",
+                "endDate": "15 April 2020"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Wave1-Testing",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "description": "Deploy Config",
+                "data": {
+                  "id": 1,
+                  "name": "Post deployment validation",
+                  "description": "Deploy Config"
+                },
+                "status": "Stuck",
+                "startDate": "15 April 2020",
+                "endDate": "15 April 2020"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "description": "Security Config",
+                "data": {
+                  "id": 2,
+                  "name": "Security Scan infra",
+                  "description": "Security Config"
+                },
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          },
+          {
+            "id": "4",
+            "name": "Wave1-Testing2",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "description": "Deploy Config",
+                "data": {
+                  "id": 1,
+                  "name": "Post deployment validation",
+                  "description": "Deploy Config"
+                },
+                "status": "Stuck",
+                "startDate": "15 April 2020",
+                "endDate": "15 April 2020"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "description": "Security Config",
+                "data": {
+                  "id": 2,
+                  "name": "Security Scan infra",
+                  "description": "Security Config"
+                },
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "name": "Wave 3",
+      "data": {
+        "name": "Wave 1",
+        "description": "Wave Description",
+        "waveTypes": [
+          {
+            "id": "1",
+            "name": "Wave1-APP",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Sqlserver install",
+                "description": "SQL Install Config",
+                "data": {
+                  "id": 1,
+                  "name": "Sqlserver install",
+                  "description": "SQL Install Config"
+                },
+                "status": "Done",
+                "startDate": "2 April 2020",
+                "endDate": "14 April 2020"
+              },
+              {
+                "id": 2,
+                "name": "Template Name Application VM creation",
+                "description": "VM Install Config",
+                "data": {
+                  "id": 2,
+                  "name": "Template Name Application VM creation",
+                  "description": "VM Install Config"
+                },
+                "status": "Done",
+                "startDate": "31 March 2020",
+                "endDate": "9 April 2020"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Wave1-DB",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Data factory",
+                "description": "DB Install Config",
+                "data": {
+                  "id": 1,
+                  "name": "Data factory",
+                  "description": "DB Install Config"
+                },
+                "status": "Working on it",
+                "startDate": "4 April 2020",
+                "endDate": "20 April 2020"
+              },
+              {
+                "id": 2,
+                "name": "Data Warehouse configuration",
+                "description": "DB Install Config",
+                "data": {
+                  "id": 2,
+                  "name": "Data Warehouse configuration",
+                  "description": "DB Install Config"
+                },
+                "status": "Done",
+                "startDate": "2 April 2020",
+                "endDate": "15 April 2020"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Wave1-Testing",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "description": "Deploy Config",
+                "data": {
+                  "id": 1,
+                  "name": "Post deployment validation",
+                  "description": "Deploy Config"
+                },
+                "status": "Stuck",
+                "startDate": "15 April 2020",
+                "endDate": "15 APril 2020"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "description": "Security Config",
+                "data": {
+                  "id": 2,
+                  "name": "Security Scan infra",
+                  "description": "Security Config"
+                },
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          },
+          {
+            "id": "4",
+            "name": "Wave1-Testing2",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "description": "Deploy Config",
+                "data": {
+                  "id": 1,
+                  "name": "Post deployment validation",
+                  "description": "Deploy Config"
+                },
+                "status": "Stuck",
+                "startDate": "15 April 2020",
+                "endDate": "15 April 2020"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "description": "Security Config",
+                "data": {
+                  "id": 2,
+                  "name": "Security Scan infra",
+                  "description": "Security Config"
+                },
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "templates": [
+    {
+      "id": 1,
+      "name": "New Template",
+      "data": {
+        "id": "1",
+        "name": "New Template",
+        "description": "Template Description"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Template 1",
+      "data": {
+        "id": "2",
+        "name": "Template 1",
+        "description": "Template Description"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Template 2",
+      "icon": "assets/imgs/jpgs/tomcat.jpg",
+      "data": {
+        "id": "3",
+        "name": "Template 2",
+        "description": "Template Description",
+        "icon": "assets/imgs/jpgs/tomcat.jpg"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Template New",
+      "icon": "assets/imgs/jpgs/keoba.jpg",
+      "data": {
+        "id": "4",
+        "name": "Template New",
+        "description": "Template Description",
+        "icon": "assets/imgs/jpgs/keoba.jpg"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Template Draft",
+      "data": {
+        "id": "5",
+        "name": "Template Draft",
+        "description": "Template Description"
+      }
+    }
+  ],
+  "stages": [
+    {
+      "id": 1,
+      "name": "Stage 1",
+      "progressPercentage": 50,
+      "state": "Configured",
+      "data": {
+        "name": "Stage 1",
+        "description": "Stage Description",
+        "TemplateTypes": [
+          {
+            "id": "1",
+            "name": "Template1-APP",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Sqlserver install",
+                "status": "Done",
+                "startDate": "Apr 2",
+                "endDate": "Apr 14"
+              },
+              {
+                "id": 2,
+                "name": "Stage Name Application VM creation",
+                "status": "Done",
+                "startDate": "Mar 31",
+                "endDate": "Apr 9"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Template1-DB",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Data factory",
+                "status": "Working on it",
+                "startDate": "Apr 4",
+                "endDate": "Apr 20"
+              },
+              {
+                "id": 2,
+                "name": "Data Warehouse configuration",
+                "status": "Done",
+                "startDate": "Apr 2",
+                "endDate": "Apr 15"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Template1-Testing",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "status": "Stuck",
+                "startDate": "Apr 15",
+                "endDate": "Apr 15"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          },
+          {
+            "id": "4",
+            "name": "Template1-Testing2",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "status": "Stuck",
+                "startDate": "Apr 15",
+                "endDate": "Apr 15"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "name": "Stage 2",
+      "progressPercentage": 0,
+      "state": "Undefined",
+      "data": {
+        "name": "Stage 1",
+        "description": "Stage Description",
+        "TemplateTypes": [
+          {
+            "id": "1",
+            "name": "Template1-APP",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Sqlserver install",
+                "status": "Done",
+                "startDate": "Apr 2",
+                "endDate": "Apr 14"
+              },
+              {
+                "id": 2,
+                "name": "Stage Name Application VM creation",
+                "status": "Done",
+                "startDate": "Mar 31",
+                "endDate": "Apr 9"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Template1-DB",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Data factory",
+                "status": "Working on it",
+                "startDate": "Apr 4",
+                "endDate": "Apr 20"
+              },
+              {
+                "id": 2,
+                "name": "Data Warehouse configuration",
+                "status": "Done",
+                "startDate": "Apr 2",
+                "endDate": "Apr 15"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Template1-Testing",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "status": "Stuck",
+                "startDate": "Apr 15",
+                "endDate": "Apr 15"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          },
+          {
+            "id": "4",
+            "name": "Template1-Testing2",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "status": "Stuck",
+                "startDate": "Apr 15",
+                "endDate": "Apr 15"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "name": "Stage 3",
+      "progressPercentage": 90,
+      "state": "Ready",
+      "data": {
+        "name": "Stage 1",
+        "description": "Stage Description",
+        "TemplateTypes": [
+          {
+            "id": "1",
+            "name": "Template1-APP",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Sqlserver install",
+                "status": "Done",
+                "startDate": "Apr 2",
+                "endDate": "Apr 14"
+              },
+              {
+                "id": 2,
+                "name": "Stage Name Application VM creation",
+                "status": "Done",
+                "startDate": "Mar 31",
+                "endDate": "Apr 9"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Template1-DB",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Data factory",
+                "status": "Working on it",
+                "startDate": "Apr 4",
+                "endDate": "Apr 20"
+              },
+              {
+                "id": 2,
+                "name": "Data Warehouse configuration",
+                "status": "Done",
+                "startDate": "Apr 2",
+                "endDate": "Apr 15"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Template1-Testing",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "status": "Stuck",
+                "startDate": "Apr 15",
+                "endDate": "Apr 15"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          },
+          {
+            "id": "4",
+            "name": "Template1-Testing2",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "status": "Stuck",
+                "startDate": "Apr 15",
+                "endDate": "Apr 15"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "name": "Stage 4",
+      "progressPercentage": 100,
+      "state": "Finished",
+      "data": {
+        "name": "Stage 1",
+        "description": "Stage Description",
+        "TemplateTypes": [
+          {
+            "id": "1",
+            "name": "Template1-APP",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Sqlserver install",
+                "status": "Done",
+                "startDate": "Apr 2",
+                "endDate": "Apr 14"
+              },
+              {
+                "id": 2,
+                "name": "Stage Name Application VM creation",
+                "status": "Done",
+                "startDate": "Mar 31",
+                "endDate": "Apr 9"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Template1-DB",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Data factory",
+                "status": "Working on it",
+                "startDate": "Apr 4",
+                "endDate": "Apr 20"
+              },
+              {
+                "id": 2,
+                "name": "Data Warehouse configuration",
+                "status": "Done",
+                "startDate": "Apr 2",
+                "endDate": "Apr 15"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Template1-Testing",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "status": "Stuck",
+                "startDate": "Apr 15",
+                "endDate": "Apr 15"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          },
+          {
+            "id": "4",
+            "name": "Template1-Testing2",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "status": "Stuck",
+                "startDate": "Apr 15",
+                "endDate": "Apr 15"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Task 1",
+      "title": "Create Instance",
+      "description": "Short description of task. Short description of task. Short description of task. Short description of task. Short description of task.",
+      "stage": {
+        "id": 1,
+        "name": "Stage 1",
+        "progressPercentage": 50,
+        "state": "Configured"
+      },
+      "data": {
+        "name": "Task 1",
+        "description": "Task Description",
+        "TemplateTypes": [
+          {
+            "id": "1",
+            "name": "Template1-APP",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Sqlserver install",
+                "status": "Done",
+                "startDate": "Apr 2",
+                "endDate": "Apr 14"
+              },
+              {
+                "id": 2,
+                "name": "Task Name Application VM creation",
+                "status": "Done",
+                "startDate": "Mar 31",
+                "endDate": "Apr 9"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Template1-DB",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Data factory",
+                "status": "Working on it",
+                "startDate": "Apr 4",
+                "endDate": "Apr 20"
+              },
+              {
+                "id": 2,
+                "name": "Data Warehouse configuration",
+                "status": "Done",
+                "startDate": "Apr 2",
+                "endDate": "Apr 15"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Template1-Testing",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "status": "Stuck",
+                "startDate": "Apr 15",
+                "endDate": "Apr 15"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          },
+          {
+            "id": "4",
+            "name": "Template1-Testing2",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "status": "Stuck",
+                "startDate": "Apr 15",
+                "endDate": "Apr 15"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "name": "Task 2",
+      "title": "Create Security Group",
+      "description": "Short description of task. Short description of task. Short description of task. Short description of task. Short description of task.",
+      "stage": {
+        "id": 2,
+        "name": "Stage 2",
+        "progressPercentage": 0,
+        "state": "Undefined"
+      },
+      "data": {
+        "name": "Task 1",
+        "description": "Task Description",
+        "TemplateTypes": [
+          {
+            "id": "1",
+            "name": "Template1-APP",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Sqlserver install",
+                "status": "Done",
+                "startDate": "Apr 2",
+                "endDate": "Apr 14"
+              },
+              {
+                "id": 2,
+                "name": "Task Name Application VM creation",
+                "status": "Done",
+                "startDate": "Mar 31",
+                "endDate": "Apr 9"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Template1-DB",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Data factory",
+                "status": "Working on it",
+                "startDate": "Apr 4",
+                "endDate": "Apr 20"
+              },
+              {
+                "id": 2,
+                "name": "Data Warehouse configuration",
+                "status": "Done",
+                "startDate": "Apr 2",
+                "endDate": "Apr 15"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Template1-Testing",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "status": "Stuck",
+                "startDate": "Apr 15",
+                "endDate": "Apr 15"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          },
+          {
+            "id": "4",
+            "name": "Template1-Testing2",
+            "templates": [
+              {
+                "id": 1,
+                "name": "Post deployment validation",
+                "status": "Stuck",
+                "startDate": "Apr 15",
+                "endDate": "Apr 15"
+              },
+              {
+                "id": 2,
+                "name": "Security Scan infra",
+                "status": "",
+                "startDate": "",
+                "endDate": ""
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "accounts": [
+    {
+      "id": 1,
+      "name": "SMR App 2 Account",
+      "data": {
+        "name": "SMR App 2 Account",
+        "description": "App 2 Platform Account 2",
+        "provider": "AWS",
+        "clientID": "SMR - 123214",
+        "region": "Ohio"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Account 2",
+      "data": {
+        "name": "Account 1",
+        "description": "Account Description",
+        "provider": "AWS",
+        "clientID": "SMR - 123214",
+        "region": "Ohio"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Account 3",
+      "data": {
+        "name": "Account 1",
+        "description": "Account Description",
+        "provider": "AWS",
+        "clientID": "SMR - 123214",
+        "region": "Ohio"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Account 4",
+      "data": {
+        "name": "Account 1",
+        "description": "Account Description",
+        "provider": "AWS",
+        "clientID": "SMR - 123214",
+        "region": "Ohio"
+      }
+    }
+  ]
+}

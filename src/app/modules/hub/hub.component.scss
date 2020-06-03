@@ -1,0 +1,58 @@
+.side-list {
+  width: 15.875rem;
+  height: 8.6875rem;
+
+  position: absolute;
+  top: 0;
+  left: 3.75em;
+}
+
+.waves__list {
+  padding-top: 3.75em;
+  height: 100vh;
+  border-right: solid 1px var(--grayed-border);
+  background-color: var(--light-gray-bg);
+}
+
+.wave__list__item {
+  height: 3.375em;
+  line-height: 3.375em;
+  padding: 0 24px 0 16px;
+  display: flex;
+  color: var(--blackish-text);
+  cursor: pointer;
+  &:hover {
+    background-color: #f5f6f8;
+  }
+  &.selected {
+    font-weight: bold;
+    background: var(--light-blue-bg);
+  }
+  &:active {
+    outline: none;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin: auto 8px auto 16px;
+}
+
+.screen-text {
+  color: var(--primary-light);
+  font-family: LatoRegular;
+  font-size: 1.125em;
+}
+
+.v-line {
+  width: 4px;
+  height: 3.375em;
+  transform: rotate(-360deg);
+  background-color: var(--primary-light);
+  position: absolute;
+  right: 0;
+}

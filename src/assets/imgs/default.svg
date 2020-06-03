@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="394" height="383" viewBox="0 0 394 383">
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#F9F9FA" fill-rule="nonzero" d="M4 0h386c2.21 0 4 1.79 4 4v93H0V4c0-2.21 1.79-4 4-4z"/>
+        <text fill="#1E1E1E" font-family="Lato-Bold, Lato" font-size="22.5" font-weight="bold">
+            <tspan x="16" y="46">SMR Wave</tspan>
+        </text>
+        <text fill="#99A1A9" font-family="Lato-Medium, Lato" font-size="18" font-weight="400">
+            <tspan x="16" y="69">Description of SMR Wave</tspan>
+        </text>
+        <text fill="#1E1E1E" font-family="Lato-Medium, Lato" font-size="18" font-weight="400">
+            <tspan x="16" y="149">Jun 12,2020</tspan>
+        </text>
+        <text fill="#1E1E1E" font-family="Lato-Medium, Lato" font-size="18" font-weight="400">
+            <tspan x="200" y="149">Jun 28,2020</tspan>
+        </text>
+        <text fill="#99A1A9" font-family="Lato-Medium, Lato" font-size="14.4" font-weight="400">
+            <tspan x="16" y="128">Start Date</tspan>
+        </text>
+        <text fill="#99A1A9" font-family="Lato-Medium, Lato" font-size="14.4" font-weight="400">
+            <tspan x="16" y="200">Tags (Key : Value)</tspan>
+        </text>
+        <text fill="#99A1A9" font-family="Lato-Medium, Lato" font-size="14.4" font-weight="400">
+            <tspan x="200" y="128">End Date</tspan>
+        </text>
+        <g>
+            <path d="M0 0H24V24H0z" transform="translate(354 24)"/>
+            <path fill="#006BD4" d="M10.5 7c0 .828.672 1.5 1.5 1.5s1.5-.672 1.5-1.5-.672-1.5-1.5-1.5-1.5.672-1.5 1.5zm0 5c0 .828.672 1.5 1.5 1.5s1.5-.672 1.5-1.5-.672-1.5-1.5-1.5-1.5.672-1.5 1.5zm1.5 6.5c-.536 0-1.031-.286-1.299-.75s-.268-1.036 0-1.5c.268-.464.763-.75 1.299-.75.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5z" transform="translate(354 24)"/>
+        </g>
+        <path fill="#DEE1E4" fill-rule="nonzero" d="M0 0H394V1H0z" transform="matrix(1 0 0 -1 0 98)"/>
+        <path fill="#DEE1E4" fill-rule="nonzero" d="M0 0H394V1H0z" transform="matrix(1 0 0 -1 0 170)"/>
+        <rect width="393" height="382" x=".5" y=".5" stroke="#DEE1E4" rx="4"/>
+        <g transform="translate(16 219)">
+            <rect width="168" height="35" x=".5" y=".5" fill="#F9F9FA" stroke="#DEE1E4" rx="17.5"/>
+            <text font-family="Lato-Semibold, Lato" font-size="18" font-weight="500">
+                <tspan x="16" y="25" fill="#1E1E1E">IP : </tspan> <tspan x="45.718" y="25" fill="#006BD4" font-family="Lato-Regular, Lato" font-weight="normal">192.28.10.11</tspan>
+            </text>
+        </g>
+        <g transform="translate(16 271)">
+            <rect width="114" height="35" x=".5" y=".5" fill="#F9F9FA" stroke="#DEE1E4" rx="17.5"/>
+            <text font-family="Lato-Semibold, Lato" font-size="18" font-weight="500">
+                <tspan x="16" y="25" fill="#1E1E1E">Web : </tspan> <tspan x="68.029" y="25" fill="#006BD4" font-family="Lato-Regular, Lato" font-weight="normal">End</tspan>
+            </text>
+        </g>
+        <g transform="translate(16 323)">
+            <rect width="119" height="35" x=".5" y=".5" fill="#F9F9FA" stroke="#DEE1E4" rx="17.5"/>
+            <text font-family="Lato-Semibold, Lato" font-size="18" font-weight="500">
+                <tspan x="16" y="25" fill="#1E1E1E">Java : </tspan> <tspan x="64.699" y="25" fill="#006BD4" font-family="Lato-Regular, Lato" font-weight="normal">Web</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
