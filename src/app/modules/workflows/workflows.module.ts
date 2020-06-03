@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 
 import { WorkflowsRoutingModule } from "./workflows-routing.module";
 import { WorkflowsComponent } from "./workflows.component";
-import { MainLeftNavbarModule } from "src/app/components/main-left-navbar/main-left-navbar.module";
+import { MainLeftNavbarModule } from "src/app/modules/main-left-navbar/main-left-navbar.module";
 
 @NgModule({
   declarations: [WorkflowsComponent],
