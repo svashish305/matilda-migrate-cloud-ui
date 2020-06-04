@@ -37,67 +37,111 @@
   <div class="horizontal-line-break" style="top: 8.75em;"></div>
 
   <div
+    (click)="
+      hubSelected = true; templateSelected = false; workflowSelected = false
+    "
     [routerLink]="['']"
-    routerLinkActive="router-link-active"
     class="logo__wrapper"
     style="padding: 14px;"
   >
     <img
       class="migrate-logo"
-      src="assets/imgs/blue-hub.svg"
+      [src]="
+        hubSelected ? 'assets/imgs/white-hub.svg' : 'assets/imgs/blue-hub.svg'
+      "
       alt=""
-      style="margin-top: 14px; width: 28px; height: 28px; opacity: 0.3;"
+      style="margin-top: 14px; width: 28px; height: 28px;"
+      [ngStyle]="hubIsSelected()"
     />
     <div class="migrate-section">
       <img
         class="logo"
-        src="assets/imgs/blue-hub.svg"
+        [src]="
+          hubSelected ? 'assets/imgs/white-hub.svg' : 'assets/imgs/blue-hub.svg'
+        "
         alt=""
-        style="margin-top: 14px; width: 28px; height: 28px; opacity: 0.3;"
+        style="margin-top: 14px; width: 28px; height: 28px;"
+        [ngStyle]="hubIsSelected()"
       />
-      <span class="menu-text" style="margin-top: 1em;">Hub</span>
+      <span
+        class="menu-text"
+        style="margin-top: 1em;"
+        [ngStyle]="setHubActiveColor()"
+        >Hub</span
+      >
+      <img src="src/assets/imgs/white-vline.svg" alt="" />
     </div>
   </div>
   <div
+    (click)="
+      templateSelected = true; hubSelected = false; workflowSelected = false
+    "
     [routerLink]="['/templates']"
     class="logo__wrapper"
     style="padding: 14px;"
   >
     <img
       class="migrate-logo"
-      src="assets/imgs/blue-template.svg"
+      [src]="
+        templateSelected
+          ? 'assets/imgs/white-template.svg'
+          : 'assets/imgs/blue-template.svg'
+      "
       alt=""
-      style="width: 28px; height: 28px; opacity: 0.3;"
+      style="width: 28px; height: 28px;"
+      [ngStyle]="templateIsSelected()"
     />
     <div class="migrate-section">
       <img
         class="logo"
-        src="assets/imgs/blue-template.svg"
+        [src]="
+          templateSelected
+            ? 'assets/imgs/white-template.svg'
+            : 'assets/imgs/blue-template.svg'
+        "
         alt=""
-        style="width: 28px; height: 28px; opacity: 0.3;"
+        style="width: 28px; height: 28px;"
+        [ngStyle]="templateIsSelected()"
       />
-      <span class="menu-text">Template</span>
+      <span class="menu-text" [ngStyle]="setTemplateActiveColor()"
+        >Template</span
+      >
     </div>
   </div>
   <div
+    (click)="
+      workflowSelected = true; hubSelected = false; templateSelected = false
+    "
     [routerLink]="['/workflows']"
     class="logo__wrapper"
     style="padding: 14px;"
   >
     <img
       class="migrate-logo"
-      src="assets/imgs/blue-workflow.svg"
+      [src]="
+        workflowSelected
+          ? 'assets/imgs/white-workflow.svg'
+          : 'assets/imgs/blue-workflow.svg'
+      "
       alt=""
-      style="width: 28px; height: 28px; opacity: 0.3;"
+      style="width: 28px; height: 28px;"
+      [ngStyle]="workflowIsSelected()"
     />
     <div class="migrate-section">
       <img
         class="logo"
-        src="assets/imgs/blue-workflow.svg"
+        [src]="
+          workflowSelected
+            ? 'assets/imgs/white-workflow.svg'
+            : 'assets/imgs/blue-workflow.svg'
+        "
         alt=""
-        style="width: 28px; height: 28px; opacity: 0.3;"
+        style="width: 28px; height: 28px;"
+        [ngStyle]="workflowIsSelected()"
       />
-      <span class="menu-text">Workflow</span>
+      <span class="menu-text" [ngStyle]="setWorkflowActiveColor()"
+        >Workflow</span
+      >
     </div>
   </div>
   <!-- remaining logos in left sidebar end -->
