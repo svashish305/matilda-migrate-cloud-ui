@@ -1,7 +1,33 @@
 .sidenav__wrapper {
   width: 3.75em;
+  transition: width 1s;
   height: 100vh;
   background: var(--primary-light);
+}
+
+.migrate-section {
+  display: none;
+}
+
+.sidenav__wrapper:hover {
+  width: 13.875em;
+
+  .migrate-logo {
+    display: none;
+  }
+
+  .migrate-section {
+    display: flex;
+  }
+}
+
+.menu-text {
+  color: var(--dark-blue);
+  font-family: LatoRegular;
+  font-size: 1.125em;
+  line-height: 1.375em;
+  letter-spacing: 0.51px;
+  margin: 2px 4.375em 0 14px;
 }
 
 .logo__wrapper {
@@ -10,7 +36,7 @@
   flex-direction: column;
   // justify-content: space-around;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .logo {
@@ -26,7 +52,14 @@
   margin: 0;
   top: 3.75em;
   width: 3.75em;
+  height: 1px;
+  transition: width 1s;
+  width: 13.875em;
   background-color: #ffffff;
+}
+
+.horizontal-line-break:hover {
+  width: 13.875em;
 }
 
 .horizontal-line-break-bottom {
@@ -34,7 +67,14 @@
   margin: 0;
   bottom: 3.75em;
   width: 3.75em;
+  height: 1px;
+  transition: width 1s;
+  width: 13.875em;
   background-color: #ffffff;
+}
+
+.horizontal-line-break-bottom:hover {
+  width: 13.875em;
 }
 
 .active-module {

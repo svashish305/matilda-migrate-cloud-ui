@@ -3,73 +3,107 @@
   <div class="logo__wrapper" style="padding: 18px 16px 18px 17px;">
     <img
       class="logo"
-      src="assets/imgs/Matilda.svg"
+      src="assets/imgs/matilda-logo.svg"
       alt=""
       style="width: 27px; height: 24px; opacity: 1;"
     />
   </div>
-  <hr class="horizontal-line-break" />
 
-  <!-- remaining logos in left sidebar -->
-  <div
-    class="logo__wrapper"
-    style="margin-top: 40px; padding: 17px 16px 17px 17px;"
-  >
-    <img
-      class="logo"
-      src="assets/imgs/group-2.svg"
-      alt=""
-      style="width: 27px; height: 26px; opacity: 0.3;"
-    />
-  </div>
-  <div class="logo__wrapper" style="padding: 17px 16px 17px 17px;">
-    <img
-      class="logo"
-      src="assets/imgs/group-3.svg"
-      alt=""
-      style="width: 27px; height: 26px; opacity: 0.3;"
-    />
-  </div>
-  <div class="logo__wrapper" style="padding: 17px 18px 14px 17px;">
-    <img
-      class="logo"
-      src="assets/imgs/group-4.svg"
-      alt=""
-      style="width: 27px; height: 29px; opacity: 0.3;"
-    />
-  </div>
+  <div class="horizontal-line-break"></div>
+
   <div
     class="logo__wrapper active-module"
-    style="padding: 14px;"
+    style="margin: 10px 0 10px 0; padding: 14px;"
     [routerLink]="['']"
   >
-    <!-- <div class="v-line"></div> -->
     <img
-      class="logo"
+      class="migrate-logo"
       src="assets/imgs/group-5.svg"
       alt=""
       style="width: 28px; height: 28px; opacity: 1;"
     />
+    <div class="migrate-section">
+      <img
+        class="logo"
+        src="assets/imgs/group-5.svg"
+        alt=""
+        style="width: 28px; height: 28px; opacity: 1;"
+      />
+      <span class="menu-text" style="color: #fff;">Migrate</span>
+      <img src="assets/imgs/white-chevron-down.svg" alt="" />
+    </div>
   </div>
-  <div class="logo__wrapper" style="padding: 14px;">
+
+  <div class="horizontal-line-break" style="top: 8.75em;"></div>
+
+  <div
+    [routerLink]="['']"
+    routerLinkActive="router-link-active"
+    class="logo__wrapper"
+    style="padding: 14px;"
+  >
     <img
-      class="logo"
-      src="assets/imgs/group-6.svg"
+      class="migrate-logo"
+      src="assets/imgs/blue-hub.svg"
       alt=""
-      style="width: 32px; height: 32px; opacity: 0.3;"
+      style="margin-top: 14px; width: 28px; height: 28px; opacity: 0.3;"
     />
+    <div class="migrate-section">
+      <img
+        class="logo"
+        src="assets/imgs/blue-hub.svg"
+        alt=""
+        style="margin-top: 14px; width: 28px; height: 28px; opacity: 0.3;"
+      />
+      <span class="menu-text" style="margin-top: 1em;">Hub</span>
+    </div>
   </div>
-  <div class="logo__wrapper" style="padding: 18px;">
+  <div
+    [routerLink]="['/templates']"
+    class="logo__wrapper"
+    style="padding: 14px;"
+  >
     <img
-      class="logo"
-      src="assets/imgs/group-7.svg"
+      class="migrate-logo"
+      src="assets/imgs/blue-template.svg"
       alt=""
       style="width: 28px; height: 28px; opacity: 0.3;"
     />
+    <div class="migrate-section">
+      <img
+        class="logo"
+        src="assets/imgs/blue-template.svg"
+        alt=""
+        style="width: 28px; height: 28px; opacity: 0.3;"
+      />
+      <span class="menu-text">Template</span>
+    </div>
+  </div>
+  <div
+    [routerLink]="['/workflows']"
+    class="logo__wrapper"
+    style="padding: 14px;"
+  >
+    <img
+      class="migrate-logo"
+      src="assets/imgs/blue-workflow.svg"
+      alt=""
+      style="width: 28px; height: 28px; opacity: 0.3;"
+    />
+    <div class="migrate-section">
+      <img
+        class="logo"
+        src="assets/imgs/blue-workflow.svg"
+        alt=""
+        style="width: 28px; height: 28px; opacity: 0.3;"
+      />
+      <span class="menu-text">Workflow</span>
+    </div>
   </div>
   <!-- remaining logos in left sidebar end -->
 
-  <hr class="horizontal-line-break-bottom" />
+  <div class="horizontal-line-break-bottom"></div>
+
   <div class="logo__wrapper logout-icon" style="padding: 17px;">
     <img
       class="logo"

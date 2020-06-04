@@ -9,26 +9,20 @@
     <!-- left logo bar end-->
 
     <div class="content__wrapper">
-      <div class="waves__list__wrapper">
+      <!-- template-list start -->
+      <!-- <div class="waves__list__wrapper">
         <div
           (click)="collapseWaveList()"
           [ngClass]="{ 'strict-collapse': waveListCollapsed }"
           class="wave-collapse"
         >
-          <!-- <img src="assets/imgs/arrow-dark.svg" alt="" /> -->
           <img
             src="assets/imgs/chevron-up.svg"
             style="transform: rotate(-90deg);"
             alt=""
           />
         </div>
-        <!-- <div
-          class="waves__list__inner__wrapper"
-          (mouseenter)="waveListEntered()"
-          (mouseleave)="waveListExit()"
-        > -->
         <div class="waves__list__inner__wrapper">
-          <!-- Template List -->
           <div class="template-list">
             <div class="waves__list__header">
               <div (click)="addTemplate()" class="image-wrapper">
@@ -57,7 +51,6 @@
             </div>
 
             <div class="waves__list">
-              <!-- Recent templates -->
               <a (click)="isRecentCollapsed = !isRecentCollapsed">
                 <div
                   class="wave__list__item"
@@ -106,9 +99,6 @@
                   Template 1
                 </div>
               </div>
-              <!-- End of Recent templates -->
-
-              <!-- Favourite Templates -->
               <a (click)="isFavouritesCollapsed = !isFavouritesCollapsed">
                 <div
                   class="wave__list__item"
@@ -168,8 +158,6 @@
                   MySQL
                 </div>
               </div>
-
-              <!-- End of Favourite Templates -->
               <hr class="h-sep" />
               <div
                 (click)="getTemplateData(template.id)"
@@ -200,8 +188,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <!-- End of Template List -->
+      </div> -->
+      <!-- end of template-list -->
 
       <!-- template details start -->
       <div class="wave__content">

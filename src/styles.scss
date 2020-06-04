@@ -65,6 +65,7 @@ $matilda-migrate-theme: mat-light-theme(
 
 :root {
   --primary-light: #006bd4;
+  --dark-blue: #023d98;
   --light-blue-bg: #f0f6fd;
   --blackish-text: #1e1e1e;
   --light-gray-bg: #f9f9fa;
@@ -75,6 +76,11 @@ $matilda-migrate-theme: mat-light-theme(
   --btn-gray-border: #aeb5bb;
   --btn-lightgray-border: #dee1e4;
   --faded-bg-when-sidebar-expanded: rgba(30, 30, 30, 0.6);
+}
+
+// remove black outline on click chrome v83 bug
+*:focus {
+  outline: 0px transparent !important;
 }
 
 button:focus,
