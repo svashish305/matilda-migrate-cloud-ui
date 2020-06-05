@@ -7,8 +7,15 @@
     [ngClass]="{ 'side-open': edit }"
     class="wave__content__wrapper"
   >
+    <!-- breadcrumb -->
+
+    <!-- end of breadcrumb -->
+
     <!-- wave name and desription start -->
     <div class="wave__header">
+      <a [routerLink]="['']" class="back-icon"
+        ><img src="assets/imgs/back-icon.svg" alt="back"
+      /></a>
       <img
         *ngIf="templateData.icon"
         [src]="templateData.icon"
@@ -86,6 +93,10 @@
 
     <!-- template subheader -->
     <mat-tab-group [@.disabled]="true">
+      <mat-tab label="Charts">
+        <!-- put chart tab content here -->
+      </mat-tab>
+
       <mat-tab label="Stages">
         <!-- Stages tab content -->
         <div *ngIf="stages" style="height: 6em;">
@@ -119,9 +130,6 @@
           </div>
         </div>
         <!-- End of Stages tab content -->
-      </mat-tab>
-      <mat-tab label="Charts">
-        <!-- put chart tab content here -->
       </mat-tab>
     </mat-tab-group>
 

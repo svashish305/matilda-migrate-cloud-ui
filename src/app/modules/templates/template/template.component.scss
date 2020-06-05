@@ -14,6 +14,12 @@
   }
 }
 
+.back-icon {
+  position: relative;
+  top: 10px;
+  margin-right: 24px;
+}
+
 .my-avatar /deep/ .avatar-content {
   max-width: 72px !important;
 }
@@ -36,8 +42,9 @@
   color: #cecece;
   // display: inline-block;
   position: absolute;
-  top: 6.063rem;
-  left: 6.063rem;
+  top: 4.65em;
+  // left: 6.063rem;
+  left: 11rem;
 }
 
 .description-input {
@@ -72,6 +79,12 @@
   font-family: LatoRegular;
   font-weight: 600;
   font-size: 1.125em;
+}
+
+::ng-deep.mat-tab-header {
+  position: absolute !important;
+  top: 3.5em !important;
+  right: 2em !important;
 }
 
 ::ng-deep.mat-tab-label,
@@ -126,8 +139,8 @@ mat-button-toggle {
 
 .wave__header {
   border-top: 1px solid var(--grayed-border);
-  padding: 47px 0 49px 0;
-  height: 10.5em;
+  padding: 34px 0 0 0;
+  height: 8em;
   display: flex;
   flex-direction: row;
 }
@@ -264,7 +277,9 @@ mat-button-toggle {
   min-width: unset;
   height: 30px;
   padding: 0;
-  margin-top: 19px;
+  margin-top: 2.4em;
+  position: absolute;
+  right: 0;
 }
 
 .import-options {

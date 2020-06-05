@@ -8,12 +8,14 @@ import { MaterialModule } from "./material.module";
 import { ResizableModule } from "angular-resizable-element";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { HttpClientModule } from "@angular/common/http";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [TemplateComponent, TemplateListComponent],
   imports: [
     CommonModule,
     HttpClientModule,
+    RouterModule,
     AvatarModule,
     FormsModule,
     MaterialModule,
