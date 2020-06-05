@@ -68,6 +68,9 @@
               </div>
             </div>
             <div *ngIf="!stage.collapsed" class="template-status">
+              <span>Status: </span>
+            </div>
+            <div *ngIf="!stage.collapsed" class="template-status">
               <span class="col-header">Status</span>
             </div>
             <div *ngIf="!stage.collapsed" class="template-start">
@@ -120,7 +123,7 @@
               >
                 <span
                   class="cell-text"
-                  style="color: #fff; text-transform: uppercase;"
+                  style="color: #fff; text-transform: capitalize;"
                   >{{ task.status }}</span
                 >
                 <!-- template status start -->

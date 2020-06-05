@@ -24,12 +24,13 @@
 .template-name {
   flex: 1;
   display: flex;
-  align-items: center;
+  // align-items: center;
   height: 100%;
 }
 .template__row {
   margin-left: 5px;
   height: 30px;
+  // height: 5.563em;
   font-size: 14px;
   cursor: pointer;
   &.item {
@@ -272,7 +273,7 @@
   // height: 100%;
   &::after,
   &::before {
-    content: ' ';
+    content: " ";
     position: absolute;
     border: solid transparent;
     bottom: 100%;
@@ -430,7 +431,7 @@ form {
   right: 14px;
   height: 24px !important;
   width: 24px !important;
-  background: url('src/assets/imgs/chevron-down.svg') !important;
+  background: url("src/assets/imgs/chevron-down.svg") !important;
   border: none !important;
   margin: 0 !important;
 }
