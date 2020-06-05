@@ -166,15 +166,6 @@
                 <div class="row-starter"></div>
                 <div class="grid-start-line border-white"></div>
                 <div class="border-white template-name-main">
-                  <!-- <input
-                    (focus)="stage.showAdd = true"
-                    (focusout)="inputFocusOut($event, stage)"
-                    class="template-add"
-                    (keydown.enter)="addTemplate(stage)"
-                    [(ngModel)]="stage.newTemplate"
-                    type="text"
-                    placeholder="+ Add"
-                  /> -->
                   <input
                     (focus)="stage.showAdd = true"
                     (focusout)="inputFocusOut($event, stage)"
@@ -185,13 +176,6 @@
                     placeholder="+ Add"
                   />
                 </div>
-                <!-- <div
-                  *ngIf="stage.showAdd"
-                  (click)="addTemplate(stage)"
-                  class="template-add-button"
-                >
-                  Add
-                </div> -->
                 <div
                   *ngIf="stage.showAdd"
                   (click)="openDialog(addTaskModal)"
