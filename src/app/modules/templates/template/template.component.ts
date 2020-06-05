@@ -4,26 +4,26 @@ import {
   Input,
   ViewChild,
   AfterViewInit,
-} from '@angular/core';
-import { DataService } from 'src/services/data.service';
+} from "@angular/core";
+import { DataService } from "src/services/data.service";
 
 @Component({
-  selector: 'app-template',
-  templateUrl: './template.component.html',
-  styleUrls: ['./template.component.scss'],
+  selector: "app-template",
+  templateUrl: "./template.component.html",
+  styleUrls: ["./template.component.scss"],
 })
 export class TemplateComponent implements OnInit, AfterViewInit {
   @Input() templateData: any;
   edit;
   showBackdrop;
-  @ViewChild('templateList', { static: false }) templateList;
+  @ViewChild("templateList", { static: false }) templateList;
 
   searchKey;
   stages: any[] = [];
-  titleState: string = 'idle';
+  titleState: string = "idle";
   oldTitle: string;
   newTitle: string;
-  descriptionState: string = 'idle';
+  descriptionState: string = "idle";
   oldDescription: string;
   newDescription: string;
 
@@ -56,20 +56,20 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     });
   }
 
-  setBadgeBgColor(stageState = 'undefined') {
-    let backgroundColor = '#FA0B10';
+  setBadgeBgColor(stageState = "undefined") {
+    let backgroundColor = "#FA0B10";
     switch (stageState) {
-      case 'Undefined':
-        backgroundColor = '#FA0B10';
+      case "Undefined":
+        backgroundColor = "#FA0B10";
         break;
-      case 'Configured':
-        backgroundColor = '#D0CA00';
+      case "Configured":
+        backgroundColor = "#D0CA00";
         break;
-      case 'Ready':
-        backgroundColor = '#006BD8';
+      case "Ready":
+        backgroundColor = "#006BD8";
         break;
-      case 'Finished':
-        backgroundColor = '#00BB00';
+      case "Finished":
+        backgroundColor = "#00BB00";
         break;
       default:
         break;
@@ -106,24 +106,24 @@ export class TemplateComponent implements OnInit, AfterViewInit {
    * @description resizes the template details container
    */
   appyResize(event?) {
-    const wrapperWidth = document.getElementById('wave-content-id').offsetWidth;
-    const templateHolder = document.getElementById('template-holder');
-    const contentHolder = document.getElementById('wave-main-content');
+    const wrapperWidth = document.getElementById("wave-content-id").offsetWidth;
+    const templateHolder = document.getElementById("template-holder");
+    const contentHolder = document.getElementById("wave-main-content");
     let width;
     if (templateHolder) {
       const resizerWidth = templateHolder.offsetWidth;
       width = event ? resizerWidth - event.edges.left : 430;
-      templateHolder.style.width = width + 'px';
+      templateHolder.style.width = width + "px";
     } else {
       width = 0;
     }
     if (wrapperWidth > 750 + width) {
       if (contentHolder) {
-        contentHolder.style.width = wrapperWidth - width + 40 + 'px';
+        contentHolder.style.width = wrapperWidth - width + 40 + "px";
       }
     } else {
       if (contentHolder) {
-        contentHolder.style.width = '750px';
+        contentHolder.style.width = "750px";
       }
     }
   }
@@ -157,7 +157,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     const id = Math.random().toString(6);
     this.templateData.waveTypes.unshift({
       id: id,
-      name: 'New group',
+      name: "New group",
       theme: this.templateList.getRandomColor(),
       edit: true,
       templates: [],
@@ -165,11 +165,11 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   }
 
   onFocusTitle() {
-    this.titleState = 'editing';
+    this.titleState = "editing";
   }
 
   updateTitle() {
-    this.titleState = 'idle';
+    this.titleState = "idle";
     if (this.newTitle !== this.oldTitle) {
       // update title
       const newTemplate = {
@@ -183,11 +183,11 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   }
 
   onFocusDescription() {
-    this.descriptionState = 'editing';
+    this.descriptionState = "editing";
   }
 
   updateDescription() {
-    this.descriptionState = 'idle';
+    this.descriptionState = "idle";
     if (this.newDescription !== this.oldDescription) {
       // update description
       const newTemplate = {
