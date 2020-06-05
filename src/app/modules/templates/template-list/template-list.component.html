@@ -21,7 +21,7 @@
       <!-- template list strats -->
       <div class="template-list-wrapper">
         <div>
-          <div class="template__row">
+          <div id="stage-header" class="template__row">
             <div class="template-name">
               <div
                 class="group-drag"
@@ -71,13 +71,22 @@
               <span>Status: </span>
             </div>
             <div *ngIf="!stage.collapsed" class="template-status">
-              <span class="col-header">Status</span>
+              <span>Progress: </span>
             </div>
-            <div *ngIf="!stage.collapsed" class="template-start">
-              <span class="col-header">Start Date</span>
-            </div>
-            <div *ngIf="!stage.collapsed" class="template-end">
-              <span class="col-header">End Date</span>
+
+            <div class="stage-list-subheader">
+              <div *ngIf="!stage.collapsed" class="template-status">
+                <span class="col-header">Name</span>
+              </div>
+              <div *ngIf="!stage.collapsed" class="template-status">
+                <span class="col-header">Status</span>
+              </div>
+              <div *ngIf="!stage.collapsed" class="template-start">
+                <span class="col-header">Start Date</span>
+              </div>
+              <div *ngIf="!stage.collapsed" class="template-end">
+                <span class="col-header">End Date</span>
+              </div>
             </div>
           </div>
           <!-- cdkdroplist for template re ordering among and across groups -->
@@ -85,7 +94,7 @@
             *ngIf="!stage.collapsed"
             cdkDropList
             id="{{ stage.id }}"
-            [cdkDropListData]="stages"
+            [cdkDropListData]="stage.data.taskTypes[0].tasks"
             (cdkDropListDropped)="drop($event)"
             [cdkDropListConnectedTo]="getConnectedList()"
           >
