@@ -8,7 +8,20 @@
     class="wave__content__wrapper"
   >
     <!-- breadcrumb -->
-
+    <div class="right-menu">
+      <img
+        [src]="
+          unreadNotifications
+            ? 'assets/imgs/bell-active.svg'
+            : 'assets/imgs/bell-default.svg'
+        "
+        alt="notifications"
+        style="padding-right: 24px;"
+      />
+      <ngx-avatar name="Robert Frost" size="24"></ngx-avatar
+      ><span class="std-text">Robert</span>
+      <img src="assets/imgs/chevron-down.svg" alt="profile-settings" />
+    </div>
     <!-- end of breadcrumb -->
 
     <!-- wave name and desription start -->

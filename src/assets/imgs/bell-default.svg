@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 63.1 (101010) - https://sketch.com -->
+    <title>EC3718F0-7E40-45FB-920C-6910BB19F979</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Template-Changes-New" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons" transform="translate(-134.000000, -200.000000)" fill-rule="nonzero">
+            <g id="Icons/Notifications/default" transform="translate(134.000000, 200.000000)">
+                <g id="ic-baseline-notifications">
+                    <g id="Icon" transform="translate(4.000000, 2.000000)" fill="#006BD4">
+                        <path d="M8,20 C9.1,20 10,19.1 10,18 L6,18 C6,19.1045695 6.8954305,20 8,20 Z M14,14 L14,9 C14,5.93 12.36,3.36 9.5,2.68 L9.5,2 C9.5,1.17 8.83,0.5 8,0.5 C7.17,0.5 6.5,1.17 6.5,2 L6.5,2.68 C3.63,3.36 2,5.92 2,9 L2,14 L0,16 L0,17 L16,17 L16,16 L14,14 Z" id="Icon-Shape"></path>
+                    </g>
+                    <rect id="ViewBox" x="0" y="0" width="24" height="24"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
