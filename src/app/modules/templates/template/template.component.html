@@ -98,8 +98,7 @@
       <mat-menu #templateDropdown="matMenu" xPosition="before">
         <button mat-menu-item (click)="showImportOptions = true">Import</button>
         <button mat-menu-item>Discover</button>
-        <button mat-menu-item>Clone</button>
-        <button mat-menu-item>Tag</button>
+        <button mat-menu-item (click)="showTagOptions = true">Tag</button>
       </mat-menu>
     </div>
     <!-- wave name and desription end -->
@@ -436,3 +435,6 @@
   <!-- end of template cards -->
 </div>
 <!-- end of import options -->
+
+<!-- tag options start -->
+<!-- end of tag options -->

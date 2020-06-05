@@ -26,15 +26,17 @@ export class TemplateComponent implements OnInit, AfterViewInit {
 
   searchKey;
   stages: any[] = [];
-  titleState: string = "idle";
+  titleState = "idle";
   oldTitle: string;
   newTitle: string;
-  descriptionState: string = "idle";
+  descriptionState = "idle";
   oldDescription: string;
   newDescription: string;
 
-  showImportOptions: boolean = false;
-  importStatus: boolean = false;
+  showImportOptions = false;
+  importStatus = false;
+  showTagOptions = false;
+  tagStatus = false;
 
   workflowTypes: WorkflowType[] = [
     { value: "w-0", viewValue: "Time" },
