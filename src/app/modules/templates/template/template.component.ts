@@ -40,6 +40,8 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     { value: "w-1", viewValue: "Status" },
   ];
 
+  selectedWorkflowType: any;
+
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
@@ -49,6 +51,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     // this.newTitle = this.oldTitle;
     // this.oldDescription = this.templateData.data.description;
     // this.newDescription = this.oldDescription;
+    this.selectedWorkflowType = this.workflowTypes[0].value;
     this.getStages();
   }
 

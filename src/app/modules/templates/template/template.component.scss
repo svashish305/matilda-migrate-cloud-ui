@@ -81,7 +81,7 @@
   font-size: 1.125em;
 }
 
-::ng-deep.mat-tab-header {
+#stage-tab::ng-deep.mat-tab-header {
   position: absolute !important;
   top: 3.5em !important;
   right: 2em !important;
@@ -94,9 +94,18 @@
   margin: 3px !important;
 }
 
+#workflow-select::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+#workflow-select::ng-deep .mat-select-arrow {
+  bottom: 4px;
+}
+
 .workflow-type-dd {
   width: 6.25em;
   position: absolute;
+  top: 2.75em;
   left: 11em;
 }
 
@@ -137,10 +146,9 @@ mat-button-toggle {
   border-top: 1px solid var(--grayed-border);
 }
 
-// .templates__wrapper{
-//     // border-top: 2px solid #f7f7f7;
-//     // margin-top: 10px;
-
+// .templates__wrapper {
+//   border-top: 2px solid #f7f7f7;
+//   margin-top: 10px;
 // }
 
 .wave__header {
