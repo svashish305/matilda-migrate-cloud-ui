@@ -193,36 +193,36 @@ export class TemplateListComponent implements OnInit, OnChanges {
 
   /**
    *
-   * @param templateObj - for which the details has to be shown
+   * @param taskObj - for which the details has to be shown
    * @description emits event to open template details
    */
-  rowClick(templateObj) {
-    this.tasks.forEach((waveType) => {
-      waveType.templates.forEach((template) => {
-        template.selected = false;
+  rowClick(taskObj) {
+    this.stages.forEach((stage) => {
+      stage.data.taskType.tasks.forEach((task) => {
+        task.selected = false;
       });
     });
-    templateObj.selected = true;
+    taskObj.selected = true;
     this.rowClicked.emit(true);
     console.log("row clicked");
   }
 
   /**
    *
-   * @param waveType - for which new template has to be added
+   * @param taskType - for which new template has to be added
    * @description Adds new template to group
    */
-  addTemplate(waveType) {
+  addTemplate(taskType) {
     const id = Math.random().toString(6);
 
-    waveType.templates.push({
+    taskType.tasks.push({
       id: id,
-      name: waveType.newTemplate,
+      name: taskType.newTemplate,
       status: "",
       startDate: "",
       endDate: "",
     });
-    waveType.newTemplate = "";
+    taskType.newTemplate = "";
   }
 
   /**

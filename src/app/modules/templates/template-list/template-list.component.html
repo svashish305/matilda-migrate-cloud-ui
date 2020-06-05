@@ -62,7 +62,6 @@
                 (mouseenter)="groupNameEnter(stage)"
                 (mouseleave)="stage.edit = false"
               >
-                <!-- <div class="group-name" *ngIf="!stage.edit"> -->
                 <div class="group-name">
                   {{ stage.name }}
                 </div>
@@ -83,13 +82,13 @@
             *ngIf="!stage.collapsed"
             cdkDropList
             id="{{ stage.id }}"
-            [cdkDropListData]="tasks"
+            [cdkDropListData]="stages"
             (cdkDropListDropped)="drop($event)"
             [cdkDropListConnectedTo]="getConnectedList()"
           >
             <div
               class="template__row item"
-              [ngClass]="{ selected: task.selected }"
+              [ngClass]="{ selected: stage.selected }"
               (click)="rowClick(task)"
               *ngFor="let task of tasks"
               cdkDrag
