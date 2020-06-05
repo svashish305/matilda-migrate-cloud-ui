@@ -462,90 +462,43 @@
   "stages": [
     {
       "id": 1,
-      "name": "Stage 1",
+      "name": "Stage Install YUM",
       "progressPercentage": 50,
       "state": "Configured",
       "data": {
-        "name": "Stage 1",
+        "name": "Stage Install YUM",
         "description": "Stage Description",
-        "TemplateTypes": [
+        "taskTypes": [
           {
             "id": "1",
-            "name": "Template1-APP",
-            "templates": [
+            "name": "Task For Script",
+            "tasks": [
               {
                 "id": 1,
-                "name": "Sqlserver install",
-                "status": "Done",
-                "startDate": "Apr 2",
-                "endDate": "Apr 14"
+                "name": "Task For Script",
+                "plugin": "Azure",
+                "startDate": "6/1/2020",
+                "endDate": "12/11/2020",
+                "status": "configured",
+                "progressPercentage": 50
               },
               {
                 "id": 2,
-                "name": "Stage Name Application VM creation",
-                "status": "Done",
-                "startDate": "Mar 31",
-                "endDate": "Apr 9"
-              }
-            ]
-          },
-          {
-            "id": "2",
-            "name": "Template1-DB",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Data factory",
-                "status": "Working on it",
-                "startDate": "Apr 4",
-                "endDate": "Apr 20"
+                "name": "Task For Script",
+                "plugin": "Azure",
+                "startDate": "6/1/2020",
+                "endDate": "12/11/2020",
+                "status": "configured",
+                "progressPercentage": 50
               },
               {
-                "id": 2,
-                "name": "Data Warehouse configuration",
-                "status": "Done",
-                "startDate": "Apr 2",
-                "endDate": "Apr 15"
-              }
-            ]
-          },
-          {
-            "id": "3",
-            "name": "Template1-Testing",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Post deployment validation",
-                "status": "Stuck",
-                "startDate": "Apr 15",
-                "endDate": "Apr 15"
-              },
-              {
-                "id": 2,
-                "name": "Security Scan infra",
-                "status": "",
-                "startDate": "",
-                "endDate": ""
-              }
-            ]
-          },
-          {
-            "id": "4",
-            "name": "Template1-Testing2",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Post deployment validation",
-                "status": "Stuck",
-                "startDate": "Apr 15",
-                "endDate": "Apr 15"
-              },
-              {
-                "id": 2,
-                "name": "Security Scan infra",
-                "status": "",
-                "startDate": "",
-                "endDate": ""
+                "id": 3,
+                "name": "Task For Script",
+                "plugin": "Azure",
+                "startDate": "6/1/2020",
+                "endDate": "12/11/2020",
+                "status": "configured",
+                "progressPercentage": 50
               }
             ]
           }
@@ -554,274 +507,43 @@
     },
     {
       "id": 2,
-      "name": "Stage 2",
-      "progressPercentage": 0,
-      "state": "Undefined",
+      "name": "Stage Install Resources",
+      "progressPercentage": 50,
+      "state": "Configured",
       "data": {
-        "name": "Stage 1",
+        "name": "Stage Install Resources",
         "description": "Stage Description",
-        "TemplateTypes": [
+        "taskTypes": [
           {
             "id": "1",
-            "name": "Template1-APP",
-            "templates": [
+            "name": "Task For Script",
+            "tasks": [
               {
                 "id": 1,
-                "name": "Sqlserver install",
-                "status": "Done",
-                "startDate": "Apr 2",
-                "endDate": "Apr 14"
+                "name": "Task For Script",
+                "plugin": "Azure",
+                "startDate": "6/1/2020",
+                "endDate": "12/11/2020",
+                "status": "configured",
+                "progressPercentage": 50
               },
               {
                 "id": 2,
-                "name": "Stage Name Application VM creation",
-                "status": "Done",
-                "startDate": "Mar 31",
-                "endDate": "Apr 9"
-              }
-            ]
-          },
-          {
-            "id": "2",
-            "name": "Template1-DB",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Data factory",
-                "status": "Working on it",
-                "startDate": "Apr 4",
-                "endDate": "Apr 20"
+                "name": "Task For Script",
+                "plugin": "Azure",
+                "startDate": "6/1/2020",
+                "endDate": "12/11/2020",
+                "status": "configured",
+                "progressPercentage": 50
               },
               {
-                "id": 2,
-                "name": "Data Warehouse configuration",
-                "status": "Done",
-                "startDate": "Apr 2",
-                "endDate": "Apr 15"
-              }
-            ]
-          },
-          {
-            "id": "3",
-            "name": "Template1-Testing",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Post deployment validation",
-                "status": "Stuck",
-                "startDate": "Apr 15",
-                "endDate": "Apr 15"
-              },
-              {
-                "id": 2,
-                "name": "Security Scan infra",
-                "status": "",
-                "startDate": "",
-                "endDate": ""
-              }
-            ]
-          },
-          {
-            "id": "4",
-            "name": "Template1-Testing2",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Post deployment validation",
-                "status": "Stuck",
-                "startDate": "Apr 15",
-                "endDate": "Apr 15"
-              },
-              {
-                "id": 2,
-                "name": "Security Scan infra",
-                "status": "",
-                "startDate": "",
-                "endDate": ""
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": 3,
-      "name": "Stage 3",
-      "progressPercentage": 90,
-      "state": "Ready",
-      "data": {
-        "name": "Stage 1",
-        "description": "Stage Description",
-        "TemplateTypes": [
-          {
-            "id": "1",
-            "name": "Template1-APP",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Sqlserver install",
-                "status": "Done",
-                "startDate": "Apr 2",
-                "endDate": "Apr 14"
-              },
-              {
-                "id": 2,
-                "name": "Stage Name Application VM creation",
-                "status": "Done",
-                "startDate": "Mar 31",
-                "endDate": "Apr 9"
-              }
-            ]
-          },
-          {
-            "id": "2",
-            "name": "Template1-DB",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Data factory",
-                "status": "Working on it",
-                "startDate": "Apr 4",
-                "endDate": "Apr 20"
-              },
-              {
-                "id": 2,
-                "name": "Data Warehouse configuration",
-                "status": "Done",
-                "startDate": "Apr 2",
-                "endDate": "Apr 15"
-              }
-            ]
-          },
-          {
-            "id": "3",
-            "name": "Template1-Testing",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Post deployment validation",
-                "status": "Stuck",
-                "startDate": "Apr 15",
-                "endDate": "Apr 15"
-              },
-              {
-                "id": 2,
-                "name": "Security Scan infra",
-                "status": "",
-                "startDate": "",
-                "endDate": ""
-              }
-            ]
-          },
-          {
-            "id": "4",
-            "name": "Template1-Testing2",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Post deployment validation",
-                "status": "Stuck",
-                "startDate": "Apr 15",
-                "endDate": "Apr 15"
-              },
-              {
-                "id": 2,
-                "name": "Security Scan infra",
-                "status": "",
-                "startDate": "",
-                "endDate": ""
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": 4,
-      "name": "Stage 4",
-      "progressPercentage": 100,
-      "state": "Finished",
-      "data": {
-        "name": "Stage 1",
-        "description": "Stage Description",
-        "TemplateTypes": [
-          {
-            "id": "1",
-            "name": "Template1-APP",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Sqlserver install",
-                "status": "Done",
-                "startDate": "Apr 2",
-                "endDate": "Apr 14"
-              },
-              {
-                "id": 2,
-                "name": "Stage Name Application VM creation",
-                "status": "Done",
-                "startDate": "Mar 31",
-                "endDate": "Apr 9"
-              }
-            ]
-          },
-          {
-            "id": "2",
-            "name": "Template1-DB",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Data factory",
-                "status": "Working on it",
-                "startDate": "Apr 4",
-                "endDate": "Apr 20"
-              },
-              {
-                "id": 2,
-                "name": "Data Warehouse configuration",
-                "status": "Done",
-                "startDate": "Apr 2",
-                "endDate": "Apr 15"
-              }
-            ]
-          },
-          {
-            "id": "3",
-            "name": "Template1-Testing",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Post deployment validation",
-                "status": "Stuck",
-                "startDate": "Apr 15",
-                "endDate": "Apr 15"
-              },
-              {
-                "id": 2,
-                "name": "Security Scan infra",
-                "status": "",
-                "startDate": "",
-                "endDate": ""
-              }
-            ]
-          },
-          {
-            "id": "4",
-            "name": "Template1-Testing2",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Post deployment validation",
-                "status": "Stuck",
-                "startDate": "Apr 15",
-                "endDate": "Apr 15"
-              },
-              {
-                "id": 2,
-                "name": "Security Scan infra",
-                "status": "",
-                "startDate": "",
-                "endDate": ""
+                "id": 3,
+                "name": "Task For Script",
+                "plugin": "Azure",
+                "startDate": "6/1/2020",
+                "endDate": "12/11/2020",
+                "status": "configured",
+                "progressPercentage": 50
               }
             ]
           }
@@ -832,199 +554,30 @@
   "tasks": [
     {
       "id": 1,
-      "name": "Task 1",
-      "title": "Create Instance",
-      "description": "Short description of task. Short description of task. Short description of task. Short description of task. Short description of task.",
-      "stage": {
-        "id": 1,
-        "name": "Stage 1",
-        "progressPercentage": 50,
-        "state": "Configured"
-      },
-      "data": {
-        "name": "Task 1",
-        "description": "Task Description",
-        "TemplateTypes": [
-          {
-            "id": "1",
-            "name": "Template1-APP",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Sqlserver install",
-                "status": "Done",
-                "startDate": "Apr 2",
-                "endDate": "Apr 14"
-              },
-              {
-                "id": 2,
-                "name": "Task Name Application VM creation",
-                "status": "Done",
-                "startDate": "Mar 31",
-                "endDate": "Apr 9"
-              }
-            ]
-          },
-          {
-            "id": "2",
-            "name": "Template1-DB",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Data factory",
-                "status": "Working on it",
-                "startDate": "Apr 4",
-                "endDate": "Apr 20"
-              },
-              {
-                "id": 2,
-                "name": "Data Warehouse configuration",
-                "status": "Done",
-                "startDate": "Apr 2",
-                "endDate": "Apr 15"
-              }
-            ]
-          },
-          {
-            "id": "3",
-            "name": "Template1-Testing",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Post deployment validation",
-                "status": "Stuck",
-                "startDate": "Apr 15",
-                "endDate": "Apr 15"
-              },
-              {
-                "id": 2,
-                "name": "Security Scan infra",
-                "status": "",
-                "startDate": "",
-                "endDate": ""
-              }
-            ]
-          },
-          {
-            "id": "4",
-            "name": "Template1-Testing2",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Post deployment validation",
-                "status": "Stuck",
-                "startDate": "Apr 15",
-                "endDate": "Apr 15"
-              },
-              {
-                "id": 2,
-                "name": "Security Scan infra",
-                "status": "",
-                "startDate": "",
-                "endDate": ""
-              }
-            ]
-          }
-        ]
-      }
+      "name": "Task For Script",
+      "plugin": "Azure",
+      "startDate": "6/1/2020",
+      "endDate": "12/11/2020",
+      "status": "configured",
+      "progressPercentage": 50
     },
     {
       "id": 2,
-      "name": "Task 2",
-      "title": "Create Security Group",
-      "description": "Short description of task. Short description of task. Short description of task. Short description of task. Short description of task.",
-      "stage": {
-        "id": 2,
-        "name": "Stage 2",
-        "progressPercentage": 0,
-        "state": "Undefined"
-      },
-      "data": {
-        "name": "Task 1",
-        "description": "Task Description",
-        "TemplateTypes": [
-          {
-            "id": "1",
-            "name": "Template1-APP",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Sqlserver install",
-                "status": "Done",
-                "startDate": "Apr 2",
-                "endDate": "Apr 14"
-              },
-              {
-                "id": 2,
-                "name": "Task Name Application VM creation",
-                "status": "Done",
-                "startDate": "Mar 31",
-                "endDate": "Apr 9"
-              }
-            ]
-          },
-          {
-            "id": "2",
-            "name": "Template1-DB",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Data factory",
-                "status": "Working on it",
-                "startDate": "Apr 4",
-                "endDate": "Apr 20"
-              },
-              {
-                "id": 2,
-                "name": "Data Warehouse configuration",
-                "status": "Done",
-                "startDate": "Apr 2",
-                "endDate": "Apr 15"
-              }
-            ]
-          },
-          {
-            "id": "3",
-            "name": "Template1-Testing",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Post deployment validation",
-                "status": "Stuck",
-                "startDate": "Apr 15",
-                "endDate": "Apr 15"
-              },
-              {
-                "id": 2,
-                "name": "Security Scan infra",
-                "status": "",
-                "startDate": "",
-                "endDate": ""
-              }
-            ]
-          },
-          {
-            "id": "4",
-            "name": "Template1-Testing2",
-            "templates": [
-              {
-                "id": 1,
-                "name": "Post deployment validation",
-                "status": "Stuck",
-                "startDate": "Apr 15",
-                "endDate": "Apr 15"
-              },
-              {
-                "id": 2,
-                "name": "Security Scan infra",
-                "status": "",
-                "startDate": "",
-                "endDate": ""
-              }
-            ]
-          }
-        ]
-      }
+      "name": "Task For Script",
+      "plugin": "Azure",
+      "startDate": "6/1/2020",
+      "endDate": "12/11/2020",
+      "status": "configured",
+      "progressPercentage": 50
+    },
+    {
+      "id": 3,
+      "name": "Task For Script",
+      "plugin": "Azure",
+      "startDate": "6/1/2020",
+      "endDate": "12/11/2020",
+      "status": "configured",
+      "progressPercentage": 50
     }
   ],
   "accounts": [

@@ -9,6 +9,8 @@ import { ResizableModule } from "angular-resizable-element";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
+import { DragDropModule } from "@angular/cdk/drag-drop";
+import { SearchPipeModule } from "./searchpipe.module";
 
 @NgModule({
   declarations: [TemplateComponent, TemplateListComponent],
@@ -20,6 +22,8 @@ import { RouterModule } from "@angular/router";
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,
+    SearchPipeModule,
+    DragDropModule,
     ResizableModule,
     NgbModule,
   ],

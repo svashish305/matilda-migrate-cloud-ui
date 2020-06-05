@@ -38,7 +38,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
 
   workflowTypes: WorkflowType[] = [
     { value: "w-0", viewValue: "Time" },
-    { value: "w-1", viewValue: "Status" },
+    { value: "w-1", viewValue: "Date" },
   ];
 
   selectedWorkflowType: any;

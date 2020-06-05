@@ -1,0 +1,209 @@
+<!-- {{ templateData | json }} -->
+<a (click)="openDialog(addTaskModal)">
+  <div style="padding: 32px 0 0 0;">
+    <img src="assets/imgs/rectangle-copy-2.svg" alt="" />
+    <button mat-button class="new-task-btn">+ Add Task</button>
+  </div>
+</a>
+
+<!-- Tasks Cards (Vertical) -->
+<mat-card
+  *ngFor="let task of tasks"
+  class="mat-elevation-z0"
+  [ngStyle]="toggleHeight(task.id)"
+>
+  <mat-label class="task-name">{{ task.name }}</mat-label>
+  <mat-card-title
+    >{{ task.title }}
+    <span
+      class="badge badge-pill stage-progress-badge"
+      [ngStyle]="setBadgeBgColor(task.stage.state)"
+      >{{ task.stage.state }}</span
+    >
+    <a (click)="toggleCollapse(task.id)">
+      <img
+        class="collapse-icon"
+        [src]="
+          taskCollapseState[task.id]
+            ? 'assets/imgs/chevron-up.svg'
+            : 'assets/imgs/chevron-down.svg'
+        "
+      />
+    </a>
+  </mat-card-title>
+  <mat-progress-bar
+    mode="determinate"
+    value="{{ task.stage.progressPercentage }}"
+  ></mat-progress-bar>
+  <span class="task-stage-progress"
+    >{{ task.stage.progressPercentage }}&nbsp;%</span
+  >
+  <div [ngbCollapse]="!taskCollapseState[task.id]">
+    <mat-card-subtitle>
+      {{ task.description }}
+    </mat-card-subtitle>
+  </div>
+</mat-card>
+<!-- End of Tasks Cards -->
+
+<ng-template #addTaskModal>
+  <div class="modal-header">
+    <h4 class="pull-left">Create New Task</h4>
+  </div>
+  <div class="modal-body">
+    <!-- modal body -->
+    <mat-tab-group [@.disabled]="true">
+      <mat-tab label="General">
+        <form [formGroup]="firstFormGroup">
+          <mat-form-field class="example-full-width" style="margin-top: 24px;">
+            <mat-label>Task Name</mat-label>
+            <input
+              matInput
+              placeholder="Enter task name"
+              value="Create Instance"
+            />
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <input
+              matInput
+              placeholder="Enter task description"
+              value="Installation Configuration"
+            />
+          </mat-form-field>
+          <mat-form-field class="example-half-width">
+            <mat-label>Plugin</mat-label>
+            <mat-select
+              [(ngModel)]="plugins[0].value"
+              [ngModelOptions]="{ standalone: true }"
+            >
+              <mat-option *ngFor="let plugin of plugins" [value]="plugin.value">
+                {{ plugin.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="example-half-width">
+            <mat-label>Service</mat-label>
+            <mat-select
+              [(ngModel)]="services[0].value"
+              [ngModelOptions]="{ standalone: true }"
+            >
+              <mat-option
+                *ngFor="let service of services"
+                [value]="service.value"
+              >
+                {{ service.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="example-half-width">
+            <mat-label>Action</mat-label>
+            <mat-select
+              [(ngModel)]="actions[0].value"
+              [ngModelOptions]="{ standalone: true }"
+            >
+              <mat-option *ngFor="let action of actions" [value]="action.value">
+                {{ action.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="example-half-width">
+            <mat-label>Account</mat-label>
+            <mat-select
+              [(ngModel)]="accounts[0].value"
+              [ngModelOptions]="{ standalone: true }"
+            >
+              <mat-option
+                *ngFor="let account of accounts"
+                [value]="account.value"
+              >
+                {{ account.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </mat-tab>
+      <mat-tab label="Input">
+        <form [formGroup]="secondFormGroup">
+          <mat-form-field class="example-half-width">
+            <mat-label>Instance Name</mat-label>
+            <input
+              matInput
+              placeholder="Enter Instance Name"
+              value="$stage.task.instance"
+            />
+          </mat-form-field>
+          <mat-form-field class="example-half-width">
+            <mat-label>Type</mat-label>
+            <mat-select
+              [(ngModel)]="types[0].value"
+              [ngModelOptions]="{ standalone: true }"
+            >
+              <mat-option *ngFor="let type of types" [value]="type.value">
+                {{ type.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="example-half-width">
+            <mat-label>VPC</mat-label>
+            <input matInput placeholder="Enter VPC" value="VPC-Ohio" />
+          </mat-form-field>
+          <mat-form-field class="example-half-width">
+            <mat-label>Subnet</mat-label>
+            <input matInput placeholder="Enter Subnet" value="SMR - 123214" />
+          </mat-form-field>
+          <mat-form-field class="example-half-width">
+            <mat-label>Security</mat-label>
+            <input matInput placeholder="Enter Security" value="SMR Group" />
+          </mat-form-field>
+          <mat-form-field class="example-half-width">
+            <mat-label>Security Allowed</mat-label>
+            <input
+              matInput
+              placeholder="Enter Security Allowed"
+              value="SMR - 1233214"
+            />
+          </mat-form-field>
+          <mat-form-field class="example-half-width">
+            <mat-label>AMI</mat-label>
+            <input matInput placeholder="Enter AMI" value="AMI - lkiik" />
+          </mat-form-field>
+          <mat-form-field class="example-half-width">
+            <mat-label>Key</mat-label>
+            <input matInput placeholder="Enter Key" value="KEY_SMR" />
+          </mat-form-field>
+        </form>
+      </mat-tab>
+      <mat-tab label="Output">
+        <form [formGroup]="thirdFormGroup">
+          <mat-form-field class="example-half-width">
+            <mat-label>Instance Name</mat-label>
+            <input matInput value="$stage.task.instance" />
+          </mat-form-field>
+          <mat-form-field class="example-half-width">
+            <mat-label>IP</mat-label>
+            <input matInput value="198.28.10.11" />
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <input matInput value="Some Description comes here." />
+          </mat-form-field>
+        </form>
+      </mat-tab>
+    </mat-tab-group>
+    <!-- end of modal body -->
+  </div>
+  <div class="modal-footer">
+    <mat-dialog-actions>
+      <button mat-flat-button (click)="dialog.closeAll()">Cancel</button>
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="dialog.closeAll()"
+        cdkFocusInitial
+      >
+        Create
+      </button>
+    </mat-dialog-actions>
+  </div>
+</ng-template>

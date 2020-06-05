@@ -1,50 +1,197 @@
-<!-- {{ templateData | json }} -->
-<a (click)="openDialog(addTaskModal)">
-  <div style="padding: 32px 0 0 0;">
-    <img src="assets/imgs/rectangle-copy-2.svg" alt="" />
-    <button mat-button class="new-task-btn">+ Add Task</button>
-  </div>
-</a>
-
-<!-- Tasks Cards (Vertical) -->
-<mat-card
-  *ngFor="let task of tasks"
-  class="mat-elevation-z0"
-  [ngStyle]="toggleHeight(task.id)"
->
-  <mat-label class="task-name">{{ task.name }}</mat-label>
-  <mat-card-title
-    >{{ task.title }}
-    <span
-      class="badge badge-pill stage-progress-badge"
-      [ngStyle]="setBadgeBgColor(task.stage.state)"
-      >{{ task.stage.state }}</span
-    >
-    <a (click)="toggleCollapse(task.id)">
-      <img
-        class="collapse-icon"
-        [src]="
-          taskCollapseState[task.id]
-            ? 'assets/imgs/chevron-up.svg'
-            : 'assets/imgs/chevron-down.svg'
-        "
-      />
-    </a>
-  </mat-card-title>
-  <mat-progress-bar
-    mode="determinate"
-    value="{{ task.stage.progressPercentage }}"
-  ></mat-progress-bar>
-  <span class="task-stage-progress"
-    >{{ task.stage.progressPercentage }}&nbsp;%</span
+<div class="drag-drop-parent">
+  <div
+    cdkDropList
+    [cdkDropListData]="stages"
+    (cdkDropListDropped)="dropGroup($event)"
   >
-  <div [ngbCollapse]="!taskCollapseState[task.id]">
-    <mat-card-subtitle>
-      {{ task.description }}
-    </mat-card-subtitle>
+    <!-- <div
+      class="templates__inner__wrapper"
+      *ngFor="let stage of stages | search: stage.searchKey; let i = index"
+      cdkDropListGroup
+      cdkDrag
+      [cdkDragData]="stage"
+    > -->
+    <div
+      class="templates__inner__wrapper"
+      *ngFor="let stage of stages; let i = index"
+      cdkDropListGroup
+      cdkDrag
+      [cdkDragData]="stage"
+    >
+      <!-- template list strats -->
+      <div class="template-list-wrapper">
+        <div>
+          <div class="template__row">
+            <div class="template-name">
+              <div
+                class="group-drag"
+                [ngClass]="{ 'do-not-show': !stage.drag }"
+              >
+                <img src="assets/imgs/dragIcon.svg" alt="" />
+              </div>
+              <div
+                [ngClass]="{ collapsed: stage.collapsed }"
+                (click)="openGroupLevelActions(stage)"
+                class="accordian"
+              >
+                <img
+                  style="width: 24px; height: 24px;"
+                  src="assets/imgs/chevron-down.svg"
+                  alt=""
+                />
+                <div class="group-level-actions">
+                  <div
+                    (click)="stage.collapsed = true"
+                    *ngIf="!stage.collapsed"
+                  >
+                    Collapse
+                  </div>
+                  <div
+                    (click)="stage.collapsed = false"
+                    *ngIf="stage.collapsed"
+                  >
+                    Expand
+                  </div>
+                  <div (click)="deleteGroup(stage)">Delete</div>
+                </div>
+              </div>
+              <!-- group level actions ends -->
+
+              <div
+                class="group-name-wrapper"
+                (mouseenter)="groupNameEnter(stage)"
+                (mouseleave)="stage.edit = false"
+              >
+                <!-- <div class="group-name" *ngIf="!stage.edit"> -->
+                <div class="group-name">
+                  {{ stage.name }}
+                </div>
+              </div>
+            </div>
+            <div *ngIf="!stage.collapsed" class="template-status">
+              <span class="col-header">Status</span>
+            </div>
+            <div *ngIf="!stage.collapsed" class="template-start">
+              <span class="col-header">Start Date</span>
+            </div>
+            <div *ngIf="!stage.collapsed" class="template-end">
+              <span class="col-header">End Date</span>
+            </div>
+          </div>
+          <!-- cdkdroplist for template re ordering among and across groups -->
+          <div
+            *ngIf="!stage.collapsed"
+            cdkDropList
+            id="{{ stage.id }}"
+            [cdkDropListData]="tasks"
+            (cdkDropListDropped)="drop($event)"
+            [cdkDropListConnectedTo]="getConnectedList()"
+          >
+            <div
+              class="template__row item"
+              [ngClass]="{ selected: task.selected }"
+              (click)="rowClick(task)"
+              *ngFor="let task of tasks"
+              cdkDrag
+            >
+              <div class="template-name">
+                <!-- template level actions starts -->
+                <div class="row-starter">
+                  <div (click)="$event.stopPropagation()" class="accordian">
+                    <img src="assets/imgs/chevron-down.svg" alt="" />
+                    <div class="group-level-actions">
+                      <div (click)="deleteTemplate(stage, task)">
+                        Delete
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- template level actions starts -->
+
+                <div class="grid-start-line border-white"></div>
+                <div class="border-white template-name-main">
+                  <span class="cell-text">{{ task.name }}</span>
+                </div>
+              </div>
+              <div
+                class="border-white template-status"
+                [ngClass]="getStatusClass(task)"
+                (mouseleave)="task.showStatus = false"
+                (click)="showStatuses($event, task)"
+              >
+                <span
+                  class="cell-text"
+                  style="color: #fff; text-transform: uppercase;"
+                  >{{ task.status }}</span
+                >
+                <!-- template status start -->
+                <div class="status-dropdown">
+                  <div
+                    (click)="changeStatus(task, 'Working on it')"
+                    class="status__list__item status-yellow"
+                  >
+                    Working on it
+                  </div>
+                  <div
+                    (click)="changeStatus(task, 'Done')"
+                    class="status__list__item status-green"
+                  >
+                    Done
+                  </div>
+                  <div
+                    (click)="changeStatus(task, 'Stuck')"
+                    class="status__list__item status-red"
+                  >
+                    Stuck
+                  </div>
+                  <div
+                    (click)="changeStatus(task, '')"
+                    class="status__list__item"
+                  ></div>
+                </div>
+                <!-- template status end -->
+              </div>
+              <div class="border-white template-start">
+                <span class="cell-text">{{ task.startDate }}</span>
+              </div>
+              <div class="border-white template-end">
+                <span class="cell-text">{{ task.endDate }}</span>
+              </div>
+            </div>
+            <div class="template__row item editor-row">
+              <!-- add new template strat -->
+              <div class="template-name">
+                <div class="row-starter"></div>
+                <div class="grid-start-line border-white"></div>
+                <div class="border-white template-name-main">
+                  <input
+                    (focus)="stage.showAdd = true"
+                    (focusout)="inputFocusOut($event, stage)"
+                    class="template-add"
+                    (keydown.enter)="addTemplate(stage)"
+                    [(ngModel)]="stage.newTemplate"
+                    type="text"
+                    placeholder="+Add"
+                  />
+                </div>
+                <div
+                  *ngIf="stage.showAdd"
+                  (click)="addTemplate(stage)"
+                  class="template-add-button"
+                >
+                  Add
+                </div>
+              </div>
+              <!-- add new template end -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- template list ends -->
+    </div>
   </div>
-</mat-card>
-<!-- End of Tasks Cards -->
+</div>
 
 <ng-template #addTaskModal>
   <div class="modal-header">

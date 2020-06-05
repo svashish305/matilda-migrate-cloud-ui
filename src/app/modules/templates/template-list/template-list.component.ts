@@ -6,15 +6,15 @@ import {
   EventEmitter,
   OnChanges,
   TemplateRef,
-} from '@angular/core';
+} from "@angular/core";
 import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
-} from '@angular/cdk/drag-drop';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { DataService } from 'src/services/data.service';
-import { MatDialog } from '@angular/material/dialog';
+} from "@angular/cdk/drag-drop";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { DataService } from "src/services/data.service";
+import { MatDialog } from "@angular/material/dialog";
 
 interface SelectInterface {
   value: string;
@@ -22,14 +22,15 @@ interface SelectInterface {
 }
 
 @Component({
-  selector: 'app-template-list',
-  templateUrl: './template-list.component.html',
-  styleUrls: ['./template-list.component.scss'],
+  selector: "app-template-list",
+  templateUrl: "./template-list.component.html",
+  styleUrls: ["./template-list.component.scss"],
 })
 export class TemplateListComponent implements OnInit, OnChanges {
   @Input() templateData: any;
   @Output() rowClicked: EventEmitter<any> = new EventEmitter();
 
+  stages: any[] = [];
   tasks: any[] = [];
   taskCollapseState: Map<any, boolean> = new Map();
 
@@ -37,29 +38,29 @@ export class TemplateListComponent implements OnInit, OnChanges {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   plugins: SelectInterface[] = [
-    { value: 'p-0', viewValue: 'AWS' },
-    { value: 'p-1', viewValue: 'Pizza' },
-    { value: 'p-2', viewValue: 'Tacos' },
+    { value: "p-0", viewValue: "AWS" },
+    { value: "p-1", viewValue: "Pizza" },
+    { value: "p-2", viewValue: "Tacos" },
   ];
   services: SelectInterface[] = [
-    { value: 's-0', viewValue: 'RDS' },
-    { value: 's-1', viewValue: 'Pizza' },
-    { value: 's-2', viewValue: 'Tacos' },
+    { value: "s-0", viewValue: "RDS" },
+    { value: "s-1", viewValue: "Pizza" },
+    { value: "s-2", viewValue: "Tacos" },
   ];
   actions: SelectInterface[] = [
-    { value: 'create-0', viewValue: 'Create' },
-    { value: 'update-1', viewValue: 'Update' },
-    { value: 'delete-2', viewValue: 'Delete' },
+    { value: "create-0", viewValue: "Create" },
+    { value: "update-1", viewValue: "Update" },
+    { value: "delete-2", viewValue: "Delete" },
   ];
   accounts: SelectInterface[] = [
-    { value: 'aws-acc-0', viewValue: 'AWS Account 1' },
-    { value: 'aws-acc-1', viewValue: 'AWS Account 2' },
-    { value: 'aws-acc-2', viewValue: 'AWS Account 3' },
+    { value: "aws-acc-0", viewValue: "AWS Account 1" },
+    { value: "aws-acc-1", viewValue: "AWS Account 2" },
+    { value: "aws-acc-2", viewValue: "AWS Account 3" },
   ];
   types: SelectInterface[] = [
-    { value: 'type-0', viewValue: 'T2 Micro' },
-    { value: 'type-1', viewValue: 'Type 2' },
-    { value: 'type-2', viewValue: 'Type 3' },
+    { value: "type-0", viewValue: "T2 Micro" },
+    { value: "type-1", viewValue: "Type 2" },
+    { value: "type-2", viewValue: "Type 3" },
   ];
 
   constructor(
@@ -72,24 +73,31 @@ export class TemplateListComponent implements OnInit, OnChanges {
     // console.log('templateData ', this.templateData);
 
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
+      firstCtrl: ["", Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
+      secondCtrl: ["", Validators.required],
     });
     this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['', Validators.required],
+      thirdCtrl: ["", Validators.required],
     });
 
+    this.getStages();
     this.getTasks();
   }
 
   ngOnChanges() {
-    if (this.templateData && this.templateData.waveTypes) {
-      this.templateData.waveTypes.forEach((waveType) => {
+    if (this.templateData && this.templateData.Types) {
+      this.tasks.forEach((waveType) => {
         waveType.theme = this.getRandomColor();
       });
     }
+  }
+
+  getStages() {
+    this.dataService.getStages().subscribe((data: any[]) => {
+      this.stages = data;
+    });
   }
 
   getTasks() {
@@ -98,20 +106,20 @@ export class TemplateListComponent implements OnInit, OnChanges {
     });
   }
 
-  setBadgeBgColor(stageState = 'undefined') {
-    let backgroundColor = '#FA0B10';
+  setBadgeBgColor(stageState = "undefined") {
+    let backgroundColor = "#FA0B10";
     switch (stageState) {
-      case 'Undefined':
-        backgroundColor = '#FA0B10';
+      case "Undefined":
+        backgroundColor = "#FA0B10";
         break;
-      case 'Configured':
-        backgroundColor = '#D0CA00';
+      case "Configured":
+        backgroundColor = "#D0CA00";
         break;
-      case 'Ready':
-        backgroundColor = '#006BD8';
+      case "Ready":
+        backgroundColor = "#006BD8";
         break;
-      case 'Finished':
-        backgroundColor = '#00BB00';
+      case "Finished":
+        backgroundColor = "#00BB00";
         break;
       default:
         break;
@@ -122,7 +130,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
   toggleHeight(taskId) {
     let height;
     if (this.taskCollapseState[taskId]) {
-      height = '12.375em';
+      height = "12.375em";
     }
     return { height };
   }
@@ -137,8 +145,8 @@ export class TemplateListComponent implements OnInit, OnChanges {
 
   openDialog(template: TemplateRef<any>) {
     const dialogRef = this.dialog.open(template, {
-      width: '54.444444%',
-      height: '74.89%',
+      width: "54.444444%",
+      height: "74.89%",
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -151,7 +159,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description generates new color for groups
    */
   getRandomColor() {
-    return '#' + Math.random().toString(16).substr(-6);
+    return "#" + Math.random().toString(16).substr(-6);
   }
 
   /**
@@ -180,11 +188,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description reorders groups
    */
   mainDrop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(
-      this.templateData.waveTypes,
-      event.previousIndex,
-      event.currentIndex
-    );
+    moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
   }
 
   /**
@@ -193,14 +197,14 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description emits event to open template details
    */
   rowClick(templateObj) {
-    this.templateData.waveTypes.forEach((waveType) => {
+    this.tasks.forEach((waveType) => {
       waveType.templates.forEach((template) => {
         template.selected = false;
       });
     });
     templateObj.selected = true;
     this.rowClicked.emit(true);
-    console.log('row clicked');
+    console.log("row clicked");
   }
 
   /**
@@ -214,11 +218,11 @@ export class TemplateListComponent implements OnInit, OnChanges {
     waveType.templates.push({
       id: id,
       name: waveType.newTemplate,
-      status: '',
-      startDate: '',
-      endDate: '',
+      status: "",
+      startDate: "",
+      endDate: "",
     });
-    waveType.newTemplate = '';
+    waveType.newTemplate = "";
   }
 
   /**
@@ -228,7 +232,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
   inputFocusOut(event, waveType) {
     setTimeout(() => {
       waveType.showAdd = false;
-      waveType.newTemplate = '';
+      waveType.newTemplate = "";
     }, 200);
   }
 
@@ -238,7 +242,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description make group name editable on hover
    */
   groupNameEnter(waveType) {
-    this.templateData.waveTypes.forEach((wave) => (wave.edit = false));
+    this.tasks.forEach((wave) => (wave.edit = false));
     waveType.edit = true;
     waveType.drag = true;
   }
@@ -248,7 +252,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description passes the ids of groups to angular material to make them reorderable
    */
   getConnectedList() {
-    return this.templateData.waveTypes.map((x) => `${x.id}`);
+    return this.tasks.map((x) => `${x.id}`);
   }
 
   /**
@@ -256,11 +260,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description reorders the dragged group
    */
   dropGroup(event: CdkDragDrop<string[]>) {
-    moveItemInArray(
-      this.templateData.waveTypes,
-      event.previousIndex,
-      event.currentIndex
-    );
+    moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
   }
 
   /**
@@ -283,7 +283,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description resizes the template details container
    */
   deleteGroup(waveType) {
-    this.templateData.waveTypes = this.templateData.waveTypes.filter((Type) => {
+    this.tasks = this.tasks.filter((Type) => {
       return waveType.id !== Type.id;
     });
   }
@@ -315,23 +315,23 @@ export class TemplateListComponent implements OnInit, OnChanges {
    */
   getStatusClass(template) {
     let className;
-    if (template.status === 'Working on it') {
-      className = 'status-yellow';
+    if (template.status === "Working on it") {
+      className = "status-yellow";
     }
-    if (template.status === 'Done') {
-      className = 'status-green';
-    }
-
-    if (template.status === 'Stuck') {
-      className = 'status-red';
+    if (template.status === "Done") {
+      className = "status-green";
     }
 
-    if (template.status === '') {
-      className = '';
+    if (template.status === "Stuck") {
+      className = "status-red";
+    }
+
+    if (template.status === "") {
+      className = "";
     }
 
     if (template.showStatus) {
-      className += ' show-status';
+      className += " show-status";
     }
 
     return className;
