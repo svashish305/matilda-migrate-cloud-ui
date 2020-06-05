@@ -99,22 +99,41 @@
 
       <mat-tab label="Stages">
         <!-- Stages tab content -->
-        <div *ngIf="stages" style="height: 6em;">
-          <mat-button-toggle-group disableRipple>
-            <mat-button-toggle
-              *ngFor="let stage of stages"
-              value="{{ stage.id }}"
-            >
-              {{ stage.name }}
-              <span
-                class="badge badge-pill stage-progress-badge"
-                [ngStyle]="setBadgeBgColor(stage.state)"
-                >{{ stage.progressPercentage }}%</span
-              >
-            </mat-button-toggle>
-          </mat-button-toggle-group>
+        <div *ngIf="stages" style="height: 8.438em;">
+          <div class="badge-container">
+            <span class="stage-tags"
+              >Tags (
+              <span class="stage-tags-blue">Change</span>
+              ) :
+            </span>
+            <span class="badge badge-pill badge-custom">
+              <span class="badge-key-value">IP : 192.28.10.11</span>
+            </span>
+            <span class="badge badge-pill badge-custom">
+              <span class="badge-key-value">Web : Front End</span>
+            </span>
+            <span class="badge badge-pill badge-custom">
+              <span class="badge-key-value">Software : Tomcat</span>
+            </span>
+            <span class="badge badge-pill badge-custom">
+              <span class="badge-key-value">Java : Web</span>
+            </span>
+            <span class="badge badge-pill badge-custom">
+              <span class="badge-key-value">+3</span>
+            </span>
+          </div>
 
-          <button mat-button class="add-stage-btn">+ Add Stage</button>
+          <div>
+            <span class="stage-tags">Workflow Type : </span>
+            <mat-select class="workflow-type-dd">
+              <mat-option
+                *ngFor="let wType of workflowTypes"
+                [value]="wType.value"
+              >
+                {{ wType.viewValue }}
+              </mat-option>
+            </mat-select>
+          </div>
         </div>
 
         <div class="template-container">
@@ -201,20 +220,20 @@
       <div class="badge-container">
         <span class="badge badge-pill badge-custom">
           <span
-            ><span class="badge-key">IP :</span
-            ><span class="badge-value">&nbsp;192.28.10.11</span></span
+            ><span class="badge-key-value">IP :</span
+            ><span class="badge-key-value">&nbsp;192.28.10.11</span></span
           >
         </span>
         <span class="badge badge-pill badge-custom">
           <span
-            ><span class="badge-key">Web :</span
-            ><span class="badge-value">&nbsp;End</span></span
+            ><span class="badge-key-value">Web :</span
+            ><span class="badge-key-value">&nbsp;End</span></span
           >
         </span>
         <span class="badge badge-pill badge-custom">
           <span
-            ><span class="badge-key">Java :</span
-            ><span class="badge-value">&nbsp;Web</span></span
+            ><span class="badge-key-value">Java :</span
+            ><span class="badge-key-value">&nbsp;Web</span></span
           >
         </span>
       </div>
@@ -230,20 +249,20 @@
       <div class="badge-container">
         <span class="badge badge-pill badge-custom">
           <span
-            ><span class="badge-key">IP :</span
-            ><span class="badge-value">&nbsp;192.28.10.11</span></span
+            ><span class="badge-key-value">IP :</span
+            ><span class="badge-key-value">&nbsp;192.28.10.11</span></span
           >
         </span>
         <span class="badge badge-pill badge-custom">
           <span
-            ><span class="badge-key">Web :</span
-            ><span class="badge-value">&nbsp;End</span></span
+            ><span class="badge-key-value">Web :</span
+            ><span class="badge-key-value">&nbsp;End</span></span
           >
         </span>
         <span class="badge badge-pill badge-custom">
           <span
-            ><span class="badge-key">Java :</span
-            ><span class="badge-value">&nbsp;Web</span></span
+            ><span class="badge-key-value">Java :</span
+            ><span class="badge-key-value">&nbsp;Web</span></span
           >
         </span>
       </div>
@@ -259,20 +278,20 @@
       <div class="badge-container">
         <span class="badge badge-pill badge-custom">
           <span
-            ><span class="badge-key">IP :</span
-            ><span class="badge-value">&nbsp;192.28.10.11</span></span
+            ><span class="badge-key-value">IP :</span
+            ><span class="badge-key-value">&nbsp;192.28.10.11</span></span
           >
         </span>
         <span class="badge badge-pill badge-custom">
           <span
-            ><span class="badge-key">Web :</span
-            ><span class="badge-value">&nbsp;End</span></span
+            ><span class="badge-key-value">Web :</span
+            ><span class="badge-key-value">&nbsp;End</span></span
           >
         </span>
         <span class="badge badge-pill badge-custom">
           <span
-            ><span class="badge-key">Java :</span
-            ><span class="badge-value">&nbsp;Web</span></span
+            ><span class="badge-key-value">Java :</span
+            ><span class="badge-key-value">&nbsp;Web</span></span
           >
         </span>
       </div>
@@ -296,20 +315,20 @@
         <div class="badge-container">
           <span class="badge badge-pill badge-custom">
             <span
-              ><span class="badge-key">IP :</span
-              ><span class="badge-value">&nbsp;192.28.10.11</span></span
+              ><span class="badge-key-value">IP :</span
+              ><span class="badge-key-value">&nbsp;192.28.10.11</span></span
             >
           </span>
           <span class="badge badge-pill badge-custom">
             <span
-              ><span class="badge-key">Web :</span
-              ><span class="badge-value">&nbsp;End</span></span
+              ><span class="badge-key-value">Web :</span
+              ><span class="badge-key-value">&nbsp;End</span></span
             >
           </span>
           <span class="badge badge-pill badge-custom">
             <span
-              ><span class="badge-key">Java :</span
-              ><span class="badge-value">&nbsp;Web</span></span
+              ><span class="badge-key-value">Java :</span
+              ><span class="badge-key-value">&nbsp;Web</span></span
             >
           </span>
         </div>
@@ -331,20 +350,20 @@
         <div class="badge-container">
           <span class="badge badge-pill badge-custom">
             <span
-              ><span class="badge-key">IP :</span
-              ><span class="badge-value">&nbsp;192.28.10.11</span></span
+              ><span class="badge-key-value">IP :</span
+              ><span class="badge-key-value">&nbsp;192.28.10.11</span></span
             >
           </span>
           <span class="badge badge-pill badge-custom">
             <span
-              ><span class="badge-key">Web :</span
-              ><span class="badge-value">&nbsp;End</span></span
+              ><span class="badge-key-value">Web :</span
+              ><span class="badge-key-value">&nbsp;End</span></span
             >
           </span>
           <span class="badge badge-pill badge-custom">
             <span
-              ><span class="badge-key">Java :</span
-              ><span class="badge-value">&nbsp;Web</span></span
+              ><span class="badge-key-value">Java :</span
+              ><span class="badge-key-value">&nbsp;Web</span></span
             >
           </span>
         </div>

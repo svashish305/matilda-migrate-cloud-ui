@@ -7,6 +7,11 @@ import {
 } from "@angular/core";
 import { DataService } from "src/services/data.service";
 
+interface WorkflowType {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: "app-template",
   templateUrl: "./template.component.html",
@@ -29,6 +34,11 @@ export class TemplateComponent implements OnInit, AfterViewInit {
 
   showImportOptions: boolean = false;
   importStatus: boolean = false;
+
+  workflowTypes: WorkflowType[] = [
+    { value: "w-0", viewValue: "Time" },
+    { value: "w-1", viewValue: "Status" },
+  ];
 
   constructor(private dataService: DataService) {}
 

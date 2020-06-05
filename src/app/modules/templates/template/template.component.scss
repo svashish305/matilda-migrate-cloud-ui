@@ -94,6 +94,12 @@
   margin: 3px !important;
 }
 
+.workflow-type-dd {
+  width: 6.25em;
+  position: absolute;
+  left: 11em;
+}
+
 mat-button-toggle-group {
   margin: 24px 0 24px 0;
   border-color: var(--btn-gray-border);
@@ -293,6 +299,24 @@ mat-button-toggle {
   z-index: 2;
 }
 
+.stage-tags {
+  font-family: LatoRegular;
+  font-size: 1.125em;
+  line-height: 1.375em;
+  letter-spacing: 0.51px;
+  color: var(--blackish-text);
+  position: absolute;
+  left: 0;
+}
+
+.stage-tags-blue {
+  font-family: LatoRegular;
+  font-size: 1.125em;
+  line-height: 1.375em;
+  letter-spacing: 0.51px;
+  color: var(--primary-light);
+}
+
 header {
   margin: 24px 0 16px 0;
   font-family: LatoSemiBold;
@@ -385,9 +409,9 @@ mat-card-content {
 .badge-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  margin-left: 3.125em;
+  margin: 0 0 1.875em 9em;
 }
 
 .badge-custom {
@@ -396,15 +420,15 @@ mat-card-content {
   font-size: 1.125em;
 }
 
-.badge-key {
+.badge-key-value {
   font-family: LatoSemiBold;
   color: var(--blackish-text);
 }
 
-.badge-value {
-  font-family: LatoRegular;
-  color: var(--primary-light);
-}
+// .badge-value {
+//   font-family: LatoRegular;
+//   color: var(--primary-light);
+// }
 
 .import-final {
   margin-top: 24px;
