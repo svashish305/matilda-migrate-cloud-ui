@@ -6,6 +6,7 @@ import {
   AfterViewInit,
 } from "@angular/core";
 import { DataService } from "src/services/data.service";
+import { ThemePalette } from "@angular/material/core";
 
 interface WorkflowType {
   value: string;
@@ -41,6 +42,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   ];
 
   selectedWorkflowType: any;
+  primaryColor: ThemePalette = "primary";
 
   constructor(private dataService: DataService) {}
 

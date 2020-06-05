@@ -5,6 +5,14 @@ import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { SharedModule } from "./modules/shared.module";
+import {
+  RippleGlobalOptions,
+  MAT_RIPPLE_GLOBAL_OPTIONS,
+} from "@angular/material/core";
+
+const globalRippleConfig: RippleGlobalOptions = {
+  disabled: true,
+};
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,7 +22,9 @@ import { SharedModule } from "./modules/shared.module";
     AppRoutingModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

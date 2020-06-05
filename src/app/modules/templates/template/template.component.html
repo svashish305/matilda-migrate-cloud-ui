@@ -136,6 +136,38 @@
               </mat-select>
             </mat-form-field>
           </div>
+
+          <div class="stage-action-bar">
+            <span class="stage-action-collapse-text">Collapse All</span
+            ><mat-slide-toggle
+              disableRipple="true"
+              [color]="primaryColor"
+            ></mat-slide-toggle>
+
+            <button
+              mat-flat-button
+              color="primary"
+              style="position: absolute; right: 30em;"
+            >
+              <span class="new-stage-btn">+ New</span>
+            </button>
+
+            <div class="waves__list__filter right-align-searchbox">
+              <div>
+                <img class="search-icon" src="assets/imgs/search.svg" alt="" />
+              </div>
+              <div class="waves_list__search">
+                <input
+                  (keyup)="search($event)"
+                  name="test"
+                  [(ngModel)]="searchKey"
+                  placeholder="Search"
+                  class="filter__input"
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="template-container">
