@@ -96,6 +96,13 @@
   font-size: 1.125em;
 }
 
+.mat-tab-label .mat-tab-label-content {
+  font-family: LatoMedium;
+  font-size: 0.9rem;
+  line-height: 1.063rem;
+  letter-spacing: 0.41px;
+}
+
 #stage-tab::ng-deep.mat-tab-header {
   position: absolute !important;
   top: 8em !important;
