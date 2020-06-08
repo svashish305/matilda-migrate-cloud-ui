@@ -227,15 +227,16 @@
 <!-- import options start -->
 <div *ngIf="showImportOptions" class="import-options">
   <header>
-    Template Import
     <a
       (click)="showImportOptions = false; importStatus = false"
-      style="cursor: pointer; position: absolute; right: 24px;"
+      style="cursor: pointer; position: absolute; left: 24px;"
     >
-      <img src="assets/imgs/go-back.svg" alt="go-back" />
+      <img src="assets/imgs/close-circle.svg" alt="Close" />
     </a>
+    Template Import
   </header>
-  <div class="waves__list__filter">
+  <mat-divider></mat-divider>
+  <div class="waves__list__filter" style="margin: 24px 0 24px 0;">
     <div>
       <img class="search-icon" src="assets/imgs/search.svg" alt="" />
     </div>
@@ -254,16 +255,22 @@
   <mat-card
     *ngIf="!importStatus"
     class="mat-elevation-z0"
-    style="margin-top: 8px;"
+    style="margin-bottom: 24px;"
   >
     <mat-card-content (click)="importStatus = true">
-      <mat-checkbox
-        ><span class="import-list-template-name">Tomcat</span></mat-checkbox
-      >
+      <mat-checkbox>
+        <div class="checkbox-label-with-icon">
+          <ngx-avatar name="Tomcat"></ngx-avatar>
+          <span class="import-list-template-name">Tomcat</span>
+          <span class="import-list-template-description"
+            >Installation Configuration</span
+          >
+        </div>
+      </mat-checkbox>
       <div>
         <span class="tag-text">Tags (Key : Value)</span>
       </div>
-      <div class="badge-container">
+      <div class="badge-container" style="margin-left: 1em;">
         <span class="badge badge-pill badge-custom">
           <span
             ><span class="badge-key-value">IP :</span
@@ -277,72 +284,68 @@
           >
         </span>
         <span class="badge badge-pill badge-custom">
-          <span
-            ><span class="badge-key-value">Java :</span
-            ><span class="badge-key-value">&nbsp;Web</span></span
-          >
-        </span>
-      </div>
-    </mat-card-content>
-    <mat-divider></mat-divider>
-    <mat-card-content (click)="importStatus = true">
-      <mat-checkbox
-        ><span class="import-list-template-name">Apache</span></mat-checkbox
-      >
-      <div>
-        <span class="tag-text">Tags (Key : Value)</span>
-      </div>
-      <div class="badge-container">
-        <span class="badge badge-pill badge-custom">
-          <span
-            ><span class="badge-key-value">IP :</span
-            ><span class="badge-key-value">&nbsp;192.28.10.11</span></span
-          >
-        </span>
-        <span class="badge badge-pill badge-custom">
-          <span
-            ><span class="badge-key-value">Web :</span
-            ><span class="badge-key-value">&nbsp;End</span></span
-          >
-        </span>
-        <span class="badge badge-pill badge-custom">
-          <span
-            ><span class="badge-key-value">Java :</span
-            ><span class="badge-key-value">&nbsp;Web</span></span
-          >
-        </span>
-      </div>
-    </mat-card-content>
-    <mat-divider></mat-divider>
-    <mat-card-content (click)="importStatus = true">
-      <mat-checkbox
-        ><span class="import-list-template-name">SMR</span></mat-checkbox
-      >
-      <div>
-        <span class="tag-text">Tags (Key : Value)</span>
-      </div>
-      <div class="badge-container">
-        <span class="badge badge-pill badge-custom">
-          <span
-            ><span class="badge-key-value">IP :</span
-            ><span class="badge-key-value">&nbsp;192.28.10.11</span></span
-          >
-        </span>
-        <span class="badge badge-pill badge-custom">
-          <span
-            ><span class="badge-key-value">Web :</span
-            ><span class="badge-key-value">&nbsp;End</span></span
-          >
-        </span>
-        <span class="badge badge-pill badge-custom">
-          <span
-            ><span class="badge-key-value">Java :</span
-            ><span class="badge-key-value">&nbsp;Web</span></span
-          >
-        </span>
+          <span class="badge-key-value">+1</span></span
+        >
       </div>
     </mat-card-content>
   </mat-card>
+  <mat-card
+    *ngIf="!importStatus"
+    class="mat-elevation-z0"
+    style="margin-bottom: 24px;"
+  >
+    <mat-card-content (click)="importStatus = true">
+      <mat-checkbox>
+        <div class="checkbox-label-with-icon">
+          <ngx-avatar name="Apache"></ngx-avatar>
+          <span class="import-list-template-name">Apache</span>
+          <span class="import-list-template-description"
+            >Installation Configuration</span
+          >
+        </div>
+      </mat-checkbox>
+      <div>
+        <span class="tag-text">Tags (Key : Value)</span>
+      </div>
+      <div class="badge-container" style="margin-left: 1em;">
+        <span class="badge badge-pill badge-custom">
+          <span
+            ><span class="badge-key-value">IP :</span
+            ><span class="badge-key-value">&nbsp;192.28.10.11</span></span
+          >
+        </span>
+        <span class="badge badge-pill badge-custom">
+          <span
+            ><span class="badge-key-value">Web :</span
+            ><span class="badge-key-value">&nbsp;End</span></span
+          >
+        </span>
+        <span class="badge badge-pill badge-custom">
+          <span class="badge-key-value">+1</span></span
+        >
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div class="modal-footer" style="position: relative; top: 22vh;">
+    <div style="position: absolute; left: 0; top: 0.9em;">
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="showImportOptions = false; importStatus = false"
+        cdkFocusInitial
+      >
+        Import
+      </button>
+      <button
+        mat-button
+        color="primary"
+        (click)="showImportOptions = false; importStatus = false"
+        style="margin-left: 1em;"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
 
   <div *ngIf="importStatus" class="import-final">
     <mat-card class="mat-elevation-z0">
