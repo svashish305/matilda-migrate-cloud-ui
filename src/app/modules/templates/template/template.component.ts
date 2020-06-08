@@ -36,7 +36,6 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   showImportOptions = false;
   importStatus = false;
   showTagOptions = false;
-  tagStatus = false;
 
   workflowTypes: SelectInterface[] = [
     { value: "w-0", viewValue: "Time" },

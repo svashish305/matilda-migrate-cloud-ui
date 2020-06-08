@@ -355,9 +355,8 @@
     </header>
     <mat-divider></mat-divider>
 
-    <!-- add task modal content -->
     <app-add-task-modal-content></app-add-task-modal-content>
-    <!-- end of add task modal content -->
+
     <div
       class="modal-footer"
       style="position: absolute; width: 100%; top: 42.25em;"
@@ -382,9 +381,46 @@
       </div>
     </div>
   </div>
-  <!-- end of template cards -->
 </div>
 <!-- end of import options -->
 
 <!-- tag options start -->
+<div *ngIf="showTagOptions" class="import-options">
+  <header>
+    <a
+      (click)="showTagOptions = false"
+      style="cursor: pointer; position: absolute; left: 24px;"
+    >
+      <img src="assets/imgs/close-circle.svg" alt="Close" />
+    </a>
+    Edit Tags
+  </header>
+  <mat-divider></mat-divider>
+  <!-- tag edit body -->
+  <app-edit-tag></app-edit-tag>
+  <!-- end of tag edit body -->
+  <div
+    class="modal-footer"
+    style="position: absolute; width: 100%; top: 42.25em;"
+  >
+    <div style="position: absolute; left: 0; top: 0.9em;">
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="showTagOptions = false"
+        cdkFocusInitial
+      >
+        Save
+      </button>
+      <button
+        mat-button
+        color="primary"
+        (click)="showTagOptions = false"
+        style="margin-left: 1em;"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
 <!-- end of tag options -->

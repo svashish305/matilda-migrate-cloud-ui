@@ -12,6 +12,7 @@ import { RouterModule } from "@angular/router";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { SearchPipeModule } from "./searchpipe.module";
 import { AddTaskModalContentModule } from "./templates/add-task-modal-content/add-task-modal-content.module";
+import { EditTagModule } from "./templates/edit-tag/edit-tag.module";
 
 @NgModule({
   declarations: [TemplateComponent, TemplateListComponent],
@@ -28,6 +29,7 @@ import { AddTaskModalContentModule } from "./templates/add-task-modal-content/ad
     ResizableModule,
     NgbModule,
     AddTaskModalContentModule,
+    EditTagModule,
   ],
   exports: [TemplateComponent, TemplateListComponent],
   providers: [],
