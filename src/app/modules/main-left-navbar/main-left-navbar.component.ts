@@ -49,4 +49,22 @@ export class MainLeftNavbarComponent implements OnInit {
       color: this.workflowSelected ? "#fff" : "#023d98",
     };
   }
+
+  addHubActiveInd() {
+    return {
+      borderRight: this.hubSelected ? "3px solid white" : "none",
+    };
+  }
+
+  addTemplateActiveInd() {
+    return {
+      borderRight: this.templateSelected ? "3px solid white" : "none",
+    };
+  }
+
+  addWorkflowActiveInd() {
+    return {
+      borderRight: this.workflowSelected ? "3px solid white" : "none",
+    };
+  }
 }

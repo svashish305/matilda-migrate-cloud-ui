@@ -43,6 +43,7 @@
     [routerLink]="['']"
     class="logo__wrapper"
     style="padding: 14px;"
+    [ngStyle]="addHubActiveInd()"
   >
     <img
       class="migrate-logo"
@@ -78,6 +79,7 @@
     [routerLink]="['/templates']"
     class="logo__wrapper"
     style="padding: 14px;"
+    [ngStyle]="addTemplateActiveInd()"
   >
     <img
       class="migrate-logo"
@@ -114,6 +116,7 @@
     [routerLink]="['/workflows']"
     class="logo__wrapper"
     style="padding: 14px;"
+    [ngStyle]="addWorkflowActiveInd()"
   >
     <img
       class="migrate-logo"
