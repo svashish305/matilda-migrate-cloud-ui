@@ -5,14 +5,14 @@ const routes: Routes = [
   {
     path: "",
     loadChildren: () =>
-      import("./modules/main-left-navbar/main-left-navbar.module").then(
-        (m) => m.MainLeftNavbarModule
-      ),
+      import("./modules/home/home.module").then((m) => m.HomeModule),
+    data: { breadcrumbItem: { key: "home", labelName: "Home" }, title: "Home" },
   },
   {
     path: "hub",
     loadChildren: () =>
       import("./modules/hub/hub.module").then((m) => m.HubModule),
+    data: { breadcrumbItem: { key: "hub", labelName: "Hub" }, title: "Hub" },
   },
   {
     path: "templates",
@@ -20,6 +20,10 @@ const routes: Routes = [
       import("./modules/templates/templates.module").then(
         (m) => m.TemplatesModule
       ),
+    data: {
+      breadcrumbItem: { key: "templates", labelName: "Templates" },
+      title: "Templates",
+    },
   },
   {
     path: "workflows",
@@ -27,6 +31,10 @@ const routes: Routes = [
       import("./modules/workflows/workflows.module").then(
         (m) => m.WorkflowsModule
       ),
+    data: {
+      breadcrumbItem: { key: "workflows", labelName: "Workflows" },
+      title: "Workflows",
+    },
   },
   {
     path: "test",

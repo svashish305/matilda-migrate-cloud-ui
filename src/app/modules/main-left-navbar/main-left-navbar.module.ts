@@ -4,22 +4,12 @@ import { MainLeftNavbarComponent } from "./main-left-navbar.component";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "../material.module";
-import { HubModule } from "../hub/hub.module";
-import { TemplatesModule } from "../templates/templates.module";
-import { WorkflowsModule } from "../workflows/workflows.module";
 
 @NgModule({
   declarations: [MainLeftNavbarComponent],
-  imports: [
-    CommonModule,
-    RouterModule,
-    MaterialModule,
-    HubModule,
-    TemplatesModule,
-    WorkflowsModule,
-  ],
+  imports: [CommonModule, RouterModule, MaterialModule],
   exports: [MainLeftNavbarComponent],
   providers: [],
-  bootstrap: [MainLeftNavbarComponent],
+  bootstrap: [],
 })
 export class MainLeftNavbarModule {}
