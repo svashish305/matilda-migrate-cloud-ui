@@ -8,7 +8,7 @@ import {
 import { DataService } from "src/services/data.service";
 import { ThemePalette } from "@angular/material/core";
 
-interface WorkflowType {
+interface SelectInterface {
   value: string;
   viewValue: string;
 }
@@ -38,7 +38,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   showTagOptions = false;
   tagStatus = false;
 
-  workflowTypes: WorkflowType[] = [
+  workflowTypes: SelectInterface[] = [
     { value: "w-0", viewValue: "Time" },
     { value: "w-1", viewValue: "Date" },
   ];

@@ -444,10 +444,15 @@ mat-card-content {
   letter-spacing: 0.41px;
 }
 
+.lalign-import-template-icon {
+  position: absolute;
+  left: 24px;
+}
+
 .import-list-template-name {
   padding-left: 1em;
   font-family: LatoBold;
-  font-size: 1.406em;
+  font-size: 1.406rem;
   line-height: 0;
   letter-spacing: 0.64px;
   color: #000;
@@ -457,7 +462,7 @@ mat-card-content {
 
 .import-list-template-description {
   position: relative;
-  right: 3.875rem;
+  right: 4.875rem;
   top: 0.75rem;
   font-family: LatoMedium;
   font-size: 0.9em;

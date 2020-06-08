@@ -57,18 +57,6 @@
       </div>
 
       <div class="wave-description">
-        <!-- <div (mouseenter)="templateData.edit = true" *ngIf="!templateData.edit">
-          {{ templateData.data.description }}
-        </div> -->
-        <!-- <textarea class="description-input" [(ngModel)]="templateData.description" (mouseleave)="templateData.edit = false"
-                *ngIf="templateData.edit" rows="4"></textarea> -->
-        <!-- <input
-          class="description-input"
-          [(ngModel)]="templateData.data.description"
-          (mouseleave)="templateData.edit = false"
-          *ngIf="templateData.edit"
-        /> -->
-
         <input
           class="description-styles"
           style="color: var(--grayed-text);"
@@ -226,213 +214,169 @@
 
 <!-- import options start -->
 <div *ngIf="showImportOptions" class="import-options">
-  <header>
-    <a
-      (click)="showImportOptions = false; importStatus = false"
-      style="cursor: pointer; position: absolute; left: 24px;"
-    >
-      <img src="assets/imgs/close-circle.svg" alt="Close" />
-    </a>
-    Template Import
-  </header>
-  <mat-divider></mat-divider>
-  <div class="waves__list__filter" style="margin: 24px 0 24px 0;">
-    <div>
-      <img class="search-icon" src="assets/imgs/search.svg" alt="" />
+  <div *ngIf="!importStatus">
+    <header>
+      <a
+        (click)="showImportOptions = false; importStatus = false"
+        style="cursor: pointer; position: absolute; left: 24px;"
+      >
+        <img src="assets/imgs/close-circle.svg" alt="Close" />
+      </a>
+      Template Import
+    </header>
+    <mat-divider></mat-divider>
+    <div class="waves__list__filter" style="margin: 24px 0 24px 0;">
+      <div>
+        <img class="search-icon" src="assets/imgs/search.svg" alt="" />
+      </div>
+      <div class="waves_list__search">
+        <input
+          (keyup)="search($event)"
+          name="test"
+          [(ngModel)]="searchKey"
+          placeholder="Search"
+          class="filter__input"
+          type="text"
+        />
+      </div>
     </div>
-    <div class="waves_list__search">
-      <input
-        (keyup)="search($event)"
-        name="test"
-        [(ngModel)]="searchKey"
-        placeholder="Search"
-        class="filter__input"
-        type="text"
-      />
-    </div>
-  </div>
-  <!-- template cards -->
-  <mat-card
-    *ngIf="!importStatus"
-    class="mat-elevation-z0"
-    style="margin-bottom: 24px;"
-  >
-    <mat-card-content (click)="importStatus = true">
-      <mat-checkbox>
-        <div class="checkbox-label-with-icon">
-          <ngx-avatar name="Tomcat"></ngx-avatar>
-          <span class="import-list-template-name">Tomcat</span>
-          <span class="import-list-template-description"
-            >Installation Configuration</span
+    <!-- template cards -->
+    <mat-card class="mat-elevation-z0" style="margin-bottom: 24px;">
+      <mat-card-content (click)="importStatus = true">
+        <mat-checkbox>
+          <div class="checkbox-label-with-icon">
+            <ngx-avatar name="Tomcat"></ngx-avatar>
+            <span class="import-list-template-name">Tomcat</span>
+            <span class="import-list-template-description"
+              >Installation Configuration</span
+            >
+          </div>
+        </mat-checkbox>
+        <div>
+          <span class="tag-text">Tags (Key : Value)</span>
+        </div>
+        <div class="badge-container" style="margin-left: 1em;">
+          <span class="badge badge-pill badge-custom">
+            <span
+              ><span class="badge-key-value">IP :</span
+              ><span class="badge-key-value">&nbsp;192.28.10.11</span></span
+            >
+          </span>
+          <span class="badge badge-pill badge-custom">
+            <span
+              ><span class="badge-key-value">Web :</span
+              ><span class="badge-key-value">&nbsp;End</span></span
+            >
+          </span>
+          <span class="badge badge-pill badge-custom">
+            <span class="badge-key-value">+1</span></span
           >
         </div>
-      </mat-checkbox>
-      <div>
-        <span class="tag-text">Tags (Key : Value)</span>
-      </div>
-      <div class="badge-container" style="margin-left: 1em;">
-        <span class="badge badge-pill badge-custom">
-          <span
-            ><span class="badge-key-value">IP :</span
-            ><span class="badge-key-value">&nbsp;192.28.10.11</span></span
-          >
-        </span>
-        <span class="badge badge-pill badge-custom">
-          <span
-            ><span class="badge-key-value">Web :</span
-            ><span class="badge-key-value">&nbsp;End</span></span
-          >
-        </span>
-        <span class="badge badge-pill badge-custom">
-          <span class="badge-key-value">+1</span></span
-        >
-      </div>
-    </mat-card-content>
-  </mat-card>
-  <mat-card
-    *ngIf="!importStatus"
-    class="mat-elevation-z0"
-    style="margin-bottom: 24px;"
-  >
-    <mat-card-content (click)="importStatus = true">
-      <mat-checkbox>
-        <div class="checkbox-label-with-icon">
-          <ngx-avatar name="Apache"></ngx-avatar>
-          <span class="import-list-template-name">Apache</span>
-          <span class="import-list-template-description"
-            >Installation Configuration</span
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="mat-elevation-z0" style="margin-bottom: 24px;">
+      <mat-card-content (click)="importStatus = true">
+        <mat-checkbox>
+          <div class="checkbox-label-with-icon">
+            <ngx-avatar name="Apache"></ngx-avatar>
+            <span class="import-list-template-name">Apache</span>
+            <span class="import-list-template-description"
+              >Installation Configuration</span
+            >
+          </div>
+        </mat-checkbox>
+        <div>
+          <span class="tag-text">Tags (Key : Value)</span>
+        </div>
+        <div class="badge-container" style="margin-left: 1em;">
+          <span class="badge badge-pill badge-custom">
+            <span
+              ><span class="badge-key-value">IP :</span
+              ><span class="badge-key-value">&nbsp;192.28.10.11</span></span
+            >
+          </span>
+          <span class="badge badge-pill badge-custom">
+            <span
+              ><span class="badge-key-value">Web :</span
+              ><span class="badge-key-value">&nbsp;End</span></span
+            >
+          </span>
+          <span class="badge badge-pill badge-custom">
+            <span class="badge-key-value">+1</span></span
           >
         </div>
-      </mat-checkbox>
-      <div>
-        <span class="tag-text">Tags (Key : Value)</span>
-      </div>
-      <div class="badge-container" style="margin-left: 1em;">
-        <span class="badge badge-pill badge-custom">
-          <span
-            ><span class="badge-key-value">IP :</span
-            ><span class="badge-key-value">&nbsp;192.28.10.11</span></span
-          >
-        </span>
-        <span class="badge badge-pill badge-custom">
-          <span
-            ><span class="badge-key-value">Web :</span
-            ><span class="badge-key-value">&nbsp;End</span></span
-          >
-        </span>
-        <span class="badge badge-pill badge-custom">
-          <span class="badge-key-value">+1</span></span
+      </mat-card-content>
+    </mat-card>
+    <div class="modal-footer" style="position: relative; top: 22vh;">
+      <div style="position: absolute; left: 0; top: 0.9em;">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="showImportOptions = false; importStatus = false"
+          cdkFocusInitial
         >
+          Import
+        </button>
+        <button
+          mat-button
+          color="primary"
+          (click)="showImportOptions = false; importStatus = false"
+          style="margin-left: 1em;"
+        >
+          Cancel
+        </button>
       </div>
-    </mat-card-content>
-  </mat-card>
-  <div class="modal-footer" style="position: relative; top: 22vh;">
-    <div style="position: absolute; left: 0; top: 0.9em;">
-      <button
-        mat-flat-button
-        color="primary"
-        (click)="showImportOptions = false; importStatus = false"
-        cdkFocusInitial
-      >
-        Import
-      </button>
-      <button
-        mat-button
-        color="primary"
-        (click)="showImportOptions = false; importStatus = false"
-        style="margin-left: 1em;"
-      >
-        Cancel
-      </button>
     </div>
   </div>
 
   <div *ngIf="importStatus" class="import-final">
-    <mat-card class="mat-elevation-z0">
-      <div style="height: 2.25em;">
-        <span class="import-list-template-name">Tomcat</span>
-        <div class="action-icons">
-          <img style="padding-right: 1em;" src="assets/imgs/chevron-up.svg" />
-          <img src="assets/imgs/delete.svg" />
-        </div>
-      </div>
-      <mat-divider></mat-divider>
-      <div style="margin-left: -28px;">
-        <div>
-          <span class="tag-text">Tags (Key : Value)</span>
-        </div>
-        <div class="badge-container">
-          <span class="badge badge-pill badge-custom">
-            <span
-              ><span class="badge-key-value">IP :</span
-              ><span class="badge-key-value">&nbsp;192.28.10.11</span></span
-            >
-          </span>
-          <span class="badge badge-pill badge-custom">
-            <span
-              ><span class="badge-key-value">Web :</span
-              ><span class="badge-key-value">&nbsp;End</span></span
-            >
-          </span>
-          <span class="badge badge-pill badge-custom">
-            <span
-              ><span class="badge-key-value">Java :</span
-              ><span class="badge-key-value">&nbsp;Web</span></span
-            >
-          </span>
-        </div>
-      </div>
-    </mat-card>
-    <mat-card class="mat-elevation-z0" style="margin: 24px 0 24px 0;">
-      <div style="height: 2.25em;">
-        <span class="import-list-template-name">Apache</span>
-        <div class="action-icons">
-          <img style="padding-right: 1em;" src="assets/imgs/chevron-up.svg" />
-          <img src="assets/imgs/delete.svg" />
-        </div>
-      </div>
-      <mat-divider></mat-divider>
-      <div style="margin-left: -28px;">
-        <div>
-          <span class="tag-text">Tags (Key : Value)</span>
-        </div>
-        <div class="badge-container">
-          <span class="badge badge-pill badge-custom">
-            <span
-              ><span class="badge-key-value">IP :</span
-              ><span class="badge-key-value">&nbsp;192.28.10.11</span></span
-            >
-          </span>
-          <span class="badge badge-pill badge-custom">
-            <span
-              ><span class="badge-key-value">Web :</span
-              ><span class="badge-key-value">&nbsp;End</span></span
-            >
-          </span>
-          <span class="badge badge-pill badge-custom">
-            <span
-              ><span class="badge-key-value">Java :</span
-              ><span class="badge-key-value">&nbsp;Web</span></span
-            >
-          </span>
-        </div>
-      </div>
-    </mat-card>
-    <div class="modal-footer">
-      <button
-        mat-flat-button
+    <header>
+      <a
         (click)="showImportOptions = false; importStatus = false"
+        style="cursor: pointer; position: absolute; left: 24px; top: 24px;"
       >
-        Cancel
-      </button>
-      <button
-        mat-flat-button
-        color="primary"
-        (click)="showImportOptions = false; importStatus = false"
-        cdkFocusInitial
-      >
-        Import
-      </button>
+        <img src="assets/imgs/close-circle.svg" alt="Close" />
+      </a>
+      <div style="margin: 4rem 0 1.5rem 0; display: flex; height: 4.5rem;">
+        <ngx-avatar
+          name="Tomcat"
+          size="72"
+          class="lalign-import-template-icon"
+        ></ngx-avatar>
+        <div style="position: relative; top: 10px;">
+          <span class="import-list-template-name">Tomcat</span>
+          <span
+            class="import-list-template-description"
+            style="font-size: 0.9rem;"
+            >Installation Configuration</span
+          >
+        </div>
+      </div>
+    </header>
+    <mat-divider></mat-divider>
+
+    <!-- add task modal content -->
+
+    <!-- end of add task modal content -->
+    <div class="modal-footer" style="position: relative; top: 22vh;">
+      <div style="position: absolute; left: 0; top: 0.9em;">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="showImportOptions = false; importStatus = false"
+          cdkFocusInitial
+        >
+          Save
+        </button>
+        <button
+          mat-button
+          color="primary"
+          (click)="showImportOptions = false; importStatus = false"
+          style="margin-left: 1em;"
+        >
+          Cancel
+        </button>
+      </div>
     </div>
   </div>
   <!-- end of template cards -->
