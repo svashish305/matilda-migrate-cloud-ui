@@ -11,6 +11,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { SearchPipeModule } from "./searchpipe.module";
+import { AddTaskModalContentModule } from "./templates/add-task-modal-content/add-task-modal-content.module";
 
 @NgModule({
   declarations: [TemplateComponent, TemplateListComponent],
@@ -26,6 +27,7 @@ import { SearchPipeModule } from "./searchpipe.module";
     DragDropModule,
     ResizableModule,
     NgbModule,
+    AddTaskModalContentModule,
   ],
   exports: [TemplateComponent, TemplateListComponent],
   providers: [],
