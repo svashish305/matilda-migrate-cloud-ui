@@ -9,6 +9,7 @@ import {
   RippleGlobalOptions,
   MAT_RIPPLE_GLOBAL_OPTIONS,
 } from "@angular/material/core";
+import { MainLeftNavbarModule } from "./modules/main-left-navbar/main-left-navbar.module";
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true,
@@ -21,6 +22,7 @@ const globalRippleConfig: RippleGlobalOptions = {
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
+    MainLeftNavbarModule,
   ],
   providers: [
     { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig },

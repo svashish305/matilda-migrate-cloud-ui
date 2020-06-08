@@ -3,8 +3,6 @@ import { CommonModule } from "@angular/common";
 
 import { TemplatesRoutingModule } from "./templates-routing.module";
 import { TemplatesComponent } from "./templates.component";
-import { MainLeftNavbarModule } from "src/app/modules/main-left-navbar/main-left-navbar.module";
-import { TemplateListComponent } from "./template-list/template-list.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AvatarModule } from "ngx-avatar";
@@ -20,7 +18,6 @@ import { HttpClientModule } from "@angular/common/http";
   imports: [
     CommonModule,
     TemplatesRoutingModule,
-    MainLeftNavbarModule,
     MaterialModule,
     DragDropModule,
     ResizableModule,
@@ -32,5 +29,6 @@ import { HttpClientModule } from "@angular/common/http";
     SearchPipeModule,
     TemplateModule,
   ],
+  exports: [TemplatesComponent],
 })
 export class TemplatesModule {}

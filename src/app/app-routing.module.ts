@@ -3,6 +3,18 @@ import { Routes, RouterModule } from "@angular/router";
 
 const routes: Routes = [
   {
+    path: "",
+    loadChildren: () =>
+      import("./modules/main-left-navbar/main-left-navbar.module").then(
+        (m) => m.MainLeftNavbarModule
+      ),
+  },
+  {
+    path: "hub",
+    loadChildren: () =>
+      import("./modules/hub/hub.module").then((m) => m.HubModule),
+  },
+  {
     path: "templates",
     loadChildren: () =>
       import("./modules/templates/templates.module").then(
@@ -17,11 +29,10 @@ const routes: Routes = [
       ),
   },
   {
-    path: "",
+    path: "test",
     loadChildren: () =>
-      import("./modules/hub/hub.module").then((m) => m.HubModule),
+      import("./modules/test/test.module").then((m) => m.TestModule),
   },
-  { path: 'test', loadChildren: () => import('./modules/test/test.module').then(m => m.TestModule) },
 ];
 
 @NgModule({

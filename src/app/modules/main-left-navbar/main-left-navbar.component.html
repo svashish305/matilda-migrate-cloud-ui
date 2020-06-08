@@ -40,9 +40,9 @@
     (click)="
       hubSelected = true; templateSelected = false; workflowSelected = false
     "
-    [routerLink]="['']"
     class="logo__wrapper"
     style="padding: 14px;"
+    [routerLink]="['/hub']"
     [ngStyle]="addHubActiveInd()"
   >
     <img
@@ -76,9 +76,9 @@
     (click)="
       templateSelected = true; hubSelected = false; workflowSelected = false
     "
-    [routerLink]="['/templates']"
     class="logo__wrapper"
     style="padding: 14px;"
+    [routerLink]="['/templates']"
     [ngStyle]="addTemplateActiveInd()"
   >
     <img
@@ -113,9 +113,9 @@
     (click)="
       workflowSelected = true; hubSelected = false; templateSelected = false
     "
-    [routerLink]="['/workflows']"
     class="logo__wrapper"
     style="padding: 14px;"
+    [routerLink]="['/workflows']"
     [ngStyle]="addWorkflowActiveInd()"
   >
     <img
@@ -160,13 +160,3 @@
   </div>
 </div>
 <!-- left logo bar end-->
-
-<!-- <div *ngIf="hubSelected">
-  <app-hub></app-hub>
-</div>
-<div *ngIf="hubSelected">
-  <app-templates></app-templates>
-</div>
-<div *ngIf="hubSelected">
-  <app-workflows></app-workflows>
-</div> -->
