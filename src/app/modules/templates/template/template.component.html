@@ -7,22 +7,34 @@
     [ngClass]="{ 'side-open': edit }"
     class="wave__content__wrapper"
   >
-    <!-- breadcrumb -->
-    <div class="right-menu">
-      <img
-        [src]="
-          unreadNotifications
-            ? 'assets/imgs/bell-active.svg'
-            : 'assets/imgs/bell-default.svg'
-        "
-        alt="notifications"
-        style="padding-right: 24px;"
-      />
-      <ngx-avatar name="Robert Frost" size="24"></ngx-avatar
-      ><span class="std-text">Robert</span>
-      <img src="assets/imgs/chevron-down.svg" alt="profile-settings" />
+    <div class="main-header">
+      <!-- breadcrumb -->
+      <div>
+        <img src="assets/imgs/bc-hub-gray.svg" alt="hub" />
+        <span class="breadcrumb-text">Hub > </span>
+        <img src="assets/imgs/bc-workflow-gray.svg" alt="workflow" />
+        <span class="breadcrumb-text">Workflow > </span>
+        <img src="assets/imgs/bc-template-blue.svg" alt="template" />
+        <span class="breadcrumb-text" style="color: var(--primary-light);"
+          >Template</span
+        >
+      </div>
+      <!-- end of breadcrumb -->
+      <div class="right-menu">
+        <img
+          [src]="
+            unreadNotifications
+              ? 'assets/imgs/bell-active.svg'
+              : 'assets/imgs/bell-default.svg'
+          "
+          alt="notifications"
+          style="padding-right: 24px;"
+        />
+        <ngx-avatar name="Robert Frost" size="24"></ngx-avatar
+        ><span class="std-text">Robert</span>
+        <img src="assets/imgs/chevron-down.svg" alt="profile-settings" />
+      </div>
     </div>
-    <!-- end of breadcrumb -->
 
     <!-- wave name and desription start -->
     <div class="wave__header">
