@@ -1,12 +1,11 @@
 <!-- main page starts here -->
-<div style="position: absolute; top: 0; left: 60px; width: 100%;">
-  <div
-    class="main__background blue"
-    [ngClass]="{ wave__list__collapsed: waveListCollapsed && !showWaveList }"
-  >
-    <div class="content__wrapper">
-      <!-- workflow-list start -->
-      <!-- <div class="waves__list__wrapper">
+<div
+  class="main__background blue"
+  [ngClass]="{ wave__list__collapsed: waveListCollapsed && !showWaveList }"
+>
+  <div class="content__wrapper">
+    <!-- workflow-list start -->
+    <!-- <div class="waves__list__wrapper">
         <div
           (click)="collapseWaveList()"
           [ngClass]="{ 'strict-collapse': waveListCollapsed }"
@@ -185,14 +184,13 @@
           </div>
         </div>
       </div> -->
-      <!-- end of workflow-list -->
+    <!-- end of workflow-list -->
 
-      <!-- wave details start -->
-      <div class="wave__content">
-        <app-wave [waveData]="waveData"></app-wave>
-      </div>
-      <!-- wave details end -->
+    <!-- wave details start -->
+    <div class="wave__content">
+      <app-wave [waveData]="waveData"></app-wave>
     </div>
+    <!-- wave details end -->
   </div>
 </div>
 <!-- main page ends here -->

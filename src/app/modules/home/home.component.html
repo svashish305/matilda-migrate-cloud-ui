@@ -1,3 +1,7 @@
 <!-- <p>home works!</p> -->
-<app-main-left-navbar></app-main-left-navbar>
-<router-outlet></router-outlet>
+<div style="position: absolute; z-index: 1000;">
+  <app-main-left-navbar></app-main-left-navbar>
+</div>
+<div style="position: absolute; top: 0; left: 60px; width: 100%;">
+  <router-outlet></router-outlet>
+</div>
