@@ -228,7 +228,14 @@
 </div>
 
 <!-- import options start -->
-<div *ngIf="showImportOptions" class="import-options">
+<div
+  *ngIf="showImportOptions"
+  class="import-options resizable"
+  mwlResizable
+  [enableGhostResize]="true"
+  [resizeEdges]="{ bottom: false, right: false, top: false, left: true }"
+  (resizeEnd)="onResizeEnd($event)"
+>
   <div *ngIf="!importStatus">
     <header>
       <a
@@ -400,7 +407,14 @@
 <!-- end of import options -->
 
 <!-- tag options start -->
-<div *ngIf="showTagOptions" class="import-options">
+<div
+  *ngIf="showTagOptions"
+  class="import-options resizable"
+  mwlResizable
+  [enableGhostResize]="true"
+  [resizeEdges]="{ bottom: false, right: false, top: false, left: true }"
+  (resizeEnd)="onResizeEnd($event)"
+>
   <header>
     <a
       (click)="showTagOptions = false"

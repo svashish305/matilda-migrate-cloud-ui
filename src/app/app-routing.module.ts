@@ -7,22 +7,12 @@ const routes: Routes = [
     path: "",
     component: HomeComponent,
     children: [
-      // {
-      //   path: "",
-      //   loadChildren: () =>
-      //     import("./modules/home/home.module").then((m) => m.HomeModule),
-      //   data: {
-      //     breadcrumbItem: { key: "home", labelName: "Home" },
-      //     title: "Home",
-      //   },
-      // },
       {
         path: "hub",
         loadChildren: () =>
           import("./modules/hub/hub.module").then((m) => m.HubModule),
         data: {
-          breadcrumbItem: { key: "hub", labelName: "Hub" },
-          title: "Hub",
+          breadcrumb: "hub",
         },
       },
       {
@@ -32,8 +22,7 @@ const routes: Routes = [
             (m) => m.TemplatesModule
           ),
         data: {
-          breadcrumbItem: { key: "templates", labelName: "Templates" },
-          title: "Templates",
+          breadcrumb: "templates",
         },
       },
       {
@@ -43,14 +32,16 @@ const routes: Routes = [
             (m) => m.WorkflowsModule
           ),
         data: {
-          breadcrumbItem: { key: "workflows", labelName: "Workflows" },
-          title: "Workflows",
+          breadcrumb: "workflows",
         },
       },
       {
         path: "test",
         loadChildren: () =>
           import("./modules/test/test.module").then((m) => m.TestModule),
+        data: {
+          breadcrumb: "test",
+        },
       },
     ],
   },

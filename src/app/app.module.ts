@@ -10,13 +10,14 @@ import {
   MAT_RIPPLE_GLOBAL_OPTIONS,
 } from "@angular/material/core";
 import { HomeModule } from "./modules/home/home.module";
+import { BreadcrumbComponent } from "./shared/components/breadcrumb/breadcrumb.component";
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true,
 };
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, BreadcrumbComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
