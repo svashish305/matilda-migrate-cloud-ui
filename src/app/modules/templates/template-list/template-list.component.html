@@ -27,7 +27,11 @@
                 class="group-drag"
                 [ngClass]="{ 'do-not-show': !stage.drag }"
               >
-                <img src="assets/imgs/dragIcon.svg" alt="" />
+                <img
+                  style="cursor: move;"
+                  src="assets/imgs/dragIcon.svg"
+                  alt=""
+                />
               </div>
               <div
                 [ngClass]="{ collapsed: stage.collapsed }"
