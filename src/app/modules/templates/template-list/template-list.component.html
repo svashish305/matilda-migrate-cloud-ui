@@ -153,7 +153,7 @@
             [cdkDropListConnectedTo]="getConnectedList()"
           >
             <div
-              class="template__row item"
+              class="row-items template__row item"
               [ngClass]="{ selected: stage.selected }"
               (click)="rowClick(task)"
               *ngFor="let task of tasks"
@@ -161,7 +161,7 @@
             >
               <div class="template-name">
                 <!-- template level actions starts -->
-                <div class="row-starter">
+                <!-- <div class="row-starter">
                   <div (click)="$event.stopPropagation()" class="accordian">
                     <img src="assets/imgs/chevron-down.svg" alt="" />
                     <div class="group-level-actions">
@@ -170,10 +170,10 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <!-- template level actions starts -->
 
-                <div class="grid-start-line border-white"></div>
+                <!-- <div class="grid-start-line border-white"></div> -->
                 <div class="border-white template-name-main">
                   <span class="cell-text common-text">{{ task.name }}</span>
                 </div>
@@ -252,12 +252,13 @@
                 <img src="assets/imgs/vEllipsis.svg" alt="settings" />
               </div>
             </div>
-            <div class="template__row item editor-row">
-              <!-- add new template strat -->
+            <!-- <div class="template__row item editor-row"> -->
+            <div class="template__row item">
+              <!-- add new template start -->
               <div class="template-name">
-                <div class="row-starter"></div>
-                <div class="grid-start-line border-white"></div>
-                <div class="border-white template-name-main">
+                <!-- <div class="row-starter"></div>
+                <div class="grid-start-line border-white"></div> -->
+                <!-- <div class="border-white template-name-main">
                   <input
                     (focus)="stage.showAdd = true"
                     (focusout)="inputFocusOut($event, stage)"
@@ -274,7 +275,13 @@
                   class="template-add-button"
                 >
                   Add
-                </div>
+                </div> -->
+                <span
+                  class="common-text"
+                  style="color: var(--primary-light); margin: auto 14px;"
+                  (click)="openDialog(addTaskModal)"
+                  >+ Add New Task</span
+                >
               </div>
               <!-- add new template end -->
             </div>

@@ -111,6 +111,17 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     // });
   }
 
+  collapseAllStages() {
+    // console.log("stages ", this.stages);
+    this.stages.forEach((stage: any) => {
+      const modifiedStage = { collapsed: true, ...stage };
+      this.dataService
+        .updateStage(modifiedStage)
+        .subscribe((res) => console.log(res));
+      stage.collapsed = true;
+    });
+  }
+
   /**
    *
    * @description triggers when resize is released

@@ -150,7 +150,10 @@
           </div>
 
           <div class="stage-action-bar">
-            <span class="stage-action-collapse-text">Collapse All</span
+            <span
+              class="stage-action-collapse-text"
+              (click)="collapseAllStages()"
+              >Collapse All</span
             ><mat-slide-toggle
               disableRipple="true"
               [color]="primaryColor"
