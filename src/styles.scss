@@ -123,3 +123,25 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.common-text {
+  font-family: LatoRegular;
+  font-size: 1.125em;
+  line-height: 1.375em;
+  letter-spacing: 0.51px;
+  color: #000;
+}
+
+.medium-text {
+  font-family: LatoMedium;
+  font-size: 0.9em;
+  line-height: 1.063em;
+  letter-spacing: 0.41px;
+  color: var(--blackish-text);
+}

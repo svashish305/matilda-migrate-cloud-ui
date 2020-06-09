@@ -479,7 +479,7 @@
                 "plugin": "Azure",
                 "startDate": "6/1/2020",
                 "endDate": "12/11/2020",
-                "status": "configured",
+                "status": "Configured",
                 "progressPercentage": 50
               },
               {
@@ -488,7 +488,7 @@
                 "plugin": "Azure",
                 "startDate": "6/1/2020",
                 "endDate": "12/11/2020",
-                "status": "configured",
+                "status": "Configured",
                 "progressPercentage": 50
               },
               {
@@ -497,7 +497,7 @@
                 "plugin": "Azure",
                 "startDate": "6/1/2020",
                 "endDate": "12/11/2020",
-                "status": "configured",
+                "status": "Configured",
                 "progressPercentage": 50
               }
             ]
@@ -524,7 +524,7 @@
                 "plugin": "Azure",
                 "startDate": "6/1/2020",
                 "endDate": "12/11/2020",
-                "status": "configured",
+                "status": "Configured",
                 "progressPercentage": 50
               },
               {
@@ -533,7 +533,7 @@
                 "plugin": "Azure",
                 "startDate": "6/1/2020",
                 "endDate": "12/11/2020",
-                "status": "configured",
+                "status": "Configured",
                 "progressPercentage": 50
               },
               {
@@ -542,7 +542,7 @@
                 "plugin": "Azure",
                 "startDate": "6/1/2020",
                 "endDate": "12/11/2020",
-                "status": "configured",
+                "status": "Configured",
                 "progressPercentage": 50
               }
             ]
@@ -558,7 +558,7 @@
       "plugin": "Azure",
       "startDate": "6/1/2020",
       "endDate": "12/11/2020",
-      "status": "configured",
+      "status": "Configured",
       "progressPercentage": 50
     },
     {
@@ -567,7 +567,7 @@
       "plugin": "Azure",
       "startDate": "6/1/2020",
       "endDate": "12/11/2020",
-      "status": "configured",
+      "status": "Configured",
       "progressPercentage": 50
     },
     {
@@ -576,7 +576,7 @@
       "plugin": "Azure",
       "startDate": "6/1/2020",
       "endDate": "12/11/2020",
-      "status": "configured",
+      "status": "Configured",
       "progressPercentage": 50
     }
   ],
