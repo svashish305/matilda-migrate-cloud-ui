@@ -40,7 +40,7 @@
   }
 }
 
-@media only screen and (min-width: 769px) and (max-width: 1191px) {
+@media only screen and (min-width: 769px) and (max-width: 1041px) {
   .stage-list-subheader {
     display: grid;
     grid-template-columns: 10fr 1fr 15fr 15fr 1fr 1fr;
@@ -67,7 +67,61 @@
   }
 }
 
-@media only screen and (min-width: 1192px) and (max-width: 1291px) {
+@media only screen and (min-width: 1042px) and (max-width: 1117px) {
+  .stage-list-subheader {
+    display: grid;
+    grid-template-columns: 20fr 1fr 1fr 20fr 38fr 80fr;
+    grid-template-rows: auto;
+    position: relative;
+    top: 1.25rem;
+    right: 24em;
+    column-gap: 0.5em;
+  }
+
+  .template-name {
+    display: flex;
+    height: 100%;
+    width: 34vw;
+  }
+
+  .stage-name-width {
+    width: 34vw;
+  }
+
+  .r-align {
+    position: absolute;
+    right: -3em;
+  }
+}
+
+@media only screen and (min-width: 1118px) and (max-width: 1186px) {
+  .stage-list-subheader {
+    display: grid;
+    grid-template-columns: 20fr 1fr 1fr 20fr 38fr 80fr;
+    grid-template-rows: auto;
+    position: relative;
+    top: 1.25rem;
+    right: 24em;
+    column-gap: 0.5em;
+  }
+
+  .template-name {
+    display: flex;
+    height: 100%;
+    width: 34vw;
+  }
+
+  .stage-name-width {
+    width: 34vw;
+  }
+
+  .r-align {
+    position: absolute;
+    right: -3em;
+  }
+}
+
+@media only screen and (min-width: 1187px) and (max-width: 1291px) {
   .stage-list-subheader {
     display: grid;
     grid-template-columns: 20fr 1fr 1fr 20fr 38fr 80fr;
@@ -121,7 +175,7 @@
   }
 }
 
-@media only screen and (min-width: 1364px) and (max-width: 1400px) {
+@media only screen and (min-width: 1364px) and (max-width: 1440px) {
   .stage-list-subheader {
     display: grid;
     grid-template-columns: 20fr 1fr 1fr 20fr 38fr 80fr;
@@ -133,13 +187,13 @@
   }
 
   .stage-name-width {
-    width: 42vw;
+    width: 44vw;
   }
 
   .template-name {
     display: flex;
     height: 100%;
-    width: 42vw;
+    width: 44vw;
   }
 
   .r-align {
@@ -148,7 +202,7 @@
   }
 }
 
-@media only screen and (min-width: 1401px) {
+@media only screen and (min-width: 1441px) and (max-width: 1980px) {
   .stage-list-subheader {
     display: grid;
     grid-template-columns: 20fr 1fr 1fr 20fr 38fr 80fr;
@@ -160,13 +214,40 @@
   }
 
   .stage-name-width {
-    width: 43vw;
+    width: 59vw;
   }
 
   .template-name {
     display: flex;
     height: 100%;
-    width: 43vw;
+    width: 59vw;
+  }
+
+  .r-align {
+    position: absolute;
+    right: -60px;
+  }
+}
+
+@media only screen and (min-width: 1981px) and (max-width: 2560px) {
+  .stage-list-subheader {
+    display: grid;
+    grid-template-columns: 20fr 1fr 1fr 20fr 38fr 80fr;
+    grid-template-rows: auto;
+    position: relative;
+    top: 1.25rem;
+    right: 24em;
+    column-gap: 0.5em;
+  }
+
+  .stage-name-width {
+    width: 68vw;
+  }
+
+  .template-name {
+    display: flex;
+    height: 100%;
+    width: 68vw;
   }
 
   .r-align {
