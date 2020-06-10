@@ -577,6 +577,13 @@ mat-progress-bar {
   letter-spacing: 0.64px;
 }
 
+::ng-deep.mat-tab-label .mat-tab-label-content {
+  font-family: LatoMedium;
+  font-size: 0.9rem;
+  line-height: 1.063rem;
+  letter-spacing: 0.41px;
+}
+
 ::ng-deep.mat-tab-label,
 ::ng-deep.mat-tab-label-active {
   min-width: 6.063rem !important;

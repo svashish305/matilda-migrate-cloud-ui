@@ -72,4 +72,10 @@ $accent: mat-palette($mat-gray);
 
 $theme: mat-light-theme($primary, $accent);
 
+$custom-typography: mat-typography-config(
+  $font-family: "LatoRegular",
+);
+
+@include angular-material-typography($custom-typography);
+
 @include angular-material-theme($theme);
