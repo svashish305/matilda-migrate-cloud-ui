@@ -33,17 +33,19 @@
                   alt=""
                 />
               </div>
-              <div
+              <!-- <div
                 [ngClass]="{ collapsed: stage.collapsed }"
                 (click)="openGroupLevelActions(stage)"
                 class="accordian"
-              >
+              > -->
+              <div [ngClass]="{ collapsed: stage.collapsed }" class="accordian">
                 <img
                   style="width: 24px; height: 24px;"
                   src="assets/imgs/chevron-down.svg"
                   alt=""
+                  (click)="stage.collapsed = !stage.collapsed"
                 />
-                <div class="group-level-actions">
+                <!-- <div class="group-level-actions">
                   <div
                     (click)="stage.collapsed = true"
                     *ngIf="!stage.collapsed"
@@ -57,7 +59,7 @@
                     Expand
                   </div>
                   <div (click)="deleteGroup(stage)">Delete</div>
-                </div>
+                </div> -->
               </div>
               <!-- group level actions ends -->
 
