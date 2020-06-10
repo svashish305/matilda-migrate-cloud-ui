@@ -143,7 +143,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
    */
   appyResize(event?) {
     const wrapperWidth = document.getElementById("wave-content-id").offsetWidth;
-    const templateHolder = document.getElementById("template-holder");
+    const templateHolder = document.getElementById("resizable-holder");
     const contentHolder = document.getElementById("wave-main-content");
     let width;
     if (templateHolder) {
