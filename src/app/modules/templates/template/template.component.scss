@@ -113,7 +113,7 @@
   font-size: 1.125em;
 }
 
-.mat-tab-label .mat-tab-label-content {
+#stage-tab::ng-deep.mat-tab-label .mat-tab-label-content {
   font-family: LatoMedium;
   font-size: 0.9rem;
   line-height: 1.063rem;
@@ -133,18 +133,36 @@
   margin: 3px !important;
 }
 
+::ng-deep.mat-menu-content .mat-menu-item {
+  font-family: LatoRegular;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
+  letter-spacing: 0.51px;
+  color: var(--blackish-text);
+}
+
 #workflow-select::ng-deep .mat-form-field-underline {
   display: none;
 }
 
-#workflow-select::ng-deep .mat-select-arrow {
-  bottom: 4px;
+::ng-deep.mat-select-value-text {
+  font-family: LatoRegular;
+  font-size: 1.125em;
+  line-height: 1.375em;
+  color: var(--primary-light);
+}
+
+::ng-deep .mat-option-text {
+  font-family: LatoRegular;
+  font-size: 1.125em;
+  line-height: 1.375em;
+  color: var(--primary-light);
 }
 
 .workflow-type-dd {
   width: 6.25em;
   position: absolute;
-  top: 2.75em;
+  top: 2.5em;
   left: 11em;
 }
 
