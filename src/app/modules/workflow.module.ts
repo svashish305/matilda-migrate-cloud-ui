@@ -12,12 +12,16 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
 import { SearchPipeModule } from "./searchpipe.module";
 import { TemplateModule } from "./template.module";
 
+const avatarColors = ["#5fb8f1", "#012b7a"];
+
 @NgModule({
   declarations: [WaveComponent, WaveListComponent],
   imports: [
     CommonModule,
     HttpClientModule,
-    AvatarModule,
+    AvatarModule.forRoot({
+      colors: avatarColors,
+    }),
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,

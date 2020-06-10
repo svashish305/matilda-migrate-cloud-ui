@@ -13,6 +13,8 @@ import { SearchPipeModule } from "../searchpipe.module";
 import { TemplateModule } from "../template.module";
 import { HttpClientModule } from "@angular/common/http";
 
+const avatarColors = ["#5fb8f1", "#012b7a"];
+
 @NgModule({
   declarations: [TemplatesComponent],
   imports: [
@@ -25,7 +27,9 @@ import { HttpClientModule } from "@angular/common/http";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AvatarModule,
+    AvatarModule.forRoot({
+      colors: avatarColors,
+    }),
     SearchPipeModule,
     TemplateModule,
   ],

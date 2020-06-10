@@ -146,9 +146,10 @@
 
           <div>
             <span class="stage-tags">Workflow Type : </span>
-            <mat-form-field id="workflow-select" class="workflow-type-dd">
+            <mat-form-field id="workflow-select-field" class="workflow-type-dd">
               <mat-select [(ngModel)]="selectedWorkflowType">
                 <mat-option
+                  id="wf-option"
                   *ngFor="let wType of workflowTypes"
                   [value]="wType.value"
                 >

@@ -141,18 +141,18 @@
   color: var(--blackish-text);
 }
 
-#workflow-select::ng-deep .mat-form-field-underline {
+#workflow-select-field::ng-deep .mat-form-field-underline {
   display: none;
 }
 
-::ng-deep.mat-select-value-text {
+#workflow-select-field::ng-deep.mat-select-value-text {
   font-family: LatoRegular;
   font-size: 1.125em;
   line-height: 1.375em;
   color: var(--primary-light);
 }
 
-::ng-deep .mat-option-text {
+#wf-option ::ng-deep .mat-option-text {
   font-family: LatoRegular;
   font-size: 1.125em;
   line-height: 1.375em;

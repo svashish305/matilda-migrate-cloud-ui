@@ -14,13 +14,17 @@ import { SearchPipeModule } from "./searchpipe.module";
 import { AddTaskModalContentModule } from "./templates/add-task-modal-content/add-task-modal-content.module";
 import { EditTagModule } from "./templates/edit-tag/edit-tag.module";
 
+const avatarColors = ["#5fb8f1", "#012b7a"];
+
 @NgModule({
   declarations: [TemplateComponent, TemplateListComponent],
   imports: [
     CommonModule,
     HttpClientModule,
     RouterModule,
-    AvatarModule,
+    AvatarModule.forRoot({
+      colors: avatarColors,
+    }),
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,

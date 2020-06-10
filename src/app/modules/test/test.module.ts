@@ -13,6 +13,8 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
 import { ResizableModule } from "angular-resizable-element";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
+const avatarColors = ["#5fb8f1", "#012b7a"];
+
 @NgModule({
   declarations: [TestComponent],
   imports: [
@@ -20,7 +22,9 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     TestRoutingModule,
     HttpClientModule,
     RouterModule,
-    AvatarModule,
+    AvatarModule.forRoot({
+      colors: avatarColors,
+    }),
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,

@@ -13,6 +13,8 @@ import { SearchPipeModule } from "../searchpipe.module";
 import { HttpClientModule } from "@angular/common/http";
 import { WorkflowModule } from "../workflow.module";
 
+const avatarColors = ["#5fb8f1", "#012b7a"];
+
 @NgModule({
   declarations: [WorkflowsComponent],
   imports: [
@@ -26,7 +28,9 @@ import { WorkflowModule } from "../workflow.module";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AvatarModule,
+    AvatarModule.forRoot({
+      colors: avatarColors,
+    }),
     SearchPipeModule,
     WorkflowModule,
   ],

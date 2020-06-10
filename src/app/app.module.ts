@@ -11,6 +11,7 @@ import {
 } from "@angular/material/core";
 import { HomeModule } from "./modules/home/home.module";
 import { BreadcrumbComponent } from "./shared/components/breadcrumb/breadcrumb.component";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true,
@@ -22,6 +23,7 @@ const globalRippleConfig: RippleGlobalOptions = {
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    FlexLayoutModule,
     HomeModule,
     SharedModule,
   ],

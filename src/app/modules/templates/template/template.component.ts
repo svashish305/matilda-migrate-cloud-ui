@@ -75,20 +75,26 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     });
   }
 
-  setBadgeBgColor(stageState = "undefined") {
-    let backgroundColor = "#FA0B10";
+  setBadgeBgColor(stageState = "Defined") {
+    let backgroundColor = "#99a1a9";
     switch (stageState) {
-      case "Undefined":
-        backgroundColor = "#FA0B10";
+      case "Defined":
+        backgroundColor = "#99a1a9";
         break;
       case "Configured":
-        backgroundColor = "#D0CA00";
+        backgroundColor = "#012b7a";
         break;
-      case "Ready":
-        backgroundColor = "#006BD8";
+      case "In Progress":
+        backgroundColor = "#006bd4";
         break;
-      case "Finished":
-        backgroundColor = "#00BB00";
+      case "Success":
+        backgroundColor = "#0ba73d";
+        break;
+      case "Failed":
+        backgroundColor = "#d91b1b";
+        break;
+      case "Paused":
+        backgroundColor = "#fc9528";
         break;
       default:
         break;
