@@ -506,7 +506,7 @@ mat-card-content {
 .badge-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   margin: 0 0 1.875em 9em;
 }
@@ -515,6 +515,7 @@ mat-card-content {
   background: var(--light-gray-bg);
   border: solid 1px var(--btn-lightgray-border);
   font-size: 1.125em;
+  margin-right: 1em;
 }
 
 .badge-key-value {
