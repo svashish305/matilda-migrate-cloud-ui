@@ -64,6 +64,13 @@ export class TemplateListComponent implements OnInit, OnChanges {
     { value: "type-2", viewValue: "Type 3" },
   ];
 
+  workflowTypes: SelectInterface[] = [
+    { value: "w-0", viewValue: "Time" },
+    { value: "w-1", viewValue: "Trigger" },
+  ];
+
+  selectedWorkflowType: any;
+
   primaryColor: ThemePalette = "primary";
 
   constructor(
@@ -74,6 +81,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     // console.log('templateData ', this.templateData);
+    this.selectedWorkflowType = this.workflowTypes[0].value;
 
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ["", Validators.required],

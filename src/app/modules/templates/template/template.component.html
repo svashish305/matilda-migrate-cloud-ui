@@ -93,7 +93,7 @@
             <span class="stage-tags"
               >Tags (
               <span class="stage-tags-blue">Change</span>
-              ) :
+              )<span>&nbsp;&nbsp;&nbsp;</span>:
             </span>
             <span
               class="badge badge-pill badge-custom"
@@ -113,21 +113,6 @@
             <span class="badge badge-pill badge-custom">
               <span class="badge-key-value">+3</span>
             </span>
-          </div>
-
-          <div>
-            <span class="stage-tags">Workflow Type : </span>
-            <mat-form-field id="workflow-select-field" class="workflow-type-dd">
-              <mat-select [(ngModel)]="selectedWorkflowType">
-                <mat-option
-                  id="wf-option"
-                  *ngFor="let wType of workflowTypes"
-                  [value]="wType.value"
-                >
-                  {{ wType.viewValue }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
           </div>
 
           <div class="stage-action-bar">

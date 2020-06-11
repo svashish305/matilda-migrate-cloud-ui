@@ -1,3 +1,20 @@
+<div>
+  <span class="stage-tags"
+    >Workflow Type<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>:</span
+  >
+  <mat-form-field id="workflow-select-field" class="workflow-type-dd">
+    <mat-select [(ngModel)]="selectedWorkflowType">
+      <mat-option
+        id="wf-option"
+        *ngFor="let wType of workflowTypes"
+        [value]="wType.value"
+      >
+        {{ wType.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
 <div style="position: absolute; top: 9.688em;">
   <span class="stage-action-collapse-text" (click)="collapseAllStages()"
     >Collapse All</span
@@ -49,7 +66,12 @@
               > -->
               <div [ngClass]="{ collapsed: stage.collapsed }" class="accordian">
                 <img
-                  style="width: 24px; height: 24px;"
+                  style="
+                    width: 24px;
+                    height: 24px;
+                    position: relative;
+                    top: 2px;
+                  "
                   src="assets/imgs/chevron-down.svg"
                   alt=""
                   (click)="stage.collapsed = !stage.collapsed"

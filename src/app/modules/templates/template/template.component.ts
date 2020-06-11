@@ -36,13 +36,6 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   importStatus = false;
   showTagOptions = false;
 
-  workflowTypes: SelectInterface[] = [
-    { value: "w-0", viewValue: "Time" },
-    { value: "w-1", viewValue: "Date" },
-  ];
-
-  selectedWorkflowType: any;
-
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
@@ -52,7 +45,6 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     // this.newTitle = this.oldTitle;
     // this.oldDescription = this.templateData.data.description;
     // this.newDescription = this.oldDescription;
-    this.selectedWorkflowType = this.workflowTypes[0].value;
     this.getStages();
   }
 
