@@ -144,6 +144,10 @@ export class TemplateListComponent implements OnInit, OnChanges {
     return { backgroundColor };
   }
 
+  onCheck(event) {
+    event.stopPropagation();
+  }
+
   collapseAllStages() {
     // console.log("stages ", this.stages);
     this.stages.forEach((stage: any) => {
