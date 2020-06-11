@@ -6,7 +6,6 @@ import {
   AfterViewInit,
 } from "@angular/core";
 import { DataService } from "src/services/data.service";
-import { ThemePalette } from "@angular/material/core";
 
 interface SelectInterface {
   value: string;
@@ -43,7 +42,6 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   ];
 
   selectedWorkflowType: any;
-  primaryColor: ThemePalette = "primary";
 
   constructor(private dataService: DataService) {}
 
@@ -112,17 +110,6 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     // this.templates = this.rawtemplates.filter((x) => {
     //   return x.name.toLowerCase().search(this.searchKey.toLowerCase()) !== -1;
     // });
-  }
-
-  collapseAllStages() {
-    // console.log("stages ", this.stages);
-    this.stages.forEach((stage: any) => {
-      const modifiedStage = { collapsed: true, ...stage };
-      this.dataService
-        .updateStage(modifiedStage)
-        .subscribe((res) => console.log(res));
-      stage.collapsed = true;
-    });
   }
 
   /**

@@ -12,6 +12,7 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
+import { ThemePalette } from "@angular/material/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DataService } from "src/services/data.service";
 import { MatDialog } from "@angular/material/dialog";
@@ -62,6 +63,8 @@ export class TemplateListComponent implements OnInit, OnChanges {
     { value: "type-1", viewValue: "Type 2" },
     { value: "type-2", viewValue: "Type 3" },
   ];
+
+  primaryColor: ThemePalette = "primary";
 
   constructor(
     private dataService: DataService,
@@ -131,6 +134,17 @@ export class TemplateListComponent implements OnInit, OnChanges {
         break;
     }
     return { backgroundColor };
+  }
+
+  collapseAllStages() {
+    // console.log("stages ", this.stages);
+    this.stages.forEach((stage: any) => {
+      const modifiedStage = { collapsed: true, ...stage };
+      this.dataService
+        .updateStage(modifiedStage)
+        .subscribe((res) => console.log(res));
+      stage.collapsed = true;
+    });
   }
 
   toggleHeight(taskId) {
