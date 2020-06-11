@@ -104,6 +104,10 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     // });
   }
 
+  onCheck(event) {
+    event.stopPropagation();
+  }
+
   /**
    *
    * @description triggers when resize is released
