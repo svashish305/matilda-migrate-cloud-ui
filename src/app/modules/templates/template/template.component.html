@@ -280,15 +280,19 @@
       <!-- template cards -->
       <mat-card class="mat-elevation-z0" style="margin-bottom: 24px;">
         <mat-card-content (click)="importStatus = true">
-          <mat-checkbox>
-            <div class="checkbox-label-with-icon">
-              <ngx-avatar name="Tomcat"></ngx-avatar>
-              <span class="import-list-template-name">Tomcat</span>
-              <span class="import-list-template-description"
-                >Installation Configuration</span
-              >
-            </div>
+          <mat-checkbox
+            (click)="onCheck($event)"
+            style="top: 14px; position: relative;"
+          >
           </mat-checkbox>
+          <div class="checkbox-label-with-icon">
+            <ngx-avatar name="Tomcat"></ngx-avatar>
+            <span class="import-list-template-name">Tomcat</span>
+            <span class="import-list-template-description"
+              >Installation Configuration</span
+            >
+          </div>
+
           <div>
             <span class="tag-text">Tags (Key : Value)</span>
           </div>
@@ -313,15 +317,18 @@
       </mat-card>
       <mat-card class="mat-elevation-z0" style="margin-bottom: 24px;">
         <mat-card-content (click)="importStatus = true">
-          <mat-checkbox>
-            <div class="checkbox-label-with-icon">
-              <ngx-avatar name="Apache"></ngx-avatar>
-              <span class="import-list-template-name">Apache</span>
-              <span class="import-list-template-description"
-                >Installation Configuration</span
-              >
-            </div>
+          <mat-checkbox
+            style="top: 14px; position: relative;"
+            (click)="onCheck($event)"
+          >
           </mat-checkbox>
+          <div class="checkbox-label-with-icon">
+            <ngx-avatar name="Apache"></ngx-avatar>
+            <span class="import-list-template-name">Apache</span>
+            <span class="import-list-template-description"
+              >Installation Configuration</span
+            >
+          </div>
           <div>
             <span class="tag-text">Tags (Key : Value)</span>
           </div>
@@ -344,7 +351,7 @@
           </div>
         </mat-card-content>
       </mat-card>
-      <div class="modal-footer" style="position: relative; top: 22vh;">
+      <div class="modal-footer" style="position: relative; top: 7.438em;">
         <div style="position: absolute; left: 0; top: 0.9em;">
           <button
             mat-flat-button
@@ -369,10 +376,10 @@
     <div *ngIf="importStatus" class="import-final">
       <header>
         <a
-          (click)="showImportOptions = false; importStatus = false"
+          (click)="importStatus = false"
           style="cursor: pointer; position: absolute; left: 24px; top: 24px;"
         >
-          <img src="assets/imgs/close-circle.svg" alt="Close" />
+          <img src="assets/imgs/back-icon.svg" alt="Close" />
         </a>
         <div style="margin: 5.5rem 0 1.5rem 0; display: flex; height: 4.5rem;">
           <ngx-avatar
@@ -392,10 +399,7 @@
 
       <app-add-task-modal-content></app-add-task-modal-content>
 
-      <div
-        class="modal-footer"
-        style="position: absolute; width: 100%; top: 42.25em;"
-      >
+      <div class="modal-footer" style="position: relative; top: 8.75em;">
         <div style="position: absolute; left: 0; top: 0.9em;">
           <button
             mat-flat-button
