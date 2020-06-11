@@ -65,8 +65,8 @@ export class TemplateListComponent implements OnInit, OnChanges {
   ];
 
   workflowTypes: SelectInterface[] = [
-    { value: "w-0", viewValue: "Time" },
-    { value: "w-1", viewValue: "Trigger" },
+    { value: "time", viewValue: "Time" },
+    { value: "trigger", viewValue: "Trigger" },
   ];
 
   selectedWorkflowType: any;
@@ -149,14 +149,17 @@ export class TemplateListComponent implements OnInit, OnChanges {
   }
 
   collapseAllStages() {
-    // console.log("stages ", this.stages);
     this.stages.forEach((stage: any) => {
-      const modifiedStage = { collapsed: true, ...stage };
-      this.dataService
-        .updateStage(modifiedStage)
-        .subscribe((res) => console.log(res));
-      stage.collapsed = true;
+      // const modifiedStage = { collapsed: true, ...stage };
+      // this.dataService
+      //   .updateStage(modifiedStage)
+      //   .subscribe((res) => console.log(res));
+      stage.collapsed = !stage.collapsed;
     });
+  }
+
+  getWorkflowType() {
+    return this.selectedWorkflowType;
   }
 
   toggleHeight(taskId) {

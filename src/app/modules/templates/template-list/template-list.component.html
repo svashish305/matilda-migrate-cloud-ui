@@ -3,7 +3,10 @@
     >Workflow Type<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>:</span
   >
   <mat-form-field id="workflow-select-field" class="workflow-type-dd">
-    <mat-select [(ngModel)]="selectedWorkflowType">
+    <mat-select
+      [(ngModel)]="selectedWorkflowType"
+      (ngModelChange)="getWorkflowType()"
+    >
       <mat-option
         id="wf-option"
         *ngFor="let wType of workflowTypes"
@@ -16,9 +19,9 @@
 </div>
 
 <div style="position: absolute; top: 9.688em;">
-  <span class="stage-action-collapse-text" (click)="collapseAllStages()"
-    >Collapse All</span
+  <span class="stage-action-collapse-text">Collapse All</span
   ><mat-slide-toggle
+    (change)="collapseAllStages()"
     disableRipple="true"
     [color]="primaryColor"
   ></mat-slide-toggle>
@@ -149,18 +152,28 @@
                   >Plugin</span
                 >
               </div>
-              <div style="width: 7.143em;">
+              <div style="width: 7.143em;" *ngIf="getWorkflowType() === 'time'">
                 <span
                   class="medium-text"
                   style="font-family: LatoSemiBold; color: var(--grayed-text);"
                   >Start Date</span
                 >
               </div>
-              <div style="width: 7.143em;">
+              <div style="width: 7.143em;" *ngIf="getWorkflowType() === 'time'">
                 <span
                   class="medium-text"
                   style="font-family: LatoSemiBold; color: var(--grayed-text);"
                   >End Date</span
+                >
+              </div>
+              <div
+                style="width: 7.143em;"
+                *ngIf="getWorkflowType() === 'trigger'"
+              >
+                <span
+                  class="medium-text"
+                  style="font-family: LatoSemiBold; color: var(--grayed-text);"
+                  >Trigger</span
                 >
               </div>
               <div style="width: 7.143em;">
@@ -219,13 +232,23 @@
                 <span class="cell-text common-text">{{ task.plugin }}</span>
               </div>
               <div
+                *ngIf="getWorkflowType() === 'time'"
                 class="border-white template-start flex-center"
                 style="margin-left: 20px;"
               >
                 <span class="cell-text common-text">{{ task.startDate }}</span>
               </div>
-              <div class="border-white template-end flex-center">
+              <div
+                *ngIf="getWorkflowType() === 'time'"
+                class="border-white template-end flex-center"
+              >
                 <span class="cell-text common-text">{{ task.endDate }}</span>
+              </div>
+              <div
+                *ngIf="getWorkflowType() === 'trigger'"
+                class="border-white template-end flex-center"
+              >
+                <span class="cell-text common-text">{{ task.trigger }}</span>
               </div>
               <div
                 class="border-white template-status"
