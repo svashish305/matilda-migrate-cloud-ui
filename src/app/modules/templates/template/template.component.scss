@@ -447,6 +447,10 @@ header {
   right: 0;
 }
 
+#mat-search ::ng-deep .mat-form-field-underline {
+  background-color: var(--btn-lightgray-border);
+}
+
 .waves__list__filter {
   display: flex;
   align-items: center;

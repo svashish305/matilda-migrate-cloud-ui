@@ -177,7 +177,7 @@
               <span class="new-stage-btn">+ New</span>
             </button>
 
-            <div class="waves__list__filter right-align-searchbox">
+            <!-- <div class="waves__list__filter right-align-searchbox">
               <div>
                 <img class="search-icon" src="assets/imgs/search.svg" alt="" />
               </div>
@@ -191,6 +191,38 @@
                   type="text"
                 />
               </div>
+            </div> -->
+            <div
+              class="right-align-searchbox"
+              style="width: 23.813em; bottom: 0.7em;"
+            >
+              <form>
+                <mat-form-field
+                  id="mat-search"
+                  floatLabel="never"
+                  class="mat-typography"
+                  style="width: 100%;"
+                >
+                  <img
+                    matPrefix
+                    src="assets/imgs/search-2.svg"
+                    alt="search-icon"
+                    style="
+                      position: relative;
+                      bottom: 2px;
+                      padding-right: 0.5em;
+                    "
+                  />
+                  <input
+                    matInput
+                    placeholder="Search"
+                    type="search"
+                    (keyup)="search($event)"
+                    name="test"
+                    [(ngModel)]="searchKey"
+                  />
+                </mat-form-field>
+              </form>
             </div>
           </div>
         </div>
@@ -257,7 +289,7 @@
         Template Import
       </header>
       <mat-divider></mat-divider>
-      <div class="waves__list__filter" style="margin: 24px 0 24px 0;">
+      <!-- <div class="waves__list__filter" style="margin: 24px 0 24px 0;">
         <div>
           <img class="search-icon" src="assets/imgs/search.svg" alt="" />
         </div>
@@ -271,7 +303,33 @@
             type="text"
           />
         </div>
+      </div> -->
+      <div style="margin: 24px 0 4px 0;">
+        <form>
+          <mat-form-field
+            id="mat-search"
+            floatLabel="never"
+            class="mat-typography"
+            style="width: 100%;"
+          >
+            <img
+              matPrefix
+              src="assets/imgs/search-2.svg"
+              alt="search-icon"
+              style="position: relative; bottom: 2px; padding-right: 0.5em;"
+            />
+            <input
+              matInput
+              placeholder="Search"
+              type="search"
+              (keyup)="search($event)"
+              name="test"
+              [(ngModel)]="searchKey"
+            />
+          </mat-form-field>
+        </form>
       </div>
+
       <!-- template cards -->
       <mat-card class="mat-elevation-z0" style="margin-bottom: 24px;">
         <mat-card-content (click)="importStatus = true">
