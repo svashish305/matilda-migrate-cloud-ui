@@ -342,11 +342,11 @@
     width: 6px;
     margin: 0 auto;
   }
-  &:hover {
-    .group-level-actions {
-      display: block;
-    }
-  }
+  // &:hover {
+  //   .group-level-actions {
+  //     display: block;
+  //   }
+  // }
 }
 
 .row-starter {
@@ -491,7 +491,8 @@
       visibility: visible;
     }
     .group-drag.do-not-show {
-      display: none !important;
+      // display: none !important;
+      visibility: hidden;
     }
   }
 }

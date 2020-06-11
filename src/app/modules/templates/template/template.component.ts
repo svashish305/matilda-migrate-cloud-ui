@@ -45,8 +45,6 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   selectedWorkflowType: any;
   primaryColor: ThemePalette = "primary";
 
-  unreadNotifications = false;
-
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
@@ -57,7 +55,6 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     // this.oldDescription = this.templateData.data.description;
     // this.newDescription = this.oldDescription;
     this.selectedWorkflowType = this.workflowTypes[0].value;
-    this.unreadNotifications = true;
     this.getStages();
   }
 

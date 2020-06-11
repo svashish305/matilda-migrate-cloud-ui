@@ -45,6 +45,7 @@ const routes: Routes = [
       },
     ],
   },
+  { path: 'top-header', loadChildren: () => import('./modules/top-header/top-header.module').then(m => m.TopHeaderModule) },
 ];
 
 @NgModule({

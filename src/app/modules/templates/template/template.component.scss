@@ -14,41 +14,6 @@
   }
 }
 
-.main-header {
-  height: 4.5em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.breadcrumb-text {
-  padding-left: 6px;
-  position: relative;
-  top: 3px;
-  font-family: LatoRegular;
-  font-size: 1.125em;
-  line-height: 1.375em;
-  letter-spacing: 0.51px;
-  color: var(--alt-gray-text);
-}
-
-.right-menu {
-  height: 4.5em;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.std-text {
-  font-family: LatoRegular;
-  font-size: 1.125em;
-  line-height: 1.375em;
-  letter-spacing: 0.51px;
-  color: #000;
-  padding: 0 8px 0 8px;
-}
-
 .back-icon {
   position: relative;
   top: 10px;
@@ -77,7 +42,8 @@
   color: #cecece;
   // display: inline-block;
   position: absolute;
-  top: 8.25em;
+  // top: 8.25em;
+  top: 4.25em;
   left: 11rem;
 }
 
@@ -113,6 +79,10 @@
   font-size: 1.125em;
 }
 
+#stage-tab {
+  z-index: 1;
+}
+
 #stage-tab::ng-deep.mat-tab-label .mat-tab-label-content {
   font-family: LatoMedium;
   font-size: 0.9rem;
@@ -122,7 +92,8 @@
 
 #stage-tab::ng-deep.mat-tab-header {
   position: absolute !important;
-  top: 8em !important;
+  // top: 8em !important;
+  top: 3.5em !important;
   right: 2em !important;
 }
 
@@ -391,13 +362,13 @@ mat-button-toggle {
   border-top: solid 1px var(--btn-lightgray-border);
   border-left: solid 1px var(--btn-lightgray-border);
   background-color: #fff;
-  height: 100%;
+  height: 100vh;
   width: 40vw;
   padding: 0 24px 0 24px;
   position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2;
+  top: -4.5em;
+  right: -4.625em;
+  z-index: 1000;
 }
 
 .checkbox-label-with-icon {
