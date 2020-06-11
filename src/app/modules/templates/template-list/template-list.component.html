@@ -190,7 +190,32 @@
                   >Progress</span
                 >
               </div>
-              <img class="r-align" src="assets/imgs/vEllipsis.svg" alt="" />
+              <!-- <img class="r-align" src="assets/imgs/vEllipsis.svg" alt="" /> -->
+              <button
+                class="stage-btn"
+                style="bottom: -5px; position: absolute; right: -60px;"
+                mat-button
+                [matMenuTriggerFor]="stageDropdown"
+              >
+                <img src="assets/imgs/vEllipsis.svg" alt="Stage Settings" />
+              </button>
+              <mat-menu
+                id="stage-dd"
+                #stageDropdown="matMenu"
+                xPosition="before"
+                yPosition="below"
+              >
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    padding-left: 12px;
+                  "
+                >
+                  <mat-checkbox (click)="onCheck($event)">Service</mat-checkbox>
+                  <mat-checkbox (click)="onCheck($event)">Action</mat-checkbox>
+                </div>
+              </mat-menu>
             </div>
           </div>
           <!-- cdkdroplist for template re ordering among and across groups -->

@@ -669,6 +669,11 @@
   right: 15rem;
 }
 
+#stage-dd ::ng-deep .mat-menu-panel {
+  width: 11.5em !important;
+  max-width: none !important;
+}
+
 mat-card {
   width: 336px;
   height: 99px;
