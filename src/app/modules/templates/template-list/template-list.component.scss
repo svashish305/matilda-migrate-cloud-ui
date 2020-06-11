@@ -23,15 +23,13 @@
   }
 
   .template-name {
-    // flex: 1;
     display: flex;
-    // align-items: center;
     height: 100%;
-    width: 300px;
+    width: 15vw;
   }
 
   .stage-name-width {
-    width: 34vw;
+    width: 15vw;
   }
 
   .r-align {
@@ -40,7 +38,7 @@
   }
 }
 
-@media only screen and (min-width: 769px) and (max-width: 1041px) {
+@media only screen and (min-width: 769px) and (max-width: 991px) {
   .stage-list-subheader {
     display: grid;
     grid-template-columns: 10fr 1fr 15fr 15fr 1fr 1fr;
@@ -54,11 +52,38 @@
   .template-name {
     display: flex;
     height: 100%;
-    width: 23vw;
+    width: 18vw;
   }
 
   .stage-name-width {
-    width: 23vw;
+    width: 18vw;
+  }
+
+  .r-align {
+    position: absolute;
+    right: -3em;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1041px) {
+  .stage-list-subheader {
+    display: grid;
+    grid-template-columns: 10fr 1fr 15fr 15fr 1fr 1fr;
+    grid-template-rows: auto;
+    position: relative;
+    top: 1.25rem;
+    right: 24em;
+    column-gap: 0.5em;
+  }
+
+  .template-name {
+    display: flex;
+    height: 100%;
+    width: 20vw;
+  }
+
+  .stage-name-width {
+    width: 20vw;
   }
 
   .r-align {
@@ -81,11 +106,11 @@
   .template-name {
     display: flex;
     height: 100%;
-    width: 34vw;
+    width: 24vw;
   }
 
   .stage-name-width {
-    width: 34vw;
+    width: 24vw;
   }
 
   .r-align {
@@ -108,11 +133,11 @@
   .template-name {
     display: flex;
     height: 100%;
-    width: 34vw;
+    width: 29vw;
   }
 
   .stage-name-width {
-    width: 34vw;
+    width: 29vw;
   }
 
   .r-align {
@@ -214,13 +239,13 @@
   }
 
   .stage-name-width {
-    width: 59vw;
+    width: 47vw;
   }
 
   .template-name {
     display: flex;
     height: 100%;
-    width: 59vw;
+    width: 47vw;
   }
 
   .r-align {
@@ -456,12 +481,14 @@
 .group-drag {
   width: 24px;
   margin-left: -6px;
-  display: none;
+  // display: none;
+  visibility: hidden;
 }
 .template__row {
   &:hover {
     .group-drag {
-      display: block;
+      // display: block;
+      visibility: visible;
     }
     .group-drag.do-not-show {
       display: none !important;
