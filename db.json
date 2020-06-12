@@ -11,6 +11,8 @@
             "id": "1",
             "name": "Wave1-APP",
             "triggerType": "Normal",
+            "status": "Configured",
+            "progressPercentage": 50,
             "templates": [
               {
                 "id": 1,
@@ -21,7 +23,8 @@
                   "name": "Tomcat",
                   "description": "Tomcat Install Configuration"
                 },
-                "status": "Done",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "2 April 2020",
                 "endDate": "14 April 2020"
               },
@@ -34,7 +37,8 @@
                   "name": "Sqlserver install",
                   "description": "Install Configuration"
                 },
-                "status": "Done",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "2 April 2020",
                 "endDate": "14 April 2020"
               },
@@ -47,7 +51,8 @@
                   "name": "Template Name Application VM creation",
                   "description": "Install Configuration"
                 },
-                "status": "Done",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "31 March 2020",
                 "endDate": "9 April 2020"
               }
@@ -56,6 +61,8 @@
           {
             "id": "2",
             "name": "Wave1-DB",
+            "status": "Configured",
+            "progressPercentage": 50,
             "triggerType": "Event",
             "templates": [
               {
@@ -67,7 +74,8 @@
                   "name": "Data factory",
                   "description": "Factory Install Steps"
                 },
-                "status": "Working on it",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "4 April 2020",
                 "endDate": "20 April 2020"
               },
@@ -80,7 +88,8 @@
                   "name": "Data Warehouse configuration",
                   "description": "DB Install Configuration"
                 },
-                "status": "Done",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "2 April 2020",
                 "endDate": "15 April 2020"
               }
@@ -89,19 +98,23 @@
           {
             "id": "3",
             "name": "Wave1-Testing",
+            "status": "Configured",
+            "progressPercentage": 50,
             "triggerType": "Schedule | Every Monday 2 PM IST",
             "templates": [
               {
                 "id": 1,
                 "name": "Post deployment validation",
-                "status": "Stuck",
+                "status": "Success",
+                "progressPercentage": 100,
                 "startDate": "Apr 15",
                 "endDate": "Apr 15"
               },
               {
                 "id": 2,
                 "name": "Security Scan infra",
-                "status": "",
+                "status": "Failed",
+                "progressPercentage": 0,
                 "startDate": "",
                 "endDate": ""
               }
@@ -110,19 +123,23 @@
           {
             "id": "4",
             "name": "Wave1-Testing2",
+            "status": "Configured",
+            "progressPercentage": 50,
             "triggerType": "Normal",
             "templates": [
               {
                 "id": 1,
                 "name": "Post deployment validation",
-                "status": "Stuck",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "Apr 15",
                 "endDate": "Apr 15"
               },
               {
                 "id": 2,
                 "name": "Security Scan infra",
-                "status": "",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "",
                 "endDate": ""
               }
@@ -141,6 +158,8 @@
           {
             "id": "1",
             "name": "Wave1-APP",
+            "status": "Configured",
+            "progressPercentage": 50,
             "templates": [
               {
                 "id": 1,
@@ -151,7 +170,8 @@
                   "name": "Sqlserver install",
                   "description": "SQL Install Config"
                 },
-                "status": "Done",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "2 April 2020",
                 "endDate": "14 April 2020"
               },
@@ -164,7 +184,8 @@
                   "name": "Template Name Application VM creation",
                   "description": "VM Install Config"
                 },
-                "status": "Done",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "31 March 2020",
                 "endDate": "9 April 2020"
               }
@@ -183,7 +204,8 @@
                   "name": "Data factory",
                   "description": "DB Install Config"
                 },
-                "status": "Working on it",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "4 April 2020",
                 "endDate": "20 April 2020"
               },
@@ -196,7 +218,8 @@
                   "name": "Data Warehouse configuration",
                   "description": "DB Install Config"
                 },
-                "status": "Done",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "2 April 2020",
                 "endDate": "15 April 2020"
               }
@@ -215,7 +238,8 @@
                   "name": "Post deployment validation",
                   "description": "Deploy Config"
                 },
-                "status": "Stuck",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "15 April 2020",
                 "endDate": "15 April 2020"
               },
@@ -228,7 +252,8 @@
                   "name": "Security Scan infra",
                   "description": "Security Config"
                 },
-                "status": "",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "",
                 "endDate": ""
               }
@@ -247,7 +272,8 @@
                   "name": "Post deployment validation",
                   "description": "Deploy Config"
                 },
-                "status": "Stuck",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "15 April 2020",
                 "endDate": "15 April 2020"
               },
@@ -260,7 +286,8 @@
                   "name": "Security Scan infra",
                   "description": "Security Config"
                 },
-                "status": "",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "",
                 "endDate": ""
               }
@@ -279,6 +306,8 @@
           {
             "id": "1",
             "name": "Wave1-APP",
+            "status": "Configured",
+            "progressPercentage": 50,
             "templates": [
               {
                 "id": 1,
@@ -289,7 +318,8 @@
                   "name": "Sqlserver install",
                   "description": "SQL Install Config"
                 },
-                "status": "Done",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "2 April 2020",
                 "endDate": "14 April 2020"
               },
@@ -302,7 +332,8 @@
                   "name": "Template Name Application VM creation",
                   "description": "VM Install Config"
                 },
-                "status": "Done",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "31 March 2020",
                 "endDate": "9 April 2020"
               }
@@ -321,7 +352,8 @@
                   "name": "Data factory",
                   "description": "DB Install Config"
                 },
-                "status": "Working on it",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "4 April 2020",
                 "endDate": "20 April 2020"
               },
@@ -334,7 +366,8 @@
                   "name": "Data Warehouse configuration",
                   "description": "DB Install Config"
                 },
-                "status": "Done",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "2 April 2020",
                 "endDate": "15 April 2020"
               }
@@ -353,7 +386,8 @@
                   "name": "Post deployment validation",
                   "description": "Deploy Config"
                 },
-                "status": "Stuck",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "15 April 2020",
                 "endDate": "15 APril 2020"
               },
@@ -366,7 +400,8 @@
                   "name": "Security Scan infra",
                   "description": "Security Config"
                 },
-                "status": "",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "",
                 "endDate": ""
               }
@@ -385,7 +420,8 @@
                   "name": "Post deployment validation",
                   "description": "Deploy Config"
                 },
-                "status": "Stuck",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "15 April 2020",
                 "endDate": "15 April 2020"
               },
@@ -398,7 +434,8 @@
                   "name": "Security Scan infra",
                   "description": "Security Config"
                 },
-                "status": "",
+                "status": "Configured",
+                "progressPercentage": 50,
                 "startDate": "",
                 "endDate": ""
               }

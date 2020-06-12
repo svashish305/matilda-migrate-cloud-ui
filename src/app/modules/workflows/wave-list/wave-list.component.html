@@ -115,8 +115,8 @@
               </span>
               <span
                 class="badge badge-pill badge-custom"
-                [ngStyle]="setBadgeBgColor(waveType.state)"
-                >{{ waveType.state }}</span
+                [ngStyle]="setBadgeBgColor(waveType.status)"
+                >{{ waveType.status }}</span
               >
             </div>
             <div *ngIf="!waveType.collapsed" class="progress-section">
@@ -274,7 +274,7 @@
                 </div>
               </div>
               <div style="display: flex;">
-                <div
+                <!-- <div
                   class="flex-center"
                   style="width: 100px; margin-left: 8px;"
                 >
@@ -282,7 +282,7 @@
                     template.plugin
                   }}</span>
                 </div>
-                <!-- <div
+                <div
                   *ngIf="getWorkflowType() === 'time'"
                   class="border-white template-start flex-center"
                   style="margin-left: 20px;"
