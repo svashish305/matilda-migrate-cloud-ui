@@ -102,7 +102,7 @@
               <div
                 class="group-name-wrapper"
                 (mouseenter)="groupNameEnter(waveType)"
-                (mouseleave)="stage.edit = false"
+                (mouseleave)="waveType.edit = false"
               >
                 <div class="group-name common-text">
                   {{ waveType.name }}
@@ -282,7 +282,7 @@
                     template.plugin
                   }}</span>
                 </div>
-                <div
+                <!-- <div
                   *ngIf="getWorkflowType() === 'time'"
                   class="border-white template-start flex-center"
                   style="margin-left: 20px;"
@@ -306,7 +306,7 @@
                   <span class="cell-text common-text">{{
                     template.trigger
                   }}</span>
-                </div>
+                </div> -->
                 <div
                   class="border-white template-status"
                   [ngClass]="getStatusClass(template)"
