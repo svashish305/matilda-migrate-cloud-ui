@@ -50,7 +50,8 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   accountCollapseState: Map<any, boolean> = new Map();
 
   showAccountOptions = false;
-  showEditOptions = false;
+
+  waveState = "start";
 
   items: SelectInterface[] = [
     { value: "New Item", viewValue: "New Item" },

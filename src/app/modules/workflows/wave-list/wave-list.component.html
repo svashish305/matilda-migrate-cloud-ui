@@ -1,107 +1,427 @@
-<!-- {{ templateData | json }} -->
-<a (click)="openDialog(addAccountModal)">
-  <div style="padding: 32px 0 0 0;">
-    <img src="assets/imgs/rectangle-copy-2.svg" alt="" />
-    <button mat-button class="new-account-btn">+ Add Account</button>
-  </div>
-</a>
+<div>
+  <span class="stage-tags"
+    >Workflow Type<span style="position: relative; left: 54px;">:</span></span
+  >
+  <mat-form-field id="workflow-select-field" class="workflow-type-dd">
+    <mat-select
+      [(ngModel)]="selectedWorkflowType"
+      (ngModelChange)="getWorkflowType()"
+    >
+      <mat-option
+        id="wf-option"
+        *ngFor="let wType of workflowTypes"
+        [value]="wType.value"
+      >
+        {{ wType.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
 
-<!-- Tasks Cards (Vertical) -->
-<mat-card
-  *ngFor="let account of accounts"
-  class="mat-elevation-z0"
-  [ngStyle]="toggleHeight(account.id)"
->
-  <mat-card-title
-    >{{ account.name }}
-    <a (click)="toggleCollapse(account.id)">
-      <img
-        class="collapse-icon"
-        [src]="
-          accountCollapseState[account.id]
-            ? 'assets/imgs/chevron-up.svg'
-            : 'assets/imgs/chevron-down.svg'
-        "
-      />
-    </a>
-  </mat-card-title>
-  <div [ngbCollapse]="!accountCollapseState[account.id]">
-    <mat-card-subtitle>
-      <div class="account-details">
-        <span style="color: var(--primary-light); margin: 32px 0 22px 0;">{{
-          account.data.description
-        }}</span>
-        <mat-label>Provider</mat-label>
-        <span class="account-detail-text">{{ account.data.provider }}</span>
-        <mat-label style="margin-top: 26px;">Region</mat-label>
-        <span class="account-detail-text">{{ account.data.region }}</span>
-        <button
-          mat-button
-          class="edit-account-btn"
-          (click)="openEditAccountModal(editAccountModal, account.id)"
-        >
-          Edit
-        </button>
+<div style="position: absolute; top: 12.688em;">
+  <span class="stage-action-collapse-text">Collapse All</span
+  ><mat-slide-toggle
+    (change)="collapseAll($event.checked)"
+    disableRipple="true"
+    [color]="primaryColor"
+  ></mat-slide-toggle>
+</div>
+<div class="drag-drop-parent">
+  <div
+    cdkDropList
+    [cdkDropListData]="waveData.data.waveTypes"
+    (cdkDropListDropped)="dropGroup($event)"
+  >
+    <!-- <div
+      class="templates__inner__wrapper"
+      *ngFor="let stage of waves | search: stage.searchKey; let i = index"
+      cdkDropListGroup
+      cdkDrag
+      [cdkDragData]="stage"
+    > -->
+    <div
+      class="templates__inner__wrapper"
+      *ngFor="let waveType of waveData.data.waveTypes; let i = index"
+      cdkDropListGroup
+      cdkDrag
+      [cdkDragData]="waveType"
+    >
+      <!-- template list strats -->
+      <div class="template-list-wrapper">
+        <div>
+          <div id="stage-header" class="template__row">
+            <div class="template-name">
+              <div
+                class="group-drag"
+                [ngClass]="{ 'do-not-show': !waveType.drag }"
+              >
+                <img
+                  style="cursor: move;"
+                  src="assets/imgs/dragIcon-2.svg"
+                  alt=""
+                />
+              </div>
+              <!-- <div
+                [ngClass]="{ collapsed: waveType.collapsed }"
+                (click)="openGroupLevelActions(waveType)"
+                class="accordian"
+              > -->
+              <div
+                [ngClass]="{ collapsed: waveType.collapsed }"
+                class="accordian"
+              >
+                <img
+                  style="
+                    width: 24px;
+                    height: 24px;
+                    position: relative;
+                    top: 2px;
+                  "
+                  src="assets/imgs/chevron-down.svg"
+                  alt=""
+                  (click)="waveType.collapsed = !waveType.collapsed"
+                />
+                <!-- <div class="group-level-actions">
+                  <div
+                    (click)="waveType.collapsed = true"
+                    *ngIf="!waveType.collapsed"
+                  >
+                    Collapse
+                  </div>
+                  <div
+                    (click)="waveType.collapsed = false"
+                    *ngIf="waveType.collapsed"
+                  >
+                    Expand
+                  </div>
+                  <div (click)="deleteGroup(waveType)">Delete</div>
+                </div> -->
+              </div>
+              <!-- group level actions ends -->
+
+              <div
+                class="group-name-wrapper"
+                (mouseenter)="groupNameEnter(waveType)"
+                (mouseleave)="stage.edit = false"
+              >
+                <div class="group-name common-text">
+                  {{ waveType.name }}
+                </div>
+              </div>
+            </div>
+            <div *ngIf="!waveType.collapsed" class="status-section">
+              <span class="common-text" style="margin-right: 8px;"
+                >Status:
+              </span>
+              <span
+                class="badge badge-pill badge-custom"
+                [ngStyle]="setBadgeBgColor(waveType.state)"
+                >{{ waveType.state }}</span
+              >
+            </div>
+            <div *ngIf="!waveType.collapsed" class="progress-section">
+              <span class="common-text" style="margin-right: 8px;"
+                >Progress:
+              </span>
+              <mat-progress-bar
+                style="width: 4.375em;"
+                value="{{ waveType.progressPercentage }}"
+              ></mat-progress-bar>
+              <span
+                class="medium-text"
+                style="margin-left: 8px; min-width: fit-content;"
+                >{{ waveType.progressPercentage }} %</span
+              >
+            </div>
+            <img
+              class="stage-option"
+              src="assets/imgs/vEllipsis.svg"
+              alt="stage-options"
+            />
+
+            <div *ngIf="!waveType.collapsed" class="stage-list-subheader">
+              <div class="stage-name-width">
+                <span
+                  class="medium-text"
+                  style="font-family: LatoSemiBold; color: var(--grayed-text);"
+                  >Name</span
+                >
+              </div>
+              <div style="display: flex;">
+                <!-- <div
+                  style="width: 7.143em;"
+                  *ngIf="getWorkflowType() === 'time'"
+                >
+                  <span
+                    class="medium-text"
+                    style="
+                      font-family: LatoSemiBold;
+                      color: var(--grayed-text);
+                    "
+                    >Start Date</span
+                  >
+                </div>
+                <div
+                  style="width: 7.143em;"
+                  *ngIf="getWorkflowType() === 'time'"
+                >
+                  <span
+                    class="medium-text"
+                    style="
+                      font-family: LatoSemiBold;
+                      color: var(--grayed-text);
+                    "
+                    >End Date</span
+                  >
+                </div>
+                <div
+                  style="width: 7.143em;"
+                  *ngIf="getWorkflowType() === 'trigger'"
+                >
+                  <span
+                    class="medium-text"
+                    style="
+                      font-family: LatoSemiBold;
+                      color: var(--grayed-text);
+                    "
+                    >Trigger</span
+                  >
+                </div> -->
+                <div style="width: 7.143em;">
+                  <span
+                    class="medium-text"
+                    style="
+                      font-family: LatoSemiBold;
+                      color: var(--grayed-text);
+                    "
+                    >Status</span
+                  >
+                </div>
+                <div style="width: 7.143em;">
+                  <span
+                    class="medium-text"
+                    style="
+                      font-family: LatoSemiBold;
+                      color: var(--grayed-text);
+                    "
+                    >Progress</span
+                  >
+                </div>
+                <button
+                  class="stage-btn"
+                  mat-button
+                  [matMenuTriggerFor]="stageDropdown"
+                >
+                  <img src="assets/imgs/vEllipsis.svg" alt="Stage Settings" />
+                </button>
+                <mat-menu
+                  id="stage-dd"
+                  #stageDropdown="matMenu"
+                  xPosition="before"
+                  yPosition="below"
+                >
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      padding-left: 12px;
+                    "
+                  >
+                    <mat-checkbox (click)="onCheck($event)"
+                      >Service</mat-checkbox
+                    >
+                    <mat-checkbox (click)="onCheck($event)"
+                      >Action</mat-checkbox
+                    >
+                  </div>
+                </mat-menu>
+              </div>
+            </div>
+          </div>
+          <!-- cdkdroplist for template re ordering among and across groups -->
+          <div
+            *ngIf="!waveType.collapsed && waveData.data.waveTypes"
+            cdkDropList
+            id="{{ waveType.id }}"
+            [cdkDropListData]="waveType.templates"
+            (cdkDropListDropped)="drop($event)"
+            [cdkDropListConnectedTo]="getConnectedList()"
+          >
+            <div
+              class="row-items template__row item"
+              [ngClass]="{ selected: template.selected }"
+              (click)="rowClick(template)"
+              *ngFor="let template of waveType.templates"
+              cdkDrag
+            >
+              <div class="template-name">
+                <!-- template level actions starts -->
+                <!-- <div class="row-starter">
+                  <div (click)="$event.stopPropagation()" class="accordian">
+                    <img src="assets/imgs/chevron-down.svg" alt="" />
+                    <div class="group-level-actions">
+                      <div (click)="deleteTemplate(waveType, template)">
+                        Delete
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+                <!-- template level actions starts -->
+
+                <!-- <div class="grid-start-line border-white"></div> -->
+                <div class="border-white template-name-main">
+                  <span class="cell-text common-text">{{ template.name }}</span>
+                </div>
+              </div>
+              <div style="display: flex;">
+                <div
+                  class="flex-center"
+                  style="width: 100px; margin-left: 8px;"
+                >
+                  <span class="cell-text common-text">{{
+                    template.plugin
+                  }}</span>
+                </div>
+                <div
+                  *ngIf="getWorkflowType() === 'time'"
+                  class="border-white template-start flex-center"
+                  style="margin-left: 20px;"
+                >
+                  <span class="cell-text common-text">{{
+                    template.startDate
+                  }}</span>
+                </div>
+                <div
+                  *ngIf="getWorkflowType() === 'time'"
+                  class="border-white template-end flex-center"
+                >
+                  <span class="cell-text common-text">{{
+                    template.endDate
+                  }}</span>
+                </div>
+                <div
+                  *ngIf="getWorkflowType() === 'trigger'"
+                  class="border-white template-end flex-center"
+                >
+                  <span class="cell-text common-text">{{
+                    template.trigger
+                  }}</span>
+                </div>
+                <div
+                  class="border-white template-status"
+                  [ngClass]="getStatusClass(template)"
+                  (mouseleave)="template.showStatus = false"
+                  (click)="showStatuses($event, template)"
+                >
+                  <!-- <span
+                    class="cell-text"
+                    style="color: #fff; text-transform: capitalize;"
+                    >{{ template.status }}</span
+                  > -->
+                  <span
+                    class="badge badge-pill badge-custom"
+                    [ngStyle]="setBadgeBgColor(template.status)"
+                    >{{ template.status }}</span
+                  >
+                  <!-- template status start -->
+                  <div class="status-dropdown">
+                    <div
+                      (click)="changeStatus(template, 'Working on it')"
+                      class="status__list__item status-yellow"
+                    >
+                      Working on it
+                    </div>
+                    <div
+                      (click)="changeStatus(template, 'Done')"
+                      class="status__list__item status-green"
+                    >
+                      Done
+                    </div>
+                    <div
+                      (click)="changeStatus(template, 'Stuck')"
+                      class="status__list__item status-red"
+                    >
+                      Stuck
+                    </div>
+                    <div
+                      (click)="changeStatus(template, '')"
+                      class="status__list__item"
+                    ></div>
+                  </div>
+                  <!-- template status end -->
+                </div>
+                <div class="flex-center" style="margin-left: 1vw;">
+                  <mat-progress-bar
+                    style="width: 57px;"
+                    value="{{ template.progressPercentage }}"
+                  ></mat-progress-bar>
+                  <span
+                    class="medium-text"
+                    style="margin-left: 8px; min-width: fit-content;"
+                    >{{ template.progressPercentage }} %</span
+                  >
+                </div>
+                <div
+                  class="flex-center"
+                  style="position: relative; right: -50px;"
+                >
+                  <img
+                    style="margin-right: 1em;"
+                    src="assets/imgs/delete.svg"
+                    alt="delete"
+                  />
+                  <img src="assets/imgs/vEllipsis.svg" alt="settings" />
+                </div>
+              </div>
+            </div>
+            <!-- <div class="template__row item editor-row"> -->
+            <div class="template__row item row-items">
+              <!-- add new template start -->
+              <div class="template-name">
+                <!-- <div class="row-starter"></div>
+                <div class="grid-start-line border-white"></div> -->
+                <!-- <div class="border-white template-name-main">
+                  <input
+                    (focus)="stage.showAdd = true"
+                    (focusout)="inputFocusOut($event, stage)"
+                    class="template-add"
+                    (keydown.enter)="openDialog(addTaskModal)"
+                    [(ngModel)]="stage.newTemplate"
+                    type="text"
+                    placeholder="+ Add"
+                  />
+                </div>
+                <div
+                  *ngIf="stage.showAdd"
+                  (click)="openDialog(addTaskModal)"
+                  class="template-add-button"
+                >
+                  Add
+                </div> -->
+                <span
+                  class="common-text"
+                  style="color: var(--primary-light); margin: auto 14px;"
+                  (click)="openDialog(addTemplateModal)"
+                  >+ Add New Template</span
+                >
+              </div>
+              <!-- add new template end -->
+            </div>
+          </div>
+        </div>
       </div>
-    </mat-card-subtitle>
+
+      <!-- template list ends -->
+    </div>
   </div>
-</mat-card>
-<!-- End of Tasks Cards -->
+</div>
 
-<ng-template #addAccountModal> </ng-template>
-
-<ng-template #editAccountModal>
+<ng-template #addTemplateModal>
   <div class="modal-header">
-    <h4 class="pull-left">{{ selectedAccount.name }}</h4>
+    <h4 class="pull-left">Create New Template</h4>
   </div>
   <div class="modal-body">
     <!-- modal body -->
-    <form [formGroup]="editAccountFormGroup">
-      <mat-form-field class="example-full-width">
-        <mat-label>Provider</mat-label>
-        <mat-select
-          [(ngModel)]="accountProvider"
-          [ngModelOptions]="{ standalone: true }"
-        >
-          <mat-option
-            *ngFor="let provider of providers"
-            [value]="provider.value"
-          >
-            {{ provider.viewValue }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Account Name</mat-label>
-        <input
-          matInput
-          placeholder="Enter account name"
-          value="{{ selectedAccount.name }}"
-          [(ngModel)]="accountName"
-          [ngModelOptions]="{ standalone: true }"
-        />
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Client ID</mat-label>
-        <input
-          matInput
-          placeholder="Enter client ID"
-          value="{{ selectedAccount.clientID }}"
-          [(ngModel)]="accountClientID"
-          [ngModelOptions]="{ standalone: true }"
-        />
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Region</mat-label>
-        <input
-          matInput
-          placeholder="Enter region"
-          value="{{ selectedAccount.region }}"
-          [(ngModel)]="accountRegion"
-          [ngModelOptions]="{ standalone: true }"
-        />
-      </mat-form-field>
-    </form>
     <!-- end of modal body -->
   </div>
   <div class="modal-footer">
@@ -110,10 +430,10 @@
       <button
         mat-flat-button
         color="primary"
-        (click)="editAccount(selectedAccount.id); dialog.closeAll()"
+        (click)="dialog.closeAll()"
         cdkFocusInitial
       >
-        Save
+        Create
       </button>
     </mat-dialog-actions>
   </div>

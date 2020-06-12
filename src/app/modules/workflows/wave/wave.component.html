@@ -74,9 +74,6 @@
         <button mat-menu-item (click)="showAccountOptions = true">
           Add
         </button>
-        <button mat-menu-item (click)="showEditOptions = true">
-          Edit
-        </button>
       </mat-menu>
     </div>
     <!-- wave name and desription end -->
@@ -89,7 +86,7 @@
 
       <mat-tab label="Workflows">
         <!-- Workflows tab content -->
-        <div *ngIf="waves" style="height: 7.438em;">
+        <div *ngIf="waves" style="height: 10.438em;">
           <div class="badge-container">
             <span class="stage-tags"
               >Tags (
@@ -134,6 +131,36 @@
             <span class="badge badge-pill badge-custom">
               <span class="badge-key-value">+1</span>
             </span>
+          </div>
+
+          <div class="wave-states">
+            <img
+              style="cursor: pointer;"
+              [src]="
+                waveState === 'start'
+                  ? 'assets/imgs/start-active.svg'
+                  : 'assets/imgs/start-inactive.svg'
+              "
+              alt="start"
+            />
+            <img
+              style="cursor: pointer; padding-left: 24px;"
+              [src]="
+                waveState === 'pause'
+                  ? 'assets/imgs/pause-active.svg'
+                  : 'assets/imgs/pause-inactive.svg'
+              "
+              alt="pause"
+            />
+            <img
+              style="cursor: pointer; padding-left: 24px;"
+              [src]="
+                waveState === 'stop'
+                  ? 'assets/imgs/stop-active.svg'
+                  : 'assets/imgs/stop-inactive.svg'
+              "
+              alt="stop"
+            />
           </div>
 
           <div class="stage-action-bar">

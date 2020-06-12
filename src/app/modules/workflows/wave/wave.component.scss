@@ -117,13 +117,18 @@
   color: var(--blackish-text);
 }
 
+.wave-states {
+  position: absolute;
+  right: 0;
+}
+
 .stage-action-bar {
   border-top: solid 1px var(--btn-lightgray-border);
   border-bottom: solid 1px var(--btn-lightgray-border);
   width: 100%;
   height: 6em;
   position: absolute;
-  top: 7.5em;
+  top: 10.5em;
   display: flex;
   flex-direction: row;
   align-items: center;

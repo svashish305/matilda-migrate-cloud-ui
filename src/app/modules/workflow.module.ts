@@ -6,12 +6,12 @@ import { MaterialModule } from "./material.module";
 import { ResizableModule } from "angular-resizable-element";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { HttpClientModule } from "@angular/common/http";
-import { WaveComponent } from "./workflows/wave/wave.component";
 import { WaveListComponent } from "./workflows/wave-list/wave-list.component";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { SearchPipeModule } from "./searchpipe.module";
 import { TemplateModule } from "./template.module";
 import { RouterModule } from "@angular/router";
+import { WaveComponent } from "./workflows/wave/wave.component";
 
 const avatarColors = ["#5fb8f1", "#012b7a"];
 
