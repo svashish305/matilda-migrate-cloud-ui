@@ -465,6 +465,7 @@
       "name": "Stage Install YUM",
       "progressPercentage": 50,
       "state": "Configured",
+      "collapsed": false,
       "data": {
         "name": "Stage Install YUM",
         "description": "Stage Description",
@@ -513,6 +514,7 @@
       "name": "Stage Install Resources",
       "progressPercentage": 50,
       "state": "Configured",
+      "collapsed": false,
       "data": {
         "name": "Stage Install Resources",
         "description": "Stage Description",

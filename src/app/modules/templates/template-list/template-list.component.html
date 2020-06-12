@@ -21,7 +21,7 @@
 <div style="position: absolute; top: 9.688em;">
   <span class="stage-action-collapse-text">Collapse All</span
   ><mat-slide-toggle
-    (change)="collapseAllStages()"
+    (change)="collapseAllStages($event.checked)"
     disableRipple="true"
     [color]="primaryColor"
   ></mat-slide-toggle>

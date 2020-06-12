@@ -148,14 +148,24 @@ export class TemplateListComponent implements OnInit, OnChanges {
     event.stopPropagation();
   }
 
-  collapseAllStages() {
-    this.stages.forEach((stage: any) => {
-      // const modifiedStage = { collapsed: true, ...stage };
-      // this.dataService
-      //   .updateStage(modifiedStage)
-      //   .subscribe((res) => console.log(res));
-      stage.collapsed = !stage.collapsed;
-    });
+  collapseAllStages(checked: boolean) {
+    if (checked) {
+      this.stages.forEach((stage: any) => {
+        // const modifiedStage = { collapsed: true, ...stage };
+        // this.dataService
+        //   .updateStage(modifiedStage)
+        //   .subscribe((res) => console.log(res));
+        stage.collapsed = true;
+      });
+    } else {
+      this.stages.forEach((stage: any) => {
+        // const modifiedStage = { collapsed: true, ...stage };
+        // this.dataService
+        //   .updateStage(modifiedStage)
+        //   .subscribe((res) => console.log(res));
+        stage.collapsed = false;
+      });
+    }
   }
 
   getWorkflowType() {
