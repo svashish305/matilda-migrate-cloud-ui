@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-main-left-navbar",
@@ -10,9 +11,17 @@ export class MainLeftNavbarComponent implements OnInit {
   templateSelected = false;
   workflowSelected = false;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.router.url.includes("hub")) {
+      this.hubSelected = true;
+    } else if (this.router.url.includes("templates")) {
+      this.templateSelected = true;
+    } else if (this.router.url.includes("workflows")) {
+      this.workflowSelected = true;
+    }
+  }
 
   hubIsSelected() {
     return {
@@ -34,19 +43,19 @@ export class MainLeftNavbarComponent implements OnInit {
 
   setHubActiveColor() {
     return {
-      color: this.hubSelected ? "#fff" : "#023d98",
+      color: this.hubSelected ? "#fff" : "#012b7a",
     };
   }
 
   setTemplateActiveColor() {
     return {
-      color: this.templateSelected ? "#fff" : "#023d98",
+      color: this.templateSelected ? "#fff" : "#012b7a",
     };
   }
 
   setWorkflowActiveColor() {
     return {
-      color: this.workflowSelected ? "#fff" : "#023d98",
+      color: this.workflowSelected ? "#fff" : "#012b7a",
     };
   }
 
