@@ -1,6 +1,5 @@
 <!-- wave details start -->
 <!-- {{ waveData | json }} -->
-
 <div id="wave-content-id" class="wave__content__main__wrapper">
   <div
     id="wave-main-content"
@@ -10,6 +9,9 @@
   >
     <!-- wave name and desription start -->
     <div class="wave__header">
+      <a [routerLink]="['']" class="back-icon"
+        ><img src="assets/imgs/back-icon.svg" alt="back"
+      /></a>
       <img
         *ngIf="waveData.icon"
         [src]="waveData.icon"
@@ -26,7 +28,7 @@
       <div class="wave__heading">
         <!-- {{ waveData.name }} -->
         <input
-          class="description-styles"
+          class="description-styles template-title-font"
           (click)="$event.target.select()"
           (focus)="onFocusTitle()"
           (keydown.enter)="
@@ -38,20 +40,8 @@
       </div>
 
       <div class="wave-description">
-        <!-- <div (mouseenter)="waveData.edit = true" *ngIf="!waveData.edit">
-          {{ waveData.data.description }}
-        </div> -->
-        <!-- <textarea class="description-input" [(ngModel)]="waveData.description" (mouseleave)="waveData.edit = false"
-                *ngIf="waveData.edit" rows="4"></textarea> -->
-        <!-- <input
-          class="description-input"
-          [(ngModel)]="waveData.data.description"
-          (mouseleave)="waveData.edit = false"
-          *ngIf="waveData.edit"
-        /> -->
-
         <input
-          class="description-styles"
+          class="description-styles template-desc-font"
           style="color: var(--grayed-text);"
           (click)="$event.target.select()"
           (focus)="onFocusDescription()"
@@ -65,36 +55,151 @@
         />
       </div>
 
-      <img
-        src="assets/imgs/vEllipsis.svg"
-        alt="Template Settings"
-        style="padding-left: 7.75em;"
-      />
+      <button
+        class="template-dd-btn"
+        mat-button
+        [matMenuTriggerFor]="templateDropdown"
+      >
+        <img
+          src="assets/imgs/vEllipsis.svg"
+          style="position: relative; bottom: 4px;"
+          alt="Template Settings"
+        />
+      </button>
+      <mat-menu
+        #templateDropdown="matMenu"
+        xPosition="before"
+        yPosition="below"
+      >
+        <button mat-menu-item (click)="showAccountOptions = true">
+          Add
+        </button>
+        <button mat-menu-item (click)="showEditOptions = true">
+          Edit
+        </button>
+      </mat-menu>
     </div>
     <!-- wave name and desription end -->
 
     <!-- template subheader -->
-    <mat-tab-group [@.disabled]="true">
-      <mat-tab label="Account">
-        <!-- Account tab content -->
-        <div *ngIf="accounts" style="height: 6em;">
-          <mat-button-toggle-group disableRipple>
-            <mat-button-toggle
-              *ngFor="let account of accounts"
-              value="{{ account.id }}"
-            >
-              {{ account.name }}
-            </mat-button-toggle>
-          </mat-button-toggle-group>
+    <mat-tab-group id="stage-tab" [@.disabled]="true">
+      <mat-tab label="Charts">
+        <!-- put chart tab content here -->
+      </mat-tab>
 
-          <button mat-button class="add-account-btn">+ Add ENV</button>
+      <mat-tab label="Workflows">
+        <!-- Workflows tab content -->
+        <div *ngIf="waves" style="height: 7.438em;">
+          <div class="badge-container">
+            <span class="stage-tags"
+              >Tags (
+              <span class="stage-tags-blue">Change</span>
+              )<span style="position: relative; left: 50px;">:</span>
+            </span>
+            <span
+              class="badge badge-pill badge-custom"
+              style="margin-left: 3.5em;"
+            >
+              <span class="badge-key-value">IP : 192.28.10.11</span>
+            </span>
+            <span class="badge badge-pill badge-custom">
+              <span class="badge-key-value">Web : Front End</span>
+            </span>
+            <span class="badge badge-pill badge-custom">
+              <span class="badge-key-value">Software : Tomcat</span>
+            </span>
+            <span class="badge badge-pill badge-custom">
+              <span class="badge-key-value">Java : Web</span>
+            </span>
+            <span class="badge badge-pill badge-custom">
+              <span class="badge-key-value">+3</span>
+            </span>
+          </div>
+
+          <div class="badge-container">
+            <span class="stage-tags"
+              >Accounts (
+              <span class="stage-tags-blue">Change</span>
+              )<span style="position: relative; left: 9px;">:</span>
+            </span>
+            <span
+              class="badge badge-pill badge-custom"
+              style="margin-left: 3.5em;"
+            >
+              <span class="badge-key-value">Provider Name : Account Name</span>
+            </span>
+            <span class="badge badge-pill badge-custom">
+              <span class="badge-key-value">Jenkins : JKSMR</span>
+            </span>
+            <span class="badge badge-pill badge-custom">
+              <span class="badge-key-value">+1</span>
+            </span>
+          </div>
+
+          <div class="stage-action-bar">
+            <button
+              mat-flat-button
+              color="primary"
+              style="position: absolute; right: 30em;"
+            >
+              <span class="new-stage-btn">+ New</span>
+            </button>
+
+            <!-- <div class="waves__list__filter right-align-searchbox">
+              <div>
+                <img class="search-icon" src="assets/imgs/search.svg" alt="" />
+              </div>
+              <div class="waves_list__search">
+                <input
+                  (keyup)="search($event)"
+                  name="test"
+                  [(ngModel)]="searchKey"
+                  placeholder="Search"
+                  class="filter__input"
+                  type="text"
+                />
+              </div>
+            </div> -->
+            <div
+              class="right-align-searchbox"
+              style="width: 23.813em; bottom: 0.7em;"
+            >
+              <form>
+                <mat-form-field
+                  id="mat-search"
+                  floatLabel="never"
+                  class="mat-typography"
+                  style="width: 100%;"
+                >
+                  <img
+                    matPrefix
+                    src="assets/imgs/search-2.svg"
+                    alt="search-icon"
+                    style="
+                      position: relative;
+                      bottom: 2px;
+                      padding-right: 0.5em;
+                    "
+                  />
+                  <input
+                    matInput
+                    placeholder="Search"
+                    type="search"
+                    (keyup)="search($event)"
+                    name="test"
+                    [(ngModel)]="searchKey"
+                  />
+                </mat-form-field>
+              </form>
+            </div>
+          </div>
         </div>
 
         <div class="template-container">
           <div class="templates__wrapper">
             <!-- wave templates list start-->
             <app-wave-list
-              #templateList
+              #waveList
               (rowClicked)="openDetails($event)"
               [waveData]="waveData"
             >
@@ -102,298 +207,7 @@
             <!-- wave templates list end-->
           </div>
         </div>
-        <!-- End of Account tab content -->
-      </mat-tab>
-      <mat-tab label="Workflow">
-        <!-- put workflow tab content here -->
-        <!-- workflow tab subheader -->
-        <div class="workflow-subheader">
-          <mat-button-toggle-group
-            style="min-width: 9.125em; max-width: 9.125em;"
-            name="playbackControls"
-          >
-            <mat-button-toggle value="play">
-              <img src="assets/imgs/play.svg" alt="play" />
-            </mat-button-toggle>
-            <mat-button-toggle value="pause">
-              <img src="assets/imgs/pause.svg" alt="pause" />
-            </mat-button-toggle>
-            <mat-button-toggle value="stop">
-              <img src="assets/imgs/stop.svg" alt="stop" />
-            </mat-button-toggle>
-          </mat-button-toggle-group>
-
-          <mat-form-field class="item-select">
-            <mat-select [(ngModel)]="items[0].value">
-              <mat-option *ngFor="let item of items" [value]="item.value">
-                {{ item.viewValue }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <div class="waves__list__filter">
-            <div>
-              <img class="search-icon" src="assets/imgs/search.svg" alt="" />
-            </div>
-            <div class="waves_list__search">
-              <input
-                (keyup)="search($event)"
-                name="test"
-                [(ngModel)]="searchKey"
-                placeholder="Search"
-                class="filter__input"
-                type="text"
-              />
-            </div>
-          </div>
-
-          <mat-checkbox style="margin-left: 32px;">Templates</mat-checkbox>
-          <mat-checkbox style="margin-left: 12px;">Workflows</mat-checkbox>
-        </div>
-        <!-- end of workflow tab subheader -->
-
-        <!-- gruops list start -->
-        <!-- main cdkdroplist which re orders groups -->
-        <div class="drag-drop-parent">
-          <div
-            cdkDropList
-            [cdkDropListData]="waveData.data.waveTypes"
-            (cdkDropListDropped)="dropGroup($event)"
-          >
-            <div
-              class="templates__inner__wrapper"
-              *ngFor="
-                let waveType of waveData.data.waveTypes
-                  | search: waveData.searchKey;
-                let i = index
-              "
-              cdkDropListGroup
-              cdkDrag
-              [cdkDragData]="waveType"
-            >
-              <!-- template list strats -->
-              <div class="template-list-wrapper">
-                <div>
-                  <div class="template__row">
-                    <div
-                      class="template-name"
-                      [ngStyle]="{ color: waveType.theme }"
-                    >
-                      <div
-                        class="group-drag"
-                        [ngClass]="{ 'do-not-show': !waveType.drag }"
-                      >
-                        <img src="assets/imgs/dragIcon-2.svg" alt="" />
-                      </div>
-
-                      <!-- group level actions starts -->
-                      <!-- <div
-                        [ngClass]="{ collapsed: waveType.collapsed }"
-                        (click)="openGroupLevelActions(waveType)"
-                        [ngStyle]="{ background: waveType.theme }"
-                        class="accordian"
-                      > -->
-                      <div
-                        [ngClass]="{ collapsed: waveType.collapsed }"
-                        (click)="openGroupLevelActions(waveType)"
-                        class="accordian"
-                      >
-                        <img
-                          style="width: 24px; height: 24px;"
-                          src="assets/imgs/chevron-down.svg"
-                          alt=""
-                        />
-                        <div class="group-level-actions">
-                          <div
-                            (click)="waveType.collapsed = true"
-                            *ngIf="!waveType.collapsed"
-                          >
-                            Collapse
-                          </div>
-                          <div
-                            (click)="waveType.collapsed = false"
-                            *ngIf="waveType.collapsed"
-                          >
-                            Expand
-                          </div>
-                          <div (click)="deleteGroup(waveType)">Delete</div>
-                        </div>
-                      </div>
-                      <!-- group level actions ends -->
-
-                      <div
-                        class="group-name-wrapper"
-                        (mouseenter)="groupNameEnter(waveType)"
-                        (mouseleave)="waveType.edit = false"
-                      >
-                        <!-- <div class="group-name" *ngIf="!waveType.edit"> -->
-                        <div class="group-name">
-                          {{ waveType.name }}
-                        </div>
-                        <div style="margin-right: 10px;">
-                          <span class="trigger-type">Trigger Type: </span
-                          ><span class="trigger-type-val"
-                            >&nbsp;{{ waveType.triggerType }}</span
-                          >
-                        </div>
-
-                        <!-- <input
-                          [ngStyle]="{
-                            'border-color': waveType.theme,
-                            color: waveType.theme
-                          }"
-                          [(ngModel)]="waveType.name"
-                          class="group-input"
-                          (focus)="waveType.drag = false"
-                          (focusout)="waveType.drag = true"
-                          *ngIf="waveType.edit"
-                          type="text"
-                          (mouseleave)="waveType.edit = false"
-                        /> -->
-                      </div>
-                    </div>
-                    <div *ngIf="!waveType.collapsed" class="template-status">
-                      <span class="col-header">Status</span>
-                    </div>
-                    <div *ngIf="!waveType.collapsed" class="template-start">
-                      <!-- <span class="bell-icon"><img src="assets/imgs/bell.svg" alt="" /></span> -->
-                      <span class="col-header">Start Date</span>
-                    </div>
-                    <div *ngIf="!waveType.collapsed" class="template-end">
-                      <!-- <span class="bell-icon"><img src="assets/imgs/bell.svg" alt="" /></span> -->
-                      <span class="col-header">End Date</span>
-                    </div>
-                  </div>
-                  <!-- cdkdroplist for template re ordering among and across groups -->
-                  <div
-                    *ngIf="!waveType.collapsed"
-                    cdkDropList
-                    id="{{ waveType.id }}"
-                    [cdkDropListData]="waveData.data.waveTypes[i].templates"
-                    (cdkDropListDropped)="drop($event)"
-                    [cdkDropListConnectedTo]="getConnectedList()"
-                  >
-                    <div
-                      class="template__row item"
-                      [ngClass]="{ selected: template.selected }"
-                      (click)="rowClick(template)"
-                      *ngFor="let template of waveType.templates"
-                      cdkDrag
-                    >
-                      <div class="template-name">
-                        <!-- template level actions starts -->
-                        <div class="row-starter">
-                          <div
-                            (click)="$event.stopPropagation()"
-                            class="accordian"
-                          >
-                            <img src="assets/imgs/chevron-down.svg" alt="" />
-                            <div class="group-level-actions">
-                              <div (click)="deleteTemplate(waveType, template)">
-                                Delete
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- template level actions starts -->
-
-                        <div
-                          [ngStyle]="{ background: waveType.theme }"
-                          class="grid-start-line border-white"
-                        ></div>
-                        <div
-                          class="border-white template-name-main"
-                          (click)="toggleRightSidebar(template)"
-                        >
-                          <span class="cell-text">{{ template.name }}</span>
-                        </div>
-                      </div>
-                      <div
-                        class="border-white template-status"
-                        [ngClass]="getStatusClass(template)"
-                        (mouseleave)="template.showStatus = false"
-                        (click)="showStatuses($event, template)"
-                      >
-                        <span
-                          class="cell-text"
-                          style="color: #fff; text-transform: uppercase;"
-                          >{{ template.status }}</span
-                        >
-                        <!-- template status start -->
-                        <div class="status-dropdown">
-                          <div
-                            (click)="changeStatus(template, 'Working on it')"
-                            class="status__list__item status-yellow"
-                          >
-                            Working on it
-                          </div>
-                          <div
-                            (click)="changeStatus(template, 'Done')"
-                            class="status__list__item status-green"
-                          >
-                            Done
-                          </div>
-                          <div
-                            (click)="changeStatus(template, 'Stuck')"
-                            class="status__list__item status-red"
-                          >
-                            Stuck
-                          </div>
-                          <div
-                            (click)="changeStatus(template, '')"
-                            class="status__list__item"
-                          ></div>
-                        </div>
-                        <!-- template status end -->
-                      </div>
-                      <div class="border-white template-start">
-                        <span class="cell-text">{{ template.startDate }}</span>
-                      </div>
-                      <div class="border-white template-end">
-                        <span class="cell-text">{{ template.endDate }}</span>
-                      </div>
-                    </div>
-                    <div class="template__row item editor-row">
-                      <!-- add new template strat -->
-                      <div class="template-name">
-                        <div class="row-starter"></div>
-                        <div
-                          [ngStyle]="{ background: waveType.theme }"
-                          class="grid-start-line border-white"
-                        ></div>
-                        <div class="border-white template-name-main">
-                          <input
-                            (focus)="waveType.showAdd = true"
-                            (focusout)="inputFocusOut($event, waveType)"
-                            class="template-add"
-                            (keydown.enter)="addTemplate(waveType)"
-                            [(ngModel)]="waveType.newTemplate"
-                            type="text"
-                            placeholder="+Add"
-                          />
-                        </div>
-                        <div
-                          *ngIf="waveType.showAdd"
-                          (click)="addTemplate(waveType)"
-                          class="template-add-button"
-                        >
-                          Add
-                        </div>
-                      </div>
-                      <!-- add new template end -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- template list ends -->
-            </div>
-          </div>
-        </div>
-        <!-- gruops list end -->
-      </mat-tab>
-      <mat-tab label="Charts">
-        <!-- put chart tab content here -->
+        <!-- End of Stages tab content -->
       </mat-tab>
     </mat-tab-group>
 
@@ -402,7 +216,7 @@
     <!-- wave groups end -->
   </div>
   <!-- template details resizable start -->
-  <section
+  <!-- <section
     tabindex="-1"
     id="template-holder"
     (mouseenter)="showBackdrop = true"
@@ -419,19 +233,152 @@
       Template
     </div>
   </section>
-  <div [ngClass]="{ show: showBackdrop }" class="modal-backdrop"></div>
+  <div [ngClass]="{ show: showBackdrop }" class="modal-backdrop"></div> -->
   <!-- template details resizable start -->
-</div>
 
-<!-- wave details start -->
+  <!-- account options start -->
+  <div
+    *ngIf="showAccountOptions"
+    id="resizable-holder"
+    class="import-options resizable"
+    mwlResizable
+    [enableGhostResize]="true"
+    [resizeEdges]="{ bottom: false, right: false, top: false, left: true }"
+    (resizeEnd)="onResizeEnd($event)"
+  >
+    <div>
+      <header>
+        <a
+          (click)="showAccountOptions = false"
+          style="cursor: pointer; position: absolute; left: 24px;"
+        >
+          <img src="assets/imgs/close-circle.svg" alt="Close" />
+        </a>
+        Account
+      </header>
+      <mat-divider></mat-divider>
+      <!-- <div class="waves__list__filter" style="margin: 24px 0 24px 0;">
+        <div>
+          <img class="search-icon" src="assets/imgs/search.svg" alt="" />
+        </div>
+        <div class="waves_list__search">
+          <input
+            (keyup)="search($event)"
+            name="test"
+            [(ngModel)]="searchKey"
+            placeholder="Search"
+            class="filter__input"
+            type="text"
+          />
+        </div>
+      </div> -->
+      <div style="margin: 24px 0 4px 0;">
+        <form>
+          <mat-form-field
+            id="mat-search"
+            floatLabel="never"
+            class="mat-typography"
+            style="width: 100%;"
+          >
+            <img
+              matPrefix
+              src="assets/imgs/search-2.svg"
+              alt="search-icon"
+              style="position: relative; bottom: 2px; padding-right: 0.5em;"
+            />
+            <input
+              matInput
+              placeholder="Search"
+              type="search"
+              (keyup)="search($event)"
+              name="test"
+              [(ngModel)]="searchKey"
+            />
+          </mat-form-field>
+        </form>
+      </div>
 
-<!-- import sidebar -->
-<div class="right-sidebar-container" *ngIf="rightSidebarToggleState">
-  <div class="close-sidebar" (click)="rightSidebarToggleState = false">
-    <img src="assets/imgs/close-sidebar.svg" alt="close-sidebar" />
+      <!-- account cards -->
+      <mat-card
+        class="mat-elevation-z0"
+        style="margin-bottom: 24px;"
+        *ngFor="let account of accounts"
+        [ngStyle]="toggleHeight(account.id)"
+      >
+        <mat-card-content>
+          <mat-checkbox
+            (click)="onCheck($event)"
+            style="top: 14px; position: relative;"
+          >
+          </mat-checkbox>
+          <div class="checkbox-label-with-icon">
+            <ngx-avatar name="S M"></ngx-avatar>
+            <span class="import-list-template-name">{{ account.name }}</span>
+            <span class="import-list-template-description">{{
+              account.data.description
+            }}</span>
+            <div class="collapse-icon">
+              <a (click)="toggleCollapse(account.id)">
+                <img
+                  [src]="
+                    accountCollapseState[account.id]
+                      ? 'assets/imgs/chevron-up.svg'
+                      : 'assets/imgs/chevron-down.svg'
+                  "
+                />
+              </a>
+            </div>
+          </div>
+          <div [ngbCollapse]="!accountCollapseState[account.id]">
+            <mat-card-subtitle>
+              <div class="account-details">
+                <span class="medium-text">{{ account.data.description }}</span>
+                <div style="padding: 12px 0 12px 0;">
+                  <mat-label
+                    class="common-text"
+                    style="color: var(--alt-gray-text);"
+                    >Provider :
+                  </mat-label>
+                  <span class="account-detail-text">{{
+                    account.data.provider
+                  }}</span>
+                </div>
+                <div style="padding: 0 0 12px 0;">
+                  <mat-label
+                    class="common-text"
+                    style="color: var(--alt-gray-text);"
+                    >Region :
+                  </mat-label>
+                  <span class="account-detail-text">{{
+                    account.data.region
+                  }}</span>
+                </div>
+              </div>
+            </mat-card-subtitle>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <div class="modal-footer">
+        <div style="display: flex; position: absolute; left: 0; top: 0.9em;">
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="showAccountOptions = false"
+            cdkFocusInitial
+          >
+            Add
+          </button>
+          <button
+            mat-button
+            color="primary"
+            (click)="showAccountOptions = false"
+            style="margin-left: 1em;"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div style="margin: 0 24px 0 24px;">
-    <app-template [templateData]="selectedTemplateInSidebar"></app-template>
-  </div>
+  <!-- end of account options -->
 </div>
-<!-- end of import sidebar -->

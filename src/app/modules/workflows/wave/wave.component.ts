@@ -7,15 +7,15 @@ import {
   OnChanges,
   EventEmitter,
   Output,
-} from '@angular/core';
+} from "@angular/core";
 import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
-} from '@angular/cdk/drag-drop';
-import { ResizeEvent } from 'angular-resizable-element';
-import { DataService } from 'src/services/data.service';
-import { FormControl } from '@angular/forms';
+} from "@angular/cdk/drag-drop";
+import { ResizeEvent } from "angular-resizable-element";
+import { DataService } from "src/services/data.service";
+import { FormControl } from "@angular/forms";
 
 interface SelectInterface {
   value: string;
@@ -23,9 +23,9 @@ interface SelectInterface {
 }
 
 @Component({
-  selector: 'app-wave',
-  templateUrl: './wave.component.html',
-  styleUrls: ['./wave.component.scss'],
+  selector: "app-wave",
+  templateUrl: "./wave.component.html",
+  styleUrls: ["./wave.component.scss"],
 })
 export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   // @Input() waveData: any = {};
@@ -33,23 +33,29 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   @Output() rowClicked: EventEmitter<any> = new EventEmitter();
   edit;
   showBackdrop;
-  @ViewChild('waveList', { static: false }) waveList;
+  @ViewChild("waveList", { static: false }) waveList;
 
+  waves: any[] = [];
   accounts: any[] = [];
-  titleState: string = 'idle';
+  titleState: string = "idle";
   oldTitle: string;
   newTitle: string;
-  descriptionState: string = 'idle';
+  descriptionState: string = "idle";
   oldDescription: string;
   newDescription: string;
 
   rightSidebarToggleState: boolean = false;
   selectedTemplateInSidebar: any;
 
+  accountCollapseState: Map<any, boolean> = new Map();
+
+  showAccountOptions = false;
+  showEditOptions = false;
+
   items: SelectInterface[] = [
-    { value: 'New Item', viewValue: 'New Item' },
-    { value: 'p-1', viewValue: 'Pizza' },
-    { value: 'p-2', viewValue: 'Tacos' },
+    { value: "New Item", viewValue: "New Item" },
+    { value: "p-1", viewValue: "Pizza" },
+    { value: "p-2", viewValue: "Tacos" },
   ];
 
   searchKey;
@@ -66,6 +72,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngOnInit() {
     this.getAccounts();
+    this.getWaves();
   }
 
   ngAfterViewInit() {
@@ -74,7 +81,17 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
 
   /**
    *
-   * @description gets list of stages and calls first stage details
+   * @description gets list of Waves and calls first wave details
+   */
+  getWaves() {
+    this.dataService.getWaves().subscribe((data: any[]) => {
+      this.waves = data;
+    });
+  }
+
+  /**
+   *
+   * @description gets list of accounts and calls first stage details
    */
   getAccounts() {
     this.dataService.getAccounts().subscribe((data: any[]) => {
@@ -97,9 +114,31 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     // });
   }
 
+  onCheck(event) {
+    event.stopPropagation();
+  }
+
   toggleRightSidebar(template: any) {
     this.rightSidebarToggleState = !this.rightSidebarToggleState;
     this.selectedTemplateInSidebar = template;
+  }
+
+  toggleHeight(accountId) {
+    let height;
+    if (this.accountCollapseState[accountId]) {
+      height = "13.313em";
+    }
+    return { height };
+  }
+
+  toggleCollapse(accountId) {
+    this.accountCollapseState[accountId] = !this.accountCollapseState[
+      accountId
+    ];
+  }
+
+  isCollapsed(accountId) {
+    this.accountCollapseState[accountId] = false;
   }
 
   /**
@@ -116,24 +155,24 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
    * @description resizes the template details container
    */
   appyResize(event?) {
-    const wrapperWidth = document.getElementById('wave-content-id').offsetWidth;
-    const templateHolder = document.getElementById('template-holder');
-    const contentHolder = document.getElementById('wave-main-content');
+    const wrapperWidth = document.getElementById("wave-content-id").offsetWidth;
+    const templateHolder = document.getElementById("template-holder");
+    const contentHolder = document.getElementById("wave-main-content");
     let width;
     if (templateHolder) {
       const resizerWidth = templateHolder.offsetWidth;
       width = event ? resizerWidth - event.edges.left : 430;
-      templateHolder.style.width = width + 'px';
+      templateHolder.style.width = width + "px";
     } else {
       width = 0;
     }
     if (wrapperWidth > 750 + width) {
       if (contentHolder) {
-        contentHolder.style.width = wrapperWidth - width + 40 + 'px';
+        contentHolder.style.width = wrapperWidth - width + 40 + "px";
       }
     } else {
       if (contentHolder) {
-        contentHolder.style.width = '750px';
+        contentHolder.style.width = "750px";
       }
     }
   }
@@ -167,7 +206,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     const id = Math.random().toString(6);
     this.waveData.data.waveTypes.unshift({
       id: id,
-      name: 'New group',
+      name: "New group",
       theme: this.waveList.getRandomColor(),
       edit: true,
       templates: [],
@@ -175,11 +214,11 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   onFocusTitle() {
-    this.titleState = 'editing';
+    this.titleState = "editing";
   }
 
   updateTitle() {
-    this.titleState = 'idle';
+    this.titleState = "idle";
     if (this.newTitle !== this.oldTitle) {
       // update title
       const newTemplate = {
@@ -193,11 +232,11 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   onFocusDescription() {
-    this.descriptionState = 'editing';
+    this.descriptionState = "editing";
   }
 
   updateDescription() {
-    this.descriptionState = 'idle';
+    this.descriptionState = "idle";
     if (this.newDescription !== this.oldDescription) {
       // update description
       const newTemplate = {
@@ -215,7 +254,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
    * @description generates new color for groups
    */
   getRandomColor() {
-    return '#' + Math.random().toString(16).substr(-6);
+    return "#" + Math.random().toString(16).substr(-6);
   }
 
   /**
@@ -264,7 +303,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     });
     template.selected = true;
     this.rowClicked.emit(true);
-    console.log('row clicked');
+    console.log("row clicked");
   }
 
   /**
@@ -278,11 +317,11 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     waveType.templates.push({
       id: id,
       name: waveType.newTemplate,
-      status: '',
-      startDate: '',
-      endDate: '',
+      status: "",
+      startDate: "",
+      endDate: "",
     });
-    waveType.newTemplate = '';
+    waveType.newTemplate = "";
   }
 
   /**
@@ -292,7 +331,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   inputFocusOut(event, waveType) {
     setTimeout(() => {
       waveType.showAdd = false;
-      waveType.newTemplate = '';
+      waveType.newTemplate = "";
     }, 200);
   }
 
@@ -381,23 +420,23 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
    */
   getStatusClass(template) {
     let className;
-    if (template.status === 'Working on it') {
-      className = 'status-yellow';
+    if (template.status === "Working on it") {
+      className = "status-yellow";
     }
-    if (template.status === 'Done') {
-      className = 'status-green';
-    }
-
-    if (template.status === 'Stuck') {
-      className = 'status-red';
+    if (template.status === "Done") {
+      className = "status-green";
     }
 
-    if (template.status === '') {
-      className = '';
+    if (template.status === "Stuck") {
+      className = "status-red";
+    }
+
+    if (template.status === "") {
+      className = "";
     }
 
     if (template.showStatus) {
-      className += ' show-status';
+      className += " show-status";
     }
 
     return className;

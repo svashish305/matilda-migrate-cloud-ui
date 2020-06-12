@@ -11,6 +11,7 @@ import { WaveListComponent } from "./workflows/wave-list/wave-list.component";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { SearchPipeModule } from "./searchpipe.module";
 import { TemplateModule } from "./template.module";
+import { RouterModule } from "@angular/router";
 
 const avatarColors = ["#5fb8f1", "#012b7a"];
 
@@ -22,6 +23,7 @@ const avatarColors = ["#5fb8f1", "#012b7a"];
     AvatarModule.forRoot({
       colors: avatarColors,
     }),
+    RouterModule,
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,

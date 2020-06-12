@@ -594,10 +594,10 @@
   "accounts": [
     {
       "id": 1,
-      "name": "SMR App 2 Account",
+      "name": "SMR App 1 Account",
       "data": {
-        "name": "SMR App 2 Account",
-        "description": "App 2 Platform Account 2",
+        "name": "SMR App 1 Account",
+        "description": "Installation Configuration",
         "provider": "AWS",
         "clientID": "SMR - 123214",
         "region": "Ohio"
@@ -605,32 +605,10 @@
     },
     {
       "id": 2,
-      "name": "Account 2",
+      "name": "SMR App 2 Account",
       "data": {
-        "name": "Account 1",
-        "description": "Account Description",
-        "provider": "AWS",
-        "clientID": "SMR - 123214",
-        "region": "Ohio"
-      }
-    },
-    {
-      "id": 3,
-      "name": "Account 3",
-      "data": {
-        "name": "Account 1",
-        "description": "Account Description",
-        "provider": "AWS",
-        "clientID": "SMR - 123214",
-        "region": "Ohio"
-      }
-    },
-    {
-      "id": 4,
-      "name": "Account 4",
-      "data": {
-        "name": "Account 1",
-        "description": "Account Description",
+        "name": "SMR App 2 Account",
+        "description": "Installation Configuration",
         "provider": "AWS",
         "clientID": "SMR - 123214",
         "region": "Ohio"
