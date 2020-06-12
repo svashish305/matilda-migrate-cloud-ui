@@ -125,23 +125,11 @@ export class WaveListComponent implements OnInit {
   collapseAll(checked: boolean) {
     if (checked) {
       this.waveData.data.waveTypes.forEach((waveType: any) => {
-        // const modifiedStage = { collapsed: true, ...stage };
-        // this.dataService
-        //   .updateStage(modifiedStage)
-        //   .subscribe((res) => console.log(res));
-        waveType.templates.forEach((template) => {
-          template.collapsed = true;
-        });
+        waveType.collapsed = true;
       });
     } else {
       this.waveData.data.waveTypes.forEach((waveType: any) => {
-        // const modifiedStage = { collapsed: true, ...stage };
-        // this.dataService
-        //   .updateStage(modifiedStage)
-        //   .subscribe((res) => console.log(res));
-        waveType.templates.forEach((template) => {
-          template.collapsed = true;
-        });
+        waveType.collapsed = false;
       });
     }
   }

@@ -13,6 +13,7 @@
             "triggerType": "Normal",
             "status": "Configured",
             "progressPercentage": 50,
+            "collapsed": false,
             "templates": [
               {
                 "id": 1,
@@ -63,6 +64,7 @@
             "name": "Wave1-DB",
             "status": "Configured",
             "progressPercentage": 50,
+            "collapsed": false,
             "triggerType": "Event",
             "templates": [
               {
@@ -100,6 +102,7 @@
             "name": "Wave1-Testing",
             "status": "Configured",
             "progressPercentage": 50,
+            "collapsed": false,
             "triggerType": "Schedule | Every Monday 2 PM IST",
             "templates": [
               {
@@ -125,6 +128,7 @@
             "name": "Wave1-Testing2",
             "status": "Configured",
             "progressPercentage": 50,
+            "collapsed": false,
             "triggerType": "Normal",
             "templates": [
               {
@@ -160,6 +164,7 @@
             "name": "Wave1-APP",
             "status": "Configured",
             "progressPercentage": 50,
+            "collapsed": false,
             "templates": [
               {
                 "id": 1,
@@ -194,6 +199,9 @@
           {
             "id": "2",
             "name": "Wave1-DB",
+            "status": "Configured",
+            "progressPercentage": 50,
+            "collapsed": false,
             "templates": [
               {
                 "id": 1,
@@ -228,6 +236,9 @@
           {
             "id": "3",
             "name": "Wave1-Testing",
+            "status": "Configured",
+            "progressPercentage": 50,
+            "collapsed": false,
             "templates": [
               {
                 "id": 1,
@@ -262,6 +273,9 @@
           {
             "id": "4",
             "name": "Wave1-Testing2",
+            "status": "Configured",
+            "progressPercentage": 50,
+            "collapsed": false,
             "templates": [
               {
                 "id": 1,
@@ -308,6 +322,7 @@
             "name": "Wave1-APP",
             "status": "Configured",
             "progressPercentage": 50,
+            "collapsed": false,
             "templates": [
               {
                 "id": 1,
@@ -342,6 +357,9 @@
           {
             "id": "2",
             "name": "Wave1-DB",
+            "status": "Configured",
+            "progressPercentage": 50,
+            "collapsed": false,
             "templates": [
               {
                 "id": 1,
@@ -376,6 +394,9 @@
           {
             "id": "3",
             "name": "Wave1-Testing",
+            "status": "Configured",
+            "progressPercentage": 50,
+            "collapsed": false,
             "templates": [
               {
                 "id": 1,
@@ -410,6 +431,9 @@
           {
             "id": "4",
             "name": "Wave1-Testing2",
+            "status": "Configured",
+            "progressPercentage": 50,
+            "collapsed": false,
             "templates": [
               {
                 "id": 1,
