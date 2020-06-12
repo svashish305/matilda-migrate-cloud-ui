@@ -145,77 +145,105 @@
                   >Name</span
                 >
               </div>
-              <div style="width: 7.143em;">
-                <span
-                  class="medium-text"
-                  style="font-family: LatoSemiBold; color: var(--grayed-text);"
-                  >Plugin</span
-                >
-              </div>
-              <div style="width: 7.143em;" *ngIf="getWorkflowType() === 'time'">
-                <span
-                  class="medium-text"
-                  style="font-family: LatoSemiBold; color: var(--grayed-text);"
-                  >Start Date</span
-                >
-              </div>
-              <div style="width: 7.143em;" *ngIf="getWorkflowType() === 'time'">
-                <span
-                  class="medium-text"
-                  style="font-family: LatoSemiBold; color: var(--grayed-text);"
-                  >End Date</span
-                >
-              </div>
-              <div
-                style="width: 7.143em;"
-                *ngIf="getWorkflowType() === 'trigger'"
-              >
-                <span
-                  class="medium-text"
-                  style="font-family: LatoSemiBold; color: var(--grayed-text);"
-                  >Trigger</span
-                >
-              </div>
-              <div style="width: 7.143em;">
-                <span
-                  class="medium-text"
-                  style="font-family: LatoSemiBold; color: var(--grayed-text);"
-                  >Status</span
-                >
-              </div>
-              <div style="width: 7.143em;">
-                <span
-                  class="medium-text"
-                  style="font-family: LatoSemiBold; color: var(--grayed-text);"
-                  >Progress</span
-                >
-              </div>
-              <!-- <img class="r-align" src="assets/imgs/vEllipsis.svg" alt="" /> -->
-              <button
-                class="stage-btn"
-                style="bottom: -5px; position: absolute; right: -60px;"
-                mat-button
-                [matMenuTriggerFor]="stageDropdown"
-              >
-                <img src="assets/imgs/vEllipsis.svg" alt="Stage Settings" />
-              </button>
-              <mat-menu
-                id="stage-dd"
-                #stageDropdown="matMenu"
-                xPosition="before"
-                yPosition="below"
-              >
-                <div
-                  style="
-                    display: flex;
-                    flex-direction: column;
-                    padding-left: 12px;
-                  "
-                >
-                  <mat-checkbox (click)="onCheck($event)">Service</mat-checkbox>
-                  <mat-checkbox (click)="onCheck($event)">Action</mat-checkbox>
+              <div style="display: flex;">
+                <div style="width: 7.143em;">
+                  <span
+                    class="medium-text"
+                    style="
+                      font-family: LatoSemiBold;
+                      color: var(--grayed-text);
+                    "
+                    >Plugin</span
+                  >
                 </div>
-              </mat-menu>
+                <div
+                  style="width: 7.143em;"
+                  *ngIf="getWorkflowType() === 'time'"
+                >
+                  <span
+                    class="medium-text"
+                    style="
+                      font-family: LatoSemiBold;
+                      color: var(--grayed-text);
+                    "
+                    >Start Date</span
+                  >
+                </div>
+                <div
+                  style="width: 7.143em;"
+                  *ngIf="getWorkflowType() === 'time'"
+                >
+                  <span
+                    class="medium-text"
+                    style="
+                      font-family: LatoSemiBold;
+                      color: var(--grayed-text);
+                    "
+                    >End Date</span
+                  >
+                </div>
+                <div
+                  style="width: 7.143em;"
+                  *ngIf="getWorkflowType() === 'trigger'"
+                >
+                  <span
+                    class="medium-text"
+                    style="
+                      font-family: LatoSemiBold;
+                      color: var(--grayed-text);
+                    "
+                    >Trigger</span
+                  >
+                </div>
+                <div style="width: 7.143em;">
+                  <span
+                    class="medium-text"
+                    style="
+                      font-family: LatoSemiBold;
+                      color: var(--grayed-text);
+                    "
+                    >Status</span
+                  >
+                </div>
+                <div style="width: 7.143em;">
+                  <span
+                    class="medium-text"
+                    style="
+                      font-family: LatoSemiBold;
+                      color: var(--grayed-text);
+                    "
+                    >Progress</span
+                  >
+                </div>
+                <button
+                  class="stage-btn"
+                  mat-button
+                  [matMenuTriggerFor]="stageDropdown"
+                >
+                  <img src="assets/imgs/vEllipsis.svg" alt="Stage Settings" />
+                </button>
+                <mat-menu
+                  id="stage-dd"
+                  #stageDropdown="matMenu"
+                  xPosition="before"
+                  yPosition="below"
+                >
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      padding-left: 12px;
+                    "
+                  >
+                    <mat-checkbox (click)="onCheck($event)"
+                      >Service</mat-checkbox
+                    >
+                    <mat-checkbox (click)="onCheck($event)"
+                      >Action</mat-checkbox
+                    >
+                  </div>
+                </mat-menu>
+              </div>
             </div>
           </div>
           <!-- cdkdroplist for template re ordering among and across groups -->
@@ -253,92 +281,99 @@
                   <span class="cell-text common-text">{{ task.name }}</span>
                 </div>
               </div>
-              <div class="flex-center" style="width: 100px; margin-left: 8px;">
-                <span class="cell-text common-text">{{ task.plugin }}</span>
-              </div>
-              <div
-                *ngIf="getWorkflowType() === 'time'"
-                class="border-white template-start flex-center"
-                style="margin-left: 20px;"
-              >
-                <span class="cell-text common-text">{{ task.startDate }}</span>
-              </div>
-              <div
-                *ngIf="getWorkflowType() === 'time'"
-                class="border-white template-end flex-center"
-              >
-                <span class="cell-text common-text">{{ task.endDate }}</span>
-              </div>
-              <div
-                *ngIf="getWorkflowType() === 'trigger'"
-                class="border-white template-end flex-center"
-              >
-                <span class="cell-text common-text">{{ task.trigger }}</span>
-              </div>
-              <div
-                class="border-white template-status"
-                [ngClass]="getStatusClass(task)"
-                (mouseleave)="task.showStatus = false"
-                (click)="showStatuses($event, task)"
-              >
-                <!-- <span
-                  class="cell-text"
-                  style="color: #fff; text-transform: capitalize;"
-                  >{{ task.status }}</span
-                > -->
-                <span
-                  class="badge badge-pill badge-custom"
-                  [ngStyle]="setBadgeBgColor(task.status)"
-                  >{{ task.status }}</span
+              <div style="display: flex;">
+                <div
+                  class="flex-center"
+                  style="width: 100px; margin-left: 8px;"
                 >
-                <!-- template status start -->
-                <div class="status-dropdown">
-                  <div
-                    (click)="changeStatus(task, 'Working on it')"
-                    class="status__list__item status-yellow"
-                  >
-                    Working on it
-                  </div>
-                  <div
-                    (click)="changeStatus(task, 'Done')"
-                    class="status__list__item status-green"
-                  >
-                    Done
-                  </div>
-                  <div
-                    (click)="changeStatus(task, 'Stuck')"
-                    class="status__list__item status-red"
-                  >
-                    Stuck
-                  </div>
-                  <div
-                    (click)="changeStatus(task, '')"
-                    class="status__list__item"
-                  ></div>
+                  <span class="cell-text common-text">{{ task.plugin }}</span>
                 </div>
-                <!-- template status end -->
-              </div>
-              <div class="flex-center" style="margin-left: 1vw;">
-                <mat-progress-bar
-                  style="width: 57px;"
-                  value="{{ task.progressPercentage }}"
-                ></mat-progress-bar>
-                <span
-                  class="medium-text"
-                  style="margin-left: 8px; min-width: fit-content;"
-                  >{{ task.progressPercentage }} %</span
+                <div
+                  *ngIf="getWorkflowType() === 'time'"
+                  class="border-white template-start flex-center"
+                  style="margin-left: 20px;"
                 >
-              </div>
-              <div
-                class="flex-center"
-                style="position: relative; right: -50px;"
-              >
-                <img
-                  style="margin-right: 1em;"
-                  src="assets/imgs/delete.svg"
-                  alt="delete"
-                />
-                <img src="assets/imgs/vEllipsis.svg" alt="settings" />
+                  <span class="cell-text common-text">{{
+                    task.startDate
+                  }}</span>
+                </div>
+                <div
+                  *ngIf="getWorkflowType() === 'time'"
+                  class="border-white template-end flex-center"
+                >
+                  <span class="cell-text common-text">{{ task.endDate }}</span>
+                </div>
+                <div
+                  *ngIf="getWorkflowType() === 'trigger'"
+                  class="border-white template-end flex-center"
+                >
+                  <span class="cell-text common-text">{{ task.trigger }}</span>
+                </div>
+                <div
+                  class="border-white template-status"
+                  [ngClass]="getStatusClass(task)"
+                  (mouseleave)="task.showStatus = false"
+                  (click)="showStatuses($event, task)"
+                >
+                  <!-- <span
+                    class="cell-text"
+                    style="color: #fff; text-transform: capitalize;"
+                    >{{ task.status }}</span
+                  > -->
+                  <span
+                    class="badge badge-pill badge-custom"
+                    [ngStyle]="setBadgeBgColor(task.status)"
+                    >{{ task.status }}</span
+                  >
+                  <!-- template status start -->
+                  <div class="status-dropdown">
+                    <div
+                      (click)="changeStatus(task, 'Working on it')"
+                      class="status__list__item status-yellow"
+                    >
+                      Working on it
+                    </div>
+                    <div
+                      (click)="changeStatus(task, 'Done')"
+                      class="status__list__item status-green"
+                    >
+                      Done
+                    </div>
+                    <div
+                      (click)="changeStatus(task, 'Stuck')"
+                      class="status__list__item status-red"
+                    >
+                      Stuck
+                    </div>
+                    <div
+                      (click)="changeStatus(task, '')"
+                      class="status__list__item"
+                    ></div>
+                  </div>
+                  <!-- template status end -->
+                </div>
+                <div class="flex-center" style="margin-left: 1vw;">
+                  <mat-progress-bar
+                    style="width: 57px;"
+                    value="{{ task.progressPercentage }}"
+                  ></mat-progress-bar>
+                  <span
+                    class="medium-text"
+                    style="margin-left: 8px; min-width: fit-content;"
+                    >{{ task.progressPercentage }} %</span
+                  >
+                </div>
+                <div
+                  class="flex-center"
+                  style="position: relative; right: -50px;"
+                >
+                  <img
+                    style="margin-right: 1em;"
+                    src="assets/imgs/delete.svg"
+                    alt="delete"
+                  />
+                  <img src="assets/imgs/vEllipsis.svg" alt="settings" />
+                </div>
               </div>
             </div>
             <!-- <div class="template__row item editor-row"> -->
