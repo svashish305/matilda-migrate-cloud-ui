@@ -82,7 +82,7 @@
   }
 }
 
-@media only screen and (min-width: 769px) and (max-width: 991px) {
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
   .stage-list-subheader {
     display: flex;
     flex-direction: row;
@@ -94,11 +94,11 @@
   .template-name {
     display: flex;
     height: 100%;
-    width: 21vw;
+    width: 54vw;
   }
 
   .stage-name-width {
-    width: 24vw;
+    width: 55vw;
   }
 
   .stage-btn {
@@ -108,7 +108,7 @@
   }
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1041px) {
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
   .stage-list-subheader {
     display: flex;
     flex-direction: row;
@@ -120,11 +120,11 @@
   .template-name {
     display: flex;
     height: 100%;
-    width: 23vw;
+    width: 62vw;
   }
 
   .stage-name-width {
-    width: 25vw;
+    width: 63vw;
   }
 
   .stage-btn {
@@ -134,7 +134,7 @@
   }
 }
 
-@media only screen and (min-width: 1042px) and (max-width: 1117px) {
+@media only screen and (min-width: 1281px) and (max-width: 1366px) {
   .stage-list-subheader {
     display: flex;
     flex-direction: row;
@@ -146,89 +146,11 @@
   .template-name {
     display: flex;
     height: 100%;
-    width: 25vw;
+    width: 65vw;
   }
 
   .stage-name-width {
-    width: 28vw;
-  }
-
-  .stage-btn {
-    bottom: -5px;
-    position: absolute;
-    right: -7.5em;
-  }
-}
-
-@media only screen and (min-width: 1118px) and (max-width: 1186px) {
-  .stage-list-subheader {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    right: 27em;
-    top: 2em;
-  }
-
-  .template-name {
-    display: flex;
-    height: 100%;
-    width: 29vw;
-  }
-
-  .stage-name-width {
-    width: 32vw;
-  }
-
-  .stage-btn {
-    bottom: -5px;
-    position: absolute;
-    right: -7.5em;
-  }
-}
-
-@media only screen and (min-width: 1187px) and (max-width: 1291px) {
-  .stage-list-subheader {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    right: 27em;
-    top: 2em;
-  }
-
-  .template-name {
-    display: flex;
-    height: 100%;
-    width: 34vw;
-  }
-
-  .stage-name-width {
-    width: 36vw;
-  }
-
-  .stage-btn {
-    bottom: -5px;
-    position: absolute;
-    right: -7.5em;
-  }
-}
-
-@media only screen and (min-width: 1292px) and (max-width: 1366px) {
-  .stage-list-subheader {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    right: 27em;
-    top: 2em;
-  }
-
-  .template-name {
-    display: flex;
-    height: 100%;
-    width: 40.5vw;
-  }
-
-  .stage-name-width {
-    width: 43vw;
+    width: 66vw;
   }
 
   .stage-btn {
@@ -250,11 +172,11 @@
   .template-name {
     display: flex;
     height: 100%;
-    width: 43.5vw;
+    width: 66vw;
   }
 
   .stage-name-width {
-    width: 46vw;
+    width: 67vw;
   }
 
   .stage-btn {
@@ -276,11 +198,11 @@
   .template-name {
     display: flex;
     height: 100%;
-    width: 47vw;
+    width: 68vw;
   }
 
   .stage-name-width {
-    width: 48vw;
+    width: 67.5vw;
   }
 
   .stage-btn {
@@ -302,11 +224,11 @@
   .template-name {
     display: flex;
     height: 100%;
-    width: 62vw;
+    width: 79vw;
   }
 
   .stage-name-width {
-    width: 63vw;
+    width: 80vw;
   }
 
   .stage-btn {
