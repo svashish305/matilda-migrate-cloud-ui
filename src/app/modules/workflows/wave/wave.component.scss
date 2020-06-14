@@ -542,14 +542,6 @@ mat-card-content {
 //   color: var(--primary-light);
 // }
 
-.collapse-icon {
-  cursor: pointer;
-  display: flex;
-  position: absolute;
-  top: 10px;
-  right: 8.6em;
-}
-
 .account-details {
   display: flex;
   flex-direction: column;
@@ -580,4 +572,74 @@ mat-card-content {
   position: absolute;
   top: 89vh;
   width: 91%;
+}
+
+@media only screen and (max-width: 768px) {
+  .collapse-icon {
+    cursor: pointer;
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: 8.6em;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .collapse-icon {
+    cursor: pointer;
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: 8.6em;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+  .collapse-icon {
+    cursor: pointer;
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: 8.6em;
+  }
+}
+
+@media only screen and (min-width: 1281px) and (max-width: 1366px) {
+  .collapse-icon {
+    cursor: pointer;
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: 6.6em;
+  }
+}
+
+@media only screen and (min-width: 1367px) and (max-width: 1440px) {
+  .collapse-icon {
+    cursor: pointer;
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: 4.6em;
+  }
+}
+
+@media only screen and (min-width: 1441px) and (max-width: 1980px) {
+  .collapse-icon {
+    cursor: pointer;
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: 0em;
+  }
+}
+
+@media only screen and (min-width: 1981px) and (max-width: 2560px) {
+  .collapse-icon {
+    cursor: pointer;
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: -22em;
+  }
 }
