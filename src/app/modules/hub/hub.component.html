@@ -1,0 +1,103 @@
+<div class="hub-container">
+  <mat-tab-group id="hub-tab" [@.disabled]="true">
+    <mat-tab label="Dashboard">
+      <!-- dashboard tab content -->
+    </mat-tab>
+    <mat-tab label="Template">
+      <div class="align-searchbox">
+        <form>
+          <mat-form-field
+            id="mat-search"
+            floatLabel="never"
+            class="mat-typography"
+            style="width: 100%;"
+          >
+            <img
+              matPrefix
+              src="assets/imgs/search-2.svg"
+              alt="search-icon"
+              style="position: relative; bottom: 2px; padding-right: 0.5em;"
+            />
+            <input
+              matInput
+              placeholder="Search"
+              type="search"
+              (keyup)="search($event)"
+              name="test"
+              [(ngModel)]="searchKey"
+            />
+          </mat-form-field>
+        </form>
+      </div>
+
+      <div class="templates">
+        <div
+          style="margin-bottom: 2em;"
+          (click)="
+            isTemplateFavouritesCollapsed = !isTemplateFavouritesCollapsed
+          "
+        >
+          <img
+            src="assets/imgs/favourite.svg"
+            alt="Favourites"
+            style="margin-right: 1em;"
+          />
+          <span
+            class="common-text"
+            style="
+              position: relative;
+              top: 4px;
+              letter-spacing: 0;
+              color: var(--primary-light);
+            "
+            >Favourites</span
+          >
+          <img
+            style="margin-left: 8px;"
+            [src]="
+              isTemplateFavouritesCollapsed
+                ? 'assets/imgs/chevron-up.svg'
+                : 'assets/imgs/chevron-down.svg'
+            "
+            alt=""
+          />
+        </div>
+
+        <div
+          [ngbCollapse]="isTemplateFavouritesCollapsed"
+          class="grid-container"
+        >
+          <mat-card>
+            <div>
+              <ngx-avatar name="Tomcat Template"></ngx-avatar>
+              <span class="bold-text template-title">Tomcat Template</span>
+              <span class="badge badge-pill badge-custom template-status"
+                >Configured</span
+              >
+              <div class="template-progress">
+                <span class="common-text">Progress : </span>
+                <mat-progress-bar value="50"></mat-progress-bar>
+                <span class="medium-text">50%</span>
+              </div>
+            </div>
+          </mat-card>
+          <mat-card>
+            <div>
+              <ngx-avatar name="Template 2"></ngx-avatar>
+              <span class="bold-text template-title">Template 2</span>
+              <span class="badge badge-pill badge-custom template-status"
+                >Configured</span
+              >
+              <div class="template-progress">
+                <span class="common-text">Progress : </span>
+                <mat-progress-bar value="50"></mat-progress-bar>
+                <span class="medium-text">50%</span>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Workflow"> </mat-tab>
+  </mat-tab-group>
+</div>
