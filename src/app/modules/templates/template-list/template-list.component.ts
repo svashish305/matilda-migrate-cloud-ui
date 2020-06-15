@@ -16,6 +16,7 @@ import { ThemePalette } from "@angular/material/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DataService } from "src/services/data.service";
 import { MatDialog } from "@angular/material/dialog";
+import { DeviceDetectorService } from "ngx-device-detector";
 
 interface SelectInterface {
   value: string;
@@ -71,11 +72,12 @@ export class TemplateListComponent implements OnInit, OnChanges {
   ];
 
   selectedWorkflowType: any;
-
+  isMobile = false;
   primaryColor: ThemePalette = "primary";
 
   constructor(
     private dataService: DataService,
+    private deviceService: DeviceDetectorService,
     private _formBuilder: FormBuilder,
     public dialog: MatDialog
   ) {}
@@ -93,6 +95,8 @@ export class TemplateListComponent implements OnInit, OnChanges {
     this.thirdFormGroup = this._formBuilder.group({
       thirdCtrl: ["", Validators.required],
     });
+
+    this.isMobile = this.deviceService.isMobile();
 
     this.getStages();
     this.getTasks();

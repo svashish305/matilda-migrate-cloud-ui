@@ -171,7 +171,7 @@
                   >Name</span
                 >
               </div>
-              <div class="except-name">
+              <div style="display: flex;" *ngIf="!isMobile">
                 <div style="width: 7.143em;">
                   <span
                     class="medium-text"
@@ -241,35 +241,31 @@
                     >Progress</span
                   >
                 </div>
-                <button
-                  class="stage-btn"
-                  mat-button
-                  [matMenuTriggerFor]="stageDropdown"
-                >
-                  <img src="assets/imgs/vEllipsis.svg" alt="Stage Settings" />
-                </button>
-                <mat-menu
-                  id="stage-dd"
-                  #stageDropdown="matMenu"
-                  xPosition="before"
-                  yPosition="below"
-                >
-                  <div
-                    style="
-                      display: flex;
-                      flex-direction: column;
-                      padding-left: 12px;
-                    "
-                  >
-                    <mat-checkbox (click)="onCheck($event)"
-                      >Service</mat-checkbox
-                    >
-                    <mat-checkbox (click)="onCheck($event)"
-                      >Action</mat-checkbox
-                    >
-                  </div>
-                </mat-menu>
               </div>
+              <button
+                class="stage-btn"
+                mat-button
+                [matMenuTriggerFor]="stageDropdown"
+              >
+                <img src="assets/imgs/vEllipsis.svg" alt="Stage Settings" />
+              </button>
+              <mat-menu
+                id="stage-dd"
+                #stageDropdown="matMenu"
+                xPosition="before"
+                yPosition="below"
+              >
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    padding-left: 12px;
+                  "
+                >
+                  <mat-checkbox (click)="onCheck($event)">Service</mat-checkbox>
+                  <mat-checkbox (click)="onCheck($event)">Action</mat-checkbox>
+                </div>
+              </mat-menu>
             </div>
           </div>
           <!-- cdkdroplist for template re ordering among and across groups -->
@@ -309,33 +305,45 @@
               </div>
               <div style="display: flex;">
                 <div
+                  *ngIf="!isMobile"
                   class="flex-center"
                   style="width: 100px; margin-left: 8px;"
                 >
                   <span class="cell-text common-text">{{ task.plugin }}</span>
                 </div>
-                <div
-                  *ngIf="getWorkflowType() === 'time'"
-                  class="border-white template-start flex-center"
-                  style="margin-left: 20px;"
-                >
-                  <span class="cell-text common-text">{{
-                    task.startDate
-                  }}</span>
+                <div *ngIf="!isMobile">
+                  <div
+                    *ngIf="getWorkflowType() === 'time'"
+                    class="border-white template-start flex-center"
+                    style="margin-left: 20px;"
+                  >
+                    <span class="cell-text common-text">{{
+                      task.startDate
+                    }}</span>
+                  </div>
+                </div>
+                <div *ngIf="!isMobile">
+                  <div
+                    *ngIf="getWorkflowType() === 'time'"
+                    class="border-white template-end flex-center"
+                  >
+                    <span class="cell-text common-text">{{
+                      task.endDate
+                    }}</span>
+                  </div>
+                </div>
+                <div *ngIf="!isMobile">
+                  <div
+                    *ngIf="getWorkflowType() === 'trigger'"
+                    class="border-white template-end flex-center"
+                  >
+                    <span class="cell-text common-text">{{
+                      task.trigger
+                    }}</span>
+                  </div>
                 </div>
                 <div
-                  *ngIf="getWorkflowType() === 'time'"
-                  class="border-white template-end flex-center"
-                >
-                  <span class="cell-text common-text">{{ task.endDate }}</span>
-                </div>
-                <div
-                  *ngIf="getWorkflowType() === 'trigger'"
-                  class="border-white template-end flex-center"
-                >
-                  <span class="cell-text common-text">{{ task.trigger }}</span>
-                </div>
-                <div
+                  *ngIf="!isMobile"
                   class="border-white template-status"
                   [ngClass]="getStatusClass(task)"
                   (mouseleave)="task.showStatus = false"
@@ -378,7 +386,11 @@
                   </div>
                   <!-- template status end -->
                 </div>
-                <div class="flex-center" style="margin-left: 1vw;">
+                <div
+                  *ngIf="!isMobile"
+                  class="flex-center"
+                  style="margin-left: 1vw;"
+                >
                   <mat-progress-bar
                     style="width: 57px;"
                     value="{{ task.progressPercentage }}"

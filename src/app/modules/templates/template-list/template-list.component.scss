@@ -56,7 +56,7 @@
   .right-align-searchbox {
     width: 23.813em !important;
     position: absolute;
-    bottom: 2em;
+    top: 13.563em;
   }
 
   #mat-search ::ng-deep .mat-form-field-underline {
@@ -83,7 +83,7 @@
   .template-name {
     display: flex;
     height: 100%;
-    width: 17vw;
+    width: 66vw;
   }
 
   .stage-name-width {
@@ -91,13 +91,13 @@
   }
 
   .except-stage {
-    display: none;
+    display: none !important;
   }
 
   .stage-btn {
     bottom: -5px;
     position: absolute;
-    right: -2em;
+    left: 23em;
   }
 
   .template__row {
@@ -147,6 +147,7 @@
   }
 
   .accordian {
+    order: 2;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -156,16 +157,12 @@
     width: 14px;
     border-radius: 50%;
     position: relative;
+    left: 14.5em;
     img {
       height: 7px;
       width: 6px;
       margin: 0 auto;
     }
-    // &:hover {
-    //   .group-level-actions {
-    //     display: block;
-    //   }
-    // }
   }
 
   .row-starter {
@@ -296,6 +293,7 @@
   .group-name-wrapper {
     flex: 1;
     display: flex;
+    order: 1;
   }
 
   .group-drag {
@@ -544,7 +542,7 @@
 
   ::ng-deep.mat-select-arrow {
     position: relative;
-    right: 14px;
+    left: 1em;
     height: 24px !important;
     width: 24px !important;
     background: url("src/assets/imgs/chevron-down.svg") !important;
@@ -558,10 +556,6 @@
 
   ::ng-deep.modal-body {
     padding: 0 !important;
-  }
-
-  form {
-    height: 50vh;
   }
 
   mat-form-field {
@@ -589,7 +583,7 @@
 
   .progress-section {
     position: relative;
-    right: -1em;
+    right: 0;
     display: flex;
     align-items: center;
   }
@@ -597,7 +591,7 @@
   .stage-option {
     bottom: 2em;
     position: relative;
-    left: 0;
+    left: -13px;
   }
 
   .row-items {
@@ -681,10 +675,6 @@
     flex-direction: row;
     // justify-content: space-evenly;
     align-items: center;
-  }
-
-  .except-name {
-    display: flex;
   }
 
   @media only screen and (max-width: 768px) {

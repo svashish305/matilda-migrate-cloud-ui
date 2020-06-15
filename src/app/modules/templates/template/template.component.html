@@ -101,16 +101,19 @@
             >
               <span class="badge-key-value">IP : 192.28.10.11</span>
             </span>
-            <span class="badge badge-pill badge-custom">
+            <span *ngIf="isMobile" class="badge badge-pill badge-custom">
+              <span class="badge-key-value">+4</span>
+            </span>
+            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
               <span class="badge-key-value">Web : Front End</span>
             </span>
-            <span class="badge badge-pill badge-custom">
+            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
               <span class="badge-key-value">Software : Tomcat</span>
             </span>
-            <span class="badge badge-pill badge-custom">
+            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
               <span class="badge-key-value">Java : Web</span>
             </span>
-            <span class="badge badge-pill badge-custom">
+            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
               <span class="badge-key-value">+3</span>
             </span>
           </div>
