@@ -1,6 +1,6 @@
 <div>
   <span class="stage-tags"
-    >Workflow Type<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>:</span
+    >Workflow Type<span class="align-workflow-colon">:</span></span
   >
   <mat-form-field id="workflow-select-field" class="workflow-type-dd">
     <mat-select
@@ -134,7 +134,12 @@
               </div>
             </div>
             <div *ngIf="!stage.collapsed" class="status-section">
-              <span class="common-text" style="margin-right: 8px;"
+              <span
+                [ngClass]="{
+                  'common-text-mobile': isMobile,
+                  'common-text': !isMobile
+                }"
+                style="margin-right: 8px;"
                 >Status:
               </span>
               <span
@@ -144,7 +149,12 @@
               >
             </div>
             <div *ngIf="!stage.collapsed" class="progress-section">
-              <span class="common-text" style="margin-right: 8px;"
+              <span
+                [ngClass]="{
+                  'common-text-mobile': isMobile,
+                  'common-text': !isMobile
+                }"
+                style="margin-right: 8px;"
                 >Progress:
               </span>
               <mat-progress-bar
@@ -152,13 +162,17 @@
                 value="{{ stage.progressPercentage }}"
               ></mat-progress-bar>
               <span
-                class="medium-text"
+                [ngClass]="{
+                  'medium-text-mobile': isMobile,
+                  'medium-text': !isMobile
+                }"
                 style="margin-left: 8px; min-width: fit-content;"
                 >{{ stage.progressPercentage }} %</span
               >
             </div>
             <img
               class="stage-option"
+              [ngStyle]="alignStageOption(stage.collapsed)"
               src="assets/imgs/vEllipsis.svg"
               alt="stage-options"
             />
@@ -166,7 +180,10 @@
             <div *ngIf="!stage.collapsed" class="stage-list-subheader">
               <div class="stage-name-width">
                 <span
-                  class="medium-text"
+                  [ngClass]="{
+                    'medium-text-mobile': isMobile,
+                    'medium-text': !isMobile
+                  }"
                   style="font-family: LatoSemiBold; color: var(--grayed-text);"
                   >Name</span
                 >
@@ -300,7 +317,14 @@
 
                 <!-- <div class="grid-start-line border-white"></div> -->
                 <div class="border-white template-name-main">
-                  <span class="cell-text common-text">{{ task.name }}</span>
+                  <span
+                    [ngClass]="{
+                      'mobile-text': isMobile,
+                      'common-text': !isMobile
+                    }"
+                    class="cell-text"
+                    >{{ task.name }}</span
+                  >
                 </div>
               </div>
               <div style="display: flex;">
@@ -401,10 +425,7 @@
                     >{{ task.progressPercentage }} %</span
                   >
                 </div>
-                <div
-                  class="flex-center"
-                  style="position: relative; right: -50px;"
-                >
+                <div class="right-options">
                   <img
                     style="margin-right: 1em;"
                     src="assets/imgs/delete.svg"

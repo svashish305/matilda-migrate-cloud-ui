@@ -5,13 +5,17 @@
 
   .stage-tags {
     font-family: LatoRegular;
-    font-size: 1.125em;
-    line-height: 1.375em;
-    letter-spacing: 0.51px;
+    font-size: 0.875em;
+    letter-spacing: 0.4px;
     color: var(--blackish-text);
     position: absolute;
     left: 0;
-    top: 6.85em;
+    top: 8.85em;
+  }
+
+  .align-workflow-colon {
+    position: relative;
+    left: 2.25em;
   }
 
   #workflow-select-field::ng-deep .mat-form-field-underline {
@@ -20,15 +24,13 @@
 
   #workflow-select-field::ng-deep.mat-select-value-text {
     font-family: LatoRegular;
-    font-size: 1.125em;
-    line-height: 1.375em;
+    font-size: 0.875em;
     color: var(--primary-light);
   }
 
   #wf-option ::ng-deep .mat-option-text {
     font-family: LatoRegular;
-    font-size: 1.125em;
-    line-height: 1.375em;
+    font-size: 0.875em;
     color: var(--primary-light);
   }
 
@@ -36,7 +38,7 @@
     width: 7.25em;
     position: absolute;
     top: 5.8em;
-    left: 9.5em;
+    left: 8.5em;
   }
 
   .collapse-container {
@@ -45,9 +47,8 @@
 
     .stage-action-collapse-text {
       font-family: LatoRegular;
-      font-size: 1.125em;
-      line-height: 1.375em;
-      letter-spacing: 0.51px;
+      font-size: 1em;
+      letter-spacing: 0.45px;
       color: var(--alt-gray-text);
       padding-right: 1em;
     }
@@ -76,7 +77,7 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 27em;
+    right: 26em;
     top: 2em;
   }
 
@@ -97,7 +98,7 @@
   .stage-btn {
     bottom: -5px;
     position: absolute;
-    left: 23em;
+    left: 22em;
   }
 
   .template__row {
@@ -121,6 +122,11 @@
     width: 100px;
     height: calc(100% - 1px);
     text-align: center;
+  }
+
+  .right-options {
+    position: relative;
+    right: -35px;
   }
 
   .template__row {
@@ -162,6 +168,13 @@
       height: 7px;
       width: 6px;
       margin: 0 auto;
+    }
+
+    &.collapsed {
+      left: 0;
+      img {
+        transform: rotate(-90deg);
+      }
     }
   }
 
@@ -284,10 +297,32 @@
     width: 2em;
   }
 
-  .collapsed {
-    img {
-      transform: rotate(-90deg);
-    }
+  .mobile-text {
+    font-family: LatoRegular;
+    font-size: 1em;
+    letter-spacing: 0.51px;
+    color: #000;
+  }
+
+  .common-text {
+    font-family: LatoRegular;
+    font-size: 1em;
+    letter-spacing: 0.45px;
+    color: #000;
+  }
+
+  .common-text-mobile {
+    font-family: LatoRegular;
+    font-size: 0.875em;
+    letter-spacing: 0.4px;
+    color: #000;
+  }
+
+  .medium-text-mobile {
+    font-family: LatoMedium;
+    font-size: 0.875em;
+    letter-spacing: 0.4px;
+    color: var(--blackish-text);
   }
 
   .group-name-wrapper {
@@ -576,7 +611,7 @@
 
   .status-section {
     position: relative;
-    left: -5em;
+    left: -5.2em;
     display: flex;
     align-items: center;
   }
@@ -591,7 +626,6 @@
   .stage-option {
     bottom: 2em;
     position: relative;
-    left: -13px;
   }
 
   .row-items {
@@ -616,6 +650,11 @@
     position: absolute;
     left: 0;
     top: 3.85em;
+  }
+
+  .align-workflow-colon {
+    position: relative;
+    left: 0.85em;
   }
 
   #workflow-select-field::ng-deep .mat-form-field-underline {
@@ -960,6 +999,11 @@
     text-align: center;
   }
 
+  .right-options {
+    position: relative;
+    right: -35px;
+  }
+
   .template__row {
     margin-left: 5px;
     // height: 30px;
@@ -998,11 +1042,12 @@
       width: 6px;
       margin: 0 auto;
     }
-    // &:hover {
-    //   .group-level-actions {
-    //     display: block;
-    //   }
-    // }
+
+    &.collapsed {
+      img {
+        transform: rotate(-90deg);
+      }
+    }
   }
 
   .row-starter {
@@ -1122,12 +1167,6 @@
     flex: 1;
     min-width: max-content;
     width: 2em;
-  }
-
-  .collapsed {
-    img {
-      transform: rotate(-90deg);
-    }
   }
 
   .group-name-wrapper {
@@ -1436,8 +1475,6 @@
   .stage-option {
     bottom: 2em;
     position: relative;
-    // left: 21em;
-    left: 29.75em;
   }
 
   .row-items {

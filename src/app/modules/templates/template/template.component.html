@@ -93,11 +93,11 @@
             <span class="stage-tags"
               >Tags (
               <span class="stage-tags-blue">Change</span>
-              )<span>&nbsp;&nbsp;&nbsp;</span>:
+              )<span class="align-tags-colon">:</span>
             </span>
             <span
               class="badge badge-pill badge-custom"
-              style="margin-left: 1em;"
+              [ngStyle]="{ 'margin-left': isMobile ? '0' : '1em' }"
             >
               <span class="badge-key-value">IP : 192.28.10.11</span>
             </span>

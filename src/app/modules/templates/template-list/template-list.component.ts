@@ -164,6 +164,30 @@ export class TemplateListComponent implements OnInit, OnChanges {
     // });
   }
 
+  alignStageOption(collapseState: boolean) {
+    if (this.isMobile) {
+      if (collapseState) {
+        return {
+          left: "5.75em",
+        };
+      } else {
+        return {
+          left: "-12px",
+        };
+      }
+    } else {
+      if (collapseState) {
+        return {
+          left: "4.9em",
+        };
+      } else {
+        return {
+          left: "29.75em",
+        };
+      }
+    }
+  }
+
   onCheck(event) {
     event.stopPropagation();
   }
