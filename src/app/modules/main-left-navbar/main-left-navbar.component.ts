@@ -7,6 +7,8 @@ import { Router } from "@angular/router";
   styleUrls: ["./main-left-navbar.component.scss"],
 })
 export class MainLeftNavbarComponent implements OnInit {
+  isCollapsed = true;
+
   hubSelected = false;
   templateSelected = false;
   workflowSelected = false;

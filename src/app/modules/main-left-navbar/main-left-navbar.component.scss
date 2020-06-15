@@ -1,8 +1,22 @@
 @media only screen and (max-width: 426px) {
+  .larger-screen {
+    display: none;
+  }
+
+  .navbar-toggle {
+    position: absolute;
+    top: 1.125em;
+    left: 0;
+
+    .navbar-toggle-btn {
+      width: 32px;
+      height: 32px;
+      padding: 0;
+    }
+  }
+
   .sidenav__wrapper {
-    width: 3.75em;
-    transition: width 0.1s;
-    // width: 13.875em;
+    width: 13.875em;
     height: 100vh;
     background: var(--primary-light);
   }
@@ -12,18 +26,31 @@
   }
 
   .migrate-section {
+    display: flex;
+  }
+
+  .migrate-logo {
     display: none;
   }
 
-  .sidenav__wrapper:hover {
-    width: 13.875em;
+  .mobile-logo {
+    flex-direction: row !important;
+    align-items: center !important;
 
-    .migrate-logo {
-      display: none;
+    .close-btn {
+      position: absolute;
+      left: 24px;
     }
 
-    .migrate-section {
-      display: flex;
+    .logo {
+      position: absolute;
+      left: 3.625em;
+    }
+
+    .matilda-text {
+      visibility: visible;
+      color: #fff;
+      margin-left: 2em;
     }
   }
 
@@ -77,6 +104,18 @@
 }
 
 @media only screen and (min-width: 427px) {
+  .navbar-toggle {
+    display: none;
+  }
+
+  .close-btn {
+    display: none;
+  }
+
+  .mobile-logo {
+    display: none;
+  }
+
   .sidenav__wrapper {
     width: 3.75em;
     transition: width 0.1s;
@@ -90,6 +129,10 @@
   }
 
   .migrate-section {
+    display: none;
+  }
+
+  .matilda-text {
     display: none;
   }
 
