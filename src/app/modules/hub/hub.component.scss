@@ -30,25 +30,40 @@
   width: 39.75em;
 }
 
-.templates {
-  height: 80vh;
+.all-templates {
+  height: 67vh;
   overflow-y: scroll;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.templates::-webkit-scrollbar {
+.all-templates::-webkit-scrollbar {
   width: 0px;
   background: transparent; /* make scrollbar transparent */
 }
 
-.templates {
+.all-templates {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto;
+@media only screen and (max-width: 1060px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto;
+    position: relative;
+    right: 0.7em;
+    bottom: 1.25em;
+  }
+}
+
+@media only screen and (min-width: 1061px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    position: relative;
+    right: 0.7em;
+    bottom: 1.25em;
+  }
 }
 
 mat-card {
@@ -90,4 +105,5 @@ mat-progress-bar {
   position: relative;
   bottom: 3.5em;
   left: 9.7em;
+  width: fit-content;
 }

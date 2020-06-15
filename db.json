@@ -476,7 +476,9 @@
       "data": {
         "id": "1",
         "name": "New Template",
-        "description": "Template Description"
+        "description": "Template Description",
+        "status": "Configured",
+        "progressPercentage": 50
       }
     },
     {
@@ -485,7 +487,9 @@
       "data": {
         "id": "2",
         "name": "Template 1",
-        "description": "Template Description"
+        "description": "Template Description",
+        "status": "Configured",
+        "progressPercentage": 50
       }
     },
     {
@@ -496,7 +500,9 @@
         "id": "3",
         "name": "Template 2",
         "description": "Template Description",
-        "icon": "assets/imgs/jpgs/tomcat.jpg"
+        "icon": "assets/imgs/jpgs/tomcat.jpg",
+        "status": "Configured",
+        "progressPercentage": 50
       }
     },
     {
@@ -507,7 +513,9 @@
         "id": "4",
         "name": "Template New",
         "description": "Template Description",
-        "icon": "assets/imgs/jpgs/keoba.jpg"
+        "icon": "assets/imgs/jpgs/keoba.jpg",
+        "status": "Configured",
+        "progressPercentage": 50
       }
     },
     {
@@ -516,7 +524,9 @@
       "data": {
         "id": "5",
         "name": "Template Draft",
-        "description": "Template Description"
+        "description": "Template Description",
+        "status": "Configured",
+        "progressPercentage": 50
       }
     }
   ],

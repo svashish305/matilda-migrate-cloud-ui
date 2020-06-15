@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { DataService } from "src/services/data.service";
 
 @Component({
   selector: "app-hub",
@@ -7,12 +8,32 @@ import { Component, OnInit } from "@angular/core";
 })
 export class HubComponent implements OnInit {
   searchKey;
-  isTemplateFavouritesCollapsed: true;
+  isTemplateFavouritesCollapsed: false;
+  isTemplateCollapsed: false;
   isWorkflowFavouritesCollapsed: false;
+  isWorkflowCollapsed: false;
 
-  constructor() {}
+  templates: any[] = [];
+  workflows: any[] = [];
 
-  ngOnInit() {}
+  constructor(private dataService: DataService) {}
+
+  ngOnInit() {
+    this.getTemplates();
+    this.getWorkflows();
+  }
+
+  getTemplates() {
+    this.dataService.getTemplates().subscribe((templates: any) => {
+      this.templates = templates;
+    });
+  }
+
+  getWorkflows() {
+    this.dataService.getWaves().subscribe((waves: any) => {
+      this.workflows = waves;
+    });
+  }
 
   /**
    *

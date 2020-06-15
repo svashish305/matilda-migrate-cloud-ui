@@ -30,74 +30,305 @@
         </form>
       </div>
 
-      <div class="templates">
-        <div
-          style="margin-bottom: 2em;"
-          (click)="
-            isTemplateFavouritesCollapsed = !isTemplateFavouritesCollapsed
-          "
-        >
-          <img
-            src="assets/imgs/favourite.svg"
-            alt="Favourites"
-            style="margin-right: 1em;"
-          />
-          <span
-            class="common-text"
-            style="
-              position: relative;
-              top: 4px;
-              letter-spacing: 0;
-              color: var(--primary-light);
+      <div class="all-templates">
+        <div>
+          <div
+            style="margin-bottom: 2em;"
+            (click)="
+              isTemplateFavouritesCollapsed = !isTemplateFavouritesCollapsed
             "
-            >Favourites</span
           >
-          <img
-            style="margin-left: 8px;"
-            [src]="
-              isTemplateFavouritesCollapsed
-                ? 'assets/imgs/chevron-up.svg'
-                : 'assets/imgs/chevron-down.svg'
-            "
-            alt=""
-          />
+            <img
+              src="assets/imgs/favourite.svg"
+              alt="Favourites"
+              style="margin-right: 1em;"
+            />
+            <span
+              class="common-text"
+              style="
+                position: relative;
+                top: 4px;
+                letter-spacing: 0;
+                color: var(--primary-light);
+              "
+              >Favourites</span
+            >
+            <img
+              style="margin-left: 8px; cursor: pointer;"
+              [src]="
+                isTemplateFavouritesCollapsed
+                  ? 'assets/imgs/chevron-up.svg'
+                  : 'assets/imgs/chevron-down.svg'
+              "
+              alt=""
+            />
+          </div>
+
+          <div
+            [ngbCollapse]="isTemplateFavouritesCollapsed"
+            class="grid-container"
+          >
+            <mat-card style="margin: 12px;">
+              <div>
+                <ngx-avatar name="Tomcat Template"></ngx-avatar>
+                <span class="bold-text template-title">Tomcat Template</span>
+                <span class="badge badge-pill badge-custom template-status"
+                  >Configured</span
+                >
+                <div class="template-progress">
+                  <span class="common-text">Progress : </span>
+                  <mat-progress-bar value="50"></mat-progress-bar>
+                  <span class="medium-text">50%</span>
+                </div>
+              </div>
+            </mat-card>
+            <mat-card style="margin: 12px;">
+              <div>
+                <ngx-avatar name="Template 2"></ngx-avatar>
+                <span class="bold-text template-title">Template 2</span>
+                <span class="badge badge-pill badge-custom template-status"
+                  >Configured</span
+                >
+                <div class="template-progress">
+                  <span class="common-text">Progress : </span>
+                  <mat-progress-bar value="50"></mat-progress-bar>
+                  <span class="medium-text">50%</span>
+                </div>
+              </div>
+            </mat-card>
+          </div>
         </div>
 
-        <div
-          [ngbCollapse]="isTemplateFavouritesCollapsed"
-          class="grid-container"
-        >
-          <mat-card>
-            <div>
-              <ngx-avatar name="Tomcat Template"></ngx-avatar>
-              <span class="bold-text template-title">Tomcat Template</span>
-              <span class="badge badge-pill badge-custom template-status"
-                >Configured</span
-              >
-              <div class="template-progress">
-                <span class="common-text">Progress : </span>
-                <mat-progress-bar value="50"></mat-progress-bar>
-                <span class="medium-text">50%</span>
+        <div style="margin-top: 2em;">
+          <div
+            style="margin-bottom: 2em;"
+            (click)="isTemplateCollapsed = !isTemplateCollapsed"
+          >
+            <img
+              src="assets/imgs/bc-template-blue.svg"
+              alt="Template"
+              style="margin-right: 1em;"
+            />
+            <span
+              class="common-text"
+              style="
+                position: relative;
+                top: 4px;
+                letter-spacing: 0;
+                color: var(--primary-light);
+                padding-right: 20px;
+              "
+              >Template</span
+            >
+            <img
+              style="margin-left: 8px; cursor: pointer;"
+              [src]="
+                isTemplateCollapsed
+                  ? 'assets/imgs/chevron-up.svg'
+                  : 'assets/imgs/chevron-down.svg'
+              "
+              alt=""
+            />
+          </div>
+
+          <div [ngbCollapse]="isTemplateCollapsed" class="grid-container">
+            <mat-card *ngFor="let template of templates" style="margin: 12px;">
+              <div>
+                <ngx-avatar name="{{ template.name }}"></ngx-avatar>
+                <span class="bold-text template-title">{{
+                  template.name
+                }}</span>
+                <span class="badge badge-pill badge-custom template-status">{{
+                  template.data.status
+                }}</span>
+                <div class="template-progress">
+                  <span class="common-text">Progress : </span>
+                  <mat-progress-bar
+                    value="{{ template.data.progressPercentage }}"
+                  ></mat-progress-bar>
+                  <span class="medium-text"
+                    >{{ template.data.progressPercentage }}%</span
+                  >
+                </div>
               </div>
-            </div>
-          </mat-card>
-          <mat-card>
-            <div>
-              <ngx-avatar name="Template 2"></ngx-avatar>
-              <span class="bold-text template-title">Template 2</span>
-              <span class="badge badge-pill badge-custom template-status"
-                >Configured</span
-              >
-              <div class="template-progress">
-                <span class="common-text">Progress : </span>
-                <mat-progress-bar value="50"></mat-progress-bar>
-                <span class="medium-text">50%</span>
-              </div>
-            </div>
-          </mat-card>
+            </mat-card>
+          </div>
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Workflow"> </mat-tab>
+    <mat-tab label="Workflow">
+      <div class="align-searchbox">
+        <form>
+          <mat-form-field
+            id="mat-search"
+            floatLabel="never"
+            class="mat-typography"
+            style="width: 100%;"
+          >
+            <img
+              matPrefix
+              src="assets/imgs/search-2.svg"
+              alt="search-icon"
+              style="position: relative; bottom: 2px; padding-right: 0.5em;"
+            />
+            <input
+              matInput
+              placeholder="Search"
+              type="search"
+              (keyup)="search($event)"
+              name="test"
+              [(ngModel)]="searchKey"
+            />
+          </mat-form-field>
+        </form>
+      </div>
+
+      <div class="all-templates">
+        <div>
+          <div
+            style="margin-bottom: 2em;"
+            (click)="
+              isWorkflowFavouritesCollapsed = !isWorkflowFavouritesCollapsed
+            "
+          >
+            <img
+              src="assets/imgs/favourite.svg"
+              alt="Favourites"
+              style="margin-right: 1em;"
+            />
+            <span
+              class="common-text"
+              style="
+                position: relative;
+                top: 4px;
+                letter-spacing: 0;
+                color: var(--primary-light);
+              "
+              >Favourites</span
+            >
+            <img
+              style="margin-left: 8px; cursor: pointer;"
+              [src]="
+                isWorkflowFavouritesCollapsed
+                  ? 'assets/imgs/chevron-up.svg'
+                  : 'assets/imgs/chevron-down.svg'
+              "
+              alt=""
+            />
+          </div>
+
+          <div
+            [ngbCollapse]="isWorkflowFavouritesCollapsed"
+            class="grid-container"
+          >
+            <mat-card style="margin: 12px;">
+              <div>
+                <ngx-avatar name="SMR Wave Workflow"></ngx-avatar>
+                <span class="bold-text template-title">SMR Wave Workflow</span>
+                <img
+                  style="position: absolute; top: 3em; left: 5.25em;"
+                  src="assets/imgs/wf-configured.svg"
+                  alt="Configured"
+                />
+                <span
+                  class="badge badge-pill badge-custom template-status"
+                  style="left: 10.4em;"
+                  >Configured</span
+                >
+                <div class="template-progress" style="left: 12em;">
+                  <span class="common-text">Progress : </span>
+                  <mat-progress-bar value="50"></mat-progress-bar>
+                  <span class="medium-text">50%</span>
+                </div>
+              </div>
+            </mat-card>
+            <mat-card style="margin: 12px;">
+              <div>
+                <ngx-avatar name="SME Wave Workflow"></ngx-avatar>
+                <span class="bold-text template-title">SMR Wave Workflow</span>
+                <img
+                  style="position: absolute; top: 3em; left: 5.25em;"
+                  src="assets/imgs/wf-defined.svg"
+                  alt="Defined"
+                />
+                <span
+                  class="badge badge-pill badge-custom template-status"
+                  style="left: 10.4em;"
+                  >Defined</span
+                >
+                <div class="template-progress" style="left: 12em;">
+                  <span class="common-text">Progress : </span>
+                  <mat-progress-bar value="50"></mat-progress-bar>
+                  <span class="medium-text">50%</span>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+
+        <div style="margin-top: 2em;">
+          <div
+            style="margin-bottom: 2em;"
+            (click)="isWorkflowCollapsed = !isWorkflowCollapsed"
+          >
+            <img
+              src="assets/imgs/bc-workflow-blue.svg"
+              alt="Template"
+              style="margin-right: 1em;"
+            />
+            <span
+              class="common-text"
+              style="
+                position: relative;
+                top: 4px;
+                letter-spacing: 0;
+                color: var(--primary-light);
+                padding-right: 20px;
+              "
+              >Workflow</span
+            >
+            <img
+              style="margin-left: 8px; cursor: pointer;"
+              [src]="
+                isWorkflowCollapsed
+                  ? 'assets/imgs/chevron-up.svg'
+                  : 'assets/imgs/chevron-down.svg'
+              "
+              alt=""
+            />
+          </div>
+
+          <div [ngbCollapse]="isWorkflowCollapsed" class="grid-container">
+            <mat-card *ngFor="let workflow of workflows" style="margin: 12px;">
+              <div>
+                <ngx-avatar name="{{ workflow.name }}"></ngx-avatar>
+                <span class="bold-text template-title">{{
+                  workflow.name
+                }}</span>
+                <img
+                  style="position: absolute; top: 3em; left: 5.25em;"
+                  src="assets/imgs/wf-configured.svg"
+                  alt="Configured"
+                />
+                <span
+                  class="badge badge-pill badge-custom template-status"
+                  style="left: 10.4em;"
+                  >{{ workflow.data.waveTypes.status }}</span
+                >
+                <div class="template-progress" style="left: 12em;">
+                  <span class="common-text">Progress : </span>
+                  <mat-progress-bar
+                    value="{{ workflow.data.waveTypes.progressPercentage }}"
+                  ></mat-progress-bar>
+                  <span class="medium-text"
+                    >{{ workflow.data.waveTypes.progressPercentage }}%</span
+                  >
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
   </mat-tab-group>
 </div>
