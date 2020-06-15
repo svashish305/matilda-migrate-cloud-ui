@@ -5,7 +5,7 @@
     box-sizing: border-box;
     // padding-right: 20px;
     // overflow: auto;
-    width: 100vw;
+    width: 91vw;
 
     // transition: all 0.1s ease;
     &.side-open {
@@ -144,6 +144,11 @@
   }
 
   .new-stage-btn {
+    position: absolute;
+    right: 0;
+  }
+
+  .new-stage-btn-text {
     border-radius: 4px;
     font-family: LatoRegular;
     font-size: 1.125em;
@@ -673,6 +678,11 @@
   }
 
   .new-stage-btn {
+    position: absolute;
+    right: 30em;
+  }
+
+  .new-stage-btn-text {
     border-radius: 4px;
     font-family: LatoRegular;
     font-size: 1.125em;

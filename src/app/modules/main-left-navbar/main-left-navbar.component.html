@@ -1,4 +1,4 @@
-<div class="navbar-toggle">
+<div *ngIf="mobileDevice" class="navbar-toggle">
   <button
     mat-button
     class="navbar-toggle-btn"
@@ -186,7 +186,7 @@
   </div>
 </div>
 
-<div class="larger-screen">
+<div *ngIf="!mobileDevice">
   <div class="sidenav__wrapper">
     <div
       class="logo__wrapper mobile-logo"

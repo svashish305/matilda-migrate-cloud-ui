@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { DeviceDetectorService } from "ngx-device-detector";
 
 @Component({
   selector: "app-main-left-navbar",
@@ -13,9 +14,18 @@ export class MainLeftNavbarComponent implements OnInit {
   templateSelected = false;
   workflowSelected = false;
 
-  constructor(private router: Router) {}
+  mobileDevice = false;
+
+  constructor(
+    private router: Router,
+    private deviceService: DeviceDetectorService
+  ) {}
 
   ngOnInit() {
+    if (this.deviceService.isMobile()) {
+      this.mobileDevice = true;
+    }
+
     if (this.router.url.includes("hub")) {
       this.hubSelected = true;
     } else if (this.router.url.includes("templates")) {

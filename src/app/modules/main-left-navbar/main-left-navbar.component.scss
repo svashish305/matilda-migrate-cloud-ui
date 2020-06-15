@@ -1,8 +1,4 @@
 @media only screen and (max-width: 426px) {
-  .larger-screen {
-    display: none;
-  }
-
   .navbar-toggle {
     position: absolute;
     top: 1.125em;
@@ -14,7 +10,7 @@
   }
 
   .sidenav__wrapper {
-    width: 13.875em;
+    width: 35vh;
     height: 100vh;
     background: var(--primary-light);
   }
@@ -49,6 +45,7 @@
       visibility: visible;
       color: #fff;
       margin-left: 2em;
+      font-size: 1.5em;
     }
   }
 
@@ -58,7 +55,7 @@
     font-size: 1.125em;
     line-height: 1.375em;
     letter-spacing: 0.51px;
-    margin: 2px 4.375em 0 14px;
+    margin: 2px 8em 0 14px;
   }
 
   .logo__wrapper {
