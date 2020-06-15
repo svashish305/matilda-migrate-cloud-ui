@@ -20,11 +20,11 @@ interface SelectInterface {
 })
 export class TemplateComponent implements OnInit, AfterViewInit {
   @Input() templateData: any;
+  searchKey;
   edit;
   showBackdrop;
   @ViewChild("templateList", { static: false }) templateList;
 
-  searchKey;
   stages: any[] = [];
   titleState = "idle";
   oldTitle: string;

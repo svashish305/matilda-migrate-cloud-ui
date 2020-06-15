@@ -31,6 +31,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
   @Input() templateData: any;
   @Output() rowClicked: EventEmitter<any> = new EventEmitter();
 
+  searchKey;
   stages: any[] = [];
   tasks: any[] = [];
   taskCollapseState: Map<any, boolean> = new Map();
@@ -142,6 +143,21 @@ export class TemplateListComponent implements OnInit, OnChanges {
         break;
     }
     return { backgroundColor };
+  }
+
+  /**
+   *
+   * @description searches the wavelist using the search key
+   */
+
+  search(e) {
+    // if (!this.searchKey) {
+    //   this.templates = this.rawtemplates;
+    //   return true;
+    // }
+    // this.templates = this.rawtemplates.filter((x) => {
+    //   return x.name.toLowerCase().search(this.searchKey.toLowerCase()) !== -1;
+    // });
   }
 
   onCheck(event) {
