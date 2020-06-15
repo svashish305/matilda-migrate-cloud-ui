@@ -13,6 +13,10 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
 import { SearchPipeModule } from "./searchpipe.module";
 import { AddTaskModalContentModule } from "./templates/add-task-modal-content/add-task-modal-content.module";
 import { EditTagModule } from "./templates/edit-tag/edit-tag.module";
+import {
+  DeviceDetectorService,
+  DeviceDetectorModule,
+} from "ngx-device-detector";
 
 const avatarColors = ["#5fb8f1", "#012b7a"];
 
@@ -34,6 +38,7 @@ const avatarColors = ["#5fb8f1", "#012b7a"];
     NgbModule,
     AddTaskModalContentModule,
     EditTagModule,
+    DeviceDetectorModule.forRoot(),
   ],
   exports: [TemplateComponent, TemplateListComponent],
   providers: [],

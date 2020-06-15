@@ -18,11 +18,11 @@
         class="avatar"
         alt="{{ templateData.name }}"
       />
-      <div *ngIf="!templateData.icon" style="padding-right: 25px;">
+      <div *ngIf="!templateData.icon" class="ngx-template-header-avatar">
         <ngx-avatar
           class="my-avatar"
           name="{{ templateData.name }}"
-          size="72"
+          [size]="isMobile ? 40 : 72"
         ></ngx-avatar>
       </div>
       <div class="wave__heading">

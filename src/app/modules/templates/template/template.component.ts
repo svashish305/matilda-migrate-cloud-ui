@@ -6,6 +6,7 @@ import {
   AfterViewInit,
 } from "@angular/core";
 import { DataService } from "src/services/data.service";
+import { DeviceDetectorService } from "ngx-device-detector";
 
 interface SelectInterface {
   value: string;
@@ -32,11 +33,18 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   oldDescription: string;
   newDescription: string;
 
+  isMobile = false;
+  isTablet = false;
+  isDesktop = false;
+
   showImportOptions = false;
   importStatus = false;
   showTagOptions = false;
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private deviceService: DeviceDetectorService
+  ) {}
 
   ngOnInit() {
     // console.log('templateData ', this.templateData);
@@ -45,6 +53,10 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     // this.newTitle = this.oldTitle;
     // this.oldDescription = this.templateData.data.description;
     // this.newDescription = this.oldDescription;
+    this.isMobile = this.deviceService.isMobile();
+    this.isTablet = this.deviceService.isTablet();
+    this.isDesktop = this.deviceService.isDesktop();
+
     this.getStages();
   }
 

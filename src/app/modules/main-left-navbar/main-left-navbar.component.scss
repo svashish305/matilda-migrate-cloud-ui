@@ -6,11 +6,9 @@
   .navbar-toggle {
     position: absolute;
     top: 1.125em;
-    left: 0;
+    left: -6px;
 
     .navbar-toggle-btn {
-      width: 32px;
-      height: 32px;
       padding: 0;
     }
   }
