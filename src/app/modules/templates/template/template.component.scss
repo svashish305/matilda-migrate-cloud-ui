@@ -510,9 +510,11 @@
     bottom: 26px;
   }
 
-  .modal-footer {
-    position: relative;
-    top: 4.688em;
+  .modal-footer-mobile {
+    position: absolute !important;
+    top: 92vh !important;
+    display: flex;
+    width: 100%;
   }
 }
 
