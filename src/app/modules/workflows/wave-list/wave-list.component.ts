@@ -16,6 +16,7 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
+import { DeviceDetectorService } from "ngx-device-detector";
 
 interface SelectInterface {
   value: string;
@@ -65,8 +66,11 @@ export class WaveListComponent implements OnInit {
 
   primaryColor: ThemePalette = "primary";
 
+  isMobile = false;
+
   constructor(
     private dataService: DataService,
+    private deviceService: DeviceDetectorService,
     private _formBuilder: FormBuilder,
     public dialog: MatDialog
   ) {}
@@ -78,6 +82,8 @@ export class WaveListComponent implements OnInit {
 
     this.getWaves();
     this.getAccounts();
+
+    this.isMobile = this.deviceService.isMobile();
   }
 
   getWaves() {

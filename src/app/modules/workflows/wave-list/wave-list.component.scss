@@ -743,240 +743,6 @@
     }
   }
 
-  @media only screen and (min-width: 769px) and (max-width: 991px) {
-    .stage-list-subheader {
-      display: flex;
-      flex-direction: row;
-      position: relative;
-      right: 27em;
-      top: 2em;
-    }
-
-    .template-name {
-      display: flex;
-      height: 100%;
-      width: 21vw;
-    }
-
-    .stage-name-width {
-      width: 24vw;
-    }
-
-    .stage-btn {
-      bottom: -5px;
-      position: absolute;
-      right: -2.5em;
-    }
-  }
-
-  @media only screen and (min-width: 992px) and (max-width: 1041px) {
-    .stage-list-subheader {
-      display: flex;
-      flex-direction: row;
-      position: relative;
-      right: 27em;
-      top: 2em;
-    }
-
-    .template-name {
-      display: flex;
-      height: 100%;
-      width: 23vw;
-    }
-
-    .stage-name-width {
-      width: 25vw;
-    }
-
-    .stage-btn {
-      bottom: -5px;
-      position: absolute;
-      right: -7.5em;
-    }
-  }
-
-  @media only screen and (min-width: 1042px) and (max-width: 1117px) {
-    .stage-list-subheader {
-      display: flex;
-      flex-direction: row;
-      position: relative;
-      right: 27em;
-      top: 2em;
-    }
-
-    .template-name {
-      display: flex;
-      height: 100%;
-      width: 25vw;
-    }
-
-    .stage-name-width {
-      width: 28vw;
-    }
-
-    .stage-btn {
-      bottom: -5px;
-      position: absolute;
-      right: -7.5em;
-    }
-  }
-
-  @media only screen and (min-width: 1118px) and (max-width: 1186px) {
-    .stage-list-subheader {
-      display: flex;
-      flex-direction: row;
-      position: relative;
-      right: 27em;
-      top: 2em;
-    }
-
-    .template-name {
-      display: flex;
-      height: 100%;
-      width: 29vw;
-    }
-
-    .stage-name-width {
-      width: 32vw;
-    }
-
-    .stage-btn {
-      bottom: -5px;
-      position: absolute;
-      right: -7.5em;
-    }
-  }
-
-  @media only screen and (min-width: 1187px) and (max-width: 1291px) {
-    .stage-list-subheader {
-      display: flex;
-      flex-direction: row;
-      position: relative;
-      right: 27em;
-      top: 2em;
-    }
-
-    .template-name {
-      display: flex;
-      height: 100%;
-      width: 34vw;
-    }
-
-    .stage-name-width {
-      width: 36vw;
-    }
-
-    .stage-btn {
-      bottom: -5px;
-      position: absolute;
-      right: -7.5em;
-    }
-  }
-
-  @media only screen and (min-width: 1292px) and (max-width: 1366px) {
-    .stage-list-subheader {
-      display: flex;
-      flex-direction: row;
-      position: relative;
-      right: 27em;
-      top: 2em;
-    }
-
-    .template-name {
-      display: flex;
-      height: 100%;
-      width: 40.5vw;
-    }
-
-    .stage-name-width {
-      width: 43vw;
-    }
-
-    .stage-btn {
-      bottom: -5px;
-      position: absolute;
-      right: -7.5em;
-    }
-  }
-
-  @media only screen and (min-width: 1367px) and (max-width: 1440px) {
-    .stage-list-subheader {
-      display: flex;
-      flex-direction: row;
-      position: relative;
-      right: 27em;
-      top: 2em;
-    }
-
-    .template-name {
-      display: flex;
-      height: 100%;
-      width: 43.5vw;
-    }
-
-    .stage-name-width {
-      width: 46vw;
-    }
-
-    .stage-btn {
-      bottom: -5px;
-      position: absolute;
-      right: -7.5em;
-    }
-  }
-
-  @media only screen and (min-width: 1441px) and (max-width: 1980px) {
-    .stage-list-subheader {
-      display: flex;
-      flex-direction: row;
-      position: relative;
-      right: 27em;
-      top: 2em;
-    }
-
-    .template-name {
-      display: flex;
-      height: 100%;
-      width: 47vw;
-    }
-
-    .stage-name-width {
-      width: 48vw;
-    }
-
-    .stage-btn {
-      bottom: -5px;
-      position: absolute;
-      right: -9em;
-    }
-  }
-
-  @media only screen and (min-width: 1981px) and (max-width: 2560px) {
-    .stage-list-subheader {
-      display: flex;
-      flex-direction: row;
-      position: relative;
-      right: 27em;
-      top: 2em;
-    }
-
-    .template-name {
-      display: flex;
-      height: 100%;
-      width: 62vw;
-    }
-
-    .stage-name-width {
-      width: 63vw;
-    }
-
-    .stage-btn {
-      bottom: -5px;
-      position: absolute;
-      right: -7.5em;
-    }
-  }
-
   .template__row {
     display: flex;
     align-items: center;
@@ -1492,5 +1258,239 @@
     position: absolute;
     right: 0;
     bottom: 24.5em;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+  .stage-list-subheader {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    right: 27em;
+    top: 2em;
+  }
+
+  .template-name {
+    display: flex;
+    height: 100%;
+    width: 49vw;
+  }
+
+  .stage-name-width {
+    width: 56vw;
+  }
+
+  .stage-btn {
+    bottom: -5px;
+    position: absolute;
+    right: -2.5em;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1041px) {
+  .stage-list-subheader {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    right: 27em;
+    top: 2em;
+  }
+
+  .template-name {
+    display: flex;
+    height: 100%;
+    width: 55vw;
+  }
+
+  .stage-name-width {
+    width: 54vw;
+  }
+
+  .stage-btn {
+    bottom: -5px;
+    position: absolute;
+    right: -7.5em;
+  }
+}
+
+@media only screen and (min-width: 1042px) and (max-width: 1117px) {
+  .stage-list-subheader {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    right: 27em;
+    top: 2em;
+  }
+
+  .template-name {
+    display: flex;
+    height: 100%;
+    width: 57vw;
+  }
+
+  .stage-name-width {
+    width: 56.5vw;
+  }
+
+  .stage-btn {
+    bottom: -5px;
+    position: absolute;
+    right: -7.5em;
+  }
+}
+
+@media only screen and (min-width: 1118px) and (max-width: 1186px) {
+  .stage-list-subheader {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    right: 27em;
+    top: 2em;
+  }
+
+  .template-name {
+    display: flex;
+    height: 100%;
+    width: 60vw;
+  }
+
+  .stage-name-width {
+    width: 59.5vw;
+  }
+
+  .stage-btn {
+    bottom: -5px;
+    position: absolute;
+    right: -7.5em;
+  }
+}
+
+@media only screen and (min-width: 1187px) and (max-width: 1291px) {
+  .stage-list-subheader {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    right: 27em;
+    top: 2em;
+  }
+
+  .template-name {
+    display: flex;
+    height: 100%;
+    width: 61vw;
+  }
+
+  .stage-name-width {
+    width: 60.5vw;
+  }
+
+  .stage-btn {
+    bottom: -5px;
+    position: absolute;
+    right: -7.5em;
+  }
+}
+
+@media only screen and (min-width: 1292px) and (max-width: 1366px) {
+  .stage-list-subheader {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    right: 27em;
+    top: 2em;
+  }
+
+  .template-name {
+    display: flex;
+    height: 100%;
+    width: 81vw;
+  }
+
+  .stage-name-width {
+    width: 80vw;
+  }
+
+  .stage-btn {
+    bottom: -5px;
+    position: absolute;
+    right: -7.5em;
+  }
+}
+
+@media only screen and (min-width: 1367px) and (max-width: 1440px) {
+  .stage-list-subheader {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    right: 27em;
+    top: 2em;
+  }
+
+  .template-name {
+    display: flex;
+    height: 100%;
+    width: 81vw;
+  }
+
+  .stage-name-width {
+    width: 80vw;
+  }
+
+  .stage-btn {
+    bottom: -5px;
+    position: absolute;
+    right: -7.5em;
+  }
+}
+
+@media only screen and (min-width: 1441px) and (max-width: 1980px) {
+  .stage-list-subheader {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    right: 27em;
+    top: 2em;
+  }
+
+  .template-name {
+    display: flex;
+    height: 100%;
+    width: 68.5vw;
+  }
+
+  .stage-name-width {
+    width: 67vw;
+  }
+
+  .stage-btn {
+    bottom: -5px;
+    position: absolute;
+    right: -9em;
+  }
+}
+
+@media only screen and (min-width: 1981px) and (max-width: 2560px) {
+  .stage-list-subheader {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    right: 27em;
+    top: 2em;
+  }
+
+  .template-name {
+    display: flex;
+    height: 100%;
+    width: 88.5vw;
+  }
+
+  .stage-name-width {
+    width: 88vw;
+  }
+
+  .stage-btn {
+    bottom: -5px;
+    position: absolute;
+    right: -7.5em;
   }
 }

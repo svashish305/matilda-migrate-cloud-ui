@@ -214,7 +214,7 @@
                     >Trigger</span
                   >
                 </div> -->
-                <div style="width: 7.143em;">
+                <div *ngIf="!isMobile" style="width: 7.143em;">
                   <span
                     class="medium-text"
                     style="
@@ -224,7 +224,7 @@
                     >Status</span
                   >
                 </div>
-                <div style="width: 7.143em;">
+                <div *ngIf="!isMobile" style="width: 7.143em;">
                   <span
                     class="medium-text"
                     style="
@@ -335,6 +335,7 @@
                   }}</span>
                 </div> -->
                 <div
+                  *ngIf="!isMobile"
                   class="border-white template-status"
                   [ngClass]="getStatusClass(template)"
                   (mouseleave)="template.showStatus = false"
@@ -377,7 +378,11 @@
                   </div>
                   <!-- template status end -->
                 </div>
-                <div class="flex-center" style="margin-left: 1vw;">
+                <div
+                  *ngIf="!isMobile"
+                  class="flex-center"
+                  style="margin-left: 1vw;"
+                >
                   <mat-progress-bar
                     style="width: 57px;"
                     value="{{ template.progressPercentage }}"
@@ -388,10 +393,7 @@
                     >{{ template.progressPercentage }} %</span
                   >
                 </div>
-                <div
-                  class="flex-center"
-                  style="position: relative; right: -50px;"
-                >
+                <div class="right-options">
                   <img
                     style="margin-right: 1em;"
                     src="assets/imgs/delete.svg"
