@@ -5,8 +5,8 @@
     box-sizing: border-box;
     // padding-right: 20px;
     // overflow: auto;
-    // width: 91vw;
-    width: 87vw;
+    width: 92vw;
+    // width: 87vw;
     // transition: all 0.1s ease;
     &.side-open {
       padding-right: 0;
@@ -350,7 +350,7 @@
     padding: 0 24px 0 24px;
     position: absolute;
     top: -4.5em;
-    right: -1em;
+    right: -2em;
     z-index: 1000;
   }
 
@@ -461,7 +461,7 @@
   .import-list-template-description {
     position: relative;
     // right: 4.875rem;
-    right: 5rem;
+    right: 11.75rem;
     // top: 0.75rem;
     top: 1.25rem;
     // font-family: LatoMedium;
