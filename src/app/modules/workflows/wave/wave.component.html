@@ -18,11 +18,11 @@
         class="avatar"
         alt="{{ waveData.name }}"
       />
-      <div *ngIf="!waveData.icon" style="padding-right: 25px;">
+      <div *ngIf="!waveData.icon" class="ngx-template-header-avatar">
         <ngx-avatar
           class="my-avatar"
           name="{{ waveData.name }}"
-          size="72"
+          [size]="isMobile ? 40 : 72"
         ></ngx-avatar>
       </div>
       <div class="wave__heading">
@@ -87,48 +87,70 @@
       <mat-tab label="Workflows">
         <!-- Workflows tab content -->
         <div *ngIf="waves" style="height: 10.438em;">
-          <div class="badge-container">
+          <div
+            class="badge-container"
+            [ngStyle]="{ 'margin-top': isMobile ? '3.938em' : '7px' }"
+          >
             <span class="stage-tags"
               >Tags (
               <span class="stage-tags-blue">Change</span>
-              )<span style="position: relative; left: 50px;">:</span>
+              )<span class="align-tags-colon">:</span>
             </span>
             <span
               class="badge badge-pill badge-custom"
-              style="margin-left: 3.5em;"
+              [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }"
             >
               <span class="badge-key-value">IP : 192.28.10.11</span>
             </span>
-            <span class="badge badge-pill badge-custom">
+            <span *ngIf="isMobile" class="badge badge-pill badge-custom">
+              <span class="badge-key-value">+4</span>
+            </span>
+            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
               <span class="badge-key-value">Web : Front End</span>
             </span>
-            <span class="badge badge-pill badge-custom">
+            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
               <span class="badge-key-value">Software : Tomcat</span>
             </span>
-            <span class="badge badge-pill badge-custom">
+            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
               <span class="badge-key-value">Java : Web</span>
             </span>
-            <span class="badge badge-pill badge-custom">
+            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
               <span class="badge-key-value">+3</span>
             </span>
           </div>
 
-          <div class="badge-container">
+          <div
+            class="badge-container"
+            [ngStyle]="{ 'margin-top': isMobile ? '0' : '7px' }"
+          >
             <span class="stage-tags"
               >Accounts (
               <span class="stage-tags-blue">Change</span>
-              )<span style="position: relative; left: 9px;">:</span>
+              )<span class="align-accounts-colon">:</span>
             </span>
             <span
+              *ngIf="isMobile"
+              style="margin-left: 0;"
               class="badge badge-pill badge-custom"
-              style="margin-left: 3.5em;"
             >
-              <span class="badge-key-value">Provider Name : Account Name</span>
+              <span class="badge-key-value">AWS : SMR</span>
             </span>
-            <span class="badge badge-pill badge-custom">
+            <span *ngIf="isMobile" class="badge badge-pill badge-custom">
+              <span class="badge-key-value">+4</span>
+            </span>
+            <span
+              *ngIf="!isMobile"
+              class="badge badge-pill badge-custom"
+              [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }"
+            >
+              <span *ngIf="!isMobile" class="badge-key-value"
+                >Provider Name : Account Name</span
+              >
+            </span>
+            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
               <span class="badge-key-value">Jenkins : JKSMR</span>
             </span>
-            <span class="badge badge-pill badge-custom">
+            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
               <span class="badge-key-value">+1</span>
             </span>
           </div>
@@ -164,12 +186,8 @@
           </div>
 
           <div class="stage-action-bar">
-            <button
-              mat-flat-button
-              color="primary"
-              style="position: absolute; right: 30em;"
-            >
-              <span class="new-stage-btn">+ New</span>
+            <button mat-flat-button color="primary" class="new-stage-btn">
+              <span class="new-stage-btn-text">+ New</span>
             </button>
 
             <!-- <div class="waves__list__filter right-align-searchbox">
@@ -187,38 +205,6 @@
                 />
               </div>
             </div> -->
-            <div
-              class="right-align-searchbox"
-              style="width: 23.813em; bottom: 0.7em;"
-            >
-              <form>
-                <mat-form-field
-                  id="mat-search"
-                  floatLabel="never"
-                  class="mat-typography"
-                  style="width: 100%;"
-                >
-                  <img
-                    matPrefix
-                    src="assets/imgs/search-2.svg"
-                    alt="search-icon"
-                    style="
-                      position: relative;
-                      bottom: 2px;
-                      padding-right: 0.5em;
-                    "
-                  />
-                  <input
-                    matInput
-                    placeholder="Search"
-                    type="search"
-                    (keyup)="search($event)"
-                    name="test"
-                    [(ngModel)]="searchKey"
-                  />
-                </mat-form-field>
-              </form>
-            </div>
           </div>
         </div>
 
@@ -385,7 +371,12 @@
           </div>
         </mat-card-content>
       </mat-card>
-      <div class="modal-footer">
+      <div
+        [ngClass]="{
+          'modal-footer-mobile': isMobile,
+          'modal-footer': !isMobile
+        }"
+      >
         <div style="display: flex; position: absolute; left: 0; top: 0.9em;">
           <button
             mat-flat-button

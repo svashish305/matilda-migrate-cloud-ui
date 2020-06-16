@@ -16,6 +16,7 @@ import {
 import { ResizeEvent } from "angular-resizable-element";
 import { DataService } from "src/services/data.service";
 import { FormControl } from "@angular/forms";
+import { DeviceDetectorService } from "ngx-device-detector";
 
 interface SelectInterface {
   value: string;
@@ -61,7 +62,14 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
 
   searchKey;
 
-  constructor(private dataService: DataService) {}
+  isMobile = false;
+  isTablet = false;
+  isDesktop = false;
+
+  constructor(
+    private dataService: DataService,
+    private deviceService: DeviceDetectorService
+  ) {}
 
   ngOnChanges() {
     if (this.waveData && this.waveData.data.waveTypes) {
@@ -74,6 +82,10 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnInit() {
     this.getAccounts();
     this.getWaves();
+
+    this.isMobile = this.deviceService.isMobile();
+    this.isTablet = this.deviceService.isTablet();
+    this.isDesktop = this.deviceService.isDesktop();
   }
 
   ngAfterViewInit() {

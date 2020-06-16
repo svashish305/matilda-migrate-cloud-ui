@@ -32,6 +32,7 @@ export class WaveListComponent implements OnInit {
   @Output() rowClicked: EventEmitter<any> = new EventEmitter();
 
   edit;
+  searchKey;
   showBackdrop;
   @ViewChild("waveList", { static: false }) waveList;
 
@@ -132,6 +133,21 @@ export class WaveListComponent implements OnInit {
         waveType.collapsed = false;
       });
     }
+  }
+
+  /**
+   *
+   * @description searches the wavelist using the search key
+   */
+
+  search(e) {
+    // if (!this.searchKey) {
+    //   this.waves = this.rawwaves;
+    //   return true;
+    // }
+    // this.waves = this.rawwaves.filter((x) => {
+    //   return x.name.toLowerCase().search(this.searchKey.toLowerCase()) !== -1;
+    // });
   }
 
   onCheck(event) {

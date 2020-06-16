@@ -1,6 +1,6 @@
 <div>
   <span class="stage-tags"
-    >Workflow Type<span style="position: relative; left: 54px;">:</span></span
+    >Workflow Type<span class="align-workflow-colon">:</span></span
   >
   <mat-form-field id="workflow-select-field" class="workflow-type-dd">
     <mat-select
@@ -18,7 +18,7 @@
   </mat-form-field>
 </div>
 
-<div style="position: absolute; top: 12.688em;">
+<div class="collapse-container">
   <span class="stage-action-collapse-text">Collapse All</span
   ><mat-slide-toggle
     (change)="collapseAll($event.checked)"
@@ -26,6 +26,33 @@
     [color]="primaryColor"
   ></mat-slide-toggle>
 </div>
+
+<div class="right-align-searchbox">
+  <form id="search-form">
+    <mat-form-field
+      id="mat-search"
+      floatLabel="never"
+      class="mat-typography"
+      style="width: 100%;"
+    >
+      <img
+        matPrefix
+        src="assets/imgs/search-2.svg"
+        alt="search-icon"
+        style="position: relative; bottom: 2px; padding-right: 0.5em;"
+      />
+      <input
+        matInput
+        placeholder="Search"
+        type="search"
+        (keyup)="search($event)"
+        name="test"
+        [(ngModel)]="searchKey"
+      />
+    </mat-form-field>
+  </form>
+</div>
+
 <div class="drag-drop-parent">
   <div
     cdkDropList
