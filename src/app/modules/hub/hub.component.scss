@@ -5,6 +5,12 @@
 
   #hub-tab {
     z-index: 1;
+    position: relative;
+    top: 3em;
+  }
+
+  #hub-tab::ng-deep.mat-tab-label {
+    margin-top: 0;
   }
 
   #hub-tab::ng-deep.mat-tab-label .mat-tab-label-content {
