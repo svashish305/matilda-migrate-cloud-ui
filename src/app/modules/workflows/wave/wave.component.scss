@@ -350,8 +350,12 @@
     padding: 0 24px 0 24px;
     position: absolute;
     top: -4.5em;
-    right: -2em;
+    right: -1em;
     z-index: 1000;
+  }
+
+  .sidebar-search::ng-deep.mat-form-field-underline {
+    background-color: var(--btn-lightgray-border);
   }
 
   .checkbox-label-with-icon {
@@ -461,7 +465,7 @@
   .import-list-template-description {
     position: relative;
     // right: 4.875rem;
-    right: 11.75rem;
+    right: 13.2rem;
     // top: 0.75rem;
     top: 1.25rem;
     // font-family: LatoMedium;
@@ -894,10 +898,10 @@
     top: -4.5em;
     right: -4.625em;
     z-index: 1000;
+  }
 
-    #mat-search ::ng-deep .mat-form-field-underline {
-      background-color: var(--btn-lightgray-border);
-    }
+  .sidebar-search::ng-deep.mat-form-field-underline {
+    background-color: var(--btn-lightgray-border);
   }
 
   .checkbox-label-with-icon {

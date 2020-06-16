@@ -37,6 +37,7 @@ export class WaveListComponent implements OnInit {
   showBackdrop;
   @ViewChild("waveList", { static: false }) waveList;
 
+  rawwaves: any[] = [];
   waves: any[] = [];
   accounts: any[] = [];
   accountCollapseState: Map<any, boolean> = new Map();
@@ -88,6 +89,7 @@ export class WaveListComponent implements OnInit {
 
   getWaves() {
     this.dataService.getWaves().subscribe((data: any[]) => {
+      this.rawwaves = data;
       this.waves = data;
     });
   }
@@ -147,13 +149,13 @@ export class WaveListComponent implements OnInit {
    */
 
   search(e) {
-    // if (!this.searchKey) {
-    //   this.waves = this.rawwaves;
-    //   return true;
-    // }
-    // this.waves = this.rawwaves.filter((x) => {
-    //   return x.name.toLowerCase().search(this.searchKey.toLowerCase()) !== -1;
-    // });
+    if (!this.searchKey) {
+      this.waves = this.rawwaves;
+      return true;
+    }
+    this.waves = this.rawwaves.filter((x) => {
+      return x.name.toLowerCase().search(this.searchKey.toLowerCase()) !== -1;
+    });
   }
 
   onCheck(event) {

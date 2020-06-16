@@ -354,6 +354,10 @@
     z-index: 1000;
   }
 
+  .sidebar-search::ng-deep.mat-form-field-underline {
+    background-color: var(--btn-lightgray-border);
+  }
+
   .checkbox-label-with-icon {
     margin-left: 2.5em;
     display: flex;
@@ -883,10 +887,10 @@
     top: -4.5em;
     right: -4.625em;
     z-index: 1000;
+  }
 
-    #mat-search ::ng-deep .mat-form-field-underline {
-      background-color: var(--btn-lightgray-border);
-    }
+  .sidebar-search::ng-deep.mat-form-field-underline {
+    background-color: var(--btn-lightgray-border);
   }
 
   .checkbox-label-with-icon {
