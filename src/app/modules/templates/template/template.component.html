@@ -41,8 +41,7 @@
 
       <div class="wave-description">
         <input
-          class="description-styles template-desc-font"
-          style="color: var(--grayed-text);"
+          class="description-styles template-desc-font gray-text"
           (click)="$event.target.select()"
           (focus)="onFocusDescription()"
           (keydown.enter)="
@@ -62,7 +61,7 @@
       >
         <img
           src="assets/imgs/vEllipsis.svg"
-          style="position: relative; bottom: 4px;"
+          class="relative-bottom-4"
           alt="Template Settings"
         />
       </button>
@@ -88,7 +87,7 @@
 
       <mat-tab label="Stages">
         <!-- Stages tab content -->
-        <div *ngIf="stages" style="height: 7.438em;">
+        <div *ngIf="stages" class="stages-height">
           <div class="badge-container">
             <span class="stage-tags"
               >Tags (
@@ -203,21 +202,6 @@
         Template Import
       </header>
       <mat-divider></mat-divider>
-      <!-- <div class="waves__list__filter" style="margin: 24px 0 24px 0;">
-        <div>
-          <img class="search-icon" src="assets/imgs/search.svg" alt="" />
-        </div>
-        <div class="waves_list__search">
-          <input
-            (keyup)="search($event)"
-            name="test"
-            [(ngModel)]="searchKey"
-            placeholder="Search"
-            class="filter__input"
-            type="text"
-          />
-        </div>
-      </div> -->
       <div class="sidebar-search margin-t24-b4">
         <form>
           <mat-form-field
@@ -259,7 +243,7 @@
           <div>
             <span class="tag-text">Tags (Key : Value)</span>
           </div>
-          <div class="badge-container" style="margin-left: 2.5em;">
+          <div class="sidebar-badge-container">
             <span class="badge badge-pill badge-custom">
               <span
                 ><span class="badge-key-value">IP :</span
@@ -292,7 +276,7 @@
           <div>
             <span class="tag-text">Tags (Key : Value)</span>
           </div>
-          <div class="badge-container" style="margin-left: 2.5em;">
+          <div class="sidebar-badge-container">
             <span class="badge badge-pill badge-custom">
               <span
                 ><span class="badge-key-value">IP :</span
@@ -316,9 +300,9 @@
           'modal-footer-mobile': isMobile,
           'modal-footer': !isMobile
         }"
-        style="position: relative; top: 7.438em;"
+        class="footer-styles-1"
       >
-        <div style="position: absolute; left: 0; top: 0.9em;">
+        <div class="import-btns-1">
           <button
             mat-flat-button
             color="primary"
@@ -341,19 +325,16 @@
 
     <div *ngIf="importStatus" class="import-final">
       <header>
-        <a
-          (click)="importStatus = false"
-          style="cursor: pointer; position: absolute; left: 24px; top: 24px;"
-        >
+        <a (click)="importStatus = false" class="import-final-close">
           <img src="assets/imgs/back-icon.svg" alt="Close" />
         </a>
-        <div style="margin: 5.5rem 0 1.5rem 0; display: flex; height: 4.5rem;">
+        <div class="import-2-header">
           <ngx-avatar
             name="Tomcat"
             size="72"
             class="lalign-import-template-icon"
           ></ngx-avatar>
-          <div style="position: relative; top: 10px;">
+          <div class="relative-top-10">
             <span class="import-list-template-name">Tomcat</span>
             <span class="import-list-template-description"
               >Installation Configuration</span
@@ -370,9 +351,9 @@
           'modal-footer-mobile': isMobile,
           'modal-footer': !isMobile
         }"
-        style="position: relative; top: 8.75em;"
+        class="footer-styles-2"
       >
-        <div style="position: absolute; left: 0; top: 0.9em;">
+        <div class="import-btns-1">
           <button
             mat-flat-button
             color="primary"
@@ -417,9 +398,9 @@
     <!-- end of tag edit body -->
     <div
       [ngClass]="{ 'modal-footer-mobile': isMobile, 'modal-footer': !isMobile }"
-      style="position: absolute; width: 100%; top: 42.25em;"
+      class="edit-tag-footer-btns"
     >
-      <div style="position: absolute; left: 0; top: 0.9em;">
+      <div class="import-btns-1">
         <button
           mat-flat-button
           color="primary"
