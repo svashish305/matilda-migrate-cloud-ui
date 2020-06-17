@@ -97,11 +97,13 @@
     </div>
     <div
       (click)="
-        templateSelected = true; hubSelected = false; workflowSelected = false
+        templateSelected = true;
+        hubSelected = false;
+        workflowSelected = false;
+        addTemplate()
       "
       class="logo__wrapper"
       style="padding: 14px;"
-      [routerLink]="['/templates']"
       [ngStyle]="addTemplateActiveInd()"
     >
       <img
@@ -134,11 +136,13 @@
     </div>
     <div
       (click)="
-        workflowSelected = true; hubSelected = false; templateSelected = false
+        workflowSelected = true;
+        hubSelected = false;
+        templateSelected = false;
+        addWorkflow()
       "
       class="logo__wrapper"
       style="padding: 14px;"
-      [routerLink]="['/workflows']"
       [ngStyle]="addWorkflowActiveInd()"
     >
       <img
@@ -274,11 +278,13 @@
     </div>
     <div
       (click)="
-        templateSelected = true; hubSelected = false; workflowSelected = false
+        templateSelected = true;
+        hubSelected = false;
+        workflowSelected = false;
+        addTemplate()
       "
       class="logo__wrapper"
       style="padding: 14px;"
-      [routerLink]="['/templates']"
       [ngStyle]="addTemplateActiveInd()"
     >
       <img
@@ -311,11 +317,13 @@
     </div>
     <div
       (click)="
-        workflowSelected = true; hubSelected = false; templateSelected = false
+        workflowSelected = true;
+        hubSelected = false;
+        templateSelected = false;
+        addWorkflow()
       "
       class="logo__wrapper"
       style="padding: 14px;"
-      [routerLink]="['/workflows']"
       [ngStyle]="addWorkflowActiveInd()"
     >
       <img
