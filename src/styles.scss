@@ -119,15 +119,29 @@ body {
 
 .medium-text {
   font-family: LatoMedium;
-  font-size: 0.9em;
+  font-size: 0.875em;
   line-height: 1.063em;
   letter-spacing: 0.41px;
   color: var(--blackish-text);
 }
 
+.common-text-mobile {
+  font-family: LatoRegular;
+  font-size: 0.875em;
+  letter-spacing: 0.4px;
+  color: #000;
+}
+
+.medium-text-mobile {
+  font-family: LatoMedium;
+  font-size: 0.875em;
+  letter-spacing: 0.4px;
+  color: var(--blackish-text);
+}
+
 .bold-text {
   font-family: LatoBold;
-  font-size: 1.406em;
+  font-size: 1.25em;
   line-height: 1.688em;
   letter-spacing: 0.64px;
   color: #000;
@@ -137,9 +151,10 @@ body {
   width: 100%;
 }
 // custom positions
-.left-24 {
+.left-24-top-1em {
   position: absolute;
   left: 24px;
+  top: 1rem;
 }
 
 .relative-top-14 {

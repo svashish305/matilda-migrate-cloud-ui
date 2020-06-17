@@ -195,7 +195,7 @@
       <header>
         <a
           (click)="showImportOptions = false; importStatus = false"
-          class="pointer-cursor left-24"
+          class="pointer-cursor left-24-top-1em"
         >
           <img src="assets/imgs/close-circle.svg" alt="Close" />
         </a>
@@ -387,7 +387,10 @@
     (resizeEnd)="onResizeEnd($event)"
   >
     <header>
-      <a (click)="showTagOptions = false" class="pointer-cursor left-24">
+      <a
+        (click)="showTagOptions = false"
+        class="pointer-cursor left-24-top-1em"
+      >
         <img src="assets/imgs/close-circle.svg" alt="Close" />
       </a>
       Edit Tags

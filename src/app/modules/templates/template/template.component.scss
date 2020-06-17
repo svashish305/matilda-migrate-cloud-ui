@@ -85,7 +85,7 @@
 
   #stage-tab::ng-deep.mat-tab-label .mat-tab-label-content {
     font-family: LatoMedium;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     font-weight: 500;
     letter-spacing: 0.41px;
     color: #000;
@@ -402,7 +402,7 @@
   header {
     margin: 24px 0 24px 64px;
     font-family: LatoSemiBold;
-    font-size: 1.756em;
+    font-size: 1.25em;
     color: #000;
   }
 
@@ -435,7 +435,7 @@
   ::ng-deep .mat-checkbox-label {
     color: #000;
     font-family: LatoRegular;
-    font-size: 0.9em;
+    font-size: 0.875em;
     letter-spacing: 0.41px;
   }
 
@@ -447,13 +447,13 @@
   .import-list-template-name {
     padding-left: 1em;
     // font-family: LatoBold;
-    // font-size: 1.406rem;
+    // font-size: 1.25rem;
     // line-height: 0;
     // letter-spacing: 0.64px;
     // color: #000;
 
     font-family: LatoSemiBold;
-    font-size: 1.406rem;
+    font-size: 1.25rem;
     line-height: 1.688rem;
     letter-spacing: 0.64px;
     color: #000;
@@ -468,7 +468,7 @@
     // top: 0.75rem;
     top: 1.25rem;
     // font-family: LatoMedium;
-    // font-size: 0.9em;
+    // font-size: 0.875em;
     // line-height: 1.063em;
 
     font-family: LatoRegular;
@@ -480,7 +480,7 @@
 
   .tag-text {
     font-family: LatoMedium;
-    font-size: 0.9em;
+    font-size: 0.875em;
     color: var(--alt-gray-text);
     margin-left: 2.75em;
   }
@@ -589,9 +589,9 @@
   }
 
   .wave__heading {
-    // margin-top: 14px;
-    margin-top: 2px;
-    font-size: 1.756em;
+    // margin-top: 2px;
+    margin-top: 10px;
+    font-size: 1.25em;
   }
 
   .wave-description {
@@ -642,7 +642,7 @@
 
   #stage-tab::ng-deep.mat-tab-label .mat-tab-label-content {
     // font-family: LatoMedium;
-    // font-size: 0.9rem;
+    // font-size: 0.875rem;
     // line-height: 1.063rem;
     // letter-spacing: 0.41px;
 
@@ -862,7 +862,7 @@
 
   .template-title-font {
     font-family: LatoSemiBold;
-    font-size: 1.406rem;
+    font-size: 1.25rem;
     line-height: 1.688rem;
     letter-spacing: 0.64px;
     color: #000;
@@ -963,7 +963,7 @@
   header {
     margin: 24px 0 24px 64px;
     font-family: LatoSemiBold;
-    font-size: 1.756em;
+    font-size: 1.25em;
     color: #000;
   }
 
@@ -1033,7 +1033,7 @@
   ::ng-deep .mat-checkbox-label {
     color: #000;
     font-family: LatoRegular;
-    font-size: 0.9em;
+    font-size: 0.875em;
     letter-spacing: 0.41px;
   }
 
@@ -1045,13 +1045,13 @@
   .import-list-template-name {
     padding-left: 1em;
     // font-family: LatoBold;
-    // font-size: 1.406rem;
+    // font-size: 1.25rem;
     // line-height: 0;
     // letter-spacing: 0.64px;
     // color: #000;
 
     font-family: LatoSemiBold;
-    font-size: 1.406rem;
+    font-size: 1.25rem;
     line-height: 1.688rem;
     letter-spacing: 0.64px;
     color: #000;
@@ -1062,11 +1062,11 @@
   .import-list-template-description {
     position: relative;
     // right: 4.875rem;
-    right: 5rem;
+    right: 4.4rem;
     // top: 0.75rem;
     top: 1.25rem;
     // font-family: LatoMedium;
-    // font-size: 0.9em;
+    // font-size: 0.875em;
     // line-height: 1.063em;
 
     font-family: LatoRegular;
@@ -1078,7 +1078,7 @@
 
   .tag-text {
     font-family: LatoMedium;
-    font-size: 0.9em;
+    font-size: 0.875em;
     color: var(--alt-gray-text);
     margin-left: 2.75em;
   }
@@ -1154,7 +1154,7 @@
 .import-btns-1 {
   position: absolute;
   left: 0;
-  top: 0.9em;
+  top: 0.875em;
 }
 
 .edit-tag-footer-btns {

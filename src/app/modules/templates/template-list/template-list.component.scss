@@ -328,20 +328,6 @@
     color: #000;
   }
 
-  .common-text-mobile {
-    font-family: LatoRegular;
-    font-size: 0.875em;
-    letter-spacing: 0.4px;
-    color: #000;
-  }
-
-  .medium-text-mobile {
-    font-family: LatoMedium;
-    font-size: 0.875em;
-    letter-spacing: 0.4px;
-    color: var(--blackish-text);
-  }
-
   .group-name-wrapper {
     flex: 1;
     display: flex;
@@ -508,7 +494,7 @@
 
   .task-name {
     font-family: LatoRegular;
-    font-size: 0.9em;
+    font-size: 0.875em;
     letter-spacing: 0.41px;
     color: var(--alt-gray-text);
   }
@@ -520,7 +506,7 @@
 
   mat-card-subtitle {
     font-family: LatoRegular;
-    font-size: 0.9em;
+    font-size: 0.875em;
     line-height: 1.39;
     color: var(--alt-gray-text);
   }
@@ -544,7 +530,7 @@
   .task-stage-progress {
     font-family: LatoSemiBold;
     position: relative;
-    bottom: 0.90625em;
+    bottom: 0.8750625em;
     left: 11em;
   }
 
@@ -558,13 +544,13 @@
   .modal-header {
     color: black;
     font-family: LatoBold;
-    font-size: 1.406em;
+    font-size: 1.25em;
     letter-spacing: 0.64px;
   }
 
   ::ng-deep.mat-tab-label .mat-tab-label-content {
     font-family: LatoMedium;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     line-height: 1.063rem;
     letter-spacing: 0.41px;
   }
@@ -1369,7 +1355,7 @@
 
   .task-name {
     font-family: LatoRegular;
-    font-size: 0.9em;
+    font-size: 0.875em;
     letter-spacing: 0.41px;
     color: var(--alt-gray-text);
   }
@@ -1381,7 +1367,7 @@
 
   mat-card-subtitle {
     font-family: LatoRegular;
-    font-size: 0.9em;
+    font-size: 0.875em;
     line-height: 1.39;
     color: var(--alt-gray-text);
   }
@@ -1405,7 +1391,7 @@
   .task-stage-progress {
     font-family: LatoSemiBold;
     position: relative;
-    bottom: 0.90625em;
+    bottom: 0.8750625em;
     left: 11em;
   }
 
@@ -1419,13 +1405,13 @@
   .modal-header {
     color: black;
     font-family: LatoBold;
-    font-size: 1.406em;
+    font-size: 1.25em;
     letter-spacing: 0.64px;
   }
 
   ::ng-deep.mat-tab-label .mat-tab-label-content {
     font-family: LatoMedium;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     line-height: 1.063rem;
     letter-spacing: 0.41px;
   }
