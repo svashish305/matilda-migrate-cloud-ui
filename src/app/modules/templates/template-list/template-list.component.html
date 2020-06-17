@@ -82,7 +82,7 @@
                 [ngClass]="{ 'do-not-show': !stage.drag }"
               >
                 <img
-                  style="cursor: move;"
+                  class="move-cursor"
                   src="assets/imgs/dragIcon-2.svg"
                   alt=""
                 />
@@ -215,13 +215,7 @@
                 xPosition="before"
                 yPosition="below"
               >
-                <div
-                  style="
-                    display: flex;
-                    flex-direction: column;
-                    padding-left: 12px;
-                  "
-                >
+                <div class="service-menu">
                   <mat-checkbox (click)="onCheck($event)">Service</mat-checkbox>
                   <mat-checkbox (click)="onCheck($event)">Action</mat-checkbox>
                 </div>
@@ -271,18 +265,13 @@
                 </div>
               </div>
               <div class="flex-lay">
-                <div
-                  *ngIf="!isMobile"
-                  class="flex-center"
-                  style="width: 100px; margin-left: 8px;"
-                >
+                <div *ngIf="!isMobile" class="flex-center plugin-val">
                   <span class="cell-text common-text">{{ task.plugin }}</span>
                 </div>
                 <div *ngIf="!isMobile">
                   <div
                     *ngIf="getWorkflowType() === 'time'"
-                    class="border-white template-start flex-center"
-                    style="margin-left: 20px;"
+                    class="border-white template-start flex-center left-margin-20"
                   >
                     <span class="cell-text common-text">{{
                       task.startDate
@@ -316,11 +305,6 @@
                   (mouseleave)="task.showStatus = false"
                   (click)="showStatuses($event, task)"
                 >
-                  <!-- <span
-                    class="cell-text"
-                    style="color: #fff; text-transform: capitalize;"
-                    >{{ task.status }}</span
-                  > -->
                   <span
                     class="badge badge-pill badge-custom"
                     [ngStyle]="setBadgeBgColor(task.status)"
@@ -421,7 +405,7 @@
     <!-- modal body -->
     <mat-tab-group [@.disabled]="true" class="mat-typography">
       <mat-tab label="General">
-        <form [formGroup]="firstFormGroup" style="margin-top: 24px;">
+        <form [formGroup]="firstFormGroup" class="top-margin-24">
           <mat-form-field class="example-full-width">
             <mat-label>Task Name</mat-label>
             <input
@@ -491,7 +475,7 @@
         </form>
       </mat-tab>
       <mat-tab label="Input">
-        <form [formGroup]="secondFormGroup" style="margin-top: 24px;">
+        <form [formGroup]="secondFormGroup" class="top-margin-24">
           <mat-form-field class="example-half-width">
             <mat-label>Instance Name</mat-label>
             <input
@@ -542,7 +526,7 @@
         </form>
       </mat-tab>
       <mat-tab label="Output">
-        <form [formGroup]="thirdFormGroup" style="margin-top: 24px;">
+        <form [formGroup]="thirdFormGroup" class="top-margin-24">
           <mat-form-field class="example-half-width">
             <mat-label>Instance Name</mat-label>
             <input matInput value="$stage.task.instance" />

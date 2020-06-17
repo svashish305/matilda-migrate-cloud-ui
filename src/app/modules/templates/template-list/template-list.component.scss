@@ -1561,3 +1561,14 @@
 .cell-width {
   width: 7.143em;
 }
+
+.service-menu {
+  display: flex;
+  flex-direction: column;
+  padding-left: 12px;
+}
+
+.plugin-val {
+  width: 100px !important;
+  margin-left: 8px !important;
+}
