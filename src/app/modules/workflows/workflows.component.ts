@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "src/services/data.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-workflows",
@@ -18,9 +19,19 @@ export class WorkflowsComponent implements OnInit {
   isRecentCollapsed = true;
   isFavouritesCollapsed = true;
 
-  constructor(private dataService: DataService) {}
+  waveId: any;
+
+  constructor(
+    private dataService: DataService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
+    this.route.params.subscribe((params: any) => {
+      console.log(params);
+      this.waveId = params.id;
+    });
+
     this.getWaves();
   }
 
@@ -32,7 +43,12 @@ export class WorkflowsComponent implements OnInit {
     this.dataService.getWaves().subscribe((data: any[]) => {
       this.waves = data;
       this.rawwaves = this.waves;
-      this.getWaveData(this.waves[0].id);
+      // this.getWaveData(this.waves[0].id);
+      if (this.waveId) {
+        this.getWaveData(this.waveId);
+      } else {
+        this.getWaveData(this.waves[0].id);
+      }
     });
   }
 

@@ -68,7 +68,7 @@
             [ngbCollapse]="isTemplateFavouritesCollapsed"
             class="grid-container"
           >
-            <mat-card style="margin: 12px;">
+            <mat-card>
               <div>
                 <ngx-avatar name="Tomcat Template"></ngx-avatar>
                 <span class="bold-text template-title">Tomcat Template</span>
@@ -82,7 +82,7 @@
                 </div>
               </div>
             </mat-card>
-            <mat-card style="margin: 12px;">
+            <mat-card>
               <div>
                 <ngx-avatar name="Template 2"></ngx-avatar>
                 <span class="bold-text template-title">Template 2</span>
@@ -132,7 +132,10 @@
           </div>
 
           <div [ngbCollapse]="isTemplateCollapsed" class="grid-container">
-            <mat-card *ngFor="let template of templates" style="margin: 12px;">
+            <mat-card
+              *ngFor="let template of templates"
+              (click)="goToTemplate(template.id)"
+            >
               <div>
                 <ngx-avatar name="{{ template.name }}"></ngx-avatar>
                 <span class="bold-text template-title">{{
@@ -221,7 +224,7 @@
             [ngbCollapse]="isWorkflowFavouritesCollapsed"
             class="grid-container"
           >
-            <mat-card style="margin: 12px;">
+            <mat-card>
               <div>
                 <ngx-avatar name="SMR Wave Workflow"></ngx-avatar>
                 <span class="bold-text template-title">SMR Wave Workflow</span>
@@ -242,7 +245,7 @@
                 </div>
               </div>
             </mat-card>
-            <mat-card style="margin: 12px;">
+            <mat-card>
               <div>
                 <ngx-avatar name="SME Wave Workflow"></ngx-avatar>
                 <span class="bold-text template-title">SMR Wave Workflow</span>
@@ -299,7 +302,10 @@
           </div>
 
           <div [ngbCollapse]="isWorkflowCollapsed" class="grid-container">
-            <mat-card *ngFor="let workflow of workflows" style="margin: 12px;">
+            <mat-card
+              *ngFor="let workflow of workflows"
+              (click)="goToWorkflow(workflow.id)"
+            >
               <div>
                 <ngx-avatar name="{{ workflow.name }}"></ngx-avatar>
                 <span class="bold-text template-title">{{

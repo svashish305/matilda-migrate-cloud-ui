@@ -7,6 +7,7 @@ import {
 } from "@angular/core";
 import { DataService } from "src/services/data.service";
 import { DeviceDetectorService } from "ngx-device-detector";
+import { ActivatedRoute } from "@angular/router";
 
 interface SelectInterface {
   value: string;
@@ -43,7 +44,8 @@ export class TemplateComponent implements OnInit, AfterViewInit {
 
   constructor(
     private dataService: DataService,
-    private deviceService: DeviceDetectorService
+    private deviceService: DeviceDetectorService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {

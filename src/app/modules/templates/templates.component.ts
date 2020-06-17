@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "src/services/data.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-templates",
@@ -18,9 +19,19 @@ export class TemplatesComponent implements OnInit {
   isRecentCollapsed = true;
   isFavouritesCollapsed = true;
 
-  constructor(private dataService: DataService) {}
+  templateId: any;
+
+  constructor(
+    private dataService: DataService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
+    this.route.params.subscribe((params: any) => {
+      console.log(params);
+      this.templateId = params.id;
+    });
+
     this.getTemplates();
   }
 
@@ -32,7 +43,11 @@ export class TemplatesComponent implements OnInit {
     this.dataService.getTemplates().subscribe((data: any[]) => {
       this.templates = data;
       this.rawtemplates = this.templates;
-      this.templateData = this.getTemplateData(this.templates[0].id);
+      if (this.templateId) {
+        this.templateData = this.getTemplateData(this.templateId);
+      } else {
+        this.templateData = this.getTemplateData(this.templates[0].id);
+      }
     });
   }
 

@@ -1,12 +1,15 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { WorkflowsComponent } from './workflows.component';
+import { WorkflowsComponent } from "./workflows.component";
 
-const routes: Routes = [{ path: '', component: WorkflowsComponent }];
+const routes: Routes = [
+  { path: "", component: WorkflowsComponent },
+  { path: ":id", component: WorkflowsComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class WorkflowsRoutingModule { }
+export class WorkflowsRoutingModule {}

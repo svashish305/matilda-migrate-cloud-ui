@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "src/services/data.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-hub",
@@ -16,7 +17,7 @@ export class HubComponent implements OnInit {
   templates: any[] = [];
   workflows: any[] = [];
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit() {
     this.getTemplates();
@@ -32,6 +33,18 @@ export class HubComponent implements OnInit {
   getWorkflows() {
     this.dataService.getWaves().subscribe((waves: any) => {
       this.workflows = waves;
+    });
+  }
+
+  goToTemplate(templateId) {
+    this.router.navigate([`/templates/${templateId}`], {
+      preserveQueryParams: true,
+    });
+  }
+
+  goToWorkflow(workflowId) {
+    this.router.navigate([`/workflows/${workflowId}`], {
+      preserveQueryParams: true,
     });
   }
 
