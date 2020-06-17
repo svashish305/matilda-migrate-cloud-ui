@@ -28,6 +28,10 @@
     align-items: center;
     position: absolute;
     right: 0;
+
+    .notification-img {
+      padding-right: 24px;
+    }
   }
 
   .std-text {
@@ -54,6 +58,10 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+
+    .notification-img {
+      padding-right: 24px;
+    }
   }
 
   .std-text {
@@ -75,4 +83,8 @@
   line-height: 1.375em;
   letter-spacing: 0.51px;
   color: var(--alt-gray-text);
+}
+
+.set-primary-color {
+  color: var(--primary-light);
 }
