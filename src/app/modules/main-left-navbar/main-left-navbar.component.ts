@@ -40,19 +40,19 @@ export class MainLeftNavbarComponent implements OnInit {
 
   hubIsSelected() {
     return {
-      opacity: this.hubSelected ? 1 : 0.3,
+      opacity: this.hubSelected ? 1 : 0.5,
     };
   }
 
   templateIsSelected() {
     return {
-      opacity: this.templateSelected ? 1 : 0.3,
+      opacity: this.templateSelected ? 1 : 0.5,
     };
   }
 
   workflowIsSelected() {
     return {
-      opacity: this.workflowSelected ? 1 : 0.3,
+      opacity: this.workflowSelected ? 1 : 0.7,
     };
   }
 
