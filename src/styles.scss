@@ -91,6 +91,10 @@ body {
   // font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.flex-lay {
+  display: flex;
+}
+
 .flex-center {
   display: flex;
   justify-content: center;
@@ -99,6 +103,10 @@ body {
 
 .pointer-cursor {
   cursor: pointer;
+}
+
+.move-cursor {
+  cursor: move;
 }
 
 .common-text {
@@ -159,8 +167,20 @@ body {
   margin-bottom: 24px;
 }
 
+.left-margin-20 {
+  margin-left: 20px !important;
+}
+
 .left-margin-1em {
   margin-left: 1em;
+}
+
+.left-margin-1vw {
+  margin-left: 1vw !important;
+}
+
+.right-margin-8 {
+  margin-right: 8px !important;
 }
 // end of custom margins
 

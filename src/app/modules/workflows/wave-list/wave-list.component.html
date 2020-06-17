@@ -82,7 +82,7 @@
                 [ngClass]="{ 'do-not-show': !waveType.drag }"
               >
                 <img
-                  style="cursor: move;"
+                  class="move-cursor"
                   src="assets/imgs/dragIcon-2.svg"
                   alt=""
                 />
@@ -97,12 +97,7 @@
                 class="accordian"
               >
                 <img
-                  style="
-                    width: 24px;
-                    height: 24px;
-                    position: relative;
-                    top: 2px;
-                  "
+                  class="accordian-icon"
                   src="assets/imgs/chevron-down.svg"
                   alt=""
                   (click)="waveType.collapsed = !waveType.collapsed"
@@ -136,9 +131,7 @@
               </div>
             </div>
             <div *ngIf="!waveType.collapsed" class="status-section">
-              <span class="common-text" style="margin-right: 8px;"
-                >Status:
-              </span>
+              <span class="status-text">Status: </span>
               <span
                 class="badge badge-pill badge-custom"
                 [ngStyle]="setBadgeBgColor(waveType.status)"
@@ -146,16 +139,12 @@
               >
             </div>
             <div *ngIf="!waveType.collapsed" class="progress-section">
-              <span class="common-text" style="margin-right: 8px;"
-                >Progress:
-              </span>
+              <span class="status-text">Progress: </span>
               <mat-progress-bar
-                style="width: 4.375em;"
+                class="list-progress-bar"
                 value="{{ waveType.progressPercentage }}"
               ></mat-progress-bar>
-              <span
-                class="medium-text"
-                style="margin-left: 8px; min-width: fit-content;"
+              <span class="list-percent-text"
                 >{{ waveType.progressPercentage }} %</span
               >
             </div>
@@ -167,71 +156,41 @@
 
             <div *ngIf="!waveType.collapsed" class="stage-list-subheader">
               <div class="stage-name-width">
-                <span
-                  class="medium-text"
-                  style="font-family: LatoSemiBold; color: var(--grayed-text);"
-                  >Name</span
-                >
+                <span class="medium-text list-header-text">Name</span>
               </div>
-              <div style="display: flex;">
+              <div class="flex-lay">
                 <!-- <div
-                  style="width: 7.143em;"
+                  class="cell-width"
                   *ngIf="getWorkflowType() === 'time'"
                 >
                   <span
-                    class="medium-text"
-                    style="
-                      font-family: LatoSemiBold;
-                      color: var(--grayed-text);
-                    "
+                    class="medium-text list-header-text"
                     >Start Date</span
                   >
                 </div>
                 <div
-                  style="width: 7.143em;"
+                  class="cell-width"
                   *ngIf="getWorkflowType() === 'time'"
                 >
                   <span
-                    class="medium-text"
-                    style="
-                      font-family: LatoSemiBold;
-                      color: var(--grayed-text);
-                    "
+                    class="medium-text list-header-text"
                     >End Date</span
                   >
                 </div>
                 <div
-                  style="width: 7.143em;"
+                  class="cell-width"
                   *ngIf="getWorkflowType() === 'trigger'"
                 >
                   <span
-                    class="medium-text"
-                    style="
-                      font-family: LatoSemiBold;
-                      color: var(--grayed-text);
-                    "
+                    class="medium-text list-header-text"
                     >Trigger</span
                   >
                 </div> -->
-                <div *ngIf="!isMobile" style="width: 7.143em;">
-                  <span
-                    class="medium-text"
-                    style="
-                      font-family: LatoSemiBold;
-                      color: var(--grayed-text);
-                    "
-                    >Status</span
-                  >
+                <div *ngIf="!isMobile" class="cell-width">
+                  <span class="medium-text list-header-text">Status</span>
                 </div>
-                <div *ngIf="!isMobile" style="width: 7.143em;">
-                  <span
-                    class="medium-text"
-                    style="
-                      font-family: LatoSemiBold;
-                      color: var(--grayed-text);
-                    "
-                    >Progress</span
-                  >
+                <div *ngIf="!isMobile" class="cell-width">
+                  <span class="medium-text list-header-text">Progress</span>
                 </div>
                 <button
                   class="stage-btn"
@@ -246,13 +205,7 @@
                   xPosition="before"
                   yPosition="below"
                 >
-                  <div
-                    style="
-                      display: flex;
-                      flex-direction: column;
-                      padding-left: 12px;
-                    "
-                  >
+                  <div class="service-menu">
                     <mat-checkbox (click)="onCheck($event)"
                       >Service</mat-checkbox
                     >
@@ -299,10 +252,9 @@
                   <span class="cell-text common-text">{{ template.name }}</span>
                 </div>
               </div>
-              <div style="display: flex;">
+              <div class="flex-lay">
                 <!-- <div
-                  class="flex-center"
-                  style="width: 100px; margin-left: 8px;"
+                  class="flex-center plugin-val"
                 >
                   <span class="cell-text common-text">{{
                     template.plugin
@@ -310,8 +262,7 @@
                 </div>
                 <div
                   *ngIf="getWorkflowType() === 'time'"
-                  class="border-white template-start flex-center"
-                  style="margin-left: 20px;"
+                  class="border-white template-start flex-center left-margin-20"
                 >
                   <span class="cell-text common-text">{{
                     template.startDate
@@ -340,11 +291,6 @@
                   (mouseleave)="template.showStatus = false"
                   (click)="showStatuses($event, template)"
                 >
-                  <!-- <span
-                    class="cell-text"
-                    style="color: #fff; text-transform: capitalize;"
-                    >{{ template.status }}</span
-                  > -->
                   <span
                     class="badge badge-pill badge-custom"
                     [ngStyle]="setBadgeBgColor(template.status)"
@@ -377,18 +323,12 @@
                   </div>
                   <!-- template status end -->
                 </div>
-                <div
-                  *ngIf="!isMobile"
-                  class="flex-center"
-                  style="margin-left: 1vw;"
-                >
+                <div *ngIf="!isMobile" class="flex-center left-margin-1vw">
                   <mat-progress-bar
-                    style="width: 57px;"
+                    class="list-item-progress-bar"
                     value="{{ template.progressPercentage }}"
                   ></mat-progress-bar>
-                  <span
-                    class="medium-text"
-                    style="margin-left: 8px; min-width: fit-content;"
+                  <span class="list-percent-text"
                     >{{ template.progressPercentage }} %</span
                   >
                 </div>
@@ -427,8 +367,7 @@
                   Add
                 </div> -->
                 <span
-                  class="common-text"
-                  style="color: var(--primary-light); margin: auto 14px;"
+                  class="common-text add-new-text"
                   (click)="openDialog(addTemplateModal)"
                   >+ Add New Template</span
                 >

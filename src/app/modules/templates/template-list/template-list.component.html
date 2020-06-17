@@ -94,12 +94,7 @@
               > -->
               <div [ngClass]="{ collapsed: stage.collapsed }" class="accordian">
                 <img
-                  style="
-                    width: 24px;
-                    height: 24px;
-                    position: relative;
-                    top: 2px;
-                  "
+                  class="accordian-icon"
                   src="assets/imgs/chevron-down.svg"
                   alt=""
                   (click)="stage.collapsed = !stage.collapsed"
@@ -138,7 +133,7 @@
                   'common-text-mobile': isMobile,
                   'common-text': !isMobile
                 }"
-                style="margin-right: 8px;"
+                class="right-margin-8"
                 >Status:
               </span>
               <span
@@ -153,11 +148,11 @@
                   'common-text-mobile': isMobile,
                   'common-text': !isMobile
                 }"
-                style="margin-right: 8px;"
+                class="right-margin-8"
                 >Progress:
               </span>
               <mat-progress-bar
-                style="width: 4.375em;"
+                class="list-progress-bar"
                 value="{{ stage.progressPercentage }}"
               ></mat-progress-bar>
               <span
@@ -165,7 +160,7 @@
                   'medium-text-mobile': isMobile,
                   'medium-text': !isMobile
                 }"
-                style="margin-left: 8px; min-width: fit-content;"
+                class="list-percent-text"
                 >{{ stage.progressPercentage }} %</span
               >
             </div>
@@ -183,79 +178,28 @@
                     'medium-text-mobile': isMobile,
                     'medium-text': !isMobile
                   }"
-                  style="font-family: LatoSemiBold; color: var(--grayed-text);"
+                  class="list-header-text"
                   >Name</span
                 >
               </div>
-              <div style="display: flex;" *ngIf="!isMobile">
-                <div style="width: 7.143em;">
-                  <span
-                    class="medium-text"
-                    style="
-                      font-family: LatoSemiBold;
-                      color: var(--grayed-text);
-                    "
-                    >Plugin</span
-                  >
+              <div class="flex-lay" *ngIf="!isMobile">
+                <div class="cell-width">
+                  <span class="medium-text list-header-text">Plugin</span>
                 </div>
-                <div
-                  style="width: 7.143em;"
-                  *ngIf="getWorkflowType() === 'time'"
-                >
-                  <span
-                    class="medium-text"
-                    style="
-                      font-family: LatoSemiBold;
-                      color: var(--grayed-text);
-                    "
-                    >Start Date</span
-                  >
+                <div class="cell-width" *ngIf="getWorkflowType() === 'time'">
+                  <span class="medium-text list-header-text">Start Date</span>
                 </div>
-                <div
-                  style="width: 7.143em;"
-                  *ngIf="getWorkflowType() === 'time'"
-                >
-                  <span
-                    class="medium-text"
-                    style="
-                      font-family: LatoSemiBold;
-                      color: var(--grayed-text);
-                    "
-                    >End Date</span
-                  >
+                <div class="cell-width" *ngIf="getWorkflowType() === 'time'">
+                  <span class="medium-text list-header-text">End Date</span>
                 </div>
-                <div
-                  style="width: 7.143em;"
-                  *ngIf="getWorkflowType() === 'trigger'"
-                >
-                  <span
-                    class="medium-text"
-                    style="
-                      font-family: LatoSemiBold;
-                      color: var(--grayed-text);
-                    "
-                    >Trigger</span
-                  >
+                <div class="cell-width" *ngIf="getWorkflowType() === 'trigger'">
+                  <span class="medium-text list-header-text">Trigger</span>
                 </div>
-                <div style="width: 7.143em;">
-                  <span
-                    class="medium-text"
-                    style="
-                      font-family: LatoSemiBold;
-                      color: var(--grayed-text);
-                    "
-                    >Status</span
-                  >
+                <div class="cell-width">
+                  <span class="medium-text list-header-text">Status</span>
                 </div>
-                <div style="width: 7.143em;">
-                  <span
-                    class="medium-text"
-                    style="
-                      font-family: LatoSemiBold;
-                      color: var(--grayed-text);
-                    "
-                    >Progress</span
-                  >
+                <div class="cell-width">
+                  <span class="medium-text list-header-text">Progress</span>
                 </div>
               </div>
               <button
@@ -326,7 +270,7 @@
                   >
                 </div>
               </div>
-              <div style="display: flex;">
+              <div class="flex-lay">
                 <div
                   *ngIf="!isMobile"
                   class="flex-center"
@@ -409,18 +353,12 @@
                   </div>
                   <!-- template status end -->
                 </div>
-                <div
-                  *ngIf="!isMobile"
-                  class="flex-center"
-                  style="margin-left: 1vw;"
-                >
+                <div *ngIf="!isMobile" class="flex-center left-margin-1vw">
                   <mat-progress-bar
-                    style="width: 57px;"
+                    class="list-item-progress-bar"
                     value="{{ task.progressPercentage }}"
                   ></mat-progress-bar>
-                  <span
-                    class="medium-text"
-                    style="margin-left: 8px; min-width: fit-content;"
+                  <span class="list-percent-text"
                     >{{ task.progressPercentage }} %</span
                   >
                 </div>
@@ -459,8 +397,7 @@
                   Add
                 </div> -->
                 <span
-                  class="common-text"
-                  style="color: var(--primary-light); margin: auto 14px;"
+                  class="common-text add-new-text"
                   (click)="openDialog(addTaskModal)"
                   >+ Add New Task</span
                 >

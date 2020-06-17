@@ -188,6 +188,13 @@
     }
   }
 
+  .accordian-icon {
+    width: 24px !important;
+    height: 24px !important;
+    position: relative;
+    top: 2px;
+  }
+
   .row-starter {
     display: inline-flex;
     align-items: center;
@@ -626,6 +633,15 @@
     align-items: center;
   }
 
+  .status-text {
+    font-family: LatoRegular;
+    font-size: 1.125em;
+    line-height: 1.375em;
+    letter-spacing: 0.51px;
+    color: #000;
+    margin-right: 8px;
+  }
+
   .progress-section {
     position: relative;
     right: -12px;
@@ -835,6 +851,13 @@
         transform: rotate(-90deg);
       }
     }
+  }
+
+  .accordian-icon {
+    width: 24px !important;
+    height: 24px !important;
+    position: relative;
+    top: 2px;
   }
 
   .row-starter {
@@ -1251,6 +1274,15 @@
     align-items: center;
   }
 
+  .status-text {
+    font-family: LatoRegular;
+    font-size: 1.125em;
+    line-height: 1.375em;
+    letter-spacing: 0.51px;
+    color: #000;
+    margin-right: 8px;
+  }
+
   .progress-section {
     bottom: 2em;
     position: relative;
@@ -1519,4 +1551,38 @@
     position: absolute;
     right: -7.5em;
   }
+}
+
+// common styles
+.list-progress-bar {
+  width: 4.375em;
+}
+
+.list-item-progress-bar {
+  width: 57px;
+}
+
+.list-percent-text {
+  margin-left: 8px;
+  min-width: fit-content;
+}
+
+.list-header-text {
+  font-family: LatoSemiBold !important;
+  color: var(--grayed-text) !important;
+}
+
+.cell-width {
+  width: 7.143em;
+}
+
+.service-menu {
+  display: flex;
+  flex-direction: column;
+  padding-left: 12px;
+}
+
+.plugin-val {
+  width: 100px !important;
+  margin-left: 8px !important;
 }
