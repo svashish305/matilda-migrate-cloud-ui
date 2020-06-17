@@ -358,6 +358,12 @@
     background-color: var(--btn-lightgray-border);
   }
 
+  .new-search-icon {
+    position: relative;
+    bottom: 2px;
+    padding-right: 0.5em;
+  }
+
   .checkbox-label-with-icon {
     margin-left: 2.5em;
     display: flex;
@@ -902,6 +908,12 @@
 
   .sidebar-search::ng-deep.mat-form-field-underline {
     background-color: var(--btn-lightgray-border);
+  }
+
+  .new-search-icon {
+    position: relative;
+    bottom: 2px;
+    padding-right: 0.5em;
   }
 
   .checkbox-label-with-icon {

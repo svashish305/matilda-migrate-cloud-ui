@@ -64,6 +64,12 @@
     background-color: var(--btn-lightgray-border);
   }
 
+  .new-search-icon {
+    position: relative;
+    bottom: 2px;
+    padding-right: 0.5em;
+  }
+
   #stage-header {
     height: 5.563em !important;
 
@@ -705,6 +711,12 @@
 
   #mat-search ::ng-deep .mat-form-field-underline {
     background-color: var(--btn-lightgray-border);
+  }
+
+  .new-search-icon {
+    position: relative;
+    bottom: 2px;
+    padding-right: 0.5em;
   }
 
   #stage-header {
@@ -1491,5 +1503,11 @@
     position: absolute;
     right: 0;
     bottom: 4.5em;
+  }
+
+  .new-search-icon {
+    position: relative;
+    bottom: 2px;
+    padding-right: 0.5em;
   }
 }
