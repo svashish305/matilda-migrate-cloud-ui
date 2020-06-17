@@ -32,7 +32,7 @@
       <div class="all-templates">
         <div>
           <div
-            style="margin-bottom: 2em;"
+            class="set-margin-bottom"
             (click)="
               isTemplateFavouritesCollapsed = !isTemplateFavouritesCollapsed
             "
@@ -40,20 +40,11 @@
             <img
               src="assets/imgs/favourite.svg"
               alt="Favourites"
-              style="margin-right: 1em;"
+              class="set-margin-right"
             />
-            <span
-              class="common-text"
-              style="
-                position: relative;
-                top: 4px;
-                letter-spacing: 0;
-                color: var(--primary-light);
-              "
-              >Favourites</span
-            >
+            <span class="label-text-fav">Favourites</span>
             <img
-              style="margin-left: 8px; cursor: pointer;"
+              class="collapse-icon"
               [src]="
                 isTemplateFavouritesCollapsed
                   ? 'assets/imgs/chevron-up.svg'
@@ -98,29 +89,19 @@
           </div>
         </div>
 
-        <div style="margin-top: 2em;">
+        <div class="set-margin-top">
           <div
-            style="margin-bottom: 2em;"
+            class="set-margin-bottom"
             (click)="isTemplateCollapsed = !isTemplateCollapsed"
           >
             <img
               src="assets/imgs/bc-template-blue.svg"
               alt="Template"
-              style="margin-right: 1em;"
+              class="set-margin-right"
             />
-            <span
-              class="common-text"
-              style="
-                position: relative;
-                top: 4px;
-                letter-spacing: 0;
-                color: var(--primary-light);
-                padding-right: 20px;
-              "
-              >Template</span
-            >
+            <span class="label-text">Template</span>
             <img
-              style="margin-left: 8px; cursor: pointer;"
+              class="collapse-icon"
               [src]="
                 isTemplateCollapsed
                   ? 'assets/imgs/chevron-up.svg'
@@ -187,7 +168,7 @@
       <div class="all-templates">
         <div>
           <div
-            style="margin-bottom: 2em;"
+            class="set-margin-bottom"
             (click)="
               isWorkflowFavouritesCollapsed = !isWorkflowFavouritesCollapsed
             "
@@ -195,20 +176,11 @@
             <img
               src="assets/imgs/favourite.svg"
               alt="Favourites"
-              style="margin-right: 1em;"
+              class="set-margin-right"
             />
-            <span
-              class="common-text"
-              style="
-                position: relative;
-                top: 4px;
-                letter-spacing: 0;
-                color: var(--primary-light);
-              "
-              >Favourites</span
-            >
+            <span class="label-text-fav">Favourites</span>
             <img
-              style="margin-left: 8px; cursor: pointer;"
+              class="collapse-icon"
               [src]="
                 isWorkflowFavouritesCollapsed
                   ? 'assets/imgs/chevron-up.svg'
@@ -227,16 +199,14 @@
                 <ngx-avatar name="SMR Wave Workflow"></ngx-avatar>
                 <span class="bold-text template-title">SMR Wave Workflow</span>
                 <img
-                  style="position: absolute; top: 3em; left: 5.25em;"
+                  class="workflow-state-img"
                   src="assets/imgs/wf-configured.svg"
                   alt="Configured"
                 />
-                <span
-                  class="badge badge-pill badge-custom template-status"
-                  style="left: 10.4em;"
+                <span class="badge badge-pill badge-custom workflow-status"
                   >Configured</span
                 >
-                <div class="template-progress" style="left: 12em;">
+                <div class="workflow-progress">
                   <span class="common-text">Progress : </span>
                   <mat-progress-bar value="50"></mat-progress-bar>
                   <span class="medium-text">50%</span>
@@ -248,16 +218,14 @@
                 <ngx-avatar name="SME Wave Workflow"></ngx-avatar>
                 <span class="bold-text template-title">SMR Wave Workflow</span>
                 <img
-                  style="position: absolute; top: 3em; left: 5.25em;"
+                  class="workflow-state-img"
                   src="assets/imgs/wf-defined.svg"
                   alt="Defined"
                 />
-                <span
-                  class="badge badge-pill badge-custom template-status"
-                  style="left: 10.4em;"
+                <span class="badge badge-pill badge-custom workflow-status"
                   >Defined</span
                 >
-                <div class="template-progress" style="left: 12em;">
+                <div class="workflow-progress">
                   <span class="common-text">Progress : </span>
                   <mat-progress-bar value="50"></mat-progress-bar>
                   <span class="medium-text">50%</span>
@@ -267,29 +235,19 @@
           </div>
         </div>
 
-        <div style="margin-top: 2em;">
+        <div class="set-margin-top">
           <div
-            style="margin-bottom: 2em;"
+            class="set-margin-bottom"
             (click)="isWorkflowCollapsed = !isWorkflowCollapsed"
           >
             <img
               src="assets/imgs/bc-workflow-blue.svg"
               alt="Template"
-              style="margin-right: 1em;"
+              class="set-margin-right"
             />
-            <span
-              class="common-text"
-              style="
-                position: relative;
-                top: 4px;
-                letter-spacing: 0;
-                color: var(--primary-light);
-                padding-right: 20px;
-              "
-              >Workflow</span
-            >
+            <span class="label-text">Workflow</span>
             <img
-              style="margin-left: 8px; cursor: pointer;"
+              class="collapse-icon"
               [src]="
                 isWorkflowCollapsed
                   ? 'assets/imgs/chevron-up.svg'
@@ -310,16 +268,14 @@
                   workflow.name
                 }}</span>
                 <img
-                  style="position: absolute; top: 3em; left: 5.25em;"
+                  class="workflow-state-img"
                   src="assets/imgs/wf-configured.svg"
                   alt="Configured"
                 />
-                <span
-                  class="badge badge-pill badge-custom template-status"
-                  style="left: 10.4em;"
-                  >{{ workflow.data.waveTypes.status }}</span
-                >
-                <div class="template-progress" style="left: 12em;">
+                <span class="badge badge-pill badge-custom workflow-status">{{
+                  workflow.data.waveTypes.status
+                }}</span>
+                <div class="workflow-progress">
                   <span class="common-text">Progress : </span>
                   <mat-progress-bar
                     value="{{ workflow.data.waveTypes.progressPercentage }}"

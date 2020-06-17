@@ -58,6 +58,44 @@
     -ms-overflow-style: none; /* IE and Edge */
   }
 
+  .set-margin-top {
+    margin-top: 2em;
+  }
+
+  .set-margin-bottom {
+    margin-bottom: 2em;
+  }
+
+  .set-margin-right {
+    margin-right: 1em;
+  }
+
+  .label-text-fav {
+    position: relative;
+    top: 4px;
+    font-family: LatoRegular;
+    font-size: 1.125em;
+    line-height: 1.375em;
+    letter-spacing: 0;
+    color: var(--primary-light);
+  }
+
+  .label-text {
+    position: relative;
+    top: 4px;
+    font-family: LatoRegular;
+    font-size: 1.125em;
+    line-height: 1.375em;
+    letter-spacing: 0;
+    color: var(--primary-light);
+    padding-right: 20px;
+  }
+
+  .collapse-icon {
+    margin-left: 8px;
+    cursor: pointer;
+  }
+
   @media only screen and (max-width: 1060px) {
     .grid-container {
       display: grid;
@@ -91,6 +129,12 @@
     left: 3em;
   }
 
+  .workflow-state-img {
+    position: absolute;
+    top: 3em;
+    left: 5.25em;
+  }
+
   .badge-custom {
     background-color: #012b7a;
     border: solid 1px var(--btn-lightgray-border);
@@ -107,6 +151,12 @@
     left: 7.2em;
   }
 
+  .workflow-status {
+    position: absolute;
+    bottom: 3em;
+    left: 10.4em;
+  }
+
   mat-progress-bar {
     width: 4.375em;
     border-radius: 3px;
@@ -119,6 +169,15 @@
     position: relative;
     bottom: 3.5em;
     left: 9.7em;
+    width: fit-content;
+  }
+
+  .workflow-progress {
+    display: flex;
+    align-items: center;
+    position: relative;
+    bottom: 3.5em;
+    left: 12em;
     width: fit-content;
   }
 }
@@ -178,6 +237,44 @@
     -ms-overflow-style: none; /* IE and Edge */
   }
 
+  .set-margin-top {
+    margin-top: 2em;
+  }
+
+  .set-margin-bottom {
+    margin-bottom: 2em;
+  }
+
+  .set-margin-right {
+    margin-right: 1em;
+  }
+
+  .label-text-fav {
+    position: relative;
+    top: 4px;
+    font-family: LatoRegular;
+    font-size: 1.125em;
+    line-height: 1.375em;
+    letter-spacing: 0;
+    color: var(--primary-light);
+  }
+
+  .label-text {
+    position: relative;
+    top: 4px;
+    font-family: LatoRegular;
+    font-size: 1.125em;
+    line-height: 1.375em;
+    letter-spacing: 0;
+    color: var(--primary-light);
+    padding-right: 20px;
+  }
+
+  .collapse-icon {
+    margin-left: 8px;
+    cursor: pointer;
+  }
+
   @media only screen and (max-width: 1060px) {
     .grid-container {
       display: grid;
@@ -211,6 +308,12 @@
     left: 3em;
   }
 
+  .workflow-state-img {
+    position: absolute;
+    top: 3em;
+    left: 5.25em;
+  }
+
   .badge-custom {
     background-color: #012b7a;
     border: solid 1px var(--btn-lightgray-border);
@@ -227,6 +330,12 @@
     left: 7.2em;
   }
 
+  .workflow-status {
+    position: absolute;
+    bottom: 3em;
+    left: 10.4em;
+  }
+
   mat-progress-bar {
     width: 4.375em;
     border-radius: 3px;
@@ -239,6 +348,15 @@
     position: relative;
     bottom: 3.5em;
     left: 9.7em;
+    width: fit-content;
+  }
+
+  .workflow-progress {
+    display: flex;
+    align-items: center;
+    position: relative;
+    bottom: 3.5em;
+    left: 12em;
     width: fit-content;
   }
 }
