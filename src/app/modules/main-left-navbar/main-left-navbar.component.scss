@@ -192,3 +192,56 @@
     bottom: 0;
   }
 }
+
+// common styles
+.mobile-logo-header-padding {
+  padding: 18px 16px 18px 17px !important;
+}
+
+.matilda-logo {
+  width: 27px;
+  height: 24px;
+  opacity: 1;
+}
+
+.active-module-extra {
+  margin: 10px 0 10px 0 !important;
+  padding: 16px !important;
+}
+
+.logo-extra {
+  width: 28px !important;
+  height: 28px !important;
+  opacity: 1;
+}
+
+.white-color {
+  color: #fff !important;
+}
+
+.divider-top {
+  top: 8.75em;
+}
+
+.icon-extra {
+  margin-top: 14px !important;
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.img-size {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.divider-bottom {
+  position: absolute;
+  bottom: 60px;
+  width: 100%;
+}
+
+.logout-icon {
+  width: 26px !important;
+  height: 26px !important;
+  opacity: 1 !important;
+}

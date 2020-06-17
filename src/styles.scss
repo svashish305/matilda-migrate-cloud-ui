@@ -163,6 +163,10 @@ body {
   margin-top: 24px;
 }
 
+.top-margin-1em {
+  margin-top: 1em !important;
+}
+
 .margin-t24-b4 {
   margin: 24px 0 4px 0;
 }
@@ -189,6 +193,14 @@ body {
 // end of custom margins
 
 // custom paddings
+.padding-14 {
+  padding: 14px !important;
+}
+
+.padding-17 {
+  padding: 17px !important;
+}
+
 .padding-t12-b12 {
   padding: 12px 0 12px 0;
 }
