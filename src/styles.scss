@@ -128,16 +128,45 @@ body {
 .full-width {
   width: 100%;
 }
-
-.left-padding-24 {
-  padding-left: 24px;
-}
-
+// custom positions
 .left-24 {
   position: absolute;
   left: 24px;
 }
 
-.margin-24-4 {
+.relative-top-14 {
+  position: relative;
+  top: 14px;
+}
+// end of custom positions
+
+// custom margins
+.margin-t24-b4 {
   margin: 24px 0 4px 0;
 }
+
+.bottom-margin-24 {
+  margin-bottom: 24px;
+}
+
+.left-margin-1em {
+  margin-left: 1em;
+}
+// end of custom margins
+
+// custom paddings
+.padding-t12-b12 {
+  padding: 12px 0 12px 0;
+}
+
+.left-padding-24 {
+  padding-left: 24px;
+}
+
+.bottom-padding-12 {
+  padding-bottom: 12px;
+}
+// end of custom paddings
+
+// misc common styles
+// end of misc common styles

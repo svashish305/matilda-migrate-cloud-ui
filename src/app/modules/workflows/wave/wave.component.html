@@ -265,22 +265,7 @@
         Account
       </header>
       <mat-divider></mat-divider>
-      <!-- <div class="waves__list__filter" style="margin: 24px 0 24px 0;">
-        <div>
-          <img class="search-icon" src="assets/imgs/search.svg" alt="" />
-        </div>
-        <div class="waves_list__search">
-          <input
-            (keyup)="search($event)"
-            name="test"
-            [(ngModel)]="searchKey"
-            placeholder="Search"
-            class="filter__input"
-            type="text"
-          />
-        </div>
-      </div> -->
-      <div class="sidebar-search margin-24-4">
+      <div class="sidebar-search margin-t24-b4">
         <form>
           <mat-form-field
             id="mat-search"
@@ -307,16 +292,12 @@
 
       <!-- account cards -->
       <mat-card
-        class="mat-elevation-z0"
-        style="margin-bottom: 24px;"
+        class="mat-elevation-z0 bottom-margin-24"
         *ngFor="let account of accounts"
         [ngStyle]="toggleHeight(account.id)"
       >
         <mat-card-content>
-          <mat-checkbox
-            (click)="onCheck($event)"
-            style="top: 14px; position: relative;"
-          >
+          <mat-checkbox (click)="onCheck($event)" class="relative-top-14">
           </mat-checkbox>
           <div class="checkbox-label-with-icon">
             <ngx-avatar name="S M"></ngx-avatar>
@@ -340,22 +321,16 @@
             <mat-card-subtitle>
               <div class="account-details">
                 <span class="medium-text">{{ account.data.description }}</span>
-                <div style="padding: 12px 0 12px 0;">
-                  <mat-label
-                    class="common-text"
-                    style="color: var(--alt-gray-text);"
+                <div class="padding-t12-b12">
+                  <mat-label class="account-details-text"
                     >Provider :
                   </mat-label>
                   <span class="account-detail-text">{{
                     account.data.provider
                   }}</span>
                 </div>
-                <div style="padding: 0 0 12px 0;">
-                  <mat-label
-                    class="common-text"
-                    style="color: var(--alt-gray-text);"
-                    >Region :
-                  </mat-label>
+                <div class="bottom-padding-12">
+                  <mat-label class="account-details-text">Region : </mat-label>
                   <span class="account-detail-text">{{
                     account.data.region
                   }}</span>
@@ -371,7 +346,7 @@
           'modal-footer': !isMobile
         }"
       >
-        <div style="display: flex; position: absolute; left: 0; top: 0.9em;">
+        <div class="account-sidebar-footer-btns">
           <button
             mat-flat-button
             color="primary"
@@ -384,7 +359,7 @@
             mat-button
             color="primary"
             (click)="showAccountOptions = false"
-            style="margin-left: 1em;"
+            class="left-margin-1em"
           >
             Cancel
           </button>

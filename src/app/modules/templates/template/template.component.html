@@ -218,7 +218,7 @@
           />
         </div>
       </div> -->
-      <div class="sidebar-search margin-24-4">
+      <div class="sidebar-search margin-t24-b4">
         <form>
           <mat-form-field
             id="mat-search"
@@ -244,12 +244,9 @@
       </div>
 
       <!-- template cards -->
-      <mat-card class="mat-elevation-z0" style="margin-bottom: 24px;">
+      <mat-card class="mat-elevation-z0 bottom-margin-24">
         <mat-card-content (click)="importStatus = true">
-          <mat-checkbox
-            (click)="onCheck($event)"
-            style="top: 14px; position: relative;"
-          >
+          <mat-checkbox (click)="onCheck($event)" class="relative-top-14">
           </mat-checkbox>
           <div class="checkbox-label-with-icon">
             <ngx-avatar name="Tomcat"></ngx-avatar>
@@ -281,12 +278,9 @@
           </div>
         </mat-card-content>
       </mat-card>
-      <mat-card class="mat-elevation-z0" style="margin-bottom: 24px;">
+      <mat-card class="mat-elevation-z0 bottom-margin-24">
         <mat-card-content (click)="importStatus = true">
-          <mat-checkbox
-            style="top: 14px; position: relative;"
-            (click)="onCheck($event)"
-          >
+          <mat-checkbox class="relative-top-14" (click)="onCheck($event)">
           </mat-checkbox>
           <div class="checkbox-label-with-icon">
             <ngx-avatar name="Apache"></ngx-avatar>
@@ -337,7 +331,7 @@
             mat-button
             color="primary"
             (click)="showImportOptions = false; importStatus = false"
-            style="margin-left: 1em;"
+            class="left-margin-1em"
           >
             Cancel
           </button>
@@ -391,7 +385,7 @@
             mat-button
             color="primary"
             (click)="showImportOptions = false; importStatus = false"
-            style="margin-left: 1em;"
+            class="left-margin-1em"
           >
             Cancel
           </button>
@@ -438,7 +432,7 @@
           mat-button
           color="primary"
           (click)="showTagOptions = false"
-          style="margin-left: 1em;"
+          class="left-margin-1em"
         >
           Cancel
         </button>

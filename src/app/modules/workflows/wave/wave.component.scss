@@ -546,6 +546,21 @@
     display: flex;
     width: 100%;
   }
+
+  .account-details-text {
+    font-family: LatoRegular;
+    font-size: 1.125em;
+    line-height: 1.375em;
+    letter-spacing: 0.51px;
+    color: var(--alt-gray-text);
+  }
+
+  .account-sidebar-footer-btns {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0.9em;
+  }
 }
 
 @media only screen and (min-width: 427px) {
@@ -1078,8 +1093,8 @@
 
   .import-list-template-description {
     position: relative;
-    // right: 4.875rem;
-    right: 5rem;
+    // right: 5rem;
+    right: 13rem;
     // top: 0.75rem;
     top: 1.25rem;
     // font-family: LatoMedium;
@@ -1145,6 +1160,26 @@
 
   .modal-footer {
     position: relative;
-    top: 4.688em;
+    top: 13.688em;
+  }
+
+  .collapse-icon {
+    position: absolute;
+    right: 0;
+  }
+
+  .account-details-text {
+    font-family: LatoRegular;
+    font-size: 1.125em;
+    line-height: 1.375em;
+    letter-spacing: 0.51px;
+    color: var(--alt-gray-text);
+  }
+
+  .account-sidebar-footer-btns {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0.9em;
   }
 }
