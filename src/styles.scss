@@ -97,6 +97,10 @@ body {
   align-items: center;
 }
 
+.pointer-cursor {
+  cursor: pointer;
+}
+
 .common-text {
   font-family: LatoRegular;
   font-size: 1.125em;
@@ -123,4 +127,17 @@ body {
 
 .full-width {
   width: 100%;
+}
+
+.left-padding-24 {
+  padding-left: 24px;
+}
+
+.left-24 {
+  position: absolute;
+  left: 24px;
+}
+
+.margin-24-4 {
+  margin: 24px 0 4px 0;
 }

@@ -42,7 +42,6 @@
       <div class="wave-description">
         <input
           class="description-styles template-desc-font"
-          style="color: var(--grayed-text);"
           (click)="$event.target.select()"
           (focus)="onFocusDescription()"
           (keydown.enter)="
@@ -62,7 +61,7 @@
       >
         <img
           src="assets/imgs/vEllipsis.svg"
-          style="position: relative; bottom: 4px;"
+          class="template-dd-icon"
           alt="Template Settings"
         />
       </button>
@@ -86,7 +85,7 @@
 
       <mat-tab label="Workflows">
         <!-- Workflows tab content -->
-        <div *ngIf="waves" style="height: 10.438em;">
+        <div *ngIf="waves" class="workflows-height">
           <div
             class="badge-container"
             [ngStyle]="{ 'margin-top': isMobile ? '3.938em' : '7px' }"
@@ -130,8 +129,7 @@
             </span>
             <span
               *ngIf="isMobile"
-              style="margin-left: 0;"
-              class="badge badge-pill badge-custom"
+              class="badge badge-pill badge-custom margin-left-zero"
             >
               <span class="badge-key-value">AWS : SMR</span>
             </span>
@@ -157,7 +155,7 @@
 
           <div class="wave-states">
             <img
-              style="cursor: pointer;"
+              class="pointer-cursor"
               [src]="
                 waveState === 'start'
                   ? 'assets/imgs/start-active.svg'
@@ -166,7 +164,7 @@
               alt="start"
             />
             <img
-              style="cursor: pointer; padding-left: 24px;"
+              class="pointer-cursor left-padding-24"
               [src]="
                 waveState === 'pause'
                   ? 'assets/imgs/pause-active.svg'
@@ -175,7 +173,7 @@
               alt="pause"
             />
             <img
-              style="cursor: pointer; padding-left: 24px;"
+              class="pointer-cursor left-padding-24"
               [src]="
                 waveState === 'stop'
                   ? 'assets/imgs/stop-active.svg'
@@ -261,10 +259,7 @@
   >
     <div>
       <header>
-        <a
-          (click)="showAccountOptions = false"
-          style="cursor: pointer; position: absolute; left: 24px;"
-        >
+        <a (click)="showAccountOptions = false" class="pointer-cursor left-24">
           <img src="assets/imgs/close-circle.svg" alt="Close" />
         </a>
         Account
@@ -285,7 +280,7 @@
           />
         </div>
       </div> -->
-      <div class="sidebar-search" style="margin: 24px 0 4px 0;">
+      <div class="sidebar-search margin-24-4">
         <form>
           <mat-form-field
             id="mat-search"

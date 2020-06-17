@@ -336,6 +336,11 @@
     right: 0;
   }
 
+  .template-dd-icon {
+    position: relative;
+    bottom: 4px;
+  }
+
   ::ng-deep.mat-menu-panel {
     position: absolute;
     right: 0;
@@ -490,6 +495,10 @@
     font-size: 0.9em;
     color: var(--alt-gray-text);
     margin-left: 2.75em;
+  }
+
+  .workflows-height {
+    height: 10.438em;
   }
 
   .badge-container {
@@ -893,6 +902,11 @@
     right: 0;
   }
 
+  .template-dd-icon {
+    position: relative;
+    bottom: 4px;
+  }
+
   .import-options {
     border-top: solid 1px var(--btn-lightgray-border);
     border-left: solid 1px var(--btn-lightgray-border);
@@ -952,6 +966,10 @@
   .align-accounts-colon {
     position: relative;
     left: 0.75em;
+  }
+
+  .margin-left-zero {
+    margin-left: 0;
   }
 
   .wave-states {
@@ -1080,6 +1098,10 @@
     font-size: 0.9em;
     color: var(--alt-gray-text);
     margin-left: 2.75em;
+  }
+
+  .workflows-height {
+    height: 10.438em;
   }
 
   .badge-container {

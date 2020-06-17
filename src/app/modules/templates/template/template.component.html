@@ -196,7 +196,7 @@
       <header>
         <a
           (click)="showImportOptions = false; importStatus = false"
-          style="cursor: pointer; position: absolute; left: 24px;"
+          class="pointer-cursor left-24"
         >
           <img src="assets/imgs/close-circle.svg" alt="Close" />
         </a>
@@ -218,7 +218,7 @@
           />
         </div>
       </div> -->
-      <div class="sidebar-search" style="margin: 24px 0 4px 0;">
+      <div class="sidebar-search margin-24-4">
         <form>
           <mat-form-field
             id="mat-search"
@@ -412,10 +412,7 @@
     (resizeEnd)="onResizeEnd($event)"
   >
     <header>
-      <a
-        (click)="showTagOptions = false"
-        style="cursor: pointer; position: absolute; left: 24px;"
-      >
+      <a (click)="showTagOptions = false" class="pointer-cursor left-24">
         <img src="assets/imgs/close-circle.svg" alt="Close" />
       </a>
       Edit Tags
