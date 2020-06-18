@@ -157,13 +157,14 @@ export class WaveListComponent implements OnInit {
     //   return x.name.toLowerCase().search(this.searchKey.toLowerCase()) !== -1;
     // });
     // console.log("filtered data ", this.waves);
-    if (!this.searchKey || this.searchKey === "") {
-      this.waves = this.rawwaves;
-      return true;
-    }
-    this.waveData.groups = this.waveData.groups.filter((x) => {
-      return x.name.toLowerCase().includes(this.searchKey.toLowerCase());
-    });
+    // new implementation
+    // if (!this.searchKey || this.searchKey === "") {
+    //   this.waves = this.rawwaves;
+    //   return true;
+    // }
+    // this.waveData.groups = this.waveData.groups.filter((x) => {
+    //   return x.name.toLowerCase().includes(this.searchKey.toLowerCase());
+    // });
   }
 
   onCheck(event) {

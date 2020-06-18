@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { DeviceDetectorService } from "ngx-device-detector";
 import { DataService } from "src/services/data.service";
@@ -19,22 +20,31 @@ export class MainLeftNavbarComponent implements OnInit {
   mobileDevice = false;
 
   constructor(
+    private location: Location,
     private router: Router,
     private deviceService: DeviceDetectorService,
     private dataService: DataService
-  ) {}
+  ) {
+    this.router.events.subscribe((val) => {
+      if (location.path().includes("hub")) {
+        this.hubSelected = true;
+        this.templateSelected = false;
+        this.workflowSelected = false;
+      } else if (location.path().includes("templates")) {
+        this.templateSelected = true;
+        this.hubSelected = false;
+        this.workflowSelected = false;
+      } else if (location.path().includes("workflows")) {
+        this.workflowSelected = true;
+        this.hubSelected = false;
+        this.templateSelected = false;
+      }
+    });
+  }
 
   ngOnInit() {
     if (this.deviceService.isMobile()) {
       this.mobileDevice = true;
-    }
-
-    if (this.router.url.includes("hub")) {
-      this.hubSelected = true;
-    } else if (this.router.url.includes("templates")) {
-      this.templateSelected = true;
-    } else if (this.router.url.includes("workflows")) {
-      this.workflowSelected = true;
     }
   }
 
