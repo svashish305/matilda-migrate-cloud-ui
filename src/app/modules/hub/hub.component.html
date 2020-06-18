@@ -54,10 +54,7 @@
             />
           </div>
 
-          <div
-            [ngbCollapse]="isTemplateFavouritesCollapsed"
-            class="grid-container"
-          >
+          <div *ngIf="!isTemplateFavouritesCollapsed" class="grid-container">
             <mat-card>
               <div>
                 <ngx-avatar name="Tomcat Template"></ngx-avatar>
@@ -111,7 +108,7 @@
             />
           </div>
 
-          <div [ngbCollapse]="isTemplateCollapsed" class="grid-container">
+          <div *ngIf="!isTemplateCollapsed" class="grid-container">
             <mat-card
               *ngFor="let template of templates"
               (click)="goToTemplate(template.id)"
@@ -188,10 +185,7 @@
             />
           </div>
 
-          <div
-            [ngbCollapse]="isWorkflowFavouritesCollapsed"
-            class="grid-container"
-          >
+          <div *ngIf="!isWorkflowFavouritesCollapsed" class="grid-container">
             <mat-card>
               <div>
                 <ngx-avatar name="SMR Wave Workflow"></ngx-avatar>
@@ -255,7 +249,7 @@
             />
           </div>
 
-          <div [ngbCollapse]="isWorkflowCollapsed" class="grid-container">
+          <div *ngIf="!isWorkflowCollapsed" class="grid-container">
             <mat-card
               *ngFor="let workflow of workflows"
               (click)="goToWorkflow(workflow.id)"
