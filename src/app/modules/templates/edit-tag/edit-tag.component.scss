@@ -12,7 +12,11 @@
 }
 
 mat-form-field {
-  padding: 10px;
+  padding: 5px;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: #fff;
 }
 
 .right-align {

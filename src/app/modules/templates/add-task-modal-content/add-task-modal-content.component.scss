@@ -6,16 +6,21 @@
   padding: 0 !important;
 }
 
-.example-full-width {
-  width: 100%;
-}
+// .example-full-width {
+//   width: 100%;
+// }
 
-.example-half-width {
-  width: 50%;
-}
+// .example-half-width {
+//   width: 50%;
+// }
 
 mat-form-field {
-  padding: 10px;
+  // padding: 10px;
+  padding: 5px;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: #fff;
 }
 
 .mat-tab-label .mat-tab-label-content {
