@@ -91,6 +91,7 @@
     position: absolute !important;
     top: 7.5em !important;
     z-index: 2;
+    width: 100%;
   }
 
   ::ng-deep.mat-tab-label,
@@ -476,7 +477,7 @@
   .import-list-template-description {
     position: relative;
     // right: 4.875rem;
-    right: 13.2rem;
+    right: 11.9rem;
     // top: 0.75rem;
     top: 1.25rem;
     // font-family: LatoMedium;
@@ -488,6 +489,11 @@
     line-height: 1.375rem;
     letter-spacing: 0.51px;
     color: var(--alt-gray-text);
+  }
+
+  .collapse-icon {
+    position: relative;
+    right: 13em;
   }
 
   .tag-text {

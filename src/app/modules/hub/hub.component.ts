@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "src/services/data.service";
 import { Router } from "@angular/router";
+import { DeviceDetectorService } from "ngx-device-detector";
 
 @Component({
   selector: "app-hub",
@@ -17,9 +18,17 @@ export class HubComponent implements OnInit {
   templates: any[] = [];
   workflows: any[] = [];
 
-  constructor(private dataService: DataService, private router: Router) {}
+  isMobile = false;
+
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    private deviceService: DeviceDetectorService
+  ) {}
 
   ngOnInit() {
+    this.isMobile = this.deviceService.isMobile();
+
     this.getTemplates();
     this.getWorkflows();
   }

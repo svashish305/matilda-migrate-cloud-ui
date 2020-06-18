@@ -136,14 +136,14 @@
 
   .template-title {
     position: relative;
-    bottom: 2.5em;
-    left: 3em;
+    bottom: 3.5em;
+    left: 4em;
   }
 
   .workflow-state-img {
     position: absolute;
-    top: 3em;
-    left: 4.75em;
+    top: 3.75em;
+    left: 6em;
   }
 
   .badge-custom {
@@ -158,18 +158,18 @@
 
   .template-status {
     position: absolute;
-    bottom: 3em;
-    left: 7.2em;
+    bottom: 1.75em;
+    left: 8.25em;
   }
 
   .workflow-status {
     position: absolute;
-    bottom: 3em;
-    left: 9em;
+    bottom: 2em;
+    left: 11em;
   }
 
   mat-progress-bar {
-    width: 4.375em;
+    width: 2em;
     border-radius: 3px;
     margin: 0 8px 0 8px;
   }
@@ -177,18 +177,18 @@
   .template-progress {
     display: flex;
     align-items: center;
-    position: relative;
-    bottom: 3.5em;
-    left: 9.7em;
+    position: absolute;
+    bottom: 1.25em;
+    right: 1em;
     width: fit-content;
   }
 
   .workflow-progress {
     display: flex;
     align-items: center;
-    position: relative;
-    bottom: 3.3em;
-    left: 11em;
+    position: absolute;
+    bottom: 1.25em;
+    right: 1em;
     width: fit-content;
   }
 }
@@ -205,7 +205,7 @@
 
   #hub-tab::ng-deep.mat-tab-label .mat-tab-label-content {
     font-family: LatoMedium;
-    font-size: 0.875em;
+    font-size: 1.125rem;
     line-height: 1.063em;
     letter-spacing: 0.41px;
     color: #000;
@@ -331,14 +331,14 @@
 
   .template-title {
     position: relative;
-    bottom: 2.5em;
-    left: 3.5em;
+    bottom: 3.5em;
+    left: 4.5em;
   }
 
   .workflow-state-img {
     position: absolute;
-    top: 3em;
-    left: 5.25em;
+    top: 4em;
+    left: 6.5em;
   }
 
   .badge-custom {
@@ -353,14 +353,14 @@
 
   .template-status {
     position: absolute;
-    bottom: 3em;
-    left: 7.2em;
+    bottom: 1.5em;
+    left: 9.2em;
   }
 
   .workflow-status {
     position: absolute;
-    bottom: 3em;
-    left: 10.4em;
+    bottom: 1.5em;
+    left: 12em;
   }
 
   mat-progress-bar {
@@ -372,18 +372,18 @@
   .template-progress {
     display: flex;
     align-items: center;
-    position: relative;
-    bottom: 3.5em;
-    left: 9.7em;
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
     width: fit-content;
   }
 
   .workflow-progress {
     display: flex;
     align-items: center;
-    position: relative;
-    bottom: 3.5em;
-    left: 12em;
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
     width: fit-content;
   }
 }

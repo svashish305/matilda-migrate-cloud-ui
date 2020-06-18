@@ -48,9 +48,7 @@
             $event.preventDefault() && updateDescription(); $event.target.blur()
           "
           (blur)="updateDescription()"
-          [(ngModel)]="
-            newDescription ? newDescription : templateData.desc
-          "
+          [(ngModel)]="newDescription ? newDescription : templateData.desc"
         />
       </div>
 
@@ -336,7 +334,7 @@
           ></ngx-avatar>
           <div class="relative-top-10">
             <span class="import-list-template-name">Tomcat</span>
-            <span class="import-list-template-description"
+            <span class="import-list-2-template-description"
               >Installation Configuration</span
             >
           </div>

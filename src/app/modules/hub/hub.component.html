@@ -57,7 +57,10 @@
           <div *ngIf="!isTemplateFavouritesCollapsed" class="grid-container">
             <mat-card>
               <div>
-                <ngx-avatar name="Tomcat Template"></ngx-avatar>
+                <ngx-avatar
+                  [size]="!isMobile ? 72 : 68"
+                  name="Tomcat Template"
+                ></ngx-avatar>
                 <span class="bold-text template-title">Tomcat Template</span>
                 <span class="badge badge-pill badge-custom template-status"
                   >Configured</span
@@ -71,7 +74,10 @@
             </mat-card>
             <mat-card>
               <div>
-                <ngx-avatar name="Template 2"></ngx-avatar>
+                <ngx-avatar
+                  [size]="!isMobile ? 72 : 68"
+                  name="Template 2"
+                ></ngx-avatar>
                 <span class="bold-text template-title">Template 2</span>
                 <span class="badge badge-pill badge-custom template-status"
                   >Configured</span
@@ -114,7 +120,10 @@
               (click)="goToTemplate(template.id)"
             >
               <div>
-                <ngx-avatar name="{{ template.name }}"></ngx-avatar>
+                <ngx-avatar
+                  [size]="!isMobile ? 72 : 68"
+                  name="{{ template.name }}"
+                ></ngx-avatar>
                 <span class="bold-text template-title">{{
                   template.name
                 }}</span>
@@ -188,7 +197,10 @@
           <div *ngIf="!isWorkflowFavouritesCollapsed" class="grid-container">
             <mat-card>
               <div>
-                <ngx-avatar name="SMR Wave Workflow"></ngx-avatar>
+                <ngx-avatar
+                  [size]="!isMobile ? 72 : 68"
+                  name="SMR Wave Workflow"
+                ></ngx-avatar>
                 <span class="bold-text template-title">SMR Wave Workflow</span>
                 <img
                   class="workflow-state-img"
@@ -207,7 +219,10 @@
             </mat-card>
             <mat-card>
               <div>
-                <ngx-avatar name="SME Wave Workflow"></ngx-avatar>
+                <ngx-avatar
+                  [size]="!isMobile ? 72 : 68"
+                  name="SME Wave Workflow"
+                ></ngx-avatar>
                 <span class="bold-text template-title">SMR Wave Workflow</span>
                 <img
                   class="workflow-state-img"
@@ -255,7 +270,10 @@
               (click)="goToWorkflow(workflow.id)"
             >
               <div>
-                <ngx-avatar name="{{ workflow.name }}"></ngx-avatar>
+                <ngx-avatar
+                  [size]="!isMobile ? 72 : 68"
+                  name="{{ workflow.name }}"
+                ></ngx-avatar>
                 <span class="bold-text template-title">{{
                   workflow.name
                 }}</span>
