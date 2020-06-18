@@ -192,22 +192,14 @@ export class TemplateListComponent implements OnInit, OnChanges {
     event.stopPropagation();
   }
 
-  collapseAllStages(checked: boolean) {
+  collapseAll(checked: boolean) {
     if (checked) {
-      this.stages.forEach((stage: any) => {
-        // const modifiedStage = { collapsed: true, ...stage };
-        // this.dataService
-        //   .updateStage(modifiedStage)
-        //   .subscribe((res) => console.log(res));
-        stage.collapsed = true;
+      this.templateData.groups.forEach((templateType: any) => {
+        templateType.collapsed = true;
       });
     } else {
-      this.stages.forEach((stage: any) => {
-        // const modifiedStage = { collapsed: true, ...stage };
-        // this.dataService
-        //   .updateStage(modifiedStage)
-        //   .subscribe((res) => console.log(res));
-        stage.collapsed = false;
+      this.templateData.groups.forEach((templateType: any) => {
+        templateType.collapsed = false;
       });
     }
   }
