@@ -55,7 +55,7 @@
 <div class="drag-drop-parent">
   <div
     cdkDropList
-    [cdkDropListData]="stages"
+    [cdkDropListData]="templateData.groups"
     (cdkDropListDropped)="dropGroup($event)"
   >
     <!-- <div
@@ -67,10 +67,10 @@
     > -->
     <div
       class="templates__inner__wrapper"
-      *ngFor="let stage of stages; let i = index"
+      *ngFor="let templateType of templateData.groups; let i = index"
       cdkDropListGroup
       cdkDrag
-      [cdkDragData]="stage"
+      [cdkDragData]="templateType"
     >
       <!-- template list strats -->
       <div class="template-list-wrapper">
@@ -79,7 +79,7 @@
             <div class="template-name">
               <div
                 class="group-drag"
-                [ngClass]="{ 'do-not-show': !stage.drag }"
+                [ngClass]="{ 'do-not-show': !templateType.drag }"
               >
                 <img
                   class="move-cursor"
@@ -92,12 +92,15 @@
                 (click)="openGroupLevelActions(stage)"
                 class="accordian"
               > -->
-              <div [ngClass]="{ collapsed: stage.collapsed }" class="accordian">
+              <div
+                [ngClass]="{ collapsed: templateType.collapsed }"
+                class="accordian"
+              >
                 <img
                   class="accordian-icon"
                   src="assets/imgs/chevron-down.svg"
                   alt=""
-                  (click)="stage.collapsed = !stage.collapsed"
+                  (click)="templateType.collapsed = !templateType.collapsed"
                 />
                 <!-- <div class="group-level-actions">
                   <div
@@ -119,15 +122,15 @@
 
               <div
                 class="group-name-wrapper"
-                (mouseenter)="groupNameEnter(stage)"
-                (mouseleave)="stage.edit = false"
+                (mouseenter)="groupNameEnter(templateType)"
+                (mouseleave)="templateType.edit = false"
               >
                 <div class="group-name common-text">
-                  {{ stage.name }}
+                  {{ templateType.name }}
                 </div>
               </div>
             </div>
-            <div *ngIf="!stage.collapsed" class="status-section">
+            <div *ngIf="!templateType.collapsed" class="status-section">
               <span
                 [ngClass]="{
                   'common-text-mobile': isMobile,
@@ -138,11 +141,11 @@
               </span>
               <span
                 class="badge badge-pill badge-custom"
-                [ngStyle]="setBadgeBgColor(stage.state)"
-                >{{ stage.state }}</span
+                [ngStyle]="setBadgeBgColor(templateType.statusCd)"
+                >{{ templateType.statusCd }}</span
               >
             </div>
-            <div *ngIf="!stage.collapsed" class="progress-section">
+            <div *ngIf="!templateType.collapsed" class="progress-section">
               <span
                 [ngClass]="{
                   'common-text-mobile': isMobile,
@@ -153,7 +156,7 @@
               </span>
               <mat-progress-bar
                 class="list-progress-bar"
-                value="{{ stage.progressPercentage }}"
+                value="{{ templateType.progress }}"
               ></mat-progress-bar>
               <span
                 [ngClass]="{
@@ -161,17 +164,17 @@
                   'medium-text': !isMobile
                 }"
                 class="list-percent-text"
-                >{{ stage.progressPercentage }} %</span
+                >{{ templateType.progress }} %</span
               >
             </div>
             <img
               class="stage-option"
-              [ngStyle]="alignStageOption(stage.collapsed)"
+              [ngStyle]="alignStageOption(templateType.collapsed)"
               src="assets/imgs/vEllipsis.svg"
               alt="stage-options"
             />
 
-            <div *ngIf="!stage.collapsed" class="stage-list-subheader">
+            <div *ngIf="!templateType.collapsed" class="stage-list-subheader">
               <div class="stage-name-width">
                 <span
                   [ngClass]="{
@@ -224,18 +227,18 @@
           </div>
           <!-- cdkdroplist for template re ordering among and across groups -->
           <div
-            *ngIf="!stage.collapsed"
+            *ngIf="!templateType.collapsed"
             cdkDropList
-            id="{{ stage.id }}"
-            [cdkDropListData]="stage.data.taskTypes[0].tasks"
+            id="{{ templateType.id }}"
+            [cdkDropListData]="templateType.items"
             (cdkDropListDropped)="drop($event)"
             [cdkDropListConnectedTo]="getConnectedList()"
           >
             <div
               class="row-items template__row item"
-              [ngClass]="{ selected: stage.selected }"
+              [ngClass]="{ selected: templateType.selected }"
               (click)="rowClick(task)"
-              *ngFor="let task of tasks"
+              *ngFor="let task of templateType.items"
               cdkDrag
             >
               <div class="template-name">
@@ -266,7 +269,9 @@
               </div>
               <div class="flex-lay">
                 <div *ngIf="!isMobile" class="flex-center plugin-val">
-                  <span class="cell-text common-text">{{ task.plugin }}</span>
+                  <span class="cell-text common-text">{{
+                    task.pluginName
+                  }}</span>
                 </div>
                 <div *ngIf="!isMobile">
                   <div
@@ -294,7 +299,7 @@
                     class="border-white template-end flex-center"
                   >
                     <span class="cell-text common-text">{{
-                      task.trigger
+                      task.actionName
                     }}</span>
                   </div>
                 </div>
@@ -307,8 +312,8 @@
                 >
                   <span
                     class="badge badge-pill badge-custom"
-                    [ngStyle]="setBadgeBgColor(task.status)"
-                    >{{ task.status }}</span
+                    [ngStyle]="setBadgeBgColor(task.statusCd)"
+                    >{{ task.statusCd }}</span
                   >
                   <!-- template status start -->
                   <div class="status-dropdown">
@@ -340,11 +345,9 @@
                 <div *ngIf="!isMobile" class="flex-center left-margin-1vw">
                   <mat-progress-bar
                     class="list-item-progress-bar"
-                    value="{{ task.progressPercentage }}"
+                    value="{{ task.progress }}"
                   ></mat-progress-bar>
-                  <span class="list-percent-text"
-                    >{{ task.progressPercentage }} %</span
-                  >
+                  <span class="list-percent-text">{{ task.progress }} %</span>
                 </div>
                 <div class="right-options">
                   <img

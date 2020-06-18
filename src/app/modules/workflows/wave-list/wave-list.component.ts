@@ -37,7 +37,7 @@ export class WaveListComponent implements OnInit {
   showBackdrop;
   @ViewChild("waveList", { static: false }) waveList;
 
-  // rawwaves: any[] = [];
+  rawwaves: any[] = [];
   waves: any[] = [];
   accounts: any[] = [];
   accountCollapseState: Map<any, boolean> = new Map();
@@ -89,7 +89,7 @@ export class WaveListComponent implements OnInit {
 
   getWaves() {
     this.dataService.getWaves().subscribe((data: any[]) => {
-      // this.rawwaves = data;
+      this.rawwaves = data;
       this.waves = data;
     });
   }
@@ -371,7 +371,7 @@ export class WaveListComponent implements OnInit {
   addTemplate(waveType) {
     const id = Math.random().toString(6);
 
-    waveType.templates.push({
+    waveType.items.push({
       id: id,
       name: waveType.newTemplate,
       status: "",

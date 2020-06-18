@@ -282,36 +282,36 @@ export class TemplateListComponent implements OnInit, OnChanges {
 
   /**
    *
-   * @param taskObj - for which the details has to be shown
+   * @param template - for which the details has to be shown
    * @description emits event to open template details
    */
-  rowClick(taskObj) {
-    this.stages.forEach((stage) => {
-      stage.data.taskType.tasks.forEach((task) => {
+  rowClick(template) {
+    this.templateData.groups.forEach((templateType) => {
+      templateType.items.forEach((task) => {
         task.selected = false;
       });
     });
-    taskObj.selected = true;
+    template.selected = true;
     this.rowClicked.emit(true);
     console.log("row clicked");
   }
 
   /**
    *
-   * @param taskType - for which new template has to be added
+   * @param templateType - for which new template has to be added
    * @description Adds new template to group
    */
-  addTemplate(taskType) {
+  addTemplate(templateType) {
     const id = Math.random().toString(6);
 
-    taskType.tasks.push({
+    templateType.items.push({
       id: id,
-      name: taskType.newTemplate,
+      name: templateType.newTemplate,
       status: "",
       startDate: "",
       endDate: "",
     });
-    taskType.newTemplate = "";
+    templateType.newTemplate = "";
   }
 
   /**
@@ -327,13 +327,13 @@ export class TemplateListComponent implements OnInit, OnChanges {
 
   /**
    *
-   * @param waveType for which name has to be edited
+   * @param templateType for which name has to be edited
    * @description make group name editable on hover
    */
-  groupNameEnter(waveType) {
-    this.tasks.forEach((wave) => (wave.edit = false));
-    waveType.edit = true;
-    waveType.drag = true;
+  groupNameEnter(templateType) {
+    this.templateData.groups.forEach((template) => (template.edit = false));
+    templateType.edit = true;
+    templateType.drag = true;
   }
 
   /**
@@ -341,7 +341,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description passes the ids of groups to angular material to make them reorderable
    */
   getConnectedList() {
-    return this.tasks.map((x) => `${x.id}`);
+    return this.templateData.groups.map((x) => `${x.id}`);
   }
 
   /**
@@ -357,10 +357,10 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @param waveType - for which actions has to be opened
    * @description shows group level actions
    */
-  openGroupLevelActions(waveType) {
-    waveType.openActions = !waveType.openActions;
-    this.templateData.waveType.forEach((type) => {
-      if (type.id !== waveType.id) {
+  openGroupLevelActions(templateType) {
+    templateType.openActions = !templateType.openActions;
+    this.templateData.groups.forEach((type) => {
+      if (type.id !== templateType.id) {
         type.openActions = false;
       }
     });
@@ -368,22 +368,22 @@ export class TemplateListComponent implements OnInit, OnChanges {
 
   /**
    *
-   * @param waveType - which is being deleted
+   * @param templateType - which is being deleted
    * @description resizes the template details container
    */
-  deleteGroup(waveType) {
+  deleteGroup(templateType) {
     this.tasks = this.tasks.filter((Type) => {
-      return waveType.id !== Type.id;
+      return templateType.id !== Type.id;
     });
   }
 
   /**
    *
-   * @param waveType of template which is being deleted and template
+   * @param templateType of template which is being deleted and template
    * @description deletes template of group
    */
-  deleteTemplate(waveType, template) {
-    waveType.templates = waveType.templates.filter((temp) => {
+  deleteTemplate(templateType, template) {
+    templateType.items = templateType.items.filter((temp) => {
       return template.id !== temp.id;
     });
   }
