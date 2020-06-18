@@ -1094,6 +1094,23 @@
     color: var(--alt-gray-text);
   }
 
+  .import-list-2-template-description {
+    position: relative;
+    // right: 4.875rem;
+    right: 4.25rem;
+    // top: 0.75rem;
+    top: 1.25rem;
+    // font-family: LatoMedium;
+    // font-size: 0.875em;
+    // line-height: 1.063em;
+
+    font-family: LatoRegular;
+    font-size: 1.125rem;
+    line-height: 1.375rem;
+    letter-spacing: 0.51px;
+    color: var(--alt-gray-text);
+  }
+
   .tag-text {
     font-family: LatoMedium;
     font-size: 0.875em;
