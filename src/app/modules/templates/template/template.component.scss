@@ -1176,8 +1176,9 @@
   }
 
   .footer-styles-2 {
-    position: relative;
-    top: 8.75em;
+    position: absolute !important;
+    top: 42em !important;
+    width: 82vw !important;
   }
 }
 
