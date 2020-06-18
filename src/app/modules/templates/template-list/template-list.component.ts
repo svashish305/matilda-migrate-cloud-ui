@@ -162,6 +162,13 @@ export class TemplateListComponent implements OnInit, OnChanges {
     // this.templates = this.rawtemplates.filter((x) => {
     //   return x.name.toLowerCase().search(this.searchKey.toLowerCase()) !== -1;
     // });
+    if (!this.searchKey || this.searchKey === "") {
+      // this.templates = this.rawtemplates;
+      return true;
+    }
+    this.templateData.groups = this.templateData.groups.filter((x) => {
+      return x.name.toLowerCase().includes(this.searchKey.toLowerCase());
+    });
   }
 
   alignStageOption(collapseState: boolean) {
