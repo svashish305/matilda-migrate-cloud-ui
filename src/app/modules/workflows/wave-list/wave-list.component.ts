@@ -353,14 +353,14 @@ export class WaveListComponent implements OnInit {
    * @description emits event to open template details
    */
   rowClick(template) {
-    this.waveData.groups.forEach((waveType) => {
-      waveType.items.forEach((t) => {
-        t.selected = false;
-      });
-    });
-    template.selected = true;
-    this.rowClicked.emit(true);
-    console.log("row clicked");
+    // this.waveData.groups.forEach((waveType) => {
+    //   waveType.items.forEach((t) => {
+    //     t.selected = false;
+    //   });
+    // });
+    // template.selected = true;
+    // this.rowClicked.emit(true);
+    // console.log("row clicked");
   }
 
   /**
