@@ -44,7 +44,7 @@
         },
         {
           "id": 123,
-          "name": "App1",
+          "name": "App2",
           "order": 100,
           "statusCd": "Defined",
           "progress": 10,
@@ -152,7 +152,7 @@
       "progress": 10,
       "groups": [
         {
-          "id": 1,
+          "id": 123,
           "name": "Infrastructure",
           "order": 100,
           "statusCd": "Defined",
@@ -254,7 +254,7 @@
           ]
         },
         {
-          "id": 2,
+          "id": 123,
           "name": "Infrastructure",
           "order": 100,
           "statusCd": "Defined",
@@ -356,7 +356,7 @@
           ]
         },
         {
-          "id": 3,
+          "id": 123,
           "name": "Infrastructure",
           "order": 100,
           "statusCd": "Defined",

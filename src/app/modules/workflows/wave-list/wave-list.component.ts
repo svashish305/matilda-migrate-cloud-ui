@@ -354,7 +354,7 @@ export class WaveListComponent implements OnInit {
    */
   rowClick(template) {
     this.waveData.groups.forEach((waveType) => {
-      waveType.templates.forEach((t) => {
+      waveType.items.forEach((t) => {
         t.selected = false;
       });
     });

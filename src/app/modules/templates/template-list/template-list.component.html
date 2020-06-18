@@ -227,7 +227,7 @@
           </div>
           <!-- cdkdroplist for template re ordering among and across groups -->
           <div
-            *ngIf="!templateType.collapsed"
+            *ngIf="!templateType.collapsed && templateData.groups"
             cdkDropList
             id="{{ templateType.id }}"
             [cdkDropListData]="templateType.items"
