@@ -87,7 +87,7 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 23em;
+    right: 25em;
     top: 2em;
   }
 
@@ -589,7 +589,8 @@
 
   ::ng-deep.mat-select-arrow {
     position: relative;
-    left: 1em;
+    left: -1.3em;
+    top: -2px;
     height: 24px !important;
     width: 24px !important;
     background: url("src/assets/imgs/chevron-down.svg") !important;
@@ -628,10 +629,19 @@
     align-items: center;
   }
 
+  .status-text {
+    font-family: LatoRegular;
+    font-size: 1.125em;
+    line-height: 1.375em;
+    letter-spacing: 0.51px;
+    color: #000;
+    margin: 8px;
+  }
+
   .progress-section {
     position: relative;
     // right: 0;
-    left: 5em;
+    left: -4em;
     display: flex;
     align-items: center;
   }
@@ -1497,6 +1507,15 @@
     left: 10.5em;
     display: flex;
     align-items: center;
+  }
+
+  .status-text {
+    font-family: LatoRegular;
+    font-size: 1.125em;
+    line-height: 1.375em;
+    letter-spacing: 0.51px;
+    color: #000;
+    margin-right: 8px;
   }
 
   .progress-section {

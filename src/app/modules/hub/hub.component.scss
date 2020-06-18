@@ -164,7 +164,7 @@
 
   .workflow-status {
     position: absolute;
-    bottom: 2em;
+    bottom: 1.75em;
     left: 11em;
   }
 
@@ -179,7 +179,7 @@
     align-items: center;
     position: absolute;
     bottom: 1.25em;
-    right: 1em;
+    right: 3em;
     width: fit-content;
   }
 
@@ -337,7 +337,7 @@
 
   .workflow-state-img {
     position: absolute;
-    top: 4em;
+    top: 3.9em;
     left: 6.5em;
   }
 
@@ -353,13 +353,13 @@
 
   .template-status {
     position: absolute;
-    bottom: 1.5em;
+    bottom: 1.75em;
     left: 9.2em;
   }
 
   .workflow-status {
     position: absolute;
-    bottom: 1.5em;
+    bottom: 1.75em;
     left: 12em;
   }
 
@@ -373,8 +373,8 @@
     display: flex;
     align-items: center;
     position: absolute;
-    bottom: 1em;
-    right: 1em;
+    bottom: 1.1em;
+    right: 4em;
     width: fit-content;
   }
 
@@ -382,8 +382,8 @@
     display: flex;
     align-items: center;
     position: absolute;
-    bottom: 1em;
-    right: 1em;
+    bottom: 1.1em;
+    right: 2em;
     width: fit-content;
   }
 }

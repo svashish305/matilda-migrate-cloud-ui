@@ -131,14 +131,7 @@
               </div>
             </div>
             <div *ngIf="!templateType.collapsed" class="status-section">
-              <span
-                [ngClass]="{
-                  'common-text-mobile': isMobile,
-                  'common-text': !isMobile
-                }"
-                class="right-margin-8"
-                >Status:
-              </span>
+              <span class="status-text">Status: </span>
               <span
                 class="badge badge-pill badge-custom"
                 [ngStyle]="setBadgeBgColor(templateType.statusCd)"
@@ -146,14 +139,7 @@
               >
             </div>
             <div *ngIf="!templateType.collapsed" class="progress-section">
-              <span
-                [ngClass]="{
-                  'common-text-mobile': isMobile,
-                  'common-text': !isMobile
-                }"
-                class="right-margin-8"
-                >Progress:
-              </span>
+              <span class="status-text">Progress: </span>
               <mat-progress-bar
                 class="list-progress-bar"
                 value="{{ templateType.progress }}"

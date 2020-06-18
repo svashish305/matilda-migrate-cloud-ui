@@ -45,6 +45,33 @@ export class HubComponent implements OnInit {
     });
   }
 
+  setBadgeBgColor(stageState = "Defined") {
+    let backgroundColor = "#99a1a9";
+    switch (stageState) {
+      case "Defined":
+        backgroundColor = "#99a1a9";
+        break;
+      case "Configured":
+        backgroundColor = "#012b7a";
+        break;
+      case "In Progress":
+        backgroundColor = "#006bd4";
+        break;
+      case "Success":
+        backgroundColor = "#0ba73d";
+        break;
+      case "Failed":
+        backgroundColor = "#d91b1b";
+        break;
+      case "Paused":
+        backgroundColor = "#fc9528";
+        break;
+      default:
+        break;
+    }
+    return { backgroundColor };
+  }
+
   goToTemplate(templateId) {
     this.router.navigate([`/templates/${templateId}`], {
       preserveQueryParams: true,

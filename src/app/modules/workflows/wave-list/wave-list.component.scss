@@ -97,6 +97,11 @@
     width: 2em;
   }
 
+  .list-percent-text {
+    margin: 3px 0 0 8px;
+    min-width: fit-content;
+  }
+
   .template-name {
     display: flex;
     height: 100%;
@@ -114,7 +119,7 @@
   .stage-btn {
     bottom: -5px;
     position: absolute;
-    left: 24em;
+    left: 23em;
   }
 
   .template__row {
@@ -591,7 +596,8 @@
 
   ::ng-deep.mat-select-arrow {
     position: relative;
-    left: 1em;
+    left: -1.3em;
+    top: -2px;
     height: 24px !important;
     width: 24px !important;
     background: url("src/assets/imgs/chevron-down.svg") !important;
@@ -636,12 +642,12 @@
     line-height: 1.375em;
     letter-spacing: 0.51px;
     color: #000;
-    margin-right: 8px;
+    margin: 8px;
   }
 
   .progress-section {
     position: relative;
-    left: 3em;
+    left: -4em;
     display: flex;
     align-items: center;
   }
@@ -748,6 +754,11 @@
 
   .list-progress-bar {
     width: 4.375em;
+  }
+
+  .list-percent-text {
+    margin-left: 8px;
+    min-width: fit-content;
   }
 
   @media only screen and (max-width: 768px) {
@@ -1557,11 +1568,6 @@
 // common styles
 .list-item-progress-bar {
   width: 57px;
-}
-
-.list-percent-text {
-  margin-left: 8px;
-  min-width: fit-content;
 }
 
 .list-header-text {

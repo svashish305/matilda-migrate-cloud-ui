@@ -127,9 +127,11 @@
                 <span class="bold-text template-title">{{
                   template.name
                 }}</span>
-                <span class="badge badge-pill badge-custom template-status">{{
-                  template.groups[0].statusCd
-                }}</span>
+                <span
+                  class="badge badge-pill badge-custom template-status"
+                  [ngStyle]="setBadgeBgColor(template.groups[0].statusCd)"
+                  >{{ template.groups[0].statusCd }}</span
+                >
                 <div class="template-progress">
                   <span class="common-text">Progress : </span>
                   <mat-progress-bar
@@ -229,7 +231,9 @@
                   src="assets/imgs/wf-defined.svg"
                   alt="Defined"
                 />
-                <span class="badge badge-pill badge-custom workflow-status"
+                <span
+                  class="badge badge-pill badge-custom workflow-status"
+                  [ngStyle]="setBadgeBgColor('Defined')"
                   >Defined</span
                 >
                 <div class="workflow-progress">
@@ -282,9 +286,11 @@
                   src="assets/imgs/wf-configured.svg"
                   alt="Configured"
                 />
-                <span class="badge badge-pill badge-custom workflow-status">{{
-                  workflow.groups[0].statusCd
-                }}</span>
+                <span
+                  class="badge badge-pill badge-custom workflow-status"
+                  [ngStyle]="setBadgeBgColor(workflow.groups[0].statusCd)"
+                  >{{ workflow.groups[0].statusCd }}</span
+                >
                 <div class="workflow-progress">
                   <span class="common-text">Progress : </span>
                   <mat-progress-bar
