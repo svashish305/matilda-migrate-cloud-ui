@@ -72,11 +72,11 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   ) {}
 
   ngOnChanges() {
-    if (this.waveData && this.waveData.data.waveTypes) {
-      this.waveData.data.waveTypes.forEach((waveType) => {
-        waveType.theme = this.getRandomColor();
-      });
-    }
+    // if (this.waveData && this.waveData.data.waveTypes) {
+    //   this.waveData.data.waveTypes.forEach((waveType) => {
+    //     waveType.theme = this.getRandomColor();
+    //   });
+    // }
   }
 
   ngOnInit() {

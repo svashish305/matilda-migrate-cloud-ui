@@ -122,16 +122,14 @@
                   template.name
                 }}</span>
                 <span class="badge badge-pill badge-custom template-status">{{
-                  template.data.status
+                  template.groups[0].statusCd
                 }}</span>
                 <div class="template-progress">
                   <span class="common-text">Progress : </span>
                   <mat-progress-bar
-                    value="{{ template.data.progressPercentage }}"
+                    value="{{ template.progress }}"
                   ></mat-progress-bar>
-                  <span class="medium-text"
-                    >{{ template.data.progressPercentage }}%</span
-                  >
+                  <span class="medium-text">{{ template.progress }}%</span>
                 </div>
               </div>
             </mat-card>
@@ -273,16 +271,14 @@
                   alt="Configured"
                 />
                 <span class="badge badge-pill badge-custom workflow-status">{{
-                  workflow.data.waveTypes.status
+                  workflow.groups[0].statusCd
                 }}</span>
                 <div class="workflow-progress">
                   <span class="common-text">Progress : </span>
                   <mat-progress-bar
-                    value="{{ workflow.data.waveTypes.progressPercentage }}"
+                    value="{{ workflow.progress }}"
                   ></mat-progress-bar>
-                  <span class="medium-text"
-                    >{{ workflow.data.waveTypes.progressPercentage }}%</span
-                  >
+                  <span class="medium-text">{{ workflow.progress }}%</span>
                 </div>
               </div>
             </mat-card>

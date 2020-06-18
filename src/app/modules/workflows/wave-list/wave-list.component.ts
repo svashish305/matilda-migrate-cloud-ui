@@ -133,11 +133,11 @@ export class WaveListComponent implements OnInit {
 
   collapseAll(checked: boolean) {
     if (checked) {
-      this.waveData.data.waveTypes.forEach((waveType: any) => {
+      this.waveData.groups.forEach((waveType: any) => {
         waveType.collapsed = true;
       });
     } else {
-      this.waveData.data.waveTypes.forEach((waveType: any) => {
+      this.waveData.groups.forEach((waveType: any) => {
         waveType.collapsed = false;
       });
     }
@@ -279,7 +279,7 @@ export class WaveListComponent implements OnInit {
     this.edit = edit;
     if (!edit) {
       this.showBackdrop = false;
-      this.waveData.data.waveTypes.forEach((waveType) => {
+      this.waveData.groups.forEach((waveType) => {
         waveType.templates.forEach((template) => {
           template.selected = false;
         });
@@ -297,7 +297,7 @@ export class WaveListComponent implements OnInit {
   addNewGroup() {
     console.log(this.waveList);
     const id = Math.random().toString(6);
-    this.waveData.data.waveTypes.unshift({
+    this.waveData.groups.unshift({
       id: id,
       name: "New group",
       theme: this.waveList.getRandomColor(),
@@ -341,7 +341,7 @@ export class WaveListComponent implements OnInit {
    */
   mainDrop(event: CdkDragDrop<string[]>) {
     moveItemInArray(
-      this.waveData.data.waveTypes,
+      this.waveData.groups,
       event.previousIndex,
       event.currentIndex
     );
@@ -353,7 +353,7 @@ export class WaveListComponent implements OnInit {
    * @description emits event to open template details
    */
   rowClick(template) {
-    this.waveData.data.waveTypes.forEach((waveType) => {
+    this.waveData.groups.forEach((waveType) => {
       waveType.templates.forEach((t) => {
         t.selected = false;
       });
@@ -398,7 +398,7 @@ export class WaveListComponent implements OnInit {
    * @description make group name editable on hover
    */
   groupNameEnter(waveType) {
-    this.waveData.data.waveTypes.forEach((wave) => (wave.edit = false));
+    this.waveData.groups.forEach((wave) => (wave.edit = false));
     waveType.edit = true;
     waveType.drag = true;
   }
@@ -408,7 +408,7 @@ export class WaveListComponent implements OnInit {
    * @description passes the ids of groups to angular material to make them reorderable
    */
   getConnectedList() {
-    return this.waveData.data.waveTypes.map((x) => `${x.id}`);
+    return this.waveData.groups.map((x) => `${x.id}`);
   }
 
   /**
@@ -417,7 +417,7 @@ export class WaveListComponent implements OnInit {
    */
   dropGroup(event: CdkDragDrop<string[]>) {
     moveItemInArray(
-      this.waveData.data.waveTypes,
+      this.waveData.groups,
       event.previousIndex,
       event.currentIndex
     );
@@ -430,7 +430,7 @@ export class WaveListComponent implements OnInit {
    */
   openGroupLevelActions(waveType) {
     waveType.openActions = !waveType.openActions;
-    this.waveData.data.waveTypes.forEach((type) => {
+    this.waveData.groups.forEach((type) => {
       if (type.id !== waveType.id) {
         type.openActions = false;
       }
@@ -443,11 +443,9 @@ export class WaveListComponent implements OnInit {
    * @description resizes the template details container
    */
   deleteGroup(waveType) {
-    this.waveData.data.waveTypes = this.waveData.data.waveTypes.filter(
-      (Type) => {
-        return waveType.id !== Type.id;
-      }
-    );
+    this.waveData.groups = this.waveData.groups.filter((Type) => {
+      return waveType.id !== Type.id;
+    });
   }
 
   /**

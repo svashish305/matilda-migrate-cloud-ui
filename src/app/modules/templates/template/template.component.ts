@@ -49,11 +49,11 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit() {
-    // console.log('templateData ', this.templateData);
+    // console.log("templateData ", this.templateData);
 
     // this.oldTitle = this.templateData.name;
     // this.newTitle = this.oldTitle;
-    // this.oldDescription = this.templateData.data.description;
+    // this.oldDescription = this.templateData.desc;
     // this.newDescription = this.oldDescription;
     this.isMobile = this.deviceService.isMobile();
     this.isTablet = this.deviceService.isTablet();

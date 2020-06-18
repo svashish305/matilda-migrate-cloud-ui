@@ -48,9 +48,7 @@
             $event.preventDefault() && updateDescription(); $event.target.blur()
           "
           (blur)="updateDescription()"
-          [(ngModel)]="
-            newDescription ? newDescription : waveData.data.description
-          "
+          [(ngModel)]="newDescription ? newDescription : waveData.desc"
         />
       </div>
 

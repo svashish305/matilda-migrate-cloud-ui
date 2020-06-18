@@ -55,7 +55,7 @@
 <div class="drag-drop-parent">
   <div
     cdkDropList
-    [cdkDropListData]="waveData.data.waveTypes"
+    [cdkDropListData]="waveData.groups"
     (cdkDropListDropped)="dropGroup($event)"
   >
     <!-- <div
@@ -67,7 +67,7 @@
     > -->
     <div
       class="templates__inner__wrapper"
-      *ngFor="let waveType of waveData.data.waveTypes; let i = index"
+      *ngFor="let waveType of waveData.groups; let i = index"
       cdkDropListGroup
       cdkDrag
       [cdkDragData]="waveType"
@@ -134,19 +134,17 @@
               <span class="status-text">Status: </span>
               <span
                 class="badge badge-pill badge-custom"
-                [ngStyle]="setBadgeBgColor(waveType.status)"
-                >{{ waveType.status }}</span
+                [ngStyle]="setBadgeBgColor(waveType.statusCd)"
+                >{{ waveType.statusCd }}</span
               >
             </div>
             <div *ngIf="!waveType.collapsed" class="progress-section">
               <span class="status-text">Progress: </span>
               <mat-progress-bar
                 class="list-progress-bar"
-                value="{{ waveType.progressPercentage }}"
+                value="{{ waveType.progress }}"
               ></mat-progress-bar>
-              <span class="list-percent-text"
-                >{{ waveType.progressPercentage }} %</span
-              >
+              <span class="list-percent-text">{{ waveType.progress }} %</span>
             </div>
             <img
               class="stage-option"
@@ -219,10 +217,10 @@
           </div>
           <!-- cdkdroplist for template re ordering among and across groups -->
           <div
-            *ngIf="!waveType.collapsed && waveData.data.waveTypes"
+            *ngIf="!waveType.collapsed && waveData.groups"
             cdkDropList
             id="{{ waveType.id }}"
-            [cdkDropListData]="waveType.templates"
+            [cdkDropListData]="waveType.items"
             (cdkDropListDropped)="drop($event)"
             [cdkDropListConnectedTo]="getConnectedList()"
           >
@@ -230,7 +228,7 @@
               class="row-items template__row item"
               [ngClass]="{ selected: template.selected }"
               (click)="rowClick(template)"
-              *ngFor="let template of waveType.templates"
+              *ngFor="let template of waveType.items"
               cdkDrag
             >
               <div class="template-name">
@@ -293,8 +291,8 @@
                 >
                   <span
                     class="badge badge-pill badge-custom"
-                    [ngStyle]="setBadgeBgColor(template.status)"
-                    >{{ template.status }}</span
+                    [ngStyle]="setBadgeBgColor(template.statusCd)"
+                    >{{ template.statusCd }}</span
                   >
                   <!-- template status start -->
                   <div class="status-dropdown">
@@ -326,10 +324,10 @@
                 <div *ngIf="!isMobile" class="flex-center left-margin-1vw">
                   <mat-progress-bar
                     class="list-item-progress-bar"
-                    value="{{ template.progressPercentage }}"
+                    value="{{ template.progress }}"
                   ></mat-progress-bar>
                   <span class="list-percent-text"
-                    >{{ template.progressPercentage }} %</span
+                    >{{ template.progress }} %</span
                   >
                 </div>
                 <div class="right-options">
