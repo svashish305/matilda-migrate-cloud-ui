@@ -8,6 +8,7 @@ import {
 import { DataService } from "src/services/data.service";
 import { DeviceDetectorService } from "ngx-device-detector";
 import { ActivatedRoute } from "@angular/router";
+import { Location } from "@angular/common";
 
 interface SelectInterface {
   value: string;
@@ -47,7 +48,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   constructor(
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
-    private route: ActivatedRoute
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -118,6 +119,10 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     // this.templates = this.rawtemplates.filter((x) => {
     //   return x.name.toLowerCase().search(this.searchKey.toLowerCase()) !== -1;
     // });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   onCheck(event) {

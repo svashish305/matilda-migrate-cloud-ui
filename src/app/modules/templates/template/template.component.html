@@ -9,7 +9,7 @@
   >
     <!-- wave name and desription start -->
     <div class="wave__header">
-      <a [routerLink]="['/hub']" class="back-icon"
+      <a (click)="goBack()" class="back-icon pointer-cursor"
         ><img src="assets/imgs/back-icon.svg" alt="back"
       /></a>
       <img
@@ -234,7 +234,7 @@
 
       <!-- template cards -->
       <mat-card class="mat-elevation-z0 bottom-margin-24">
-        <mat-card-content (click)="importStatus = true">
+        <mat-card-content>
           <mat-checkbox (click)="onCheck($event)" class="relative-top-14">
           </mat-checkbox>
           <div class="checkbox-label-with-icon">
@@ -268,7 +268,7 @@
         </mat-card-content>
       </mat-card>
       <mat-card class="mat-elevation-z0 bottom-margin-24">
-        <mat-card-content (click)="importStatus = true">
+        <mat-card-content>
           <mat-checkbox class="relative-top-14" (click)="onCheck($event)">
           </mat-checkbox>
           <div class="checkbox-label-with-icon">
@@ -315,57 +315,6 @@
             cdkFocusInitial
           >
             Import
-          </button>
-          <button
-            mat-button
-            color="primary"
-            (click)="showImportOptions = false; importStatus = false"
-            class="left-margin-1em"
-          >
-            Cancel
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div *ngIf="importStatus" class="import-final">
-      <header>
-        <a (click)="importStatus = false" class="import-final-close">
-          <img src="assets/imgs/back-icon.svg" alt="Close" />
-        </a>
-        <div class="import-2-header">
-          <ngx-avatar
-            name="Tomcat"
-            size="72"
-            class="lalign-import-template-icon"
-          ></ngx-avatar>
-          <div class="relative-top-10">
-            <span class="import-list-template-name">Tomcat</span>
-            <span class="import-list-2-template-description"
-              >Installation Configuration</span
-            >
-          </div>
-        </div>
-      </header>
-      <mat-divider></mat-divider>
-
-      <app-add-task-modal-content></app-add-task-modal-content>
-
-      <div
-        [ngClass]="{
-          'modal-footer-mobile': isMobile,
-          'modal-footer': !isMobile
-        }"
-        class="footer-styles-2"
-      >
-        <div class="import-btns-1">
-          <button
-            mat-flat-button
-            color="primary"
-            (click)="showImportOptions = false; importStatus = false"
-            cdkFocusInitial
-          >
-            Save
           </button>
           <button
             mat-button
