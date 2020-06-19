@@ -12,7 +12,7 @@ const routes: Routes = [
         loadChildren: () =>
           import("./modules/hub/hub.module").then((m) => m.HubModule),
         data: {
-          breadcrumb: "hub",
+          breadcrumb: "Hub",
         },
       },
       {
@@ -22,7 +22,7 @@ const routes: Routes = [
             (m) => m.TemplatesModule
           ),
         data: {
-          breadcrumb: "templates",
+          breadcrumb: "Templates",
         },
       },
       {
@@ -32,7 +32,7 @@ const routes: Routes = [
             (m) => m.WorkflowsModule
           ),
         data: {
-          breadcrumb: "workflows",
+          breadcrumb: "Workflows",
         },
       },
       {

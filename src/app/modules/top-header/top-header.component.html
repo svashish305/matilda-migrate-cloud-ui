@@ -1,9 +1,20 @@
 <div class="main-header">
   <!-- breadcrumb -->
   <div class="bc">
-    <img class="bc-icons" src="assets/imgs/bc-hub-gray.svg" alt="hub" />
-    <span class="breadcrumb-text">Hub > </span>
     <img
+      class="bc-icons"
+      [src]="
+        onHub ? 'assets/imgs/bc-hub-blue.svg' : 'assets/imgs/bc-hub-gray.svg'
+      "
+      alt="hub"
+    />
+    <span
+      class="breadcrumb-text pointer-cursor"
+      (click)="goToHub()"
+      [ngClass]="{ 'set-primary-color': onHub }"
+      >Hub
+    </span>
+    <!-- <img
       class="bc-icons"
       src="assets/imgs/bc-workflow-gray.svg"
       alt="workflow"
@@ -14,8 +25,11 @@
       src="assets/imgs/bc-template-blue.svg"
       alt="template"
     />
-    <span class="breadcrumb-text set-primary-color">Template</span>
+    <span class="breadcrumb-text set-primary-color">Template</span> -->
+
+    <app-breadcrumb></app-breadcrumb>
   </div>
+
   <!-- end of breadcrumb -->
   <div class="right-menu">
     <img

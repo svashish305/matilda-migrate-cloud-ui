@@ -1,7 +1,23 @@
-<ol class="breadcrumb">
+<ol *ngIf="breadcrumbs" class="breadcrumb">
   <li *ngFor="let breadcrumb of breadcrumbs">
-    <span [routerLink]="breadcrumb.url" routerLinkActive="router-link-active">
-      {{ breadcrumb.label }}
+    <span
+      *ngIf="breadcrumb.label !== 'Hub'"
+      class="breadcrumb-text lr-padding-8"
+    >
+      >
+    </span>
+    <img
+      *ngIf="breadcrumb.label !== 'Hub'"
+      class="bc-icons"
+      src="assets/imgs/bc-{{ breadcrumb.label.toLowerCase() }}-blue.svg"
+      [alt]="breadcrumb.label"
+    />
+    <span
+      [routerLink]="breadcrumb.url"
+      routerLinkActive="router-link-active"
+      class="pointer-cursor breadcrumb-text set-primary-color"
+    >
+      {{ breadcrumb.label !== "Hub" ? breadcrumb.label : "" }}
     </span>
   </li>
 </ol>
