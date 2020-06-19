@@ -306,12 +306,14 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description emits event to open task details
    */
   rowClick(task) {
-    this.templateData.groups.forEach((templateType) => {
-      templateType.items.forEach((task) => {
-        task.selected = false;
+    if (task) {
+      this.templateData.groups.forEach((templateType) => {
+        templateType.items.forEach((task) => {
+          task.selected = false;
+        });
       });
-    });
-    task.selected = true;
+      task.selected = true;
+    }
     this.rowClicked.emit(task);
     console.log("row clicked");
   }

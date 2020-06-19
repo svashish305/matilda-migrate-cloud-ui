@@ -452,8 +452,12 @@
             class="lalign-import-template-icon"
           ></ngx-avatar>
           <div class="relative-top-14">
-            <span class="task-name">{{ selectedTask.name }}</span>
-            <span class="task-description">{{ selectedTask.description }}</span>
+            <div>
+              <span class="task-name">{{ selectedTask.name }}</span>
+              <span class="task-description">{{
+                selectedTask.description
+              }}</span>
+            </div>
           </div>
         </div>
       </header>

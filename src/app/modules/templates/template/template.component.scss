@@ -699,8 +699,8 @@
     right: 2em !important;
   }
 
-  #stage-tab ::ng-deep .mat-tab-body-content {
-    overflow: hidden;
+  ::ng-deep.mat-tab-body.mat-tab-body-active.mat-tab-body-content {
+    overflow: hidden !important;
   }
 
   ::ng-deep.mat-tab-label,
@@ -1148,9 +1148,12 @@
   }
 
   .task-description {
-    position: relative;
-    right: 10.75rem;
-    top: 1.25rem;
+    // position: relative;
+    // right: 10.75rem;
+    // top: 1.25rem;
+    position: fixed;
+    right: 17.75rem;
+    top: 8.25rem;
     font-family: LatoRegular;
     font-size: 1rem;
     line-height: 1.375rem;

@@ -181,7 +181,42 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   }
 
   openTaskDetails(task) {
-    this.selectedTask = task;
+    if (task) {
+      this.selectedTask = task;
+    } else {
+      this.selectedTask = {
+        id: 123,
+        name: "Untitled Task",
+        description: "Task Description",
+        order: 100,
+        pluginName: "AWS",
+        pluginId: 1,
+        serviceId: "1",
+        actionId: "1",
+        serviceName: "vm",
+        actionName: "Create",
+        statusCd: "Configured",
+        progress: 10,
+        keyVault: {
+          id: 1,
+          name: "AWS",
+        },
+        input:
+          '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
+        output: null,
+        startDate: "6/1/2020",
+        endDate: "12/11/2020",
+        duration: null,
+        dependencies: [
+          {
+            groupId: 1234,
+            taskId: 345345,
+            mode: "before",
+          },
+        ],
+        notification: '{"type":"email/hook","id":"1","payload":"emailid/url"}',
+      };
+    }
     this.showTaskOptions = true;
   }
 
