@@ -197,7 +197,7 @@ export class WaveListComponent implements OnInit {
     } else {
       if (collapseState) {
         return {
-          left: "4.9em",
+          left: "-3.6em",
           top: "0.25em",
         };
       } else {
