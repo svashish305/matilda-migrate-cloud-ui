@@ -179,15 +179,15 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     } else {
       width = 0;
     }
-    if (wrapperWidth > 750 + width) {
-      if (contentHolder) {
-        contentHolder.style.width = wrapperWidth - width + 40 + "px";
-      }
-    } else {
-      if (contentHolder) {
-        contentHolder.style.width = "750px";
-      }
-    }
+    // if (wrapperWidth > 750 + width) {
+    //   if (contentHolder) {
+    //     contentHolder.style.width = wrapperWidth - width + 40 + "px";
+    //   }
+    // } else {
+    //   if (contentHolder) {
+    //     contentHolder.style.width = "750px";
+    //   }
+    // }
   }
 
   /**
