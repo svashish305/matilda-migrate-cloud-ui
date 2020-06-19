@@ -10,8 +10,7 @@
     color: var(--blackish-text);
     position: absolute;
     left: 0;
-    // top: 9.85em;
-    top: 10.25em;
+    top: 10em;
   }
 
   .align-workflow-colon {
@@ -38,8 +37,7 @@
   .workflow-type-dd {
     width: 7.25em;
     position: absolute;
-    // top: 6.8em;
-    top: 7.1em;
+    top: 6.9em;
     left: 8.5em;
   }
 
@@ -487,7 +485,7 @@
     cursor: pointer;
     color: var(--primary-light);
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
     width: 7.5625em;
     height: 2.25em;
     top: 3px;
@@ -515,7 +513,7 @@
 
   mat-card-title {
     font-family: LatoMedium;
-    font-size: 1.125em;
+    font-size: 0.875em;
   }
 
   mat-card-subtitle {
@@ -636,7 +634,7 @@
 
   .status-text {
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
     line-height: 1.375em;
     letter-spacing: 0.51px;
     color: #000;
@@ -671,18 +669,18 @@
 
   .stage-tags {
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
     line-height: 1.375em;
     letter-spacing: 0.51px;
     color: var(--blackish-text);
     position: absolute;
     left: 0;
-    top: 6.5em;
+    top: 6em;
   }
 
   .align-workflow-colon {
     position: relative;
-    left: 3.26em;
+    left: 2.9em;
   }
 
   #workflow-select-field::ng-deep .mat-form-field-underline {
@@ -691,14 +689,14 @@
 
   #workflow-select-field::ng-deep.mat-select-value-text {
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
     line-height: 1.375em;
     color: var(--primary-light);
   }
 
   #wf-option ::ng-deep .mat-option-text {
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
     line-height: 1.375em;
     color: var(--primary-light);
   }
@@ -706,17 +704,17 @@
   .workflow-type-dd {
     width: 7.25em;
     position: absolute;
-    top: 5.5em;
-    left: 12.5em;
+    top: 3.3em;
+    left: 11.5em;
   }
 
   .collapse-container {
     position: absolute;
-    top: 13.688em;
+    top: 10.3em;
 
     .stage-action-collapse-text {
       font-family: LatoRegular;
-      font-size: 1.125em;
+      font-size: 0.875em;
       line-height: 1.375em;
       letter-spacing: 0.51px;
       color: var(--alt-gray-text);
@@ -728,7 +726,7 @@
     width: 23.813em !important;
     position: absolute;
     right: 0;
-    top: 12em;
+    top: 8.5em;
   }
 
   #mat-search ::ng-deep .mat-form-field-underline {
@@ -762,7 +760,7 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 27em;
+      right: 25em;
       top: 2em;
     }
 
@@ -1131,7 +1129,7 @@
     cursor: pointer;
     color: var(--primary-light);
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
     width: 7.5625em;
     height: 2.25em;
     top: 3px;
@@ -1159,7 +1157,7 @@
 
   mat-card-title {
     font-family: LatoMedium;
-    font-size: 1.125em;
+    font-size: 0.875em;
   }
 
   mat-card-subtitle {
@@ -1238,6 +1236,7 @@
 
   ::ng-deep.mat-select-arrow {
     position: relative;
+    bottom: 2px;
     right: 14px;
     height: 24px !important;
     width: 24px !important;
@@ -1284,7 +1283,7 @@
 
   .status-text {
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
     line-height: 1.375em;
     letter-spacing: 0.51px;
     color: #000;
@@ -1332,7 +1331,7 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 27em;
+    right: 25em;
     top: 2em;
   }
 
@@ -1358,7 +1357,7 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 27em;
+    right: 25em;
     top: 2em;
   }
 
@@ -1384,7 +1383,7 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 27em;
+    right: 25em;
     top: 2em;
   }
 
@@ -1410,7 +1409,7 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 27em;
+    right: 25em;
     top: 2em;
   }
 
@@ -1436,7 +1435,7 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 27em;
+    right: 25em;
     top: 2em;
   }
 
@@ -1462,7 +1461,7 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 27em;
+    right: 25em;
     top: 2em;
   }
 
@@ -1488,7 +1487,7 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 27em;
+    right: 25em;
     top: 2em;
   }
 
@@ -1514,7 +1513,7 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 27em;
+    right: 25em;
     top: 2em;
   }
 
@@ -1540,14 +1539,14 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 27em;
+    right: 25em;
     top: 2em;
   }
 
   .template-name {
     display: flex;
     height: 100%;
-    width: 77vw;
+    width: 77.5vw;
   }
 
   .stage-name-width {

@@ -1,5 +1,5 @@
 .stages-height {
-  height: 7.438em;
+  height: 7em;
 }
 
 @media only screen and (max-width: 426px) {
@@ -23,7 +23,7 @@
 
   .ngx-template-header-avatar {
     padding-right: 8px;
-    padding-top: 25px;
+    padding-top: 20px;
   }
 
   .my-avatar /deep/ .avatar-content {
@@ -42,12 +42,12 @@
   }
 
   .wave-description {
-    font-size: 1.125em;
+    font-size: 0.875em;
     color: #cecece;
     // display: inline-block;
     position: absolute;
-    // top: 8.25em;
-    top: 4.25em;
+    // top: 4.25em;
+    top: 5.25em;
     left: 3rem;
   }
 
@@ -64,7 +64,7 @@
   .template-header-option {
     color: var(--primary-light);
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
   }
 
   .v-sep {
@@ -80,7 +80,7 @@
   .template-header-disabled-option {
     color: var(--grayed-text);
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
   }
 
   #stage-tab::ng-deep.mat-tab-label .mat-tab-label-content {
@@ -107,7 +107,7 @@
 
   ::ng-deep.mat-menu-content .mat-menu-item {
     font-family: LatoRegular;
-    font-size: 1.125rem;
+    font-size: 0.875rem;
     line-height: 1.375rem;
     letter-spacing: 0.51px;
     color: var(--blackish-text);
@@ -300,7 +300,7 @@
 
   .template-title-font {
     font-family: LatoSemiBold;
-    font-size: 1.125em;
+    font-size: 0.875em;
     font-weight: 600;
     letter-spacing: 0.51px;
     color: #000;
@@ -473,7 +473,7 @@
     // line-height: 1.063em;
 
     font-family: LatoRegular;
-    font-size: 1.125rem;
+    font-size: 0.875rem;
     line-height: 1.375rem;
     letter-spacing: 0.51px;
     color: var(--alt-gray-text);
@@ -490,7 +490,7 @@
     // line-height: 1.063em;
 
     font-family: LatoRegular;
-    font-size: 1.125rem;
+    font-size: 0.875rem;
     line-height: 1.375rem;
     letter-spacing: 0.51px;
     color: var(--alt-gray-text);
@@ -635,12 +635,11 @@
   }
 
   .wave-description {
-    font-size: 1.125em;
+    font-size: 0.875em;
     color: #cecece;
     // display: inline-block;
     position: absolute;
-    // top: 4.25em;
-    top: 3.25em;
+    top: 4.25em;
     left: 11rem;
   }
 
@@ -657,7 +656,7 @@
   .template-header-option {
     color: var(--primary-light);
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
   }
 
   .v-sep {
@@ -673,7 +672,7 @@
   .template-header-disabled-option {
     color: var(--grayed-text);
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
   }
 
   #stage-tab {
@@ -687,7 +686,7 @@
     // letter-spacing: 0.41px;
 
     font-family: LatoRegular;
-    font-size: 1.125rem;
+    font-size: 0.875rem;
     line-height: 1.375rem;
     letter-spacing: 0.51px;
   }
@@ -712,7 +711,7 @@
 
   ::ng-deep.mat-menu-content .mat-menu-item {
     font-family: LatoRegular;
-    font-size: 1.125rem;
+    font-size: 0.875rem;
     line-height: 1.375rem;
     letter-spacing: 0.51px;
     color: var(--blackish-text);
@@ -724,7 +723,7 @@
     width: 100%;
     height: 6em;
     position: absolute;
-    top: 7.5em;
+    top: 5.5em;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -756,7 +755,7 @@
   .new-stage-btn-text {
     border-radius: 4px;
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
     line-height: 1.375em;
     color: #fff;
     display: flex;
@@ -914,7 +913,7 @@
 
   .template-desc-font {
     font-family: LatoRegular;
-    font-size: 1.125rem;
+    font-size: 0.875rem;
     line-height: 1.375rem;
     letter-spacing: 0.51px;
     color: var(--grayed-text);
@@ -985,7 +984,7 @@
 
   .stage-tags {
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
     line-height: 1.375em;
     letter-spacing: 0.51px;
     color: var(--blackish-text);
@@ -995,7 +994,7 @@
 
   .stage-tags-blue {
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875rem;
     line-height: 1.375em;
     letter-spacing: 0.51px;
     color: var(--primary-light);
@@ -1116,7 +1115,7 @@
     // line-height: 1.063em;
 
     font-family: LatoRegular;
-    font-size: 1.125rem;
+    font-size: 0.875rem;
     line-height: 1.375rem;
     letter-spacing: 0.51px;
     color: var(--alt-gray-text);
@@ -1133,7 +1132,7 @@
     // line-height: 1.063em;
 
     font-family: LatoRegular;
-    font-size: 1.125rem;
+    font-size: 0.875rem;
     line-height: 1.375rem;
     letter-spacing: 0.51px;
     color: var(--alt-gray-text);
@@ -1142,7 +1141,7 @@
   .task-name {
     padding-left: 1em;
     font-family: LatoSemiBold;
-    font-size: 1.125rem;
+    font-size: 0.875rem;
     line-height: 1.688rem;
     color: #000;
     position: relative;
@@ -1186,7 +1185,7 @@
   .badge-custom {
     background: var(--light-gray-bg);
     border: solid 1px var(--btn-lightgray-border);
-    font-size: 1.125em;
+    font-size: 0.875em;
     margin-right: 1em;
   }
 

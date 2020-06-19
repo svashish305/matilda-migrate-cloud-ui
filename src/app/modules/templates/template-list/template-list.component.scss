@@ -479,7 +479,7 @@
     cursor: pointer;
     color: var(--primary-light);
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
     width: 7.5625em;
     height: 2.25em;
     top: 3px;
@@ -507,7 +507,7 @@
 
   mat-card-title {
     font-family: LatoMedium;
-    font-size: 1.125em;
+    font-size: 0.875em;
   }
 
   mat-card-subtitle {
@@ -628,7 +628,7 @@
 
   .status-text {
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
     line-height: 1.375em;
     letter-spacing: 0.51px;
     color: #000;
@@ -664,7 +664,7 @@
 
   .stage-tags {
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
     line-height: 1.375em;
     letter-spacing: 0.51px;
     color: var(--blackish-text);
@@ -675,7 +675,7 @@
 
   .align-workflow-colon {
     position: relative;
-    left: 0.85em;
+    left: 0.6em;
   }
 
   #workflow-select-field::ng-deep .mat-form-field-underline {
@@ -684,14 +684,14 @@
 
   #workflow-select-field::ng-deep.mat-select-value-text {
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
     line-height: 1.375em;
     color: var(--primary-light);
   }
 
   #wf-option ::ng-deep .mat-option-text {
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
     line-height: 1.375em;
     color: var(--primary-light);
   }
@@ -699,17 +699,17 @@
   .workflow-type-dd {
     width: 7.25em;
     position: absolute;
-    top: 2.5em;
+    top: 1.5em;
     left: 9.5em;
   }
 
   .collapse-container {
     position: absolute;
-    top: 9.688em;
+    top: 7.688em;
 
     .stage-action-collapse-text {
       font-family: LatoRegular;
-      font-size: 1.125em;
+      font-size: 0.875em;
       line-height: 1.375em;
       letter-spacing: 0.51px;
       color: var(--alt-gray-text);
@@ -721,7 +721,7 @@
     width: 23.813em !important;
     position: absolute;
     right: 0;
-    top: 8em;
+    top: 6em;
   }
 
   #mat-search ::ng-deep .mat-form-field-underline {
@@ -750,7 +750,7 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 27em;
+      right: 25em;
       top: 2em;
     }
 
@@ -776,7 +776,7 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 27em;
+      right: 25em;
       top: 2em;
     }
 
@@ -802,7 +802,7 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 27em;
+      right: 25em;
       top: 2em;
     }
 
@@ -828,7 +828,7 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 27em;
+      right: 25em;
       top: 2em;
     }
 
@@ -854,7 +854,7 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 27em;
+      right: 25em;
       top: 2em;
     }
 
@@ -880,7 +880,7 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 27em;
+      right: 25em;
       top: 2em;
     }
 
@@ -906,7 +906,7 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 27em;
+      right: 25em;
       top: 2em;
     }
 
@@ -932,7 +932,7 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 27em;
+      right: 25em;
       top: 2em;
     }
 
@@ -958,7 +958,7 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 27em;
+      right: 25em;
       top: 2em;
     }
 
@@ -984,7 +984,7 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 27em;
+      right: 25em;
       top: 2em;
     }
 
@@ -1352,7 +1352,7 @@
     cursor: pointer;
     color: var(--primary-light);
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
     width: 7.5625em;
     height: 2.25em;
     top: 3px;
@@ -1380,7 +1380,7 @@
 
   mat-card-title {
     font-family: LatoMedium;
-    font-size: 1.125em;
+    font-size: 0.875em;
   }
 
   mat-card-subtitle {
@@ -1460,6 +1460,7 @@
   ::ng-deep.mat-select-arrow {
     position: relative;
     right: 14px;
+    bottom: 2px;
     height: 24px !important;
     width: 24px !important;
     background: url("src/assets/imgs/chevron-down.svg") !important;
@@ -1501,7 +1502,7 @@
 
   .status-text {
     font-family: LatoRegular;
-    font-size: 1.125em;
+    font-size: 0.875em;
     line-height: 1.375em;
     letter-spacing: 0.51px;
     color: #000;
