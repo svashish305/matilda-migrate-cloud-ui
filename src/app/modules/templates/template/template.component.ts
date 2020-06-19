@@ -41,6 +41,8 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   showImportOptions = false;
   importStatus = false;
   showTagOptions = false;
+  selectedTask: any;
+  showTaskOptions = false;
 
   constructor(
     private dataService: DataService,
@@ -176,6 +178,11 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.appyResize();
     }, 0);
+  }
+
+  openTaskDetails(task) {
+    this.selectedTask = task;
+    this.showTaskOptions = true;
   }
 
   /**

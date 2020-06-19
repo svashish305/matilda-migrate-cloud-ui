@@ -73,8 +73,6 @@ export class TemplateListComponent implements OnInit, OnChanges {
 
   selectedWorkflowType: any;
   isMobile = false;
-  showTaskOptions = false;
-  selectedTask: any;
   primaryColor: ThemePalette = "primary";
 
   constructor(
@@ -314,9 +312,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
       });
     });
     task.selected = true;
-    this.selectedTask = task;
-    this.showTaskOptions = true;
-    this.rowClicked.emit(true);
+    this.rowClicked.emit(task);
     console.log("row clicked");
   }
 
