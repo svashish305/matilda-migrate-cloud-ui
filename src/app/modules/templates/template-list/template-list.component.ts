@@ -73,6 +73,8 @@ export class TemplateListComponent implements OnInit, OnChanges {
 
   selectedWorkflowType: any;
   isMobile = false;
+  showTaskOptions = false;
+  selectedTask: any;
   primaryColor: ThemePalette = "primary";
 
   constructor(
@@ -302,16 +304,18 @@ export class TemplateListComponent implements OnInit, OnChanges {
 
   /**
    *
-   * @param template - for which the details has to be shown
-   * @description emits event to open template details
+   * @param task - for which the details has to be shown
+   * @description emits event to open task details
    */
-  rowClick(template) {
+  rowClick(task) {
     this.templateData.groups.forEach((templateType) => {
       templateType.items.forEach((task) => {
         task.selected = false;
       });
     });
-    template.selected = true;
+    task.selected = true;
+    this.selectedTask = task;
+    this.showTaskOptions = true;
     this.rowClicked.emit(true);
     console.log("row clicked");
   }
@@ -321,17 +325,23 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @param templateType - for which new template has to be added
    * @description Adds new template to group
    */
-  addTemplate(templateType) {
+  addTask(templateType) {
     const id = Math.random().toString(6);
 
     templateType.items.push({
       id: id,
-      name: templateType.newTemplate,
+      name: "Untitiled Task",
       status: "",
       startDate: "",
       endDate: "",
     });
     templateType.newTemplate = "";
+  }
+
+  deleteTask(templateType, taskId) {
+    templateType.items = templateType.items.filter(
+      (item) => item.id !== taskId
+    );
   }
 
   /**
