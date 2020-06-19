@@ -4,13 +4,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #fff;
     border-bottom: 1px solid var(--grayed-border);
   }
 
   .bc {
     position: absolute;
     top: 7em;
-    left: 0;
+    left: 1em;
     font-size: 12px;
     z-index: 1;
   }
@@ -60,7 +61,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 8.25em 0 1.5em;
+    background-color: #fff;
+    margin: 0 7.8em 0 1.5em;
+    border-bottom: 1px solid var(--grayed-border);
   }
 
   .bc {

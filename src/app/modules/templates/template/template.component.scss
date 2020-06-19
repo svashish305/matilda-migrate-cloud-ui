@@ -699,6 +699,10 @@
     right: 2em !important;
   }
 
+  #stage-tab ::ng-deep .mat-tab-body-content {
+    overflow: hidden;
+  }
+
   ::ng-deep.mat-tab-label,
   ::ng-deep.mat-tab-label-active {
     min-width: 6.286em !important;
@@ -762,30 +766,30 @@
   }
 
   .template-container {
-    overflow-y: scroll;
-    height: 45vh;
+    // overflow-y: scroll;
+    // height: 45vh;
     width: 100%;
     margin-top: 6em;
     // border-top: 1px solid var(--grayed-border);
   }
 
   /* Hide scrollbar for Chrome, Safari and Opera */
-  .template-container::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
-  }
+  // .template-container::-webkit-scrollbar {
+  //   width: 0px;
+  //   background: transparent; /* make scrollbar transparent */
+  // }
 
-  .template-container {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-  }
+  // .template-container {
+  //   scrollbar-width: none; /* Firefox */
+  //   -ms-overflow-style: none; /* IE and Edge */
+  // }
 
   // .templates__wrapper {
   //   margin-top: 6em;
   // }
 
   .wave__header {
-    border-top: 1px solid var(--grayed-border);
+    // border-top: 1px solid var(--grayed-border);
     padding: 34px 0 0 0;
     height: 8em;
     display: flex;

@@ -1,12 +1,12 @@
 .left-nav-styles {
-  position: absolute;
+  position: fixed;
   z-index: 3;
 }
 
 @media only screen and (max-width: 426px) {
   .nav-body-container {
     position: absolute;
-    top: 0;
+    top: 72px;
     left: 0;
     width: 92vw;
     // width: 87vw;
@@ -15,9 +15,17 @@
 }
 
 @media only screen and (min-width: 427px) {
+  .fix-header {
+    position: fixed;
+    top: 0;
+    left: 60px;
+    width: 96.05vw;
+    z-index: 4;
+  }
+
   .nav-body-container {
     position: absolute;
-    top: 0;
+    top: 72px;
     left: 60px;
     width: 96.05vw;
     // margin: 0 84px 0 24px;
