@@ -20,6 +20,12 @@
 }
 
 @media only screen and (max-width: 426px) {
+  .breadcrumb {
+    position: relative;
+    left: 4.5em;
+    bottom: 2.5em;
+  }
+
   .bc {
     position: absolute;
     top: 7em;
@@ -29,8 +35,21 @@
   }
 
   .bc-icons {
-    width: 1em;
-    height: 1em;
+    width: 12px;
+    height: 12px;
+    position: relative;
+    bottom: 1px;
+  }
+
+  .breadcrumb-text {
+    position: relative;
+    top: 1px;
+    padding-left: 6px;
+    font-family: LatoRegular;
+    font-size: 13.5px;
+    line-height: 1.375rem;
+    letter-spacing: 0.51px;
+    color: var(--alt-gray-text);
   }
 }
 
@@ -45,15 +64,15 @@
     position: relative;
     bottom: 3px;
   }
-}
 
-.breadcrumb-text {
-  padding-left: 6px;
-  font-family: LatoRegular;
-  font-size: 1.125rem;
-  line-height: 1.375rem;
-  letter-spacing: 0.51px;
-  color: var(--alt-gray-text);
+  .breadcrumb-text {
+    padding-left: 6px;
+    font-family: LatoRegular;
+    font-size: 1.125rem;
+    line-height: 1.375rem;
+    letter-spacing: 0.51px;
+    color: var(--alt-gray-text);
+  }
 }
 
 .set-primary-color {
