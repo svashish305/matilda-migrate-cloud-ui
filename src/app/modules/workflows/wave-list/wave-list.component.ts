@@ -773,7 +773,6 @@ export class WaveListComponent implements OnInit {
     };
     waveType.items.push(newTemplate);
     waveType.newTemplate = "";
-    console.log("items after adding ", waveType.items);
   }
 
   removeTemplate(waveType, templateId) {
