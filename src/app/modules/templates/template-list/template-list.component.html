@@ -58,13 +58,6 @@
     [cdkDropListData]="templateData.groups"
     (cdkDropListDropped)="dropGroup($event)"
   >
-    <!-- <div
-      class="templates__inner__wrapper"
-      *ngFor="let stage of stages | search: stage.searchKey; let i = index"
-      cdkDropListGroup
-      cdkDrag
-      [cdkDragData]="stage"
-    > -->
     <div
       class="templates__inner__wrapper"
       *ngFor="let templateType of templateData.groups; let i = index"
@@ -75,7 +68,7 @@
       <!-- template list strats -->
       <div class="template-list-wrapper">
         <div>
-          <div id="stage-header" class="template__row">
+          <div id="stage-header" class="template__row" [ngStyle]="toggleTemplateHeight(templateType.collapsed)">
             <div class="template-name">
               <div
                 class="group-drag"

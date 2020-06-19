@@ -172,30 +172,6 @@ export class TemplateListComponent implements OnInit, OnChanges {
     // });
   }
 
-  alignStageOption(collapseState: boolean) {
-    if (this.isMobile) {
-      if (collapseState) {
-        return {
-          left: "5.75em",
-        };
-      } else {
-        return {
-          left: "-12px",
-        };
-      }
-    } else {
-      if (collapseState) {
-        return {
-          left: "4.9em",
-        };
-      } else {
-        return {
-          left: "29.75em",
-        };
-      }
-    }
-  }
-
   onCheck(event) {
     event.stopPropagation();
   }
@@ -241,6 +217,50 @@ export class TemplateListComponent implements OnInit, OnChanges {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  alignStageOption(collapseState: boolean) {
+    if (this.isMobile) {
+      if (collapseState) {
+        return {
+          left: "-4em",
+          top: "0.75em",
+        };
+      } else {
+        return {
+          left: "22px",
+        };
+      }
+    } else {
+      if (collapseState) {
+        return {
+          left: "4.9em",
+          top: "0.25em",
+        };
+      } else {
+        return {
+          left: "29.75em",
+        };
+      }
+    }
+  }
+
+  toggleTemplateHeight(collapsed) {
+    let height;
+    if (this.isMobile) {
+      if (collapsed) {
+        height = "0";
+      } else {
+        height = "5.563em";
+      }
+    } else {
+      if (collapsed) {
+        height = "1em";
+      } else {
+        height = "5.563em";
+      }
+    }
+    return { height };
   }
 
   /**

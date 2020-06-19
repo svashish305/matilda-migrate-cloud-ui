@@ -179,6 +179,50 @@ export class WaveListComponent implements OnInit {
     return { height };
   }
 
+  alignStageOption(collapseState: boolean) {
+    if (this.isMobile) {
+      if (collapseState) {
+        return {
+          left: "-4em",
+          top: "0.75em",
+        };
+      } else {
+        return {
+          left: "22px",
+        };
+      }
+    } else {
+      if (collapseState) {
+        return {
+          left: "4.9em",
+          top: "0.25em",
+        };
+      } else {
+        return {
+          left: "29.75em",
+        };
+      }
+    }
+  }
+
+  toggleWorkflowHeight(collapsed) {
+    let height;
+    if (this.isMobile) {
+      if (collapsed) {
+        height = "0";
+      } else {
+        height = "5.563em";
+      }
+    } else {
+      if (collapsed) {
+        height = "1em";
+      } else {
+        height = "5.563em";
+      }
+    }
+    return { height };
+  }
+
   toggleCollapse(accountId) {
     this.accountCollapseState[accountId] = !this.accountCollapseState[
       accountId

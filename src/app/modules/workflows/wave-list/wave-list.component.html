@@ -75,7 +75,11 @@
       <!-- template list strats -->
       <div class="template-list-wrapper">
         <div>
-          <div id="stage-header" class="template__row">
+          <div
+            id="stage-header"
+            class="template__row"
+            [ngStyle]="toggleWorkflowHeight(waveType.collapsed)"
+          >
             <div class="template-name">
               <div
                 class="group-drag"
@@ -148,6 +152,7 @@
             </div>
             <img
               class="stage-option"
+              [ngStyle]="alignStageOption(waveType.collapsed)"
               src="assets/imgs/vEllipsis.svg"
               alt="stage-options"
             />

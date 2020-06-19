@@ -75,8 +75,6 @@
   }
 
   #stage-header {
-    height: 5.563em !important;
-
     display: flex;
     flex-direction: row;
     // justify-content: space-evenly;
@@ -255,7 +253,6 @@
   // }
 
   .templates__inner__wrapper {
-    // margin-bottom: 60px;
     margin-bottom: 40px;
   }
 
@@ -649,7 +646,7 @@
   .stage-option {
     bottom: 2em;
     position: relative;
-    left: 3.5em !important;
+    left: 3.5em;
   }
 
   .row-items {
@@ -738,8 +735,6 @@
   }
 
   #stage-header {
-    height: 5.563em !important;
-
     display: flex;
     flex-direction: row;
     // justify-content: space-evenly;
@@ -1146,7 +1141,6 @@
   // }
 
   .templates__inner__wrapper {
-    // margin-bottom: 60px;
     margin-bottom: 40px;
   }
 
