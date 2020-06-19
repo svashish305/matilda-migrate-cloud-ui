@@ -336,11 +336,13 @@
                   >
                 </div>
                 <div class="right-options">
-                  <img
-                    class="set-margin-right"
-                    src="assets/imgs/delete.svg"
-                    alt="delete"
-                  />
+                  <a (click)="removeTemplate(waveType, template.id)">
+                    <img
+                      class="set-margin-right"
+                      src="assets/imgs/delete.svg"
+                      alt="delete"
+                    />
+                  </a>
                   <img src="assets/imgs/vEllipsis.svg" alt="settings" />
                 </div>
               </div>
@@ -371,7 +373,7 @@
                 </div> -->
                 <span
                   class="common-text add-new-text"
-                  (click)="openDialog(addTemplateModal)"
+                  (click)="addTemplate(waveType)"
                   >+ Add New Template</span
                 >
               </div>
@@ -385,26 +387,3 @@
     </div>
   </div>
 </div>
-
-<ng-template #addTemplateModal>
-  <div class="modal-header">
-    <h4 class="pull-left">Create New Template</h4>
-  </div>
-  <div class="modal-body">
-    <!-- modal body -->
-    <!-- end of modal body -->
-  </div>
-  <div class="modal-footer">
-    <mat-dialog-actions>
-      <button mat-flat-button (click)="dialog.closeAll()">Cancel</button>
-      <button
-        mat-flat-button
-        color="primary"
-        (click)="dialog.closeAll()"
-        cdkFocusInitial
-      >
-        Create
-      </button>
-    </mat-dialog-actions>
-  </div>
-</ng-template>
