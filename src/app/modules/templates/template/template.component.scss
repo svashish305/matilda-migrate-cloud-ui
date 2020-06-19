@@ -496,6 +496,27 @@
     color: var(--alt-gray-text);
   }
 
+  .task-name {
+    padding-left: 1em;
+    font-family: LatoSemiBold;
+    font-size: 1rem;
+    line-height: 1.688rem;
+    color: #000;
+    position: relative;
+    bottom: 8px;
+  }
+
+  .task-description {
+    position: relative;
+    right: 9.5rem;
+    top: 1.25rem;
+    font-family: LatoRegular;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    letter-spacing: 0.51px;
+    color: var(--alt-gray-text);
+  }
+
   .tag-text {
     font-family: LatoMedium;
     font-size: 0.875em;
@@ -552,7 +573,8 @@
 
   .modal-footer-mobile {
     position: absolute !important;
-    top: 92vh !important;
+    // top: 92vh !important;
+    top: 90vh !important;
     display: flex;
     width: 100%;
   }
@@ -1106,6 +1128,27 @@
 
     font-family: LatoRegular;
     font-size: 1.125rem;
+    line-height: 1.375rem;
+    letter-spacing: 0.51px;
+    color: var(--alt-gray-text);
+  }
+
+  .task-name {
+    padding-left: 1em;
+    font-family: LatoSemiBold;
+    font-size: 1.125rem;
+    line-height: 1.688rem;
+    color: #000;
+    position: relative;
+    bottom: 8px;
+  }
+
+  .task-description {
+    position: relative;
+    right: 10.75rem;
+    top: 1.25rem;
+    font-family: LatoRegular;
+    font-size: 1rem;
     line-height: 1.375rem;
     letter-spacing: 0.51px;
     color: var(--alt-gray-text);
