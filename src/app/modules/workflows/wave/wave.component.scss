@@ -618,8 +618,8 @@
     color: #cecece;
     // display: inline-block;
     position: absolute;
-    // top: 8.25em;
-    top: 4.25em;
+    // top: 4.25em;
+    top: 3.25em;
     left: 11rem;
   }
 
@@ -677,8 +677,8 @@
 
   #stage-tab::ng-deep.mat-tab-header {
     position: absolute !important;
-    // top: 8em !important;
-    top: 3.5em !important;
+    // top: 3.5em !important;
+    top: 1.75em !important;
     right: 2em !important;
   }
 
@@ -769,8 +769,8 @@
 
   .wave__header {
     // border-top: 1px solid var(--grayed-border);
-    padding: 34px 0 0 0;
-    height: 8em;
+    padding: 1em 0 0 0;
+    height: 6em;
     display: flex;
     flex-direction: row;
   }
@@ -922,7 +922,7 @@
     min-width: unset;
     height: 30px;
     padding: 0;
-    margin-top: 2.4em;
+    margin-top: 1.75em;
     position: absolute;
     right: 0;
   }
