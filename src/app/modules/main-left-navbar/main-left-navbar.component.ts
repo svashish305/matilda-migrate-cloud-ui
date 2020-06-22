@@ -28,14 +28,17 @@ export class MainLeftNavbarComponent implements OnInit {
   ) {
     this.router.events.subscribe((val) => {
       if (location.path().includes("hub")) {
+        this.isMigrateCollapsed = false;
         this.hubSelected = true;
         this.templateSelected = false;
         this.workflowSelected = false;
       } else if (location.path().includes("templates")) {
+        this.isMigrateCollapsed = false;
         this.templateSelected = true;
         this.hubSelected = false;
         this.workflowSelected = false;
       } else if (location.path().includes("workflows")) {
+        this.isMigrateCollapsed = false;
         this.workflowSelected = true;
         this.hubSelected = false;
         this.templateSelected = false;
