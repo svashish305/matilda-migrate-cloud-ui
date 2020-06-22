@@ -450,10 +450,11 @@
   }
 
   .wave__content {
-    margin: 0 84px 0 24px;
+    // margin: 0 84px 0 24px;
+    margin: 0 0 0 24px;
     flex: 1;
-    // max-width: calc(100% - 200px);
-    max-width: calc(100% - 100px);
+    // max-width: calc(100% - 100px);
+    max-width: calc(100% - 14px);
   }
 
   .modal-backdrop {

@@ -11,6 +11,7 @@ import * as uuid from "uuid";
   styleUrls: ["./main-left-navbar.component.scss"],
 })
 export class MainLeftNavbarComponent implements OnInit {
+  isMigrateCollapsed = true;
   isCollapsed = true;
 
   hubSelected = false;
@@ -46,6 +47,18 @@ export class MainLeftNavbarComponent implements OnInit {
     if (this.deviceService.isMobile()) {
       this.mobileDevice = true;
     }
+  }
+
+  rotateOnClick(migrateCollapsed) {
+    let transform;
+    if (migrateCollapsed) {
+      transform = "rotate(0deg)";
+    } else {
+      transform = "rotate(180deg)";
+    }
+    return {
+      transform,
+    };
   }
 
   hubIsSelected() {

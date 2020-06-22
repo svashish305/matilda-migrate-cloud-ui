@@ -28,7 +28,6 @@
 
     <div
       class="logo__wrapper active-module active-module-extra"
-      [routerLink]="['']"
       (click)="
         hubSelected = false; templateSelected = false; workflowSelected = false
       "
@@ -180,9 +179,11 @@
 
     <div
       class="logo__wrapper active-module active-module-extra"
-      [routerLink]="['']"
       (click)="
-        hubSelected = false; templateSelected = false; workflowSelected = false
+        isMigrateCollapsed = !isMigrateCollapsed;
+        hubSelected = false;
+        templateSelected = false;
+        workflowSelected = false
       "
     >
       <img
@@ -193,13 +194,18 @@
       <div class="migrate-section">
         <img class="logo logo-extra" src="assets/imgs/group-5.svg" alt="" />
         <span class="menu-text white-color">Migrate</span>
-        <img src="assets/imgs/white-chevron-down.svg" alt="" />
+        <img
+          src="assets/imgs/white-chevron-down.svg"
+          alt=""
+          [ngStyle]="rotateOnClick(isMigrateCollapsed)"
+        />
       </div>
     </div>
 
     <mat-divider class="divider-top"></mat-divider>
 
     <div
+      *ngIf="!isMigrateCollapsed"
       (click)="
         hubSelected = true; templateSelected = false; workflowSelected = false
       "
@@ -232,6 +238,7 @@
       </div>
     </div>
     <div
+      *ngIf="!isMigrateCollapsed"
       (click)="
         templateSelected = true;
         hubSelected = false;
@@ -268,6 +275,7 @@
       </div>
     </div>
     <div
+      *ngIf="!isMigrateCollapsed"
       (click)="
         workflowSelected = true;
         hubSelected = false;
