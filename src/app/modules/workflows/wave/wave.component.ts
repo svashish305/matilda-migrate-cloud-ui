@@ -61,7 +61,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   ];
 
   searchKey;
-
+  imgHovered = false;
   isMobile = false;
   isTablet = false;
   isDesktop = false;

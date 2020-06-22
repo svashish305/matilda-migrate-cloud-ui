@@ -39,6 +39,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   isTablet = false;
   isDesktop = false;
 
+  imgHovered = false;
   showImportOptions = false;
   importStatus = false;
   showTagOptions = false;
