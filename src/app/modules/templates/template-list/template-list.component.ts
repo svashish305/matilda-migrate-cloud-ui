@@ -149,6 +149,135 @@ export class TemplateListComponent implements OnInit, OnChanges {
     return { backgroundColor };
   }
 
+  setStatusPos(collapsed) {
+    let pos;
+    if (this.isMobile) {
+      if (collapsed) {
+      } else {
+      }
+    } else {
+      if (collapsed) {
+        pos = {
+          position: "relative",
+          left: "15vw", // -4em
+          bottom: 0,
+          display: "flex",
+          alignItems: "center",
+        };
+      } else {
+        pos = {
+          position: "relative",
+          left: "56em", // 10.5em -> 18.25em
+          bottom: "2em",
+          display: "flex",
+          alignItems: "center",
+        };
+      }
+    }
+    return pos;
+  }
+
+  setProgressPos(collapsed) {
+    let pos;
+    if (this.isMobile) {
+      if (collapsed) {
+      } else {
+      }
+    } else {
+      if (collapsed) {
+        pos = {
+          bottom: 0,
+          position: "relative",
+          left: "20vw", //3.5em -> 22.5em
+          display: "flex",
+          alignItems: "center",
+        };
+      } else {
+        pos = {
+          bottom: "2em",
+          position: "relative",
+          left: "61.75vw", // 18em -> 25.75em
+          display: "flex",
+          alignItems: "center",
+        };
+      }
+    }
+    return pos;
+  }
+
+  alignStageOption(collapseState: boolean) {
+    if (this.isMobile) {
+      if (collapseState) {
+        return {
+          left: "65.75vw", //-4em
+          top: "0.75em",
+        };
+      } else {
+        return {
+          left: 0, //22px
+        };
+      }
+    } else {
+      if (collapseState) {
+        return {
+          left: "1vw", //4.9em -> 14.4em -> 1vw
+          top: "0.25em",
+        };
+      } else {
+        return {
+          left: "2em", //29.75em -> 37.75em -> 47.5em
+        };
+      }
+    }
+  }
+
+  setRightMenuPos(collapsed) {
+    let pos;
+    if (this.isMobile) {
+      if (collapsed) {
+        pos = {
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
+          left: "20%",
+        };
+      } else {
+        pos = {
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
+          left: "-17%",
+        };
+      }
+    } else {
+      if (collapsed) {
+        pos = {
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
+          left: "20%",
+        };
+      } else {
+        pos = {
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
+          left: "68%",
+          bottom: "2.1em",
+        };
+      }
+    }
+    return pos;
+  }
+
   /**
    *
    * @description searches the wavelist using the search key
@@ -217,32 +346,6 @@ export class TemplateListComponent implements OnInit, OnChanges {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
-  }
-
-  alignStageOption(collapseState: boolean) {
-    if (this.isMobile) {
-      if (collapseState) {
-        return {
-          left: "-4em",
-          top: "0.75em",
-        };
-      } else {
-        return {
-          left: "22px",
-        };
-      }
-    } else {
-      if (collapseState) {
-        return {
-          left: "4.9em",
-          top: "0.25em",
-        };
-      } else {
-        return {
-          left: "29.75em",
-        };
-      }
-    }
   }
 
   toggleTemplateHeight(collapsed) {

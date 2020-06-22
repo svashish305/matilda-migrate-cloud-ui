@@ -85,12 +85,19 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 25em;
+    // right: 29em;
+    right: 31.4em;
     top: 2em;
   }
 
   .list-progress-bar {
-    width: 2em;
+    position: relative;
+    top: 14px;
+    width: 2rem;
+  }
+
+  .list-percent-text {
+    margin: 8px 0 0 8px !important;
   }
 
   .template-name {
@@ -192,6 +199,14 @@
         transform: rotate(-90deg);
       }
     }
+  }
+
+  .accordian-icon-collapsed {
+    width: 24px !important;
+    height: 24px !important;
+    position: relative;
+    top: 6px;
+    left: -10em;
   }
 
   .accordian-icon {
@@ -617,6 +632,7 @@
     font-weight: 600;
     letter-spacing: 0.33px;
     color: #fff;
+    margin: 8px 0 8px 0;
   }
 
   .status-section {
@@ -742,6 +758,8 @@
   }
 
   .list-progress-bar {
+    position: relative;
+    top: 7px;
     width: 4.375em;
   }
 
@@ -750,18 +768,18 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 25em;
+      right: 23em;
       top: 2em;
     }
 
     .template-name {
       display: flex;
       height: 100%;
-      width: 17vw;
+      width: 6vw;
     }
 
     .stage-name-width {
-      width: 20vw;
+      width: 21.5vw;
     }
 
     .stage-btn {
@@ -776,18 +794,18 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 25em;
+      right: 29em;
       top: 2em;
     }
 
     .template-name {
       display: flex;
       height: 100%;
-      width: 21vw;
+      width: 14vw;
     }
 
     .stage-name-width {
-      width: 24vw;
+      width: 27.5vw;
     }
 
     .stage-btn {
@@ -802,18 +820,18 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 25em;
+      right: 29em;
       top: 2em;
     }
 
     .template-name {
       display: flex;
       height: 100%;
-      width: 18vw;
+      width: 26vw;
     }
 
     .stage-name-width {
-      width: 22vw;
+      width: 30.5vw;
     }
 
     .stage-btn {
@@ -828,18 +846,18 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 25em;
+      right: 29em;
       top: 2em;
     }
 
     .template-name {
       display: flex;
       height: 100%;
-      width: 25vw;
+      width: 29vw;
     }
 
     .stage-name-width {
-      width: 28vw;
+      width: 33.5vw;
     }
 
     .stage-btn {
@@ -854,18 +872,18 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 25em;
+      right: 29em;
       top: 2em;
     }
 
     .template-name {
       display: flex;
       height: 100%;
-      width: 29vw;
+      width: 33vw;
     }
 
     .stage-name-width {
-      width: 32vw;
+      width: 37vw;
     }
 
     .stage-btn {
@@ -880,18 +898,18 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 25em;
+      right: 29em;
       top: 2em;
     }
 
     .template-name {
       display: flex;
       height: 100%;
-      width: 34vw;
+      width: 40vw;
     }
 
     .stage-name-width {
-      width: 37.5vw;
+      width: 44vw;
     }
 
     .stage-btn {
@@ -906,18 +924,18 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 25em;
+      right: 29em;
       top: 2em;
     }
 
     .template-name {
       display: flex;
       height: 100%;
-      width: 37.5vw;
+      width: 43.5vw;
     }
 
     .stage-name-width {
-      width: 41vw;
+      width: 47vw;
     }
 
     .stage-btn {
@@ -932,18 +950,18 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 25em;
+      right: 29em;
       top: 2em;
     }
 
     .template-name {
       display: flex;
       height: 100%;
-      width: 41vw;
+      width: 46vw;
     }
 
     .stage-name-width {
-      width: 44.25vw;
+      width: 49.5vw;
     }
 
     .stage-btn {
@@ -958,18 +976,18 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 25em;
+      right: 29em;
       top: 2em;
     }
 
     .template-name {
       display: flex;
       height: 100%;
-      width: 44vw;
+      width: 49vw;
     }
 
     .stage-name-width {
-      width: 47vw;
+      width: 52.5vw;
     }
 
     .stage-btn {
@@ -984,18 +1002,18 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 25em;
+      right: 29em;
       top: 2em;
     }
 
     .template-name {
       display: flex;
       height: 100%;
-      width: 63.75vw;
+      width: 67.5vw;
     }
 
     .stage-name-width {
-      width: 66vw;
+      width: 70vw;
     }
 
     .stage-btn {
@@ -1081,6 +1099,13 @@
         transform: rotate(-90deg);
       }
     }
+  }
+
+  .accordian-icon-collapsed {
+    width: 24px !important;
+    height: 24px !important;
+    position: relative;
+    top: 2px;
   }
 
   .accordian-icon {
@@ -1518,7 +1543,6 @@
   }
 
   .stage-option {
-    bottom: 2em;
     position: relative;
   }
 
@@ -1551,7 +1575,7 @@
 }
 
 .list-percent-text {
-  margin-left: 8px;
+  margin: 2px 0 0 8px;
   min-width: fit-content;
 }
 

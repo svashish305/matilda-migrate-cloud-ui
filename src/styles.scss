@@ -214,6 +214,16 @@ body {
 // end of custom margins
 
 // custom paddings
+.flex-padding-r-2 {
+  display: flex;
+  padding-right: 2em;
+}
+
+.flex-padding-r-4 {
+  display: flex;
+  padding-right: 3.9em;
+}
+
 .lr-padding-8 {
   padding: 0 8px 0 8px;
 }

@@ -186,26 +186,74 @@ export class WaveListComponent implements OnInit {
     if (this.isMobile) {
       if (collapseState) {
         return {
-          left: "-4em",
+          left: "65.75vw", //-4em
           top: "0.75em",
         };
       } else {
         return {
-          left: "22px",
+          left: 0, //22px
         };
       }
     } else {
       if (collapseState) {
         return {
-          left: "-3.6em",
+          left: "1vw", //4.9em -> 14.4em -> 1vw
           top: "0.25em",
         };
       } else {
         return {
-          left: "29.75em",
+          left: "2em", //29.75em -> 37.75em -> 47.5em
+          bottom: 0,
         };
       }
     }
+  }
+
+  setRightMenuPos(collapsed) {
+    let pos;
+    if (this.isMobile) {
+      if (collapsed) {
+        pos = {
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
+          left: "20%",
+        };
+      } else {
+        pos = {
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
+          left: "-17%",
+        };
+      }
+    } else {
+      if (collapsed) {
+        pos = {
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
+          left: "-1em",
+        };
+      } else {
+        pos = {
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
+          left: "67.5%",
+          bottom: "2.1em",
+        };
+      }
+    }
+    return pos;
   }
 
   toggleWorkflowHeight(collapsed) {

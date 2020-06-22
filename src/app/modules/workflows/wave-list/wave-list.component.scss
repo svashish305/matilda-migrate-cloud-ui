@@ -90,11 +90,13 @@
   }
 
   .list-progress-bar {
-    width: 2em;
+    position: relative;
+    top: 14px;
+    width: 2rem;
   }
 
   .list-percent-text {
-    margin: 3px 0 0 8px;
+    margin: 8px 0 0 8px !important;
     min-width: fit-content;
   }
 
@@ -197,6 +199,14 @@
         transform: rotate(-90deg);
       }
     }
+  }
+
+  .accordian-icon-collapsed {
+    width: 24px !important;
+    height: 24px !important;
+    position: relative;
+    top: 6px;
+    left: -10em;
   }
 
   .accordian-icon {
@@ -623,6 +633,7 @@
     font-weight: 600;
     letter-spacing: 0.33px;
     color: #fff;
+    margin: 8px 0 8px 0;
   }
 
   .status-section {
@@ -649,9 +660,7 @@
   }
 
   .stage-option {
-    bottom: 2em;
     position: relative;
-    right: 0;
   }
 
   .row-items {
@@ -747,6 +756,8 @@
   }
 
   .list-progress-bar {
+    position: relative;
+    top: 7px;
     width: 4.375em;
   }
 
@@ -760,7 +771,7 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 25em;
+      right: 29em;
       top: 2em;
     }
 
@@ -857,6 +868,13 @@
         transform: rotate(-90deg);
       }
     }
+  }
+
+  .accordian-icon-collapsed {
+    width: 24px !important;
+    height: 24px !important;
+    position: relative;
+    top: 2px;
   }
 
   .accordian-icon {
@@ -1331,18 +1349,18 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 25em;
+    right: 29em;
     top: 2em;
   }
 
   .template-name {
     display: flex;
     height: 100%;
-    width: 49vw;
+    width: 51vw;
   }
 
   .stage-name-width {
-    width: 56vw;
+    width: 61vw;
   }
 
   .stage-btn {
@@ -1357,18 +1375,18 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 25em;
+    right: 29em;
     top: 2em;
   }
 
   .template-name {
     display: flex;
     height: 100%;
-    width: 50vw;
+    width: 58vw;
   }
 
   .stage-name-width {
-    width: 51vw;
+    width: 60vw;
   }
 
   .stage-btn {
@@ -1383,18 +1401,18 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 25em;
+    right: 29em;
     top: 2em;
   }
 
   .template-name {
     display: flex;
     height: 100%;
-    width: 57vw;
+    width: 60vw;
   }
 
   .stage-name-width {
-    width: 56.5vw;
+    width: 61.5vw;
   }
 
   .stage-btn {
@@ -1409,18 +1427,18 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 25em;
+    right: 29em;
     top: 2em;
   }
 
   .template-name {
     display: flex;
     height: 100%;
-    width: 60vw;
+    width: 63vw;
   }
 
   .stage-name-width {
-    width: 59.5vw;
+    width: 64.5vw;
   }
 
   .stage-btn {
@@ -1435,18 +1453,18 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 25em;
+    right: 29em;
     top: 2em;
   }
 
   .template-name {
     display: flex;
     height: 100%;
-    width: 59vw;
+    width: 65vw;
   }
 
   .stage-name-width {
-    width: 60vw;
+    width: 66.5vw;
   }
 
   .stage-btn {
@@ -1461,18 +1479,18 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 25em;
+    right: 29em;
     top: 2em;
   }
 
   .template-name {
     display: flex;
     height: 100%;
-    width: 61vw;
+    width: 67vw;
   }
 
   .stage-name-width {
-    width: 62vw;
+    width: 68.5vw;
   }
 
   .stage-btn {
@@ -1487,18 +1505,18 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 25em;
+    right: 29em;
     top: 2em;
   }
 
   .template-name {
     display: flex;
     height: 100%;
-    width: 63vw;
+    width: 70.5vw;
   }
 
   .stage-name-width {
-    width: 64vw;
+    width: 72vw;
   }
 
   .stage-btn {
@@ -1513,18 +1531,18 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 25em;
+    right: 29em;
     top: 2em;
   }
 
   .template-name {
     display: flex;
     height: 100%;
-    width: 65.2vw;
+    width: 70vw;
   }
 
   .stage-name-width {
-    width: 66vw;
+    width: 71vw;
   }
 
   .stage-btn {
@@ -1539,18 +1557,18 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    right: 25em;
+    right: 29em;
     top: 2em;
   }
 
   .template-name {
     display: flex;
     height: 100%;
-    width: 77.5vw;
+    width: 67.5vw;
   }
 
   .stage-name-width {
-    width: 78vw;
+    width: 70vw;
   }
 
   .stage-btn {

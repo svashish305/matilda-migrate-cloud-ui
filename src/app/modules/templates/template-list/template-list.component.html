@@ -94,7 +94,10 @@
                 class="accordian"
               >
                 <img
-                  class="accordian-icon"
+                  [ngClass]="{
+                    'accordian-icon-collapsed': templateType.collapsed,
+                    'accordian-icon': !templateType.collapsed
+                  }"
                   src="assets/imgs/chevron-down.svg"
                   alt=""
                   (click)="templateType.collapsed = !templateType.collapsed"
@@ -127,7 +130,10 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="!templateType.collapsed" class="status-section">
+            <!-- <div
+              class="status-section"
+              [ngStyle]="setStatusPos(templateType.collapsed)"
+            >
               <span class="status-text">Status: </span>
               <span
                 class="badge badge-pill badge-custom"
@@ -135,7 +141,10 @@
                 >{{ templateType.statusCd }}</span
               >
             </div>
-            <div *ngIf="!templateType.collapsed" class="progress-section">
+            <div
+              class="progress-section"
+              [ngStyle]="setProgressPos(templateType.collapsed)"
+            >
               <span class="status-text">Progress: </span>
               <mat-progress-bar
                 class="list-progress-bar"
@@ -155,7 +164,50 @@
               [ngStyle]="alignStageOption(templateType.collapsed)"
               src="assets/imgs/vEllipsis.svg"
               alt="stage-options"
-            />
+            /> -->
+            <div [ngStyle]="setRightMenuPos(templateType.collapsed)">
+              <div
+                *ngIf="!(isMobile && templateType.collapsed)"
+                class="flex-padding-r-2"
+                [ngClass]="{
+                  'flex-padding-r-4': isMobile && !templateType.collapsed
+                }"
+              >
+                <span class="status-text">Status: </span>
+                <span
+                  class="badge badge-pill badge-custom"
+                  [ngStyle]="setBadgeBgColor(templateType.statusCd)"
+                  >{{ templateType.statusCd }}</span
+                >
+              </div>
+              <div
+                *ngIf="!(isMobile && templateType.collapsed)"
+                class="flex-padding-r-2"
+                [ngClass]="{
+                  'flex-padding-r-4': isMobile && !templateType.collapsed
+                }"
+              >
+                <span class="status-text">Progress: </span>
+                <mat-progress-bar
+                  class="list-progress-bar"
+                  value="{{ templateType.progress }}"
+                ></mat-progress-bar>
+                <span
+                  [ngClass]="{
+                    'medium-text-mobile': isMobile,
+                    'medium-text': !isMobile
+                  }"
+                  class="list-percent-text"
+                  >{{ templateType.progress }} %</span
+                >
+              </div>
+              <img
+                class="stage-option"
+                [ngStyle]="alignStageOption(templateType.collapsed)"
+                src="assets/imgs/vEllipsis.svg"
+                alt="stage-options"
+              />
+            </div>
 
             <div *ngIf="!templateType.collapsed" class="stage-list-subheader">
               <div class="stage-name-width">
