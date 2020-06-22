@@ -20,9 +20,9 @@
       />
       <div *ngIf="!templateData.icon" class="ngx-template-header-avatar">
         <ngx-avatar
-          class="my-avatar"
+          class="my-avatar flex-center"
           name="{{ templateData.name }}"
-          [size]="isMobile ? 40 : 72"
+          [size]="isMobile ? 40 : 56"
         ></ngx-avatar>
       </div>
       <div class="wave__heading">
@@ -397,7 +397,7 @@
         <div class="task-header">
           <ngx-avatar
             [name]="selectedTask.name"
-            size="72"
+            size="56"
             class="lalign-import-template-icon"
           ></ngx-avatar>
           <div class="relative-top-14">

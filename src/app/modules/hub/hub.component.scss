@@ -344,13 +344,13 @@
 
   .template-title {
     position: relative;
-    bottom: 3.5em;
+    bottom: 3em;
     left: 4.5em;
   }
 
   .workflow-state-img {
     position: absolute;
-    top: 3.9em;
+    top: 3.25em;
     left: 6.5em;
   }
 
@@ -366,13 +366,13 @@
 
   .template-status {
     position: absolute;
-    bottom: 1.75em;
+    bottom: 2.5em;
     left: 9.2em;
   }
 
   .workflow-status {
     position: absolute;
-    bottom: 1.75em;
+    bottom: 2.5em;
     left: 12em;
   }
 
@@ -386,7 +386,7 @@
     display: flex;
     align-items: center;
     position: absolute;
-    bottom: 1.1em;
+    bottom: 1.75em;
     right: 4em;
     width: fit-content;
   }
@@ -395,7 +395,7 @@
     display: flex;
     align-items: center;
     position: absolute;
-    bottom: 1.1em;
+    bottom: 1.75em;
     right: 2em;
     width: fit-content;
   }
