@@ -78,4 +78,12 @@ export class BreadcrumbComponent implements OnInit {
     }
     return newBreadcrumbs;
   }
+
+  setActiveUrl(label) {
+    return `assets/imgs/bc-${label.toLowerCase()}-blue.svg`;
+  }
+
+  setInactiveUrl(label) {
+    return `assets/imgs/bc-${label.toLowerCase()}-gray.svg`;
+  }
 }

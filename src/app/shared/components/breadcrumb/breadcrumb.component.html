@@ -9,13 +9,21 @@
     <img
       *ngIf="breadcrumb.label !== 'Hub'"
       class="bc-icons"
-      src="assets/imgs/bc-{{ breadcrumb.label.toLowerCase() }}-blue.svg"
+      [src]="
+        breadcrumb.label === breadcrumbs[breadcrumbs.length - 1].label
+          ? setActiveUrl(breadcrumb.label)
+          : setInactiveUrl(breadcrumb.label)
+      "
       [alt]="breadcrumb.label"
     />
     <span
       [routerLink]="breadcrumb.url"
       routerLinkActive="router-link-active"
-      class="pointer-cursor breadcrumb-text set-primary-color"
+      class="pointer-cursor breadcrumb-text"
+      [ngClass]="{
+        'set-primary-color':
+          breadcrumb.label === breadcrumbs[breadcrumbs.length - 1].label
+      }"
     >
       {{ breadcrumb.label !== "Hub" ? breadcrumb.label : "" }}
     </span>
