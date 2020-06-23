@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SearchPipeModule } from "../searchpipe.module";
 import { HttpClientModule } from "@angular/common/http";
 import { WorkflowModule } from "../workflow.module";
+import { TemplatesModule } from "../templates/templates.module";
 
 const avatarColors = ["#5fb8f1", "#012b7a"];
 
@@ -33,6 +34,7 @@ const avatarColors = ["#5fb8f1", "#012b7a"];
     }),
     SearchPipeModule,
     WorkflowModule,
+    TemplatesModule,
   ],
   exports: [WorkflowsComponent],
 })

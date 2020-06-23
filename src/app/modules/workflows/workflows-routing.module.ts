@@ -10,6 +10,11 @@ const routes: Routes = [
     path: ":id",
     component: WorkflowsComponent,
   },
+  {
+    path: ":workflowId/templates/:id",
+    component: TemplatesComponent,
+    data: { breadcrumb: "Templates" },
+  },
 ];
 
 @NgModule({
