@@ -130,7 +130,12 @@
                 </div>
               </div>
             </div>
-            <div [ngStyle]="setRightMenuPos(templateType.collapsed)">
+            <div
+              [ngClass]="{
+                'list-right-menu-collapsed': templateType.collapsed,
+                'list-right-menu': !templateType.collapsed
+              }"
+            >
               <div
                 *ngIf="!(isMobile && templateType.collapsed)"
                 class="flex-padding-r-2"

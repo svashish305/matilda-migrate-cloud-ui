@@ -182,53 +182,6 @@ export class WaveListComponent implements OnInit {
     return { height };
   }
 
-  setRightMenuPos(collapsed) {
-    let pos;
-    if (this.isMobile) {
-      if (collapsed) {
-        pos = {
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "relative",
-          left: "20%",
-        };
-      } else {
-        pos = {
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "relative",
-          left: "-17%",
-        };
-      }
-    } else {
-      if (collapsed) {
-        pos = {
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "relative",
-          right: "32.5%",
-        };
-      } else {
-        pos = {
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "relative",
-          left: "16%",
-          bottom: "2.1em",
-        };
-      }
-    }
-    return pos;
-  }
-
   toggleWorkflowHeight(collapsed) {
     let height;
     if (this.isMobile) {

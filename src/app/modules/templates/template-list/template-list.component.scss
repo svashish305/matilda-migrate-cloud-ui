@@ -658,6 +658,22 @@
     align-items: center;
   }
 
+  .list-right-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: -17%;
+  }
+
+  .list-right-menu-collapsed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 20%;
+  }
+
   .stage-option {
     bottom: 2em;
     position: relative;
@@ -777,6 +793,23 @@
       top: 2em;
     }
 
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: 16%;
+      bottom: 2.1em;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      position: relative !important;
+      right: -16% !important;
+    }
+
     .stage-option {
       position: absolute;
       margin-top: -2em;
@@ -812,6 +845,23 @@
       position: relative;
       right: 27em;
       top: 2em;
+    }
+
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: 16%;
+      bottom: 2.1em;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      position: relative !important;
+      right: -11% !important;
     }
 
     .stage-option {
@@ -851,6 +901,23 @@
       top: 2em;
     }
 
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: 16%;
+      bottom: 2.1em;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      position: relative !important;
+      right: 5% !important;
+    }
+
     .stage-option {
       position: absolute;
       margin-top: -2em;
@@ -886,6 +953,23 @@
       position: relative;
       right: 27em;
       top: 2em;
+    }
+
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: 16%;
+      bottom: 2.1em;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      position: relative !important;
+      right: 9% !important;
     }
 
     .stage-option {
@@ -925,6 +1009,23 @@
       top: 2em;
     }
 
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: 16%;
+      bottom: 2.1em;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      position: relative !important;
+      right: 14% !important;
+    }
+
     .stage-option {
       position: absolute;
       margin-top: -2em;
@@ -960,6 +1061,23 @@
       position: relative;
       right: 27em;
       top: 2em;
+    }
+
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: 16%;
+      bottom: 2.1em;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      position: relative !important;
+      right: 22% !important;
     }
 
     .stage-option {
@@ -999,6 +1117,23 @@
       top: 2em;
     }
 
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: 16%;
+      bottom: 2.1em;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      position: relative !important;
+      right: 26% !important;
+    }
+
     .stage-option {
       position: absolute;
       margin-top: -2em;
@@ -1034,6 +1169,23 @@
       position: relative;
       right: 27em;
       top: 2em;
+    }
+
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: 16%;
+      bottom: 2.1em;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      position: relative !important;
+      right: 29% !important;
     }
 
     .stage-option {
@@ -1073,6 +1225,23 @@
       top: 2em;
     }
 
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: 16%;
+      bottom: 2.1em;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      right: 32.5%;
+    }
+
     .stage-option {
       position: absolute;
       margin-top: -2em;
@@ -1108,6 +1277,23 @@
       position: relative;
       right: 27em;
       top: 2em;
+    }
+
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: 16%;
+      bottom: 2.1em;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      right: 53.5%;
     }
 
     .stage-option {
@@ -1655,6 +1841,23 @@
     left: 18em;
     display: flex;
     align-items: center;
+  }
+
+  .list-right-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 16%;
+    bottom: 2.1em;
+  }
+
+  .list-right-menu-collapsed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    right: 32.5%;
   }
 
   .stage-option {

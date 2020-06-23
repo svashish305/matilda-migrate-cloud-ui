@@ -137,7 +137,12 @@
                 </div>
               </div>
             </div>
-            <div [ngStyle]="setRightMenuPos(waveType.collapsed)">
+            <div
+              [ngClass]="{
+                'list-right-menu-collapsed': waveType.collapsed,
+                'list-right-menu': !waveType.collapsed
+              }"
+            >
               <div
                 *ngIf="!(isMobile && waveType.collapsed)"
                 class="flex-padding-r-2"
