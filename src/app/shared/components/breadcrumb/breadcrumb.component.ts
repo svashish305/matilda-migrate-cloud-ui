@@ -23,6 +23,7 @@ export class BreadcrumbComponent implements OnInit {
       )
       .subscribe(() => {
         this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
+        console.log("breadcrumbs ", this.breadcrumbs);
       });
   }
 
@@ -66,6 +67,7 @@ export class BreadcrumbComponent implements OnInit {
       label: label,
       url: nextUrl,
     };
+    console.log("current breadcrumb elment ", breadcrumb);
     // Only adding route with non-empty label
     const newBreadcrumbs = breadcrumb.label
       ? [...breadcrumbs, breadcrumb]
