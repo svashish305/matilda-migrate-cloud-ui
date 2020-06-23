@@ -23,6 +23,7 @@ export class BreadcrumbComponent implements OnInit {
       )
       .subscribe(() => {
         this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
+        console.log("breadcrumbs ", this.breadcrumbs);
       });
   }
 
@@ -55,7 +56,7 @@ export class BreadcrumbComponent implements OnInit {
     if (isDynamicRoute && !!route.snapshot) {
       const paramName = lastRoutePart.split(":")[1];
       path = path.replace(lastRoutePart, route.snapshot.params[paramName]);
-      label = route.snapshot.params[paramName];
+      // label = route.snapshot.params[paramName];
     }
 
     //In the routeConfig the complete path is not available,
