@@ -937,8 +937,9 @@
     border-left: solid 1px var(--btn-lightgray-border);
     background-color: #fff;
     height: 100vh;
-    width: 40vw;
-    padding: 0 24px 0 24px;
+    // width: 40vw;
+    // padding: 0 24px 0 24px;
+    padding: 0 94px 0 24px;
     // position: absolute;
     // top: -4.5em;
     position: fixed;
@@ -1175,9 +1176,16 @@
     top: 13.688em;
   }
 
+  .account-footer {
+    border-top: solid 1px var(--grayed-border);
+    position: absolute;
+    bottom: 4.75em;
+    width: calc(100% - 120px);
+  }
+
   .collapse-icon {
     position: absolute;
-    right: -1em;
+    right: 3em;
   }
 
   .account-details {
@@ -1198,5 +1206,19 @@
     position: absolute;
     left: 0;
     top: 0.875em;
+  }
+}
+
+@media only screen and (min-width: 1441px) and (max-width: 1980px) {
+  .collapse-icon {
+    position: absolute;
+    right: 0;
+  }
+}
+
+@media only screen and (min-width: 1981px) and (max-width: 2560px) {
+  .collapse-icon {
+    position: absolute;
+    right: 5em;
   }
 }

@@ -319,7 +319,7 @@
             <span class="import-list-template-description">{{
               account.data.description
             }}</span>
-            <div class="collapse-icon">
+            <div class="collapse-icon pointer-cursor">
               <a (click)="toggleCollapse(account.id)">
                 <img
                   [src]="
@@ -357,7 +357,7 @@
       <div
         [ngClass]="{
           'modal-footer-mobile': isMobile,
-          'modal-footer': !isMobile
+          'account-footer': !isMobile
         }"
       >
         <div class="account-sidebar-footer-btns">
