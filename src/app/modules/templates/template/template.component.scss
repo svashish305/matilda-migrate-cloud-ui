@@ -954,7 +954,8 @@
     background-color: #fff;
     height: 100vh;
     width: 40vw;
-    padding: 0 24px 0 24px;
+    // padding: 0 24px 0 24px;
+    padding: 0 94px 0 24px;
     // position: absolute;
     // top: -4.5em;
     position: fixed;
@@ -1221,7 +1222,8 @@
 
   .footer-styles-1 {
     position: relative;
-    top: 7.438em;
+    // top: 7.438em;
+    top: 8.5em;
   }
 
   .footer-styles-2 {
@@ -1244,7 +1246,7 @@
 
 .edit-tag-footer-btns {
   position: absolute;
-  width: 100%;
+  width: calc(100% - 120px);
   top: 42.25em;
 }
 
