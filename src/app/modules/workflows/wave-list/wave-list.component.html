@@ -101,10 +101,10 @@
                 class="accordian"
               >
                 <img
-                [ngClass]="{
-                  'accordian-icon-collapsed': waveType.collapsed,
-                  'accordian-icon': !waveType.collapsed
-                }"
+                  [ngClass]="{
+                    'accordian-icon-collapsed': waveType.collapsed,
+                    'accordian-icon': !waveType.collapsed
+                  }"
                   src="assets/imgs/chevron-down.svg"
                   alt=""
                   (click)="waveType.collapsed = !waveType.collapsed"
@@ -137,28 +137,6 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="status-section">
-              <span class="status-text">Status: </span>
-              <span
-                class="badge badge-pill badge-custom"
-                [ngStyle]="setBadgeBgColor(waveType.statusCd)"
-                >{{ waveType.statusCd }}</span
-              >
-            </div>
-            <div class="progress-section">
-              <span class="status-text">Progress: </span>
-              <mat-progress-bar
-                class="list-progress-bar"
-                value="{{ waveType.progress }}"
-              ></mat-progress-bar>
-              <span class="list-percent-text">{{ waveType.progress }} %</span>
-            </div>
-            <img
-              class="stage-option"
-              [ngStyle]="alignStageOption(waveType.collapsed)"
-              src="assets/imgs/vEllipsis.svg"
-              alt="stage-options"
-            /> -->
             <div [ngStyle]="setRightMenuPos(waveType.collapsed)">
               <div
                 *ngIf="!(isMobile && waveType.collapsed)"
@@ -195,13 +173,16 @@
                   >{{ waveType.progress }} %</span
                 >
               </div>
-              <img
-                class="stage-option"
-                [ngStyle]="alignStageOption(waveType.collapsed)"
-                src="assets/imgs/vEllipsis.svg"
-                alt="stage-options"
-              />
             </div>
+
+            <img
+              [ngClass]="{
+                'stage-option-collapsed': waveType.collapsed,
+                'stage-option': !waveType.collapsed
+              }"
+              src="assets/imgs/vEllipsis.svg"
+              alt="stage-options"
+            />
 
             <div *ngIf="!waveType.collapsed" class="stage-list-subheader">
               <div class="stage-name-width">

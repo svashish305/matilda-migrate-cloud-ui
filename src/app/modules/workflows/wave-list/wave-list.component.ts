@@ -182,33 +182,6 @@ export class WaveListComponent implements OnInit {
     return { height };
   }
 
-  alignStageOption(collapseState: boolean) {
-    if (this.isMobile) {
-      if (collapseState) {
-        return {
-          left: "65.75vw", //-4em
-          top: "0.75em",
-        };
-      } else {
-        return {
-          left: 0, //22px
-        };
-      }
-    } else {
-      if (collapseState) {
-        return {
-          left: "1vw", //4.9em -> 14.4em -> 1vw
-          top: "0.25em",
-        };
-      } else {
-        return {
-          left: "2em", //29.75em -> 37.75em -> 47.5em
-          bottom: 0,
-        };
-      }
-    }
-  }
-
   setRightMenuPos(collapsed) {
     let pos;
     if (this.isMobile) {
@@ -239,7 +212,7 @@ export class WaveListComponent implements OnInit {
           justifyContent: "center",
           alignItems: "center",
           position: "relative",
-          left: "-1em",
+          right: "32.5%",
         };
       } else {
         pos = {
@@ -248,7 +221,7 @@ export class WaveListComponent implements OnInit {
           justifyContent: "center",
           alignItems: "center",
           position: "relative",
-          left: "67.5%",
+          left: "16%",
           bottom: "2.1em",
         };
       }

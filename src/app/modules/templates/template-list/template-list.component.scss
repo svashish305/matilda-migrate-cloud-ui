@@ -85,8 +85,7 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    // right: 29em;
-    right: 31.4em;
+    right: 31.5em;
     top: 2em;
   }
 
@@ -662,7 +661,13 @@
   .stage-option {
     bottom: 2em;
     position: relative;
-    left: 3.5em;
+    right: 5em;
+  }
+
+  .stage-option-collapsed {
+    position: absolute;
+    right: 0;
+    margin-top: 1em;
   }
 
   .row-items {
@@ -772,6 +777,17 @@
       top: 2em;
     }
 
+    .stage-option {
+      position: absolute;
+      margin-top: -2em;
+      right: 2em;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
+    }
+
     .template-name {
       display: flex;
       height: 100%;
@@ -779,7 +795,7 @@
     }
 
     .stage-name-width {
-      width: 21.5vw;
+      width: 21vw;
     }
 
     .stage-btn {
@@ -794,8 +810,19 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 29em;
+      right: 27em;
       top: 2em;
+    }
+
+    .stage-option {
+      position: absolute;
+      margin-top: -2em;
+      right: 2em;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
     }
 
     .template-name {
@@ -805,7 +832,7 @@
     }
 
     .stage-name-width {
-      width: 27.5vw;
+      width: 27vw;
     }
 
     .stage-btn {
@@ -820,8 +847,19 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 29em;
+      right: 27em;
       top: 2em;
+    }
+
+    .stage-option {
+      position: absolute;
+      margin-top: -2em;
+      right: 2em;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
     }
 
     .template-name {
@@ -831,7 +869,7 @@
     }
 
     .stage-name-width {
-      width: 30.5vw;
+      width: 30vw;
     }
 
     .stage-btn {
@@ -846,8 +884,19 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 29em;
+      right: 27em;
       top: 2em;
+    }
+
+    .stage-option {
+      position: absolute;
+      margin-top: -2em;
+      right: 2em;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
     }
 
     .template-name {
@@ -857,7 +906,7 @@
     }
 
     .stage-name-width {
-      width: 33.5vw;
+      width: 33vw;
     }
 
     .stage-btn {
@@ -872,8 +921,19 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 29em;
+      right: 27em;
       top: 2em;
+    }
+
+    .stage-option {
+      position: absolute;
+      margin-top: -2em;
+      right: 2em;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
     }
 
     .template-name {
@@ -883,7 +943,7 @@
     }
 
     .stage-name-width {
-      width: 37vw;
+      width: 36.5vw;
     }
 
     .stage-btn {
@@ -898,8 +958,19 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 29em;
+      right: 27em;
       top: 2em;
+    }
+
+    .stage-option {
+      position: absolute;
+      margin-top: -2em;
+      right: 2em;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
     }
 
     .template-name {
@@ -909,7 +980,7 @@
     }
 
     .stage-name-width {
-      width: 44vw;
+      width: 43.5vw;
     }
 
     .stage-btn {
@@ -924,8 +995,19 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 29em;
+      right: 27em;
       top: 2em;
+    }
+
+    .stage-option {
+      position: absolute;
+      margin-top: -2em;
+      right: 2em;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
     }
 
     .template-name {
@@ -935,7 +1017,7 @@
     }
 
     .stage-name-width {
-      width: 47vw;
+      width: 46.5vw;
     }
 
     .stage-btn {
@@ -950,8 +1032,19 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 29em;
+      right: 27em;
       top: 2em;
+    }
+
+    .stage-option {
+      position: absolute;
+      margin-top: -2em;
+      right: 2em;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
     }
 
     .template-name {
@@ -961,7 +1054,7 @@
     }
 
     .stage-name-width {
-      width: 49.5vw;
+      width: 49vw;
     }
 
     .stage-btn {
@@ -976,8 +1069,19 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 29em;
+      right: 27em;
       top: 2em;
+    }
+
+    .stage-option {
+      position: absolute;
+      margin-top: -2em;
+      right: 2em;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
     }
 
     .template-name {
@@ -987,7 +1091,7 @@
     }
 
     .stage-name-width {
-      width: 52.5vw;
+      width: 52vw;
     }
 
     .stage-btn {
@@ -1002,8 +1106,19 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 29em;
+      right: 27em;
       top: 2em;
+    }
+
+    .stage-option {
+      position: absolute;
+      margin-top: -2em;
+      right: 2em;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
     }
 
     .template-name {
@@ -1013,7 +1128,7 @@
     }
 
     .stage-name-width {
-      width: 70vw;
+      width: 69.75vw;
     }
 
     .stage-btn {
@@ -1543,7 +1658,14 @@
   }
 
   .stage-option {
-    position: relative;
+    position: absolute;
+    margin-top: -2em;
+    right: 2em;
+  }
+
+  .stage-option-collapsed {
+    position: absolute;
+    right: 0;
   }
 
   .row-items {

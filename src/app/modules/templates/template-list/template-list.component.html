@@ -130,41 +130,6 @@
                 </div>
               </div>
             </div>
-            <!-- <div
-              class="status-section"
-              [ngStyle]="setStatusPos(templateType.collapsed)"
-            >
-              <span class="status-text">Status: </span>
-              <span
-                class="badge badge-pill badge-custom"
-                [ngStyle]="setBadgeBgColor(templateType.statusCd)"
-                >{{ templateType.statusCd }}</span
-              >
-            </div>
-            <div
-              class="progress-section"
-              [ngStyle]="setProgressPos(templateType.collapsed)"
-            >
-              <span class="status-text">Progress: </span>
-              <mat-progress-bar
-                class="list-progress-bar"
-                value="{{ templateType.progress }}"
-              ></mat-progress-bar>
-              <span
-                [ngClass]="{
-                  'medium-text-mobile': isMobile,
-                  'medium-text': !isMobile
-                }"
-                class="list-percent-text"
-                >{{ templateType.progress }} %</span
-              >
-            </div>
-            <img
-              class="stage-option"
-              [ngStyle]="alignStageOption(templateType.collapsed)"
-              src="assets/imgs/vEllipsis.svg"
-              alt="stage-options"
-            /> -->
             <div [ngStyle]="setRightMenuPos(templateType.collapsed)">
               <div
                 *ngIf="!(isMobile && templateType.collapsed)"
@@ -201,13 +166,16 @@
                   >{{ templateType.progress }} %</span
                 >
               </div>
-              <img
-                class="stage-option"
-                [ngStyle]="alignStageOption(templateType.collapsed)"
-                src="assets/imgs/vEllipsis.svg"
-                alt="stage-options"
-              />
             </div>
+
+            <img
+              [ngClass]="{
+                'stage-option-collapsed': templateType.collapsed,
+                'stage-option': !templateType.collapsed
+              }"
+              src="assets/imgs/vEllipsis.svg"
+              alt="stage-options"
+            />
 
             <div *ngIf="!templateType.collapsed" class="stage-list-subheader">
               <div class="stage-name-width">
