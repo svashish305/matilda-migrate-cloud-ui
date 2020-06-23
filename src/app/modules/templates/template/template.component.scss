@@ -616,6 +616,10 @@
   .ngx-template-header-avatar {
     padding-right: 25px;
     margin: auto 0;
+
+    position: absolute;
+    left: 69px;
+    top: 25px;
   }
 
   .my-avatar /deep/ .avatar-content {
@@ -641,7 +645,7 @@
     // display: inline-block;
     position: absolute;
     top: 4.8em;
-    left: 10.2rem;
+    left: 9rem;
   }
 
   .description-input {
@@ -910,6 +914,9 @@
     line-height: 1.688rem;
     letter-spacing: 0.64px;
     color: #000;
+
+    position: absolute;
+    left: 144px;
   }
 
   .template-desc-font {
