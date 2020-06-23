@@ -5,10 +5,7 @@ import { TemplatesComponent } from "./templates.component";
 
 const routes: Routes = [
   { path: "", component: TemplatesComponent },
-  {
-    path: ":id",
-    component: TemplatesComponent,
-  },
+  { path: ":id", component: TemplatesComponent },
   {
     path: "add-task-modal-content",
     loadChildren: () =>

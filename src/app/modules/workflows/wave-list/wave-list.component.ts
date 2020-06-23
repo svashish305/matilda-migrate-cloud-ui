@@ -389,9 +389,7 @@ export class WaveListComponent implements OnInit {
     // });
     // template.selected = true;
 
-    this.router.navigate([
-      `/workflows/${this.waveData.id}/templates/${template.id}`,
-    ]);
+    this.router.navigate([`/templates/${template.id}`]);
     this.rowClicked.emit(true);
     console.log("row clicked");
   }
