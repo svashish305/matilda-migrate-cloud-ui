@@ -61,7 +61,7 @@
     <div
       class="templates__inner__wrapper"
       *ngFor="
-        let waveType of waveData.groups | nestedSearch: searchKey;
+        let waveType of waveData.groups | nestedWorkflowSearch: searchKey;
         let i = index
       "
       cdkDropListGroup

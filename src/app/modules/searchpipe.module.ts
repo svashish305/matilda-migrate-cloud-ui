@@ -1,12 +1,17 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { SearchPipe } from "../pipes/search.pipe";
-import { NestedSearchPipe } from "../pipes/nested-search.pipe";
+import { NestedTemplateSearchPipe } from "../pipes/nested-template-search.pipe";
+import { NestedWorkflowSearchPipe } from "../pipes/nested-workflow-search.pipe";
 
 @NgModule({
-  declarations: [SearchPipe, NestedSearchPipe],
+  declarations: [
+    SearchPipe,
+    NestedTemplateSearchPipe,
+    NestedWorkflowSearchPipe,
+  ],
   imports: [CommonModule],
-  exports: [SearchPipe, NestedSearchPipe],
+  exports: [SearchPipe, NestedTemplateSearchPipe, NestedWorkflowSearchPipe],
   providers: [],
   bootstrap: [],
 })

@@ -61,7 +61,8 @@
     <div
       class="templates__inner__wrapper"
       *ngFor="
-        let templateType of templateData.groups | nestedSearch: searchKey;
+        let templateType of templateData.groups
+          | nestedTemplateSearch: searchKey;
         let i = index
       "
       cdkDropListGroup
