@@ -116,7 +116,7 @@
 
           <div *ngIf="!isTemplateCollapsed" class="grid-container">
             <mat-card
-              *ngFor="let template of templates"
+              *ngFor="let template of templates | search: searchKey"
               (click)="goToTemplate(template.id)"
             >
               <div>
@@ -270,7 +270,7 @@
 
           <div *ngIf="!isWorkflowCollapsed" class="grid-container">
             <mat-card
-              *ngFor="let workflow of workflows"
+              *ngFor="let workflow of workflows | search: searchKey"
               (click)="goToWorkflow(workflow.id)"
             >
               <div>
