@@ -116,7 +116,7 @@
   .stage-btn {
     bottom: -5px;
     position: absolute;
-    left: 23.5em;
+    left: 23.6em;
   }
 
   .template__row {
@@ -205,7 +205,7 @@
     height: 24px !important;
     position: relative;
     top: 6px;
-    left: -10em;
+    left: -6em;
   }
 
   .accordian-icon {
@@ -677,7 +677,7 @@
   .stage-option {
     bottom: 2em;
     position: relative;
-    right: 5em;
+    right: 4.75em;
   }
 
   .stage-option-collapsed {
@@ -789,7 +789,7 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      right: 23em;
+      right: 26em;
       top: 2em;
     }
 
@@ -824,11 +824,11 @@
     .template-name {
       display: flex;
       height: 100%;
-      width: 6vw;
+      width: 14vw;
     }
 
     .stage-name-width {
-      width: 21vw;
+      width: 27.5vw;
     }
 
     .stage-btn {
@@ -867,7 +867,7 @@
     .stage-option {
       position: absolute;
       margin-top: -2em;
-      right: 2em;
+      right: 0.85em;
     }
 
     .stage-option-collapsed {
@@ -921,7 +921,7 @@
     .stage-option {
       position: absolute;
       margin-top: -2em;
-      right: 2em;
+      right: 1.5em !important;
     }
 
     .stage-option-collapsed {
@@ -942,7 +942,7 @@
     .stage-btn {
       bottom: -5px;
       position: absolute;
-      right: -7.5em;
+      right: -7.75em;
     }
   }
 
@@ -975,7 +975,7 @@
     .stage-option {
       position: absolute;
       margin-top: -2em;
-      right: 2em;
+      right: 2em !important;
     }
 
     .stage-option-collapsed {
@@ -1029,7 +1029,7 @@
     .stage-option {
       position: absolute;
       margin-top: -2em;
-      right: 2em;
+      right: 2.5em;
     }
 
     .stage-option-collapsed {
@@ -1050,7 +1050,7 @@
     .stage-btn {
       bottom: -5px;
       position: absolute;
-      right: -7.5em;
+      right: -7.75em;
     }
   }
 
@@ -1158,7 +1158,7 @@
     .stage-btn {
       bottom: -5px;
       position: absolute;
-      right: -7.5em;
+      right: -7.75em;
     }
   }
 
@@ -1191,7 +1191,7 @@
     .stage-option {
       position: absolute;
       margin-top: -2em;
-      right: 2em;
+      right: 1.65em !important;
     }
 
     .stage-option-collapsed {
@@ -1212,7 +1212,7 @@
     .stage-btn {
       bottom: -5px;
       position: absolute;
-      right: -7.5em;
+      right: -7.75em;
     }
   }
 
@@ -1243,9 +1243,9 @@
     }
 
     .stage-option {
-      position: absolute;
-      margin-top: -2em;
-      right: 2em;
+      position: absolute !important;
+      margin-top: -2em !important;
+      right: 1.65em !important;
     }
 
     .stage-option-collapsed {
@@ -1266,7 +1266,8 @@
     .stage-btn {
       bottom: -5px;
       position: absolute;
-      right: -7.5em;
+      // right: -7.5em;
+      right: -7.65em;
     }
   }
 
@@ -1299,7 +1300,7 @@
     .stage-option {
       position: absolute;
       margin-top: -2em;
-      right: 2em;
+      right: 1.6em;
     }
 
     .stage-option-collapsed {
