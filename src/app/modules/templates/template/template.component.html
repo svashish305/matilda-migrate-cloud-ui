@@ -249,7 +249,7 @@
       <div class="import-list-scroll-control">
         <mat-card
           class="mat-elevation-z0 bottom-margin-24"
-          *ngFor="let template of templatesToImport"
+          *ngFor="let template of templatesToImport | search: searchKey"
         >
           <mat-card-content>
             <mat-checkbox
@@ -290,40 +290,6 @@
             </div>
           </mat-card-content>
         </mat-card>
-
-        <!-- <mat-card class="mat-elevation-z0 bottom-margin-24">
-        <mat-card-content>
-          <mat-checkbox class="relative-top-14" (click)="onCheck($event)">
-          </mat-checkbox>
-          <div class="checkbox-label-with-icon">
-            <ngx-avatar name="Apache"></ngx-avatar>
-            <span class="import-list-template-name">Apache</span>
-            <span class="import-list-template-description"
-              >Installation Configuration</span
-            >
-          </div>
-          <div>
-            <span class="tag-text">Tags (Key : Value)</span>
-          </div>
-          <div class="sidebar-badge-container">
-            <span class="badge badge-pill badge-custom">
-              <span
-                ><span class="badge-key-value">IP :</span
-                ><span class="badge-key-value">&nbsp;192.28.10.11</span></span
-              >
-            </span>
-            <span class="badge badge-pill badge-custom">
-              <span
-                ><span class="badge-key-value">Web :</span
-                ><span class="badge-key-value">&nbsp;End</span></span
-              >
-            </span>
-            <span class="badge badge-pill badge-custom">
-              <span class="badge-key-value">+1</span></span
-            >
-          </div>
-        </mat-card-content>
-      </mat-card> -->
       </div>
       <div
         [ngClass]="{

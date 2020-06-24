@@ -307,7 +307,7 @@
       <!-- account cards -->
       <mat-card
         class="mat-elevation-z0 bottom-margin-24"
-        *ngFor="let account of accounts"
+        *ngFor="let account of accounts | search: searchKey"
         [ngStyle]="toggleHeight(account.id)"
       >
         <mat-card-content>
