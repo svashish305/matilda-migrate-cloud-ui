@@ -29,7 +29,6 @@ interface SelectInterface {
   styleUrls: ["./wave.component.scss"],
 })
 export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
-  // @Input() waveData: any = {};
   @Input() waveData: any;
   @Output() rowClicked: EventEmitter<any> = new EventEmitter();
   edit;

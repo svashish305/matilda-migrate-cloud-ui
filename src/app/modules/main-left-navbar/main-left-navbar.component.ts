@@ -128,6 +128,7 @@ export class MainLeftNavbarComponent implements OnInit {
       type: "NONE/TRIGGER/EVENT",
       owner: "TEMPLATE OWNER",
       progress: 10,
+      statusCd: "Defined",
       groups: [
         {
           id: 1,

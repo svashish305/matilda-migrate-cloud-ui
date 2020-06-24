@@ -379,6 +379,12 @@
     width: max-content;
   }
 
+  .import-avatar {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
   .stage-tags {
     font-family: LatoRegular;
     font-size: 0.875rem;
@@ -409,6 +415,7 @@
 
   ::ng-deep.mat-card {
     border: solid 1px var(--btn-lightgray-border);
+    height: 145px;
   }
 
   mat-card-content {
@@ -445,6 +452,12 @@
     left: 24px;
   }
 
+  .import-list-scroll-control {
+    height: 75vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
   .import-list-template-name {
     padding-left: 1em;
     // font-family: LatoBold;
@@ -458,19 +471,19 @@
     line-height: 1.688rem;
     letter-spacing: 0.64px;
     color: #000;
-    position: relative;
-    bottom: 8px;
+    position: absolute;
+    left: 45px;
+    top: 0;
+    min-width: max-content;
   }
 
   .import-list-template-description {
-    position: relative;
-    // right: 4.875rem;
-    right: 4.5rem;
-    // top: 0.75rem;
-    top: 1.25rem;
-    // font-family: LatoMedium;
-    // font-size: 0.875em;
-    // line-height: 1.063em;
+    // position: relative;
+    // right: 4.5rem;
+    // top: 1.25rem;
+    position: absolute;
+    right: -13rem;
+    top: 1.75rem;
 
     font-family: LatoRegular;
     font-size: 0.875rem;
@@ -517,6 +530,11 @@
     color: var(--alt-gray-text);
   }
 
+  .sidebar-tag-text {
+    position: relative;
+    top: 2.25em;
+  }
+
   .tag-text {
     font-family: LatoMedium;
     font-size: 0.875em;
@@ -537,7 +555,8 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin: 8px 0 1.563em 2.5em;
+    // margin: 8px 0 1.563em 2.5em;
+    margin: 40px 0 1.563em 2.5em;
   }
 
   .badge-custom {
@@ -991,6 +1010,12 @@
     width: max-content;
   }
 
+  .import-avatar {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
   .stage-tags {
     font-family: LatoRegular;
     font-size: 0.875em;
@@ -1060,6 +1085,7 @@
 
   ::ng-deep.mat-card {
     border: solid 1px var(--btn-lightgray-border);
+    height: 145px;
   }
 
   mat-card-content {
@@ -1096,32 +1122,33 @@
     left: 24px;
   }
 
+  .import-list-scroll-control {
+    height: 67.25vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
   .import-list-template-name {
     padding-left: 1em;
-    // font-family: LatoBold;
-    // font-size: 1.25rem;
-    // line-height: 0;
-    // letter-spacing: 0.64px;
-    // color: #000;
-
     font-family: LatoSemiBold;
     font-size: 1.25rem;
     line-height: 1.688rem;
     letter-spacing: 0.64px;
     color: #000;
-    position: relative;
-    bottom: 8px;
+    position: absolute;
+    top: 0;
+    left: 45px;
+    min-width: max-content;
   }
 
   .import-list-template-description {
-    position: relative;
-    // right: 4.875rem;
-    right: 4.4rem;
-    // top: 0.75rem;
-    top: 1.25rem;
-    // font-family: LatoMedium;
-    // font-size: 0.875em;
-    // line-height: 1.063em;
+    // position: relative;
+    // right: 6.4rem;
+    // top: 1.25rem;
+
+    position: absolute;
+    right: -13rem;
+    top: 1.75rem;
 
     font-family: LatoRegular;
     font-size: 0.875rem;
@@ -1168,6 +1195,11 @@
     color: var(--alt-gray-text);
   }
 
+  .sidebar-tag-text {
+    position: relative;
+    top: 2.25em;
+  }
+
   .tag-text {
     font-family: LatoMedium;
     font-size: 0.875em;
@@ -1188,7 +1220,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin: 8px 0 1.563em 2.5em;
+    margin: 40px 0 1.563em 2.5em;
   }
 
   .badge-custom {
@@ -1228,9 +1260,12 @@
   }
 
   .footer-styles-1 {
-    position: relative;
-    // top: 7.438em;
-    top: 8.5em;
+    // position: relative;
+    // top: -0.1em;
+
+    position: absolute;
+    top: 90vh;
+    width: calc(100% - 120px);
   }
 
   .footer-styles-2 {

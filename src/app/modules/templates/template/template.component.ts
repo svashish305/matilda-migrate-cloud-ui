@@ -27,6 +27,8 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   showBackdrop;
   @ViewChild("templateList", { static: false }) templateList;
 
+  templateId: any;
+  templatesToImport: any[] = [];
   stages: any[] = [];
   titleState = "idle";
   oldTitle: string;
@@ -47,27 +49,39 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   showTaskOptions = false;
 
   constructor(
+    private route: ActivatedRoute,
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
     private location: Location
   ) {}
 
   ngOnInit() {
-    // console.log("templateData ", this.templateData);
-
     // this.oldTitle = this.templateData.name;
     // this.newTitle = this.oldTitle;
     // this.oldDescription = this.templateData.desc;
     // this.newDescription = this.oldDescription;
+
+    this.route.params.subscribe((params: any) => {
+      this.templateId = params.id;
+    });
+
     this.isMobile = this.deviceService.isMobile();
     this.isTablet = this.deviceService.isTablet();
     this.isDesktop = this.deviceService.isDesktop();
 
     this.getStages();
+
+    this.getTemplates();
   }
 
   ngAfterViewInit() {
     this.appyResize();
+  }
+
+  getTemplates() {
+    this.dataService.getTemplates().subscribe((data: any[]) => {
+      this.templatesToImport = data.filter((d) => d.id !== this.templateId);
+    });
   }
 
   /**
