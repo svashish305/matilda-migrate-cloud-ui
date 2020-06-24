@@ -58,16 +58,12 @@
     [cdkDropListData]="waveData.groups"
     (cdkDropListDropped)="dropGroup($event)"
   >
-    <!-- <div
-      class="templates__inner__wrapper"
-      *ngFor="let stage of waves | search: stage.searchKey; let i = index"
-      cdkDropListGroup
-      cdkDrag
-      [cdkDragData]="stage"
-    > -->
     <div
       class="templates__inner__wrapper"
-      *ngFor="let waveType of waveData.groups; let i = index"
+      *ngFor="
+        let waveType of waveData.groups | nestedSearch: searchKey;
+        let i = index
+      "
       cdkDropListGroup
       cdkDrag
       [cdkDragData]="waveType"
