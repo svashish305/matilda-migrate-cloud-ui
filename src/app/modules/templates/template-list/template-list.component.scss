@@ -742,7 +742,7 @@
 
   .collapse-container {
     position: absolute;
-    top: 7.688em;
+    top: 6.688em; //7.688em
 
     .stage-action-collapse-text {
       font-family: LatoRegular;
@@ -758,7 +758,7 @@
     width: 23.813em !important;
     position: absolute;
     right: 0;
-    top: 6em;
+    top: 5em; //6em
   }
 
   #mat-search ::ng-deep .mat-form-field-underline {

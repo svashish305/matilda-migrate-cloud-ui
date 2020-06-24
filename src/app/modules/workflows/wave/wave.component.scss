@@ -588,7 +588,7 @@
 
   .back-icon {
     position: relative;
-    top: 10px;
+    top: 14px; //10px
     margin-right: 24px;
   }
 
@@ -598,7 +598,7 @@
 
     position: absolute;
     left: 69px;
-    top: 25px;
+    top: 15px; //25px
   }
 
   .my-avatar /deep/ .avatar-content {
@@ -623,7 +623,7 @@
     color: #cecece;
     // display: inline-block;
     position: absolute;
-    top: 4.8em;
+    top: 3.8em; //4.8em
     left: 9rem;
   }
 
@@ -681,8 +681,8 @@
 
   #stage-tab::ng-deep.mat-tab-header {
     position: absolute !important;
-    // top: 3.5em !important;
-    top: 1.75em !important;
+    // top: 1.75em !important;
+    top: 0.75em !important;
     right: 2em !important;
   }
 
@@ -705,7 +705,7 @@
     border-top: solid 1px var(--btn-lightgray-border);
     border-bottom: solid 1px var(--btn-lightgray-border);
     width: 100%;
-    height: 6em;
+    height: 4em; //6em
     position: absolute;
     top: 8em;
     display: flex;
@@ -773,8 +773,8 @@
 
   .wave__header {
     // border-top: 1px solid var(--grayed-border);
-    padding: 1em 0 0 0;
-    height: 6em;
+    // padding: 1em 0 0 0;
+    height: 5em; // 6em
     display: flex;
     flex-direction: row;
   }
@@ -1136,7 +1136,7 @@
   }
 
   .workflows-height {
-    height: 7em;
+    height: 5em; //7em
   }
 
   .badge-container {
