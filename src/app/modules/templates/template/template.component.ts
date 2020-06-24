@@ -28,7 +28,9 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   @ViewChild("templateList", { static: false }) templateList;
 
   templateId: any;
+  currTemplate: any;
   templatesToImport: any[] = [];
+  selectedTemplatesToImport: any[] = [];
   stages: any[] = [];
   titleState = "idle";
   oldTitle: string;
@@ -140,8 +142,34 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     this.location.back();
   }
 
-  onCheck(event) {
+  onCheck(event, template) {
     event.stopPropagation();
+    if (!this.selectedTemplatesToImport.includes(template)) {
+      this.selectedTemplatesToImport.push(template);
+    }
+  }
+
+  importTemplates() {
+    let newStagesAndTasks = [];
+    this.selectedTemplatesToImport.forEach((selectedTemplate: any) => {
+      if (selectedTemplate.groups && selectedTemplate.groups.length) {
+        selectedTemplate.groups.forEach((group) => {
+          newStagesAndTasks.push(group);
+        });
+      }
+    });
+    // console.log("new stuff to copy ", newStagesAndTasks);
+    this.dataService
+      .getTemplate(this.templateId)
+      .subscribe((currentTemplate: any) => {
+        this.currTemplate = currentTemplate;
+        newStagesAndTasks.forEach((newStageTask: any) => {
+          this.currTemplate.groups.push(newStageTask);
+        });
+        console.log("updated ", this.currTemplate);
+        this.templateData = this.currTemplate;
+      });
+    this.selectedTemplatesToImport = [];
   }
 
   /**

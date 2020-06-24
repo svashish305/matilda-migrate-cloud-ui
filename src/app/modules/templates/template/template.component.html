@@ -252,10 +252,16 @@
           *ngFor="let template of templatesToImport"
         >
           <mat-card-content>
-            <mat-checkbox (click)="onCheck($event)" class="relative-top-14">
+            <mat-checkbox
+              (click)="onCheck($event, template)"
+              class="relative-top-14"
+            >
             </mat-checkbox>
             <div class="checkbox-label-with-icon">
-              <ngx-avatar name="{{ template.name }}" class="import-avatar"></ngx-avatar>
+              <ngx-avatar
+                name="{{ template.name }}"
+                class="import-avatar"
+              ></ngx-avatar>
               <span class="import-list-template-name">{{ template.name }}</span>
               <span class="import-list-template-description">{{
                 template.desc
@@ -330,7 +336,9 @@
           <button
             mat-flat-button
             color="primary"
-            (click)="showImportOptions = false; importStatus = false"
+            (click)="
+              showImportOptions = false; importStatus = false; importTemplates()
+            "
             cdkFocusInitial
           >
             Import
