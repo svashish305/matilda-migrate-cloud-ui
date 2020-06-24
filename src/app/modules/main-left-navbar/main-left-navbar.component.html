@@ -29,7 +29,10 @@
     <div
       class="logo__wrapper active-module active-module-extra"
       (click)="
-        hubSelected = false; templateSelected = false; workflowSelected = false
+        isMigrateCollapsed = !isMigrateCollapsed;
+        hubSelected = false;
+        templateSelected = false;
+        workflowSelected = false
       "
     >
       <img
@@ -40,19 +43,24 @@
       <div class="migrate-section">
         <img class="logo logo-extra" src="assets/imgs/group-5.svg" alt="" />
         <span class="menu-text white-color">Migrate</span>
-        <img src="assets/imgs/white-chevron-down.svg" alt="" />
+        <img
+          src="assets/imgs/white-chevron-down.svg"
+          alt=""
+          [ngStyle]="rotateOnClick(isMigrateCollapsed)"
+        />
       </div>
     </div>
 
     <mat-divider class="divider-top"></mat-divider>
 
     <div
+      *ngIf="!isMigrateCollapsed"
       (click)="
         hubSelected = true; templateSelected = false; workflowSelected = false
       "
       class="logo__wrapper padding-14"
       [routerLink]="['/hub']"
-      [ngStyle]="addHubActiveInd()"
+      [ngStyle]="addActiveInd(hubSelected)"
     >
       <img
         class="migrate-logo icon-extra"
@@ -60,7 +68,7 @@
           hubSelected ? 'assets/imgs/white-hub.svg' : 'assets/imgs/blue-hub.svg'
         "
         alt=""
-        [ngStyle]="hubIsSelected()"
+        [ngStyle]="isSelected(hubSelected)"
       />
       <div class="migrate-section">
         <img
@@ -71,14 +79,17 @@
               : 'assets/imgs/blue-hub.svg'
           "
           alt=""
-          [ngStyle]="hubIsSelected()"
+          [ngStyle]="isSelected(hubSelected)"
         />
-        <span class="menu-text top-margin-1em" [ngStyle]="setHubActiveColor()"
+        <span
+          class="menu-text top-margin-1em"
+          [ngStyle]="setActiveColor(hubSelected)"
           >Hub</span
         >
       </div>
     </div>
     <div
+      *ngIf="!isMigrateCollapsed"
       (click)="
         templateSelected = true;
         hubSelected = false;
@@ -86,7 +97,7 @@
         addTemplate()
       "
       class="logo__wrapper padding-14"
-      [ngStyle]="addTemplateActiveInd()"
+      [ngStyle]="addActiveInd(templateSelected)"
     >
       <img
         class="migrate-logo img-size"
@@ -96,7 +107,7 @@
             : 'assets/imgs/blue-template.svg'
         "
         alt=""
-        [ngStyle]="templateIsSelected()"
+        [ngStyle]="isSelected(templateSelected)"
       />
       <div class="migrate-section">
         <img
@@ -107,14 +118,15 @@
               : 'assets/imgs/blue-template.svg'
           "
           alt=""
-          [ngStyle]="templateIsSelected()"
+          [ngStyle]="isSelected(templateSelected)"
         />
-        <span class="menu-text" [ngStyle]="setTemplateActiveColor()"
+        <span class="menu-text" [ngStyle]="setActiveColor(templateSelected)"
           >Template</span
         >
       </div>
     </div>
     <div
+      *ngIf="!isMigrateCollapsed"
       (click)="
         workflowSelected = true;
         hubSelected = false;
@@ -122,7 +134,7 @@
         addWorkflow()
       "
       class="logo__wrapper padding-14"
-      [ngStyle]="addWorkflowActiveInd()"
+      [ngStyle]="addActiveInd(workflowSelected)"
     >
       <img
         class="migrate-logo img-size"
@@ -145,7 +157,7 @@
           alt=""
           [ngStyle]="workflowIsSelected()"
         />
-        <span class="menu-text" [ngStyle]="setWorkflowActiveColor()"
+        <span class="menu-text" [ngStyle]="setActiveColor(workflowSelected)"
           >Workflow</span
         >
       </div>
@@ -211,7 +223,7 @@
       "
       class="logo__wrapper padding-14"
       [routerLink]="['/hub']"
-      [ngStyle]="addHubActiveInd()"
+      [ngStyle]="addActiveInd(hubSelected)"
     >
       <img
         class="migrate-logo icon-extra"
@@ -219,7 +231,7 @@
           hubSelected ? 'assets/imgs/white-hub.svg' : 'assets/imgs/blue-hub.svg'
         "
         alt=""
-        [ngStyle]="hubIsSelected()"
+        [ngStyle]="isSelected(hubSelected)"
       />
       <div class="migrate-section">
         <img
@@ -230,9 +242,11 @@
               : 'assets/imgs/blue-hub.svg'
           "
           alt=""
-          [ngStyle]="hubIsSelected()"
+          [ngStyle]="isSelected(hubSelected)"
         />
-        <span class="menu-text top-margin-1em" [ngStyle]="setHubActiveColor()"
+        <span
+          class="menu-text top-margin-1em"
+          [ngStyle]="setActiveColor(hubSelected)"
           >Hub</span
         >
       </div>
@@ -246,7 +260,7 @@
         addTemplate()
       "
       class="logo__wrapper padding-14"
-      [ngStyle]="addTemplateActiveInd()"
+      [ngStyle]="addActiveInd(templateSelected)"
     >
       <img
         class="migrate-logo img-size"
@@ -256,7 +270,7 @@
             : 'assets/imgs/blue-template.svg'
         "
         alt=""
-        [ngStyle]="templateIsSelected()"
+        [ngStyle]="isSelected(templateSelected)"
       />
       <div class="migrate-section">
         <img
@@ -267,9 +281,9 @@
               : 'assets/imgs/blue-template.svg'
           "
           alt=""
-          [ngStyle]="templateIsSelected()"
+          [ngStyle]="isSelected(templateSelected)"
         />
-        <span class="menu-text" [ngStyle]="setTemplateActiveColor()"
+        <span class="menu-text" [ngStyle]="setActiveColor(templateSelected)"
           >Template</span
         >
       </div>
@@ -283,7 +297,7 @@
         addWorkflow()
       "
       class="logo__wrapper padding-14"
-      [ngStyle]="addWorkflowActiveInd()"
+      [ngStyle]="addActiveInd(workflowSelected)"
     >
       <img
         class="migrate-logo img-size"
@@ -306,7 +320,7 @@
           alt=""
           [ngStyle]="workflowIsSelected()"
         />
-        <span class="menu-text" [ngStyle]="setWorkflowActiveColor()"
+        <span class="menu-text" [ngStyle]="setActiveColor(workflowSelected)"
           >Workflow</span
         >
       </div>

@@ -64,15 +64,9 @@ export class MainLeftNavbarComponent implements OnInit {
     };
   }
 
-  hubIsSelected() {
+  isSelected(selected) {
     return {
-      opacity: this.hubSelected ? 1 : 0.5,
-    };
-  }
-
-  templateIsSelected() {
-    return {
-      opacity: this.templateSelected ? 1 : 0.5,
+      opacity: selected ? 1 : 0.5,
     };
   }
 
@@ -82,39 +76,15 @@ export class MainLeftNavbarComponent implements OnInit {
     };
   }
 
-  setHubActiveColor() {
+  setActiveColor(selected) {
     return {
-      color: this.hubSelected ? "#fff" : "#012b7a",
+      color: selected ? "#fff" : "#012b7a",
     };
   }
 
-  setTemplateActiveColor() {
+  addActiveInd(selected) {
     return {
-      color: this.templateSelected ? "#fff" : "#012b7a",
-    };
-  }
-
-  setWorkflowActiveColor() {
-    return {
-      color: this.workflowSelected ? "#fff" : "#012b7a",
-    };
-  }
-
-  addHubActiveInd() {
-    return {
-      borderRight: this.hubSelected ? "3px solid white" : "none",
-    };
-  }
-
-  addTemplateActiveInd() {
-    return {
-      borderRight: this.templateSelected ? "3px solid white" : "none",
-    };
-  }
-
-  addWorkflowActiveInd() {
-    return {
-      borderRight: this.workflowSelected ? "3px solid white" : "none",
+      borderRight: selected ? "3px solid white" : "none",
     };
   }
 
