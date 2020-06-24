@@ -3,6 +3,10 @@
 }
 
 @media only screen and (max-width: 426px) {
+  .stages-height {
+    height: 8em !important;
+  }
+
   .wave__content__wrapper {
     // flex: 1;
     transition: width 1s;
