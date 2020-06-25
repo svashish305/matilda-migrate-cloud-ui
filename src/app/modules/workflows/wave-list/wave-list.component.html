@@ -261,7 +261,7 @@
               class="row-items template__row item"
               [ngClass]="{ selected: template.selected }"
               (click)="rowClick(template)"
-              *ngFor="let template of waveType.items"
+              *ngFor="let template of waveType.items | naiveSearch: searchKey"
               cdkDrag
             >
               <div class="template-name">
