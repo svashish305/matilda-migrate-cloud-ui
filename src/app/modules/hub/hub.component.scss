@@ -42,6 +42,11 @@
     padding-right: 0.5em;
   }
 
+  .section-icon {
+    height: 20px;
+    width: 20px;
+  }
+
   .all-templates {
     // height: 67vh;
     height: 72vh;
@@ -68,22 +73,26 @@
   }
 
   .set-margin-right {
-    margin-right: 1em;
+    margin-right: 0.5em;
+  }
+
+  .set-fav-margin-right {
+    margin-right: 0.35em;
   }
 
   .label-text-fav {
     position: relative;
-    top: 4px;
+    top: 3px;
     font-family: LatoRegular;
     font-size: 0.875em;
-    line-height: 1.375em;
+    // line-height: 1.375em;
     letter-spacing: 0;
     color: var(--primary-light);
   }
 
   .label-text {
     position: relative;
-    top: 4px;
+    top: 3px;
     font-family: LatoRegular;
     font-size: 0.875em;
     line-height: 1.375em;
@@ -94,7 +103,7 @@
 
   .wf-label-text {
     position: relative;
-    top: 4px;
+    top: 3px;
     font-family: LatoRegular;
     font-size: 0.875em;
     line-height: 1.375em;
@@ -234,6 +243,11 @@
     padding-right: 0.5em;
   }
 
+  .section-icon {
+    height: 20px;
+    width: 20px;
+  }
+
   .all-templates {
     height: 67vh;
     overflow-y: scroll;
@@ -259,7 +273,11 @@
   }
 
   .set-margin-right {
-    margin-right: 1em;
+    margin-right: 0.5em;
+  }
+
+  .set-fav-margin-right {
+    margin-right: 0.35em;
   }
 
   .template-icon {
@@ -269,36 +287,36 @@
 
   .label-text-fav {
     position: relative;
-    top: 4px;
+    top: 3px;
     font-family: LatoRegular;
-    font-size: 0.875em;
-    line-height: 1.375em;
+    font-size: 1em; // 0.875em;
+    // line-height: 1.375em;
     letter-spacing: 0;
     color: var(--primary-light);
   }
 
   .label-text {
     position: relative;
-    top: 4px;
+    top: 3px;
     font-family: LatoRegular;
-    font-size: 0.875em;
+    font-size: 1em; // 0.875em;
     line-height: 1.375em;
     letter-spacing: 0;
     color: var(--primary-light);
-    // padding-right: 20px;
-    padding-right: 1em;
+    // padding-right: 1em;
+    padding-right: 0.65em;
   }
 
   .wf-label-text {
     position: relative;
-    top: 4px;
+    top: 3px;
     font-family: LatoRegular;
-    font-size: 0.875em;
+    font-size: 1em; // 0.875em;
     line-height: 1.375em;
     letter-spacing: 0;
     color: var(--primary-light);
-    // padding-right: 13px;
-    padding-right: 10px;
+    // padding-right: 10px;
+    padding-right: 4px;
   }
 
   .collapse-icon {
@@ -316,7 +334,7 @@
     }
   }
 
-  @media only screen and (min-width: 1061px) and (max-width: 1440px) {
+  @media only screen and (min-width: 1061px) and (max-width: 1366px) {
     .grid-container {
       display: grid;
       grid-template-columns: 1fr 2fr;
@@ -326,7 +344,7 @@
     }
   }
 
-  @media only screen and (min-width: 1441px) and (max-width: 1980px) {
+  @media only screen and (min-width: 1367px) and (max-width: 1440px) {
     .grid-container {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -336,24 +354,35 @@
     }
   }
 
+  @media only screen and (min-width: 1441px) and (max-width: 1980px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr 3fr;
+      position: relative;
+      right: 0.7em;
+      bottom: 1.125em;
+    }
+  }
+
   mat-card {
     cursor: pointer;
-    // width: 28.938em;
-    width: 27.938em;
-    height: 6.438em;
+    // width: 27.938em;
+    // height: 6.438em;
+    width: 26em;
+    height: 6em;
     margin: 12px;
   }
 
   .template-title {
     position: relative;
     bottom: 3em;
-    left: 4.5em;
+    left: 3.5em;
   }
 
   .workflow-state-img {
     position: absolute;
     top: 3.25em;
-    left: 6.5em;
+    left: 5.5em;
   }
 
   .badge-custom {
@@ -368,14 +397,14 @@
 
   .template-status {
     position: absolute;
-    bottom: 2.5em;
-    left: 9.2em;
+    bottom: 2em;
+    left: 7.2em;
   }
 
   .workflow-status {
     position: absolute;
-    bottom: 2.5em;
-    left: 12em;
+    bottom: 2em;
+    left: 10em;
   }
 
   mat-progress-bar {
@@ -388,8 +417,8 @@
     display: flex;
     align-items: center;
     position: absolute;
-    bottom: 1.75em;
-    right: 4em;
+    bottom: 1.45em;
+    right: 2em;
     width: fit-content;
   }
 
@@ -397,8 +426,8 @@
     display: flex;
     align-items: center;
     position: absolute;
-    bottom: 1.75em;
-    right: 2em;
+    bottom: 1.45em;
+    right: 1.5em;
     width: fit-content;
   }
 }

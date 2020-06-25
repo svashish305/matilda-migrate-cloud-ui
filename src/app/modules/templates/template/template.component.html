@@ -390,7 +390,7 @@
     (resizeEnd)="onResizeEnd($event)"
   >
     <div class="import-final">
-      <header>
+      <header class="task-header-tag">
         <a (click)="showTaskOptions = false" class="import-final-close">
           <img src="assets/imgs/close-circle.svg" alt="Close" />
         </a>
@@ -400,7 +400,7 @@
             size="56"
             class="lalign-import-template-icon"
           ></ngx-avatar>
-          <div class="relative-top-14">
+          <div class="relative-top-5">
             <div>
               <span class="task-name">{{ selectedTask.name }}</span>
               <span class="task-description">{{
