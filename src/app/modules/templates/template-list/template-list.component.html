@@ -210,6 +210,12 @@
                 <div class="cell-width" *ngIf="getWorkflowType() === 'trigger'">
                   <span class="medium-text list-header-text">Trigger</span>
                 </div>
+                <!-- <div class="cell-width" *ngIf="showService">
+                  <span class="medium-text list-header-text">Service</span>
+                </div>
+                <div class="cell-width" *ngIf="showAction">
+                  <span class="medium-text list-header-text">Action</span>
+                </div> -->
                 <div class="cell-width">
                   <span class="medium-text list-header-text">Status</span>
                 </div>
@@ -231,8 +237,12 @@
                 yPosition="below"
               >
                 <div class="service-menu">
-                  <mat-checkbox (click)="onCheck($event)">Service</mat-checkbox>
-                  <mat-checkbox (click)="onCheck($event)">Action</mat-checkbox>
+                  <mat-checkbox (click)="onCheck($event, 'service')"
+                    >Service</mat-checkbox
+                  >
+                  <mat-checkbox (click)="onCheck($event, 'action')"
+                    >Action</mat-checkbox
+                  >
                 </div>
               </mat-menu>
             </div>
@@ -315,6 +325,26 @@
                     }}</span>
                   </div>
                 </div>
+                <!-- <div *ngIf="!isMobile">
+                  <div
+                    *ngIf="showService"
+                    class="border-white template-end flex-center"
+                  >
+                    <span class="cell-text common-text">{{
+                      task.serviceName
+                    }}</span>
+                  </div>
+                </div>
+                <div *ngIf="!isMobile">
+                  <div
+                    *ngIf="showAction"
+                    class="border-white template-end flex-center"
+                  >
+                    <span class="cell-text common-text">{{
+                      task.actionName
+                    }}</span>
+                  </div>
+                </div> -->
                 <div
                   *ngIf="!isMobile"
                   class="border-white template-status"

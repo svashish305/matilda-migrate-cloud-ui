@@ -75,6 +75,9 @@ export class TemplateListComponent implements OnInit, OnChanges {
   isMobile = false;
   primaryColor: ThemePalette = "primary";
 
+  showService = false;
+  showAction = false;
+
   constructor(
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
@@ -172,8 +175,14 @@ export class TemplateListComponent implements OnInit, OnChanges {
     // });
   }
 
-  onCheck(event) {
+  onCheck(event, columnName) {
     event.stopPropagation();
+    if (columnName === "service") {
+      this.showService = !this.showService;
+    }
+    if (columnName === "action") {
+      this.showAction = !this.showAction;
+    }
   }
 
   collapseAll(checked: boolean) {
