@@ -613,6 +613,7 @@
   .footer-styles-1 {
     position: relative;
     top: 7.438em;
+    background-color: #fff;
   }
 
   .footer-styles-2 {
@@ -1140,7 +1141,7 @@
   }
 
   .import-list-scroll-control {
-    height: 67.25vh;
+    height: 64vh; //67.25vh
     overflow-y: scroll;
     overflow-x: hidden;
   }
@@ -1290,6 +1291,7 @@
     position: absolute;
     top: 89vh; //90vh
     width: calc(100% - 120px);
+    background-color: #fff;
   }
 
   .footer-styles-2 {

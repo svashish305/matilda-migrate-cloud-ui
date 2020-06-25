@@ -165,33 +165,39 @@
           </div>
 
           <div class="wave-states">
-            <img
-              class="pointer-cursor"
-              [src]="
-                waveState === 'start'
-                  ? 'assets/imgs/start-active.svg'
-                  : 'assets/imgs/start-inactive.svg'
-              "
-              alt="start"
-            />
-            <img
-              class="pointer-cursor left-padding-24"
-              [src]="
-                waveState === 'pause'
-                  ? 'assets/imgs/pause-active.svg'
-                  : 'assets/imgs/pause-inactive.svg'
-              "
-              alt="pause"
-            />
-            <img
-              class="pointer-cursor left-padding-24"
-              [src]="
-                waveState === 'stop'
-                  ? 'assets/imgs/stop-active.svg'
-                  : 'assets/imgs/stop-inactive.svg'
-              "
-              alt="stop"
-            />
+            <a (click)="waveState = 'start'">
+              <img
+                class="pointer-cursor"
+                [src]="
+                  waveState === 'start'
+                    ? 'assets/imgs/start-active.svg'
+                    : 'assets/imgs/start-inactive.svg'
+                "
+                alt="start"
+              />
+            </a>
+            <a (click)="waveState = 'pause'">
+              <img
+                class="pointer-cursor left-padding-24"
+                [src]="
+                  waveState === 'pause'
+                    ? 'assets/imgs/pause-active.svg'
+                    : 'assets/imgs/pause-inactive.svg'
+                "
+                alt="pause"
+              />
+            </a>
+            <a (click)="waveState = 'stop'">
+              <img
+                class="pointer-cursor left-padding-24"
+                [src]="
+                  waveState === 'stop'
+                    ? 'assets/imgs/stop-active.svg'
+                    : 'assets/imgs/stop-inactive.svg'
+                "
+                alt="stop"
+              />
+            </a>
           </div>
 
           <div class="stage-action-bar">
@@ -279,10 +285,7 @@
         Account
       </header>
       <mat-divider></mat-divider>
-      <div
-        class="sidebar-search"
-        [ngClass]="{ 'top-margin-1em': isMobile, 'margin-t24-b4': !isMobile }"
-      >
+      <div class="sidebar-search top-margin-1em">
         <form>
           <mat-form-field
             id="mat-search"
@@ -309,11 +312,7 @@
 
       <!-- account cards -->
       <mat-card
-        class="mat-elevation-z0"
-        [ngClass]="{
-          'bottom-margin-1em': isMobile,
-          'bottom-margin-24': !isMobile
-        }"
+        class="mat-elevation-z0 bottom-margin-1em"
         *ngFor="let account of accounts | search: searchKey"
         [ngStyle]="toggleHeight(account.id)"
       >
