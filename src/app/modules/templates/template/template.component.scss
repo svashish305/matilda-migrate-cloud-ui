@@ -596,8 +596,8 @@
 
   .modal-footer-mobile {
     position: absolute !important;
-    // top: 90vh !important;
-    top: 89vh !important;
+    // top: 89vh !important;
+    top: 91vh !important;
     display: flex;
     width: 100%;
   }
@@ -613,7 +613,7 @@
 
     position: absolute !important;
     width: calc(100% - 50px) !important;
-    top: 89vh !important;
+    top: 91vh !important; //89vh
   }
 }
 
