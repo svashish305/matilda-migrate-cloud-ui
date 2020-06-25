@@ -279,7 +279,10 @@
         Account
       </header>
       <mat-divider></mat-divider>
-      <div class="sidebar-search margin-t24-b4">
+      <div
+        class="sidebar-search"
+        [ngClass]="{ 'top-margin-1em': isMobile, 'margin-t24-b4': !isMobile }"
+      >
         <form>
           <mat-form-field
             id="mat-search"
@@ -306,7 +309,11 @@
 
       <!-- account cards -->
       <mat-card
-        class="mat-elevation-z0 bottom-margin-24"
+        class="mat-elevation-z0"
+        [ngClass]="{
+          'bottom-margin-1em': isMobile,
+          'bottom-margin-24': !isMobile
+        }"
         *ngFor="let account of accounts | search: searchKey"
         [ngStyle]="toggleHeight(account.id)"
       >
@@ -354,12 +361,13 @@
           </div>
         </mat-card-content>
       </mat-card>
-      <div
+      <!-- <div
         [ngClass]="{
           'modal-footer-mobile': isMobile,
           'account-footer': !isMobile
         }"
-      >
+      > -->
+      <div class="account-footer">
         <div class="account-sidebar-footer-btns">
           <button
             mat-flat-button

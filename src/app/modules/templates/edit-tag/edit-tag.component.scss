@@ -6,9 +6,40 @@
   width: 100%;
 }
 
-.example-half-width {
-  // width: 40%;
-  width: 32%;
+@media only screen and (max-width: 426px) {
+  .example-half-width {
+    width: 40%;
+  }
+}
+
+@media only screen and (min-width: 427px) and (max-width: 768px) {
+  .example-half-width {
+    width: 7.5vw;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .example-half-width {
+    width: 10vw;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+  .example-half-width {
+    width: 12vw;
+  }
+}
+
+@media only screen and (min-width: 1441px) and (max-width: 1980px) {
+  .example-half-width {
+    width: 13vw;
+  }
+}
+
+@media only screen and (min-width: 1981px) and (max-width: 2560px) {
+  .example-half-width {
+    width: 15vw;
+  }
 }
 
 mat-form-field {

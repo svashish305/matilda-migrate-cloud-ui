@@ -220,7 +220,10 @@
         Template Import
       </header>
       <mat-divider></mat-divider>
-      <div class="sidebar-search margin-t24-b4">
+      <div
+        class="sidebar-search"
+        [ngClass]="{ 'top-margin-1em': isMobile, 'margin-t24-b4': !isMobile }"
+      >
         <form>
           <mat-form-field
             id="mat-search"
@@ -248,7 +251,11 @@
       <!-- template cards -->
       <div class="import-list-scroll-control">
         <mat-card
-          class="mat-elevation-z0 bottom-margin-24"
+          class="mat-elevation-z0"
+          [ngClass]="{
+            'bottom-margin-1em': isMobile,
+            'bottom-margin-24': !isMobile
+          }"
           *ngFor="let template of templatesToImport | search: searchKey"
         >
           <mat-card-content>

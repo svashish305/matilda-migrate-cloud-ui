@@ -548,9 +548,17 @@
 
   .modal-footer-mobile {
     position: absolute !important;
-    top: 92vh !important;
+    top: 89vh !important; //92vh
     display: flex;
     width: 100%;
+  }
+
+  .account-footer {
+    border-top: solid 1px var(--grayed-border);
+    position: absolute;
+    // bottom: 4.75em;
+    top: 89vh !important;
+    width: calc(100% - 120px);
   }
 
   .account-details-text {
@@ -1186,7 +1194,8 @@
   .account-footer {
     border-top: solid 1px var(--grayed-border);
     position: absolute;
-    bottom: 4.75em;
+    // bottom: 4.75em;
+    top: 89vh !important;
     width: calc(100% - 120px);
   }
 
@@ -1216,7 +1225,11 @@
   }
 }
 
-@media only screen and (min-width: 1337px) and (max-width: 1339px) {
+@media only screen and (min-width: 1023px) and (max-width: 1339px) {
+  .import-options {
+    width: 525px;
+  }
+
   .collapse-icon {
     position: absolute;
     right: 6em;
@@ -1226,7 +1239,7 @@
 @media only screen and (min-width: 1337px) and (max-width: 1440px) {
   .collapse-icon {
     position: absolute;
-    right: 6em;
+    right: 4em; //6em;
   }
 }
 

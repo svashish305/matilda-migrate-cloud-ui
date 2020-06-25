@@ -596,8 +596,8 @@
 
   .modal-footer-mobile {
     position: absolute !important;
-    // top: 92vh !important;
-    top: 90vh !important;
+    // top: 90vh !important;
+    top: 89vh !important;
     display: flex;
     width: 100%;
   }
@@ -608,8 +608,12 @@
   }
 
   .footer-styles-2 {
-    position: relative;
-    top: 8.75em;
+    // position: relative;
+    // top: 8.75em;
+
+    position: absolute !important;
+    width: calc(100% - 50px) !important;
+    top: 89vh !important;
   }
 }
 
@@ -1269,13 +1273,13 @@
     // top: -0.1em;
 
     position: absolute;
-    top: 90vh;
+    top: 89vh; //90vh
     width: calc(100% - 120px);
   }
 
   .footer-styles-2 {
     position: absolute !important;
-    top: 42em !important;
+    top: 89vh !important; //42em
     width: 82vw !important;
   }
 }
@@ -1294,7 +1298,7 @@
 .edit-tag-footer-btns {
   position: absolute;
   width: calc(100% - 120px);
-  top: 42.25em;
+  top: 89vh; //42.25em;
 }
 
 .import-final-close {
