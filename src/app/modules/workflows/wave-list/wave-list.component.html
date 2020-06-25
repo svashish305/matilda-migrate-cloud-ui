@@ -60,10 +60,7 @@
   >
     <div
       class="templates__inner__wrapper"
-      *ngFor="
-        let waveType of waveData.groups | nestedWorkflowSearch: searchKey;
-        let i = index
-      "
+      *ngFor="let waveType of waveData.groups; let i = index"
       cdkDropListGroup
       cdkDrag
       [cdkDragData]="waveType"
@@ -261,7 +258,7 @@
               class="row-items template__row item"
               [ngClass]="{ selected: template.selected }"
               (click)="rowClick(template)"
-              *ngFor="let template of waveType.items | naiveSearch: searchKey"
+              *ngFor="let template of waveType.items | search: searchKey"
               cdkDrag
             >
               <div class="template-name">
