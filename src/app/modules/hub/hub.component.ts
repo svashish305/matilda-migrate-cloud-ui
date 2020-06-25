@@ -10,10 +10,10 @@ import { DeviceDetectorService } from "ngx-device-detector";
 })
 export class HubComponent implements OnInit {
   searchKey;
-  isTemplateFavouritesCollapsed: false;
-  isTemplateCollapsed: false;
-  isWorkflowFavouritesCollapsed: false;
-  isWorkflowCollapsed: false;
+  isTemplateFavouritesCollapsed = false;
+  isTemplateCollapsed = false;
+  isWorkflowFavouritesCollapsed = false;
+  isWorkflowCollapsed = false;
 
   templates: any[] = [];
   workflows: any[] = [];
