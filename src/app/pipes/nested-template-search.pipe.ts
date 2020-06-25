@@ -29,7 +29,14 @@ export class NestedTemplateSearchPipe implements PipeTransform {
         if (templateType.name.includes(search.toLowerCase())) {
           return newData[index];
         } else {
-          let fields = ["name", "statusCd", "progress", "startDate", "endDate"];
+          let fields = [
+            "name",
+            "statusCd",
+            "progress",
+            "pluginName",
+            "startDate",
+            "endDate",
+          ];
           newData[index].items = templateType.items.filter((item) => {
             return fields.some((x) => {
               let ele = item[x].toString().toLowerCase();

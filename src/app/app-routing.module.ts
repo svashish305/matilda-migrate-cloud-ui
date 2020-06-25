@@ -40,7 +40,7 @@ const routes: Routes = [
         loadChildren: () =>
           import("./modules/test/test.module").then((m) => m.TestModule),
         data: {
-          breadcrumb: "test",
+          breadcrumb: "Test",
         },
       },
     ],
