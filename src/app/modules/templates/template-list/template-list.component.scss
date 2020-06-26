@@ -1257,17 +1257,30 @@
       display: flex;
       height: 100%;
       width: 49vw;
+      // margin-right: auto;
     }
+
+    // .right-cols {
+    //   position: relative;
+    //   right: 4em;
+    // }
 
     .stage-name-width {
       width: 52vw;
+
+      // margin-right: auto;
+      // position: absolute;
+      // left: 8em;
     }
 
     .stage-btn {
       bottom: -5px;
       position: absolute;
-      // right: -7.5em;
       right: -7.65em;
+
+      // bottom: -5px;
+      // position: absolute;
+      // left: 58em;
     }
   }
 
