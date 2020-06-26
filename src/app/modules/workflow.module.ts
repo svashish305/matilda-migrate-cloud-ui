@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { AvatarModule } from "ngx-avatar";
+import { AvatarModule, AvatarSource } from "ngx-avatar";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "./material.module";
 import { ResizableModule } from "angular-resizable-element";
@@ -12,7 +12,9 @@ import { SearchPipeModule } from "./searchpipe.module";
 import { TemplateModule } from "./template.module";
 import { RouterModule } from "@angular/router";
 import { WaveComponent } from "./workflows/wave/wave.component";
+import { EditTagModule } from "./templates/edit-tag/edit-tag.module";
 
+const avatarSourcesOrder = [AvatarSource.CUSTOM, AvatarSource.INITIALS];
 const avatarColors = ["#5fb8f1", "#012b7a"];
 
 @NgModule({
@@ -22,6 +24,7 @@ const avatarColors = ["#5fb8f1", "#012b7a"];
     HttpClientModule,
     AvatarModule.forRoot({
       colors: avatarColors,
+      sourcePriorityOrder: avatarSourcesOrder,
     }),
     RouterModule,
     FormsModule,
@@ -31,6 +34,7 @@ const avatarColors = ["#5fb8f1", "#012b7a"];
     ResizableModule,
     SearchPipeModule,
     TemplateModule,
+    EditTagModule,
     NgbModule,
   ],
   exports: [WaveComponent, WaveListComponent],

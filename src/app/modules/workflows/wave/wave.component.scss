@@ -1256,3 +1256,16 @@
     right: 5em;
   }
 }
+
+// commmon styles
+.import-btns-1 {
+  position: absolute;
+  left: 0;
+  top: 0.875em;
+}
+
+.edit-tag-footer-btns {
+  position: absolute;
+  width: calc(100% - 120px);
+  top: 89vh; //42.25em;
+}

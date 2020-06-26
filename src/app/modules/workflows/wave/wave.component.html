@@ -25,16 +25,11 @@
           alt="back"
         />
       </div>
-      <img
-        *ngIf="waveData.icon"
-        [src]="waveData.icon"
-        class="avatar"
-        alt="{{ waveData.name }}"
-      />
-      <div *ngIf="!waveData.icon" class="ngx-template-header-avatar">
+      <div class="ngx-template-header-avatar">
         <ngx-avatar
           class="my-avatar flex-center"
           name="{{ waveData.name }}"
+          initialsSize="2"
           [size]="isMobile ? 40 : 56"
         ></ngx-avatar>
       </div>
@@ -82,7 +77,10 @@
         yPosition="below"
       >
         <button mat-menu-item (click)="showAccountOptions = true">
-          Add
+          Accounts
+        </button>
+        <button mat-menu-item (click)="showTagOptions = true">
+          Tags
         </button>
       </mat-menu>
     </div>
@@ -103,7 +101,9 @@
           >
             <span class="stage-tags"
               >Tags (
-              <span class="stage-tags-blue">Change</span>
+              <a (click)="showTagOptions = true" class="pointer-cursor">
+                <span class="stage-tags-blue">Change</span>
+              </a>
               )<span class="align-tags-colon">:</span>
             </span>
             <span
@@ -135,7 +135,9 @@
           >
             <span class="stage-tags"
               >Accounts (
-              <span class="stage-tags-blue">Change</span>
+              <a (click)="showAccountOptions = true" class="pointer-cursor">
+                <span class="stage-tags-blue">Change</span>
+              </a>
               )<span class="align-accounts-colon">:</span>
             </span>
             <span
@@ -325,7 +327,7 @@
           <mat-checkbox (click)="onCheck($event)" class="relative-top-14">
           </mat-checkbox>
           <div class="checkbox-label-with-icon">
-            <ngx-avatar name="S M"></ngx-avatar>
+            <ngx-avatar name="S M" initialsSize="2"></ngx-avatar>
             <span class="import-list-template-name">{{ account.name }}</span>
             <span class="import-list-template-description">{{
               account.data.description
@@ -394,4 +396,53 @@
     </div>
   </div>
   <!-- end of account options -->
+
+  <!-- tag options start -->
+  <div
+    *ngIf="showTagOptions"
+    id="resizable-holder"
+    class="import-options resizable"
+    mwlResizable
+    [enableGhostResize]="true"
+    [resizeEdges]="{ bottom: false, right: false, top: false, left: true }"
+    (resizeEnd)="onResizeEnd($event)"
+  >
+    <header>
+      <a
+        (click)="showTagOptions = false"
+        class="pointer-cursor left-24-top-1em"
+      >
+        <img src="assets/imgs/close-circle.svg" alt="Close" />
+      </a>
+      Edit Tags
+    </header>
+    <mat-divider></mat-divider>
+    <!-- tag edit body -->
+    <app-edit-tag></app-edit-tag>
+    <!-- end of tag edit body -->
+    <div
+      [ngClass]="{ 'modal-footer-mobile': isMobile, 'modal-footer': !isMobile }"
+      class="edit-tag-footer-btns"
+    >
+      <div class="import-btns-1">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="showTagOptions = false"
+          cdkFocusInitial
+        >
+          Save
+        </button>
+        <button
+          mat-button
+          color="primary"
+          (click)="showTagOptions = false"
+          class="left-margin-1em"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- end of tag options -->
 </div>

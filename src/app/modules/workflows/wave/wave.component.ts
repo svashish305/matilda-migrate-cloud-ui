@@ -52,6 +52,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   accountCollapseState: Map<any, boolean> = new Map();
 
   showAccountOptions = false;
+  showTagOptions = false;
 
   waveState = "start";
 

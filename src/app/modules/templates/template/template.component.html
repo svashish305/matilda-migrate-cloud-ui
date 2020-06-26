@@ -25,16 +25,11 @@
           alt="back"
         />
       </div>
-      <img
-        *ngIf="templateData.icon"
-        [src]="templateData.icon"
-        class="avatar"
-        alt="{{ templateData.name }}"
-      />
-      <div *ngIf="!templateData.icon" class="ngx-template-header-avatar">
+      <div class="ngx-template-header-avatar">
         <ngx-avatar
           class="my-avatar flex-center"
           name="{{ templateData.name }}"
+          initialsSize="2"
           [size]="isMobile ? 40 : 56"
         ></ngx-avatar>
       </div>
@@ -131,7 +126,12 @@
           </div>
 
           <div class="stage-action-bar">
-            <button mat-flat-button color="primary" class="new-stage-btn" (click)="addStage()">
+            <button
+              mat-flat-button
+              color="primary"
+              class="new-stage-btn"
+              (click)="addStage()"
+            >
               <span class="new-stage-btn-text">+ New</span>
             </button>
 
@@ -260,6 +260,7 @@
             <div class="checkbox-label-with-icon">
               <ngx-avatar
                 name="{{ template.name }}"
+                initialsSize="2"
                 class="import-avatar"
               ></ngx-avatar>
               <span class="import-list-template-name">{{ template.name }}</span>
@@ -390,6 +391,7 @@
         <div class="task-header">
           <ngx-avatar
             [name]="selectedTask.name"
+            initialsSize="2"
             size="56"
             class="lalign-import-template-icon"
           ></ngx-avatar>

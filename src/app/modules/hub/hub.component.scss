@@ -145,9 +145,9 @@
   }
 
   .template-title {
-    position: relative;
-    bottom: 3.5em;
-    left: 4em;
+    position: absolute;
+    bottom: 2.5em;
+    left: 4.75em;
   }
 
   .workflow-state-img {
@@ -374,9 +374,9 @@
   }
 
   .template-title {
-    position: relative;
-    bottom: 3em;
-    left: 3.5em;
+    position: absolute;
+    bottom: 2.5em;
+    left: 4.1em;
   }
 
   .workflow-state-img {
@@ -430,4 +430,9 @@
     right: 1.5em;
     width: fit-content;
   }
+}
+
+// common styles
+#fileInput {
+  display: none;
 }

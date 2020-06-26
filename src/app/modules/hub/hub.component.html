@@ -57,10 +57,26 @@
           <div *ngIf="!isTemplateFavouritesCollapsed" class="grid-container">
             <mat-card>
               <div>
+                <!-- <label for="fileInput">
+                  <ngx-avatar
+                    [src]="avatarUrl"
+                    [size]="!isMobile ? 56 : 68"
+                    name="Tomcat Template"
+                    initialsSize="2"
+                  >
+                  </ngx-avatar>
+                </label>
+                <input
+                  id="fileInput"
+                  type="file"
+                  (change)="changeAvatar($event)"
+                /> -->
                 <ngx-avatar
                   [size]="!isMobile ? 56 : 68"
                   name="Tomcat Template"
-                ></ngx-avatar>
+                  initialsSize="2"
+                >
+                </ngx-avatar>
                 <span class="bold-text template-title">Tomcat Template</span>
                 <span class="badge badge-pill badge-custom template-status"
                   >Configured</span
@@ -77,6 +93,8 @@
                 <ngx-avatar
                   [size]="!isMobile ? 56 : 68"
                   name="Template 2"
+                  initialsSize="2"
+                  (clickOnAvatar)="changeAvatar($event)"
                 ></ngx-avatar>
                 <span class="bold-text template-title">Template 2</span>
                 <span class="badge badge-pill badge-custom template-status"
@@ -123,6 +141,8 @@
                 <ngx-avatar
                   [size]="!isMobile ? 56 : 68"
                   name="{{ template.name }}"
+                  initialsSize="2"
+                  (clickOnAvatar)="changeAvatar($event)"
                 ></ngx-avatar>
                 <span class="bold-text template-title">{{
                   template.name
@@ -202,6 +222,8 @@
                 <ngx-avatar
                   [size]="!isMobile ? 56 : 68"
                   name="SMR Wave Workflow"
+                  initialsSize="2"
+                  (clickOnAvatar)="changeAvatar($event)"
                 ></ngx-avatar>
                 <span class="bold-text template-title">SMR Wave Workflow</span>
                 <img
@@ -224,6 +246,8 @@
                 <ngx-avatar
                   [size]="!isMobile ? 56 : 68"
                   name="SME Wave Workflow"
+                  initialsSize="2"
+                  (clickOnAvatar)="changeAvatar($event)"
                 ></ngx-avatar>
                 <span class="bold-text template-title">SMR Wave Workflow</span>
                 <img
@@ -277,6 +301,8 @@
                 <ngx-avatar
                   [size]="!isMobile ? 56 : 68"
                   name="{{ workflow.name }}"
+                  initialsSize="2"
+                  (clickOnAvatar)="changeAvatar($event)"
                 ></ngx-avatar>
                 <span class="bold-text template-title">{{
                   workflow.name
