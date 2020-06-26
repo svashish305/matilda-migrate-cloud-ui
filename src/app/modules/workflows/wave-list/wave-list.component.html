@@ -71,13 +71,10 @@
           <div
             id="stage-header"
             class="template__row"
-            [ngStyle]="toggleWorkflowHeight(waveType.collapsed)"
+            [ngStyle]="toggleWorkflowHeight(groupCollapseList[i])"
           >
             <div class="template-name">
-              <div
-                class="group-drag"
-                [ngClass]="{ 'do-not-show': !waveType.drag }"
-              >
+              <div class="group-drag" [ngClass]="{ 'do-not-show': !drag }">
                 <img
                   class="move-cursor"
                   src="assets/imgs/dragIcon-2.svg"
@@ -85,33 +82,33 @@
                 />
               </div>
               <!-- <div
-                [ngClass]="{ collapsed: waveType.collapsed }"
+                [ngClass]="{ collapsed: groupCollapseList[i] }"
                 (click)="openGroupLevelActions(waveType)"
                 class="accordian"
               > -->
               <div
-                [ngClass]="{ collapsed: waveType.collapsed }"
+                [ngClass]="{ collapsed: groupCollapseList[i] }"
                 class="accordian"
               >
                 <img
                   [ngClass]="{
-                    'accordian-icon-collapsed': waveType.collapsed,
-                    'accordian-icon': !waveType.collapsed
+                    'accordian-icon-collapsed': groupCollapseList[i],
+                    'accordian-icon': !groupCollapseList[i]
                   }"
                   src="assets/imgs/chevron-down.svg"
                   alt=""
-                  (click)="waveType.collapsed = !waveType.collapsed"
+                  (click)="toggleCollapse(i)"
                 />
                 <!-- <div class="group-level-actions">
                   <div
-                    (click)="waveType.collapsed = true"
-                    *ngIf="!waveType.collapsed"
+                    (click)="groupCollapseList[i] = true"
+                    *ngIf="!groupCollapseList[i]"
                   >
                     Collapse
                   </div>
                   <div
-                    (click)="waveType.collapsed = false"
-                    *ngIf="waveType.collapsed"
+                    (click)="groupCollapseList[i] = false"
+                    *ngIf="groupCollapseList[i]"
                   >
                     Expand
                   </div>
@@ -132,15 +129,15 @@
             </div>
             <div
               [ngClass]="{
-                'list-right-menu-collapsed': waveType.collapsed,
-                'list-right-menu': !waveType.collapsed
+                'list-right-menu-collapsed': groupCollapseList[i],
+                'list-right-menu': !groupCollapseList[i]
               }"
             >
               <div
-                *ngIf="!(isMobile && waveType.collapsed)"
+                *ngIf="!(isMobile && groupCollapseList[i])"
                 class="flex-padding-r-2"
                 [ngClass]="{
-                  'flex-padding-r-4': isMobile && !waveType.collapsed
+                  'flex-padding-r-4': isMobile && !groupCollapseList[i]
                 }"
               >
                 <span class="status-text">Status: </span>
@@ -151,10 +148,10 @@
                 >
               </div>
               <div
-                *ngIf="!(isMobile && waveType.collapsed)"
+                *ngIf="!(isMobile && groupCollapseList[i])"
                 class="flex-padding-r-2"
                 [ngClass]="{
-                  'flex-padding-r-4': isMobile && !waveType.collapsed
+                  'flex-padding-r-4': isMobile && !groupCollapseList[i]
                 }"
               >
                 <span class="status-text">Progress: </span>
@@ -175,14 +172,14 @@
 
             <img
               [ngClass]="{
-                'stage-option-collapsed': waveType.collapsed,
-                'stage-option': !waveType.collapsed
+                'stage-option-collapsed': groupCollapseList[i],
+                'stage-option': !groupCollapseList[i]
               }"
               src="assets/imgs/vEllipsis.svg"
               alt="stage-options"
             />
 
-            <div *ngIf="!waveType.collapsed" class="stage-list-subheader">
+            <div *ngIf="!groupCollapseList[i]" class="stage-list-subheader">
               <div class="stage-name-width">
                 <span class="medium-text list-header-text">Name</span>
               </div>
@@ -247,7 +244,7 @@
           </div>
           <!-- cdkdroplist for template re ordering among and across groups -->
           <div
-            *ngIf="!waveType.collapsed && waveData.groups"
+            *ngIf="!groupCollapseList[i] && waveData.groups"
             cdkDropList
             id="{{ waveType.id }}"
             [cdkDropListData]="waveType.items"

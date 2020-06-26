@@ -71,12 +71,12 @@
           <div
             id="stage-header"
             class="template__row"
-            [ngStyle]="toggleTemplateHeight(templateType.collapsed)"
+            [ngStyle]="toggleTemplateHeight(groupCollapseList[i])"
           >
             <div class="template-name">
               <div
                 class="group-drag"
-                [ngClass]="{ 'do-not-show': !templateType.drag }"
+                [ngClass]="{ 'do-not-show': !drag }"
               >
                 <img
                   class="move-cursor"
@@ -90,17 +90,17 @@
                 class="accordian"
               > -->
               <div
-                [ngClass]="{ collapsed: templateType.collapsed }"
+                [ngClass]="{ collapsed: groupCollapseList[i] }"
                 class="accordian"
               >
                 <img
                   [ngClass]="{
-                    'accordian-icon-collapsed': templateType.collapsed,
-                    'accordian-icon': !templateType.collapsed
+                    'accordian-icon-collapsed': groupCollapseList[i],
+                    'accordian-icon': !groupCollapseList[i]
                   }"
                   src="assets/imgs/chevron-down.svg"
                   alt=""
-                  (click)="templateType.collapsed = !templateType.collapsed"
+                  (click)="toggleCollapse(i)"
                 />
                 <!-- <div class="group-level-actions">
                   <div
@@ -132,15 +132,15 @@
             </div>
             <div
               [ngClass]="{
-                'list-right-menu-collapsed': templateType.collapsed,
-                'list-right-menu': !templateType.collapsed
+                'list-right-menu-collapsed': groupCollapseList[i],
+                'list-right-menu': !groupCollapseList[i]
               }"
             >
               <div
-                *ngIf="!(isMobile && templateType.collapsed)"
+                *ngIf="!(isMobile && groupCollapseList[i])"
                 class="flex-padding-r-2"
                 [ngClass]="{
-                  'flex-padding-r-4': isMobile && !templateType.collapsed
+                  'flex-padding-r-4': isMobile && !groupCollapseList[i]
                 }"
               >
                 <span class="status-text">Status: </span>
@@ -151,10 +151,10 @@
                 >
               </div>
               <div
-                *ngIf="!(isMobile && templateType.collapsed)"
+                *ngIf="!(isMobile && groupCollapseList[i])"
                 class="flex-padding-r-2"
                 [ngClass]="{
-                  'flex-padding-r-4': isMobile && !templateType.collapsed
+                  'flex-padding-r-4': isMobile && !groupCollapseList[i]
                 }"
               >
                 <span class="status-text">Progress: </span>
@@ -175,14 +175,14 @@
 
             <img
               [ngClass]="{
-                'stage-option-collapsed': templateType.collapsed,
-                'stage-option': !templateType.collapsed
+                'stage-option-collapsed': groupCollapseList[i],
+                'stage-option': !groupCollapseList[i]
               }"
               src="assets/imgs/vEllipsis.svg"
               alt="stage-options"
             />
 
-            <div *ngIf="!templateType.collapsed" class="stage-list-subheader">
+            <div *ngIf="!groupCollapseList[i]" class="stage-list-subheader">
               <div class="stage-name-width">
                 <span
                   [ngClass]="{
@@ -245,9 +245,9 @@
           </div>
           <!-- cdkdroplist for template re ordering among and across groups -->
           <div
-            *ngIf="!templateType.collapsed && templateData.groups"
+            *ngIf="!groupCollapseList[i] && templateData.groups"
             cdkDropList
-            id="{{ templateType.id }}"
+            id="{{ templateType[i] }}"
             [cdkDropListData]="templateType.items"
             (cdkDropListDropped)="drop($event)"
             [cdkDropListConnectedTo]="getConnectedList()"

@@ -69,6 +69,9 @@ export class WaveListComponent implements OnInit {
 
   primaryColor: ThemePalette = "primary";
 
+  drag = true;
+  groupCollapseList: boolean[];
+
   isMobile = false;
 
   constructor(
@@ -77,7 +80,9 @@ export class WaveListComponent implements OnInit {
     private _formBuilder: FormBuilder,
     public dialog: MatDialog,
     private router: Router
-  ) {}
+  ) {
+    this.groupCollapseList = [];
+  }
 
   ngOnInit() {
     console.log("wavedata ", this.waveData);
@@ -134,15 +139,37 @@ export class WaveListComponent implements OnInit {
     return { backgroundColor };
   }
 
+  toggleWorkflowHeight(collapsed) {
+    let height;
+    if (this.isMobile) {
+      if (collapsed) {
+        height = "0";
+      } else {
+        height = "5.563em";
+      }
+    } else {
+      if (collapsed) {
+        height = "1em";
+      } else {
+        height = "5.563em";
+      }
+    }
+    return { height };
+  }
+
+  toggleCollapse(id) {
+    this.groupCollapseList[id] = !this.groupCollapseList[id];
+  }
+
   collapseAll(checked: boolean) {
     if (checked) {
-      this.waveData.groups.forEach((waveType: any) => {
-        waveType.collapsed = true;
-      });
+      for (let i = 0; i < this.waveData.groups.length; i++) {
+        this.groupCollapseList[i] = true;
+      }
     } else {
-      this.waveData.groups.forEach((waveType: any) => {
-        waveType.collapsed = false;
-      });
+      for (let i = 0; i < this.waveData.groups.length; i++) {
+        this.groupCollapseList[i] = false;
+      }
     }
   }
 
@@ -180,34 +207,6 @@ export class WaveListComponent implements OnInit {
       height = "18.125em";
     }
     return { height };
-  }
-
-  toggleWorkflowHeight(collapsed) {
-    let height;
-    if (this.isMobile) {
-      if (collapsed) {
-        height = "0";
-      } else {
-        height = "5.563em";
-      }
-    } else {
-      if (collapsed) {
-        height = "1em";
-      } else {
-        height = "5.563em";
-      }
-    }
-    return { height };
-  }
-
-  toggleCollapse(accountId) {
-    this.accountCollapseState[accountId] = !this.accountCollapseState[
-      accountId
-    ];
-  }
-
-  isCollapsed(accountId) {
-    this.accountCollapseState[accountId] = false;
   }
 
   openDialog(template: TemplateRef<any>) {
