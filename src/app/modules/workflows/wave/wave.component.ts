@@ -17,6 +17,8 @@ import { ResizeEvent } from "angular-resizable-element";
 import { DataService } from "src/services/data.service";
 import { FormControl } from "@angular/forms";
 import { DeviceDetectorService } from "ngx-device-detector";
+import * as uuid from "uuid";
+import { ActivatedRoute } from "@angular/router";
 
 interface SelectInterface {
   value: string;
@@ -59,6 +61,9 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     { value: "p-2", viewValue: "Tacos" },
   ];
 
+  waveId: any;
+  currWave: any;
+
   searchKey;
   imgHovered = false;
   isMobile = false;
@@ -67,7 +72,8 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
 
   constructor(
     private dataService: DataService,
-    private deviceService: DeviceDetectorService
+    private deviceService: DeviceDetectorService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnChanges() {
@@ -81,6 +87,13 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnInit() {
     this.getAccounts();
     this.getWaves();
+
+    this.route.params.subscribe((params: any) => {
+      this.waveId = params.id;
+    });
+    +this.dataService.getWave(this.waveId).subscribe((currentWorkflow: any) => {
+      this.currWave = currentWorkflow;
+    });
 
     this.isMobile = this.deviceService.isMobile();
     this.isTablet = this.deviceService.isTablet();
@@ -128,6 +141,21 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
 
   onCheck(event) {
     event.stopPropagation();
+  }
+
+  addGroup() {
+    const id = uuid.v4();
+    let newGroup = {
+      id: 123,
+      name: "Untitled Group",
+      order: 100,
+      statusCd: "Defined",
+      progress: 10,
+      items: [],
+    };
+    this.currWave.groups.push(newGroup);
+    this.waveData.groups.push(newGroup);
+    console.log("modified wave ", this.currWave);
   }
 
   toggleRightSidebar(template: any) {

@@ -9,6 +9,7 @@ import { DataService } from "src/services/data.service";
 import { DeviceDetectorService } from "ngx-device-detector";
 import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
+import * as uuid from "uuid";
 
 interface SelectInterface {
   value: string;
@@ -66,6 +67,12 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     this.route.params.subscribe((params: any) => {
       this.templateId = params.id;
     });
+
+    this.dataService
+      .getTemplate(this.templateId)
+      .subscribe((currentTemplate: any) => {
+        this.currTemplate = currentTemplate;
+      });
 
     this.isMobile = this.deviceService.isMobile();
     this.isTablet = this.deviceService.isTablet();
@@ -142,6 +149,20 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     this.location.back();
   }
 
+  addStage() {
+    const id = uuid.v4();
+    let newStage = {
+      id,
+      name: "Untitled Stage",
+      order: 100,
+      statusCd: "Defined",
+      progress: 10,
+      items: [],
+    };
+    this.currTemplate.groups.push(newStage);
+    this.templateData.groups.push(newStage);
+  }
+
   onCheck(event, template) {
     event.stopPropagation();
     if (!this.selectedTemplatesToImport.includes(template)) {
@@ -159,16 +180,11 @@ export class TemplateComponent implements OnInit, AfterViewInit {
       }
     });
     // console.log("new stuff to copy ", newStagesAndTasks);
-    this.dataService
-      .getTemplate(this.templateId)
-      .subscribe((currentTemplate: any) => {
-        this.currTemplate = currentTemplate;
-        newStagesAndTasks.forEach((newStageTask: any) => {
-          this.currTemplate.groups.push(newStageTask);
-        });
-        console.log("updated ", this.currTemplate);
-        this.templateData = this.currTemplate;
-      });
+    newStagesAndTasks.forEach((newStageTask: any) => {
+      this.currTemplate.groups.push(newStageTask);
+    });
+    // console.log("updated ", this.currTemplate);
+    this.templateData = this.currTemplate;
     this.selectedTemplatesToImport = [];
   }
 
