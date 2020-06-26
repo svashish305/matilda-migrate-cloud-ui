@@ -60,6 +60,18 @@
         />
       </div>
 
+      <a (click)="favourite = !favourite">
+        <img
+          class="fav-icon"
+          [src]="
+            favourite
+              ? 'assets/imgs/favourite.svg'
+              : 'assets/imgs/unfavourite.svg'
+          "
+          alt="mark-as-favourite"
+        />
+      </a>
+
       <button
         class="template-dd-btn"
         mat-button

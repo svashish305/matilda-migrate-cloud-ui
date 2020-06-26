@@ -28,6 +28,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   showBackdrop;
   @ViewChild("templateList", { static: false }) templateList;
 
+  favourite = false;
   templateId: any;
   currTemplate: any;
   templatesToImport: any[] = [];

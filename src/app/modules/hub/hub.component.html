@@ -138,7 +138,6 @@
                   [size]="!isMobile ? 56 : 68"
                   name="{{ template.name }}"
                   initialsSize="2"
-                  (clickOnAvatar)="changeAvatar($event)"
                 ></ngx-avatar>
                 <a (click)="toggleTemplateFavourite(template, $event)">
                   <img
@@ -230,7 +229,6 @@
                   [size]="!isMobile ? 56 : 68"
                   name="{{ favWorkflow.name }}"
                   initialsSize="2"
-                  (clickOnAvatar)="changeAvatar($event)"
                 ></ngx-avatar>
                 <a (click)="toggleWorkflowFavourite(favWorkflow, $event)">
                   <img
@@ -298,7 +296,6 @@
                   [size]="!isMobile ? 56 : 68"
                   name="{{ workflow.name }}"
                   initialsSize="2"
-                  (clickOnAvatar)="changeAvatar($event)"
                 ></ngx-avatar>
                 <a (click)="toggleWorkflowFavourite(workflow, $event)">
                   <img

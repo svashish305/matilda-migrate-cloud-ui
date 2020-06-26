@@ -317,6 +317,7 @@
     border: solid 1.5px transparent;
     border-radius: 4px;
     text-overflow: ellipsis;
+    width: 134px;
   }
 
   .description-styles:hover {
@@ -326,6 +327,15 @@
   .description-styles:focus {
     border-radius: 4px !important;
     border-color: #1a73e8;
+  }
+
+  .fav-icon {
+    position: absolute;
+    left: 12em;
+    top: 3.5em;
+    cursor: pointer;
+    height: 1em;
+    width: 1em;
   }
 
   .template-dd-btn {
@@ -923,6 +933,7 @@
     border: solid 1.5px transparent;
     border-radius: 4px;
     text-overflow: ellipsis;
+    width: 170px;
   }
 
   .description-styles:hover {
@@ -932,6 +943,15 @@
   .description-styles:focus {
     border-radius: 4px !important;
     border-color: #1a73e8;
+  }
+
+  .fav-icon {
+    position: absolute;
+    left: 20em;
+    top: 1.25em;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
   }
 
   .template-dd-btn {

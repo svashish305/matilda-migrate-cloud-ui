@@ -37,6 +37,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   showBackdrop;
   @ViewChild("waveList", { static: false }) waveList;
 
+  favourite = false;
   waves: any[] = [];
   accounts: any[] = [];
   titleState: string = "idle";
