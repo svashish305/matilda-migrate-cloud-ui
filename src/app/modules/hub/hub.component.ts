@@ -16,7 +16,11 @@ export class HubComponent implements OnInit {
   isWorkflowCollapsed = false;
 
   templates: any[] = [];
+  templateFavStatus: boolean[];
+  favTemplates: any[] = [];
+  workflowFavStatus: boolean[];
   workflows: any[] = [];
+  favWorkflows: any[] = [];
 
   isMobile = false;
   avatarUrl: any;
@@ -25,7 +29,10 @@ export class HubComponent implements OnInit {
     private dataService: DataService,
     private router: Router,
     private deviceService: DeviceDetectorService
-  ) {}
+  ) {
+    this.templateFavStatus = [];
+    this.workflowFavStatus = [];
+  }
 
   ngOnInit() {
     this.isMobile = this.deviceService.isMobile();
@@ -57,6 +64,34 @@ export class HubComponent implements OnInit {
     this.dataService.getWaves().subscribe((waves: any) => {
       this.workflows = waves;
     });
+  }
+
+  toggleTemplateFavourite(template, event) {
+    event.stopPropagation();
+    this.templateFavStatus[template.id] = !this.templateFavStatus[template.id];
+    if (this.templateFavStatus[template.id] == true) {
+      this.favTemplates.push(template);
+      this.templates = this.templates.filter((t) => t.id != template.id);
+    } else {
+      this.favTemplates = this.favTemplates.filter(
+        (ft) => ft.id != template.id
+      );
+      this.templates.push(template);
+    }
+  }
+
+  toggleWorkflowFavourite(workflow, event) {
+    event.stopPropagation();
+    this.workflowFavStatus[workflow.id] = !this.workflowFavStatus[workflow.id];
+    if (this.workflowFavStatus[workflow.id] == true) {
+      this.favWorkflows.push(workflow);
+      this.workflows = this.workflows.filter((t) => t.id != workflow.id);
+    } else {
+      this.favWorkflows = this.favWorkflows.filter(
+        (ft) => ft.id != workflow.id
+      );
+      this.workflows.push(workflow);
+    }
   }
 
   setBadgeBgColor(stageState = "Defined") {
