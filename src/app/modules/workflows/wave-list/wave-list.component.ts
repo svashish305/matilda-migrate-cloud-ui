@@ -157,10 +157,6 @@ export class WaveListComponent implements OnInit {
     return { height };
   }
 
-  toggleCollapse(id) {
-    this.groupCollapseList[id] = !this.groupCollapseList[id];
-  }
-
   collapseAll(checked: boolean) {
     if (checked) {
       for (let i = 0; i < this.waveData.groups.length; i++) {

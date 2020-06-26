@@ -74,10 +74,7 @@
             [ngStyle]="toggleTemplateHeight(groupCollapseList[i])"
           >
             <div class="template-name">
-              <div
-                class="group-drag"
-                [ngClass]="{ 'do-not-show': !drag }"
-              >
+              <div class="group-drag" [ngClass]="{ 'do-not-show': !drag }">
                 <img
                   class="move-cursor"
                   src="assets/imgs/dragIcon-2.svg"
@@ -100,7 +97,7 @@
                   }"
                   src="assets/imgs/chevron-down.svg"
                   alt=""
-                  (click)="toggleCollapse(i)"
+                  (click)="groupCollapseList[i] = !groupCollapseList[i]"
                 />
                 <!-- <div class="group-level-actions">
                   <div
