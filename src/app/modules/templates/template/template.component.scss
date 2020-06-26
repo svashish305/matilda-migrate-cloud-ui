@@ -324,6 +324,7 @@
     box-sizing: border-box;
     border: solid 1.5px transparent;
     border-radius: 4px;
+    text-overflow: ellipsis;
   }
 
   .description-styles:hover {
@@ -971,6 +972,7 @@
     box-sizing: border-box;
     border: solid 1.5px transparent;
     border-radius: 4px;
+    text-overflow: ellipsis;
   }
 
   .description-styles:hover {

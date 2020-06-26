@@ -365,7 +365,9 @@
                       alt="delete"
                     />
                   </a>
-                  <img src="assets/imgs/vEllipsis.svg" alt="settings" />
+                  <a (click)="templateSettings(waveType, template.id, $event)">
+                    <img src="assets/imgs/vEllipsis.svg" alt="settings" />
+                  </a>
                 </div>
               </div>
             </div>

@@ -311,6 +311,10 @@ export class TemplateListComponent implements OnInit, OnChanges {
     );
   }
 
+  taskSettings(templateType, taskId, event) {
+    event.stopPropagation();
+  }
+
   /**
    *
    * @description clears entered template name and hides add button

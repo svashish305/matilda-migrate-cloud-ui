@@ -750,6 +750,10 @@ export class WaveListComponent implements OnInit {
     waveType.items = waveType.items.filter((item) => item.id !== templateId);
   }
 
+  templateSettings(waveType, templateId, event) {
+    event.stopPropagation();
+  }
+
   /**
    *
    * @description clears entered template name and hides add button
