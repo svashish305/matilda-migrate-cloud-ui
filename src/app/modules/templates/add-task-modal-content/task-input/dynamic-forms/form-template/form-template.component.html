@@ -1,0 +1,43 @@
+<div [formGroup]="form">
+    <div [ngSwitch]="dataItem.controlType" >
+
+        <mat-form-field *ngSwitchCase="'TextBox'" appearance="fill">
+            <mat-label>{{dataItem.label}}</mat-label>
+            <input matInput placeholder="Enter task name" [type]="dataItem.inputType"
+                [formControlName]="dataItem.key" required="checkForRequiredField(dataItem)"/>
+        </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="'TextArea'" appearance="fill">
+            <mat-label>{{dataItem.label}}</mat-label>
+            <textarea matInput [placeholder]="dataItem.placeholder" [formControlName]="dataItem.key" required="checkForRequiredField(dataItem)"></textarea>
+        </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="'DropDown'" appearance="fill">
+            <mat-label>{{dataItem.label}}</mat-label>
+            <mat-select [formControlName]="dataItem.key" required="checkForRequiredField(dataItem)">
+                <mat-option *ngFor="let opt of dataItem.options" [value]="opt.key">
+                    {{opt.value}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <label *ngSwitchCase="'RadioGroup'">{{dataItem.label}}</label>
+        <mat-radio-group *ngSwitchCase="'RadioGroup'" [formControlName]="dataItem.key" required="checkForRequiredField(dataItem)">
+            <mat-radio-button *ngFor="let opt of dataItem.options" [value]="opt.key">
+                {{opt.value}}
+            </mat-radio-button>
+        </mat-radio-group>
+
+        <mat-checkbox *ngSwitchCase="'CheckBox'" [formControlName]="dataItem.key" [value]="dataItem.value" required="checkForRequiredField(dataItem)">
+            {{dataItem.label}}
+        </mat-checkbox>
+
+        <mat-form-field *ngSwitchCase="'Date'" appearance="fill">
+            <mat-label>{{dataItem.label}}</mat-label>
+            <input matInput [matDatepicker]="picker" [min]="min" required="checkForRequiredField(dataItem)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+    </div>
+</div>

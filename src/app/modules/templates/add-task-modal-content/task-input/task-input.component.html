@@ -1,0 +1,5 @@
+<form  (ngSubmit)="onSubmit(form.value)" [formGroup]="form" >
+    <div  *ngFor="let data of dataSource">
+        <app-form-template [dataItem]="data" [form]="form"></app-form-template>
+    </div>
+</form>
