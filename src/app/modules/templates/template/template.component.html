@@ -27,7 +27,7 @@
       </div>
       <div class="ngx-template-header-avatar">
         <button
-          class="avatar-dd-btn"
+          class="avatar-dd-btn no-hover-effect"
           mat-button
           [matMenuTriggerFor]="avatarDropdown"
           (mouseover)="templateImgHover = true"
@@ -57,7 +57,9 @@
         </button>
         <mat-menu #avatarDropdown="matMenu">
           <button mat-menu-item>
-            <label for="templateAvatarFile" class="avatar-upload-option"
+            <label
+              for="templateAvatarFile"
+              class="avatar-upload-option pointer-cursor"
               >Upload
               <input
                 id="templateAvatarFile"
@@ -127,6 +129,7 @@
         />
       </button>
       <mat-menu
+        id="import-menu"
         #templateDropdown="matMenu"
         xPosition="before"
         yPosition="below"

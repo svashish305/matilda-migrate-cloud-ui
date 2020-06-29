@@ -359,7 +359,7 @@
     right: 0;
   }
 
-  ::ng-deep.mat-menu-panel {
+  #import-menu::ng-deep.mat-menu-panel {
     position: absolute;
     right: 0;
   }
@@ -642,10 +642,22 @@
   .avatar-dd-btn {
     padding: 0;
     border-radius: 50%;
+    width: 40px;
+    min-width: unset;
+
+    .edit-avatar-img {
+      position: absolute;
+      right: -5px;
+      height: 10px;
+      width: 10px;
+      top: 30px;
+    }
   }
 
   .avatar-upload-option {
-    margin: auto 0;
+    height: 100%;
+    width: 100%;
+    margin-top: 15%;
   }
 }
 
@@ -1337,10 +1349,12 @@
   .avatar-dd-btn {
     padding: 0;
     border-radius: 50%;
+    width: 56px;
+    min-width: unset;
 
     .edit-avatar-img {
       position: absolute;
-      right: 8px;
+      right: 0;
       height: 10px;
       width: 10px;
       top: 45px;
@@ -1348,7 +1362,9 @@
   }
 
   .avatar-upload-option {
-    margin: auto 0;
+    height: 100%;
+    width: 100%;
+    margin-top: 15%;
   }
 }
 
@@ -1392,4 +1408,8 @@
 // common styles
 #templateAvatarFile {
   display: none;
+}
+
+::ng-deep.mat-button .mat-button-focus-overlay {
+  background-color: transparent !important;
 }
