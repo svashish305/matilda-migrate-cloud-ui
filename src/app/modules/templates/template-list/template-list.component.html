@@ -74,7 +74,13 @@
             [ngStyle]="toggleTemplateHeight(groupCollapseList[i])"
           >
             <div class="template-name">
-              <div class="group-drag" [ngClass]="{ 'do-not-show': !drag }">
+              <div
+                class="group-drag"
+                [ngClass]="{
+                  'do-not-show': !drag,
+                  collapsed: groupCollapseList[i]
+                }"
+              >
                 <img
                   class="move-cursor"
                   src="assets/imgs/dragIcon-2.svg"
@@ -118,7 +124,10 @@
               <!-- group level actions ends -->
 
               <div
-                class="group-name-wrapper"
+                [ngClass]="{
+                  'group-name-wrapper-collapsed': groupCollapseList[i],
+                  'group-name-wrapper': !groupCollapseList[i]
+                }"
                 (mouseenter)="groupNameEnter(templateType)"
                 (mouseleave)="templateType.edit = false"
               >
@@ -186,36 +195,41 @@
                     'medium-text-mobile': isMobile,
                     'medium-text': !isMobile
                   }"
-                  class="list-header-text"
+                  class="list-header-text pos-name"
                   >Name</span
                 >
+
+                <div class="flex-lay right-headers" *ngIf="!isMobile">
+                  <div class="cell-width">
+                    <span class="medium-text list-header-text">Plugin</span>
+                  </div>
+                  <div class="cell-width" *ngIf="getWorkflowType() === 'time'">
+                    <span class="medium-text list-header-text">Start Date</span>
+                  </div>
+                  <div class="cell-width" *ngIf="getWorkflowType() === 'time'">
+                    <span class="medium-text list-header-text">End Date</span>
+                  </div>
+                  <div
+                    class="cell-width"
+                    *ngIf="getWorkflowType() === 'trigger'"
+                  >
+                    <span class="medium-text list-header-text">Trigger</span>
+                  </div>
+                  <div class="cell-width" *ngIf="showService">
+                    <span class="medium-text list-header-text">Service</span>
+                  </div>
+                  <div class="cell-width" *ngIf="showAction">
+                    <span class="medium-text list-header-text">Action</span>
+                  </div>
+                  <div class="cell-width">
+                    <span class="medium-text list-header-text">Status</span>
+                  </div>
+                  <div class="cell-width">
+                    <span class="medium-text list-header-text">Progress</span>
+                  </div>
+                </div>
               </div>
-              <div class="flex-lay" *ngIf="!isMobile">
-                <div class="cell-width">
-                  <span class="medium-text list-header-text">Plugin</span>
-                </div>
-                <div class="cell-width" *ngIf="getWorkflowType() === 'time'">
-                  <span class="medium-text list-header-text">Start Date</span>
-                </div>
-                <div class="cell-width" *ngIf="getWorkflowType() === 'time'">
-                  <span class="medium-text list-header-text">End Date</span>
-                </div>
-                <div class="cell-width" *ngIf="getWorkflowType() === 'trigger'">
-                  <span class="medium-text list-header-text">Trigger</span>
-                </div>
-                <!-- <div class="cell-width" *ngIf="showService">
-                  <span class="medium-text list-header-text">Service</span>
-                </div>
-                <div class="cell-width" *ngIf="showAction">
-                  <span class="medium-text list-header-text">Action</span>
-                </div> -->
-                <div class="cell-width">
-                  <span class="medium-text list-header-text">Status</span>
-                </div>
-                <div class="cell-width">
-                  <span class="medium-text list-header-text">Progress</span>
-                </div>
-              </div>
+
               <button
                 class="stage-btn"
                 mat-button
@@ -318,7 +332,7 @@
                     }}</span>
                   </div>
                 </div>
-                <!-- <div *ngIf="!isMobile">
+                <div *ngIf="!isMobile">
                   <div
                     *ngIf="showService"
                     class="border-white template-end flex-center"
@@ -337,7 +351,7 @@
                       task.actionName
                     }}</span>
                   </div>
-                </div> -->
+                </div>
                 <div
                   *ngIf="!isMobile"
                   class="border-white template-status"
