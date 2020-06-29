@@ -113,7 +113,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
 
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
-      reader.onload = (event) => {
+      reader.onload = (event: any) => {
         // called once readAsDataURL is completed
         this.templateAvatarUrl = event.target.result;
       };

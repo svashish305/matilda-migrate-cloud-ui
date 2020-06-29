@@ -135,7 +135,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
 
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
-      reader.onload = (event) => {
+      reader.onload = (event: any) => {
         // called once readAsDataURL is completed
         this.waveAvatarUrl = event.target.result;
       };
