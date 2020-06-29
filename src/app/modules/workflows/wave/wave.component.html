@@ -26,15 +26,58 @@
         />
       </div>
       <div class="ngx-template-header-avatar">
-        <ngx-avatar
+        <button
+          class="avatar-dd-btn"
+          mat-button
+          [matMenuTriggerFor]="avatarDropdown"
+          (mouseover)="waveImgHover = true"
+          (mouseleave)="waveImgHover = false"
+        >
+          <ngx-avatar
+            *ngIf="waveAvatarUrl; else initialsAvatar"
+            [src]="waveAvatarUrl"
+            class="my-avatar flex-center"
+            name="{{ waveData.name }}"
+            initialsSize="2"
+            [size]="isMobile ? 40 : 56"
+          ></ngx-avatar>
+          <ng-template #initialsAvatar>
+            <ngx-avatar
+              name="{{ waveData.name }}"
+              initialsSize="2"
+              [size]="isMobile ? 40 : 56"
+            ></ngx-avatar>
+          </ng-template>
+          <img
+            *ngIf="waveImgHover"
+            class="edit-avatar-img"
+            src="assets/imgs/edit-img.svg"
+            alt="edit"
+          />
+        </button>
+        <mat-menu #avatarDropdown="matMenu">
+          <button mat-menu-item>
+            <label for="waveAvatarFile" class="avatar-upload-option"
+              >Upload
+              <input
+                id="waveAvatarFile"
+                type="file"
+                (change)="changeAvatar($event)"
+              />
+            </label>
+          </button>
+          <button mat-menu-item (click)="waveAvatarUrl = null">
+            Remove
+          </button>
+        </mat-menu>
+        <!-- <ngx-avatar
           class="my-avatar flex-center"
           name="{{ waveData.name }}"
           initialsSize="2"
           [size]="isMobile ? 40 : 56"
-        ></ngx-avatar>
+        ></ngx-avatar> -->
       </div>
       <div class="wave__heading">
-        <!-- {{ waveData.name }} -->
         <input
           class="description-styles template-title-font"
           (click)="$event.target.select()"

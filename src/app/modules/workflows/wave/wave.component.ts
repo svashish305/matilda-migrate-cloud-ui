@@ -72,6 +72,9 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   isTablet = false;
   isDesktop = false;
 
+  waveImgHover = false;
+  waveAvatarUrl: any;
+
   constructor(
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
@@ -124,6 +127,19 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     this.dataService.getAccounts().subscribe((data: any[]) => {
       this.accounts = data;
     });
+  }
+
+  changeAvatar(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => {
+        // called once readAsDataURL is completed
+        this.waveAvatarUrl = event.target.result;
+      };
+    }
   }
 
   /**

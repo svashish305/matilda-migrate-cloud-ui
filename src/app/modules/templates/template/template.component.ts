@@ -52,6 +52,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   selectedTask: any;
   showTaskOptions = false;
 
+  templateImgHover = false;
   templateAvatarUrl: any;
 
   constructor(
