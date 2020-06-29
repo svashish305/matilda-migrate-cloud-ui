@@ -647,10 +647,14 @@
 
     .edit-avatar-img {
       position: absolute;
-      right: -5px;
-      height: 10px;
-      width: 10px;
-      top: 30px;
+      right: -8px;
+      // height: 19px;
+      // width: 21px;
+      top: 28px;
+      // padding: 0.25em;
+      border-radius: 50%;
+      // border: 1px solid var(--btn-lightgray-border);
+      background-color: #fff;
     }
   }
 
@@ -1354,10 +1358,14 @@
 
     .edit-avatar-img {
       position: absolute;
-      right: 0;
-      height: 10px;
-      width: 10px;
-      top: 45px;
+      right: -4px;
+      // height: 19px;
+      // width: 21px;
+      top: 40px;
+      // padding: 0.25em;
+      border-radius: 50%;
+      // border: 1px solid var(--btn-lightgray-border);
+      background-color: #fff;
     }
   }
 
