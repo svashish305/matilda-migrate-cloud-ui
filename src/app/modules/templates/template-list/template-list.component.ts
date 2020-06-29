@@ -331,11 +331,11 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @param templateType for which name has to be edited
    * @description make group name editable on hover
    */
-  groupNameEnter(templateType) {
-    this.templateData.groups.forEach((template) => (template.edit = false));
-    templateType.edit = true;
-    templateType.drag = true;
-  }
+  // groupNameEnter(templateType) {
+  //   this.templateData.groups.forEach((template) => (template.edit = false));
+  //   templateType.edit = true;
+  //   templateType.drag = true;
+  // }
 
   /**
    *

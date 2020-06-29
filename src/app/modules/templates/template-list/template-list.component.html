@@ -123,13 +123,19 @@
               </div>
               <!-- group level actions ends -->
 
-              <div
+              <!-- <div
                 [ngClass]="{
                   'group-name-wrapper-collapsed': groupCollapseList[i],
                   'group-name-wrapper': !groupCollapseList[i]
                 }"
                 (mouseenter)="groupNameEnter(templateType)"
                 (mouseleave)="templateType.edit = false"
+              > -->
+              <div
+                [ngClass]="{
+                  'group-name-wrapper-collapsed': groupCollapseList[i],
+                  'group-name-wrapper': !groupCollapseList[i]
+                }"
               >
                 <div class="group-name common-text">
                   {{ templateType.name }}

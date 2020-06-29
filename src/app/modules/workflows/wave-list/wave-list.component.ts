@@ -770,11 +770,11 @@ export class WaveListComponent implements OnInit {
    * @param waveType for which name has to be edited
    * @description make group name editable on hover
    */
-  groupNameEnter(waveType) {
-    this.waveData.groups.forEach((wave) => (wave.edit = false));
-    waveType.edit = true;
-    waveType.drag = true;
-  }
+  // groupNameEnter(waveType) {
+  //   this.waveData.groups.forEach((wave) => (wave.edit = false));
+  //   waveType.edit = true;
+  //   waveType.drag = true;
+  // }
 
   /**
    *
