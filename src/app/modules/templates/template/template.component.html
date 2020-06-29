@@ -30,6 +30,8 @@
           class="avatar-dd-btn"
           mat-button
           [matMenuTriggerFor]="avatarDropdown"
+          (mouseover)="templateImgHover = true"
+          (mouseleave)="templateImgHover = false"
         >
           <ngx-avatar
             *ngIf="templateAvatarUrl; else initialsAvatar"
@@ -46,10 +48,16 @@
               [size]="isMobile ? 40 : 56"
             ></ngx-avatar>
           </ng-template>
+          <img
+            *ngIf="templateImgHover"
+            class="edit-avatar-img"
+            src="assets/imgs/edit-img.svg"
+            alt="edit"
+          />
         </button>
         <mat-menu #avatarDropdown="matMenu">
           <button mat-menu-item>
-            <label for="templateAvatarFile"
+            <label for="templateAvatarFile" class="avatar-upload-option"
               >Upload
               <input
                 id="templateAvatarFile"
