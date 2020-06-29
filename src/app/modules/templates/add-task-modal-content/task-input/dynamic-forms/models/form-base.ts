@@ -13,5 +13,6 @@ export interface FormBase {
     inputType?: string;
     options?: any[];
     value?: any;
+    actionId?: any;
     validations?: Validator[];
 }

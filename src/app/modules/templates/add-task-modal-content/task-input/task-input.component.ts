@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { FormBase, Validator } from './dynamic-forms/models/form-base';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
+import { PluginService } from '../services/plugin.service';
+
 
 @Component({
   selector: 'app-task-input',
@@ -10,8 +12,11 @@ import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms'
 })
 export class TaskInputComponent implements OnInit, OnChanges {
   @Input('dataSource') dataSource: FormBase[] = [];
+  @Output('saveConfig') saveConfig = new EventEmitter();
+  @Output('closeWidget') closeWidget = new EventEmitter();
+
   form: FormGroup;
-  constructor(private _fb: FormBuilder) { }
+  constructor(private _fb: FormBuilder, private _pluginService: PluginService) { }
 
   ngOnInit() {
     if (this.dataSource.length > 0) {
@@ -19,12 +24,9 @@ export class TaskInputComponent implements OnInit, OnChanges {
     } else {
       this.form = this.toFormGroup([]);
     }
-
-    console.log(this.dataSource);
   }
 
   ngOnChanges(changes: SimpleChanges){
-    console.log(changes);
     if(changes.dataSource.currentValue !== changes.dataSource.previousValue) {
       this.form = this.toFormGroup(changes.dataSource.currentValue);
     }
@@ -37,7 +39,6 @@ export class TaskInputComponent implements OnInit, OnChanges {
       group[field.key] = new FormControl(field.value, this.bindValidations(field.validations));
 
     });
-    console.log(group);
     return new FormGroup(group);
   }
 
@@ -47,7 +48,6 @@ export class TaskInputComponent implements OnInit, OnChanges {
       validations.forEach(validation => {
         validList.push(this.mapValidationPattern(validation));
       });
-      console.log(validList);
       return Validators.compose(validList);
     }
     return null;
@@ -69,4 +69,68 @@ export class TaskInputComponent implements OnInit, OnChanges {
     }
   }
 
+  mapFormControl(field: any) {
+    return new FormControl(field.value, this.bindValidations(field.validations));
+  }
+
+  updateForm(event: any) {
+    console.log(event);
+    let value =  event.control.actionId + '_' + event.value;
+    let remainingKeys = event.control.options.filter(_item => _item.key != event.value);
+    remainingKeys = remainingKeys.map(_key => event.control.actionId + '_' + _key.key);
+    
+    let updateFieldArray: any[] = [];
+
+    this._pluginService.getTaskFieldsByKey(event.control.actionId, event.control.key, value)
+        .subscribe((data: FormBase[]) => {
+          if(data) {
+           
+            updateFieldArray = this.dataSource.filter((_dataItem: any) => remainingKeys.includes(_dataItem.actionId));
+            this.dataSource = this.dataSource.filter((_dataItem: any) => !remainingKeys.includes(_dataItem.actionId));
+            updateFieldArray.forEach(_formControl => this.form.removeControl(_formControl.key));
+            //this.form.updateValueAndValidity();
+
+            updateFieldArray = data;
+            this.dataSource = this.dataSource.concat(data);
+            updateFieldArray.forEach(_newField => this.form.addControl(_newField.key, this.mapFormControl(_newField)));
+            this.form.updateValueAndValidity();
+          }
+        });
+  }
+
+  updateFormForCheckbox(event: any) {
+    let value =  event.control.actionId + '_' + event.control.key;
+     
+    let updateFieldArray: any[] = [];
+
+    this._pluginService.getTaskFieldsByKey(event.control.actionId, event.control.key, value)
+        .subscribe((data: FormBase[]) => {
+          if(data.length > 0) {
+            if(event.checked){
+              updateFieldArray = data;
+              this.dataSource = this.dataSource.concat(data);
+              updateFieldArray.forEach(_newField => this.form.addControl(_newField.key, this.mapFormControl(_newField)));
+              this.form.updateValueAndValidity();
+            }else{
+              updateFieldArray = this.dataSource.filter((_dataItem: any) => _dataItem.actionId === value);
+              this.dataSource = this.dataSource.filter((_dataItem: any) => _dataItem.actionId !== value);
+              updateFieldArray.forEach(_formControl => this.form.removeControl(_formControl.key));
+              this.form.updateValueAndValidity();
+            }
+          }else{
+            updateFieldArray = this.dataSource.filter((_dataItem: any) => _dataItem.actionId === value);
+            this.dataSource = this.dataSource.filter((_dataItem: any) => _dataItem.actionId !== value);
+            updateFieldArray.forEach(_formControl => this.form.removeControl(_formControl.key));
+            this.form.updateValueAndValidity();
+          }
+        });
+  }
+
+  onSubmit(form: any, testForm?:any) {
+    this.saveConfig.emit({configuration: form, itemFields: this.dataSource});
+  }
+
+  close() {
+    this.closeWidget.emit(true);
+  } 
 }

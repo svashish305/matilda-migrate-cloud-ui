@@ -5,7 +5,7 @@
      
     </mat-tab>
     <mat-tab label="Input">
-      <app-task-input [dataSource]="pluginFields"></app-task-input>
+      <app-task-input [dataSource]="pluginFields" (saveConfig)="saveConfig($event)" (closeWidget)="($event)"></app-task-input>
     </mat-tab>
     <mat-tab label="Output">
       <form [formGroup]="firstFormGroup" class="set-margin-top">

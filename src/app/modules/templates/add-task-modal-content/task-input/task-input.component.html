@@ -1,5 +1,33 @@
-<form  (ngSubmit)="onSubmit(form.value)" [formGroup]="form" >
-    <div  *ngFor="let data of dataSource">
-        <app-form-template [dataItem]="data" [form]="form"></app-form-template>
-    </div>
+<form  (ngSubmit)="onSubmit(form.value, form)" [formGroup]="form">
+    <div class="flex-container">
+        <div *ngFor="let data of dataSource" >
+            <div class="list-item">
+                <app-form-template [dataItem]="data" [form]="form" 
+                (dropdownChange)="updateForm($event)"
+                (radioButtonChange)="updateForm($event)"
+                (CheckboxChange)="updateFormForCheckbox($event)"
+                ></app-form-template>
+            </div>
+        </div>
+    </div>  
+    <mat-divider></mat-divider> 
+   <div class="pt-4 pb-4">
+    <button
+    mat-flat-button
+    color="primary"
+    type="submit"
+    cdkFocusInitial
+  >
+    Save
+  </button>
+  <button
+    mat-button
+    color="primary"
+    type="button"
+    (click)="close()"
+  >
+    Cancel
+  </button>
+   </div>
+  
 </form>

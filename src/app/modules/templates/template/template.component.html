@@ -405,9 +405,9 @@
       </header>
       <mat-divider></mat-divider>
 
-      <app-add-task-modal-content></app-add-task-modal-content>
+      <app-add-task-modal-content (onSaveConfig)="onSaveConfig($event)" (onClose)="onClose($event)"></app-add-task-modal-content>
 
-      <div
+      <!-- <div
         [ngClass]="{
           'modal-footer-mobile': isMobile,
           'modal-footer': !isMobile
@@ -432,7 +432,7 @@
             Cancel
           </button>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <!-- end of task options -->

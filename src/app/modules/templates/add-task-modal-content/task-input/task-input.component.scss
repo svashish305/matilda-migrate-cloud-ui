@@ -1,3 +1,8 @@
-.containerDEV {
-  flex-flow: row wrap;
+.flex-container {
+	display: flex !important;
+	flex-wrap: wrap !important;
+	overflow-x: auto; 
+}
+.list-item {
+  margin: 8px !important;
 }

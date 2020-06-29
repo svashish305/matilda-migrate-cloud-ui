@@ -50,7 +50,13 @@
        "placeholder":"Host IP or URL",
        "inputType":"text",
        "actionId":1,
-       "validations":[]
+       "validations":[
+         {
+            "name":"pattern",
+            "validator":"(https?://)?([\\da-z.-_]+)\\.([a-z.]{2,6})[/\\w .-]*/?",
+            "message":"enter valid url"
+         }
+       ]
     },
     {
        "key":"source_password",
@@ -150,31 +156,9 @@
              "message":"Name Required"
           },
           {
-             "name":"pattern",
+             "name":"email",
              "validator":"email",
              "message":"enter valid email"
-          }
-       ]
-    },
-    {
-       "key":"user",
-       "label":"User Eamil",
-       "controlType":"TextBox",
-       "order":5,
-       "options":"None",
-       "placeholder":"URL",
-       "inputType":"url",
-       "actionId":1,
-       "validations":[
-          {
-             "name":"required",
-             "validator":"required",
-             "message":"url Required"
-          },
-          {
-             "name":"pattern",
-             "validator":"(https?://)?([\\da-z.-_]+)\\.([a-z.]{2,6})[/\\w .-]*/?",
-             "message":"enter valid url"
           }
        ]
     }
