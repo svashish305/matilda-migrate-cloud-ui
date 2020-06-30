@@ -2,7 +2,7 @@
   <!-- modal body -->
   <mat-tab-group [@.disabled]="true">
     <mat-tab label="General">
-     
+      <app-task-general-config [task]="task"></app-task-general-config>
     </mat-tab>
     <mat-tab label="Input">
       <app-task-input [dataSource]="pluginFields" (saveConfig)="saveConfig($event)" (closeWidget)="($event)"></app-task-input>

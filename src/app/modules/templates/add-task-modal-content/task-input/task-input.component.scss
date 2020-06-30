@@ -1,7 +1,9 @@
 .flex-container {
+	max-height: 56vh !important;
 	display: flex !important;
 	flex-wrap: wrap !important;
 	overflow-x: auto; 
+	overflow-y: auto;
 }
 .list-item {
   margin: 8px !important;

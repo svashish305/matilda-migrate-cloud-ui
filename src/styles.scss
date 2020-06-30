@@ -270,4 +270,9 @@ body {
 }
 // end of misc common styles
 
+.task-config {
+  max-height: 56vh;
+  overflow-y: auto;
+  overflow-x: auto;
+}
 
