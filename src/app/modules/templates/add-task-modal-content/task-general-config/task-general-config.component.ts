@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PluginService } from '../services/plugin.service';
 
@@ -9,6 +9,8 @@ import { PluginService } from '../services/plugin.service';
 })
 export class TaskGeneralConfigComponent implements OnInit {
   @Input() task: any;
+  @Output() taskGeneralConfig = new EventEmitter();
+  @Output() closeWindow = new EventEmitter();
   form: FormGroup;
   pluginList: any[] = [];
   serviceList: any[] = [];
@@ -66,12 +68,10 @@ export class TaskGeneralConfigComponent implements OnInit {
   }
 
   onServiceChange(event: any, pluginId: any) { 
-    console.log(event);
     this._serviceName = event.source.selected.viewValue;
       this.pluginList.forEach(_plugin => {
         if(_plugin.pluginId === pluginId) {
           _plugin.pluginServices.forEach(_service => {
-            console.log(_service);
             if(_service.pluginServiceId == event.value) {
               this.showActionControl = true;
               this.actionList = _service.pluginActions;
@@ -88,8 +88,12 @@ export class TaskGeneralConfigComponent implements OnInit {
 
   onSubmit(form: any) {
     if(this.form.valid){
-      console.log(form);
+      this.taskGeneralConfig.emit(form);
     }
+  }
+
+  close() {
+    this.closeWindow.emit(true);
   }
 
   get name() {

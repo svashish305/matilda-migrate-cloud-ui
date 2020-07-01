@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output, Input } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { PluginService } from './services/plugin.service';
 import { FormBase } from './task-input/dynamic-forms/models/form-base';
@@ -16,7 +16,9 @@ interface SelectInterface {
 })
 export class AddTaskModalContentComponent implements OnInit {
   public pluginFields: FormBase[] = [];
+  @Input() task: any;
   @Output() onSaveConfig = new EventEmitter();
+  @Output() onSaveGeneralConfig = new EventEmitter();
   @Output() onClose = new EventEmitter();
   firstFormGroup: FormGroup;
   constructor(private _formBuilder: FormBuilder, private _pluginService: PluginService) {}
@@ -33,7 +35,11 @@ export class AddTaskModalContentComponent implements OnInit {
     this.onSaveConfig.emit(event);
   }
 
-  closeWidget(event:any) {
+  closeWindow(event:any) {
     this.onClose.emit(event);
+  }
+
+  taskGeneralConfig(generalConfig: any) {
+    this.onSaveGeneralConfig.emit(generalConfig);
   }
 }

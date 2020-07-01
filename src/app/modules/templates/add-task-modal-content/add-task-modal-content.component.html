@@ -2,13 +2,14 @@
   <!-- modal body -->
   <mat-tab-group [@.disabled]="true">
     <mat-tab label="General">
-      <app-task-general-config [task]="task"></app-task-general-config>
+      <app-task-general-config [task]="task" (taskGeneralConfig)="taskGeneralConfig($event)" (closeWindow)="closeWindow($event)"></app-task-general-config>
     </mat-tab>
     <mat-tab label="Input">
-      <app-task-input [dataSource]="pluginFields" (saveConfig)="saveConfig($event)" (closeWidget)="($event)"></app-task-input>
+      <app-task-input [dataSource]="pluginFields" (saveConfig)="saveConfig($event)" (closeWidget)="closeWindow($event)"></app-task-input>
     </mat-tab>
     <mat-tab label="Output">
-      <form [formGroup]="firstFormGroup" class="set-margin-top">
+      <app-task-output></app-task-output>
+      <!-- <form [formGroup]="firstFormGroup" class="set-margin-top">
         <mat-form-field appearance="fill" class="example-half-width">
           <mat-label>Task Name</mat-label>
           <input
@@ -50,7 +51,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        </form>
+        </form> -->
     </mat-tab>
   </mat-tab-group>
   <!-- end of modal body -->
