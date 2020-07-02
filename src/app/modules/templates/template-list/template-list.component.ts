@@ -350,7 +350,11 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description reorders the dragged group
    */
   dropGroup(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
+    moveItemInArray(
+      this.templateData.groups,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 
   /**
