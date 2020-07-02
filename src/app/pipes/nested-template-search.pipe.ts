@@ -14,7 +14,7 @@ export class NestedTemplateSearchPipe implements PipeTransform {
   //     it.items.filter((item) => {
   //       if (
   //         item.name.toLowerCase().includes(searchText) ||
-  //         item.statusCd.toLowerCase().includes(searchText) ||
+  //         item.status.toLowerCase().includes(searchText) ||
   //         item.progress.toString().includes(searchText) ||
   //         item.pluginName.toString().includes(searchText) ||
   //         item.startDate.toString().includes(searchText) ||
@@ -25,7 +25,7 @@ export class NestedTemplateSearchPipe implements PipeTransform {
   //     });
   //     return (
   //       it.name.toLowerCase().includes(searchText) ||
-  //       it.statusCd.toLowerCase().includes(searchText) ||
+  //       it.status.toLowerCase().includes(searchText) ||
   //       it.progress.toString().includes(searchText) ||
   //       foundNested
   //     );
@@ -59,7 +59,7 @@ export class NestedTemplateSearchPipe implements PipeTransform {
         } else {
           let fields = [
             "name",
-            "statusCd",
+            "status",
             "progress",
             "pluginName",
             "startDate",

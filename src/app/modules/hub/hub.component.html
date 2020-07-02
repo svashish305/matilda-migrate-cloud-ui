@@ -55,37 +55,51 @@
           </div>
 
           <div *ngIf="!isTemplateFavouritesCollapsed" class="grid-container">
-            <mat-card>
+            <mat-card *ngFor="let favTemplate of favTemplates; let i = index">
               <div>
+                <!-- <label for="fileInput">
+                  <ngx-avatar
+                    [src]="avatarUrl"
+                    [size]="!isMobile ? 56 : 68"
+                    name="Tomcat Template"
+                    initialsSize="2"
+                  >
+                  </ngx-avatar>
+                </label>
+                <input
+                  id="fileInput"
+                  type="file"
+                  (change)="changeAvatar($event)"
+                /> -->
                 <ngx-avatar
                   [size]="!isMobile ? 56 : 68"
-                  name="Tomcat Template"
-                ></ngx-avatar>
-                <span class="bold-text template-title">Tomcat Template</span>
-                <span class="badge badge-pill badge-custom template-status"
-                  >Configured</span
+                  name="{{ favTemplate.name }}"
+                  initialsSize="2"
                 >
+                </ngx-avatar>
+                <a (click)="toggleTemplateFavourite(favTemplate, $event)">
+                  <img
+                    class="mark-fav-icon"
+                    [src]="
+                      templateFavStatus[favTemplate.id]
+                        ? 'assets/imgs/favourite.svg'
+                        : 'assets/imgs/unfavourite.svg'
+                    "
+                    alt="mark as favourite"
+                  />
+                </a>
+                <span class="bold-text template-title">{{
+                  favTemplate.name
+                }}</span>
+                <span class="badge badge-pill badge-custom template-status">{{
+                  favTemplate.status
+                }}</span>
                 <div class="template-progress">
                   <span class="common-text">Progress : </span>
-                  <mat-progress-bar value="50"></mat-progress-bar>
-                  <span class="medium-text">50%</span>
-                </div>
-              </div>
-            </mat-card>
-            <mat-card>
-              <div>
-                <ngx-avatar
-                  [size]="!isMobile ? 56 : 68"
-                  name="Template 2"
-                ></ngx-avatar>
-                <span class="bold-text template-title">Template 2</span>
-                <span class="badge badge-pill badge-custom template-status"
-                  >Configured</span
-                >
-                <div class="template-progress">
-                  <span class="common-text">Progress : </span>
-                  <mat-progress-bar value="50"></mat-progress-bar>
-                  <span class="medium-text">50%</span>
+                  <mat-progress-bar
+                    value="{{ favTemplate.progress }}"
+                  ></mat-progress-bar>
+                  <span class="medium-text">{{ favTemplate.progress }}%</span>
                 </div>
               </div>
             </mat-card>
@@ -123,14 +137,26 @@
                 <ngx-avatar
                   [size]="!isMobile ? 56 : 68"
                   name="{{ template.name }}"
+                  initialsSize="2"
                 ></ngx-avatar>
+                <a (click)="toggleTemplateFavourite(template, $event)">
+                  <img
+                    class="mark-fav-icon"
+                    [src]="
+                      templateFavStatus[template.id]
+                        ? 'assets/imgs/favourite.svg'
+                        : 'assets/imgs/unfavourite.svg'
+                    "
+                    alt="mark as favourite"
+                  />
+                </a>
                 <span class="bold-text template-title">{{
                   template.name
                 }}</span>
                 <span
                   class="badge badge-pill badge-custom template-status"
-                  [ngStyle]="setBadgeBgColor(template.groups[0].statusCd)"
-                  >{{ template.groups[0].statusCd }}</span
+                  [ngStyle]="setBadgeBgColor(template.status)"
+                  >{{ template.status }}</span
                 >
                 <div class="template-progress">
                   <span class="common-text">Progress : </span>
@@ -197,49 +223,41 @@
           </div>
 
           <div *ngIf="!isWorkflowFavouritesCollapsed" class="grid-container">
-            <mat-card>
+            <mat-card *ngFor="let favWorkflow of favWorkflows">
               <div>
                 <ngx-avatar
                   [size]="!isMobile ? 56 : 68"
-                  name="SMR Wave Workflow"
+                  name="{{ favWorkflow.name }}"
+                  initialsSize="2"
                 ></ngx-avatar>
-                <span class="bold-text template-title">SMR Wave Workflow</span>
+                <a (click)="toggleWorkflowFavourite(favWorkflow, $event)">
+                  <img
+                    class="mark-fav-icon"
+                    [src]="
+                      workflowFavStatus[favWorkflow.id]
+                        ? 'assets/imgs/favourite.svg'
+                        : 'assets/imgs/unfavourite.svg'
+                    "
+                    alt="mark as favourite"
+                  />
+                </a>
+                <span class="bold-text template-title">{{
+                  favWorkflow.name
+                }}</span>
                 <img
                   class="workflow-state-img"
                   src="assets/imgs/wf-configured.svg"
                   alt="Configured"
                 />
-                <span class="badge badge-pill badge-custom workflow-status"
-                  >Configured</span
-                >
+                <span class="badge badge-pill badge-custom workflow-status">{{
+                  favWorkflow.status
+                }}</span>
                 <div class="workflow-progress">
                   <span class="common-text">Progress : </span>
-                  <mat-progress-bar value="50"></mat-progress-bar>
-                  <span class="medium-text">50%</span>
-                </div>
-              </div>
-            </mat-card>
-            <mat-card>
-              <div>
-                <ngx-avatar
-                  [size]="!isMobile ? 56 : 68"
-                  name="SME Wave Workflow"
-                ></ngx-avatar>
-                <span class="bold-text template-title">SMR Wave Workflow</span>
-                <img
-                  class="workflow-state-img"
-                  src="assets/imgs/wf-defined.svg"
-                  alt="Defined"
-                />
-                <span
-                  class="badge badge-pill badge-custom workflow-status"
-                  [ngStyle]="setBadgeBgColor('Defined')"
-                  >Defined</span
-                >
-                <div class="workflow-progress">
-                  <span class="common-text">Progress : </span>
-                  <mat-progress-bar value="50"></mat-progress-bar>
-                  <span class="medium-text">50%</span>
+                  <mat-progress-bar
+                    value="{{ favWorkflow.progress }}"
+                  ></mat-progress-bar>
+                  <span class="medium-text">{{ favWorkflow.progress }}%</span>
                 </div>
               </div>
             </mat-card>
@@ -277,7 +295,19 @@
                 <ngx-avatar
                   [size]="!isMobile ? 56 : 68"
                   name="{{ workflow.name }}"
+                  initialsSize="2"
                 ></ngx-avatar>
+                <a (click)="toggleWorkflowFavourite(workflow, $event)">
+                  <img
+                    class="mark-fav-icon"
+                    [src]="
+                      workflowFavStatus[workflow.id]
+                        ? 'assets/imgs/favourite.svg'
+                        : 'assets/imgs/unfavourite.svg'
+                    "
+                    alt="mark as favourite"
+                  />
+                </a>
                 <span class="bold-text template-title">{{
                   workflow.name
                 }}</span>
@@ -288,8 +318,8 @@
                 />
                 <span
                   class="badge badge-pill badge-custom workflow-status"
-                  [ngStyle]="setBadgeBgColor(workflow.groups[0].statusCd)"
-                  >{{ workflow.groups[0].statusCd }}</span
+                  [ngStyle]="setBadgeBgColor(workflow.groups[0].status)"
+                  >{{ workflow.groups[0].status }}</span
                 >
                 <div class="workflow-progress">
                   <span class="common-text">Progress : </span>

@@ -25,21 +25,61 @@
           alt="back"
         />
       </div>
-      <img
-        *ngIf="templateData.icon"
-        [src]="templateData.icon"
-        class="avatar"
-        alt="{{ templateData.name }}"
-      />
-      <div *ngIf="!templateData.icon" class="ngx-template-header-avatar">
-        <ngx-avatar
+      <div class="ngx-template-header-avatar">
+        <button
+          class="avatar-dd-btn no-hover-effect"
+          mat-button
+          [matMenuTriggerFor]="avatarDropdown"
+          (mouseover)="templateImgHover = true"
+          (mouseleave)="templateImgHover = false"
+        >
+          <ngx-avatar
+            *ngIf="templateAvatarUrl; else initialsAvatar"
+            [src]="templateAvatarUrl"
+            class="my-avatar flex-center"
+            name="{{ templateData.name }}"
+            initialsSize="2"
+            [size]="isMobile ? 40 : 56"
+          ></ngx-avatar>
+          <ng-template #initialsAvatar>
+            <ngx-avatar
+              name="{{ templateData.name }}"
+              initialsSize="2"
+              [size]="isMobile ? 40 : 56"
+            ></ngx-avatar>
+          </ng-template>
+          <img
+            *ngIf="templateImgHover"
+            class="edit-avatar-img"
+            src="assets/imgs/edit-img-2.svg"
+            alt="edit"
+          />
+        </button>
+        <mat-menu #avatarDropdown="matMenu">
+          <button mat-menu-item>
+            <label
+              for="templateAvatarFile"
+              class="avatar-upload-option pointer-cursor"
+              >Upload
+              <input
+                id="templateAvatarFile"
+                type="file"
+                (change)="changeAvatar($event)"
+              />
+            </label>
+          </button>
+          <button mat-menu-item (click)="templateAvatarUrl = null">
+            Remove
+          </button>
+        </mat-menu>
+        <!-- <ngx-avatar
           class="my-avatar flex-center"
           name="{{ templateData.name }}"
+          initialsSize="2"
           [size]="isMobile ? 40 : 56"
-        ></ngx-avatar>
+        ></ngx-avatar> -->
       </div>
       <div class="wave__heading">
-        <!-- {{ templateData.name }} -->
         <input
           class="description-styles template-title-font"
           (click)="$event.target.select()"
@@ -65,6 +105,18 @@
         />
       </div>
 
+      <a (click)="favourite = !favourite">
+        <img
+          class="fav-icon"
+          [src]="
+            favourite
+              ? 'assets/imgs/favourite.svg'
+              : 'assets/imgs/unfavourite.svg'
+          "
+          alt="mark-as-favourite"
+        />
+      </a>
+
       <button
         class="template-dd-btn"
         mat-button
@@ -77,6 +129,7 @@
         />
       </button>
       <mat-menu
+        id="import-menu"
         #templateDropdown="matMenu"
         xPosition="before"
         yPosition="below"
@@ -131,7 +184,12 @@
           </div>
 
           <div class="stage-action-bar">
-            <button mat-flat-button color="primary" class="new-stage-btn">
+            <button
+              mat-flat-button
+              color="primary"
+              class="new-stage-btn"
+              (click)="addStage()"
+            >
               <span class="new-stage-btn-text">+ New</span>
             </button>
 
@@ -260,6 +318,7 @@
             <div class="checkbox-label-with-icon">
               <ngx-avatar
                 name="{{ template.name }}"
+                initialsSize="2"
                 class="import-avatar"
               ></ngx-avatar>
               <span class="import-list-template-name">{{ template.name }}</span>
@@ -390,6 +449,7 @@
         <div class="task-header">
           <ngx-avatar
             [name]="selectedTask.name"
+            initialsSize="2"
             size="56"
             class="lalign-import-template-icon"
           ></ngx-avatar>

@@ -14,7 +14,7 @@ export class NestedWorkflowSearchPipe implements PipeTransform {
   //     it.items.filter((item) => {
   //       if (
   //         item.name.toLowerCase().includes(searchText) ||
-  //         item.statusCd.toLowerCase().includes(searchText) ||
+  //         item.status.toLowerCase().includes(searchText) ||
   //         item.progress.toString().includes(searchText)
   //       ) {
   //         foundNested = true;
@@ -22,7 +22,7 @@ export class NestedWorkflowSearchPipe implements PipeTransform {
   //     });
   //     return (
   //       it.name.toLowerCase().includes(searchText) ||
-  //       it.statusCd.toLowerCase().includes(searchText) ||
+  //       it.status.toLowerCase().includes(searchText) ||
   //       it.progress.toString().includes(searchText) ||
   //       foundNested
   //     );
@@ -54,7 +54,7 @@ export class NestedWorkflowSearchPipe implements PipeTransform {
         if (waveType.name.includes(search.toLowerCase())) {
           return newData[index];
         } else {
-          let fields = ["name", "statusCd", "progress"];
+          let fields = ["name", "status", "progress"];
           newData[index].items = waveType.items.filter((item) => {
             return fields.some((x) => {
               let ele = item[x].toString().toLowerCase();

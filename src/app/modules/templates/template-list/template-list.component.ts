@@ -17,6 +17,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DataService } from "src/services/data.service";
 import { MatDialog } from "@angular/material/dialog";
 import { DeviceDetectorService } from "ngx-device-detector";
+import { Task, Stage } from "src/app/models/data.models";
 
 interface SelectInterface {
   value: string;
@@ -35,8 +36,8 @@ export class TemplateListComponent implements OnInit, OnChanges {
   searchKey;
   stages: any[] = [];
   tasks: any[] = [];
-  taskCollapseState: Map<any, boolean> = new Map();
-
+  groupCollapseList: boolean[];
+  drag = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
@@ -83,7 +84,9 @@ export class TemplateListComponent implements OnInit, OnChanges {
     private deviceService: DeviceDetectorService,
     private _formBuilder: FormBuilder,
     public dialog: MatDialog
-  ) {}
+  ) {
+    this.groupCollapseList = [];
+  }
 
   ngOnInit() {
     // console.log('templateData ', this.templateData);
@@ -185,47 +188,8 @@ export class TemplateListComponent implements OnInit, OnChanges {
     }
   }
 
-  collapseAll(checked: boolean) {
-    if (checked) {
-      this.templateData.groups.forEach((templateType: any) => {
-        templateType.collapsed = true;
-      });
-    } else {
-      this.templateData.groups.forEach((templateType: any) => {
-        templateType.collapsed = false;
-      });
-    }
-  }
-
   getWorkflowType() {
     return this.selectedWorkflowType;
-  }
-
-  toggleHeight(taskId) {
-    let height;
-    if (this.taskCollapseState[taskId]) {
-      height = "12.375em";
-    }
-    return { height };
-  }
-
-  toggleCollapse(taskId) {
-    this.taskCollapseState[taskId] = !this.taskCollapseState[taskId];
-  }
-
-  isCollapsed(taskId) {
-    this.taskCollapseState[taskId] = false;
-  }
-
-  openDialog(template: TemplateRef<any>) {
-    const dialogRef = this.dialog.open(template, {
-      width: "54.444444%",
-      height: "74.89%",
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 
   toggleTemplateHeight(collapsed) {
@@ -246,6 +210,29 @@ export class TemplateListComponent implements OnInit, OnChanges {
     return { height };
   }
 
+  collapseAll(checked: boolean) {
+    if (checked) {
+      for (let i = 0; i < this.templateData.groups.length; i++) {
+        this.groupCollapseList[i] = true;
+      }
+    } else {
+      for (let i = 0; i < this.templateData.groups.length; i++) {
+        this.groupCollapseList[i] = false;
+      }
+    }
+  }
+
+  openDialog(template: TemplateRef<any>) {
+    const dialogRef = this.dialog.open(template, {
+      width: "54.444444%",
+      height: "74.89%",
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
   /**
    *
    * @description generates new color for groups
@@ -259,6 +246,23 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description reorders the template to other groups or within the groups
    */
   drop(event: CdkDragDrop<string[]>) {
+    // if (event.previousContainer === event.container) {
+    //   moveItemInArray(
+    //     event.container.data,
+    //     event.previousIndex,
+    //     event.currentIndex
+    //   );
+    // } else {
+    //   transferArrayItem(
+    //     event.previousContainer.data,
+    //     event.container.data,
+    //     event.previousIndex,
+    //     event.currentIndex
+    //   );
+    // }
+
+    let task: any = event.container.data[event.previousIndex];
+    console.log("order before drag ", task.order);
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -273,6 +277,28 @@ export class TemplateListComponent implements OnInit, OnChanges {
         event.currentIndex
       );
     }
+
+    if (event.currentIndex === 0) {
+      if (event.container.data.length > 0) {
+        if (event.container.data.length !== event.currentIndex + 1) {
+          task.order =
+            0 + event.container.data[event.currentIndex + 1]["order"] / 2;
+        } else {
+          task.order = 100;
+        }
+      } else {
+        task.order = 100;
+      }
+    } else if (event.currentIndex === event.container.data.length - 1) {
+      task.order =
+        100 + event.container.data[event.container.data.length - 2]["order"];
+    } else {
+      task.order =
+        (event.container.data[event.currentIndex - 1]["order"] +
+          event.container.data[event.currentIndex + 1]["order"]) /
+        2;
+    }
+    console.log("order after drag ", task.order);
   }
 
   /**
@@ -325,6 +351,10 @@ export class TemplateListComponent implements OnInit, OnChanges {
     );
   }
 
+  taskSettings(templateType, taskId, event) {
+    event.stopPropagation();
+  }
+
   /**
    *
    * @description clears entered template name and hides add button
@@ -341,11 +371,11 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @param templateType for which name has to be edited
    * @description make group name editable on hover
    */
-  groupNameEnter(templateType) {
-    this.templateData.groups.forEach((template) => (template.edit = false));
-    templateType.edit = true;
-    templateType.drag = true;
-  }
+  // groupNameEnter(templateType) {
+  //   this.templateData.groups.forEach((template) => (template.edit = false));
+  //   templateType.edit = true;
+  //   templateType.drag = true;
+  // }
 
   /**
    *
@@ -360,7 +390,51 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description reorders the dragged group
    */
   dropGroup(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
+    // console.log("event ", event);
+    // moveItemInArray(
+    //   this.templateData.groups,
+    //   event.previousIndex,
+    //   event.currentIndex
+    // );
+
+    let group: any = event.container.data[event.previousIndex];
+    console.log("group order before drag ", group.order);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+
+    if (event.currentIndex === 0) {
+      if (event.container.data.length > 0) {
+        if (event.container.data.length !== event.currentIndex + 1) {
+          group.order =
+            0 + event.container.data[event.currentIndex + 1]["order"] / 2;
+        } else {
+          group.order = 100;
+        }
+      } else {
+        group.order = 100;
+      }
+    } else if (event.currentIndex === event.container.data.length - 1) {
+      group.order =
+        100 + event.container.data[event.container.data.length - 2]["order"];
+    } else {
+      group.order =
+        (event.container.data[event.currentIndex - 1]["order"] +
+          event.container.data[event.currentIndex + 1]["order"]) /
+        2;
+    }
+    console.log("group order after drag ", group.order);
   }
 
   /**

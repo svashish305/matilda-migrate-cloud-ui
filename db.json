@@ -13,7 +13,8 @@
           "id": 123,
           "name": "App1",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -24,13 +25,16 @@
               "type": "NONE/TRIGGER/EVENT",
               "owner": "TEMPLATE OWNER",
               "progress": 10,
-              "statusCd": "Defined",
+              "status": "Defined",
+              "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
-                  "id": 123,
+                  "id": 1234,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -44,7 +48,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -75,7 +80,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -106,7 +112,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -129,10 +136,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 4567,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -146,7 +154,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -177,7 +186,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -208,7 +218,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -231,10 +242,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 6789,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -248,7 +260,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -279,7 +292,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -310,7 +324,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -351,13 +366,16 @@
               "type": "NONE/TRIGGER/EVENT",
               "owner": "TEMPLATE OWNER",
               "progress": 10,
-              "statusCd": "Defined",
+              "status": "Defined",
+              "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
-                  "id": 123,
+                  "id": 1234,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -371,7 +389,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -402,7 +421,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -433,7 +453,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -456,10 +477,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 4567,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -473,7 +495,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -504,7 +527,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -535,7 +559,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -558,10 +583,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 6789,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -575,7 +601,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -606,7 +633,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -637,7 +665,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -678,13 +707,16 @@
               "type": "NONE/TRIGGER/EVENT",
               "owner": "TEMPLATE OWNER",
               "progress": 10,
-              "statusCd": "Defined",
+              "status": "Defined",
+              "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
-                  "id": 123,
+                  "id": 1234,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -698,7 +730,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -729,7 +762,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -760,7 +794,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -783,10 +818,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 4567,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -800,7 +836,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -831,7 +868,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -862,7 +900,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -885,10 +924,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 6789,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -902,7 +942,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -933,7 +974,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -964,7 +1006,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1003,7 +1046,8 @@
           "id": 123,
           "name": "App2",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -1014,13 +1058,16 @@
               "type": "NONE/TRIGGER/EVENT",
               "owner": "TEMPLATE OWNER",
               "progress": 10,
-              "statusCd": "Defined",
+              "status": "Defined",
+              "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
-                  "id": 123,
+                  "id": 1234,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -1034,7 +1081,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1065,7 +1113,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1096,7 +1145,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1119,10 +1169,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 4567,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -1136,7 +1187,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1167,7 +1219,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1198,7 +1251,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1221,10 +1275,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 6789,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -1238,7 +1293,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1269,7 +1325,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1300,7 +1357,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1341,13 +1399,16 @@
               "type": "NONE/TRIGGER/EVENT",
               "owner": "TEMPLATE OWNER",
               "progress": 10,
-              "statusCd": "Defined",
+              "status": "Defined",
+              "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
-                  "id": 123,
+                  "id": 1234,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -1361,7 +1422,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1392,7 +1454,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1423,7 +1486,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1446,10 +1510,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 4567,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -1463,7 +1528,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1494,7 +1560,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1525,7 +1592,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1548,10 +1616,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 6789,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -1565,7 +1634,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1596,7 +1666,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1627,7 +1698,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1668,13 +1740,16 @@
               "type": "NONE/TRIGGER/EVENT",
               "owner": "TEMPLATE OWNER",
               "progress": 10,
-              "statusCd": "Defined",
+              "status": "Defined",
+              "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
-                  "id": 123,
+                  "id": 1234,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -1688,7 +1763,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1719,7 +1795,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1750,7 +1827,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1773,10 +1851,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 4567,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -1790,7 +1869,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1821,7 +1901,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1852,7 +1933,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1875,10 +1957,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 6789,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -1892,7 +1975,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1923,7 +2007,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1954,7 +2039,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -1993,7 +2079,8 @@
           "id": 123,
           "name": "App1",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -2004,13 +2091,16 @@
               "type": "NONE/TRIGGER/EVENT",
               "owner": "TEMPLATE OWNER",
               "progress": 10,
-              "statusCd": "Defined",
+              "status": "Defined",
+              "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
-                  "id": 123,
+                  "id": 1234,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -2024,7 +2114,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2055,7 +2146,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2086,7 +2178,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2109,10 +2202,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 4567,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -2126,7 +2220,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2157,7 +2252,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2188,7 +2284,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2211,10 +2308,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 6789,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -2228,7 +2326,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2259,7 +2358,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2290,7 +2390,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2331,13 +2432,16 @@
               "type": "NONE/TRIGGER/EVENT",
               "owner": "TEMPLATE OWNER",
               "progress": 10,
-              "statusCd": "Defined",
+              "status": "Defined",
+              "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
-                  "id": 123,
+                  "id": 1234,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -2351,7 +2455,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2382,7 +2487,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2413,7 +2519,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2436,10 +2543,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 4567,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -2453,7 +2561,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2484,7 +2593,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2515,7 +2625,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2538,10 +2649,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 6789,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -2555,7 +2667,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2586,7 +2699,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2617,7 +2731,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2658,13 +2773,16 @@
               "type": "NONE/TRIGGER/EVENT",
               "owner": "TEMPLATE OWNER",
               "progress": 10,
-              "statusCd": "Defined",
+              "status": "Defined",
+              "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
-                  "id": 123,
+                  "id": 1234,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -2678,7 +2796,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2709,7 +2828,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2740,7 +2860,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2763,10 +2884,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 4567,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -2780,7 +2902,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2811,7 +2934,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2842,7 +2966,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2865,10 +2990,11 @@
                   ]
                 },
                 {
-                  "id": 123,
+                  "id": 6789,
                   "name": "Infrastructure",
                   "order": 100,
-                  "statusCd": "Defined",
+                  "status": "Defined",
+                  "statusCode": 1,
                   "progress": 10,
                   "items": [
                     {
@@ -2882,7 +3008,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2913,7 +3040,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2944,7 +3072,8 @@
                       "actionId": "1",
                       "serviceName": "vm",
                       "actionName": "Create",
-                      "statusCd": "Configured",
+                      "status": "Configured",
+                      "statusCode": 2,
                       "progress": 10,
                       "keyVault": {
                         "id": 1,
@@ -2976,146 +3105,6 @@
                 }
               ],
               "modifiedDate": "2020-06-12T14:29:18"
-            }
-          ]
-        }
-      ],
-      "tags": [
-        {
-          "id": 1,
-          "name": "Name1",
-          "value": "Value1",
-          "modifiedDate": "2020-06-12T14:29:18"
-        }
-      ],
-      "keyVault": [
-        {
-          "id": 1,
-          "name": "AWS",
-          "credentials": [
-            {
-              "id": 1,
-              "name": "awsacc1"
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "name": "Jenkins",
-          "credentials": [
-            {
-              "id": 1,
-              "name": "jenkinsacc1"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "2117c2f2-a872-488e-b197-7e77485284ad",
-      "name": "Untitled Workflow",
-      "desc": "Workflow Desc",
-      "ver": "workflowVersionNumber",
-      "type": "TRIGGER/EVENT",
-      "owner": "Workflow OWNER",
-      "progress": 10,
-      "groups": [
-        {
-          "id": 123,
-          "name": "App1",
-          "order": 100,
-          "statusCd": "Defined",
-          "progress": 10,
-          "items": [
-            {
-              "id": 1,
-              "name": "TemplateName by User",
-              "desc": "template Desc by User",
-              "order": 100,
-              "statusCd": "Defined",
-              "progress": 10
-            },
-            {
-              "id": 2,
-              "name": "TemplateName by User 1",
-              "desc": "template Desc by User",
-              "order": 100,
-              "statusCd": "Defined",
-              "progress": 10
-            },
-            {
-              "id": 3,
-              "name": "TemplateName by User",
-              "desc": "template Desc by User",
-              "order": 100,
-              "statusCd": "Defined",
-              "progress": 10
-            }
-          ]
-        },
-        {
-          "id": 123,
-          "name": "App1",
-          "order": 100,
-          "statusCd": "Defined",
-          "progress": 10,
-          "items": [
-            {
-              "id": 1,
-              "name": "TemplateName by User",
-              "desc": "template Desc by User",
-              "order": 100,
-              "statusCd": "Defined",
-              "progress": 10
-            },
-            {
-              "id": 2,
-              "name": "TemplateName by User",
-              "desc": "template Desc by User",
-              "order": 100,
-              "statusCd": "Defined",
-              "progress": 10
-            },
-            {
-              "id": 3,
-              "name": "TemplateName by User",
-              "desc": "template Desc by User",
-              "order": 100,
-              "statusCd": "Defined",
-              "progress": 10
-            }
-          ]
-        },
-        {
-          "id": 123,
-          "name": "App1",
-          "order": 100,
-          "statusCd": "Defined",
-          "progress": 10,
-          "items": [
-            {
-              "id": 1,
-              "name": "TemplateName by User",
-              "desc": "template Desc by User",
-              "order": 100,
-              "statusCd": "Defined",
-              "progress": 10
-            },
-            {
-              "id": 2,
-              "name": "TemplateName by User",
-              "desc": "template Desc by User",
-              "order": 100,
-              "statusCd": "Defined",
-              "progress": 10
-            },
-            {
-              "id": 3,
-              "name": "TemplateName by User",
-              "desc": "template Desc by User",
-              "order": 100,
-              "statusCd": "Defined",
-              "progress": 10
             }
           ]
         }
@@ -3161,13 +3150,15 @@
       "type": "NONE/TRIGGER/EVENT",
       "owner": "TEMPLATE OWNER",
       "progress": 10,
-      "statusCd": "Defined",
+      "status": "Defined",
+      "statusCode": 1,
       "groups": [
         {
-          "id": 123,
+          "id": 1234,
           "name": "Infrastructure",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -3181,7 +3172,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3212,7 +3204,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3243,7 +3236,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3266,10 +3260,11 @@
           ]
         },
         {
-          "id": 123,
-          "name": "Infrastructure",
+          "id": 4567,
+          "name": "Infrastructure 2",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -3283,7 +3278,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3314,7 +3310,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3345,7 +3342,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3368,10 +3366,11 @@
           ]
         },
         {
-          "id": 123,
-          "name": "Infrastructure",
+          "id": 6789,
+          "name": "Infrastructure 3",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -3385,7 +3384,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3416,7 +3416,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3447,7 +3448,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3488,13 +3490,15 @@
       "type": "NONE/TRIGGER/EVENT",
       "owner": "TEMPLATE OWNER",
       "progress": 10,
-      "statusCd": "Defined",
+      "status": "Defined",
+      "statusCode": 1,
       "groups": [
         {
-          "id": 123,
+          "id": 1234,
           "name": "Infrastructure",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -3508,7 +3512,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3539,7 +3544,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3570,7 +3576,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3593,10 +3600,11 @@
           ]
         },
         {
-          "id": 123,
+          "id": 4567,
           "name": "Infrastructure",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -3610,7 +3618,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3641,7 +3650,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3672,7 +3682,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3695,10 +3706,11 @@
           ]
         },
         {
-          "id": 123,
+          "id": 6789,
           "name": "Infrastructure",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -3712,7 +3724,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3743,7 +3756,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3774,7 +3788,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3815,13 +3830,15 @@
       "type": "NONE/TRIGGER/EVENT",
       "owner": "TEMPLATE OWNER",
       "progress": 10,
-      "statusCd": "Defined",
+      "status": "Defined",
+      "statusCode": 1,
       "groups": [
         {
-          "id": 123,
+          "id": 1234,
           "name": "Infrastructure",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -3835,7 +3852,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3866,7 +3884,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3897,7 +3916,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3920,10 +3940,11 @@
           ]
         },
         {
-          "id": 123,
+          "id": 4567,
           "name": "Infrastructure",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -3937,7 +3958,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3968,7 +3990,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -3999,7 +4022,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4022,10 +4046,11 @@
           ]
         },
         {
-          "id": 123,
+          "id": 6789,
           "name": "Infrastructure",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -4039,7 +4064,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4070,7 +4096,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4101,7 +4128,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4135,20 +4163,22 @@
       "modifiedDate": "2020-06-12T14:29:18"
     },
     {
-      "id": "3",
+      "id": "4",
       "name": "Template 4",
       "desc": "Template Description",
       "ver": "templateVersionNumber",
       "type": "NONE/TRIGGER/EVENT",
       "owner": "TEMPLATE OWNER",
       "progress": 10,
-      "statusCd": "Defined",
+      "status": "Defined",
+      "statusCode": 1,
       "groups": [
         {
-          "id": 123,
+          "id": 1234,
           "name": "Infrastructure",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -4162,7 +4192,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4193,7 +4224,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4224,7 +4256,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4247,10 +4280,11 @@
           ]
         },
         {
-          "id": 123,
+          "id": 4567,
           "name": "Infrastructure",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -4264,7 +4298,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4295,7 +4330,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4326,7 +4362,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4349,10 +4386,11 @@
           ]
         },
         {
-          "id": 123,
+          "id": 6789,
           "name": "Infrastructure",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -4366,7 +4404,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4397,7 +4436,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4428,7 +4468,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4469,13 +4510,15 @@
       "type": "NONE/TRIGGER/EVENT",
       "owner": "TEMPLATE OWNER",
       "progress": 10,
-      "statusCd": "Defined",
+      "status": "Defined",
+      "statusCode": 1,
       "groups": [
         {
-          "id": 123,
+          "id": 1234,
           "name": "Infrastructure",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -4489,7 +4532,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4520,7 +4564,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4551,7 +4596,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4574,10 +4620,11 @@
           ]
         },
         {
-          "id": 123,
+          "id": 4567,
           "name": "Infrastructure",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -4591,7 +4638,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4622,7 +4670,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4653,7 +4702,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4676,10 +4726,11 @@
           ]
         },
         {
-          "id": 123,
+          "id": 6789,
           "name": "Infrastructure",
           "order": 100,
-          "statusCd": "Defined",
+          "status": "Defined",
+          "statusCode": 1,
           "progress": 10,
           "items": [
             {
@@ -4693,7 +4744,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4724,7 +4776,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -4755,334 +4808,8 @@
               "actionId": "1",
               "serviceName": "vm",
               "actionName": "Create",
-              "statusCd": "Configured",
-              "progress": 10,
-              "keyVault": {
-                "id": 1,
-                "name": "AWS"
-              },
-              "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-              "output": null,
-              "startDate": "6/1/2020",
-              "endDate": "12/11/2020",
-              "duration": null,
-              "dependencies": [
-                {
-                  "groupId": 1234,
-                  "taskId": 345345,
-                  "mode": "before"
-                }
-              ],
-              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-            }
-          ]
-        }
-      ],
-      "tags": [
-        {
-          "id": 1,
-          "name": "Name1",
-          "value": "Value1",
-          "modifiedDate": "2020-06-12T14:29:18"
-        }
-      ],
-      "modifiedDate": "2020-06-12T14:29:18"
-    },
-    {
-      "id": "4941c4b1-c3ae-4458-89d0-48d3bf93cfb0",
-      "name": "Untitled Template",
-      "desc": "Template Description",
-      "ver": "templateVersionNumber",
-      "type": "NONE/TRIGGER/EVENT",
-      "owner": "TEMPLATE OWNER",
-      "progress": 10,
-      "statusCd": "Defined",
-      "groups": [
-        {
-          "id": 1,
-          "name": "Infrastructure",
-          "order": 100,
-          "statusCd": "Defined",
-          "progress": 10,
-          "items": [
-            {
-              "id": 123,
-              "name": "Create Stack Instance",
-              "description": "TaskDescription",
-              "order": 100,
-              "pluginName": "AWS",
-              "pluginId": 1,
-              "serviceId": "1",
-              "actionId": "1",
-              "serviceName": "vm",
-              "actionName": "Create",
-              "statusCd": "Configured",
-              "progress": 10,
-              "keyVault": {
-                "id": 1,
-                "name": "AWS"
-              },
-              "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-              "output": null,
-              "startDate": "6/1/2020",
-              "endDate": "12/11/2020",
-              "duration": null,
-              "dependencies": [
-                {
-                  "groupId": 1234,
-                  "taskId": 345345,
-                  "mode": "before"
-                }
-              ],
-              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-            },
-            {
-              "id": 456,
-              "name": "Create Stack Instance 2",
-              "description": "TaskDescription",
-              "order": 100,
-              "pluginName": "AWS",
-              "pluginId": 1,
-              "serviceId": "1",
-              "actionId": "1",
-              "serviceName": "vm",
-              "actionName": "Create",
-              "statusCd": "Configured",
-              "progress": 10,
-              "keyVault": {
-                "id": 1,
-                "name": "AWS"
-              },
-              "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-              "output": null,
-              "startDate": "6/1/2020",
-              "endDate": "12/11/2020",
-              "duration": null,
-              "dependencies": [
-                {
-                  "groupId": 1234,
-                  "taskId": 345345,
-                  "mode": "before"
-                }
-              ],
-              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-            },
-            {
-              "id": 789,
-              "name": "Create Stack Instance 3",
-              "description": "TaskDescription",
-              "order": 100,
-              "pluginName": "AWS",
-              "pluginId": 1,
-              "serviceId": "1",
-              "actionId": "1",
-              "serviceName": "vm",
-              "actionName": "Create",
-              "statusCd": "Configured",
-              "progress": 10,
-              "keyVault": {
-                "id": 1,
-                "name": "AWS"
-              },
-              "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-              "output": null,
-              "startDate": "6/1/2020",
-              "endDate": "12/11/2020",
-              "duration": null,
-              "dependencies": [
-                {
-                  "groupId": 1234,
-                  "taskId": 345345,
-                  "mode": "before"
-                }
-              ],
-              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "name": "Infrastructure",
-          "order": 100,
-          "statusCd": "Defined",
-          "progress": 10,
-          "items": [
-            {
-              "id": 123,
-              "name": "Create Stack Instance",
-              "description": "TaskDescription",
-              "order": 100,
-              "pluginName": "AWS",
-              "pluginId": 1,
-              "serviceId": "1",
-              "actionId": "1",
-              "serviceName": "vm",
-              "actionName": "Create",
-              "statusCd": "Configured",
-              "progress": 10,
-              "keyVault": {
-                "id": 1,
-                "name": "AWS"
-              },
-              "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-              "output": null,
-              "startDate": "6/1/2020",
-              "endDate": "12/11/2020",
-              "duration": null,
-              "dependencies": [
-                {
-                  "groupId": 1234,
-                  "taskId": 345345,
-                  "mode": "before"
-                }
-              ],
-              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-            },
-            {
-              "id": 456,
-              "name": "Create Stack Instance 2",
-              "description": "TaskDescription",
-              "order": 100,
-              "pluginName": "AWS",
-              "pluginId": 1,
-              "serviceId": "1",
-              "actionId": "1",
-              "serviceName": "vm",
-              "actionName": "Create",
-              "statusCd": "Configured",
-              "progress": 10,
-              "keyVault": {
-                "id": 1,
-                "name": "AWS"
-              },
-              "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-              "output": null,
-              "startDate": "6/1/2020",
-              "endDate": "12/11/2020",
-              "duration": null,
-              "dependencies": [
-                {
-                  "groupId": 1234,
-                  "taskId": 345345,
-                  "mode": "before"
-                }
-              ],
-              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-            },
-            {
-              "id": 789,
-              "name": "Create Stack Instance 3",
-              "description": "TaskDescription",
-              "order": 100,
-              "pluginName": "AWS",
-              "pluginId": 1,
-              "serviceId": "1",
-              "actionId": "1",
-              "serviceName": "vm",
-              "actionName": "Create",
-              "statusCd": "Configured",
-              "progress": 10,
-              "keyVault": {
-                "id": 1,
-                "name": "AWS"
-              },
-              "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-              "output": null,
-              "startDate": "6/1/2020",
-              "endDate": "12/11/2020",
-              "duration": null,
-              "dependencies": [
-                {
-                  "groupId": 1234,
-                  "taskId": 345345,
-                  "mode": "before"
-                }
-              ],
-              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-            }
-          ]
-        },
-        {
-          "id": 3,
-          "name": "Infrastructure",
-          "order": 100,
-          "statusCd": "Defined",
-          "progress": 10,
-          "items": [
-            {
-              "id": 123,
-              "name": "Create Stack Instance",
-              "description": "TaskDescription",
-              "order": 100,
-              "pluginName": "AWS",
-              "pluginId": 1,
-              "serviceId": "1",
-              "actionId": "1",
-              "serviceName": "vm",
-              "actionName": "Create",
-              "statusCd": "Configured",
-              "progress": 10,
-              "keyVault": {
-                "id": 1,
-                "name": "AWS"
-              },
-              "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-              "output": null,
-              "startDate": "6/1/2020",
-              "endDate": "12/11/2020",
-              "duration": null,
-              "dependencies": [
-                {
-                  "groupId": 1234,
-                  "taskId": 345345,
-                  "mode": "before"
-                }
-              ],
-              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-            },
-            {
-              "id": 456,
-              "name": "Create Stack Instance 2",
-              "description": "TaskDescription",
-              "order": 100,
-              "pluginName": "AWS",
-              "pluginId": 1,
-              "serviceId": "1",
-              "actionId": "1",
-              "serviceName": "vm",
-              "actionName": "Create",
-              "statusCd": "Configured",
-              "progress": 10,
-              "keyVault": {
-                "id": 1,
-                "name": "AWS"
-              },
-              "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-              "output": null,
-              "startDate": "6/1/2020",
-              "endDate": "12/11/2020",
-              "duration": null,
-              "dependencies": [
-                {
-                  "groupId": 1234,
-                  "taskId": 345345,
-                  "mode": "before"
-                }
-              ],
-              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-            },
-            {
-              "id": 789,
-              "name": "Create Stack Instance 3",
-              "description": "TaskDescription",
-              "order": 100,
-              "pluginName": "AWS",
-              "pluginId": 1,
-              "serviceId": "1",
-              "actionId": "1",
-              "serviceName": "vm",
-              "actionName": "Create",
-              "statusCd": "Configured",
+              "status": "Configured",
+              "statusCode": 2,
               "progress": 10,
               "keyVault": {
                 "id": 1,
@@ -5139,6 +4866,7 @@
                 "endDate": "12/11/2020",
                 "trigger": "Event 1",
                 "status": "Configured",
+                "statusCode": 2,
                 "progressPercentage": 50
               },
               {
@@ -5149,6 +4877,7 @@
                 "endDate": "12/11/2020",
                 "trigger": "Event 1",
                 "status": "Configured",
+                "statusCode": 2,
                 "progressPercentage": 50
               },
               {
@@ -5159,6 +4888,7 @@
                 "endDate": "12/11/2020",
                 "trigger": "Event 2",
                 "status": "Configured",
+                "statusCode": 2,
                 "progressPercentage": 50
               }
             ]
@@ -5188,6 +4918,7 @@
                 "endDate": "12/11/2020",
                 "trigger": "Event 1",
                 "status": "Configured",
+                "statusCode": 2,
                 "progressPercentage": 50
               },
               {
@@ -5198,6 +4929,7 @@
                 "endDate": "12/11/2020",
                 "trigger": "Event 1",
                 "status": "Configured",
+                "statusCode": 2,
                 "progressPercentage": 50
               },
               {
@@ -5208,6 +4940,7 @@
                 "endDate": "12/11/2020",
                 "trigger": "Event 2",
                 "status": "Configured",
+                "statusCode": 2,
                 "progressPercentage": 50
               }
             ]
@@ -5225,6 +4958,7 @@
       "endDate": "12/11/2020",
       "trigger": "Event 1",
       "status": "Configured",
+      "statusCode": 2,
       "progressPercentage": 50
     },
     {
@@ -5235,6 +4969,7 @@
       "endDate": "12/11/2020",
       "trigger": "Event 1",
       "status": "Configured",
+      "statusCode": 2,
       "progressPercentage": 50
     },
     {
@@ -5245,6 +4980,7 @@
       "endDate": "12/11/2020",
       "trigger": "Event 1",
       "status": "Configured",
+      "statusCode": 2,
       "progressPercentage": 50
     }
   ],

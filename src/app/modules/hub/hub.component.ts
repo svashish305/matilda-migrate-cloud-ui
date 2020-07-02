@@ -16,15 +16,23 @@ export class HubComponent implements OnInit {
   isWorkflowCollapsed = false;
 
   templates: any[] = [];
+  templateFavStatus: boolean[];
+  favTemplates: any[] = [];
+  workflowFavStatus: boolean[];
   workflows: any[] = [];
+  favWorkflows: any[] = [];
 
   isMobile = false;
+  avatarUrl: any;
 
   constructor(
     private dataService: DataService,
     private router: Router,
     private deviceService: DeviceDetectorService
-  ) {}
+  ) {
+    this.templateFavStatus = [];
+    this.workflowFavStatus = [];
+  }
 
   ngOnInit() {
     this.isMobile = this.deviceService.isMobile();
@@ -32,6 +40,19 @@ export class HubComponent implements OnInit {
     this.getTemplates();
     this.getWorkflows();
   }
+
+  // changeAvatar(event: any) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     var reader = new FileReader();
+
+  //     reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+  //     reader.onload = (event) => {
+  //       // called once readAsDataURL is completed
+  //       this.avatarUrl = event.target.result;
+  //     };
+  //   }
+  // }
 
   getTemplates() {
     this.dataService.getTemplates().subscribe((templates: any) => {
@@ -43,6 +64,34 @@ export class HubComponent implements OnInit {
     this.dataService.getWaves().subscribe((waves: any) => {
       this.workflows = waves;
     });
+  }
+
+  toggleTemplateFavourite(template, event) {
+    event.stopPropagation();
+    this.templateFavStatus[template.id] = !this.templateFavStatus[template.id];
+    if (this.templateFavStatus[template.id] == true) {
+      this.favTemplates.push(template);
+      this.templates = this.templates.filter((t) => t.id != template.id);
+    } else {
+      this.favTemplates = this.favTemplates.filter(
+        (ft) => ft.id != template.id
+      );
+      this.templates.push(template);
+    }
+  }
+
+  toggleWorkflowFavourite(workflow, event) {
+    event.stopPropagation();
+    this.workflowFavStatus[workflow.id] = !this.workflowFavStatus[workflow.id];
+    if (this.workflowFavStatus[workflow.id] == true) {
+      this.favWorkflows.push(workflow);
+      this.workflows = this.workflows.filter((t) => t.id != workflow.id);
+    } else {
+      this.favWorkflows = this.favWorkflows.filter(
+        (ft) => ft.id != workflow.id
+      );
+      this.workflows.push(workflow);
+    }
   }
 
   setBadgeBgColor(stageState = "Defined") {
