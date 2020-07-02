@@ -65,6 +65,7 @@ export class Template {
   progress: number = 0;
   status: string = "Defined";
   statusCode: number = 1;
+  order: number = 100;
   groups: any[] = [];
   tags: any[] = [];
   modifiedDate: string = null;

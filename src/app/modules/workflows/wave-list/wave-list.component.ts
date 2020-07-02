@@ -343,6 +343,23 @@ export class WaveListComponent implements OnInit {
    * @description reorders the template to other groups or within the groups
    */
   drop(event: CdkDragDrop<string[]>) {
+    // if (event.previousContainer === event.container) {
+    //   moveItemInArray(
+    //     event.container.data,
+    //     event.previousIndex,
+    //     event.currentIndex
+    //   );
+    // } else {
+    //   transferArrayItem(
+    //     event.previousContainer.data,
+    //     event.container.data,
+    //     event.previousIndex,
+    //     event.currentIndex
+    //   );
+    // }
+
+    let template: any = event.container.data[event.previousIndex];
+    console.log("order before drag ", template.order);
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -357,6 +374,28 @@ export class WaveListComponent implements OnInit {
         event.currentIndex
       );
     }
+
+    if (event.currentIndex === 0) {
+      if (event.container.data.length > 0) {
+        if (event.container.data.length !== event.currentIndex + 1) {
+          template.order =
+            0 + event.container.data[event.currentIndex + 1]["order"] / 2;
+        } else {
+          template.order = 100;
+        }
+      } else {
+        template.order = 100;
+      }
+    } else if (event.currentIndex === event.container.data.length - 1) {
+      template.order =
+        100 + event.container.data[event.container.data.length - 2]["order"];
+    } else {
+      template.order =
+        (event.container.data[event.currentIndex - 1]["order"] +
+          event.container.data[event.currentIndex + 1]["order"]) /
+        2;
+    }
+    console.log("order after drag ", template.order);
   }
 
   /**
@@ -789,11 +828,50 @@ export class WaveListComponent implements OnInit {
    * @description reorders the dragged group
    */
   dropGroup(event: CdkDragDrop<string[]>) {
-    moveItemInArray(
-      this.waveData.groups,
-      event.previousIndex,
-      event.currentIndex
-    );
+    // moveItemInArray(
+    //   this.waveData.groups,
+    //   event.previousIndex,
+    //   event.currentIndex
+    // );
+
+    let group: any = event.container.data[event.previousIndex];
+    console.log("group order before drag ", group.order);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+
+    if (event.currentIndex === 0) {
+      if (event.container.data.length > 0) {
+        if (event.container.data.length !== event.currentIndex + 1) {
+          group.order =
+            0 + event.container.data[event.currentIndex + 1]["order"] / 2;
+        } else {
+          group.order = 100;
+        }
+      } else {
+        group.order = 100;
+      }
+    } else if (event.currentIndex === event.container.data.length - 1) {
+      group.order =
+        100 + event.container.data[event.container.data.length - 2]["order"];
+    } else {
+      group.order =
+        (event.container.data[event.currentIndex - 1]["order"] +
+          event.container.data[event.currentIndex + 1]["order"]) /
+        2;
+    }
+    console.log("group order after drag ", group.order);
   }
 
   /**

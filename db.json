@@ -27,6 +27,7 @@
               "progress": 10,
               "status": "Defined",
               "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
                   "id": 1234,
@@ -367,6 +368,7 @@
               "progress": 10,
               "status": "Defined",
               "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
                   "id": 1234,
@@ -707,6 +709,7 @@
               "progress": 10,
               "status": "Defined",
               "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
                   "id": 1234,
@@ -1057,6 +1060,7 @@
               "progress": 10,
               "status": "Defined",
               "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
                   "id": 1234,
@@ -1397,6 +1401,7 @@
               "progress": 10,
               "status": "Defined",
               "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
                   "id": 1234,
@@ -1737,6 +1742,7 @@
               "progress": 10,
               "status": "Defined",
               "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
                   "id": 1234,
@@ -2087,6 +2093,7 @@
               "progress": 10,
               "status": "Defined",
               "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
                   "id": 1234,
@@ -2427,6 +2434,7 @@
               "progress": 10,
               "status": "Defined",
               "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
                   "id": 1234,
@@ -2767,6 +2775,7 @@
               "progress": 10,
               "status": "Defined",
               "statusCode": 1,
+              "order": 100,
               "groups": [
                 {
                   "id": 1234,
@@ -3252,7 +3261,7 @@
         },
         {
           "id": 4567,
-          "name": "Infrastructure",
+          "name": "Infrastructure 2",
           "order": 100,
           "status": "Defined",
           "statusCode": 1,
@@ -3358,7 +3367,7 @@
         },
         {
           "id": 6789,
-          "name": "Infrastructure",
+          "name": "Infrastructure 3",
           "order": 100,
           "status": "Defined",
           "statusCode": 1,

@@ -99,12 +99,14 @@ export class MainLeftNavbarComponent implements OnInit {
       owner: "TEMPLATE OWNER",
       progress: 10,
       status: "Defined",
+      statusCode: 1,
       groups: [
         {
           id: 1234,
           name: "Infrastructure",
           order: 100,
           status: "Defined",
+          statusCode: 1,
           progress: 10,
           items: [
             {
@@ -119,6 +121,7 @@ export class MainLeftNavbarComponent implements OnInit {
               serviceName: "vm",
               actionName: "Create",
               status: "Configured",
+              statusCode: 2,
               progress: 10,
               keyVault: {
                 id: 1,
@@ -152,6 +155,7 @@ export class MainLeftNavbarComponent implements OnInit {
               serviceName: "vm",
               actionName: "Create",
               status: "Configured",
+              statusCode: 2,
               progress: 10,
               keyVault: {
                 id: 1,
@@ -185,6 +189,7 @@ export class MainLeftNavbarComponent implements OnInit {
               serviceName: "vm",
               actionName: "Create",
               status: "Configured",
+              statusCode: 2,
               progress: 10,
               keyVault: {
                 id: 1,
@@ -210,9 +215,10 @@ export class MainLeftNavbarComponent implements OnInit {
         },
         {
           id: 4567,
-          name: "Infrastructure",
+          name: "Infrastructure 2",
           order: 100,
           status: "Defined",
+          statusCode: 1,
           progress: 10,
           items: [
             {
@@ -227,6 +233,7 @@ export class MainLeftNavbarComponent implements OnInit {
               serviceName: "vm",
               actionName: "Create",
               status: "Configured",
+              statusCode: 2,
               progress: 10,
               keyVault: {
                 id: 1,
@@ -260,6 +267,7 @@ export class MainLeftNavbarComponent implements OnInit {
               serviceName: "vm",
               actionName: "Create",
               status: "Configured",
+              statusCode: 2,
               progress: 10,
               keyVault: {
                 id: 1,
@@ -293,6 +301,7 @@ export class MainLeftNavbarComponent implements OnInit {
               serviceName: "vm",
               actionName: "Create",
               status: "Configured",
+              statusCode: 2,
               progress: 10,
               keyVault: {
                 id: 1,
@@ -318,9 +327,10 @@ export class MainLeftNavbarComponent implements OnInit {
         },
         {
           id: 6789,
-          name: "Infrastructure",
+          name: "Infrastructure 3",
           order: 100,
           status: "Defined",
+          statusCode: 1,
           progress: 10,
           items: [
             {
@@ -335,6 +345,7 @@ export class MainLeftNavbarComponent implements OnInit {
               serviceName: "vm",
               actionName: "Create",
               status: "Configured",
+              statusCode: 2,
               progress: 10,
               keyVault: {
                 id: 1,
@@ -368,6 +379,7 @@ export class MainLeftNavbarComponent implements OnInit {
               serviceName: "vm",
               actionName: "Create",
               status: "Configured",
+              statusCode: 2,
               progress: 10,
               keyVault: {
                 id: 1,
@@ -401,6 +413,7 @@ export class MainLeftNavbarComponent implements OnInit {
               serviceName: "vm",
               actionName: "Create",
               status: "Configured",
+              statusCode: 2,
               progress: 10,
               keyVault: {
                 id: 1,
@@ -457,6 +470,7 @@ export class MainLeftNavbarComponent implements OnInit {
           name: "App1",
           order: 100,
           status: "Defined",
+          statusCode: 1,
           progress: 10,
           items: [
             {
@@ -468,12 +482,15 @@ export class MainLeftNavbarComponent implements OnInit {
               owner: "TEMPLATE OWNER",
               progress: 10,
               status: "Defined",
+              statusCode: 1,
+              order: 100,
               groups: [
                 {
                   id: 1234,
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -488,6 +505,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -521,6 +539,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -554,6 +573,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -582,6 +602,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -596,6 +617,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -629,6 +651,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -662,6 +685,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -690,6 +714,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -704,6 +729,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -737,6 +763,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -770,6 +797,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -813,12 +841,15 @@ export class MainLeftNavbarComponent implements OnInit {
               owner: "TEMPLATE OWNER",
               progress: 10,
               status: "Defined",
+              statusCode: 1,
+              order: 100,
               groups: [
                 {
                   id: 1234,
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -833,6 +864,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -866,6 +898,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -899,6 +932,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -927,6 +961,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -941,6 +976,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -974,6 +1010,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1007,6 +1044,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1035,6 +1073,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -1049,6 +1088,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1082,6 +1122,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1115,6 +1156,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1158,12 +1200,15 @@ export class MainLeftNavbarComponent implements OnInit {
               owner: "TEMPLATE OWNER",
               progress: 10,
               status: "Defined",
+              statusCode: 1,
+              order: 100,
               groups: [
                 {
                   id: 1234,
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -1178,6 +1223,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1211,6 +1257,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1244,6 +1291,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1272,6 +1320,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -1286,6 +1335,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1319,6 +1369,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1352,6 +1403,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1380,6 +1432,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -1394,6 +1447,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1427,6 +1481,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1460,6 +1515,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1501,6 +1557,7 @@ export class MainLeftNavbarComponent implements OnInit {
           name: "App2",
           order: 100,
           status: "Defined",
+          statusCode: 1,
           progress: 10,
           items: [
             {
@@ -1512,12 +1569,15 @@ export class MainLeftNavbarComponent implements OnInit {
               owner: "TEMPLATE OWNER",
               progress: 10,
               status: "Defined",
+              statusCode: 1,
+              order: 100,
               groups: [
                 {
                   id: 1234,
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -1532,6 +1592,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1565,6 +1626,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1598,6 +1660,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1626,6 +1689,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -1640,6 +1704,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1673,6 +1738,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1706,6 +1772,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1734,6 +1801,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -1748,6 +1816,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1781,6 +1850,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1814,6 +1884,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1857,12 +1928,15 @@ export class MainLeftNavbarComponent implements OnInit {
               owner: "TEMPLATE OWNER",
               progress: 10,
               status: "Defined",
+              statusCode: 1,
+              order: 100,
               groups: [
                 {
                   id: 1234,
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -1877,6 +1951,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1910,6 +1985,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1943,6 +2019,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -1971,6 +2048,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -1985,6 +2063,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2018,6 +2097,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2051,6 +2131,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2079,6 +2160,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -2093,6 +2175,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2126,6 +2209,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2159,6 +2243,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2202,12 +2287,15 @@ export class MainLeftNavbarComponent implements OnInit {
               owner: "TEMPLATE OWNER",
               progress: 10,
               status: "Defined",
+              statusCode: 1,
+              order: 100,
               groups: [
                 {
                   id: 1234,
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -2222,6 +2310,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2255,6 +2344,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2288,6 +2378,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2316,6 +2407,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -2330,6 +2422,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2363,6 +2456,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2396,6 +2490,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2424,6 +2519,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -2438,6 +2534,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2471,6 +2568,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2504,6 +2602,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2545,6 +2644,7 @@ export class MainLeftNavbarComponent implements OnInit {
           name: "App1",
           order: 100,
           status: "Defined",
+          statusCode: 1,
           progress: 10,
           items: [
             {
@@ -2556,12 +2656,15 @@ export class MainLeftNavbarComponent implements OnInit {
               owner: "TEMPLATE OWNER",
               progress: 10,
               status: "Defined",
+              statusCode: 1,
+              order: 100,
               groups: [
                 {
                   id: 1234,
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -2576,6 +2679,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2609,6 +2713,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2642,6 +2747,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2670,6 +2776,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -2684,6 +2791,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2717,6 +2825,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2750,6 +2859,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2778,6 +2888,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -2792,6 +2903,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2825,6 +2937,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2858,6 +2971,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2901,12 +3015,15 @@ export class MainLeftNavbarComponent implements OnInit {
               owner: "TEMPLATE OWNER",
               progress: 10,
               status: "Defined",
+              statusCode: 1,
+              order: 100,
               groups: [
                 {
                   id: 1234,
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -2921,6 +3038,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2954,6 +3072,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -2987,6 +3106,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -3015,6 +3135,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -3029,6 +3150,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -3062,6 +3184,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -3095,6 +3218,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -3123,6 +3247,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -3137,6 +3262,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -3170,6 +3296,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -3203,6 +3330,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -3246,12 +3374,15 @@ export class MainLeftNavbarComponent implements OnInit {
               owner: "TEMPLATE OWNER",
               progress: 10,
               status: "Defined",
+              statusCode: 1,
+              order: 100,
               groups: [
                 {
                   id: 1234,
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -3266,6 +3397,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -3299,6 +3431,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -3332,6 +3465,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -3360,6 +3494,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -3374,6 +3509,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -3407,6 +3543,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -3440,6 +3577,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -3468,6 +3606,7 @@ export class MainLeftNavbarComponent implements OnInit {
                   name: "Infrastructure",
                   order: 100,
                   status: "Defined",
+                  statusCode: 1,
                   progress: 10,
                   items: [
                     {
@@ -3482,6 +3621,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -3515,6 +3655,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,
@@ -3548,6 +3689,7 @@ export class MainLeftNavbarComponent implements OnInit {
                       serviceName: "vm",
                       actionName: "Create",
                       status: "Configured",
+                      statusCode: 2,
                       progress: 10,
                       keyVault: {
                         id: 1,

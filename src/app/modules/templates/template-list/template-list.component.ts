@@ -17,6 +17,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DataService } from "src/services/data.service";
 import { MatDialog } from "@angular/material/dialog";
 import { DeviceDetectorService } from "ngx-device-detector";
+import { Task, Stage } from "src/app/models/data.models";
 
 interface SelectInterface {
   value: string;
@@ -245,6 +246,23 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description reorders the template to other groups or within the groups
    */
   drop(event: CdkDragDrop<string[]>) {
+    // if (event.previousContainer === event.container) {
+    //   moveItemInArray(
+    //     event.container.data,
+    //     event.previousIndex,
+    //     event.currentIndex
+    //   );
+    // } else {
+    //   transferArrayItem(
+    //     event.previousContainer.data,
+    //     event.container.data,
+    //     event.previousIndex,
+    //     event.currentIndex
+    //   );
+    // }
+
+    let task: any = event.container.data[event.previousIndex];
+    console.log("order before drag ", task.order);
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -259,6 +277,28 @@ export class TemplateListComponent implements OnInit, OnChanges {
         event.currentIndex
       );
     }
+
+    if (event.currentIndex === 0) {
+      if (event.container.data.length > 0) {
+        if (event.container.data.length !== event.currentIndex + 1) {
+          task.order =
+            0 + event.container.data[event.currentIndex + 1]["order"] / 2;
+        } else {
+          task.order = 100;
+        }
+      } else {
+        task.order = 100;
+      }
+    } else if (event.currentIndex === event.container.data.length - 1) {
+      task.order =
+        100 + event.container.data[event.container.data.length - 2]["order"];
+    } else {
+      task.order =
+        (event.container.data[event.currentIndex - 1]["order"] +
+          event.container.data[event.currentIndex + 1]["order"]) /
+        2;
+    }
+    console.log("order after drag ", task.order);
   }
 
   /**
@@ -350,11 +390,51 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description reorders the dragged group
    */
   dropGroup(event: CdkDragDrop<string[]>) {
-    moveItemInArray(
-      this.templateData.groups,
-      event.previousIndex,
-      event.currentIndex
-    );
+    // console.log("event ", event);
+    // moveItemInArray(
+    //   this.templateData.groups,
+    //   event.previousIndex,
+    //   event.currentIndex
+    // );
+
+    let group: any = event.container.data[event.previousIndex];
+    console.log("group order before drag ", group.order);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+
+    if (event.currentIndex === 0) {
+      if (event.container.data.length > 0) {
+        if (event.container.data.length !== event.currentIndex + 1) {
+          group.order =
+            0 + event.container.data[event.currentIndex + 1]["order"] / 2;
+        } else {
+          group.order = 100;
+        }
+      } else {
+        group.order = 100;
+      }
+    } else if (event.currentIndex === event.container.data.length - 1) {
+      group.order =
+        100 + event.container.data[event.container.data.length - 2]["order"];
+    } else {
+      group.order =
+        (event.container.data[event.currentIndex - 1]["order"] +
+          event.container.data[event.currentIndex + 1]["order"]) /
+        2;
+    }
+    console.log("group order after drag ", group.order);
   }
 
   /**
