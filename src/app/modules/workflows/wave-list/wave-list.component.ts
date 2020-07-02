@@ -411,7 +411,7 @@ export class WaveListComponent implements OnInit {
           id: 1,
           name: "Infrastructure",
           order: 100,
-          statusCd: "Defined",
+          status: "Defined",
           progress: 10,
           items: [
             {
@@ -425,7 +425,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -458,7 +458,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -491,7 +491,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -519,7 +519,7 @@ export class WaveListComponent implements OnInit {
           id: 2,
           name: "Infrastructure",
           order: 100,
-          statusCd: "Defined",
+          status: "Defined",
           progress: 10,
           items: [
             {
@@ -533,7 +533,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -566,7 +566,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -599,7 +599,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -627,7 +627,7 @@ export class WaveListComponent implements OnInit {
           id: 3,
           name: "Infrastructure",
           order: 100,
-          statusCd: "Defined",
+          status: "Defined",
           progress: 10,
           items: [
             {
@@ -641,7 +641,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -674,7 +674,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -707,7 +707,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,

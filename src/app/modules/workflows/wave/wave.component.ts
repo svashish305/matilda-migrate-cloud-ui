@@ -19,6 +19,8 @@ import { FormControl } from "@angular/forms";
 import { DeviceDetectorService } from "ngx-device-detector";
 import * as uuid from "uuid";
 import { ActivatedRoute } from "@angular/router";
+import { GroupedObservable } from "rxjs";
+import { Group } from "src/app/models/data.models";
 
 interface SelectInterface {
   value: string;
@@ -177,12 +179,8 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   addGroup() {
     const id = uuid.v4();
     let newGroup = {
-      id: 123,
-      name: "Untitled Group",
-      order: 100,
-      statusCd: "Defined",
-      progress: 10,
-      items: [],
+      id,
+      ...new Group(),
     };
     this.currWave.groups.push(newGroup);
     this.waveData.groups.push(newGroup);

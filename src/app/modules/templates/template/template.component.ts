@@ -10,6 +10,7 @@ import { DeviceDetectorService } from "ngx-device-detector";
 import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import * as uuid from "uuid";
+import { Stage } from "src/app/models/data.models";
 
 interface SelectInterface {
   value: string;
@@ -181,14 +182,8 @@ export class TemplateComponent implements OnInit, AfterViewInit {
 
   addStage() {
     const id = uuid.v4();
-    let newStage = {
-      id,
-      name: "Untitled Stage",
-      order: 100,
-      statusCd: "Defined",
-      progress: 10,
-      items: [],
-    };
+    let newStage = { id, ...new Stage() };
+    // console.log("stage ", newStage);
     this.currTemplate.groups.push(newStage);
     this.templateData.groups.push(newStage);
   }
@@ -289,7 +284,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
         actionId: "1",
         serviceName: "vm",
         actionName: "Create",
-        statusCd: "Configured",
+        status: "Configured",
         progress: 10,
         keyVault: {
           id: 1,
