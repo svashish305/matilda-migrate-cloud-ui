@@ -12,7 +12,6 @@ export class TaskOutputComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('im here')
     this.mapData();
     
   }
@@ -27,7 +26,6 @@ export class TaskOutputComponent implements OnInit {
 
   mapData() {
     let consoleOutput:any = this.output['console_output'];
-    console.log(consoleOutput);
     // if (typeof consoleOutput === 'string' || consoleOutput instanceof String) {
     if (consoleOutput) {
       let modifiedOutput = consoleOutput.replace(/'/g, '"');
