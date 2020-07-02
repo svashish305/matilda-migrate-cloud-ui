@@ -17,6 +17,10 @@ import { ResizeEvent } from "angular-resizable-element";
 import { DataService } from "src/services/data.service";
 import { FormControl } from "@angular/forms";
 import { DeviceDetectorService } from "ngx-device-detector";
+import * as uuid from "uuid";
+import { ActivatedRoute } from "@angular/router";
+import { GroupedObservable } from "rxjs";
+import { Group } from "src/app/models/data.models";
 
 interface SelectInterface {
   value: string;
@@ -35,6 +39,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   showBackdrop;
   @ViewChild("waveList", { static: false }) waveList;
 
+  favourite = false;
   waves: any[] = [];
   accounts: any[] = [];
   titleState: string = "idle";
@@ -50,6 +55,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   accountCollapseState: Map<any, boolean> = new Map();
 
   showAccountOptions = false;
+  showTagOptions = false;
 
   waveState = "start";
 
@@ -59,15 +65,22 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     { value: "p-2", viewValue: "Tacos" },
   ];
 
+  waveId: any;
+  currWave: any;
+
   searchKey;
   imgHovered = false;
   isMobile = false;
   isTablet = false;
   isDesktop = false;
 
+  waveImgHover = false;
+  waveAvatarUrl: any;
+
   constructor(
     private dataService: DataService,
-    private deviceService: DeviceDetectorService
+    private deviceService: DeviceDetectorService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnChanges() {
@@ -81,6 +94,13 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnInit() {
     this.getAccounts();
     this.getWaves();
+
+    this.route.params.subscribe((params: any) => {
+      this.waveId = params.id;
+    });
+    +this.dataService.getWave(this.waveId).subscribe((currentWorkflow: any) => {
+      this.currWave = currentWorkflow;
+    });
 
     this.isMobile = this.deviceService.isMobile();
     this.isTablet = this.deviceService.isTablet();
@@ -111,6 +131,32 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     });
   }
 
+  changeAvatar(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event: any) => {
+        // called once readAsDataURL is completed
+        this.waveAvatarUrl = event.target.result;
+      };
+
+      this.uploadFile(event.target.files[0]);
+    }
+  }
+
+  uploadFile(file) {
+    this.dataService.upload(file).subscribe(
+      (res: any) => {
+        console.log("file uploaded as", res);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
   /**
    *
    * @description searches the wavelist using the search key
@@ -128,6 +174,17 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
 
   onCheck(event) {
     event.stopPropagation();
+  }
+
+  addGroup() {
+    const id = uuid.v4();
+    let newGroup = {
+      id,
+      ...new Group(),
+    };
+    this.currWave.groups.push(newGroup);
+    this.waveData.groups.push(newGroup);
+    console.log("modified wave ", this.currWave);
   }
 
   toggleRightSidebar(template: any) {

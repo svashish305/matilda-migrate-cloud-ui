@@ -69,6 +69,9 @@ export class WaveListComponent implements OnInit {
 
   primaryColor: ThemePalette = "primary";
 
+  drag = true;
+  groupCollapseList: boolean[];
+
   isMobile = false;
 
   constructor(
@@ -77,7 +80,9 @@ export class WaveListComponent implements OnInit {
     private _formBuilder: FormBuilder,
     public dialog: MatDialog,
     private router: Router
-  ) {}
+  ) {
+    this.groupCollapseList = [];
+  }
 
   ngOnInit() {
     console.log("wavedata ", this.waveData);
@@ -134,15 +139,33 @@ export class WaveListComponent implements OnInit {
     return { backgroundColor };
   }
 
+  toggleWorkflowHeight(collapsed) {
+    let height;
+    if (this.isMobile) {
+      if (collapsed) {
+        height = "0";
+      } else {
+        height = "5.563em";
+      }
+    } else {
+      if (collapsed) {
+        height = "1em";
+      } else {
+        height = "5.563em";
+      }
+    }
+    return { height };
+  }
+
   collapseAll(checked: boolean) {
     if (checked) {
-      this.waveData.groups.forEach((waveType: any) => {
-        waveType.collapsed = true;
-      });
+      for (let i = 0; i < this.waveData.groups.length; i++) {
+        this.groupCollapseList[i] = true;
+      }
     } else {
-      this.waveData.groups.forEach((waveType: any) => {
-        waveType.collapsed = false;
-      });
+      for (let i = 0; i < this.waveData.groups.length; i++) {
+        this.groupCollapseList[i] = false;
+      }
     }
   }
 
@@ -180,34 +203,6 @@ export class WaveListComponent implements OnInit {
       height = "18.125em";
     }
     return { height };
-  }
-
-  toggleWorkflowHeight(collapsed) {
-    let height;
-    if (this.isMobile) {
-      if (collapsed) {
-        height = "0";
-      } else {
-        height = "5.563em";
-      }
-    } else {
-      if (collapsed) {
-        height = "1em";
-      } else {
-        height = "5.563em";
-      }
-    }
-    return { height };
-  }
-
-  toggleCollapse(accountId) {
-    this.accountCollapseState[accountId] = !this.accountCollapseState[
-      accountId
-    ];
-  }
-
-  isCollapsed(accountId) {
-    this.accountCollapseState[accountId] = false;
   }
 
   openDialog(template: TemplateRef<any>) {
@@ -348,6 +343,23 @@ export class WaveListComponent implements OnInit {
    * @description reorders the template to other groups or within the groups
    */
   drop(event: CdkDragDrop<string[]>) {
+    // if (event.previousContainer === event.container) {
+    //   moveItemInArray(
+    //     event.container.data,
+    //     event.previousIndex,
+    //     event.currentIndex
+    //   );
+    // } else {
+    //   transferArrayItem(
+    //     event.previousContainer.data,
+    //     event.container.data,
+    //     event.previousIndex,
+    //     event.currentIndex
+    //   );
+    // }
+
+    let template: any = event.container.data[event.previousIndex];
+    console.log("order before drag ", template.order);
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -362,6 +374,28 @@ export class WaveListComponent implements OnInit {
         event.currentIndex
       );
     }
+
+    if (event.currentIndex === 0) {
+      if (event.container.data.length > 0) {
+        if (event.container.data.length !== event.currentIndex + 1) {
+          template.order =
+            0 + event.container.data[event.currentIndex + 1]["order"] / 2;
+        } else {
+          template.order = 100;
+        }
+      } else {
+        template.order = 100;
+      }
+    } else if (event.currentIndex === event.container.data.length - 1) {
+      template.order =
+        100 + event.container.data[event.container.data.length - 2]["order"];
+    } else {
+      template.order =
+        (event.container.data[event.currentIndex - 1]["order"] +
+          event.container.data[event.currentIndex + 1]["order"]) /
+        2;
+    }
+    console.log("order after drag ", template.order);
   }
 
   /**
@@ -416,7 +450,7 @@ export class WaveListComponent implements OnInit {
           id: 1,
           name: "Infrastructure",
           order: 100,
-          statusCd: "Defined",
+          status: "Defined",
           progress: 10,
           items: [
             {
@@ -430,7 +464,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -463,7 +497,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -496,7 +530,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -524,7 +558,7 @@ export class WaveListComponent implements OnInit {
           id: 2,
           name: "Infrastructure",
           order: 100,
-          statusCd: "Defined",
+          status: "Defined",
           progress: 10,
           items: [
             {
@@ -538,7 +572,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -571,7 +605,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -604,7 +638,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -632,7 +666,7 @@ export class WaveListComponent implements OnInit {
           id: 3,
           name: "Infrastructure",
           order: 100,
-          statusCd: "Defined",
+          status: "Defined",
           progress: 10,
           items: [
             {
@@ -646,7 +680,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -679,7 +713,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -712,7 +746,7 @@ export class WaveListComponent implements OnInit {
               actionId: "1",
               serviceName: "vm",
               actionName: "Create",
-              statusCd: "Configured",
+              status: "Configured",
               progress: 10,
               keyVault: {
                 id: 1,
@@ -755,6 +789,10 @@ export class WaveListComponent implements OnInit {
     waveType.items = waveType.items.filter((item) => item.id !== templateId);
   }
 
+  templateSettings(waveType, templateId, event) {
+    event.stopPropagation();
+  }
+
   /**
    *
    * @description clears entered template name and hides add button
@@ -771,11 +809,11 @@ export class WaveListComponent implements OnInit {
    * @param waveType for which name has to be edited
    * @description make group name editable on hover
    */
-  groupNameEnter(waveType) {
-    this.waveData.groups.forEach((wave) => (wave.edit = false));
-    waveType.edit = true;
-    waveType.drag = true;
-  }
+  // groupNameEnter(waveType) {
+  //   this.waveData.groups.forEach((wave) => (wave.edit = false));
+  //   waveType.edit = true;
+  //   waveType.drag = true;
+  // }
 
   /**
    *
@@ -790,11 +828,50 @@ export class WaveListComponent implements OnInit {
    * @description reorders the dragged group
    */
   dropGroup(event: CdkDragDrop<string[]>) {
-    moveItemInArray(
-      this.waveData.groups,
-      event.previousIndex,
-      event.currentIndex
-    );
+    // moveItemInArray(
+    //   this.waveData.groups,
+    //   event.previousIndex,
+    //   event.currentIndex
+    // );
+
+    let group: any = event.container.data[event.previousIndex];
+    console.log("group order before drag ", group.order);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+
+    if (event.currentIndex === 0) {
+      if (event.container.data.length > 0) {
+        if (event.container.data.length !== event.currentIndex + 1) {
+          group.order =
+            0 + event.container.data[event.currentIndex + 1]["order"] / 2;
+        } else {
+          group.order = 100;
+        }
+      } else {
+        group.order = 100;
+      }
+    } else if (event.currentIndex === event.container.data.length - 1) {
+      group.order =
+        100 + event.container.data[event.container.data.length - 2]["order"];
+    } else {
+      group.order =
+        (event.container.data[event.currentIndex - 1]["order"] +
+          event.container.data[event.currentIndex + 1]["order"]) /
+        2;
+    }
+    console.log("group order after drag ", group.order);
   }
 
   /**

@@ -316,6 +316,8 @@
     box-sizing: border-box;
     border: solid 1.5px transparent;
     border-radius: 4px;
+    text-overflow: ellipsis;
+    width: 134px;
   }
 
   .description-styles:hover {
@@ -325,6 +327,15 @@
   .description-styles:focus {
     border-radius: 4px !important;
     border-color: #1a73e8;
+  }
+
+  .fav-icon {
+    position: absolute;
+    left: 12em;
+    top: 3.5em;
+    cursor: pointer;
+    height: 1em;
+    width: 1em;
   }
 
   .template-dd-btn {
@@ -342,7 +353,7 @@
     bottom: 4px;
   }
 
-  ::ng-deep.mat-menu-panel {
+  #account-menu::ng-deep.mat-menu-panel {
     position: absolute;
     right: 0;
   }
@@ -574,6 +585,31 @@
     position: absolute;
     left: 0;
     top: 0.875em;
+  }
+
+  .avatar-dd-btn {
+    padding: 0;
+    border-radius: 50%;
+    width: 40px;
+    min-width: unset;
+
+    .edit-avatar-img {
+      position: absolute;
+      right: -8px;
+      // height: 19px;
+      // width: 21px;
+      top: 28px;
+      // padding: 0.25em;
+      border-radius: 50%;
+      // border: 1px solid var(--btn-lightgray-border);
+      background-color: #fff;
+    }
+  }
+
+  .avatar-upload-option {
+    height: 100%;
+    width: 100%;
+    margin-top: 15%;
   }
 }
 
@@ -921,6 +957,8 @@
     box-sizing: border-box;
     border: solid 1.5px transparent;
     border-radius: 4px;
+    text-overflow: ellipsis;
+    width: 170px;
   }
 
   .description-styles:hover {
@@ -930,6 +968,15 @@
   .description-styles:focus {
     border-radius: 4px !important;
     border-color: #1a73e8;
+  }
+
+  .fav-icon {
+    position: absolute;
+    left: 20em;
+    top: 1.25em;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
   }
 
   .template-dd-btn {
@@ -1223,6 +1270,31 @@
     left: 0;
     top: 1.5em; //0.875em
   }
+
+  .avatar-dd-btn {
+    padding: 0;
+    border-radius: 50%;
+    width: 56px;
+    min-width: unset;
+
+    .edit-avatar-img {
+      position: absolute;
+      right: -4px;
+      // height: 19px;
+      // width: 21px;
+      top: 40px;
+      // padding: 0.25em;
+      border-radius: 50%;
+      // border: 1px solid var(--btn-lightgray-border);
+      background-color: #fff;
+    }
+  }
+
+  .avatar-upload-option {
+    height: 100%;
+    width: 100%;
+    margin-top: 15%;
+  }
 }
 
 @media only screen and (min-width: 1023px) and (max-width: 1339px) {
@@ -1255,4 +1327,21 @@
     position: absolute;
     right: 5em;
   }
+}
+
+// commmon styles
+.import-btns-1 {
+  position: absolute;
+  left: 0;
+  top: 0.875em;
+}
+
+.edit-tag-footer-btns {
+  position: absolute;
+  width: calc(100% - 120px);
+  top: 89vh; //42.25em;
+}
+
+#waveAvatarFile {
+  display: none;
 }

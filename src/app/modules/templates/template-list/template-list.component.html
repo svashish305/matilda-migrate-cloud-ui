@@ -71,12 +71,15 @@
           <div
             id="stage-header"
             class="template__row"
-            [ngStyle]="toggleTemplateHeight(templateType.collapsed)"
+            [ngStyle]="toggleTemplateHeight(groupCollapseList[i])"
           >
             <div class="template-name">
               <div
                 class="group-drag"
-                [ngClass]="{ 'do-not-show': !templateType.drag }"
+                [ngClass]="{
+                  'do-not-show': !drag,
+                  collapsed: groupCollapseList[i]
+                }"
               >
                 <img
                   class="move-cursor"
@@ -90,17 +93,17 @@
                 class="accordian"
               > -->
               <div
-                [ngClass]="{ collapsed: templateType.collapsed }"
+                [ngClass]="{ collapsed: groupCollapseList[i] }"
                 class="accordian"
               >
                 <img
                   [ngClass]="{
-                    'accordian-icon-collapsed': templateType.collapsed,
-                    'accordian-icon': !templateType.collapsed
+                    'accordian-icon-collapsed': groupCollapseList[i],
+                    'accordian-icon': !groupCollapseList[i]
                   }"
                   src="assets/imgs/chevron-down.svg"
                   alt=""
-                  (click)="templateType.collapsed = !templateType.collapsed"
+                  (click)="groupCollapseList[i] = !groupCollapseList[i]"
                 />
                 <!-- <div class="group-level-actions">
                   <div
@@ -120,10 +123,19 @@
               </div>
               <!-- group level actions ends -->
 
-              <div
-                class="group-name-wrapper"
+              <!-- <div
+                [ngClass]="{
+                  'group-name-wrapper-collapsed': groupCollapseList[i],
+                  'group-name-wrapper': !groupCollapseList[i]
+                }"
                 (mouseenter)="groupNameEnter(templateType)"
                 (mouseleave)="templateType.edit = false"
+              > -->
+              <div
+                [ngClass]="{
+                  'group-name-wrapper-collapsed': groupCollapseList[i],
+                  'group-name-wrapper': !groupCollapseList[i]
+                }"
               >
                 <div class="group-name common-text">
                   {{ templateType.name }}
@@ -132,29 +144,29 @@
             </div>
             <div
               [ngClass]="{
-                'list-right-menu-collapsed': templateType.collapsed,
-                'list-right-menu': !templateType.collapsed
+                'list-right-menu-collapsed': groupCollapseList[i],
+                'list-right-menu': !groupCollapseList[i]
               }"
             >
               <div
-                *ngIf="!(isMobile && templateType.collapsed)"
+                *ngIf="!(isMobile && groupCollapseList[i])"
                 class="flex-padding-r-2"
                 [ngClass]="{
-                  'flex-padding-r-4': isMobile && !templateType.collapsed
+                  'flex-padding-r-4': isMobile && !groupCollapseList[i]
                 }"
               >
                 <span class="status-text">Status: </span>
                 <span
                   class="badge badge-pill badge-custom"
-                  [ngStyle]="setBadgeBgColor(templateType.statusCd)"
-                  >{{ templateType.statusCd }}</span
+                  [ngStyle]="setBadgeBgColor(templateType.status)"
+                  >{{ templateType.status }}</span
                 >
               </div>
               <div
-                *ngIf="!(isMobile && templateType.collapsed)"
+                *ngIf="!(isMobile && groupCollapseList[i])"
                 class="flex-padding-r-2"
                 [ngClass]="{
-                  'flex-padding-r-4': isMobile && !templateType.collapsed
+                  'flex-padding-r-4': isMobile && !groupCollapseList[i]
                 }"
               >
                 <span class="status-text">Progress: </span>
@@ -175,50 +187,55 @@
 
             <img
               [ngClass]="{
-                'stage-option-collapsed': templateType.collapsed,
-                'stage-option': !templateType.collapsed
+                'stage-option-collapsed': groupCollapseList[i],
+                'stage-option': !groupCollapseList[i]
               }"
               src="assets/imgs/vEllipsis.svg"
               alt="stage-options"
             />
 
-            <div *ngIf="!templateType.collapsed" class="stage-list-subheader">
+            <div *ngIf="!groupCollapseList[i]" class="stage-list-subheader">
               <div class="stage-name-width">
                 <span
                   [ngClass]="{
                     'medium-text-mobile': isMobile,
                     'medium-text': !isMobile
                   }"
-                  class="list-header-text"
+                  class="list-header-text pos-name"
                   >Name</span
                 >
+
+                <div class="flex-lay right-headers" *ngIf="!isMobile">
+                  <div class="cell-width">
+                    <span class="medium-text list-header-text">Plugin</span>
+                  </div>
+                  <div class="cell-width" *ngIf="getWorkflowType() === 'time'">
+                    <span class="medium-text list-header-text">Start Date</span>
+                  </div>
+                  <div class="cell-width" *ngIf="getWorkflowType() === 'time'">
+                    <span class="medium-text list-header-text">End Date</span>
+                  </div>
+                  <div
+                    class="cell-width"
+                    *ngIf="getWorkflowType() === 'trigger'"
+                  >
+                    <span class="medium-text list-header-text">Trigger</span>
+                  </div>
+                  <div class="cell-width" *ngIf="showService">
+                    <span class="medium-text list-header-text">Service</span>
+                  </div>
+                  <div class="cell-width" *ngIf="showAction">
+                    <span class="medium-text list-header-text">Action</span>
+                  </div>
+                  <div class="cell-width">
+                    <span class="medium-text list-header-text">Status</span>
+                  </div>
+                  <div class="cell-width">
+                    <span class="medium-text list-header-text">Progress</span>
+                  </div>
+                </div>
               </div>
-              <div class="flex-lay" *ngIf="!isMobile">
-                <div class="cell-width">
-                  <span class="medium-text list-header-text">Plugin</span>
-                </div>
-                <div class="cell-width" *ngIf="getWorkflowType() === 'time'">
-                  <span class="medium-text list-header-text">Start Date</span>
-                </div>
-                <div class="cell-width" *ngIf="getWorkflowType() === 'time'">
-                  <span class="medium-text list-header-text">End Date</span>
-                </div>
-                <div class="cell-width" *ngIf="getWorkflowType() === 'trigger'">
-                  <span class="medium-text list-header-text">Trigger</span>
-                </div>
-                <!-- <div class="cell-width" *ngIf="showService">
-                  <span class="medium-text list-header-text">Service</span>
-                </div>
-                <div class="cell-width" *ngIf="showAction">
-                  <span class="medium-text list-header-text">Action</span>
-                </div> -->
-                <div class="cell-width">
-                  <span class="medium-text list-header-text">Status</span>
-                </div>
-                <div class="cell-width">
-                  <span class="medium-text list-header-text">Progress</span>
-                </div>
-              </div>
+
               <button
                 class="stage-btn"
                 mat-button
@@ -245,9 +262,9 @@
           </div>
           <!-- cdkdroplist for template re ordering among and across groups -->
           <div
-            *ngIf="!templateType.collapsed && templateData.groups"
+            *ngIf="!groupCollapseList[i] && templateData.groups"
             cdkDropList
-            id="{{ templateType.id }}"
+            id="{{ templateType[i] }}"
             [cdkDropListData]="templateType.items"
             (cdkDropListDropped)="drop($event)"
             [cdkDropListConnectedTo]="getConnectedList()"
@@ -285,7 +302,7 @@
                   >
                 </div>
               </div>
-              <div class="flex-lay">
+              <div class="flex-lay right-cols">
                 <div *ngIf="!isMobile" class="flex-center plugin-val">
                   <span class="cell-text common-text">{{
                     task.pluginName
@@ -321,7 +338,7 @@
                     }}</span>
                   </div>
                 </div>
-                <!-- <div *ngIf="!isMobile">
+                <div *ngIf="!isMobile">
                   <div
                     *ngIf="showService"
                     class="border-white template-end flex-center"
@@ -340,7 +357,7 @@
                       task.actionName
                     }}</span>
                   </div>
-                </div> -->
+                </div>
                 <div
                   *ngIf="!isMobile"
                   class="border-white template-status"
@@ -350,8 +367,8 @@
                 >
                   <span
                     class="badge badge-pill badge-custom"
-                    [ngStyle]="setBadgeBgColor(task.statusCd)"
-                    >{{ task.statusCd }}</span
+                    [ngStyle]="setBadgeBgColor(task.status)"
+                    >{{ task.status }}</span
                   >
                   <!-- template status start -->
                   <div class="status-dropdown">
@@ -395,7 +412,9 @@
                       alt="delete"
                     />
                   </a>
-                  <img src="assets/imgs/vEllipsis.svg" alt="settings" />
+                  <a (click)="taskSettings(templateType, task.id, $event)">
+                    <img src="assets/imgs/vEllipsis.svg" alt="settings" />
+                  </a>
                 </div>
               </div>
             </div>

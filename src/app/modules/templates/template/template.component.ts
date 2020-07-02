@@ -9,6 +9,8 @@ import { DataService } from "src/services/data.service";
 import { DeviceDetectorService } from "ngx-device-detector";
 import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
+import * as uuid from "uuid";
+import { Stage } from "src/app/models/data.models";
 
 interface SelectInterface {
   value: string;
@@ -27,6 +29,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   showBackdrop;
   @ViewChild("templateList", { static: false }) templateList;
 
+  favourite = false;
   templateId: any;
   currTemplate: any;
   templatesToImport: any[] = [];
@@ -50,6 +53,9 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   selectedTask: any;
   showTaskOptions = false;
 
+  templateImgHover = false;
+  templateAvatarUrl: any;
+
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
@@ -66,6 +72,12 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     this.route.params.subscribe((params: any) => {
       this.templateId = params.id;
     });
+
+    this.dataService
+      .getTemplate(this.templateId)
+      .subscribe((currentTemplate: any) => {
+        this.currTemplate = currentTemplate;
+      });
 
     this.isMobile = this.deviceService.isMobile();
     this.isTablet = this.deviceService.isTablet();
@@ -94,6 +106,32 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     this.dataService.getStages().subscribe((data: any[]) => {
       this.stages = data;
     });
+  }
+
+  changeAvatar(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event: any) => {
+        // called once readAsDataURL is completed
+        this.templateAvatarUrl = event.target.result;
+      };
+
+      this.uploadFile(event.target.files[0]);
+    }
+  }
+
+  uploadFile(file) {
+    this.dataService.upload(file).subscribe(
+      (res: any) => {
+        console.log("file uploaded as", res);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   setBadgeBgColor(stageState = "Defined") {
@@ -142,6 +180,14 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     this.location.back();
   }
 
+  addStage() {
+    const id = uuid.v4();
+    let newStage = { id, ...new Stage() };
+    // console.log("stage ", newStage);
+    this.currTemplate.groups.push(newStage);
+    this.templateData.groups.push(newStage);
+  }
+
   onCheck(event, template) {
     event.stopPropagation();
     if (!this.selectedTemplatesToImport.includes(template)) {
@@ -159,16 +205,11 @@ export class TemplateComponent implements OnInit, AfterViewInit {
       }
     });
     // console.log("new stuff to copy ", newStagesAndTasks);
-    this.dataService
-      .getTemplate(this.templateId)
-      .subscribe((currentTemplate: any) => {
-        this.currTemplate = currentTemplate;
-        newStagesAndTasks.forEach((newStageTask: any) => {
-          this.currTemplate.groups.push(newStageTask);
-        });
-        console.log("updated ", this.currTemplate);
-        this.templateData = this.currTemplate;
-      });
+    newStagesAndTasks.forEach((newStageTask: any) => {
+      this.currTemplate.groups.push(newStageTask);
+    });
+    // console.log("updated ", this.currTemplate);
+    this.templateData = this.currTemplate;
     this.selectedTemplatesToImport = [];
   }
 
@@ -243,7 +284,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
         actionId: "1",
         serviceName: "vm",
         actionName: "Create",
-        statusCd: "Configured",
+        status: "Configured",
         progress: 10,
         keyVault: {
           id: 1,
