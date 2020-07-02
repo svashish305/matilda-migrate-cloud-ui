@@ -139,7 +139,20 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
         // called once readAsDataURL is completed
         this.waveAvatarUrl = event.target.result;
       };
+
+      this.uploadFile(event.target.files[0]);
     }
+  }
+
+  uploadFile(file) {
+    this.dataService.upload(file).subscribe(
+      (res: any) => {
+        console.log("file uploaded as", res);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   /**

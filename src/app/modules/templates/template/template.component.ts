@@ -117,7 +117,20 @@ export class TemplateComponent implements OnInit, AfterViewInit {
         // called once readAsDataURL is completed
         this.templateAvatarUrl = event.target.result;
       };
+
+      this.uploadFile(event.target.files[0]);
     }
+  }
+
+  uploadFile(file) {
+    this.dataService.upload(file).subscribe(
+      (res: any) => {
+        console.log("file uploaded as", res);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   setBadgeBgColor(stageState = "Defined") {
