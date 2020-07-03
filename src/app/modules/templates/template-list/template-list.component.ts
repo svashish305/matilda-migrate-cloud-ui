@@ -18,6 +18,7 @@ import { DataService } from "src/services/data.service";
 import { MatDialog } from "@angular/material/dialog";
 import { DeviceDetectorService } from "ngx-device-detector";
 import { Task, Stage } from "src/app/models/data.models";
+import { StatusCodes } from "src/app/enums/enums";
 
 interface SelectInterface {
   value: string;
@@ -79,6 +80,8 @@ export class TemplateListComponent implements OnInit, OnChanges {
   showService = false;
   showAction = false;
 
+  statusCodes = StatusCodes;
+
   constructor(
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
@@ -128,25 +131,25 @@ export class TemplateListComponent implements OnInit, OnChanges {
     });
   }
 
-  setBadgeBgColor(stageState = "Defined") {
+  setBadgeBgColor(statusCode = 1) {
     let backgroundColor = "#99a1a9";
-    switch (stageState) {
-      case "Defined":
+    switch (statusCode) {
+      case 1:
         backgroundColor = "#99a1a9";
         break;
-      case "Configured":
+      case 2:
         backgroundColor = "#012b7a";
         break;
-      case "In Progress":
+      case 3:
         backgroundColor = "#006bd4";
         break;
-      case "Success":
+      case 4:
         backgroundColor = "#0ba73d";
         break;
-      case "Failed":
+      case 5:
         backgroundColor = "#d91b1b";
         break;
-      case "Paused":
+      case 6:
         backgroundColor = "#fc9528";
         break;
       default:

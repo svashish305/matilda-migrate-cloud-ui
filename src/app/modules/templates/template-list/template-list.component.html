@@ -158,8 +158,8 @@
                 <span class="status-text">Status: </span>
                 <span
                   class="badge badge-pill badge-custom"
-                  [ngStyle]="setBadgeBgColor(templateType.status)"
-                  >{{ templateType.status }}</span
+                  [ngStyle]="setBadgeBgColor(templateType.statusCode)"
+                  >{{ statusCodes[templateType.statusCode] }}</span
                 >
               </div>
               <div
@@ -367,8 +367,8 @@
                 >
                   <span
                     class="badge badge-pill badge-custom"
-                    [ngStyle]="setBadgeBgColor(task.status)"
-                    >{{ task.status }}</span
+                    [ngStyle]="setBadgeBgColor(task.statusCode)"
+                    >{{ statusCodes[task.statusCode] }}</span
                   >
                   <!-- template status start -->
                   <div class="status-dropdown">
