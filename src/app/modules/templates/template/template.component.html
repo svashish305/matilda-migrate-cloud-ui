@@ -465,7 +465,8 @@
       </header>
       <mat-divider></mat-divider>
 
-      <app-add-task-modal-content (onSaveConfig)="onSaveConfig($event)" (onClose)="onClose($event)"></app-add-task-modal-content>
+      <app-add-task-modal-content (onSaveConfig)="onSaveConfig($event)" (onClose)="onClose($event)" 
+      (onSaveTemplateFormat)="onSaveTemplateFormat($event)"></app-add-task-modal-content>
 
       <!-- <div
         [ngClass]="{

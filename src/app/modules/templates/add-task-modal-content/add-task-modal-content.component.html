@@ -10,37 +10,9 @@
     <mat-tab label="Output">
       <app-task-output></app-task-output>
     </mat-tab>
-    <mat-tab label="TemplateFormat">
-      <form [formGroup]="fourthFormGroup" class="set-margin-top">
-        <app-edit-task-template></app-edit-task-template>
-      </form>     
+    <mat-tab label="TemplateFormat">    
+        <app-edit-task-template [task]="task" (taskTemplateFormat)="taskTemplateFormat($event)" (closeWindow)="closeWindow($event)"></app-edit-task-template>       
     </mat-tab>
   </mat-tab-group>  
   <!-- end of modal body -->
-</div>
-<div
-[ngClass]="{
-  'modal-footer-mobile': isMobile,
-  'modal-footer': !isMobile
-}"
-class="footer-styles-2"
->
-<div class="import-btns-1">
-  <button
-    mat-flat-button
-    color="primary"
-    (click)="saveTask()"
-    cdkFocusInitial
-  >
-    Save
-  </button>
-  <button
-    mat-button
-    color="primary"
-    (click)="closeTask()"
-    class="left-margin-1em"
-  >
-    Cancel
-  </button>
-</div>
 </div>

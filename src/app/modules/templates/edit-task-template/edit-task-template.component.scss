@@ -1,41 +1,8 @@
-mat-form-field {
-    // padding: 10px;
-    padding: 5px;
-  }
-  
-  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
-    background-color: #fff;
-  }  
-  
-  .mat-radio-button ~ .mat-radio-button {
-    margin-left: 16px;
-  }
-  .modal-footer-mobile {
-    position: absolute !important;
-    // top: 89vh !important;
-    top: 91vh !important;
-    display: flex;
-    width: 100%;
-  }
-  .modal-footer {
-    position: relative;
-    top: 4.688em;
-  }
-  .footer-styles-1 {
-    position: relative;
-    top: 7.438em;
-    background-color: #fff;
-  }
-  .footer-styles-2 {
-    // position: relative;
-    // top: 8.75em;
-  
-    position: absolute !important;
-    width: calc(100% - 50px) !important;
-    top: 91vh !important; //89vh
-  }
-  .import-btns-1 {
-    position: absolute;
-    left: 0;
-    top: 0.875em;
-  }
+.format-tarea {
+  border: 1px inset #ccc;
+  background-color: white;
+  font: small courier, monospace black;  
+  width: 425px;
+  height: 195px;
+  overflow-y: auto;
+}

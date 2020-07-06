@@ -1,40 +1,58 @@
-<mat-form-field  class="example-full-width">
-    <mat-label>Format</mat-label>
-    <mat-select [(value)]="selectedFormat" (valueChange)="onFormatChange($event)">
-      <mat-option *ngFor="let format of formatTypes" [value]="format.value">
-        {{ format.viewValue }}
-      </mat-option>
-    </mat-select>      
-  </mat-form-field>
-  <mat-form-field *ngIf="formTypeJ"  class="example-full-width">
-    <mat-label>Data Type</mat-label>
-    <mat-select [(value)]="selectedDataType" (valueChange)="ondataTypeChange($event)">
-      <mat-option *ngFor="let datatype of dataTypes" [value]="datatype.value">
-        {{ datatype.viewValue }}
-      </mat-option>
-    </mat-select>      
-  </mat-form-field>
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="task-config">
+      <mat-form-field appearance="fill" class="pr-4">
+        <mat-label>Format</mat-label>
+        <mat-select (valueChange)="onFormatChange($event)" formControlName="format" required="true">
+            <mat-option *ngFor="let opt of formatTypes" [value]="opt.value">
+                {{opt.viewValue}}
+            </mat-option>
+        </mat-select>
+        <ng-container *ngIf="format.touched && format.invalid" ngProjectAs="mat-error">
+            <mat-error *ngIf="format.errors.required">
+                Please select format
+            </mat-error>
+        </ng-container>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="pr-4" *ngIf="formTypeJ">
+        <mat-label>Data Type</mat-label>
+        <mat-select (valueChange)="onDataTypeChange($event)" formControlName="dataType" [required]="formTypeJ ? 'true': 'false'">
+            <mat-option *ngFor="let opt of dataTypes" [value]="opt.value">
+                {{opt.viewValue}}
+            </mat-option>
+        </mat-select>
+        <ng-container *ngIf="dataType.touched && dataType.invalid" ngProjectAs="mat-error">
+            <mat-error *ngIf="dataType.errors.required">
+                Please select data type
+            </mat-error>
+        </ng-container>
+    </mat-form-field>
+   <div *ngIf="formTypeJ && radioD">
+     <div>
+      <label>Data</label>
+     </div>
+     <textarea class="format-tarea" formControlName="formatDataJson" required="true" >
+     </textarea>
+   </div>
+   <div *ngIf="formTypeJ && radioB">
     <div>
-    <mat-form-field *ngIf="formTypeJ && radioD">
+     <label>Schema</label>
+    </div>
+    <textarea class="format-tarea" formControlName="formatDataSchema" required="true" >
+    </textarea>
+  </div>
+  <div *ngIf="formTypeY">
+    <div>
      <label>Data</label>
-      <textarea  rows = 10 cols= 10 placeholder="JSON dataFileY..."  [(ngModel)]="dataFileJ"
-       ></textarea>
-    </mat-form-field>
-    <mat-error *ngIf="errorMessage" style="color: red;font-size: 20px;">
-      Please enter valid data
-  </mat-error>         
+    </div>
+    <textarea class="format-tarea" formControlName="formatDataYaml" required="true" >
+    </textarea>
   </div>
-  <div>
-    <mat-form-field *ngIf="formTypeJ && radioB"style="width:300px;height: 300px;">
-      <mat-label>Enter Schema</mat-label>
-      <textarea matInput placeholder="JSON Schema..."  [(ngModel)]="schemaFileJ"
-       matTextareaAutosize matAutosizeMinRows=15 matAutosizeMaxRows=100 style="width: 300px;height: 300px;"></textarea>
-    </mat-form-field>
-  </div>   
-  <div>
-    <mat-form-field *ngIf="formTypeY" style="width:300px;height: 300px;">
-      <mat-label>Enter Data</mat-label>
-      <textarea matInput placeholder="YAML Data..."  [(ngModel)]="dataFileY" 
-      matTextareaAutosize matAutosizeMinRows=10 matAutosizeMaxRows=100 style="width: 300px;height: 300px;"></textarea>
-    </mat-form-field>
-  </div>
+    <mat-divider></mat-divider>
+    <div class="pt-4 pb-4">
+        <button mat-flat-button color="primary" type="submit" cdkFocusInitial [disabled]="form.invalid">
+            Save
+        </button>
+        <button mat-button color="primary" type="button" (click)="close()">
+            Cancel
+        </button>
+    </div>
+</form>

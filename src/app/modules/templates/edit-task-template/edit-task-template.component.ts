@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NotificationsService } from 'angular2-notifications';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 declare var require: any;
 interface SelectInterface {
   value: string;
@@ -11,9 +12,10 @@ interface SelectInterface {
   styleUrls: ['./edit-task-template.component.scss']
 })
 export class EditTaskTemplateComponent implements OnInit {
-  @Input('isMobile') isMobile;
-  @Output('saveTaskData') saveTaskData = new EventEmitter<any>();
-  @Output('closeTaskForm') closeTaskForm = new EventEmitter<any>();  
+  @Input() task: any;
+  @Output('taskTemplateFormat') taskTemplateFormat = new EventEmitter<any>();
+  @Output('closeWindow') closeWindow = new EventEmitter<any>();  
+  form: FormGroup;
   formatTypes: SelectInterface[] = [
     { value: "json", viewValue: "JSON" },
     { value: "yaml", viewValue: "YAML" }
@@ -38,89 +40,96 @@ export class EditTaskTemplateComponent implements OnInit {
   dataFileJ;
   schemaFileJ;
   dataFileY;
-  errorMessage: boolean = false;
-  constructor(private _notificationService: NotificationsService) { }
+  constructor(private _notificationService: NotificationsService,private _formBuilder: FormBuilder,) { }
 
   ngOnInit() {
-    this.selectedFormat = this.formatTypes[0].value;
-    this.selectedDataType = this.dataTypes[0].value;
-    this.onFormatChange(this.formatTypes[0].viewValue);
-    this.onDataTypeChange(this.dataTypes[0].viewValue);
+    this.initForm();    
     this.schemaFileJ = JSON.stringify(this.schemaFile,undefined, 2);
     this.dataFileJ = JSON.stringify(this.dataFile,undefined, 2);
   }
-  onFormatChange(e){
-    if((e == 'JSON') || (e =='json')){
+  initForm() {
+    this.form = this._formBuilder.group({
+      format: ['', Validators.required],
+      dataType: ['', Validators.required],
+      formatDataJson: ['', Validators.nullValidator],
+      formatDataSchema: ['', Validators.nullValidator],
+      formatDataYaml:['',Validators.nullValidator]    
+    });
+  }
+  onFormatChange(fType){
+    if((fType == 'JSON') || (fType =='json')){
       this.formTypeY = false;
       this.formTypeJ = true;
         }
-    if((e == 'YAML') || (e =='yaml')){
+    if((fType == 'YAML') || (fType =='yaml')){
      this.formTypeJ = false;
      this.formTypeY = true;
  
     }
  
    }
-   onDataTypeChange(e){
-    if((e == 'data') || (e =='Data')){
-      this.radioD = true; 
-       this.radioB = false;
+   onDataTypeChange(dType){
+    if((dType == 'data') || (dType =='Data')){
+      this.radioB = false;
+      this.radioD = true;       
         }
-    if((e == 'schema') || (e =='Schema')){
+    if((dType == 'schema') || (dType =='Schema')){
       this.radioD = false;
       this.radioB = true;
  
     }
      
    }
-   saveTask(){
-    if((this.selectedFormat == 'JSON') || (this.selectedFormat == 'json')){
+   onSubmit(form:any){
+    if(this.form.valid){         
+    if((form.format == 'JSON') || (form.format == 'json')){
       let formData;
       let formSData;
-      if(this.schemaFileJ == 'null'){
-       this.isValidJson(this.dataFileJ)
+      if((form.formatDataSchema == 'null')  || ((form.formatDataSchema == ""))){
+       this.isValidJson(form)
       } 
      else{
       var  Ajv = require('ajv');
       var ajv = new Ajv();
-      formData =  JSON.parse(this.dataFileJ);
-      formSData =  JSON.parse(this.schemaFileJ);
+      formData =  JSON.parse(form.formatDataJson);
+      formSData =  JSON.parse(form.formatDataSchema);
       var valid = ajv.validate(formSData, formData);
       if (!valid) {
-        this.errorMessage = true;
         this._notificationService.error('Error Occurred', 'Please Enter Valid JSON');
       }
       if(valid) {
         let templatePayload = {
-          format:this.selectedFormat,
-          schema:this.schemaFileJ,
-          data:this.dataFileJ
+          format:form.format,
+          schema:form.formatDataSchema,
+          data:form.formatDataJson
         }
-        this.saveTaskData.emit(templatePayload);
+        this.taskTemplateFormat.emit(templatePayload);
       }  
     }
     
     }
-    else if((this.selectedFormat == 'YAML') || (this.selectedFormat == 'yaml')){
+    else if((form.format == 'YAML') || (form.format == 'yaml')){
       let yaml = require('js-yaml');
       // let fs   = require('fs');
        
       // Get document, or throw exception on error
       try {
-        let doc = yaml.safeLoad(this.dataFileY)
+        let doc = yaml.safeLoad(form.formatDataYaml)
       } catch (e) {
-        // this._notificationService.error('Error Occurred', 'Please Enter Valid YAML');
+        this._notificationService.error('Error Occurred', 'Please Enter Valid YAML');
       }
     }
+  }
     }
-     isValidJson(json) {
+
+     isValidJson(form:any) {
       try {
-          JSON.parse(json);
+          JSON.parse(form.formatDataJson);
           let templatePayload = {
-            format:this.selectedFormat,         
-            data:this.dataFileJ
+            format:form.format,       
+            data:form.formatDataJson
           }
-          this.saveTaskData.emit(templatePayload); 
+          this.taskTemplateFormat.emit(templatePayload); 
           return true;
       } catch (e) {      
         this._notificationService.error('Error Occurred', 'Please Enter Valid JSON')
@@ -128,7 +137,22 @@ export class EditTaskTemplateComponent implements OnInit {
       }
   }
   
-  closeTask(){
-    this.closeTaskForm.emit();
+  close(){
+    this.closeWindow.emit(true);
+  }
+  get format() {
+    return this.form.get('format');
+  }
+  get dataType() {
+    return this.form.get('dataType');
+  }
+  get formatDataJson() {
+    return this.form.get('formatDataJson');
+  }
+  get formatDataSchema() {
+    return this.form.get('formatDataSchema');
+  }
+  get formatDataYaml() {
+    return this.form.get('formatDataYaml');
   }
 }
