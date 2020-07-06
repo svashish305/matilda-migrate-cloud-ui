@@ -60,7 +60,11 @@
   >
     <div
       class="templates__inner__wrapper"
-      *ngFor="let templateType of templateData.groups; let i = index"
+      *ngFor="
+        let templateType of templateData.groups
+          | nestedTemplateSearch: searchKey;
+        let i = index
+      "
       cdkDropListGroup
       cdkDrag
       [cdkDragData]="templateType"
@@ -273,7 +277,7 @@
               class="row-items template__row item"
               [ngClass]="{ selected: templateType.selected }"
               (click)="rowClick(task)"
-              *ngFor="let task of templateType.items | search: searchKey"
+              *ngFor="let task of templateType.items"
               cdkDrag
             >
               <div class="template-name">

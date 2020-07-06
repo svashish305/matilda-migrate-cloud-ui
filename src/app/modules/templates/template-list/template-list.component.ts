@@ -164,13 +164,56 @@ export class TemplateListComponent implements OnInit, OnChanges {
    */
 
   search(e) {
-    // if (!this.searchKey) {
-    //   this.templates = this.rawtemplates;
-    //   return true;
-    // }
-    // this.templates = this.rawtemplates.filter((x) => {
-    //   return x.name.toLowerCase().search(this.searchKey.toLowerCase()) !== -1;
+    if (!this.searchKey || this.searchKey === "") {
+      // this.templates = this.rawtemplates;
+      return true;
+    }
+    // let rootFields = ["name", "status", "progress"];
+    // let childFields = [
+    //   "name",
+    //   "pluginName",
+    //   "status",
+    //   "progress",
+    //   "startDate",
+    //   "endDate",
+    // ];
+    // let rootFound = false;
+    // let childFound = false;
+    // let groups = [];
+    // this.templateData.groups.forEach((group) => {
+    //   for (let i = 0; i < rootFields.length; i++) {
+    //     if (
+    //       group[rootFields[i]]
+    //         .toString()
+    //         .toLowerCase()
+    //         .includes(this.searchKey.toLowerCase())
+    //     ) {
+    //       rootFound = true;
+    //     } else {
+    //       let items = [];
+    //       group.items.forEach((item) => {
+    //         for (let i = 0; i < childFields.length; i++) {
+    //           if (
+    //             item[childFields[i]]
+    //               .toString()
+    //               .toLowerCase()
+    //               .includes(this.searchKey.toLowerCase())
+    //           ) {
+    //             childFound = true;
+    //           }
+    //         }
+    //         if (childFound) {
+    //           items.push(item);
+    //         }
+    //       });
+    //       group.items = items;
+    //     }
+    //   }
+    //   if (rootFound || childFound) {
+    //     groups.push(group);
+    //   }
     // });
+    // this.templateData.groups = groups;
     // new implementation
     // if (!this.searchKey || this.searchKey === "") {
     //   // this.templates = this.rawtemplates;
