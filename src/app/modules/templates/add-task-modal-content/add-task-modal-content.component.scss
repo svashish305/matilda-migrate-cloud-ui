@@ -33,3 +33,35 @@ mat-form-field {
   line-height: 1.063rem;
   letter-spacing: 0.41px;
 }
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+.modal-footer-mobile {
+  position: absolute !important;
+  // top: 89vh !important;
+  top: 91vh !important;
+  display: flex;
+  width: 100%;
+}
+.modal-footer {
+  position: relative;
+  top: 4.688em;
+}
+.footer-styles-1 {
+  position: relative;
+  top: 7.438em;
+  background-color: #fff;
+}
+.footer-styles-2 {
+  // position: relative;
+  // top: 8.75em;
+
+  position: absolute !important;
+  width: calc(100% - 50px) !important;
+  top: 91vh !important; //89vh
+}
+.import-btns-1 {
+  position: absolute;
+  left: 0;
+  top: 0.875em;
+}

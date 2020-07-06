@@ -5,6 +5,7 @@ import { AddTaskModalContentRoutingModule } from "./add-task-modal-content-routi
 import { AddTaskModalContentComponent } from "./add-task-modal-content.component";
 import { MaterialModule } from "../../material.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 @NgModule({
   declarations: [AddTaskModalContentComponent],
@@ -14,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    SimpleNotificationsModule.forRoot()
   ],
   exports: [AddTaskModalContentComponent],
 })

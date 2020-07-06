@@ -360,4 +360,10 @@ export class TemplateComponent implements OnInit, AfterViewInit {
       //   .subscribe((res: any) => console.log(res));
     }
   }
+  onSaveTaskData($e){
+    this.showTaskOptions = false;
+  }
+  onCloseTask($e){
+    this.showTaskOptions = false;
+  }
 }
