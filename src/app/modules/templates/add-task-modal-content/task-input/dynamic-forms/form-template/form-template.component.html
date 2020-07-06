@@ -1,0 +1,71 @@
+<div [formGroup]="form">
+    <div [ngSwitch]="dataItem.controlType">
+
+        <mat-form-field *ngSwitchCase="'TextBox'" appearance="fill">
+            <mat-label>{{dataItem.label}}</mat-label>
+            <input matInput [placeholder]="dataItem.placeholder" [type]="dataItem.inputType"
+                [formControlName]="dataItem.key" [required]="checkForRequiredField(dataItem)" />
+            <ng-container *ngFor="let validation of dataItem.validations;" ngProjectAs="mat-error">
+                <mat-error *ngIf="form.get(dataItem.key) && form.get(dataItem.key).hasError(validation.name)">{{validation.message}}</mat-error>
+            </ng-container>
+        </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="'TextArea'" appearance="fill">
+            <mat-label>{{dataItem.label}}</mat-label>
+            <textarea matInput [placeholder]="dataItem.placeholder" [formControlName]="dataItem.key"
+                [required]="checkForRequiredField(dataItem)"></textarea>
+            <ng-container *ngFor="let validation of dataItem.validations;" ngProjectAs="mat-error">
+                <mat-error *ngIf="form.get(dataItem.key) && form.get(dataItem.key).hasError(validation.name)">{{validation.message}}</mat-error>
+            </ng-container>
+        </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="'DropDown'" appearance="fill">
+            <mat-label>{{dataItem.label}}</mat-label>
+            <mat-select (selectionChange)="onDropdownChange($event, dataItem)" [formControlName]="dataItem.key" [required]="checkForRequiredField(dataItem)">
+                <mat-option *ngFor="let opt of dataItem.options" [value]="opt.key">
+                    {{opt.value}}
+                </mat-option>
+            </mat-select>
+            <ng-container *ngFor="let validation of dataItem.validations;" ngProjectAs="mat-error">
+                <mat-error *ngIf="form.get(dataItem.key) && form.get(dataItem.key).hasError(validation.name)">{{validation.message}}</mat-error>
+            </ng-container>
+        </mat-form-field>
+
+        <mat-form-field class="no-underline" *ngSwitchCase="'CheckBox'" appearance="fill" floatLabel="always">
+            <mat-label>{{dataItem.label}}</mat-label>
+            <input matInput type="text" hidden />
+            <mat-checkbox color="primary" (change)="onCheckboxChange($event, dataItem)" [formControlName]="dataItem.key" [value]="dataItem.value"
+                [required]="checkForRequiredField(dataItem)">
+                {{dataItem.label}}
+            </mat-checkbox>
+            <ng-container *ngFor="let validation of dataItem.validations;" ngProjectAs="mat-error">
+                <mat-error *ngIf="form.get(dataItem.key) && form.get(dataItem.key).hasError(validation.name)">{{validation.message}}</mat-error>
+            </ng-container>
+        </mat-form-field>
+
+        <mat-form-field class="no-underline" *ngSwitchCase="'RadioGroup'" appearance="fill" floatLabel="always">
+            <mat-label>{{dataItem.label}}</mat-label>
+            <input matInput type="text" hidden />
+            <mat-radio-group color="primary" (change)="onRadioButtonChange($event, dataItem)"  [formControlName]="dataItem.key"
+                [required]="checkForRequiredField(dataItem)">
+                <mat-radio-button *ngFor="let opt of dataItem.options" [value]="opt.key">
+                    {{opt.value}} &nbsp;
+                </mat-radio-button>
+            </mat-radio-group>
+            <ng-container *ngFor="let validation of dataItem.validations;" ngProjectAs="mat-error">
+                <mat-error *ngIf=" form.get(dataItem.key) && form.get(dataItem.key).hasError(validation.name)">{{validation.message}}</mat-error>
+            </ng-container>
+        </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="'Date'" appearance="fill">
+            <mat-label>{{dataItem.label}}</mat-label>
+            <input matInput [matDatepicker]="picker" [min]="min" [required]="checkForRequiredField(dataItem)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <ng-container *ngFor="let validation of dataItem.validations;" ngProjectAs="mat-error">
+                <mat-error *ngIf="form.get(dataItem.key) && form.get(dataItem.key).hasError(validation.name)">{{validation.message}}</mat-error>
+            </ng-container>
+        </mat-form-field>
+
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="task-config">
+    <mat-form-field appearance="fill" class="pr-4">
+        <mat-label>Task Name</mat-label>
+        <input matInput placeholder="Enter task name" formControlName="name" required/>
+        <ng-container *ngIf="name.touched && name.invalid" ngProjectAs="mat-error">
+            <mat-error *ngIf="name.errors.required">
+                Please enter task name
+            </mat-error>
+            <mat-error *ngIf="name.errors.minLength">
+                Please enter minimum {{name.errors.minLength.requiredLength}}
+            </mat-error>
+            <mat-error *ngIf="name.errors.maxLength">
+                Please enter maximum {{name.errors.maxLength.requiredLength}}
+            </mat-error>
+        </ng-container>
+
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="pr-4">
+        <mat-label>Description</mat-label>
+        <textarea matInput placeholder="Enter task description" formControlName="description" matAutoSizeMinRows="1"
+            matAutoSizeMaxRows="5"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="pr-4">
+        <mat-label>Plugin</mat-label>
+        <mat-select (selectionChange)="onPluginChange($event)" formControlName="pluginId" required="true">
+            <mat-option *ngFor="let opt of pluginList" [value]="opt.pluginId">
+                {{opt.name}}
+            </mat-option>
+        </mat-select>
+        <ng-container *ngIf="plugin.touched && plugin.invalid" ngProjectAs="mat-error">
+            <mat-error *ngIf="plugin.errors.required">
+                Please select plugin
+            </mat-error>
+        </ng-container>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="pr-4" *ngIf="showServiceControl">
+        <mat-label>Service</mat-label>
+        <mat-select (selectionChange)="onServiceChange($event, plugin?.value)" formControlName="serviceId" [required]="showServiceControl ? 'true': 'false'">
+            <mat-option *ngFor="let opt of serviceList" [value]="opt.pluginServiceId">
+                {{opt.displayName}}
+            </mat-option>
+        </mat-select>
+        <ng-container *ngIf="service.touched && service.invalid" ngProjectAs="mat-error">
+            <mat-error *ngIf="service.errors.required">
+                Please select service
+            </mat-error>
+        </ng-container>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="pr-4" *ngIf="showActionControl">
+        <mat-label>Action</mat-label>
+        <mat-select (selectionChange)="onActionChange($event)" formControlName="actionId" [required]="showActionControl ? 'true': 'false'">
+            <mat-option *ngFor="let opt of actionList" [value]="opt.actionId">
+                {{opt.displayName}}
+            </mat-option>
+        </mat-select>
+        <ng-container *ngIf="action.touched && action.invalid" ngProjectAs="mat-error">
+            <mat-error *ngIf="action.errors.required">
+                Please select action
+            </mat-error>
+        </ng-container>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+    <div class="pt-4 pb-4">
+        <button mat-flat-button color="primary" type="submit" cdkFocusInitial [disabled]="form.invalid">
+            Save
+        </button>
+        <button mat-button color="primary" type="button" (click)="close()">
+            Cancel
+        </button>
+    </div>
+</form>

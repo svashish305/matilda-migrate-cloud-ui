@@ -1,0 +1,13 @@
+.output-container {
+	//max-height: 56vh !important;
+	display: flex !important;
+	flex-wrap: wrap !important;
+	overflow-x: auto; 
+	overflow-y: auto;
+}
+
+.list-item {
+    width: 260px;
+    margin: 8px !important;
+  }
+  

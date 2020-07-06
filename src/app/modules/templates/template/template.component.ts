@@ -61,7 +61,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
     private location: Location
-  ) {}
+  ) { }
 
   ngOnInit() {
     // this.oldTitle = this.templateData.name;
@@ -359,5 +359,13 @@ export class TemplateComponent implements OnInit, AfterViewInit {
       //   .updateTemplate(newTemplate)
       //   .subscribe((res: any) => console.log(res));
     }
+  }
+
+  onSaveConfig(payload: any) {
+
+  }
+
+  onClose(event: any) {
+    this.showTaskOptions = !event;
   }
 }
