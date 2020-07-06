@@ -26,7 +26,7 @@ export class Stage {
   id: string;
   name: string = "Untitled Stage";
   order: number = 100;
-  status: string = "Defined";
+  // status: string = "Defined";
   statusCode: number = 1;
   progress: number = 0;
   items: any[] = [];
@@ -36,7 +36,7 @@ export class Group {
   id: string;
   name: string = "Untitiled Group";
   order: number = 100;
-  status: string = "Defined";
+  // status: string = "Defined";
   statusCode: number = 1;
   progress: number = 0;
   items: any[] = [];
@@ -63,7 +63,7 @@ export class Template {
   type: string = "";
   owner: string = "";
   progress: number = 0;
-  status: string = "Defined";
+  // status: string = "Defined";
   statusCode: number = 1;
   order: number = 100;
   groups: any[] = [];
