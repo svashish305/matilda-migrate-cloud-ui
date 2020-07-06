@@ -2,104 +2,13 @@
   <!-- modal body -->
   <mat-tab-group [@.disabled]="true">
     <mat-tab label="General">
-      <form [formGroup]="firstFormGroup" class="set-margin-top">
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Task Name</mat-label>
-          <input matInput placeholder="Enter task name" value="Create Instance" />
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Description</mat-label>
-          <input matInput placeholder="Enter task description" value="Installation Configuration" />
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Plugin</mat-label>
-          <mat-select [(ngModel)]="plugins[0].value" [ngModelOptions]="{ standalone: true }">
-            <mat-option *ngFor="let plugin of plugins" [value]="plugin.value">
-              {{ plugin.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Service</mat-label>
-          <mat-select [(ngModel)]="services[0].value" [ngModelOptions]="{ standalone: true }">
-            <mat-option *ngFor="let service of services" [value]="service.value">
-              {{ service.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Action</mat-label>
-          <mat-select [(ngModel)]="actions[0].value" [ngModelOptions]="{ standalone: true }">
-            <mat-option *ngFor="let action of actions" [value]="action.value">
-              {{ action.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Account</mat-label>
-          <mat-select [(ngModel)]="accounts[0].value" [ngModelOptions]="{ standalone: true }">
-            <mat-option *ngFor="let account of accounts" [value]="account.value">
-              {{ account.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </form>
+      <app-task-general-config [task]="task" (taskGeneralConfig)="taskGeneralConfig($event)" (closeWindow)="closeWindow($event)"></app-task-general-config>
     </mat-tab>
     <mat-tab label="Input">
-      <form [formGroup]="secondFormGroup" class="set-margin-top">
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Instance Name</mat-label>
-          <input matInput placeholder="Enter Instance Name" value="$stage.task.instance" />
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Type</mat-label>
-          <mat-select [(ngModel)]="types[0].value" [ngModelOptions]="{ standalone: true }">
-            <mat-option *ngFor="let type of types" [value]="type.value">
-              {{ type.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>VPC</mat-label>
-          <input matInput placeholder="Enter VPC" value="VPC-Ohio" />
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Subnet</mat-label>
-          <input matInput placeholder="Enter Subnet" value="SMR - 123214" />
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Security</mat-label>
-          <input matInput placeholder="Enter Security" value="SMR Group" />
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Security Allowed</mat-label>
-          <input matInput placeholder="Enter Security Allowed" value="SMR - 1233214" />
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>AMI</mat-label>
-          <input matInput placeholder="Enter AMI" value="AMI - lkiik" />
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Key</mat-label>
-          <input matInput placeholder="Enter Key" value="KEY_SMR" />
-        </mat-form-field>
-      </form>
+      <app-task-input [task]="task" [dataSource]="pluginFields" (saveConfig)="saveConfig($event)" (closeWidget)="closeWindow($event)"></app-task-input>
     </mat-tab>
     <mat-tab label="Output">
-      <form [formGroup]="thirdFormGroup" class="set-margin-top">
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Instance Name</mat-label>
-          <input matInput value="$stage.task.instance" />
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>IP</mat-label>
-          <input matInput value="198.28.10.11" />
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-full-width">
-          <mat-label>Description</mat-label>
-          <input matInput value="Some Description comes here." />
-        </mat-form-field>
-      </form>
+      <app-task-output></app-task-output>
     </mat-tab>
     <mat-tab label="TemplateFormat">
       <form [formGroup]="fourthFormGroup" class="set-margin-top">

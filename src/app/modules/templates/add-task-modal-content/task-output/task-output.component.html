@@ -1,0 +1,16 @@
+
+<div class="pt-2" style="max-height: 56vh;">
+    <div class="output-container">
+        <div *ngFor="let outputParameter of dataMap | keyvalue" class="card-deck ml-0 mr-0">
+            <div class="list-item p-2 card" style="border-radius: 12px;" [class.mat-elevation-z3]="true">
+                {{outputParameter.key}}: &nbsp; {{outputParameter.value}}
+            </div>
+        </div>
+    </div>
+    <br/>
+    <mat-divider></mat-divider>
+    <br/>
+    {{output | json}}
+    <br/>
+</div>
+

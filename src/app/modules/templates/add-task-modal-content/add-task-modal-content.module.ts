@@ -5,18 +5,21 @@ import { AddTaskModalContentRoutingModule } from "./add-task-modal-content-routi
 import { AddTaskModalContentComponent } from "./add-task-modal-content.component";
 import { MaterialModule } from "../../material.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { SimpleNotificationsModule } from 'angular2-notifications';
-import { EditTaskTemplateComponent } from '../edit-task-template/edit-task-template.component';
+import { TaskGeneralConfigComponent } from './task-general-config/task-general-config.component';
+import { TaskInputComponent } from './task-input/task-input.component';
+import { TaskOutputComponent } from './task-output/task-output.component';
+import { DynamicFormsModule } from './task-input/dynamic-forms/dynamic-forms.module';
+
 
 @NgModule({
-  declarations: [AddTaskModalContentComponent,EditTaskTemplateComponent],
+  declarations: [AddTaskModalContentComponent, TaskGeneralConfigComponent, TaskInputComponent, TaskOutputComponent],
   imports: [
     CommonModule,
     AddTaskModalContentRoutingModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    SimpleNotificationsModule.forRoot()
+    DynamicFormsModule
   ],
   exports: [AddTaskModalContentComponent],
 })

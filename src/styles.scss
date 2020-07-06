@@ -269,3 +269,10 @@ body {
   top: 18px !important;
 }
 // end of misc common styles
+
+.task-config {
+  max-height: 56vh;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+

@@ -61,7 +61,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
     private location: Location
-  ) {}
+  ) { }
 
   ngOnInit() {
     // this.oldTitle = this.templateData.name;
@@ -360,10 +360,12 @@ export class TemplateComponent implements OnInit, AfterViewInit {
       //   .subscribe((res: any) => console.log(res));
     }
   }
-  onSaveTaskData($e){
-    this.showTaskOptions = false;
+
+  onSaveConfig(payload: any) {
+
   }
-  onCloseTask($e){
-    this.showTaskOptions = false;
+
+  onClose(event: any) {
+    this.showTaskOptions = !event;
   }
 }

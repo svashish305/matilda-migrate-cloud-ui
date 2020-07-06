@@ -1,0 +1,275 @@
+[
+    {
+        "pluginId": 1,
+        "name": "AWS",
+        "displayName": "AWS",
+        "description": "Amazon Web Service Plugin",
+        "clientId": null,
+        "category": null,
+        "cloudProviderAcctName": "AWS",
+        "pluginActions": null,
+        "pluginServices": [{
+            "pluginServiceId": 1,
+            "serviceName": "vm",
+            "displayService": true,
+            "serviceDescription": "Virtual Machine Stack",
+            "displayName": "VM",
+            "pluginActions": [{
+                "actionId": "1",
+                "name": "Create",
+                "displayName": "Create",
+                "description": "Create Virtual Machine Stack",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "2",
+                "name": "Update",
+                "displayName": "Update",
+                "description": "Update Virtual Machine Stack",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "3",
+                "name": "Select",
+                "displayName": "Select",
+                "description": "Select Virtual Machine Stack",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "4",
+                "name": "List",
+                "displayName": "List",
+                "description": "List Virtual Machine Stack",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "5",
+                "name": "Delete",
+                "displayName": "Delete",
+                "description": "Delete Virtual Machine Stack",
+                "pluginActionInputs": null
+            }],
+            "pluginId": null
+        }, {
+            "pluginServiceId": 2,
+            "serviceName": "db",
+            "displayService": true,
+            "serviceDescription": "Database Stack",
+            "displayName": "Database",
+            "pluginActions": [{
+                "actionId": "6",
+                "name": "Create",
+                "displayName": "Create",
+                "description": "Create Database Stack",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "7",
+                "name": "Update",
+                "displayName": "Update",
+                "description": "Update Database Stack",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "8",
+                "name": "Select",
+                "displayName": "Select",
+                "description": "Select Database Stack",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "9",
+                "name": "List",
+                "displayName": "List",
+                "description": "List Database Stack",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "10",
+                "name": "Delete",
+                "displayName": "Delete",
+                "description": "Delete Database Stack",
+                "pluginActionInputs": null
+            }],
+            "pluginId": null
+        }, {
+            "pluginServiceId": 3,
+            "serviceName": "storage",
+            "displayService": true,
+            "serviceDescription": "Storage",
+            "displayName": "Storage",
+            "pluginActions": [{
+                "actionId": "11",
+                "name": "Create",
+                "displayName": "Create",
+                "description": "Create Storage",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "12",
+                "name": "Update",
+                "displayName": "Update",
+                "description": "Update Storage",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "13",
+                "name": "Select",
+                "displayName": "Select",
+                "description": "Select Storage",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "14",
+                "name": "List",
+                "displayName": "List",
+                "description": "List Storages",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "15",
+                "name": "Delete",
+                "displayName": "Delete",
+                "description": "Delete Storage",
+                "pluginActionInputs": null
+            }],
+            "pluginId": null
+        }, {
+            "pluginServiceId": 4,
+            "serviceName": "cloudendure",
+            "displayService": true,
+            "serviceDescription": "Cloud Endure Stack",
+            "displayName": "Cloud Endure",
+            "pluginActions": [{
+                "actionId": "16",
+                "name": "replicate_vm",
+                "displayName": "Replicate VM",
+                "description": "Replicate Cloud Endure VM",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "17",
+                "name": "launch_vm",
+                "displayName": "Launch VM",
+                "description": "Launch Cloud Endure VM",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "18",
+                "name": "Delete",
+                "displayName": "Delete",
+                "description": "Delete Cloud Endure VM",
+                "pluginActionInputs": null
+            }],
+            "pluginId": null
+        }, {
+            "pluginServiceId": 12,
+            "serviceName": "ebs",
+            "displayService": true,
+            "serviceDescription": "Elastic Block Store",
+            "displayName": "EBS",
+            "pluginActions": [{
+                "actionId": "39",
+                "name": "create",
+                "displayName": "Create",
+                "description": "Create Elastic Block Store",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "40",
+                "name": "attach",
+                "displayName": "Attach",
+                "description": "Attach Elastic Block Store",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "41",
+                "name": "detach",
+                "displayName": "Detach",
+                "description": "Detach Elastic Block Store",
+                "pluginActionInputs": null
+            }],
+            "pluginId": null
+        }, {
+            "pluginServiceId": 13,
+            "serviceName": "vpc",
+            "displayService": true,
+            "serviceDescription": "Virtual Private Cloud",
+            "displayName": "VPC",
+            "pluginActions": [{
+                "actionId": "42",
+                "name": "Create",
+                "displayName": "Create",
+                "description": "Create Virtual Private Cloud",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "43",
+                "name": "Select",
+                "displayName": "Select",
+                "description": "Select Virtual Private Cloud",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "44",
+                "name": "List",
+                "displayName": "List",
+                "description": "List Virtual Private Clouds",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "45",
+                "name": "Delete",
+                "displayName": "Delete",
+                "description": "Delete Virtual Private Cloud",
+                "pluginActionInputs": null
+            }],
+            "pluginId": null
+        }, {
+            "pluginServiceId": 14,
+            "serviceName": "subnet",
+            "displayService": true,
+            "serviceDescription": "Subnet",
+            "displayName": "Subnet",
+            "pluginActions": [{
+                "actionId": "46",
+                "name": "Create",
+                "displayName": "Create",
+                "description": "Create Subnet",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "47",
+                "name": "Select",
+                "displayName": "Select",
+                "description": "Select Subnet",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "48",
+                "name": "List",
+                "displayName": "List",
+                "description": "List Subnets",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "49",
+                "name": "Delete",
+                "displayName": "Delete",
+                "description": "Delete Subnet",
+                "pluginActionInputs": null
+            }],
+            "pluginId": null
+        }, {
+            "pluginServiceId": 15,
+            "serviceName": "securitygroup",
+            "displayService": true,
+            "serviceDescription": "Security Group",
+            "displayName": "Security Group",
+            "pluginActions": [{
+                "actionId": "50",
+                "name": "Create",
+                "displayName": "Create",
+                "description": "Create Security Group",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "51",
+                "name": "Select",
+                "displayName": "Select",
+                "description": "Select Security Group",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "52",
+                "name": "List",
+                "displayName": "List",
+                "description": "List Security Groups",
+                "pluginActionInputs": null
+            }, {
+                "actionId": "53",
+                "name": "Delete",
+                "displayName": "Delete",
+                "description": "Delete Security Group",
+                "pluginActionInputs": null
+            }],
+            "pluginId": null
+        }]
+    }
+]

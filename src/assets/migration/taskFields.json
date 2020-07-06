@@ -1,0 +1,165 @@
+[
+    {
+       "key":"playbook",
+       "label":"Playbook Path",
+       "controlType":"TextBox",
+       "order":5,
+       "options":"None",
+       "placeholder":"Playbook Path",
+       "inputType":"text",
+       "actionId":1,
+       "validations":[
+          {
+             "name":"required",  
+             "validator":"required", 
+             "message":"Name Required"
+          },
+          {
+             "name":"pattern",
+             "validator":"^[a-zA-Z]+$",
+             "message":"Accept only text"
+          }
+       ]
+    },
+    {
+       "key":"fetch_method",
+       "label":"Fetch Method",
+       "controlType":"RadioGroup",
+       "actionId":1,
+       "order":6,
+       "options":[
+          {
+             "key":"HTTP",
+             "value":"http"
+          },
+          {
+             "key":"SFTP",
+             "value":"sftp"
+          }
+       ],
+       "placeholder":"None",
+       "inputType":"radio",
+       "validations":[]
+    },
+    {
+       "key":"source_host",
+       "label":"Host or URL",
+       "controlType":"TextBox", 
+       "order":7,
+       "options":"None",
+       "placeholder":"Host IP or URL",
+       "inputType":"text",
+       "actionId":1,
+       "validations":[
+         {
+            "name":"pattern",
+            "validator":"(https?://)?([\\da-z.-_]+)\\.([a-z.]{2,6})[/\\w .-]*/?",
+            "message":"enter valid url"
+         }
+       ]
+    },
+    {
+       "key":"source_password",
+       "label":"Password or Token",
+       "controlType":"TextBox",
+       "order":9,
+       "options":"None",
+       "placeholder":"Password or Token",
+       "inputType":"password",
+       "actionId":1,
+       "validations":[
+          {
+             "name":"required",
+             "validator":"required",
+             "message":"Name Required"
+          },
+          {
+             "name":"pattern",
+             "validator":"^[a-zA-Z]+$",
+             "message":"Accept only text"
+          }
+      ]
+    },
+    {
+       "key":"become",
+       "label":"Become",
+       "controlType":"RadioGroup",
+       "value":true,
+       "order":4,
+       "actionId":1,
+       "options":[
+          {
+             "key":"Yes",
+             "value":"true"
+          },
+          {
+             "key":"No",
+             "value":"false"
+          }
+       ],
+       "placeholder":"None",
+       "inputType":"radio",
+       "validations": []
+    },
+    {
+       "key":"city",
+       "label":"City",
+       "controlType":"DropDown",
+       "value":"39100",
+       "order":7,
+       "actionId":1,
+       "options":[
+          {
+             "key":"mdfnsdbf",
+             "value":"sdfsdf"
+          },
+          {
+             "key":"Bolzano",
+             "value":"39100"
+          },
+          {
+             "key":"Meltina",
+             "value":"39010"
+          },
+          {
+             "key":"Appiano",
+             "value":"39057"
+          }
+       ],
+       "placeholder":"None",
+       "inputType":"dropdown",
+       "validations": []
+    },
+    {  
+       "key":"agree",
+       "controlType":"CheckBox",
+       "label":"I Agree",
+       "inputType":"checkbox", 
+       "value":false,
+       "order":4,
+       "actionId":1,
+       "validations": []
+    },
+    {
+       "key":"user",
+       "label":"User Eamil",
+       "controlType":"TextBox",
+       "order":5,
+       "options":"None",
+       "placeholder":"Email Address",
+       "inputType":"email",
+       "actionId":1,
+       "validations":[
+          {
+             "name":"required",
+             "validator":"required",
+             "message":"Name Required"
+          },
+          {
+             "name":"email",
+             "validator":"email",
+             "message":"enter valid email"
+          }
+       ]
+    }
+ ]
