@@ -19,6 +19,7 @@ import {
 import { DeviceDetectorService } from "ngx-device-detector";
 import { Router } from "@angular/router";
 import * as uuid from "uuid";
+import { StatusCodes } from "src/app/enums/enums";
 
 interface SelectInterface {
   value: string;
@@ -74,6 +75,8 @@ export class WaveListComponent implements OnInit {
 
   isMobile = false;
 
+  statusCodes = StatusCodes;
+
   constructor(
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
@@ -112,25 +115,25 @@ export class WaveListComponent implements OnInit {
     return this.selectedWorkflowType;
   }
 
-  setBadgeBgColor(stageState = "Defined") {
+  setBadgeBgColor(statusCode = 1) {
     let backgroundColor = "#99a1a9";
-    switch (stageState) {
-      case "Defined":
+    switch (statusCode) {
+      case 1:
         backgroundColor = "#99a1a9";
         break;
-      case "Configured":
+      case 2:
         backgroundColor = "#012b7a";
         break;
-      case "In Progress":
+      case 3:
         backgroundColor = "#006bd4";
         break;
-      case "Success":
+      case 4:
         backgroundColor = "#0ba73d";
         break;
-      case "Failed":
+      case 5:
         backgroundColor = "#d91b1b";
         break;
-      case "Paused":
+      case 6:
         backgroundColor = "#fc9528";
         break;
       default:
