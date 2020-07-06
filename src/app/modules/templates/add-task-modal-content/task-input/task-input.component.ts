@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
-import { FormBase, Validator } from './dynamic-forms/models/form-base';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
 import { PluginService } from '../services/plugin.service';
+import { FormBase, Validator } from './dynamic-forms/models/form-base';
 
 
 @Component({
