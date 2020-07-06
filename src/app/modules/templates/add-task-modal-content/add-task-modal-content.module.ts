@@ -6,9 +6,10 @@ import { AddTaskModalContentComponent } from "./add-task-modal-content.component
 import { MaterialModule } from "../../material.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { EditTaskTemplateComponent } from '../edit-task-template/edit-task-template.component';
 
 @NgModule({
-  declarations: [AddTaskModalContentComponent],
+  declarations: [AddTaskModalContentComponent,EditTaskTemplateComponent],
   imports: [
     CommonModule,
     AddTaskModalContentRoutingModule,

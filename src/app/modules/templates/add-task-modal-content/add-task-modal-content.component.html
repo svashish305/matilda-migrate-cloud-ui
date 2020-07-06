@@ -102,50 +102,9 @@
       </form>
     </mat-tab>
     <mat-tab label="TemplateFormat">
-        <mat-form-field  class="example-full-width">
-          <mat-label>Select Format</mat-label>
-          <mat-select [(value)]="selectedFormat" (valueChange)="onFormatChange($event)">
-            <mat-option *ngFor="let format of formatTypes" [value]="format.value">
-              {{ format.viewValue }}
-            </mat-option>
-          </mat-select>      
-        </mat-form-field>
-        <div>
-          <mat-radio-group *ngIf="formTypeJ" class="example-full-width">
-            <mat-radio-button [checked]="chosenItem"  [value]="true"  (change)="radioChange(true)">
-             Data
-            </mat-radio-button>
-            <mat-radio-button  [checked]="!chosenItem" [value]="false"  (change)="radioChange(false)">
-              Schema
-             </mat-radio-button>
-          </mat-radio-group>   
-        </div>
-        <div>
-          <mat-form-field *ngIf="formTypeJ && radioD" style="width:300px;height: 300px;">
-            <mat-label>Enter Data</mat-label>
-            <textarea matInput placeholder="JSON dataFileY..."  [(ngModel)]="dataFileJ"
-              matTextareaAutosize matAutosizeMinRows=10 matAutosizeMaxRows=100 style="width: 300px;height: 300px;"></textarea>
-          </mat-form-field>
-          <mat-error *ngIf="errorMessage" style="color: red;font-size: 20px;">
-            Please enter valid data
-        </mat-error>         
-        </div>
-        <div>
-          <mat-form-field *ngIf="formTypeJ && radioB"style="width:300px;height: 300px;">
-            <mat-label>Enter Schema</mat-label>
-            <textarea matInput placeholder="JSON Schema..."  [(ngModel)]="schemaFileJ"
-             matTextareaAutosize matAutosizeMinRows=15 matAutosizeMaxRows=100 style="width: 300px;height: 300px;"></textarea>
-          </mat-form-field>
-        </div>   
-        <div>
-          <mat-form-field *ngIf="formTypeY" style="width:300px;height: 300px;">
-            <mat-label>Enter Data</mat-label>
-            <textarea matInput placeholder="YAML Data..."  [(ngModel)]="dataFileY" 
-            matTextareaAutosize matAutosizeMinRows=10 matAutosizeMaxRows=100 style="width: 300px;height: 300px;"></textarea>
-          </mat-form-field>
-        </div>
-     
-                   
+      <form [formGroup]="fourthFormGroup" class="set-margin-top">
+        <app-edit-task-template></app-edit-task-template>
+      </form>     
     </mat-tab>
   </mat-tab-group>  
   <!-- end of modal body -->

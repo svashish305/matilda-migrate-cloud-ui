@@ -12,14 +12,13 @@ import { ResizableModule } from "angular-resizable-element";
 import { SearchPipeModule } from "../searchpipe.module";
 import { TemplateModule } from "../template.module";
 import { HttpClientModule } from "@angular/common/http";
-import { EditTaskTemplateComponent } from './edit-task-template/edit-task-template.component';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 
 const avatarSourcesOrder = [AvatarSource.CUSTOM, AvatarSource.INITIALS];
 const avatarColors = ["#5fb8f1", "#012b7a"];
 
 @NgModule({
-  declarations: [TemplatesComponent, EditTaskTemplateComponent],
+  declarations: [TemplatesComponent],
   imports: [
     CommonModule,
     TemplatesRoutingModule,
