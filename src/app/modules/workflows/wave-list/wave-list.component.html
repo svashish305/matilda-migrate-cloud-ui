@@ -60,7 +60,10 @@
   >
     <div
       class="templates__inner__wrapper"
-      *ngFor="let waveType of waveData.groups; let i = index"
+      *ngFor="
+        let waveType of waveData.groups | nestedWorkflowSearch: searchKey;
+        let i = index
+      "
       cdkDropListGroup
       cdkDrag
       [cdkDragData]="waveType"
@@ -144,8 +147,8 @@
                 <span class="status-text">Status: </span>
                 <span
                   class="badge badge-pill badge-custom"
-                  [ngStyle]="setBadgeBgColor(waveType.status)"
-                  >{{ waveType.status }}</span
+                  [ngStyle]="setBadgeBgColor(waveType.statusCode)"
+                  >{{ statusCodes[waveType.statusCode] }}</span
                 >
               </div>
               <div
@@ -256,7 +259,7 @@
               class="row-items template__row item"
               [ngClass]="{ selected: template.selected }"
               (click)="rowClick(template)"
-              *ngFor="let template of waveType.items | search: searchKey"
+              *ngFor="let template of waveType.items"
               cdkDrag
             >
               <div class="template-name">
@@ -319,8 +322,8 @@
                 >
                   <span
                     class="badge badge-pill badge-custom"
-                    [ngStyle]="setBadgeBgColor(template.status)"
-                    >{{ template.status }}</span
+                    [ngStyle]="setBadgeBgColor(template.statusCode)"
+                    >{{ statusCodes[template.statusCode] }}</span
                   >
                   <!-- template status start -->
                   <div class="status-dropdown">
