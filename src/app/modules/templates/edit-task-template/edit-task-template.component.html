@@ -14,7 +14,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill" class="pr-4" *ngIf="formTypeJ">
         <mat-label>Data Type</mat-label>
-        <mat-select (valueChange)="onDataTypeChange($event)" formControlName="dataType" [required]="formTypeJ ? 'true': 'false'">
+        <mat-select (valueChange)="onDataTypeChange($event)" formControlName="dataType">
             <mat-option *ngFor="let opt of dataTypes" [value]="opt.value">
                 {{opt.viewValue}}
             </mat-option>

@@ -50,7 +50,7 @@ export class EditTaskTemplateComponent implements OnInit {
   initForm() {
     this.form = this._formBuilder.group({
       format: ['', Validators.required],
-      dataType: ['', Validators.required],
+      dataType: ['', Validators.nullValidator],
       formatDataJson: ['', Validators.nullValidator],
       formatDataSchema: ['', Validators.nullValidator],
       formatDataYaml:['',Validators.nullValidator]    
