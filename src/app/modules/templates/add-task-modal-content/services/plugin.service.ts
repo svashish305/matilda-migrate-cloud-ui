@@ -20,8 +20,8 @@ export class PluginService {
   }
 
   getPlugins() {
-    let url = this.BASE_URL + 'plugins/selectAll';
-    return this._httpClient.get('../../../../../assets/migration/plugins.json');
+    let url = this.BASE_URL + '/plugin/details/select';
+    return this._httpClient.get(url);
   }
 
   getServicesByPluginId(pluginId: any) {

@@ -49,8 +49,10 @@ export class TaskGeneralConfigComponent implements OnInit {
   }
 
   onPluginChange(event: any) {
+    
     this._pluginName = event.source.selected.viewValue;
     const filterPluginList = this.pluginList.filter(_plugin => _plugin.pluginId === event.value);
+    console.log(filterPluginList);
     if(filterPluginList[0].pluginServices) {
       this.showServiceControl = true;
       this.serviceList = filterPluginList[0].pluginServices;
@@ -68,6 +70,7 @@ export class TaskGeneralConfigComponent implements OnInit {
   }
 
   onServiceChange(event: any, pluginId: any) { 
+    this.action.patchValue(null);
     this._serviceName = event.source.selected.viewValue;
       this.pluginList.forEach(_plugin => {
         if(_plugin.pluginId === pluginId) {

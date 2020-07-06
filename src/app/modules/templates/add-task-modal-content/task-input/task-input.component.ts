@@ -12,6 +12,7 @@ import { FormBase, Validator } from './dynamic-forms/models/form-base';
 })
 export class TaskInputComponent implements OnInit, OnChanges {
   @Input('dataSource') dataSource: FormBase[] = [];
+  @Input() task: any;
   @Output('saveConfig') saveConfig = new EventEmitter();
   @Output('closeWidget') closeWidget = new EventEmitter();
 

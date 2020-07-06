@@ -5,53 +5,10 @@
       <app-task-general-config [task]="task" (taskGeneralConfig)="taskGeneralConfig($event)" (closeWindow)="closeWindow($event)"></app-task-general-config>
     </mat-tab>
     <mat-tab label="Input">
-      <app-task-input [dataSource]="pluginFields" (saveConfig)="saveConfig($event)" (closeWidget)="closeWindow($event)"></app-task-input>
+      <app-task-input [task]="task" [dataSource]="pluginFields" (saveConfig)="saveConfig($event)" (closeWidget)="closeWindow($event)"></app-task-input>
     </mat-tab>
     <mat-tab label="Output">
       <app-task-output></app-task-output>
-      <!-- <form [formGroup]="firstFormGroup" class="set-margin-top">
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Task Name</mat-label>
-          <input
-            matInput
-            placeholder="Enter task name"
-            value="Create Instance"
-          />
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Description</mat-label>
-          <input
-            matInput
-            placeholder="Enter task description"
-            value="Installation Configuration"
-          />
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Plugin</mat-label>
-          <mat-select
-            
-          
-          >
-            <mat-option *ngFor="let plugin of plugins" [value]="plugin.value">
-              {{ plugin.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="example-half-width">
-          <mat-label>Service</mat-label>
-          <mat-select
-           
-           
-          >
-            <mat-option
-              *ngFor="let service of services"
-              [value]="service.value"
-            >
-              {{ service.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        </form> -->
     </mat-tab>
   </mat-tab-group>
   <!-- end of modal body -->
