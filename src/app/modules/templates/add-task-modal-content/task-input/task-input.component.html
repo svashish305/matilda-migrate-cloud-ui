@@ -1,5 +1,5 @@
-<form  (ngSubmit)="onSubmit(form.value, form)" [formGroup]="form">
-    <div class="flex-container">
+<form  (ngSubmit)="onSubmit(form.value, form)" [formGroup]="form" class="common-text">
+    <div class="flex-container custom-scrollbar-medium">
         <div *ngFor="let data of dataSource" >
             <div class="list-item">
                 <app-form-template [dataItem]="data" [form]="form" 
