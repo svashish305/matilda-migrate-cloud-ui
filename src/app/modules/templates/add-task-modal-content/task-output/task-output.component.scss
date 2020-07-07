@@ -1,3 +1,10 @@
+.output-container {
+	max-height: 56vh !important;
+	display: flex !important;
+	flex-wrap: wrap !important;
+	overflow-x: auto; 
+	overflow-y: auto;
+}
 .card-item {
 	width: 97%;
 	border-radius: 4px;
