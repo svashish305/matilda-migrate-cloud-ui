@@ -368,4 +368,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   onClose(event: any) {
     this.showTaskOptions = !event;
   }
+  onSaveTemplateFormat(formatPaylod:any){
+    
+  }
 }

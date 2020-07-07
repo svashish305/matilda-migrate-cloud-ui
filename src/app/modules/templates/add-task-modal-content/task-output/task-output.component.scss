@@ -1,15 +1,32 @@
 .output-container {
-	//max-height: 56vh !important;
+	max-height: 56vh !important;
 	display: flex !important;
 	flex-wrap: wrap !important;
 	overflow-x: auto; 
 	overflow-y: auto;
 }
+.card-item {
+	width: 97%;
+	border-radius: 4px;
+	border: 1px solid white;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+	border-left: 3px solid var(--primary-light);
+}
 
-.list-item {
-    width: 260px;
-    margin: 8px !important;
-  }
-  
+.badge-custom {
+	background: var(--light-gray-bg);
+	border: solid 1px var(--btn-lightgray-border);
+	font-size: 0.875em;
+	//word-break: break-all !important;
+	// margin-right: 6px;
+	font-family: LatoSemiBold;
+	color: var(--blackish-text);
+}
 
-  
+.badge-key-value {
+	font-family: LatoSemiBold;
+	color: var(--blackish-text);
+	word-break: break-all !important;
+}
+
+

@@ -14,6 +14,7 @@ export class AddTaskModalContentComponent implements OnInit {
   @Output() onSaveConfig = new EventEmitter();
   @Output() onSaveGeneralConfig = new EventEmitter();
   @Output() onClose = new EventEmitter();
+  @Output() onSaveTemplateFormat = new EventEmitter();
   firstFormGroup: FormGroup;
   constructor(private _formBuilder: FormBuilder, private _pluginService: PluginService) {}
 
@@ -32,5 +33,8 @@ export class AddTaskModalContentComponent implements OnInit {
 
   taskGeneralConfig(generalConfig: any) {
     this.onSaveGeneralConfig.emit(generalConfig);
+  }
+  taskTemplateFormat(templateFormat:any){
+    this.onSaveTemplateFormat.emit(templateFormat);
   }
 }
