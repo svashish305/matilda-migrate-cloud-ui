@@ -1,58 +1,74 @@
-  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="task-config">
-      <mat-form-field appearance="fill" class="pr-4">
-        <mat-label>Format</mat-label>
-        <mat-select (valueChange)="onFormatChange($event)" formControlName="format" required="true">
-            <mat-option *ngFor="let opt of formatTypes" [value]="opt.value">
-                {{opt.viewValue}}
-            </mat-option>
-        </mat-select>
-        <ng-container *ngIf="format.touched && format.invalid" ngProjectAs="mat-error">
-            <mat-error *ngIf="format.errors.required">
-                Please select format
-            </mat-error>
-        </ng-container>
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="pr-4" *ngIf="formTypeJ">
-        <mat-label>Data Type</mat-label>
-        <mat-select (valueChange)="onDataTypeChange($event)" formControlName="dataType">
-            <mat-option *ngFor="let opt of dataTypes" [value]="opt.value">
-                {{opt.viewValue}}
-            </mat-option>
-        </mat-select>
-        <ng-container *ngIf="dataType.touched && dataType.invalid" ngProjectAs="mat-error">
-            <mat-error *ngIf="dataType.errors.required">
-                Please select data type
-            </mat-error>
-        </ng-container>
-    </mat-form-field>
-   <div *ngIf="formTypeJ && radioD">
-     <div>
-      <label>Data</label>
-     </div>
-     <textarea class="format-tarea" formControlName="formatDataJson" required="true" >
-     </textarea>
-   </div>
-   <div *ngIf="formTypeJ && radioB">
-    <div>
-     <label>Schema</label>
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <div class="pt-4">    
+        <div class="stack-container">
+            <mat-form-field appearance="fill" class="pr-4">
+                <mat-label>Format</mat-label>
+                <mat-select (valueChange)="onFormatChange($event)" formControlName="format" required="true">
+                    <mat-option *ngFor="let opt of formatTypes" [value]="opt.value">
+                        {{opt.viewValue}}
+                    </mat-option>
+                </mat-select>
+                <ng-container *ngIf="format.touched && format.invalid" ngProjectAs="mat-error">
+                    <mat-error *ngIf="format.errors.required">
+                        Please select format
+                    </mat-error>
+                </ng-container>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="pr-4" *ngIf="formTypeJ">
+                <mat-label>Data Type</mat-label>
+                <mat-select (valueChange)="onDataTypeChange($event)" formControlName="dataType">
+                    <mat-option *ngFor="let opt of dataTypes" [value]="opt.value">
+                        {{opt.viewValue}}
+                    </mat-option>
+                </mat-select>
+                <ng-container *ngIf="dataType.touched && dataType.invalid" ngProjectAs="mat-error">
+                    <mat-error *ngIf="dataType.errors.required">
+                        Please select data type
+                    </mat-error>
+                </ng-container>
+            </mat-form-field>
+        </div>  
+           <div *ngIf="formTypeJ && radioD">
+             <div>
+              <label>Data</label>
+             </div>
+             <textarea class="format-tarea" formControlName="formatDataJson" required="true" >
+             </textarea>
+           </div>
+           <div *ngIf="formTypeJ && radioB">
+            <div>
+             <label>Schema</label>
+            </div>
+            <textarea class="format-tarea" formControlName="formatDataSchema" required="true" >
+            </textarea>
+          </div>
+          <div *ngIf="formTypeY">
+            <div>
+             <label>Data</label>
+            </div>
+            <textarea class="format-tarea" formControlName="formatDataYaml" required="true" >
+            </textarea>
+          </div>
+
+        <mat-divider></mat-divider> 
+       <div class="pt-4 pb-4">
+        <button
+        mat-flat-button
+        color="primary"
+        type="submit"
+        cdkFocusInitial
+      >
+        Save
+      </button>
+      <button
+        mat-button
+        color="primary"
+        type="button"
+        (click)="close()"
+      >
+        Cancel
+      </button>
+       </div>
     </div>
-    <textarea class="format-tarea" formControlName="formatDataSchema" required="true" >
-    </textarea>
-  </div>
-  <div *ngIf="formTypeY">
-    <div>
-     <label>Data</label>
-    </div>
-    <textarea class="format-tarea" formControlName="formatDataYaml" required="true" >
-    </textarea>
-  </div>
-    <mat-divider></mat-divider>
-    <div class="pt-4 pb-4">
-        <button mat-flat-button color="primary" type="submit" cdkFocusInitial [disabled]="form.invalid">
-            Save
-        </button>
-        <button mat-button color="primary" type="button" (click)="close()">
-            Cancel
-        </button>
-    </div>
+  
 </form>
