@@ -17,7 +17,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DataService } from "src/services/data.service";
 import { MatDialog } from "@angular/material/dialog";
 import { DeviceDetectorService } from "ngx-device-detector";
-import { Task, Stage } from "src/app/models/data.models";
+import { Group, Item } from "src/app/models/data.model";
 import { StatusCodes } from "src/app/enums/enums";
 
 interface SelectInterface {
