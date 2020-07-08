@@ -15,12 +15,10 @@ import {
 } from "@angular/cdk/drag-drop";
 import { ResizeEvent } from "angular-resizable-element";
 import { DataService } from "src/services/data.service";
-import { FormControl } from "@angular/forms";
 import { DeviceDetectorService } from "ngx-device-detector";
 import * as uuid from "uuid";
 import { ActivatedRoute } from "@angular/router";
-import { GroupedObservable } from "rxjs";
-import { Group } from "src/app/models/data.models";
+import { Group } from "src/app/models/data.model";
 
 interface SelectInterface {
   value: string;
