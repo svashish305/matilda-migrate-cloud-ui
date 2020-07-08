@@ -1,31 +1,51 @@
 <div>
-  <form [formGroup]="firstFormGroup">
-    <mat-form-field class="example-half-width set-margin-top">
-      <mat-label>Key</mat-label>
-      <input matInput placeholder="Enter key" value="IP" />
-    </mat-form-field>
-    <span> : </span>
-    <mat-form-field class="example-half-width">
-      <mat-label>Value</mat-label>
-      <input matInput placeholder="Enter Value" value="192.128.10.11" />
-    </mat-form-field>
-    <img class="right-align" src="assets/imgs/delete.svg" alt="delete" />
+  <form [formGroup]="firstFormGroup" (keyup.enter)="addTag()">
+    <div *ngIf="tags.length > 0">
+      <mat-form-field class="example-half-width set-margin-top">
+        <mat-label>Key</mat-label>
+        <input matInput placeholder="Enter key" value="{{ tags[0].name }}" />
+      </mat-form-field>
+      <span> : </span>
+      <mat-form-field class="example-half-width">
+        <mat-label>Value</mat-label>
+        <input matInput placeholder="Enter Value" value="{{ tags[0].value }}" />
+      </mat-form-field>
+      <a (click)="deleteTag(tags[0].id)">
+        <img class="right-align" src="assets/imgs/delete.svg" alt="delete" />
+      </a>
+    </div>
+
+    <div *ngFor="let tag of tags | slice: 1">
+      <mat-form-field class="example-half-width">
+        <input matInput value="{{ tag.name }}" />
+      </mat-form-field>
+      <span> : </span>
+      <mat-form-field class="example-half-width">
+        <input matInput value="{{ tag.value }}" />
+      </mat-form-field>
+      <a (click)="deleteTag(tag.id)">
+        <img class="right-align" src="assets/imgs/delete.svg" alt="delete" />
+      </a>
+    </div>
 
     <mat-form-field class="example-half-width">
-      <input matInput value="Software" />
+      <input
+        matInput
+        placeholder="Enter key"
+        [(ngModel)]="newTagName"
+        [name]="newTagName"
+        [ngModelOptions]="{ standalone: true }"
+      />
     </mat-form-field>
     <span> : </span>
     <mat-form-field class="example-half-width">
-      <input matInput value="SqlDB" />
-    </mat-form-field>
-    <img class="right-align" src="assets/imgs/delete.svg" alt="delete" />
-
-    <mat-form-field class="example-half-width">
-      <input matInput placeholder="Enter key" />
-    </mat-form-field>
-    <span> : </span>
-    <mat-form-field class="example-half-width">
-      <input matInput placeholder="Enter Value" />
+      <input
+        matInput
+        placeholder="Enter Value"
+        [(ngModel)]="newTagValue"
+        [name]="newTagName"
+        [ngModelOptions]="{ standalone: true }"
+      />
     </mat-form-field>
   </form>
 </div>

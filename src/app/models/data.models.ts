@@ -70,3 +70,10 @@ export class Template {
   tags: any[] = [];
   modifiedDate: string = null;
 }
+
+export class Tag {
+  id: string;
+  name: string;
+  value: string;
+  modifiedDate: string = null;
+}
