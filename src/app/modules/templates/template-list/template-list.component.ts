@@ -169,6 +169,16 @@ export class TemplateListComponent implements OnInit, OnChanges {
   }
 
   getWorkflowType() {
+    let updatedTemplate = {
+      type: this.selectedWorkflowType,
+      ...this.templateData,
+    };
+    // this.dataService
+    //   .updateTemplate(updatedTemplate)
+    //   .subscribe((newTemplate: any) => {
+    //     console.log("updated Template ", newTemplate);
+    //     this.templateData = newTemplate;
+    //   });
     return this.selectedWorkflowType;
   }
 

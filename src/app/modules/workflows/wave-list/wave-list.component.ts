@@ -112,6 +112,16 @@ export class WaveListComponent implements OnInit {
   }
 
   getWorkflowType() {
+    let updatedWave = {
+      type: this.selectedWorkflowType,
+      ...this.waveData,
+    };
+    // this.dataService
+    //   .updateTemplate(updatedWave)
+    //   .subscribe((newWave: any) => {
+    //     console.log("updated Wave ", newWave);
+    //     this.waveData = newWave;
+    //   });
     return this.selectedWorkflowType;
   }
 
