@@ -169,6 +169,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
 
   updateTags(event: any) {
     this.currTemplateTags = event;
+    console.log("tags ", this.currTemplateTags);
     let updatedTemplate = { tags: this.currTemplateTags, ...this.currTemplate };
     this.dataService
       .updateTemplate(this.templateId, updatedTemplate)
