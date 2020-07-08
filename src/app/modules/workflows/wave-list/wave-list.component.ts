@@ -112,16 +112,7 @@ export class WaveListComponent implements OnInit {
   }
 
   getWorkflowType() {
-    let updatedWave = {
-      type: this.selectedWorkflowType,
-      ...this.waveData,
-    };
-    // this.dataService
-    //   .updateTemplate(updatedWave)
-    //   .subscribe((newWave: any) => {
-    //     console.log("updated Wave ", newWave);
-    //     this.waveData = newWave;
-    //   });
+    this.waveData.type = this.selectedWorkflowType;
     return this.selectedWorkflowType;
   }
 
@@ -237,9 +228,11 @@ export class WaveListComponent implements OnInit {
         region: this.accountRegion,
       },
     };
-    this.dataService.updateAccount(updatedAccount).subscribe((res: any) => {
-      console.log("updated account details ", updatedAccount);
-    });
+    this.dataService
+      .updateAccount(accountId, updatedAccount)
+      .subscribe((res: any) => {
+        console.log("updated account details ", updatedAccount);
+      });
   }
 
   toggleRightSidebar(template: any) {

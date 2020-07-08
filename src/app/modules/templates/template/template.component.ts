@@ -171,7 +171,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     this.currTemplateTags = event;
     let updatedTemplate = { tags: this.currTemplateTags, ...this.currTemplate };
     this.dataService
-      .updateTemplate(updatedTemplate)
+      .updateTemplate(this.templateId, updatedTemplate)
       .subscribe((newTemplate: any) => {
         console.log("updated template ", newTemplate);
         this.templateData = newTemplate;

@@ -7,7 +7,7 @@
       [(ngModel)]="selectedWorkflowType"
       (ngModelChange)="getWorkflowType()"
     >
-      <mat-option
+      <mat-option (click)="optionClicked()"
         id="wf-option"
         *ngFor="let wType of workflowTypes"
         [value]="wType.value"
