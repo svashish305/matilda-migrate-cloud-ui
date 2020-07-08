@@ -126,7 +126,8 @@
           alt="Template Settings"
         />
       </button>
-      <mat-menu id="account-menu"
+      <mat-menu
+        id="account-menu"
         #templateDropdown="matMenu"
         xPosition="before"
         yPosition="below"
@@ -165,15 +166,27 @@
               class="badge badge-pill badge-custom"
               [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }"
             >
-              <span class="badge-key-value">IP : 192.28.10.11</span>
+              <span *ngIf="isMobile" class="badge-key-value"
+                >{{ waveData.tags[0].name }} :
+                {{ waveData.tags[0].value }}</span
+              >
             </span>
             <span *ngIf="isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">+4</span>
+              <span *ngIf="waveData.tags.length > 1" class="badge-key-value"
+                >+{{ waveData.tags.length - 1 }}</span
+              >
             </span>
-            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">Web : Front End</span>
-            </span>
-            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
+            <div *ngIf="!isMobile" class="pos-tags">
+              <span
+                class="badge badge-pill badge-custom"
+                *ngFor="let tag of waveData.tags"
+              >
+                <span class="badge-key-value"
+                  >{{ tag.name }} : {{ tag.value }}</span
+                >
+              </span>
+            </div>
+            <!-- <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
               <span class="badge-key-value">Software : Tomcat</span>
             </span>
             <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
@@ -181,7 +194,7 @@
             </span>
             <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
               <span class="badge-key-value">+3</span>
-            </span>
+            </span> -->
           </div>
 
           <div
@@ -364,7 +377,6 @@
               matInput
               placeholder="Search"
               type="search"
-              (keyup)="search($event)"
               name="test"
               [(ngModel)]="searchKey"
             />
@@ -473,7 +485,7 @@
     </header>
     <mat-divider></mat-divider>
     <!-- tag edit body -->
-    <app-edit-tag></app-edit-tag>
+    <app-edit-tag [tags]="currWaveTags"></app-edit-tag>
     <!-- end of tag edit body -->
     <div
       [ngClass]="{ 'modal-footer-mobile': isMobile, 'modal-footer': !isMobile }"

@@ -67,6 +67,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
 
   waveId: any;
   currWave: any;
+  currWaveTags: any[];
 
   searchKey;
   imgHovered = false;
@@ -100,6 +101,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     });
     +this.dataService.getWave(this.waveId).subscribe((currentWorkflow: any) => {
       this.currWave = currentWorkflow;
+      this.currWaveTags = currentWorkflow.tags;
     });
 
     this.isMobile = this.deviceService.isMobile();

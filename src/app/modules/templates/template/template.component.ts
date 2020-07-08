@@ -32,6 +32,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   favourite = false;
   templateId: any;
   currTemplate: any;
+  currTemplateTags: any[];
   templatesToImport: any[] = [];
   selectedTemplatesToImport: any[] = [];
   stages: any[] = [];
@@ -77,6 +78,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
       .getTemplate(this.templateId)
       .subscribe((currentTemplate: any) => {
         this.currTemplate = currentTemplate;
+        this.currTemplateTags = currentTemplate.tags;
       });
 
     this.isMobile = this.deviceService.isMobile();
@@ -159,21 +161,6 @@ export class TemplateComponent implements OnInit, AfterViewInit {
         break;
     }
     return { backgroundColor };
-  }
-
-  /**
-   *
-   * @description searches the wavelist using the search key
-   */
-
-  search(e) {
-    // if (!this.searchKey) {
-    //   this.templates = this.rawtemplates;
-    //   return true;
-    // }
-    // this.templates = this.rawtemplates.filter((x) => {
-    //   return x.name.toLowerCase().search(this.searchKey.toLowerCase()) !== -1;
-    // });
   }
 
   goBack() {

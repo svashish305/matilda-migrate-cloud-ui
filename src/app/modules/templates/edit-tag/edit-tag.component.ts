@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
@@ -7,6 +7,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
   styleUrls: ["./edit-tag.component.scss"],
 })
 export class EditTagComponent implements OnInit {
+  @Input() tags: any[];
   firstFormGroup: FormGroup;
 
   constructor(private _formBuilder: FormBuilder) {}
@@ -15,5 +16,7 @@ export class EditTagComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ["", Validators.required],
     });
+
+    // console.log("tags ", this.tags);
   }
 }

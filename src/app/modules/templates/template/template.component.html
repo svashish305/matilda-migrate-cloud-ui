@@ -164,15 +164,27 @@
               class="badge badge-pill badge-custom"
               [ngStyle]="{ 'margin-left': isMobile ? '0' : '1em' }"
             >
-              <span class="badge-key-value">IP : 192.28.10.11</span>
+              <span *ngIf="isMobile" class="badge-key-value"
+                >{{ templateData.tags[0].name }} :
+                {{ templateData.tags[0].value }}</span
+              >
             </span>
             <span *ngIf="isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">+4</span>
+              <span *ngIf="templateData.tags.length > 1" class="badge-key-value"
+                >+{{ templateData.tags.length - 1 }}</span
+              >
             </span>
-            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">Web : Front End</span>
-            </span>
-            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
+            <div *ngIf="!isMobile">
+              <span
+                class="badge badge-pill badge-custom"
+                *ngFor="let tag of templateData.tags"
+              >
+                <span class="badge-key-value"
+                  >{{ tag.name }} : {{ tag.value }}</span
+                >
+              </span>
+            </div>
+            <!-- <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
               <span class="badge-key-value">Software : Tomcat</span>
             </span>
             <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
@@ -180,7 +192,7 @@
             </span>
             <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
               <span class="badge-key-value">+3</span>
-            </span>
+            </span> -->
           </div>
 
           <div class="stage-action-bar">
@@ -295,7 +307,6 @@
               matInput
               placeholder="Search"
               type="search"
-              (keyup)="search($event)"
               name="test"
               [(ngModel)]="searchKey"
             />
@@ -332,12 +343,14 @@
             </div>
             <div class="sidebar-badge-container">
               <span class="badge badge-pill badge-custom">
-                <span
-                  ><span class="badge-key-value">IP :</span
-                  ><span class="badge-key-value">&nbsp;192.28.10.11</span></span
+                <span *ngFor="let tag of template.tags"
+                  ><span class="badge-key-value">{{ tag.name }} :</span
+                  ><span class="badge-key-value"
+                    >&nbsp;{{ tag.value }}</span
+                  ></span
                 >
               </span>
-              <span class="badge badge-pill badge-custom">
+              <!-- <span class="badge badge-pill badge-custom">
                 <span
                   ><span class="badge-key-value">Web :</span
                   ><span class="badge-key-value">&nbsp;End</span></span
@@ -345,7 +358,7 @@
               </span>
               <span class="badge badge-pill badge-custom">
                 <span class="badge-key-value">+1</span></span
-              >
+              > -->
             </div>
           </mat-card-content>
         </mat-card>
@@ -403,7 +416,7 @@
     </header>
     <mat-divider></mat-divider>
     <!-- tag edit body -->
-    <app-edit-tag></app-edit-tag>
+    <app-edit-tag [tags]="currTemplateTags"></app-edit-tag>
     <!-- end of tag edit body -->
     <div
       [ngClass]="{ 'modal-footer-mobile': isMobile, 'modal-footer': !isMobile }"
