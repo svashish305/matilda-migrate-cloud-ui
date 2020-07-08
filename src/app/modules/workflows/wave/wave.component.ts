@@ -157,21 +157,6 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     );
   }
 
-  /**
-   *
-   * @description searches the wavelist using the search key
-   */
-
-  search(e) {
-    // if (!this.searchKey) {
-    //   this.waves = this.rawwaves;
-    //   return true;
-    // }
-    // this.waves = this.rawwaves.filter((x) => {
-    //   return x.name.toLowerCase().search(this.searchKey.toLowerCase()) !== -1;
-    // });
-  }
-
   onCheck(event) {
     event.stopPropagation();
   }

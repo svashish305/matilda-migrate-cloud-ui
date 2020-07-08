@@ -73,21 +73,6 @@ export class WorkflowsComponent implements OnInit {
 
   /**
    *
-   * @description searches the wavelist using the search key
-   */
-
-  search(e) {
-    if (!this.searchKey) {
-      this.waves = this.rawwaves;
-      return true;
-    }
-    this.waves = this.rawwaves.filter((x) => {
-      return x.name.toLowerCase().search(this.searchKey.toLowerCase()) !== -1;
-    });
-  }
-
-  /**
-   *
    * @description Show popup to add new wave
    */
   addNewWave() {

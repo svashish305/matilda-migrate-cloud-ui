@@ -172,30 +172,6 @@ export class WaveListComponent implements OnInit {
     }
   }
 
-  /**
-   *
-   * @description searches the wavelist using the search key
-   */
-
-  search(e) {
-    // if (!this.searchKey) {
-    //   this.waves = this.rawwaves;
-    //   return true;
-    // }
-    // this.waves = this.rawwaves.filter((x) => {
-    //   return x.name.toLowerCase().search(this.searchKey.toLowerCase()) !== -1;
-    // });
-    // console.log("filtered data ", this.waves);
-    // new implementation
-    // if (!this.searchKey || this.searchKey === "") {
-    //   this.waves = this.rawwaves;
-    //   return true;
-    // }
-    // this.waveData.groups = this.waveData.groups.filter((x) => {
-    //   return x.name.toLowerCase().includes(this.searchKey.toLowerCase());
-    // });
-  }
-
   onCheck(event) {
     event.stopPropagation();
   }
