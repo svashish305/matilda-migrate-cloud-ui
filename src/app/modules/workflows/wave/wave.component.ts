@@ -163,6 +163,16 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     event.stopPropagation();
   }
 
+  updateTags(event: any) {
+    this.currWaveTags = event;
+    let updatedWave = { tags: this.currWaveTags, ...this.currWave };
+    this.dataService.updateWave(updatedWave).subscribe((newWave: any) => {
+      console.log("updated template ", newWave);
+      this.waveData = newWave;
+      this.currWave = newWave;
+    });
+  }
+
   addGroup() {
     const id = uuid.v4();
     let newGroup = {

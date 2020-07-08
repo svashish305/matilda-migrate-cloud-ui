@@ -416,7 +416,7 @@
     </header>
     <mat-divider></mat-divider>
     <!-- tag edit body -->
-    <app-edit-tag [tags]="currTemplateTags"></app-edit-tag>
+    <app-edit-tag [tags]="currTemplateTags" (newTags)="updateTags($event)"></app-edit-tag>
     <!-- end of tag edit body -->
     <div
       [ngClass]="{ 'modal-footer-mobile': isMobile, 'modal-footer': !isMobile }"

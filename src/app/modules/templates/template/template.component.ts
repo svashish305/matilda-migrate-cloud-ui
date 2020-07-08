@@ -167,6 +167,18 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     this.location.back();
   }
 
+  updateTags(event: any) {
+    this.currTemplateTags = event;
+    let updatedTemplate = { tags: this.currTemplateTags, ...this.currTemplate };
+    this.dataService
+      .updateTemplate(updatedTemplate)
+      .subscribe((newTemplate: any) => {
+        console.log("updated template ", newTemplate);
+        this.templateData = newTemplate;
+        this.currTemplate = newTemplate;
+      });
+  }
+
   addStage() {
     const id = uuid.v4();
     let newStage = { id, ...new Stage() };

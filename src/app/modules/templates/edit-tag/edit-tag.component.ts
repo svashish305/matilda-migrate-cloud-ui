@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Tag } from "src/app/models/data.models";
 import * as uuid from "uuid";
@@ -10,6 +10,8 @@ import * as uuid from "uuid";
 })
 export class EditTagComponent implements OnInit {
   @Input() tags: any[];
+  @Output() newTags: EventEmitter<any> = new EventEmitter();
+
   firstFormGroup: FormGroup;
   newTagName = "";
   newTagValue = "";
@@ -36,9 +38,12 @@ export class EditTagComponent implements OnInit {
     this.tags.push(newTag);
     this.newTagName = "";
     this.newTagValue = "";
+
+    this.newTags.emit(this.tags);
   }
 
   deleteTag(tagId) {
     this.tags = this.tags.filter((tag) => tag.id !== tagId);
+    this.newTags.emit(this.tags);
   }
 }
