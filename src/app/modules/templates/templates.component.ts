@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { DataService } from "src/services/data.service";
-import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/services/data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: "app-templates",
-  templateUrl: "./templates.component.html",
-  styleUrls: ["./templates.component.scss"],
+  selector: 'app-templates',
+  templateUrl: './templates.component.html',
+  styleUrls: ['./templates.component.scss'],
 })
 export class TemplatesComponent implements OnInit {
   templates = [];
@@ -13,7 +13,7 @@ export class TemplatesComponent implements OnInit {
   templateData: any;
   searchKey;
   showPopup;
-  templateName = "Untitled Template";
+  templateName = 'Untitled Template';
   waveListCollapsed;
   showWaveList;
   isRecentCollapsed = true;
@@ -96,7 +96,7 @@ export class TemplatesComponent implements OnInit {
         data: {
           id: id,
           name: this.templateName,
-          description: "Template Description",
+          description: 'Template Description',
           TemplateTypes: [],
         },
         selected: true,
@@ -107,7 +107,7 @@ export class TemplatesComponent implements OnInit {
       this.templates.unshift(newTemplate);
       // this.gettemplateData(id);
       this.showPopup = false;
-      this.templateName = "";
+      this.templateName = '';
     }
   }
 
@@ -144,6 +144,6 @@ export class TemplatesComponent implements OnInit {
 
   cancelAdd() {
     this.showPopup = false;
-    this.templateName = "";
+    this.templateName = '';
   }
 }

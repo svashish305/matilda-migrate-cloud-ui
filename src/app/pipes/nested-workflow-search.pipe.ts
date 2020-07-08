@@ -1,18 +1,18 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: "nestedWorkflowSearch",
+  name: 'nestedWorkflowSearch',
 })
 export class NestedWorkflowSearchPipe implements PipeTransform {
   transform(value: any, args?: any): any {
-    const search = args ? args : "";
-    const rootFields = ["name", "status", "progress"];
+    const search = args ? args : '';
+    const rootFields = ['name', 'status', 'progress'];
     const childFields = [
-      "name",
-      "status",
-      "progress",
-      // "startDate",
-      // "endDate",
+      'name',
+      'status',
+      'progress',
+      // 'startDate',
+      // 'endDate',
     ];
     let rootFound = false;
     let childFound = false;
@@ -24,7 +24,7 @@ export class NestedWorkflowSearchPipe implements PipeTransform {
       rootFields.forEach((rootFieldKey) => {
         if (
           !rootFound &&
-          typeof group[rootFieldKey] !== "object" &&
+          typeof group[rootFieldKey] !== 'object' &&
           group[rootFieldKey]
             .toString()
             .toLowerCase()

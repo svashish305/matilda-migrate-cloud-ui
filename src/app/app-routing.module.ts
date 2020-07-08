@@ -1,54 +1,54 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { HomeComponent } from "./modules/home/home.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './modules/home/home.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: HomeComponent,
     children: [
       {
-        path: "hub",
+        path: 'hub',
         loadChildren: () =>
-          import("./modules/hub/hub.module").then((m) => m.HubModule),
+          import('./modules/hub/hub.module').then((m) => m.HubModule),
         data: {
-          breadcrumb: "Hub",
+          breadcrumb: 'Hub',
         },
       },
       {
-        path: "templates",
+        path: 'templates',
         loadChildren: () =>
-          import("./modules/templates/templates.module").then(
+          import('./modules/templates/templates.module').then(
             (m) => m.TemplatesModule
           ),
         data: {
-          breadcrumb: "Templates",
+          breadcrumb: 'Templates',
         },
       },
       {
-        path: "workflows",
+        path: 'workflows',
         loadChildren: () =>
-          import("./modules/workflows/workflows.module").then(
+          import('./modules/workflows/workflows.module').then(
             (m) => m.WorkflowsModule
           ),
         data: {
-          breadcrumb: "Workflows",
+          breadcrumb: 'Workflows',
         },
       },
       {
-        path: "test",
+        path: 'test',
         loadChildren: () =>
-          import("./modules/test/test.module").then((m) => m.TestModule),
+          import('./modules/test/test.module').then((m) => m.TestModule),
         data: {
-          breadcrumb: "Test",
+          breadcrumb: 'Test',
         },
       },
     ],
   },
   {
-    path: "top-header",
+    path: 'top-header',
     loadChildren: () =>
-      import("./modules/top-header/top-header.module").then(
+      import('./modules/top-header/top-header.module').then(
         (m) => m.TopHeaderModule
       ),
   },

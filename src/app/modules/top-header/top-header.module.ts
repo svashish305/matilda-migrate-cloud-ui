@@ -1,11 +1,11 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { TopHeaderRoutingModule } from "./top-header-routing.module";
-import { TopHeaderComponent } from "./top-header.component";
-import { MaterialModule } from "../material.module";
-import { AvatarModule } from "ngx-avatar";
-import { BreadcrumbComponent } from "src/app/shared/components/breadcrumb/breadcrumb.component";
+import { TopHeaderRoutingModule } from './top-header-routing.module';
+import { TopHeaderComponent } from './top-header.component';
+import { MaterialModule } from '../material.module';
+import { AvatarModule } from 'ngx-avatar';
+import { BreadcrumbComponent } from 'src/app/shared/components/breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [TopHeaderComponent, BreadcrumbComponent],

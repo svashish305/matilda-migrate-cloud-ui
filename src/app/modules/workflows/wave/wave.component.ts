@@ -7,20 +7,20 @@ import {
   OnChanges,
   EventEmitter,
   Output,
-} from "@angular/core";
+} from '@angular/core';
 import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
-} from "@angular/cdk/drag-drop";
-import { ResizeEvent } from "angular-resizable-element";
-import { DataService } from "src/services/data.service";
-import { FormControl } from "@angular/forms";
-import { DeviceDetectorService } from "ngx-device-detector";
-import * as uuid from "uuid";
-import { ActivatedRoute } from "@angular/router";
-import { GroupedObservable } from "rxjs";
-import { Group } from "src/app/models/data.models";
+} from '@angular/cdk/drag-drop';
+import { ResizeEvent } from 'angular-resizable-element';
+import { DataService } from 'src/services/data.service';
+import { FormControl } from '@angular/forms';
+import { DeviceDetectorService } from 'ngx-device-detector';
+import * as uuid from 'uuid';
+import { ActivatedRoute } from '@angular/router';
+import { GroupedObservable } from 'rxjs';
+import { Group } from 'src/app/models/data.models';
 
 interface SelectInterface {
   value: string;
@@ -28,24 +28,24 @@ interface SelectInterface {
 }
 
 @Component({
-  selector: "app-wave",
-  templateUrl: "./wave.component.html",
-  styleUrls: ["./wave.component.scss"],
+  selector: 'app-wave',
+  templateUrl: './wave.component.html',
+  styleUrls: ['./wave.component.scss'],
 })
 export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() waveData: any;
   @Output() rowClicked: EventEmitter<any> = new EventEmitter();
   edit;
   showBackdrop;
-  @ViewChild("waveList", { static: false }) waveList;
+  @ViewChild('waveList', { static: false }) waveList;
 
   favourite = false;
   waves: any[] = [];
   accounts: any[] = [];
-  titleState: string = "idle";
+  titleState: string = 'idle';
   oldTitle: string;
   newTitle: string;
-  descriptionState: string = "idle";
+  descriptionState: string = 'idle';
   oldDescription: string;
   newDescription: string;
 
@@ -57,12 +57,12 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   showAccountOptions = false;
   showTagOptions = false;
 
-  waveState = "start";
+  waveState = 'start';
 
   items: SelectInterface[] = [
-    { value: "New Item", viewValue: "New Item" },
-    { value: "p-1", viewValue: "Pizza" },
-    { value: "p-2", viewValue: "Tacos" },
+    { value: 'New Item', viewValue: 'New Item' },
+    { value: 'p-1', viewValue: 'Pizza' },
+    { value: 'p-2', viewValue: 'Tacos' },
   ];
 
   waveId: any;
@@ -151,7 +151,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   uploadFile(file) {
     this.dataService.upload(file).subscribe(
       (res: any) => {
-        console.log("file uploaded as", res);
+        console.log('file uploaded as', res);
       },
       (error) => {
         console.log(error);
@@ -169,7 +169,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     this.dataService
       .updateWave(this.waveId, updatedWave)
       .subscribe((newWave: any) => {
-        console.log("updated template ", newWave);
+        console.log('updated template ', newWave);
         this.waveData = newWave;
         this.currWave = newWave;
       });
@@ -182,8 +182,8 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
       ...new Group(),
     };
     this.currWave.groups.push(newGroup);
-    this.waveData.groups.push(newGroup);
-    console.log("modified wave ", this.currWave);
+    this.waveData = this.currWave;
+    console.log('modified wave ', this.currWave);
   }
 
   toggleRightSidebar(template: any) {
@@ -194,7 +194,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   toggleHeight(accountId) {
     let height;
     if (this.accountCollapseState[accountId]) {
-      height = "13.313em";
+      height = '13.313em';
     }
     return { height };
   }
@@ -223,24 +223,24 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
    * @description resizes the template details container
    */
   appyResize(event?) {
-    const wrapperWidth = document.getElementById("wave-content-id").offsetWidth;
-    const templateHolder = document.getElementById("resizable-holder");
-    const contentHolder = document.getElementById("wave-main-content");
+    const wrapperWidth = document.getElementById('wave-content-id').offsetWidth;
+    const templateHolder = document.getElementById('resizable-holder');
+    const contentHolder = document.getElementById('wave-main-content');
     let width;
     if (templateHolder) {
       const resizerWidth = templateHolder.offsetWidth;
       width = event ? resizerWidth - event.edges.left : 430;
-      templateHolder.style.width = width + "px";
+      templateHolder.style.width = width + 'px';
     } else {
       width = 0;
     }
     // if (wrapperWidth > 750 + width) {
     //   if (contentHolder) {
-    //     contentHolder.style.width = wrapperWidth - width + 40 + "px";
+    //     contentHolder.style.width = wrapperWidth - width + 40 + 'px';
     //   }
     // } else {
     //   if (contentHolder) {
-    //     contentHolder.style.width = "750px";
+    //     contentHolder.style.width = '750px';
     //   }
     // }
   }
@@ -274,7 +274,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     const id = Math.random().toString(6);
     this.waveData.data.waveTypes.unshift({
       id: id,
-      name: "New group",
+      name: 'New group',
       theme: this.waveList.getRandomColor(),
       edit: true,
       templates: [],
@@ -282,11 +282,11 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   onFocusTitle() {
-    this.titleState = "editing";
+    this.titleState = 'editing';
   }
 
   updateTitle() {
-    this.titleState = "idle";
+    this.titleState = 'idle';
     if (this.newTitle !== this.oldTitle) {
       // update title
       const newTemplate = {
@@ -300,11 +300,11 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   onFocusDescription() {
-    this.descriptionState = "editing";
+    this.descriptionState = 'editing';
   }
 
   updateDescription() {
-    this.descriptionState = "idle";
+    this.descriptionState = 'idle';
     if (this.newDescription !== this.oldDescription) {
       // update description
       const newTemplate = {
@@ -322,7 +322,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
    * @description generates new color for groups
    */
   getRandomColor() {
-    return "#" + Math.random().toString(16).substr(-6);
+    return '#' + Math.random().toString(16).substr(-6);
   }
 
   /**
@@ -371,7 +371,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     });
     template.selected = true;
     this.rowClicked.emit(true);
-    console.log("row clicked");
+    console.log('row clicked');
   }
 
   /**
@@ -385,11 +385,11 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     waveType.templates.push({
       id: id,
       name: waveType.newTemplate,
-      status: "",
-      startDate: "",
-      endDate: "",
+      status: '',
+      startDate: '',
+      endDate: '',
     });
-    waveType.newTemplate = "";
+    waveType.newTemplate = '';
   }
 
   /**
@@ -399,7 +399,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   inputFocusOut(event, waveType) {
     setTimeout(() => {
       waveType.showAdd = false;
-      waveType.newTemplate = "";
+      waveType.newTemplate = '';
     }, 200);
   }
 
@@ -488,23 +488,23 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
    */
   getStatusClass(template) {
     let className;
-    if (template.status === "Working on it") {
-      className = "status-yellow";
+    if (template.status === 'Working on it') {
+      className = 'status-yellow';
     }
-    if (template.status === "Done") {
-      className = "status-green";
-    }
-
-    if (template.status === "Stuck") {
-      className = "status-red";
+    if (template.status === 'Done') {
+      className = 'status-green';
     }
 
-    if (template.status === "") {
-      className = "";
+    if (template.status === 'Stuck') {
+      className = 'status-red';
+    }
+
+    if (template.status === '') {
+      className = '';
     }
 
     if (template.showStatus) {
-      className += " show-status";
+      className += ' show-status';
     }
 
     return className;

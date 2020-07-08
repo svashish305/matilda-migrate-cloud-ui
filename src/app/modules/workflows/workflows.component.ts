@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { DataService } from "src/services/data.service";
-import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/services/data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: "app-workflows",
-  templateUrl: "./workflows.component.html",
-  styleUrls: ["./workflows.component.scss"],
+  selector: 'app-workflows',
+  templateUrl: './workflows.component.html',
+  styleUrls: ['./workflows.component.scss'],
 })
 export class WorkflowsComponent implements OnInit {
   waves = [];
@@ -89,11 +89,11 @@ export class WorkflowsComponent implements OnInit {
       this.waves.forEach((wave) => (wave.selected = false));
       this.waves.push({ id: id, name: this.waveName, selected: true });
       this.waveData = {
-        waveTypes: [{ name: "New group", edit: true, templates: [] }],
+        waveTypes: [{ name: 'New group', edit: true, templates: [] }],
       };
       // this.getWaveData(id);
       this.showPopup = false;
-      this.waveName = "";
+      this.waveName = '';
     }
   }
 
@@ -130,6 +130,6 @@ export class WorkflowsComponent implements OnInit {
 
   cancelAdd() {
     this.showPopup = false;
-    this.waveName = "";
+    this.waveName = '';
   }
 }

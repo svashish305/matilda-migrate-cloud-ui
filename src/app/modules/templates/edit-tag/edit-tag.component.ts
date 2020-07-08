@@ -1,33 +1,33 @@
-import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Tag } from "src/app/models/data.models";
-import * as uuid from "uuid";
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Tag } from 'src/app/models/data.models';
+import * as uuid from 'uuid';
 
 @Component({
-  selector: "app-edit-tag",
-  templateUrl: "./edit-tag.component.html",
-  styleUrls: ["./edit-tag.component.scss"],
+  selector: 'app-edit-tag',
+  templateUrl: './edit-tag.component.html',
+  styleUrls: ['./edit-tag.component.scss'],
 })
 export class EditTagComponent implements OnInit {
   @Input() tags: any[];
   @Output() newTags: EventEmitter<any> = new EventEmitter();
 
   firstFormGroup: FormGroup;
-  newTagName = "";
-  newTagValue = "";
+  newTagName = '';
+  newTagValue = '';
 
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ["", Validators.required],
+      firstCtrl: ['', Validators.required],
     });
 
-    // console.log("tags ", this.tags);
+    // console.log('tags ', this.tags);
   }
 
   addTag() {
-    // console.log("entered tag ", this.newTagName, this.newTagValue);
+    // console.log('entered tag ', this.newTagName, this.newTagValue);
     const id = uuid.v4();
     let newTag: Tag = {
       id,
@@ -36,8 +36,8 @@ export class EditTagComponent implements OnInit {
       ...new Tag(),
     };
     this.tags.push(newTag);
-    this.newTagName = "";
-    this.newTagValue = "";
+    this.newTagName = '';
+    this.newTagValue = '';
 
     this.newTags.emit(this.tags);
   }
