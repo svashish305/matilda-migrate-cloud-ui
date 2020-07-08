@@ -454,12 +454,31 @@
             class="lalign-import-template-icon"
           ></ngx-avatar>
           <div class="relative-top-5">
-            <div>
-              <span class="task-name">{{ selectedTask.name }}</span>
-              <span class="task-description">{{
-                selectedTask.description
-              }}</span>
-            </div>
+            <!-- <div> -->
+              <div class="task-name">
+                <input
+                  class="descriptiontask-styles"
+                  (click)="$event.target.select()"
+                  (focus)="onFocusTitle()"
+                  (keydown.enter)="updateTaskTitle(selectedTask.name)" 
+                  (keydown)="uniqueTaskTitle(selectedTask.name)"
+                  (blur)="updateTaskTitle(selectedTask.name)"
+                  [(ngModel)]="selectedTask.name"
+                />
+                <div class="text-danger" *ngIf="isEventNameUnique">Please enter unique task name</div>
+              </div>
+              <div class="task-description">
+                <input
+                class="descriptiontask-styles gray-text"
+                (click)="$event.target.select()"
+                (focus)="onFocusDescription()"
+                (keydown.enter)="updateTaskDescription(selectedTask.description)" 
+                  (keydown)="uniqueTaskDescription(selectedTask.description)"
+                  (blur)="uniqueTaskDescription(selectedTask.description)"
+                  [(ngModel)]="selectedTask.description"               
+              />
+              <div class="text-danger" *ngIf="isEventDescUnique">Please enter unique rask description</div>
+              </div>             
           </div>
         </div>
       </header>

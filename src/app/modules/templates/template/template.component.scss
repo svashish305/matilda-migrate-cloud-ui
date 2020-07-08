@@ -1421,3 +1421,28 @@
 ::ng-deep.mat-button .mat-button-focus-overlay {
   background-color: transparent !important;
 }
+
+.descriptiontask-styles {
+  // overflow: hidden;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  border: solid 1.5px transparent;
+  border-radius: 4px;
+  // text-overflow: ellipsis;
+  width: 200px;
+}
+
+.descriptiontask-styles:hover {
+  border-color: lightgray;
+}
+
+.descriptiontask-styles:focus {
+  border-radius: 4px !important;
+  border-color: #1a73e8;
+}
+.text-danger{
+  color: red;
+  font-family: LatoMedium;
+  font-size: 0.875rem;
+}
