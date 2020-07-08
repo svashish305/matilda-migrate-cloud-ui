@@ -8,14 +8,9 @@
   }
 
   .wave__content__wrapper {
-    // flex: 1;
     transition: width 1s;
     box-sizing: border-box;
-    // padding-right: 20px;
-    // overflow: auto;
     width: 92vw;
-    // width: 87vw;
-    // transition: all 0.1s ease;
     &.side-open {
       padding-right: 0;
     }
@@ -48,9 +43,7 @@
   .wave-description {
     font-size: 0.875em;
     color: #cecece;
-    // display: inline-block;
     position: absolute;
-    // top: 4.25em;
     top: 5.25em;
     left: 3.1rem; //3rem
   }
@@ -169,7 +162,6 @@
     height: 40vh;
     width: 100%;
     margin-top: 6em;
-    // border-top: 1px solid var(--grayed-border);
   }
 
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -182,10 +174,6 @@
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
   }
-
-  // .templates__wrapper {
-  //   margin-top: 6em;
-  // }
 
   .wave__header {
     padding: 34px 0 0 0;
@@ -215,17 +203,14 @@
     height: 100%;
     background: white;
     border-left: 1px solid #cecece;
-    // flex: 1;
     width: 430px;
     height: 100%;
-    // margin-right: -20px;
     position: fixed;
     right: -20px;
     min-width: 150px;
     padding: 5px 0 0 20px;
     max-width: calc(100vw - 242px);
     z-index: 2;
-    // transition: all 0.3s ease;
   }
 
   .close-template {
@@ -251,7 +236,6 @@
     justify-content: center;
     cursor: pointer;
     font-size: 0.875em;
-    // padding-bottom: 2px;
     align-items: center;
   }
 
@@ -295,12 +279,6 @@
       display: block;
     }
   }
-
-  // #template-holder:hover{
-  //     &+.modal-backdrop{
-  //         display: block
-  //     }
-  // }
 
   .template-title-font {
     font-family: LatoSemiBold;
@@ -478,11 +456,6 @@
 
   .import-list-template-name {
     padding-left: 1em;
-    // font-family: LatoBold;
-    // font-size: 1.25rem;
-    // line-height: 0;
-    // letter-spacing: 0.64px;
-    // color: #000;
 
     font-family: LatoSemiBold;
     font-size: 1.25rem;
@@ -496,9 +469,6 @@
   }
 
   .import-list-template-description {
-    // position: relative;
-    // right: 4.5rem;
-    // top: 1.25rem;
     position: absolute;
     right: -13rem;
     top: 1.75rem;
@@ -512,13 +482,8 @@
 
   .import-list-2-template-description {
     position: relative;
-    // right: 4.875rem;
     right: 4.25rem;
-    // top: 0.75rem;
     top: 1.25rem;
-    // font-family: LatoMedium;
-    // font-size: 0.875em;
-    // line-height: 1.063em;
 
     font-family: LatoRegular;
     font-size: 0.875rem;
@@ -581,7 +546,6 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    // margin: 8px 0 1.563em 2.5em;
     margin: 40px 0 1.563em 2.5em;
   }
 
@@ -597,15 +561,8 @@
     color: var(--blackish-text);
   }
 
-  // .badge-value {
-  //   font-family: LatoRegular;
-  //   color: var(--primary-light);
-  // }
-
   .import-final {
     margin-top: 24px;
-    // height: 58vh;
-    // overflow-y: auto;
   }
 
   .action-icons {
@@ -618,7 +575,6 @@
 
   .modal-footer-mobile {
     position: absolute !important;
-    // top: 89vh !important;
     top: 91vh !important;
     display: flex;
     width: 100%;
@@ -631,9 +587,6 @@
   }
 
   .footer-styles-2 {
-    // position: relative;
-    // top: 8.75em;
-
     position: absolute !important;
     width: calc(100% - 50px) !important;
     top: 91vh !important; //89vh
@@ -648,12 +601,8 @@
     .edit-avatar-img {
       position: absolute;
       right: -8px;
-      // height: 19px;
-      // width: 21px;
       top: 28px;
-      // padding: 0.25em;
       border-radius: 50%;
-      // border: 1px solid var(--btn-lightgray-border);
       background-color: #fff;
     }
   }
@@ -668,15 +617,11 @@
 @media only screen and (min-width: 427px) {
   .wave__content__wrapper {
     min-width: 750px;
-    // flex: 1;
     transition: width 1s;
     box-sizing: border-box;
-    // padding-right: 20px;
-    // overflow: auto;
     width: 100%;
     max-width: 100%;
 
-    // transition: all 0.1s ease;
     &.side-open {
       padding-right: 0;
     }
@@ -709,7 +654,6 @@
   }
 
   .wave__heading {
-    // margin-top: 2px;
     margin-top: 10px;
     font-size: 1.125em;
   }
@@ -717,7 +661,6 @@
   .wave-description {
     font-size: 0.75em;
     color: #cecece;
-    // display: inline-block;
     position: absolute;
     top: 3.8em; //4.8em
     left: 9rem;
@@ -760,11 +703,6 @@
   }
 
   #stage-tab::ng-deep.mat-tab-label .mat-tab-label-content {
-    // font-family: LatoMedium;
-    // font-size: 0.875rem;
-    // line-height: 1.063rem;
-    // letter-spacing: 0.41px;
-
     font-family: LatoRegular;
     font-size: 0.875rem;
     line-height: 1.375rem;
@@ -773,7 +711,6 @@
 
   #stage-tab::ng-deep.mat-tab-header {
     position: absolute !important;
-    // top: 1.75em !important;
     top: 0.75em !important;
     right: 2em !important;
   }
@@ -845,32 +782,11 @@
   }
 
   .template-container {
-    // overflow-y: scroll;
-    // height: 45vh;
     width: 100%;
     margin-top: 6em;
-    // border-top: 1px solid var(--grayed-border);
   }
 
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  // .template-container::-webkit-scrollbar {
-  //   width: 0px;
-  //   background: transparent; /* make scrollbar transparent */
-  // }
-
-  // .template-container {
-  //   scrollbar-width: none; /* Firefox */
-  //   -ms-overflow-style: none; /* IE and Edge */
-  // }
-
-  // .templates__wrapper {
-  //   margin-top: 6em;
-  // }
-
   .wave__header {
-    // border-top: 1px solid var(--grayed-border);
-    // padding: 1em 0 0 0;
-    // height: 6em;
     height: 5em;
     display: flex;
     flex-direction: row;
@@ -897,17 +813,14 @@
     height: 100%;
     background: white;
     border-left: 1px solid #cecece;
-    // flex: 1;
     width: 430px;
     height: 100%;
-    // margin-right: -20px;
     position: fixed;
     right: -20px;
     min-width: 150px;
     padding: 5px 0 0 20px;
     max-width: calc(100vw - 242px);
     z-index: 2;
-    // transition: all 0.3s ease;
   }
 
   .close-template {
@@ -933,7 +846,6 @@
     justify-content: center;
     cursor: pointer;
     font-size: 0.875em;
-    // padding-bottom: 2px;
     align-items: center;
   }
 
@@ -977,12 +889,6 @@
       display: block;
     }
   }
-
-  // #template-holder:hover{
-  //     &+.modal-backdrop{
-  //         display: block
-  //     }
-  // }
 
   .template-title-font {
     font-family: LatoSemiBold;
@@ -1048,10 +954,7 @@
     background-color: #fff;
     height: 100vh;
     width: 40vw;
-    // padding: 0 24px 0 24px;
     padding: 0 94px 0 24px;
-    // position: absolute;
-    // top: -4.5em;
     position: fixed;
     top: 0;
     right: -4.625em;
@@ -1142,10 +1045,8 @@
     flex: 1;
     width: 100%;
     height: 20px;
-    // padding-left: 3px;
     padding-left: 10px;
     font-size: 14px;
-    // color: #cecece;
     &::placeholder {
       color: #cecece;
     }
@@ -1210,10 +1111,6 @@
   }
 
   .import-list-template-description {
-    // position: relative;
-    // right: 6.4rem;
-    // top: 1.25rem;
-
     position: absolute;
     right: -13rem;
     top: 1.75rem;
@@ -1227,13 +1124,8 @@
 
   .import-list-2-template-description {
     position: relative;
-    // right: 4.875rem;
     right: 4.25rem;
-    // top: 0.75rem;
     top: 1.25rem;
-    // font-family: LatoMedium;
-    // font-size: 0.875em;
-    // line-height: 1.063em;
 
     font-family: LatoRegular;
     font-size: 0.875rem;
@@ -1310,15 +1202,8 @@
     color: var(--blackish-text);
   }
 
-  // .badge-value {
-  //   font-family: LatoRegular;
-  //   color: var(--primary-light);
-  // }
-
   .import-final {
     margin-top: 24px;
-    // height: 58vh;
-    // overflow-y: auto;
   }
 
   .action-icons {
@@ -1335,9 +1220,6 @@
   }
 
   .footer-styles-1 {
-    // position: relative;
-    // top: -0.1em;
-
     position: absolute;
     top: 89vh; //90vh
     width: calc(100% - 120px);
@@ -1359,12 +1241,8 @@
     .edit-avatar-img {
       position: absolute;
       right: -4px;
-      // height: 19px;
-      // width: 21px;
       top: 40px;
-      // padding: 0.25em;
       border-radius: 50%;
-      // border: 1px solid var(--btn-lightgray-border);
       background-color: #fff;
     }
   }

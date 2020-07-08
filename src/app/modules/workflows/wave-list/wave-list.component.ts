@@ -265,15 +265,6 @@ export class WaveListComponent implements OnInit {
     } else {
       width = 0;
     }
-    // if (wrapperWidth > 750 + width) {
-    //   if (contentHolder) {
-    //     contentHolder.style.width = wrapperWidth - width + 40 + 'px';
-    //   }
-    // } else {
-    //   if (contentHolder) {
-    //     contentHolder.style.width = '750px';
-    //   }
-    // }
   }
 
   /**
@@ -325,21 +316,6 @@ export class WaveListComponent implements OnInit {
    * @description reorders the template to other groups or within the groups
    */
   drop(event: CdkDragDrop<string[]>) {
-    // if (event.previousContainer === event.container) {
-    //   moveItemInArray(
-    //     event.container.data,
-    //     event.previousIndex,
-    //     event.currentIndex
-    //   );
-    // } else {
-    //   transferArrayItem(
-    //     event.previousContainer.data,
-    //     event.container.data,
-    //     event.previousIndex,
-    //     event.currentIndex
-    //   );
-    // }
-
     let template: any = event.container.data[event.previousIndex];
     console.log('order before drag ', template.order);
     if (event.previousContainer === event.container) {
@@ -398,13 +374,6 @@ export class WaveListComponent implements OnInit {
    * @description emits event to open template details
    */
   rowClick(template) {
-    // this.waveData.groups.forEach((waveType) => {
-    //   waveType.items.forEach((t) => {
-    //     t.selected = false;
-    //   });
-    // });
-    // template.selected = true;
-
     this.router.navigate([
       `workflows/${this.waveData.id}/templates/${template.id}`,
     ]);
@@ -788,17 +757,6 @@ export class WaveListComponent implements OnInit {
 
   /**
    *
-   * @param waveType for which name has to be edited
-   * @description make group name editable on hover
-   */
-  // groupNameEnter(waveType) {
-  //   this.waveData.groups.forEach((wave) => (wave.edit = false));
-  //   waveType.edit = true;
-  //   waveType.drag = true;
-  // }
-
-  /**
-   *
    * @description passes the ids of groups to angular material to make them reorderable
    */
   getConnectedList() {
@@ -810,12 +768,6 @@ export class WaveListComponent implements OnInit {
    * @description reorders the dragged group
    */
   dropGroup(event: CdkDragDrop<string[]>) {
-    // moveItemInArray(
-    //   this.waveData.groups,
-    //   event.previousIndex,
-    //   event.currentIndex
-    // );
-
     let group: any = event.container.data[event.previousIndex];
     console.log('group order before drag ', group.order);
     if (event.previousContainer === event.container) {

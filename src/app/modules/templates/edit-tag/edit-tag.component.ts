@@ -22,7 +22,6 @@ export class EditTagComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required],
     });
-
     // console.log('tags ', this.tags);
   }
 

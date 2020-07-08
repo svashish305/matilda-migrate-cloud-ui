@@ -4,7 +4,6 @@ import {
   Input,
   ViewChild,
   AfterViewInit,
-  OnChanges,
   EventEmitter,
   Output,
 } from '@angular/core';
@@ -30,7 +29,7 @@ interface SelectInterface {
   templateUrl: './wave.component.html',
   styleUrls: ['./wave.component.scss'],
 })
-export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
+export class WaveComponent implements OnInit, AfterViewInit {
   @Input() waveData: any;
   @Output() rowClicked: EventEmitter<any> = new EventEmitter();
   edit;
@@ -81,14 +80,6 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     private deviceService: DeviceDetectorService,
     private route: ActivatedRoute
   ) {}
-
-  ngOnChanges() {
-    // if (this.waveData && this.waveData.data.waveTypes) {
-    //   this.waveData.data.waveTypes.forEach((waveType) => {
-    //     waveType.theme = this.getRandomColor();
-    //   });
-    // }
-  }
 
   ngOnInit() {
     this.getAccounts();
@@ -232,15 +223,6 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     } else {
       width = 0;
     }
-    // if (wrapperWidth > 750 + width) {
-    //   if (contentHolder) {
-    //     contentHolder.style.width = wrapperWidth - width + 40 + 'px';
-    //   }
-    // } else {
-    //   if (contentHolder) {
-    //     contentHolder.style.width = '750px';
-    //   }
-    // }
   }
 
   /**

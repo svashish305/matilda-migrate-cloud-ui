@@ -41,19 +41,6 @@ export class HubComponent implements OnInit {
     this.getWorkflows();
   }
 
-  // changeAvatar(event: any) {
-  //   if (event.target.files && event.target.files[0]) {
-  //     var reader = new FileReader();
-
-  //     reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-  //     reader.onload = (event) => {
-  //       // called once readAsDataURL is completed
-  //       this.avatarUrl = event.target.result;
-  //     };
-  //   }
-  // }
-
   getTemplates() {
     this.dataService.getTemplates().subscribe((templates: any) => {
       this.templates = templates;

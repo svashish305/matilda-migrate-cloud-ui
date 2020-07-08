@@ -1,5 +1,3 @@
-<!-- wave details start -->
-<!-- {{ waveData | json }} -->
 <div id="wave-content-id" class="wave__content__main__wrapper">
   <div
     id="wave-main-content"
@@ -70,12 +68,6 @@
             Remove
           </button>
         </mat-menu>
-        <!-- <ngx-avatar
-          class="my-avatar flex-center"
-          name="{{ waveData.name }}"
-          initialsSize="2"
-          [size]="isMobile ? 40 : 56"
-        ></ngx-avatar> -->
       </div>
       <div class="wave__heading">
         <input
@@ -186,15 +178,6 @@
                 >
               </span>
             </div>
-            <!-- <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">Software : Tomcat</span>
-            </span>
-            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">Java : Web</span>
-            </span>
-            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">+3</span>
-            </span> -->
           </div>
 
           <div
@@ -279,22 +262,6 @@
             >
               <span class="new-stage-btn-text">+ New</span>
             </button>
-
-            <!-- <div class="waves__list__filter right-align-searchbox">
-              <div>
-                <img class="search-icon" src="assets/imgs/search.svg" alt="" />
-              </div>
-              <div class="waves_list__search">
-                <input
-                  (keyup)="search($event)"
-                  name="test"
-                  [(ngModel)]="searchKey"
-                  placeholder="Search"
-                  class="filter__input"
-                  type="text"
-                />
-              </div>
-            </div> -->
           </div>
         </div>
 
@@ -318,26 +285,6 @@
 
     <!-- wave groups end -->
   </div>
-  <!-- template details resizable start -->
-  <!-- <section
-    tabindex="-1"
-    id="template-holder"
-    (mouseenter)="showBackdrop = true"
-    (mouseleave)="showBackdrop = false"
-    *ngIf="waveData && edit"
-    class="side-bar resizable"
-    mwlResizable
-    [enableGhostResize]="true"
-    [resizeEdges]="{ bottom: false, right: false, top: false, left: true }"
-    (resizeEnd)="onResizeEnd($event)"
-  >
-    <div (click)="openDetails(false)" class="close-template">x</div>
-    <div>
-      Template
-    </div>
-  </section>
-  <div [ngClass]="{ show: showBackdrop }" class="modal-backdrop"></div> -->
-  <!-- template details resizable start -->
 
   <!-- account options start -->
   <div
@@ -434,12 +381,6 @@
           </div>
         </mat-card-content>
       </mat-card>
-      <!-- <div
-        [ngClass]="{
-          'modal-footer-mobile': isMobile,
-          'account-footer': !isMobile
-        }"
-      > -->
       <div class="account-footer">
         <div class="account-sidebar-footer-btns">
           <button

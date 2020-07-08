@@ -90,11 +90,6 @@
                   alt=""
                 />
               </div>
-              <!-- <div
-                [ngClass]="{ collapsed: stage.collapsed }"
-                (click)="openGroupLevelActions(stage)"
-                class="accordian"
-              > -->
               <div
                 [ngClass]="{ collapsed: groupCollapseList[i] }"
                 class="accordian"
@@ -108,32 +103,8 @@
                   alt=""
                   (click)="groupCollapseList[i] = !groupCollapseList[i]"
                 />
-                <!-- <div class="group-level-actions">
-                  <div
-                    (click)="stage.collapsed = true"
-                    *ngIf="!stage.collapsed"
-                  >
-                    Collapse
-                  </div>
-                  <div
-                    (click)="stage.collapsed = false"
-                    *ngIf="stage.collapsed"
-                  >
-                    Expand
-                  </div>
-                  <div (click)="deleteGroup(stage)">Delete</div>
-                </div> -->
               </div>
               <!-- group level actions ends -->
-
-              <!-- <div
-                [ngClass]="{
-                  'group-name-wrapper-collapsed': groupCollapseList[i],
-                  'group-name-wrapper': !groupCollapseList[i]
-                }"
-                (mouseenter)="groupNameEnter(templateType)"
-                (mouseleave)="templateType.edit = false"
-              > -->
               <div
                 [ngClass]="{
                   'group-name-wrapper-collapsed': groupCollapseList[i],
@@ -280,20 +251,6 @@
               cdkDrag
             >
               <div class="template-name">
-                <!-- template level actions starts -->
-                <!-- <div class="row-starter">
-                  <div (click)="$event.stopPropagation()" class="accordian">
-                    <img src="assets/imgs/chevron-down.svg" alt="" />
-                    <div class="group-level-actions">
-                      <div (click)="deleteTemplate(stage, task)">
-                        Delete
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
-                <!-- template level actions starts -->
-
-                <!-- <div class="grid-start-line border-white"></div> -->
                 <div class="border-white template-name-main">
                   <span
                     [ngClass]="{
@@ -421,30 +378,9 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="template__row item editor-row"> -->
             <div class="template__row item row-items">
               <!-- add new template start -->
               <div class="template-name">
-                <!-- <div class="row-starter"></div>
-                <div class="grid-start-line border-white"></div> -->
-                <!-- <div class="border-white template-name-main">
-                  <input
-                    (focus)="stage.showAdd = true"
-                    (focusout)="inputFocusOut($event, stage)"
-                    class="template-add"
-                    (keydown.enter)="openDialog(addTaskModal)"
-                    [(ngModel)]="stage.newTemplate"
-                    type="text"
-                    placeholder="+ Add"
-                  />
-                </div>
-                <div
-                  *ngIf="stage.showAdd"
-                  (click)="openDialog(addTaskModal)"
-                  class="template-add-button"
-                >
-                  Add
-                </div> -->
                 <span class="common-text add-new-text" (click)="rowClick(null)"
                   >+ Add New Task</span
                 >

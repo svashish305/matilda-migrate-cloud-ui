@@ -7,13 +7,7 @@ export class NestedWorkflowSearchPipe implements PipeTransform {
   transform(value: any, args?: any): any {
     const search = args ? args : '';
     const rootFields = ['name', 'status', 'progress'];
-    const childFields = [
-      'name',
-      'status',
-      'progress',
-      // 'startDate',
-      // 'endDate',
-    ];
+    const childFields = ['name', 'status', 'progress'];
     let rootFound = false;
     let childFound = false;
     const groups = [];

@@ -57,20 +57,6 @@
           <div *ngIf="!isTemplateFavouritesCollapsed" class="grid-container">
             <mat-card *ngFor="let favTemplate of favTemplates; let i = index">
               <div>
-                <!-- <label for="fileInput">
-                  <ngx-avatar
-                    [src]="avatarUrl"
-                    [size]="!isMobile ? 56 : 68"
-                    name="Tomcat Template"
-                    initialsSize="2"
-                  >
-                  </ngx-avatar>
-                </label>
-                <input
-                  id="fileInput"
-                  type="file"
-                  (change)="changeAvatar($event)"
-                /> -->
                 <ngx-avatar
                   [size]="!isMobile ? 56 : 68"
                   name="{{ favTemplate.name }}"

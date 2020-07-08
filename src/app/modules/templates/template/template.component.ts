@@ -65,11 +65,6 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit() {
-    // this.oldTitle = this.templateData.name;
-    // this.newTitle = this.oldTitle;
-    // this.oldDescription = this.templateData.desc;
-    // this.newDescription = this.oldDescription;
-
     this.route.params.subscribe((params: any) => {
       this.templateId = params.id;
     });
@@ -239,15 +234,6 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     } else {
       width = 0;
     }
-    // if (wrapperWidth > 750 + width) {
-    //   if (contentHolder) {
-    //     contentHolder.style.width = wrapperWidth - width + 40 + 'px';
-    //   }
-    // } else {
-    //   if (contentHolder) {
-    //     contentHolder.style.width = '750px';
-    //   }
-    // }
   }
 
   /**

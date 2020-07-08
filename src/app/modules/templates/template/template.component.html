@@ -1,5 +1,3 @@
-<!-- wave details start -->
-<!-- {{ templateData | json }} -->
 <div id="wave-content-id" class="wave__content__main__wrapper">
   <div
     id="wave-main-content"
@@ -72,12 +70,6 @@
             Remove
           </button>
         </mat-menu>
-        <!-- <ngx-avatar
-          class="my-avatar flex-center"
-          name="{{ templateData.name }}"
-          initialsSize="2"
-          [size]="isMobile ? 40 : 56"
-        ></ngx-avatar> -->
       </div>
       <div class="wave__heading">
         <input
@@ -184,15 +176,6 @@
                 >
               </span>
             </div>
-            <!-- <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">Software : Tomcat</span>
-            </span>
-            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">Java : Web</span>
-            </span>
-            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">+3</span>
-            </span> -->
           </div>
 
           <div class="stage-action-bar">
@@ -204,33 +187,12 @@
             >
               <span class="new-stage-btn-text">+ New</span>
             </button>
-
-            <!-- <div class="waves__list__filter right-align-searchbox">
-              <div>
-                <img class="search-icon" src="assets/imgs/search.svg" alt="" />
-              </div>
-              <div class="waves_list__search">
-                <input
-                  (keyup)="search($event)"
-                  name="test"
-                  [(ngModel)]="searchKey"
-                  placeholder="Search"
-                  class="filter__input"
-                  type="text"
-                />
-              </div>
-            </div> -->
           </div>
         </div>
 
         <div class="template-container">
           <div class="templates__wrapper">
             <!-- wave templates list start-->
-            <!-- <app-template-list
-              #templateList
-              (rowClicked)="openDetails($event)"
-              [templateData]="templateData"
-            > -->
             <app-template-list
               #templateList
               (rowClicked)="openTaskDetails($event)"
@@ -248,26 +210,6 @@
 
     <!-- wave groups end -->
   </div>
-  <!-- template details resizable start -->
-  <!-- <section
-    tabindex="-1"
-    id="template-holder"
-    (mouseenter)="showBackdrop = true"
-    (mouseleave)="showBackdrop = false"
-    *ngIf="templateData && edit"
-    class="side-bar resizable"
-    mwlResizable
-    [enableGhostResize]="true"
-    [resizeEdges]="{ bottom: false, right: false, top: false, left: true }"
-    (resizeEnd)="onResizeEnd($event)"
-  >
-    <div (click)="openDetails(false)" class="close-template">x</div>
-    <div>
-      Template
-    </div>
-  </section>
-  <div [ngClass]="{ show: showBackdrop }" class="modal-backdrop"></div> -->
-  <!-- template details resizable start -->
 
   <!-- import options start -->
   <div
@@ -350,15 +292,6 @@
                   ></span
                 >
               </span>
-              <!-- <span class="badge badge-pill badge-custom">
-                <span
-                  ><span class="badge-key-value">Web :</span
-                  ><span class="badge-key-value">&nbsp;End</span></span
-                >
-              </span>
-              <span class="badge badge-pill badge-custom">
-                <span class="badge-key-value">+1</span></span
-              > -->
             </div>
           </mat-card-content>
         </mat-card>
@@ -416,7 +349,10 @@
     </header>
     <mat-divider></mat-divider>
     <!-- tag edit body -->
-    <app-edit-tag [tags]="currTemplateTags" (newTags)="updateTags($event)"></app-edit-tag>
+    <app-edit-tag
+      [tags]="currTemplateTags"
+      (newTags)="updateTags($event)"
+    ></app-edit-tag>
     <!-- end of tag edit body -->
     <div
       [ngClass]="{ 'modal-footer-mobile': isMobile, 'modal-footer': !isMobile }"
@@ -478,35 +414,11 @@
       </header>
       <mat-divider></mat-divider>
 
-      <app-add-task-modal-content (onSaveConfig)="onSaveConfig($event)" (onClose)="onClose($event)" 
-      (onSaveTemplateFormat)="onSaveTemplateFormat($event)"></app-add-task-modal-content>
-
-      <!-- <div
-        [ngClass]="{
-          'modal-footer-mobile': isMobile,
-          'modal-footer': !isMobile
-        }"
-        class="footer-styles-2"
-      >
-        <div class="import-btns-1">
-          <button
-            mat-flat-button
-            color="primary"
-            (click)="showTaskOptions = false"
-            cdkFocusInitial
-          >
-            Save
-          </button>
-          <button
-            mat-button
-            color="primary"
-            (click)="showTaskOptions = false"
-            class="left-margin-1em"
-          >
-            Cancel
-          </button>
-        </div>
-      </div> -->
+      <app-add-task-modal-content
+        (onSaveConfig)="onSaveConfig($event)"
+        (onClose)="onClose($event)"
+        (onSaveTemplateFormat)="onSaveTemplateFormat($event)"
+      ></app-add-task-modal-content>
     </div>
   </div>
   <!-- end of task options -->

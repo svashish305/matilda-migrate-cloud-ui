@@ -231,21 +231,6 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description reorders the template to other groups or within the groups
    */
   drop(event: CdkDragDrop<string[]>) {
-    // if (event.previousContainer === event.container) {
-    //   moveItemInArray(
-    //     event.container.data,
-    //     event.previousIndex,
-    //     event.currentIndex
-    //   );
-    // } else {
-    //   transferArrayItem(
-    //     event.previousContainer.data,
-    //     event.container.data,
-    //     event.previousIndex,
-    //     event.currentIndex
-    //   );
-    // }
-
     let task: any = event.container.data[event.previousIndex];
     console.log('order before drag ', task.order);
     if (event.previousContainer === event.container) {
@@ -357,17 +342,6 @@ export class TemplateListComponent implements OnInit, OnChanges {
 
   /**
    *
-   * @param templateType for which name has to be edited
-   * @description make group name editable on hover
-   */
-  // groupNameEnter(templateType) {
-  //   this.templateData.groups.forEach((template) => (template.edit = false));
-  //   templateType.edit = true;
-  //   templateType.drag = true;
-  // }
-
-  /**
-   *
    * @description passes the ids of groups to angular material to make them reorderable
    */
   getConnectedList() {
@@ -379,13 +353,6 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description reorders the dragged group
    */
   dropGroup(event: CdkDragDrop<string[]>) {
-    // console.log('event ', event);
-    // moveItemInArray(
-    //   this.templateData.groups,
-    //   event.previousIndex,
-    //   event.currentIndex
-    // );
-
     let group: any = event.container.data[event.previousIndex];
     console.log('group order before drag ', group.order);
     if (event.previousContainer === event.container) {
