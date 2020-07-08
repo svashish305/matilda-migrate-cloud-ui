@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Tag } from 'src/app/models/data.models';
+import { Tag } from 'src/app/models/data.model';
 import * as uuid from 'uuid';
 
 @Component({
