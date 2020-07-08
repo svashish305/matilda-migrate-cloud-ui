@@ -1,10 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-interface SelectInterface {
-  value: string;
-  viewValue: string;
-}
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { PluginService } from './services/plugin.service';
+import { FormBase } from './task-input/dynamic-forms/models/form-base';
 
 @Component({
   selector: 'app-add-task-modal-content',
@@ -12,46 +9,36 @@ interface SelectInterface {
   styleUrls: ['./add-task-modal-content.component.scss'],
 })
 export class AddTaskModalContentComponent implements OnInit {
+  public pluginFields: FormBase[] = [];
+  @Input() task: any;
+  @Output() onSaveConfig = new EventEmitter();
+  @Output() onSaveGeneralConfig = new EventEmitter();
+  @Output() onClose = new EventEmitter();
+  @Output() onSaveTemplateFormat = new EventEmitter();
   firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
-  plugins: SelectInterface[] = [
-    { value: 'p-0', viewValue: 'AWS' },
-    { value: 'p-1', viewValue: 'Pizza' },
-    { value: 'p-2', viewValue: 'Tacos' },
-  ];
-  services: SelectInterface[] = [
-    { value: 's-0', viewValue: 'RDS' },
-    { value: 's-1', viewValue: 'Pizza' },
-    { value: 's-2', viewValue: 'Tacos' },
-  ];
-  actions: SelectInterface[] = [
-    { value: 'create-0', viewValue: 'Create' },
-    { value: 'update-1', viewValue: 'Update' },
-    { value: 'delete-2', viewValue: 'Delete' },
-  ];
-  accounts: SelectInterface[] = [
-    { value: 'aws-acc-0', viewValue: 'AWS Account 1' },
-    { value: 'aws-acc-1', viewValue: 'AWS Account 2' },
-    { value: 'aws-acc-2', viewValue: 'AWS Account 3' },
-  ];
-  types: SelectInterface[] = [
-    { value: 'type-0', viewValue: 'T2 Micro' },
-    { value: 'type-1', viewValue: 'Type 2' },
-    { value: 'type-2', viewValue: 'Type 3' },
-  ];
-
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _pluginService: PluginService
+  ) {}
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
-    });
-    this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['', Validators.required],
-    });
+    this._pluginService
+      .getTaskInputFields(1)
+      .subscribe((data: any[]) => (this.pluginFields = data));
+  }
+
+  saveConfig(event: any) {
+    this.onSaveConfig.emit(event);
+  }
+
+  closeWindow(event: any) {
+    this.onClose.emit(event);
+  }
+
+  taskGeneralConfig(generalConfig: any) {
+    this.onSaveGeneralConfig.emit(generalConfig);
+  }
+  taskTemplateFormat(templateFormat: any) {
+    this.onSaveTemplateFormat.emit(templateFormat);
   }
 }

@@ -10,7 +10,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import * as uuid from 'uuid';
-import { Stage } from 'src/app/models/data.models';
+import { Group } from 'src/app/models/data.model';
 
 interface SelectInterface {
   value: string;
@@ -182,9 +182,11 @@ export class TemplateComponent implements OnInit, AfterViewInit {
 
   addStage() {
     const id = uuid.v4();
-    let newStage = { id, ...new Stage() };
+    let newStage = { id, ...new Group() };
+
     this.currTemplate.groups.push(newStage);
     this.templateData = this.currTemplate;
+    console.log(newStage);
   }
 
   onCheck(event, template) {
@@ -359,4 +361,11 @@ export class TemplateComponent implements OnInit, AfterViewInit {
       //   .subscribe((res: any) => console.log(res));
     }
   }
+
+  onSaveConfig(payload: any) {}
+
+  onClose(event: any) {
+    this.showTaskOptions = !event;
+  }
+  onSaveTemplateFormat(formatPaylod: any) {}
 }

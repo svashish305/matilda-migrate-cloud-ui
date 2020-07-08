@@ -7,7 +7,8 @@
       [(ngModel)]="selectedWorkflowType"
       (ngModelChange)="getWorkflowType()"
     >
-      <mat-option (click)="optionClicked()"
+      <mat-option
+        (click)="optionClicked()"
         id="wf-option"
         *ngFor="let wType of workflowTypes"
         [value]="wType.value"
@@ -50,7 +51,6 @@
     </mat-form-field>
   </form>
 </div>
-
 <div class="drag-drop-parent">
   <div
     cdkDropList

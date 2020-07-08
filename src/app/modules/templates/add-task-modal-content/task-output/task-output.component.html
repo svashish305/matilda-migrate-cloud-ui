@@ -1,0 +1,15 @@
+<div class="pt-4" style="max-height: 56vh;">
+    <div class="output-container common-text">
+        <div *ngFor="let outputParameter of dataMap | keyvalue" class="ml-0 mr-0 mb-2">
+            <span class="badge badge-pill badge-custom">
+                <span class="badge-key-value" style="display: inline-flex; flex-wrap: wrap;">{{outputParameter.key}}:
+                    {{outputParameter.value}}</span>
+            </span> &nbsp; &nbsp;
+        </div>
+    </div>
+    <br />
+    <mat-divider></mat-divider>
+    <br />
+    {{output | json}}
+    <br />
+</div>

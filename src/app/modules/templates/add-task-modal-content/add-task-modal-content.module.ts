@@ -5,15 +5,27 @@ import { AddTaskModalContentRoutingModule } from './add-task-modal-content-routi
 import { AddTaskModalContentComponent } from './add-task-modal-content.component';
 import { MaterialModule } from '../../material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TaskGeneralConfigComponent } from './task-general-config/task-general-config.component';
+import { TaskInputComponent } from './task-input/task-input.component';
+import { TaskOutputComponent } from './task-output/task-output.component';
+import { DynamicFormsModule } from './task-input/dynamic-forms/dynamic-forms.module';
+import { EditTaskTemplateComponent } from '../edit-task-template/edit-task-template.component';
 
 @NgModule({
-  declarations: [AddTaskModalContentComponent],
+  declarations: [
+    AddTaskModalContentComponent,
+    TaskGeneralConfigComponent,
+    TaskInputComponent,
+    TaskOutputComponent,
+    EditTaskTemplateComponent,
+  ],
   imports: [
     CommonModule,
     AddTaskModalContentRoutingModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    DynamicFormsModule,
   ],
   exports: [AddTaskModalContentComponent],
 })

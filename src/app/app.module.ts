@@ -11,6 +11,7 @@ import {
 } from '@angular/material/core';
 import { HomeModule } from './modules/home/home.module';
 
+
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true,
 };
@@ -23,6 +24,7 @@ const globalRippleConfig: RippleGlobalOptions = {
     AppRoutingModule,
     HomeModule,
     SharedModule,
+   
   ],
   providers: [
     { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig },
