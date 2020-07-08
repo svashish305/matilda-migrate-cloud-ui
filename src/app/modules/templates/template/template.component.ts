@@ -411,32 +411,5 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     //   if(res){        
     //   }
     // })
-  }
-  uniqueTaskDescription(taskDescription){    
-    let groupList = this.templateData.groups;
-    let filteredGroupList = groupList.filter(it=>{
-        return it.id === this.selectedTask.groupId;
-    })
-    let groupItems = filteredGroupList.items;
-    let keyExists;
-    for (let key of groupItems) {
-      if (key.description.toLowerCase() === taskDescription.toLowerCase()) {
-        keyExists = { isEventDescUnique: true };
-        break;
-      }
-      else {
-        keyExists = null;
-      }
-    }
-    return keyExists;
-    // API Logic
-    // this.dataService.taskDescriptionValid(taskDescription).subscribe(res=>{
-    //   if(res == true){
-    //     this.isEventDescUnique = true 
-    //   }
-    //   else{
-    //     this.isEventDescUnique =  false
-    //   }
-    // })  
-  }
+  }  
 }

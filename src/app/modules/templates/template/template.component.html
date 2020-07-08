@@ -472,12 +472,10 @@
                 class="descriptiontask-styles gray-text"
                 (click)="$event.target.select()"
                 (focus)="onFocusDescription()"
-                (keydown.enter)="updateTaskDescription(selectedTask.description)" 
-                  (keydown)="uniqueTaskDescription(selectedTask.description)"
-                  (blur)="uniqueTaskDescription(selectedTask.description)"
+                (keydown.enter)="updateTaskDescription(selectedTask.description)"                  
+                  (blur)="updateTaskDescription(selectedTask.description)"
                   [(ngModel)]="selectedTask.description"               
               />
-              <div class="text-danger" *ngIf="isEventDescUnique">Please enter unique rask description</div>
               </div>             
           </div>
         </div>
