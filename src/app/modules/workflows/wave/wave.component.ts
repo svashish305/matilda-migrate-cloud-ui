@@ -153,10 +153,9 @@ export class WaveComponent implements OnInit, AfterViewInit {
   }
 
   updateTags(event: any) {
-    this.currWaveTags = event;
-    let updatedWave = { tags: this.currWaveTags, ...this.currWave };
+    this.currWave.tags = event;
     this.dataService
-      .updateWave(this.waveId, updatedWave)
+      .updateWave(this.waveId, this.currWave)
       .subscribe((newWave: any) => {
         console.log('updated template ', newWave);
         this.waveData = newWave;

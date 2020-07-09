@@ -22,11 +22,9 @@ export class EditTagComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required],
     });
-    // console.log('tags ', this.tags);
   }
 
   addTag() {
-    // console.log('entered tag ', this.newTagName, this.newTagValue);
     const id = uuid.v4();
     let newTag: Tag = {
       id,

@@ -6293,7 +6293,7 @@
       "name": "Template 1",
       "desc": "Template Description",
       "ver": "templateVersionNumber",
-      "type": "NONE/TRIGGER/EVENT",
+      "type": "time",
       "owner": "TEMPLATE OWNER",
       "progress": 10,
       "status": "Defined",
@@ -6624,6 +6624,11 @@
           "name": "Name1",
           "value": "Value1",
           "modifiedDate": "2020-06-12T14:29:18"
+        },
+        {
+          "id": "7be4c75a-0828-4c04-a3fb-4dcca4fe0d47",
+          "name": "Name 2",
+          "value": "Value 2"
         }
       ],
       "modifiedDate": "2020-06-12T14:29:18"
