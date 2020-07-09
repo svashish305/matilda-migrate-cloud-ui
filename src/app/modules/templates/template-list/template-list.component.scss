@@ -1365,6 +1365,32 @@
     }
   }
 
+  @media only screen and (width: 1496px) {
+    .right-headers {
+      position: absolute;
+      right: -76rem !important;
+    }
+
+    .stage-btn {
+      bottom: -40px;
+      position: absolute;
+      left: 81.1rem !important;
+    }
+  }
+
+  @media only screen and (width: 1836px) {
+    .right-headers {
+      position: absolute;
+      right: -96rem !important;
+    }
+
+    .stage-btn {
+      bottom: -40px;
+      position: absolute;
+      left: 101.5rem !important;
+    }
+  }
+
   @media only screen and (min-width: 1441px) and (max-width: 1980px) {
     .stage-list-subheader {
       display: flex;
