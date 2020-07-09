@@ -116,6 +116,15 @@ export class WaveListComponent implements OnInit {
     return this.selectedWorkflowType;
   }
 
+  optionClicked(wfType) {
+    this.waveData.type = wfType;
+    this.dataService
+      .updateTemplate(this.waveData.id, this.waveData)
+      .subscribe((newWave: any) => {
+        console.log('new wave type ', newWave.type);
+      });
+  }
+
   setBadgeBgColor(statusCode = 1) {
     let backgroundColor = '#99a1a9';
     switch (statusCode) {

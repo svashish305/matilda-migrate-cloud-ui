@@ -173,8 +173,13 @@ export class TemplateListComponent implements OnInit, OnChanges {
     return this.selectedWorkflowType;
   }
 
-  optionClicked() {
-    console.log('clicked wf-dd');
+  optionClicked(wfType) {
+    this.templateData.type = wfType;
+    this.dataService
+      .updateTemplate(this.templateData.id, this.templateData)
+      .subscribe((newTemplate: any) => {
+        console.log('new template type ', newTemplate.type);
+      });
   }
 
   toggleTemplateHeight(collapsed) {

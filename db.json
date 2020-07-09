@@ -6293,7 +6293,7 @@
       "name": "Template 1",
       "desc": "Template Description",
       "ver": "templateVersionNumber",
-      "type": "time",
+      "type": "trigger",
       "owner": "TEMPLATE OWNER",
       "progress": 10,
       "status": "Defined",
