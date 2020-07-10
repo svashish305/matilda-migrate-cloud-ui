@@ -1,0 +1,38 @@
+.discover-container {
+  margin: 0 2.5em 0 1.5em;
+}
+
+.discover-header {
+  height: 80px; //118px
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid var(--grayed-border);
+}
+
+.discover-header-text {
+  font-family: LatoSemiBold;
+  font-size: 1.25rem;
+  letter-spacing: 0.64px;
+  color: #000;
+
+  position: absolute;
+  left: 6.375rem;
+}
+
+.discover-searchbox {
+  width: 23.813em !important;
+  position: absolute;
+  top: 8px;
+  left: 16.375rem;
+}
+
+#mat-search ::ng-deep .mat-form-field-underline {
+  background-color: var(--btn-lightgray-border);
+}
+
+.new-search-icon {
+  position: relative;
+  bottom: 2px;
+  padding-right: 0.5em;
+}

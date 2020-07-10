@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-template-discover',
   templateUrl: './template-discover.component.html',
-  styleUrls: ['./template-discover.component.scss']
+  styleUrls: ['./template-discover.component.scss'],
 })
 export class TemplateDiscoverComponent implements OnInit {
+  imgHovered = false;
+  searchKey;
 
-  constructor() { }
+  constructor(private location: Location) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  goBack() {
+    this.location.back();
   }
-
 }

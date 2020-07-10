@@ -1,1 +1,47 @@
-<p>template-discover works!</p>
+<!-- <p>template-discover works!</p> -->
+<div class="discover-container">
+  <div class="discover-header">
+    <div
+      (click)="goBack()"
+      (mouseover)="imgHovered = true"
+      (mouseleave)="imgHovered = false"
+      class="back-icon pointer-cursor"
+      [ngClass]="{ 'back-not-hover': !imgHovered }"
+    >
+      <img
+        [src]="
+          imgHovered
+            ? 'assets/imgs/back-icon.svg'
+            : 'assets/imgs/chevron-down.svg'
+        "
+        alt="back"
+      />
+    </div>
+
+    <span class="discover-header-text">Discover</span>
+
+    <div class="discover-searchbox">
+      <form>
+        <mat-form-field
+          id="mat-search"
+          floatLabel="never"
+          class="mat-typography full-width"
+        >
+          <img
+            matPrefix
+            src="assets/imgs/search-2.svg"
+            alt="search-icon"
+            class="new-search-icon"
+          />
+          <input
+            matInput
+            placeholder="Search Application"
+            type="search"
+            name="test"
+            [(ngModel)]="searchKey"
+          />
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+</div>
