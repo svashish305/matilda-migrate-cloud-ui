@@ -31,7 +31,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
 
 @NgModule({
   declarations: [],
@@ -102,9 +101,6 @@ import { MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
     MatSortModule,
     MatPaginatorModule,
   ],
-  providers: [
-    MatDatepickerModule,
-    { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: { disabled: true } },
-  ],
+  providers: [MatDatepickerModule],
 })
 export class MaterialModule {}
