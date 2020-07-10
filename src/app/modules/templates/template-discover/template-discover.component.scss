@@ -11,11 +11,7 @@
 }
 
 .discover-header-text {
-  font-family: LatoSemiBold;
-  font-size: 1.25rem;
-  letter-spacing: 0.64px;
-  color: #000;
-
+  font-family: LatoSemiBold !important;
   position: absolute;
   left: 6.375rem;
 }
@@ -23,7 +19,7 @@
 .discover-searchbox {
   width: 23.813em !important;
   position: absolute;
-  top: 8px;
+  top: 9px;
   left: 16.375rem;
 }
 
@@ -35,4 +31,38 @@
   position: relative;
   bottom: 2px;
   padding-right: 0.5em;
+}
+
+.discover-content {
+  margin-top: 1.5rem;
+}
+
+mat-card {
+  cursor: pointer;
+  height: 4rem;
+  border: solid 1px var(--grayed-border);
+  border-left: solid 4px var(--light-blue) !important;
+  box-shadow: 2px 3px var(--btn-gray-border) !important;
+}
+
+.pos-card-title {
+  position: absolute;
+  top: 8px;
+  color: var(--primary-light);
+}
+
+.pos-subtitle {
+  position: absolute;
+  top: 2.5rem;
+
+  font-size: 1rem !important;
+  color: var(--alt-gray-text);
+}
+
+.pos-src-subtitle {
+  position: absolute;
+  top: 2.5rem;
+  margin-left: 22rem;
+  font-size: 1rem !important;
+  color: var(--alt-gray-text);
 }
