@@ -31,9 +31,9 @@
            <div *ngIf="formTypeJ && radioD">
              <div>
               <label>Data</label>
-             </div>
-             <textarea class="format-tarea" formControlName="formatDataJson" required="true" >
-             </textarea>
+             </div>             
+             <textarea class="format-tarea will-clear" (change)="isValidJSONFormat(form.value)"  formControlName="formatDataJson" required="true" 
+             spellcheck="true"  rows="5"></textarea>         
            </div>
            <div *ngIf="formTypeJ && radioB">
             <div>
@@ -48,8 +48,7 @@
             </div>
             <textarea class="format-tarea" formControlName="formatDataYaml" required="true" >
             </textarea>
-          </div>
-
+          </div>        
         <mat-divider></mat-divider> 
        <div class="pt-4 pb-4">
         <button
