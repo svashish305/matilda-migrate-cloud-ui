@@ -92,7 +92,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    // console.log('templateData ', this.templateData);
+   
     this.selectedWorkflowType = this.workflowTypes[0].value;
 
     this.firstFormGroup = this._formBuilder.group({
@@ -359,43 +359,22 @@ export class TemplateListComponent implements OnInit, OnChanges {
    */
   dropGroup(event: CdkDragDrop<string[]>) {
     let group: any = event.container.data[event.previousIndex];
-    console.log('group order before drag ', group.order);
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
+
+    moveItemInArray(
+      this.templateData.groups,
+      event.previousIndex,
+      event.currentIndex
+    );
+
+    this.templateData.groups = [... this.templateData.groups];
 
     if (event.currentIndex === 0) {
-      if (event.container.data.length > 0) {
-        if (event.container.data.length !== event.currentIndex + 1) {
-          group.order =
-            0 + event.container.data[event.currentIndex + 1]['order'] / 2;
-        } else {
-          group.order = 100;
-        }
-      } else {
-        group.order = 100;
-      }
-    } else if (event.currentIndex === event.container.data.length - 1) {
-      group.order =
-        100 + event.container.data[event.container.data.length - 2]['order'];
+      group.order = (0 + this.templateData.groups[1].order) / 2;
+    } else if (event.currentIndex === this.templateData.groups.length - 1) {
+      group.order = 100 + this.templateData.groups[this.templateData.groups.length - 2].order;
     } else {
-      group.order =
-        (event.container.data[event.currentIndex - 1]['order'] +
-          event.container.data[event.currentIndex + 1]['order']) /
-        2;
+      group.order = (this.templateData.groups[event.currentIndex - 1].order + this.templateData.groups[event.currentIndex + 1].order) / 2;
     }
-    console.log('group order after drag ', group.order);
   }
 
   /**

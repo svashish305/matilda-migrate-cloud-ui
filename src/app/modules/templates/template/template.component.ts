@@ -299,7 +299,6 @@ export class TemplateComponent implements OnInit, AfterViewInit {
    * @description Adds new group to wave
    */
   addNewGroup() {
-    console.log(this.templateList);
     const id = Math.random().toString(6);
     this.templateData.waveTypes.unshift({
       id: id,
