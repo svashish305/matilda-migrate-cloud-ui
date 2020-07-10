@@ -1,5 +1,5 @@
 .output-container {
-	max-height: 56vh !important;
+	max-height: 23vh !important;
 	display: flex !important;
 	flex-wrap: wrap !important;
 	overflow-x: auto; 
@@ -15,7 +15,7 @@
 
 .badge-custom {
 	background: var(--light-gray-bg);
-	border: solid 1px var(--btn-lightgray-border);
+	border: solid 1px #006bd4;
 	font-size: 0.875em;
 	//word-break: break-all !important;
 	// margin-right: 6px;
@@ -25,8 +25,9 @@
 
 .badge-key-value {
 	font-family: LatoSemiBold;
-	color: var(--blackish-text);
+	color: #006bd4;
 	word-break: break-all !important;
 }
+
 
 

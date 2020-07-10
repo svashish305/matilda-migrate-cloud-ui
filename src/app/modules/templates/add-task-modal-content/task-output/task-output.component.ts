@@ -4,7 +4,7 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
   selector: 'app-task-output',
   templateUrl: './task-output.component.html',
   styleUrls: ['./task-output.component.scss'],
-  //encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None
 })
 export class TaskOutputComponent implements OnInit {
   @Input() task: any
