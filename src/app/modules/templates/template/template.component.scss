@@ -467,7 +467,7 @@
 
   .lalign-import-template-icon {
     position: absolute;
-    left: 24px;
+    left: -62px;
   }
 
   .import-list-scroll-control {
@@ -1187,7 +1187,7 @@
 
   .lalign-import-template-icon {
     position: absolute;
-    left: 24px;
+    left: -62px;
   }
 
   .import-list-scroll-control {
@@ -1368,6 +1368,24 @@
       background-color: #fff;
     }
   }
+  .avatar-dd-btn-task {
+    padding: 0;
+    border-radius: 50%;
+    width: 40px;
+    min-width: unset;
+
+    .edit-avatar-img {
+      position: absolute;
+      right: 45px;
+      // height: 19px;
+      // width: 21px;
+      top: 38px;
+      // padding: 0.25em;
+      border-radius: 50%;
+      // border: 1px solid var(--btn-lightgray-border);
+      background-color: #fff;
+    }
+  }
 
   .avatar-upload-option {
     height: 100%;
@@ -1417,6 +1435,10 @@
 #templateAvatarFile {
   display: none;
 }
+#taskAvatarFile {
+  display: none;
+}
+
 
 ::ng-deep.mat-button .mat-button-focus-overlay {
   background-color: transparent !important;

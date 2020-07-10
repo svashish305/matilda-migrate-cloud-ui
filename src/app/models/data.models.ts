@@ -20,6 +20,7 @@ export class Task {
   duration: string = null;
   dependencies: any[] = [];
   notification: any;
+  taskImage:any;
 }
 
 export class Stage {

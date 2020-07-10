@@ -10,7 +10,7 @@ import { DeviceDetectorService } from "ngx-device-detector";
 import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import * as uuid from "uuid";
-import { Stage } from "src/app/models/data.models";
+import { Stage, Task } from "src/app/models/data.models";
 
 interface SelectInterface {
   value: string;
@@ -56,6 +56,8 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   templateImgHover = false;
   templateAvatarUrl: any;
 
+  taskImgHover = false;
+  taskAvatarUrl: any;
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
@@ -122,7 +124,6 @@ export class TemplateComponent implements OnInit, AfterViewInit {
       this.uploadFile(event.target.files[0]);
     }
   }
-
   uploadFile(file) {
     this.dataService.upload(file).subscribe(
       (res: any) => {
@@ -133,7 +134,33 @@ export class TemplateComponent implements OnInit, AfterViewInit {
       }
     );
   }
+  
+  changeTaskAvatar(event: any) {
+       if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
 
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event: any) => {
+        // called once readAsDataURL is completed
+        this.taskAvatarUrl = event.target.result;
+      };
+      this.uploadTaskFile(event.target.files[0]);
+    }
+  }
+  uploadTaskFile(uploadFile:File){
+    const formData: FormData = new FormData();
+    formData.append("fileKey", uploadFile, uploadFile.name);
+    let updatedTask = new Task();
+    updatedTask.taskImage = formData;
+   //  API Task Avatar Update  
+   // this.dataService.updateTemplate(updatedTask).subscribe(res=>{
+   //   if(res){        
+   //   }
+   // })
+ 
+
+  }
   setBadgeBgColor(stageState = "Defined") {
     let backgroundColor = "#99a1a9";
     switch (stageState) {
@@ -304,6 +331,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
           },
         ],
         notification: '{"type":"email/hook","id":"1","payload":"emailid/url"}',
+        taskImage:'assets/imgs/favourite.svg'
       };
     }
     this.showTaskOptions = true;
