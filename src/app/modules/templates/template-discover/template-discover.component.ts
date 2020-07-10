@@ -9,6 +9,7 @@ import { Location } from '@angular/common';
 export class TemplateDiscoverComponent implements OnInit {
   imgHovered = false;
   searchKey;
+  accountClicked = false;
 
   constructor(private location: Location) {}
 
@@ -18,5 +19,7 @@ export class TemplateDiscoverComponent implements OnInit {
     this.location.back();
   }
 
-  accountDetails() {}
+  accountDetails() {
+    this.accountClicked = true;
+  }
 }
