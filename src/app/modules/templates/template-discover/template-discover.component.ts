@@ -17,4 +17,6 @@ export class TemplateDiscoverComponent implements OnInit {
   goBack() {
     this.location.back();
   }
+
+  accountDetails() {}
 }
