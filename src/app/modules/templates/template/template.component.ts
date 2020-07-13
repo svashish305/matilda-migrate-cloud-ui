@@ -149,24 +149,25 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     }
   }
   uploadTaskFile(uploadFile:File){
+    const formData = new FormData();
     let groupList = this.templateData.groups;
     let filteredGroupList = groupList.filter(it=>{
         return it.id === this.selectedTask.groupId;
     })
-    let groupItems = filteredGroupList.items;
+    let groupItems = filteredGroupList[0].items;
     groupItems.forEach(it=>{
       if(it.id == this.selectedTask.id){
-        it.taskImage = uploadFile.name;
+        it.taskImage = uploadFile;
+        formData.append('payload', new Blob([JSON.stringify(this.templateData)], {type: 'application/json'}));
    //  API Task Avatar Update  
-   // this.dataService.updateTemplate(this.templateData).subscribe(res=>{
+   // this.dataService.updateTemplate(formData).subscribe(res=>{
    //   if(res){        
    //   }
    // })
       }
     })     
- 
 
-  }
+  }  
   setBadgeBgColor(stageState = "Defined") {
     let backgroundColor = "#99a1a9";
     switch (stageState) {
