@@ -168,7 +168,51 @@
           class="divider-btm"
           *ngFor="let source of selectedIPSources; let i = index"
         >
-          <!-- {{ source | json }} -->
+          <div>
+            <img
+              class="pointer-cursor source-collapser"
+              [src]="
+                sourceCollapseList[i]
+                  ? 'assets/imgs/chevron-down.svg'
+                  : 'assets/imgs/chevron-up.svg'
+              "
+              alt=""
+              (click)="sourceCollapseList[i] = !sourceCollapseList[i]"
+            />
+            <mat-checkbox (click)="onCheck($event, source)"></mat-checkbox>
+            <span class="make-it-blue left-padding-one-fourth-rem">
+              {{ source.name }}
+            </span>
+          </div>
+          <div class="indented" [ngbCollapse]="sourceCollapseList[i]">
+            <span class="relative-left-4 common-text-mobile gray-text">{{
+              source.desc
+            }}</span>
+            <div *ngFor="let task of source.tasks; let j = index">
+              <img
+                class="pointer-cursor task-collapser"
+                [src]="
+                  taskCollapseList[j]
+                    ? 'assets/imgs/chevron-down.svg'
+                    : 'assets/imgs/chevron-up.svg'
+                "
+                alt=""
+                (click)="taskCollapseList[j] = !taskCollapseList[j]"
+              />
+              <span class="make-it-blue right-padding-one-fourth-rem">{{
+                task.name
+              }}</span>
+              <span class="gray-text">({{ task.contents.length }})</span>
+              <div class="task-indented" [ngbCollapse]="taskCollapseList[i]">
+                <mat-checkbox></mat-checkbox>
+                <span class="left-padding-half-rem">Select All</span>
+                <div *ngFor="let content of task.contents">
+                  <mat-checkbox></mat-checkbox>
+                  <span class="left-padding-half-rem">{{ content.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
