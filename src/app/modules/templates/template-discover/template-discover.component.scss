@@ -94,7 +94,7 @@ mat-card {
 }
 
 .divider-btm {
-  margin-top: 25px;
+  padding: 25px 0;
   border-bottom: solid 1px var(--grayed-border);
 }
 
@@ -130,4 +130,9 @@ mat-card {
 .indented {
   position: relative;
   left: 2.688rem;
+}
+
+.task-indented {
+  position: relative;
+  left: 1.5rem;
 }

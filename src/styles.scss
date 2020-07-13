@@ -174,6 +174,11 @@ body {
   top: 5px;
 }
 
+.relative-left-4 {
+  position: relative;
+  left: 4px;
+}
+
 .relative-bottom-4 {
   position: relative;
   bottom: 4px;
@@ -263,6 +268,10 @@ body {
 
 .left-padding-one-fourth-rem {
   padding-left: 0.25rem;
+}
+
+.left-padding-half-rem {
+  padding-left: 0.5rem;
 }
 
 .right-padding-one-fourth-rem {

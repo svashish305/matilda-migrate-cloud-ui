@@ -133,7 +133,9 @@
             </span>
           </div>
           <div class="indented" [ngbCollapse]="sourceCollapseList[i]">
-            <span class="common-text-mobile gray-text">{{ source.desc }}</span>
+            <span class="relative-left-4 common-text-mobile gray-text">{{
+              source.desc
+            }}</span>
             <div *ngFor="let task of source.tasks; let j = index">
               <img
                 class="pointer-cursor task-collapser"
@@ -149,6 +151,14 @@
                 task.name
               }}</span>
               <span class="gray-text">({{ task.contents.length }})</span>
+              <div class="task-indented" [ngbCollapse]="taskCollapseList[i]">
+                <mat-checkbox></mat-checkbox>
+                <span class="left-padding-half-rem">Select All</span>
+                <div *ngFor="let content of task.contents">
+                  <mat-checkbox></mat-checkbox>
+                  <span class="left-padding-half-rem">{{ content.name }}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
