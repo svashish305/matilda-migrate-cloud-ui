@@ -13,7 +13,13 @@ import { EditTaskTemplateComponent } from './edit-task-template/edit-task-templa
 
 
 @NgModule({
-  declarations: [AddTaskModalContentComponent, TaskGeneralConfigComponent, TaskInputComponent, TaskOutputComponent,EditTaskTemplateComponent],
+  declarations: [
+    AddTaskModalContentComponent, 
+    TaskGeneralConfigComponent, 
+    TaskInputComponent, 
+    TaskOutputComponent, 
+    EditTaskTemplateComponent
+  ],
   imports: [
     CommonModule,
     AddTaskModalContentRoutingModule,
@@ -24,4 +30,4 @@ import { EditTaskTemplateComponent } from './edit-task-template/edit-task-templa
   ],
   exports: [AddTaskModalContentComponent],
 })
-export class AddTaskModalContentModule {}
+export class AddTaskModalContentModule { }

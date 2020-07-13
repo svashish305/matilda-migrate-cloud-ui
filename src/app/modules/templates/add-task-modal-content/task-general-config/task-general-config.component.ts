@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PluginService } from '../services/plugin.service';
 
@@ -30,7 +30,7 @@ export class TaskGeneralConfigComponent implements OnInit {
   initForm() {
     this.form = this._formBuilder.group({
       name: ['', Validators.compose([
-        Validators.required,
+        Validators.nullValidator,
         Validators.minLength(5),
         Validators.maxLength(30),
       ]),],
@@ -49,7 +49,8 @@ export class TaskGeneralConfigComponent implements OnInit {
   }
 
   onPluginChange(event: any) {
-    
+    this.service.reset();
+    this.action.reset();
     this._pluginName = event.source.selected.viewValue;
     const filterPluginList = this.pluginList.filter(_plugin => _plugin.pluginId === event.value);
     console.log(filterPluginList);
@@ -57,20 +58,23 @@ export class TaskGeneralConfigComponent implements OnInit {
       this.showServiceControl = true;
       this.serviceList = filterPluginList[0].pluginServices;
       this.service.setValidators([Validators.required]);
+      this.service.updateValueAndValidity();
     }else{
       this.showServiceControl = false;
       this.serviceList = [];
       this.service.setValidators([Validators.nullValidator]);
+      this.service.updateValueAndValidity();
       if(filterPluginList[0].pluginActions) {
         this.showActionControl = true;
         this.actionList = filterPluginList[0].pluginActions;
         this.action.setValidators([Validators.required]);
+        this.action.updateValueAndValidity();
       }
     }
   }
 
   onServiceChange(event: any, pluginId: any) { 
-    this.action.patchValue(null);
+    this.action.reset();
     this._serviceName = event.source.selected.viewValue;
       this.pluginList.forEach(_plugin => {
         if(_plugin.pluginId === pluginId) {
@@ -79,6 +83,7 @@ export class TaskGeneralConfigComponent implements OnInit {
               this.showActionControl = true;
               this.actionList = _service.pluginActions;
               this.action.setValidators([Validators.required]);
+              this.action.updateValueAndValidity();
             }
           });
         }
