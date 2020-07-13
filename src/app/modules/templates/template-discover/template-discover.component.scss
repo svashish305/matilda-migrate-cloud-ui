@@ -93,6 +93,16 @@ mat-card {
   color: var(--primary-light);
 }
 
+.divider-btm {
+  margin-top: 25px;
+  border-bottom: solid 1px var(--grayed-border);
+}
+
+.source-collapser {
+  position: relative;
+  bottom: 3px;
+}
+
 ::ng-deep.mat-select-arrow {
   position: relative;
   right: 40px;
@@ -101,4 +111,23 @@ mat-card {
   background: url("src/assets/imgs/chevron-down.svg") !important;
   border: none !important;
   margin: 0 !important;
+}
+
+::ng-deep.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-accent .mat-pseudo-checkbox-checked,
+.mat-accent .mat-pseudo-checkbox-indeterminate,
+.mat-pseudo-checkbox-checked,
+.mat-pseudo-checkbox-indeterminate {
+  background-color: var(--primary-light);
+}
+
+::ng-deep.mat-checkbox-frame {
+  border-color: var(--primary-light);
+  border-width: 1px !important;
+}
+
+.indented {
+  position: relative;
+  left: 2.688rem;
 }

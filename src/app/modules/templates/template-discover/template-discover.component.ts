@@ -14,6 +14,10 @@ export class TemplateDiscoverComponent implements OnInit {
   apps: any[] = [];
   selectedApp: any;
   selectedIPAddress: any;
+  isIPSelected = false;
+  selectedIPSources: any;
+  sourceCollapseList: boolean[] = [];
+  taskCollapseList: boolean[] = [];
 
   constructor(private location: Location, private dataService: DataService) {}
 
@@ -42,6 +46,13 @@ export class TemplateDiscoverComponent implements OnInit {
   getIP() {}
 
   changeIP(ipAddress) {
-    console.log('selected address ', ipAddress);
+    this.isIPSelected = true;
+    this.selectedIPSources = this.selectedApp.IP.find(
+      (ip) => ip.address === ipAddress
+    ).sources;
+  }
+
+  onCheck(event, source) {
+    console.log('selected source ', source);
   }
 }

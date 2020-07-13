@@ -8034,6 +8034,7 @@
           "sources": [
             {
               "name": "NGINX",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "NGINX Ansible",
@@ -8081,6 +8082,7 @@
             },
             {
               "name": "Tomcat",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "Tomcat Ansible",
@@ -8133,6 +8135,7 @@
           "sources": [
             {
               "name": "NGINX",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "NGINX Ansible",
@@ -8180,6 +8183,7 @@
             },
             {
               "name": "Tomcat",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "Tomcat Ansible",
@@ -8232,6 +8236,7 @@
           "sources": [
             {
               "name": "NGINX",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "NGINX Ansible",
@@ -8279,6 +8284,7 @@
             },
             {
               "name": "Tomcat",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "Tomcat Ansible",
@@ -8330,6 +8336,7 @@
       "sources": [
         {
           "name": "NGINX",
+          "desc": "Source Description",
           "tasks": [
             {
               "name": "NGINX Ansible",
@@ -8377,6 +8384,7 @@
         },
         {
           "name": "Tomcat",
+          "desc": "Source Description",
           "tasks": [
             {
               "name": "Tomcat Ansible",
@@ -8433,6 +8441,7 @@
           "sources": [
             {
               "name": "NGINX",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "NGINX Ansible",
@@ -8480,6 +8489,7 @@
             },
             {
               "name": "Tomcat",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "Tomcat Ansible",
@@ -8532,6 +8542,7 @@
           "sources": [
             {
               "name": "NGINX",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "NGINX Ansible",
@@ -8579,6 +8590,7 @@
             },
             {
               "name": "Tomcat",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "Tomcat Ansible",
@@ -8631,6 +8643,7 @@
           "sources": [
             {
               "name": "NGINX",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "NGINX Ansible",
@@ -8678,6 +8691,7 @@
             },
             {
               "name": "Tomcat",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "Tomcat Ansible",
@@ -8729,6 +8743,7 @@
       "sources": [
         {
           "name": "NGINX",
+          "desc": "Source Description",
           "tasks": [
             {
               "name": "NGINX Ansible",
@@ -8776,6 +8791,7 @@
         },
         {
           "name": "Tomcat",
+          "desc": "Source Description",
           "tasks": [
             {
               "name": "Tomcat Ansible",
@@ -8832,6 +8848,7 @@
           "sources": [
             {
               "name": "NGINX",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "NGINX Ansible",
@@ -8879,6 +8896,7 @@
             },
             {
               "name": "Tomcat",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "Tomcat Ansible",
@@ -8931,6 +8949,7 @@
           "sources": [
             {
               "name": "NGINX",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "NGINX Ansible",
@@ -8978,6 +8997,7 @@
             },
             {
               "name": "Tomcat",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "Tomcat Ansible",
@@ -9030,6 +9050,7 @@
           "sources": [
             {
               "name": "NGINX",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "NGINX Ansible",
@@ -9077,6 +9098,7 @@
             },
             {
               "name": "Tomcat",
+              "desc": "Source Description",
               "tasks": [
                 {
                   "name": "Tomcat Ansible",
@@ -9128,6 +9150,7 @@
       "sources": [
         {
           "name": "NGINX",
+          "desc": "Source Description",
           "tasks": [
             {
               "name": "NGINX Ansible",
@@ -9175,6 +9198,7 @@
         },
         {
           "name": "Tomcat",
+          "desc": "Source Description",
           "tasks": [
             {
               "name": "Tomcat Ansible",

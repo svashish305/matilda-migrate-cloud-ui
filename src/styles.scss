@@ -260,11 +260,23 @@ body {
 .bottom-padding-12 {
   padding-bottom: 12px;
 }
+
+.left-padding-one-fourth-rem {
+  padding-left: 0.25rem;
+}
+
+.right-padding-one-fourth-rem {
+  padding-right: 0.25rem;
+}
 // end of custom paddings
 
 // misc common styles
 .make-it-blue {
   color: var(--primary-light) !important;
+}
+
+.gray-text {
+  color: var(--alt-gray-text);
 }
 
 .back-not-hover {
