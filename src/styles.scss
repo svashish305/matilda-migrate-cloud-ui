@@ -220,6 +220,10 @@ body {
 .right-margin-8 {
   margin-right: 8px !important;
 }
+
+.right-margin-12-half-rem {
+  margin-right: 12.5rem;
+}
 // end of custom margins
 
 // custom paddings
@@ -259,6 +263,10 @@ body {
 // end of custom paddings
 
 // misc common styles
+.make-it-blue {
+  color: var(--primary-light) !important;
+}
+
 .back-not-hover {
   transform: rotate(90deg);
   display: flex;

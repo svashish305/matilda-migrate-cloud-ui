@@ -12,6 +12,8 @@ export class TemplateDiscoverComponent implements OnInit {
   searchKey;
   accountClicked = false;
   apps: any[] = [];
+  selectedApp: any;
+  selectedIPAddress: any;
 
   constructor(private location: Location, private dataService: DataService) {}
 
@@ -30,6 +32,16 @@ export class TemplateDiscoverComponent implements OnInit {
   }
 
   showAppDetails(appId) {
+    this.dataService.getApp(appId).subscribe((res: any) => {
+      this.selectedApp = res;
+      this.selectedIPAddress = this.selectedApp.IP[0].address;
+    });
     this.accountClicked = true;
+  }
+
+  getIP() {}
+
+  changeIP(ipAddress) {
+    console.log('selected address ', ipAddress);
   }
 }

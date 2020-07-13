@@ -33,8 +33,8 @@
   padding-right: 0.5em;
 }
 
-.discover-content {
-  margin-top: 1.5rem;
+.account-res {
+  margin-top: 1.25rem;
 }
 
 mat-card {
@@ -65,4 +65,40 @@ mat-card {
   margin-left: 22rem;
   font-size: 1rem !important;
   color: var(--alt-gray-text);
+}
+
+.selected-app-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 3.5rem;
+  border-bottom: solid 1px var(--grayed-border);
+}
+
+.pad-colon {
+  padding: 0 24px;
+}
+
+#ip-select-field::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+#ip-select-field::ng-deep.mat-select-value-text {
+  position: relative;
+  top: 2.5px;
+  color: var(--primary-light);
+}
+
+#ip-option ::ng-deep .mat-option-text {
+  color: var(--primary-light);
+}
+
+::ng-deep.mat-select-arrow {
+  position: relative;
+  right: 40px;
+  height: 18px !important;
+  width: 18px !important;
+  background: url("src/assets/imgs/chevron-down.svg") !important;
+  border: none !important;
+  margin: 0 !important;
 }
