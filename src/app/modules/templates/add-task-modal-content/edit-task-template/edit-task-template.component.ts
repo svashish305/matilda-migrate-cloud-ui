@@ -158,11 +158,19 @@ export class EditTaskTemplateComponent implements OnInit {
     return this.form.get('formatDataYaml');
   }
 
-  isValidJSONFormat(event){
+  isValidJSONFormat(event,formType){
+   if(formType == 'data'){
     let json= event.formatDataJson;    
-      let obj = JSON.parse(json);
-      let formattedJson = JSON.stringify(obj, null, 2);
-     this.form.controls['formatDataJson'].setValue(formattedJson);
+    let obj = JSON.parse(json);
+    let formattedJson = JSON.stringify(obj, null, 2);
+   this.form.controls['formatDataJson'].setValue(formattedJson);
+   }
+   if(formType == 'schema'){
+    let schema= event.formatDataSchema;    
+    let obj = JSON.parse(schema);
+    let formattedJson = JSON.stringify(obj, null, 2);
+   this.form.controls['formatDataSchema'].setValue(formattedJson);
+   }   
     
     }  
  
