@@ -157,17 +157,31 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     let groupItems = filteredGroupList[0].items;
     groupItems.forEach(it=>{
       if(it.id == this.selectedTask.id){
-        it.taskImage = uploadFile;
-        formData.append('payload', new Blob([JSON.stringify(this.templateData)], {type: 'application/json'}));
-   //  API Task Avatar Update  
-   // this.dataService.updateTemplate(formData).subscribe(res=>{
+        this.fileToBase64(uploadFile).then(result => {
+          it.image= result;
+          //  API Task Avatar Update  
+   // this.dataService.updateTemplate(this.templateData).subscribe(res=>{
    //   if(res){        
    //   }
    // })
+        });
+   
       }
     })     
-
-  }  
+  }    
+  fileToBase64 = (filename:File) => {
+    return new Promise(resolve => {
+    
+      var reader = new FileReader();
+      // Read file content on file loaded event
+      reader.onload = function(event) {
+        resolve(event.target.result);
+      };
+      
+      // Convert data to base64 
+      reader.readAsDataURL(filename);
+    });
+  };
   setBadgeBgColor(stageState = "Defined") {
     let backgroundColor = "#99a1a9";
     switch (stageState) {
@@ -340,7 +354,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
           },
         ],
         notification: '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-        taskImage:'assets/imgs/favourite.svg'
+        image:'assets/imgs/favourite.svg'
       };
     }
     this.showTaskOptions = true;
