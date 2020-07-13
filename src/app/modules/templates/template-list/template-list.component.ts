@@ -106,9 +106,6 @@ export class TemplateListComponent implements OnInit, OnChanges {
     });
 
     this.isMobile = this.deviceService.isMobile();
-
-    this.getStages();
-    this.getTasks();
   }
 
   ngOnChanges() {
@@ -117,18 +114,6 @@ export class TemplateListComponent implements OnInit, OnChanges {
         waveType.theme = this.getRandomColor();
       });
     }
-  }
-
-  getStages() {
-    this.dataService.getStages().subscribe((data: any[]) => {
-      this.stages = data;
-    });
-  }
-
-  getTasks() {
-    this.dataService.getTasks().subscribe((data: any[]) => {
-      this.tasks = data;
-    });
   }
 
   setBadgeBgColor(statusCode = 1) {

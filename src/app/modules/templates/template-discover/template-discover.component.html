@@ -45,52 +45,43 @@
   </div>
   <div class="discover-content">
     <div *ngIf="!accountClicked" class="account-res">
-      <mat-card (click)="accountDetails()">
+      <mat-card
+        class="top-margin-1em"
+        *ngFor="let app of apps | search: searchKey"
+        (click)="showAppDetails(app.id)"
+      >
         <mat-card-title-group>
           <mat-card-title
-            ><span class="common-text pos-card-title">SMR</span></mat-card-title
+            ><span class="common-text pos-card-title">{{
+              app.name
+            }}</span></mat-card-title
           >
           <mat-card-subtitle>
-            <span class="medium-text pos-subtitle"
-              >IP: 192.168.1.1, 192.168.1.2 and 2 more</span
+            <span
+              class="medium-text pos-subtitle"
+              *ngIf="app.IP.length > 2; else lessIP"
+              >{{ app.IP[0].address }}, {{ app.IP[1].address }} and
+              {{ app.IP.length - 2 }} more</span
             >
-            <span class="medium-text pos-src-subtitle"
-              >Sources: NGINX, Tomcat and 3 more</span
+            <ng-template #lessIP>
+              <span class="medium-text pos-subtitle" *ngIf="app.IP.length <= 2"
+                >{{ app.IP[0].address }}, {{ app.IP[1].address }}</span
+              >
+            </ng-template>
+            <span
+              class="medium-text pos-src-subtitle"
+              *ngIf="app.sources.length > 2; else lessSources"
+              >Sources: {{ app.sources[0].name }}, {{ app.sources[1].name }} and
+              {{ app.sources.length - 2 }} more</span
             >
-          </mat-card-subtitle>
-        </mat-card-title-group>
-      </mat-card>
-      <mat-card class="top-margin-1em" (click)="accountDetails()">
-        <mat-card-title-group>
-          <mat-card-title
-            ><span class="common-text pos-card-title"
-              >SMR Toolkit</span
-            ></mat-card-title
-          >
-          <mat-card-subtitle>
-            <span class="medium-text pos-subtitle"
-              >IP: 192.168.1.1, 192.168.1.2 and 2 more</span
-            >
-            <span class="medium-text pos-src-subtitle"
-              >Sources: NGINX, Tomcat and 3 more</span
-            >
-          </mat-card-subtitle>
-        </mat-card-title-group>
-      </mat-card>
-      <mat-card class="top-margin-1em" (click)="accountDetails()">
-        <mat-card-title-group>
-          <mat-card-title
-            ><span class="common-text pos-card-title"
-              >SMR App 2</span
-            ></mat-card-title
-          >
-          <mat-card-subtitle>
-            <span class="medium-text pos-subtitle"
-              >IP: 192.168.1.1, 192.168.1.2 and 2 more</span
-            >
-            <span class="medium-text pos-src-subtitle"
-              >Sources: NGINX, Tomcat and 3 more</span
-            >
+            <ng-template #lessSources>
+              <span
+                class="medium-text pos-src-subtitle"
+                *ngIf="app.sources.length <= 2"
+                >Sources: {{ app.sources[0].name }},
+                {{ app.sources[1].name }}</span
+              >
+            </ng-template>
           </mat-card-subtitle>
         </mat-card-title-group>
       </mat-card>
