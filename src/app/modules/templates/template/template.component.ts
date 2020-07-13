@@ -10,7 +10,7 @@ import { DeviceDetectorService } from "ngx-device-detector";
 import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import * as uuid from "uuid";
-import { Group } from 'src/app/models/data.model';
+import { Group, Template } from 'src/app/models/data.model';
 
 interface SelectInterface {
   value: string;
@@ -149,15 +149,21 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     }
   }
   uploadTaskFile(uploadFile:File){
-    const formData: FormData = new FormData();
-    formData.append("fileKey", uploadFile, uploadFile.name);
-    let updatedTask = new Task();
-    updatedTask.taskImage = formData;
+    let groupList = this.templateData.groups;
+    let filteredGroupList = groupList.filter(it=>{
+        return it.id === this.selectedTask.groupId;
+    })
+    let groupItems = filteredGroupList.items;
+    groupItems.forEach(it=>{
+      if(it.id == this.selectedTask.id){
+        it.taskImage = uploadFile.name;
    //  API Task Avatar Update  
-   // this.dataService.updateTemplate(updatedTask).subscribe(res=>{
+   // this.dataService.updateTemplate(this.templateData).subscribe(res=>{
    //   if(res){        
    //   }
    // })
+      }
+    })     
  
 
   }

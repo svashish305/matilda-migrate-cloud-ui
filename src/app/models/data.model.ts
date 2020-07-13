@@ -111,6 +111,7 @@ export class Item {
   duration?: string = null;
   dependencies?: ItemDependency[] = [];
   notification?: string|any = null;
+  taskImage?:any;
 }
 
 export class Group {
