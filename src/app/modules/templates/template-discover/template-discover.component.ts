@@ -23,6 +23,7 @@ export class TemplateDiscoverComponent implements OnInit {
   contentSelectList: boolean[] = [];
   MAXN = 10000000;
   importedTasks: any[] = [];
+  showSidebar = false;
 
   constructor(private location: Location, private dataService: DataService) {
     for (let i = 0; i < this.MAXN; i++) {
@@ -52,6 +53,16 @@ export class TemplateDiscoverComponent implements OnInit {
       this.selectedIPAddress = this.selectedApp.IP[0].address;
     });
     this.accountClicked = true;
+  }
+
+  getCheckboxState(event, src, id) {
+    if (event.checked) {
+      console.log('checkbox details ', event, src, id);
+      this.showSidebar = true;
+    }
+    // else {
+    //   this.showSidebar = false;
+    // }
   }
 
   getIP() {
@@ -97,5 +108,9 @@ export class TemplateDiscoverComponent implements OnInit {
     ) {
       this.taskSelectList[sourceIndex + '_' + taskIndex] = false;
     }
+  }
+
+  import() {
+    console.log('import clicked!');
   }
 }

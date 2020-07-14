@@ -127,7 +127,10 @@
               alt=""
               (click)="sourceCollapseList[i] = !sourceCollapseList[i]"
             />
-            <mat-checkbox (click)="importSourceTasks(i, source)"></mat-checkbox>
+            <mat-checkbox
+              (click)="importSourceTasks(i, source)"
+              (change)="getCheckboxState($event, 'source', i)"
+            ></mat-checkbox>
             <span class="make-it-blue left-padding-one-fourth-rem">
               {{ source.name }}
             </span>
@@ -159,12 +162,16 @@
               >
                 <mat-checkbox
                   (click)="selectAll(i, j)"
+                  (change)="getCheckboxState($event, 'task', i + '_' + j)"
                   [(ngModel)]="taskSelectList[i + '_' + j]"
                 ></mat-checkbox>
                 <span class="left-padding-half-rem">Select All</span>
                 <div *ngFor="let content of task.contents; let k = index">
                   <mat-checkbox
                     (click)="contentClicked(i, j, k)"
+                    (change)="
+                      getCheckboxState($event, 'content', i + '_' + j + '_' + k)
+                    "
                     [(ngModel)]="contentSelectList[i + '_' + j + '_' + k]"
                   ></mat-checkbox>
                   <span class="left-padding-half-rem">{{ content.name }}</span>
@@ -190,7 +197,10 @@
               alt=""
               (click)="sourceCollapseList[i] = !sourceCollapseList[i]"
             />
-            <mat-checkbox [(ngModel)]="sourceSelectList[i]"></mat-checkbox>
+            <mat-checkbox
+              [(ngModel)]="sourceSelectList[i]"
+              (change)="getCheckboxState($event, 'source', i)"
+            ></mat-checkbox>
             <span class="make-it-blue left-padding-one-fourth-rem">
               {{ source.name }}
             </span>
@@ -222,12 +232,16 @@
               >
                 <mat-checkbox
                   (click)="selectAll(i, source.tasks)"
+                  (change)="getCheckboxState($event, 'task', i + '_' + j)"
                   [(ngModel)]="taskSelectList[i + '_' + j]"
                 ></mat-checkbox>
                 <span class="left-padding-half-rem">Select All</span>
                 <div *ngFor="let content of task.contents; let k = index">
                   <mat-checkbox
                     (click)="contentClicked(i, j, k)"
+                    (change)="
+                      getCheckboxState($event, 'content', i + '_' + j + '_' + k)
+                    "
                     [(ngModel)]="contentSelectList[i + '_' + j + '_' + k]"
                   ></mat-checkbox>
                   <span class="left-padding-half-rem">{{ content.name }}</span>
@@ -236,6 +250,19 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div
+      *ngIf="selectedApp && accountClicked && showSidebar"
+      class="import-sidebar"
+    >
+      Right Sidebar
+      <div class="sidebar-actions">
+        <button mat-button (click)="import(); showSidebar = false">
+          Import
+        </button>
+        <button mat-button (click)="showSidebar = false">Cancel</button>
       </div>
     </div>
   </div>
