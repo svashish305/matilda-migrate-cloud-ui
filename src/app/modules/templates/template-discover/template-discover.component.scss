@@ -149,6 +149,13 @@ mat-card {
   border-left: solid 1px var(--btn-lightgray-border);
 }
 
+.import-header {
+  font-family: LatoSemiBold;
+  font-size: 1.406rem !important;
+  top: 25px;
+  position: absolute;
+}
+
 .sidebar-actions {
   position: absolute;
   bottom: 1rem;

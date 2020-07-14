@@ -57,7 +57,7 @@ export class TemplateDiscoverComponent implements OnInit {
 
   getCheckboxState(event, src, id) {
     if (event.checked) {
-      console.log('checkbox details ', event, src, id);
+      console.log('checkbox details ', src, id);
       this.showSidebar = true;
     }
     // else {

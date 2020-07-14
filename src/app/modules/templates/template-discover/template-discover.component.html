@@ -257,12 +257,18 @@
       *ngIf="selectedApp && accountClicked && showSidebar"
       class="import-sidebar"
     >
-      Right Sidebar
+      <span class="common-text import-header">Import List</span>
       <div class="sidebar-actions">
-        <button mat-button (click)="import(); showSidebar = false">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="import(); showSidebar = false"
+        >
           Import
         </button>
-        <button mat-button (click)="showSidebar = false">Cancel</button>
+        <button mat-button color="primary" (click)="showSidebar = false">
+          Cancel
+        </button>
       </div>
     </div>
   </div>
