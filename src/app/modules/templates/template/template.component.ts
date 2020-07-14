@@ -174,7 +174,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     
       var reader = new FileReader();
       // Read file content on file loaded event
-      reader.onload = function(event) {
+      reader.onload = function(event:any) {
         resolve(event.target.result);
       };
       
