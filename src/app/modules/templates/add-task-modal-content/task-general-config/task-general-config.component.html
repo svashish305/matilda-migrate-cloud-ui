@@ -1,10 +1,10 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="task-config common-text">
-    <mat-form-field appearance="fill" class="pr-4">
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="task-config common-text pt-2">
+    <!-- <mat-form-field appearance="fill" class="pr-4">
         <mat-label>Task Name</mat-label>
         <input matInput placeholder="Enter task name" formControlName="name" required/>
         <ng-container *ngIf="name.touched && name.invalid" ngProjectAs="mat-error">
             <mat-error *ngIf="name.errors.required">
-                Please enter task name
+                Please enter task name 
             </mat-error>
             <mat-error *ngIf="name.errors.minLength">
                 Please enter minimum {{name.errors.minLength.requiredLength}}
@@ -19,7 +19,7 @@
         <mat-label>Description</mat-label>
         <textarea matInput placeholder="Enter task description" formControlName="description" matAutoSizeMinRows="1"
             matAutoSizeMaxRows="5"></textarea>
-    </mat-form-field>
+    </mat-form-field> -->
 
     <mat-form-field appearance="fill" class="pr-4">
         <mat-label>Plugin</mat-label>

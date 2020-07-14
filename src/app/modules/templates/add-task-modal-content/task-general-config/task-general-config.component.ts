@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PluginService } from '../services/plugin.service';
 
@@ -30,7 +30,7 @@ export class TaskGeneralConfigComponent implements OnInit {
   initForm() {
     this.form = this._formBuilder.group({
       name: ['', Validators.compose([
-        Validators.required,
+        Validators.nullValidator,
         Validators.minLength(5),
         Validators.maxLength(30),
       ]),],

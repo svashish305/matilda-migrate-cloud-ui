@@ -1,5 +1,5 @@
-<div class="pt-4" style="max-height: 56vh;">
-    <div class="output-container common-text">
+<div class="pt-4" style="max-height: 56vh;overflow-y: hidden;">
+    <div class="output-container common-text custom-scrollbar-small">
         <div *ngFor="let outputParameter of dataMap | keyvalue" class="ml-0 mr-0 mb-2">
             <span class="badge badge-pill badge-custom">
                 <span class="badge-key-value" style="display: inline-flex; flex-wrap: wrap;">{{outputParameter.key}}:
@@ -10,6 +10,8 @@
     <br />
     <mat-divider></mat-divider>
     <br />
-    {{output | json}}
+    <div style="max-height: 23vh;" class="custom-scrollbar-small">
+        {{output | json}}
+    </div>
     <br />
 </div>
