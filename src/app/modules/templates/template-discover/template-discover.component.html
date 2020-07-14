@@ -269,7 +269,13 @@
             <span class="make-it-blue">{{ source.name }}</span>
             <span class="left-padding-24">IP&nbsp;:&nbsp;</span>
             <span class="make-it-blue">{{ selectedIPAddress }}</span>
-            <img class="img-right" src="assets/imgs/delete.svg" alt="delete" />
+            <a (click)="deleteSourceInSidebar(source)">
+              <img
+                class="pointer-cursor img-right"
+                src="assets/imgs/delete.svg"
+                alt="delete"
+              />
+            </a>
           </div>
           <div class="tb-padding-half-rem">
             <mat-divider></mat-divider>

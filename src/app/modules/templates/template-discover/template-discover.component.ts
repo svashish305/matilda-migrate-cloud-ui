@@ -112,6 +112,12 @@ export class TemplateDiscoverComponent implements OnInit {
     }
   }
 
+  deleteSourceInSidebar(source) {
+    this.selectedIPSources = this.selectedIPSources.filter(
+      (s) => JSON.stringify(s) !== JSON.stringify(source)
+    );
+  }
+
   import() {
     console.log('import clicked!');
   }
