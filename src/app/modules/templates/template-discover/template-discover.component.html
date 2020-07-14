@@ -159,7 +159,7 @@
               >
                 <mat-checkbox
                   (click)="selectAll(i, j)"
-                  [(ngModel)]="allSelected"
+                  [(ngModel)]="taskSelectList[i + '_' + j]"
                 ></mat-checkbox>
                 <span class="left-padding-half-rem">Select All</span>
                 <div *ngFor="let content of task.contents; let k = index">
@@ -222,7 +222,7 @@
               >
                 <mat-checkbox
                   (click)="selectAll(i, source.tasks)"
-                  [(ngModel)]="allSelected"
+                  [(ngModel)]="taskSelectList[i + '_' + j]"
                 ></mat-checkbox>
                 <span class="left-padding-half-rem">Select All</span>
                 <div *ngFor="let content of task.contents">

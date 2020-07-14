@@ -19,14 +19,15 @@ export class TemplateDiscoverComponent implements OnInit {
   sourceCollapseList: boolean[] = [];
   taskCollapseList: boolean[] = [];
   sourceSelectList: boolean[] = [];
+  taskSelectList: boolean[] = [];
   contentSelectList: boolean[] = [];
-  allSelected = false;
   MAXN = 10000000;
   importedTasks: any[] = [];
 
   constructor(private location: Location, private dataService: DataService) {
     for (let i = 0; i < this.MAXN; i++) {
       this.sourceSelectList.push(false);
+      this.taskSelectList.push(false);
       this.contentSelectList.push(false);
     }
   }
@@ -68,8 +69,10 @@ export class TemplateDiscoverComponent implements OnInit {
     this.sourceSelectList[sourceIndex] = !this.sourceSelectList[sourceIndex];
     for (let i = 0; i < source.tasks.length; i++) {
       this.selectAll(sourceIndex, i);
+      this.taskSelectList[sourceIndex + '_' + i] = !this.taskSelectList[
+        sourceIndex + '_' + i
+      ];
     }
-    this.allSelected = !this.allSelected;
   }
 
   selectAll(sourceIndex, taskIndex) {
