@@ -22,7 +22,7 @@ export class TemplateDiscoverComponent implements OnInit {
   taskSelectList: boolean[] = [];
   contentSelectList: boolean[] = [];
   MAXN = 10000000;
-  importedArray: any[] = [];
+  importContents: any[] = [];
   showSidebar = false;
 
   constructor(private location: Location, private dataService: DataService) {
@@ -57,12 +57,21 @@ export class TemplateDiscoverComponent implements OnInit {
   }
 
   getCheckboxState(event, src, id) {
+    let sourceIndex = id.split('_')[0];
+    let taskIndex = id.split('_')[1];
+    let contentIndex = id.split('_')[2];
+    let contentToImport = this.selectedIPSources[sourceIndex].tasks[taskIndex]
+      .contents[contentIndex];
     if (event.checked) {
-      this.importedArray.push({ src, id });
+      if (src === 'content') {
+        if (!this.importContents.includes(contentToImport)) {
+          this.importContents.push(contentToImport);
+        }
+      }
       this.showSidebar = true;
     } else {
-      this.importedArray = this.importedArray.filter(
-        (res) => !(res.src === src && res.id === id)
+      this.importContents = this.importContents.filter(
+        (c) => JSON.stringify(c) === JSON.stringify(contentToImport)
       );
     }
   }
