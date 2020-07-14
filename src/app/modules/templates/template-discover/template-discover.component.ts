@@ -18,8 +18,18 @@ export class TemplateDiscoverComponent implements OnInit {
   selectedIPSources: any;
   sourceCollapseList: boolean[] = [];
   taskCollapseList: boolean[] = [];
+  sourceSelectList: boolean[] = [];
+  contentSelectList: boolean[] = [];
+  allSelected = false;
+  MAXN = 10000000;
+  importedTasks: any[] = [];
 
-  constructor(private location: Location, private dataService: DataService) {}
+  constructor(private location: Location, private dataService: DataService) {
+    for (let i = 0; i < this.MAXN; i++) {
+      this.sourceSelectList.push(false);
+      this.contentSelectList.push(false);
+    }
+  }
 
   ngOnInit() {
     this.getApps();
@@ -43,7 +53,9 @@ export class TemplateDiscoverComponent implements OnInit {
     this.accountClicked = true;
   }
 
-  getIP() {}
+  getIP() {
+    return this.selectedIPAddress;
+  }
 
   changeIP(ipAddress) {
     this.isIPSelected = true;
@@ -52,13 +64,36 @@ export class TemplateDiscoverComponent implements OnInit {
     ).sources;
   }
 
-  onCheck(event, source) {
-    console.log('selected source ', source);
+  importSourceTasks(sourceIndex, source) {
+    this.sourceSelectList[sourceIndex] = !this.sourceSelectList[sourceIndex];
+    for (let i = 0; i < source.tasks.length; i++) {
+      this.selectAll(sourceIndex, i);
+    }
+    this.allSelected = !this.allSelected;
   }
 
-  selectAll(tasks) {
-    // for (let i = 0; i < tasks.length; i++) {
-    //   tasks[i]
-    // }
+  selectAll(sourceIndex, taskIndex) {
+    let currentSources = this.selectedApp.IP.find(
+      (ip) => ip.address === this.selectedIPAddress
+    ).sources;
+    let currentTasks = currentSources[sourceIndex].tasks;
+    let task = currentTasks[taskIndex];
+    let currentContents = task.contents;
+    for (let i = 0; i < currentContents.length; i++) {
+      this.contentSelectList[sourceIndex + '_' + taskIndex + '_' + i] = !this
+        .contentSelectList[sourceIndex + '_' + taskIndex + '_' + i];
+    }
+  }
+
+  selectContentUnderTask(sourceIndex, taskIndex, contentIndex) {
+    this.contentSelectList[
+      sourceIndex + '_' + taskIndex + '_' + contentIndex
+    ] = !this.contentSelectList[
+      sourceIndex + '_' + taskIndex + '_' + contentIndex
+    ];
+    console.log(
+      'content status ',
+      this.contentSelectList[sourceIndex + '_' + taskIndex + '_' + contentIndex]
+    );
   }
 }

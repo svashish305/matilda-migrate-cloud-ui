@@ -127,7 +127,7 @@
               alt=""
               (click)="sourceCollapseList[i] = !sourceCollapseList[i]"
             />
-            <mat-checkbox (click)="onCheck($event, source)"></mat-checkbox>
+            <mat-checkbox (click)="importSourceTasks(i, source)"></mat-checkbox>
             <span class="make-it-blue left-padding-one-fourth-rem">
               {{ source.name }}
             </span>
@@ -157,10 +157,16 @@
                 class="task-indented"
                 [ngbCollapse]="taskCollapseList[i + '_' + j]"
               >
-                <mat-checkbox></mat-checkbox>
+                <mat-checkbox
+                  (click)="selectAll(i, j)"
+                  [(ngModel)]="allSelected"
+                ></mat-checkbox>
                 <span class="left-padding-half-rem">Select All</span>
-                <div *ngFor="let content of task.contents">
-                  <mat-checkbox></mat-checkbox>
+                <div *ngFor="let content of task.contents; let k = index">
+                  <mat-checkbox
+                    (click)="selectContentUnderTask(i, j, k)"
+                    [(checked)]="contentSelectList[i + '_' + j + '_' + k]"
+                  ></mat-checkbox>
                   <span class="left-padding-half-rem">{{ content.name }}</span>
                 </div>
               </div>
@@ -184,7 +190,7 @@
               alt=""
               (click)="sourceCollapseList[i] = !sourceCollapseList[i]"
             />
-            <mat-checkbox (click)="onCheck($event, source)"></mat-checkbox>
+            <mat-checkbox [(ngModel)]="sourceSelectList[i]"></mat-checkbox>
             <span class="make-it-blue left-padding-one-fourth-rem">
               {{ source.name }}
             </span>
@@ -214,7 +220,10 @@
                 class="task-indented"
                 [ngbCollapse]="taskCollapseList[i + '_' + j]"
               >
-                <mat-checkbox (click)="selectAll(source.tasks)"></mat-checkbox>
+                <mat-checkbox
+                  (click)="selectAll(i, source.tasks)"
+                  [(ngModel)]="allSelected"
+                ></mat-checkbox>
                 <span class="left-padding-half-rem">Select All</span>
                 <div *ngFor="let content of task.contents">
                   <mat-checkbox></mat-checkbox>
