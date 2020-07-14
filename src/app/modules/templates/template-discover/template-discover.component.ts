@@ -22,7 +22,7 @@ export class TemplateDiscoverComponent implements OnInit {
   taskSelectList: boolean[] = [];
   contentSelectList: boolean[] = [];
   MAXN = 10000000;
-  importedTasks: any[] = [];
+  importedArray: any[] = [];
   showSidebar = false;
 
   constructor(private location: Location, private dataService: DataService) {
@@ -58,11 +58,13 @@ export class TemplateDiscoverComponent implements OnInit {
   getCheckboxState(event, src, id) {
     if (event.checked) {
       console.log('checkbox details ', src, id);
+      this.importedArray.push({ src, id });
       this.showSidebar = true;
+    } else {
+      this.importedArray = this.importedArray.filter(
+        (res) => !(res.src === src && res.id === id)
+      );
     }
-    // else {
-    //   this.showSidebar = false;
-    // }
   }
 
   getIP() {

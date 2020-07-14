@@ -261,7 +261,10 @@
         <span class="common-text">Import List</span>
       </div>
       <div class="sidebar-content">
-        body
+        {{ importedArray | json }}
+        <!-- <mat-card *ngFor="let source of c">
+          {{ source.name }}
+        </mat-card> -->
       </div>
       <div class="sidebar-actions">
         <button
