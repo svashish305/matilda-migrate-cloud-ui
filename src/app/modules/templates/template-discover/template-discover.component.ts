@@ -55,4 +55,10 @@ export class TemplateDiscoverComponent implements OnInit {
   onCheck(event, source) {
     console.log('selected source ', source);
   }
+
+  selectAll(tasks) {
+    // for (let i = 0; i < tasks.length; i++) {
+    //   tasks[i]
+    // }
+  }
 }

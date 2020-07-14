@@ -151,7 +151,7 @@
                 task.name
               }}</span>
               <span class="gray-text">({{ task.contents.length }})</span>
-              <div class="task-indented" [ngbCollapse]="taskCollapseList[i]">
+              <div class="task-indented" [ngbCollapse]="taskCollapseList[j]">
                 <mat-checkbox></mat-checkbox>
                 <span class="left-padding-half-rem">Select All</span>
                 <div *ngFor="let content of task.contents">
@@ -204,7 +204,7 @@
               }}</span>
               <span class="gray-text">({{ task.contents.length }})</span>
               <div class="task-indented" [ngbCollapse]="taskCollapseList[i]">
-                <mat-checkbox></mat-checkbox>
+                <mat-checkbox (click)="selectAll(source.tasks)"></mat-checkbox>
                 <span class="left-padding-half-rem">Select All</span>
                 <div *ngFor="let content of task.contents">
                   <mat-checkbox></mat-checkbox>
