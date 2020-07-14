@@ -1,5 +1,3 @@
-<!-- wave details start -->
-<!-- {{ waveData | json }} -->
 <div id="wave-content-id" class="wave__content__main__wrapper">
   <div
     id="wave-main-content"
@@ -70,12 +68,6 @@
             Remove
           </button>
         </mat-menu>
-        <!-- <ngx-avatar
-          class="my-avatar flex-center"
-          name="{{ waveData.name }}"
-          initialsSize="2"
-          [size]="isMobile ? 40 : 56"
-        ></ngx-avatar> -->
       </div>
       <div class="wave__heading">
         <input
@@ -126,7 +118,8 @@
           alt="Template Settings"
         />
       </button>
-      <mat-menu id="account-menu"
+      <mat-menu
+        id="account-menu"
         #templateDropdown="matMenu"
         xPosition="before"
         yPosition="below"
@@ -142,7 +135,7 @@
     <!-- wave name and desription end -->
 
     <!-- template subheader -->
-    <mat-tab-group id="stage-tab" [@.disabled]="true">
+    <mat-tab-group id="stage-tab">
       <mat-tab label="Charts">
         <!-- put chart tab content here -->
       </mat-tab>
@@ -165,23 +158,26 @@
               class="badge badge-pill badge-custom"
               [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }"
             >
-              <span class="badge-key-value">IP : 192.28.10.11</span>
+              <span *ngIf="isMobile" class="badge-key-value"
+                >{{ waveData.tags[0].name }} :
+                {{ waveData.tags[0].value }}</span
+              >
             </span>
             <span *ngIf="isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">+4</span>
+              <span *ngIf="waveData.tags.length > 1" class="badge-key-value"
+                >+{{ waveData.tags.length - 1 }}</span
+              >
             </span>
-            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">Web : Front End</span>
-            </span>
-            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">Software : Tomcat</span>
-            </span>
-            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">Java : Web</span>
-            </span>
-            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">+3</span>
-            </span>
+            <div *ngIf="!isMobile" class="pos-tags">
+              <span
+                class="badge badge-pill badge-custom"
+                *ngFor="let tag of waveData.tags"
+              >
+                <span class="badge-key-value"
+                  >{{ tag.name }} : {{ tag.value }}</span
+                >
+              </span>
+            </div>
           </div>
 
           <div
@@ -266,22 +262,6 @@
             >
               <span class="new-stage-btn-text">+ New</span>
             </button>
-
-            <!-- <div class="waves__list__filter right-align-searchbox">
-              <div>
-                <img class="search-icon" src="assets/imgs/search.svg" alt="" />
-              </div>
-              <div class="waves_list__search">
-                <input
-                  (keyup)="search($event)"
-                  name="test"
-                  [(ngModel)]="searchKey"
-                  placeholder="Search"
-                  class="filter__input"
-                  type="text"
-                />
-              </div>
-            </div> -->
           </div>
         </div>
 
@@ -305,26 +285,6 @@
 
     <!-- wave groups end -->
   </div>
-  <!-- template details resizable start -->
-  <!-- <section
-    tabindex="-1"
-    id="template-holder"
-    (mouseenter)="showBackdrop = true"
-    (mouseleave)="showBackdrop = false"
-    *ngIf="waveData && edit"
-    class="side-bar resizable"
-    mwlResizable
-    [enableGhostResize]="true"
-    [resizeEdges]="{ bottom: false, right: false, top: false, left: true }"
-    (resizeEnd)="onResizeEnd($event)"
-  >
-    <div (click)="openDetails(false)" class="close-template">x</div>
-    <div>
-      Template
-    </div>
-  </section>
-  <div [ngClass]="{ show: showBackdrop }" class="modal-backdrop"></div> -->
-  <!-- template details resizable start -->
 
   <!-- account options start -->
   <div
@@ -364,7 +324,6 @@
               matInput
               placeholder="Search"
               type="search"
-              (keyup)="search($event)"
               name="test"
               [(ngModel)]="searchKey"
             />
@@ -422,12 +381,6 @@
           </div>
         </mat-card-content>
       </mat-card>
-      <!-- <div
-        [ngClass]="{
-          'modal-footer-mobile': isMobile,
-          'account-footer': !isMobile
-        }"
-      > -->
       <div class="account-footer">
         <div class="account-sidebar-footer-btns">
           <button
@@ -473,7 +426,10 @@
     </header>
     <mat-divider></mat-divider>
     <!-- tag edit body -->
-    <app-edit-tag></app-edit-tag>
+    <app-edit-tag
+      [tags]="currWaveTags"
+      (newTags)="updateTags($event)"
+    ></app-edit-tag>
     <!-- end of tag edit body -->
     <div
       [ngClass]="{ 'modal-footer-mobile': isMobile, 'modal-footer': !isMobile }"

@@ -1,19 +1,19 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-import { WorkflowsComponent } from "./workflows.component";
-import { TemplatesComponent } from "../templates/templates.component";
+import { WorkflowsComponent } from './workflows.component';
+import { TemplatesComponent } from '../templates/templates.component';
 
 const routes: Routes = [
-  { path: "", component: WorkflowsComponent },
+  { path: '', component: WorkflowsComponent },
   {
-    path: ":id",
+    path: ':id',
     component: WorkflowsComponent,
   },
   {
-    path: ":workflowId/templates/:id",
+    path: ':workflowId/templates/:id',
     component: TemplatesComponent,
-    data: { breadcrumb: "Templates" },
+    data: { breadcrumb: 'Templates' },
   },
 ];
 

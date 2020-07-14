@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { DataService } from "src/services/data.service";
-import { Router } from "@angular/router";
-import { DeviceDetectorService } from "ngx-device-detector";
+import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/services/data.service';
+import { Router } from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
-  selector: "app-hub",
-  templateUrl: "./hub.component.html",
-  styleUrls: ["./hub.component.scss"],
+  selector: 'app-hub',
+  templateUrl: './hub.component.html',
+  styleUrls: ['./hub.component.scss'],
 })
 export class HubComponent implements OnInit {
   searchKey;
@@ -40,19 +40,6 @@ export class HubComponent implements OnInit {
     this.getTemplates();
     this.getWorkflows();
   }
-
-  // changeAvatar(event: any) {
-  //   if (event.target.files && event.target.files[0]) {
-  //     var reader = new FileReader();
-
-  //     reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-  //     reader.onload = (event) => {
-  //       // called once readAsDataURL is completed
-  //       this.avatarUrl = event.target.result;
-  //     };
-  //   }
-  // }
 
   getTemplates() {
     this.dataService.getTemplates().subscribe((templates: any) => {
@@ -94,26 +81,26 @@ export class HubComponent implements OnInit {
     }
   }
 
-  setBadgeBgColor(stageState = "Defined") {
-    let backgroundColor = "#99a1a9";
+  setBadgeBgColor(stageState = 'Defined') {
+    let backgroundColor = '#99a1a9';
     switch (stageState) {
-      case "Defined":
-        backgroundColor = "#99a1a9";
+      case 'Defined':
+        backgroundColor = '#99a1a9';
         break;
-      case "Configured":
-        backgroundColor = "#012b7a";
+      case 'Configured':
+        backgroundColor = '#012b7a';
         break;
-      case "In Progress":
-        backgroundColor = "#006bd4";
+      case 'In Progress':
+        backgroundColor = '#006bd4';
         break;
-      case "Success":
-        backgroundColor = "#0ba73d";
+      case 'Success':
+        backgroundColor = '#0ba73d';
         break;
-      case "Failed":
-        backgroundColor = "#d91b1b";
+      case 'Failed':
+        backgroundColor = '#d91b1b';
         break;
-      case "Paused":
-        backgroundColor = "#fc9528";
+      case 'Paused':
+        backgroundColor = '#fc9528';
         break;
       default:
         break;
@@ -131,20 +118,5 @@ export class HubComponent implements OnInit {
     this.router.navigate([`/workflows/${workflowId}`], {
       preserveQueryParams: true,
     });
-  }
-
-  /**
-   *
-   * @description searches the wavelist using the search key
-   */
-
-  search(e) {
-    // if (!this.searchKey) {
-    //   this.templates = this.rawtemplates;
-    //   return true;
-    // }
-    // this.templates = this.rawtemplates.filter((x) => {
-    //   return x.name.toLowerCase().search(this.searchKey.toLowerCase()) !== -1;
-    // });
   }
 }

@@ -72,24 +72,25 @@ export class DataService {
     return this.httpClient.post(this.REST_API_SERVER + "/accounts", account);
   }
 
-  public updateWave(wave) {
-    return this.httpClient.patch(this.REST_API_SERVER + "/waves", wave);
+  public updateTemplate(templateId, template) {
+    return this.httpClient.patch(
+      this.REST_API_SERVER + "/templates/" + templateId,
+      template
+    );
   }
 
-  public updateTemplate(template) {
-    return this.httpClient.patch(this.REST_API_SERVER + "/templates", template);
+  public updateWave(waveId, wave) {
+    return this.httpClient.patch(
+      this.REST_API_SERVER + "/waves/" + waveId,
+      wave
+    );
   }
 
-  public updateStage(stage) {
-    return this.httpClient.patch(this.REST_API_SERVER + "/stages", stage);
-  }
-
-  public updateTask(task) {
-    return this.httpClient.patch(this.REST_API_SERVER + "/tasks", task);
-  }
-
-  public updateAccount(account) {
-    return this.httpClient.patch(this.REST_API_SERVER + "/accounts", account);
+  public updateAccount(accountId, account) {
+    return this.httpClient.patch(
+      this.REST_API_SERVER + "/accounts/" + accountId,
+      account
+    );
   }
 
   public deleteWave(waveId) {

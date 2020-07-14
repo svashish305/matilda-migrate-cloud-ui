@@ -1,10 +1,10 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 
-import { RouterModule } from "@angular/router";
-import { CommonModule } from "@angular/common";
-import { HubModule } from "./hub/hub.module";
-import { TemplatesModule } from "./templates/templates.module";
-import { WorkflowsModule } from "./workflows/workflows.module";
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { HubModule } from './hub/hub.module';
+import { TemplatesModule } from './templates/templates.module';
+import { WorkflowsModule } from './workflows/workflows.module';
 
 @NgModule({
   declarations: [],

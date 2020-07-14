@@ -6,20 +6,20 @@ import {
   Output,
   EventEmitter,
   ViewChild,
-} from "@angular/core";
-import { DataService } from "src/services/data.service";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { MatDialog } from "@angular/material/dialog";
-import { ThemePalette } from "@angular/material/core";
+} from '@angular/core';
+import { DataService } from 'src/services/data.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ThemePalette } from '@angular/material/core';
 import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
-} from "@angular/cdk/drag-drop";
-import { DeviceDetectorService } from "ngx-device-detector";
-import { Router } from "@angular/router";
-import * as uuid from "uuid";
-import { StatusCodes } from "src/app/enums/enums";
+} from '@angular/cdk/drag-drop';
+import { DeviceDetectorService } from 'ngx-device-detector';
+import { Router } from '@angular/router';
+import * as uuid from 'uuid';
+import { StatusCodes } from 'src/app/enums/enums';
 
 interface SelectInterface {
   value: string;
@@ -27,9 +27,9 @@ interface SelectInterface {
 }
 
 @Component({
-  selector: "app-wave-list",
-  templateUrl: "./wave-list.component.html",
-  styleUrls: ["./wave-list.component.scss"],
+  selector: 'app-wave-list',
+  templateUrl: './wave-list.component.html',
+  styleUrls: ['./wave-list.component.scss'],
 })
 export class WaveListComponent implements OnInit {
   @Input() waveData: any = {};
@@ -38,7 +38,7 @@ export class WaveListComponent implements OnInit {
   edit;
   searchKey;
   showBackdrop;
-  @ViewChild("waveList", { static: false }) waveList;
+  @ViewChild('waveList', { static: false }) waveList;
 
   rawwaves: any[] = [];
   waves: any[] = [];
@@ -56,19 +56,19 @@ export class WaveListComponent implements OnInit {
   selectedTemplateInSidebar: any;
 
   providers: SelectInterface[] = [
-    { value: "AWS", viewValue: "AWS" },
-    { value: "p-1", viewValue: "Pizza" },
-    { value: "p-2", viewValue: "Tacos" },
+    { value: 'AWS', viewValue: 'AWS' },
+    { value: 'p-1', viewValue: 'Pizza' },
+    { value: 'p-2', viewValue: 'Tacos' },
   ];
 
   workflowTypes: SelectInterface[] = [
-    { value: "time", viewValue: "Time" },
-    { value: "trigger", viewValue: "Trigger" },
+    { value: 'time', viewValue: 'Time' },
+    { value: 'trigger', viewValue: 'Trigger' },
   ];
 
   selectedWorkflowType: any;
 
-  primaryColor: ThemePalette = "primary";
+  primaryColor: ThemePalette = 'primary';
 
   drag = true;
   groupCollapseList: boolean[];
@@ -88,7 +88,7 @@ export class WaveListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("wavedata ", this.waveData);
+    console.log('wavedata ', this.waveData);
 
     this.selectedWorkflowType = this.workflowTypes[0].value;
 
@@ -112,29 +112,39 @@ export class WaveListComponent implements OnInit {
   }
 
   getWorkflowType() {
+    this.waveData.type = this.selectedWorkflowType;
     return this.selectedWorkflowType;
   }
 
+  optionClicked(wfType) {
+    this.waveData.type = wfType;
+    this.dataService
+      .updateTemplate(this.waveData.id, this.waveData)
+      .subscribe((newWave: any) => {
+        console.log('new wave type ', newWave.type);
+      });
+  }
+
   setBadgeBgColor(statusCode = 1) {
-    let backgroundColor = "#99a1a9";
+    let backgroundColor = '#99a1a9';
     switch (statusCode) {
       case 1:
-        backgroundColor = "#99a1a9";
+        backgroundColor = '#99a1a9';
         break;
       case 2:
-        backgroundColor = "#012b7a";
+        backgroundColor = '#012b7a';
         break;
       case 3:
-        backgroundColor = "#006bd4";
+        backgroundColor = '#006bd4';
         break;
       case 4:
-        backgroundColor = "#0ba73d";
+        backgroundColor = '#0ba73d';
         break;
       case 5:
-        backgroundColor = "#d91b1b";
+        backgroundColor = '#d91b1b';
         break;
       case 6:
-        backgroundColor = "#fc9528";
+        backgroundColor = '#fc9528';
         break;
       default:
         break;
@@ -146,15 +156,15 @@ export class WaveListComponent implements OnInit {
     let height;
     if (this.isMobile) {
       if (collapsed) {
-        height = "0";
+        height = '0';
       } else {
-        height = "5.563em";
+        height = '5.563em';
       }
     } else {
       if (collapsed) {
-        height = "1em";
+        height = '1em';
       } else {
-        height = "5.563em";
+        height = '5.563em';
       }
     }
     return { height };
@@ -172,30 +182,6 @@ export class WaveListComponent implements OnInit {
     }
   }
 
-  /**
-   *
-   * @description searches the wavelist using the search key
-   */
-
-  search(e) {
-    // if (!this.searchKey) {
-    //   this.waves = this.rawwaves;
-    //   return true;
-    // }
-    // this.waves = this.rawwaves.filter((x) => {
-    //   return x.name.toLowerCase().search(this.searchKey.toLowerCase()) !== -1;
-    // });
-    // console.log("filtered data ", this.waves);
-    // new implementation
-    // if (!this.searchKey || this.searchKey === "") {
-    //   this.waves = this.rawwaves;
-    //   return true;
-    // }
-    // this.waveData.groups = this.waveData.groups.filter((x) => {
-    //   return x.name.toLowerCase().includes(this.searchKey.toLowerCase());
-    // });
-  }
-
   onCheck(event) {
     event.stopPropagation();
   }
@@ -203,15 +189,15 @@ export class WaveListComponent implements OnInit {
   toggleHeight(accountId) {
     let height;
     if (this.accountCollapseState[accountId]) {
-      height = "18.125em";
+      height = '18.125em';
     }
     return { height };
   }
 
   openDialog(template: TemplateRef<any>) {
     const dialogRef = this.dialog.open(template, {
-      width: "36.1111111%",
-      height: "66.3333333%",
+      width: '36.1111111%',
+      height: '66.3333333%',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -229,8 +215,8 @@ export class WaveListComponent implements OnInit {
       this.accountRegion = this.selectedAccount.data.region;
 
       const dialogRef = this.dialog.open(template, {
-        width: "36.1111111%",
-        height: "66.3333333%",
+        width: '36.1111111%',
+        height: '66.3333333%',
         data: {
           selectedAccount: this.selectedAccount,
         },
@@ -251,9 +237,11 @@ export class WaveListComponent implements OnInit {
         region: this.accountRegion,
       },
     };
-    this.dataService.updateAccount(updatedAccount).subscribe((res: any) => {
-      console.log("updated account details ", updatedAccount);
-    });
+    this.dataService
+      .updateAccount(accountId, updatedAccount)
+      .subscribe((res: any) => {
+        console.log('updated account details ', updatedAccount);
+      });
   }
 
   toggleRightSidebar(template: any) {
@@ -275,26 +263,17 @@ export class WaveListComponent implements OnInit {
    * @description resizes the template details container
    */
   appyResize(event?) {
-    const wrapperWidth = document.getElementById("wave-content-id").offsetWidth;
-    const templateHolder = document.getElementById("template-holder");
-    const contentHolder = document.getElementById("wave-main-content");
+    const wrapperWidth = document.getElementById('wave-content-id').offsetWidth;
+    const templateHolder = document.getElementById('template-holder');
+    const contentHolder = document.getElementById('wave-main-content');
     let width;
     if (templateHolder) {
       const resizerWidth = templateHolder.offsetWidth;
       width = event ? resizerWidth - event.edges.left : 430;
-      templateHolder.style.width = width + "px";
+      templateHolder.style.width = width + 'px';
     } else {
       width = 0;
     }
-    // if (wrapperWidth > 750 + width) {
-    //   if (contentHolder) {
-    //     contentHolder.style.width = wrapperWidth - width + 40 + "px";
-    //   }
-    // } else {
-    //   if (contentHolder) {
-    //     contentHolder.style.width = "750px";
-    //   }
-    // }
   }
 
   /**
@@ -326,7 +305,7 @@ export class WaveListComponent implements OnInit {
     const id = Math.random().toString(6);
     this.waveData.groups.unshift({
       id: id,
-      name: "New group",
+      name: 'New group',
       theme: this.waveList.getRandomColor(),
       edit: true,
       templates: [],
@@ -338,7 +317,7 @@ export class WaveListComponent implements OnInit {
    * @description generates new color for groups
    */
   getRandomColor() {
-    return "#" + Math.random().toString(16).substr(-6);
+    return '#' + Math.random().toString(16).substr(-6);
   }
 
   /**
@@ -346,23 +325,8 @@ export class WaveListComponent implements OnInit {
    * @description reorders the template to other groups or within the groups
    */
   drop(event: CdkDragDrop<string[]>) {
-    // if (event.previousContainer === event.container) {
-    //   moveItemInArray(
-    //     event.container.data,
-    //     event.previousIndex,
-    //     event.currentIndex
-    //   );
-    // } else {
-    //   transferArrayItem(
-    //     event.previousContainer.data,
-    //     event.container.data,
-    //     event.previousIndex,
-    //     event.currentIndex
-    //   );
-    // }
-
     let template: any = event.container.data[event.previousIndex];
-    console.log("order before drag ", template.order);
+    console.log('order before drag ', template.order);
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -382,7 +346,7 @@ export class WaveListComponent implements OnInit {
       if (event.container.data.length > 0) {
         if (event.container.data.length !== event.currentIndex + 1) {
           template.order =
-            0 + event.container.data[event.currentIndex + 1]["order"] / 2;
+            0 + event.container.data[event.currentIndex + 1]['order'] / 2;
         } else {
           template.order = 100;
         }
@@ -391,14 +355,14 @@ export class WaveListComponent implements OnInit {
       }
     } else if (event.currentIndex === event.container.data.length - 1) {
       template.order =
-        100 + event.container.data[event.container.data.length - 2]["order"];
+        100 + event.container.data[event.container.data.length - 2]['order'];
     } else {
       template.order =
-        (event.container.data[event.currentIndex - 1]["order"] +
-          event.container.data[event.currentIndex + 1]["order"]) /
+        (event.container.data[event.currentIndex - 1]['order'] +
+          event.container.data[event.currentIndex + 1]['order']) /
         2;
     }
-    console.log("order after drag ", template.order);
+    console.log('order after drag ', template.order);
   }
 
   /**
@@ -419,18 +383,11 @@ export class WaveListComponent implements OnInit {
    * @description emits event to open template details
    */
   rowClick(template) {
-    // this.waveData.groups.forEach((waveType) => {
-    //   waveType.items.forEach((t) => {
-    //     t.selected = false;
-    //   });
-    // });
-    // template.selected = true;
-
     this.router.navigate([
       `workflows/${this.waveData.id}/templates/${template.id}`,
     ]);
     this.rowClicked.emit(true);
-    console.log("row clicked");
+    console.log('row clicked');
   }
 
   /**
@@ -442,48 +399,48 @@ export class WaveListComponent implements OnInit {
     const id = uuid.v4();
     const newTemplate = {
       id: id,
-      name: "Untitled Template",
-      desc: "Template Description",
-      ver: "templateVersionNumber",
-      type: "NONE/TRIGGER/EVENT",
-      owner: "TEMPLATE OWNER",
+      name: 'Untitled Template',
+      desc: 'Template Description',
+      ver: 'templateVersionNumber',
+      type: 'NONE/TRIGGER/EVENT',
+      owner: 'TEMPLATE OWNER',
       progress: 10,
       groups: [
         {
           id: 1,
-          name: "Infrastructure",
+          name: 'Infrastructure',
           order: 100,
-          status: "Defined",
+          status: 'Defined',
           progress: 10,
           items: [
             {
               id: 123,
-              name: "Create Stack Instance",
-              description: "TaskDescription",
+              name: 'Create Stack Instance',
+              description: 'TaskDescription',
               order: 100,
-              pluginName: "AWS",
+              pluginName: 'AWS',
               pluginId: 1,
-              serviceId: "1",
-              actionId: "1",
-              serviceName: "vm",
-              actionName: "Create",
-              status: "Configured",
+              serviceId: '1',
+              actionId: '1',
+              serviceName: 'vm',
+              actionName: 'Create',
+              status: 'Configured',
               progress: 10,
               keyVault: {
                 id: 1,
-                name: "AWS",
+                name: 'AWS',
               },
               input:
                 '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
               output: null,
-              startDate: "6/1/2020",
-              endDate: "12/11/2020",
+              startDate: '6/1/2020',
+              endDate: '12/11/2020',
               duration: null,
               dependencies: [
                 {
                   groupId: 1234,
                   taskId: 345345,
-                  mode: "before",
+                  mode: 'before',
                 },
               ],
               notification:
@@ -491,32 +448,32 @@ export class WaveListComponent implements OnInit {
             },
             {
               id: 456,
-              name: "Create Stack Instance 2",
-              description: "TaskDescription",
+              name: 'Create Stack Instance 2',
+              description: 'TaskDescription',
               order: 100,
-              pluginName: "AWS",
+              pluginName: 'AWS',
               pluginId: 1,
-              serviceId: "1",
-              actionId: "1",
-              serviceName: "vm",
-              actionName: "Create",
-              status: "Configured",
+              serviceId: '1',
+              actionId: '1',
+              serviceName: 'vm',
+              actionName: 'Create',
+              status: 'Configured',
               progress: 10,
               keyVault: {
                 id: 1,
-                name: "AWS",
+                name: 'AWS',
               },
               input:
                 '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
               output: null,
-              startDate: "6/1/2020",
-              endDate: "12/11/2020",
+              startDate: '6/1/2020',
+              endDate: '12/11/2020',
               duration: null,
               dependencies: [
                 {
                   groupId: 1234,
                   taskId: 345345,
-                  mode: "before",
+                  mode: 'before',
                 },
               ],
               notification:
@@ -524,32 +481,32 @@ export class WaveListComponent implements OnInit {
             },
             {
               id: 789,
-              name: "Create Stack Instance 3",
-              description: "TaskDescription",
+              name: 'Create Stack Instance 3',
+              description: 'TaskDescription',
               order: 100,
-              pluginName: "AWS",
+              pluginName: 'AWS',
               pluginId: 1,
-              serviceId: "1",
-              actionId: "1",
-              serviceName: "vm",
-              actionName: "Create",
-              status: "Configured",
+              serviceId: '1',
+              actionId: '1',
+              serviceName: 'vm',
+              actionName: 'Create',
+              status: 'Configured',
               progress: 10,
               keyVault: {
                 id: 1,
-                name: "AWS",
+                name: 'AWS',
               },
               input:
                 '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
               output: null,
-              startDate: "6/1/2020",
-              endDate: "12/11/2020",
+              startDate: '6/1/2020',
+              endDate: '12/11/2020',
               duration: null,
               dependencies: [
                 {
                   groupId: 1234,
                   taskId: 345345,
-                  mode: "before",
+                  mode: 'before',
                 },
               ],
               notification:
@@ -559,39 +516,39 @@ export class WaveListComponent implements OnInit {
         },
         {
           id: 2,
-          name: "Infrastructure",
+          name: 'Infrastructure',
           order: 100,
-          status: "Defined",
+          status: 'Defined',
           progress: 10,
           items: [
             {
               id: 123,
-              name: "Create Stack Instance",
-              description: "TaskDescription",
+              name: 'Create Stack Instance',
+              description: 'TaskDescription',
               order: 100,
-              pluginName: "AWS",
+              pluginName: 'AWS',
               pluginId: 1,
-              serviceId: "1",
-              actionId: "1",
-              serviceName: "vm",
-              actionName: "Create",
-              status: "Configured",
+              serviceId: '1',
+              actionId: '1',
+              serviceName: 'vm',
+              actionName: 'Create',
+              status: 'Configured',
               progress: 10,
               keyVault: {
                 id: 1,
-                name: "AWS",
+                name: 'AWS',
               },
               input:
                 '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
               output: null,
-              startDate: "6/1/2020",
-              endDate: "12/11/2020",
+              startDate: '6/1/2020',
+              endDate: '12/11/2020',
               duration: null,
               dependencies: [
                 {
                   groupId: 1234,
                   taskId: 345345,
-                  mode: "before",
+                  mode: 'before',
                 },
               ],
               notification:
@@ -599,32 +556,32 @@ export class WaveListComponent implements OnInit {
             },
             {
               id: 456,
-              name: "Create Stack Instance 2",
-              description: "TaskDescription",
+              name: 'Create Stack Instance 2',
+              description: 'TaskDescription',
               order: 100,
-              pluginName: "AWS",
+              pluginName: 'AWS',
               pluginId: 1,
-              serviceId: "1",
-              actionId: "1",
-              serviceName: "vm",
-              actionName: "Create",
-              status: "Configured",
+              serviceId: '1',
+              actionId: '1',
+              serviceName: 'vm',
+              actionName: 'Create',
+              status: 'Configured',
               progress: 10,
               keyVault: {
                 id: 1,
-                name: "AWS",
+                name: 'AWS',
               },
               input:
                 '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
               output: null,
-              startDate: "6/1/2020",
-              endDate: "12/11/2020",
+              startDate: '6/1/2020',
+              endDate: '12/11/2020',
               duration: null,
               dependencies: [
                 {
                   groupId: 1234,
                   taskId: 345345,
-                  mode: "before",
+                  mode: 'before',
                 },
               ],
               notification:
@@ -632,32 +589,32 @@ export class WaveListComponent implements OnInit {
             },
             {
               id: 789,
-              name: "Create Stack Instance 3",
-              description: "TaskDescription",
+              name: 'Create Stack Instance 3',
+              description: 'TaskDescription',
               order: 100,
-              pluginName: "AWS",
+              pluginName: 'AWS',
               pluginId: 1,
-              serviceId: "1",
-              actionId: "1",
-              serviceName: "vm",
-              actionName: "Create",
-              status: "Configured",
+              serviceId: '1',
+              actionId: '1',
+              serviceName: 'vm',
+              actionName: 'Create',
+              status: 'Configured',
               progress: 10,
               keyVault: {
                 id: 1,
-                name: "AWS",
+                name: 'AWS',
               },
               input:
                 '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
               output: null,
-              startDate: "6/1/2020",
-              endDate: "12/11/2020",
+              startDate: '6/1/2020',
+              endDate: '12/11/2020',
               duration: null,
               dependencies: [
                 {
                   groupId: 1234,
                   taskId: 345345,
-                  mode: "before",
+                  mode: 'before',
                 },
               ],
               notification:
@@ -667,39 +624,39 @@ export class WaveListComponent implements OnInit {
         },
         {
           id: 3,
-          name: "Infrastructure",
+          name: 'Infrastructure',
           order: 100,
-          status: "Defined",
+          status: 'Defined',
           progress: 10,
           items: [
             {
               id: 123,
-              name: "Create Stack Instance",
-              description: "TaskDescription",
+              name: 'Create Stack Instance',
+              description: 'TaskDescription',
               order: 100,
-              pluginName: "AWS",
+              pluginName: 'AWS',
               pluginId: 1,
-              serviceId: "1",
-              actionId: "1",
-              serviceName: "vm",
-              actionName: "Create",
-              status: "Configured",
+              serviceId: '1',
+              actionId: '1',
+              serviceName: 'vm',
+              actionName: 'Create',
+              status: 'Configured',
               progress: 10,
               keyVault: {
                 id: 1,
-                name: "AWS",
+                name: 'AWS',
               },
               input:
                 '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
               output: null,
-              startDate: "6/1/2020",
-              endDate: "12/11/2020",
+              startDate: '6/1/2020',
+              endDate: '12/11/2020',
               duration: null,
               dependencies: [
                 {
                   groupId: 1234,
                   taskId: 345345,
-                  mode: "before",
+                  mode: 'before',
                 },
               ],
               notification:
@@ -707,32 +664,32 @@ export class WaveListComponent implements OnInit {
             },
             {
               id: 456,
-              name: "Create Stack Instance 2",
-              description: "TaskDescription",
+              name: 'Create Stack Instance 2',
+              description: 'TaskDescription',
               order: 100,
-              pluginName: "AWS",
+              pluginName: 'AWS',
               pluginId: 1,
-              serviceId: "1",
-              actionId: "1",
-              serviceName: "vm",
-              actionName: "Create",
-              status: "Configured",
+              serviceId: '1',
+              actionId: '1',
+              serviceName: 'vm',
+              actionName: 'Create',
+              status: 'Configured',
               progress: 10,
               keyVault: {
                 id: 1,
-                name: "AWS",
+                name: 'AWS',
               },
               input:
                 '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
               output: null,
-              startDate: "6/1/2020",
-              endDate: "12/11/2020",
+              startDate: '6/1/2020',
+              endDate: '12/11/2020',
               duration: null,
               dependencies: [
                 {
                   groupId: 1234,
                   taskId: 345345,
-                  mode: "before",
+                  mode: 'before',
                 },
               ],
               notification:
@@ -740,32 +697,32 @@ export class WaveListComponent implements OnInit {
             },
             {
               id: 789,
-              name: "Create Stack Instance 3",
-              description: "TaskDescription",
+              name: 'Create Stack Instance 3',
+              description: 'TaskDescription',
               order: 100,
-              pluginName: "AWS",
+              pluginName: 'AWS',
               pluginId: 1,
-              serviceId: "1",
-              actionId: "1",
-              serviceName: "vm",
-              actionName: "Create",
-              status: "Configured",
+              serviceId: '1',
+              actionId: '1',
+              serviceName: 'vm',
+              actionName: 'Create',
+              status: 'Configured',
               progress: 10,
               keyVault: {
                 id: 1,
-                name: "AWS",
+                name: 'AWS',
               },
               input:
                 '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
               output: null,
-              startDate: "6/1/2020",
-              endDate: "12/11/2020",
+              startDate: '6/1/2020',
+              endDate: '12/11/2020',
               duration: null,
               dependencies: [
                 {
                   groupId: 1234,
                   taskId: 345345,
-                  mode: "before",
+                  mode: 'before',
                 },
               ],
               notification:
@@ -777,15 +734,15 @@ export class WaveListComponent implements OnInit {
       tags: [
         {
           id: 1,
-          name: "Name1",
-          value: "Value1",
-          modifiedDate: "2020-06-12T14:29:18",
+          name: 'Name1',
+          value: 'Value1',
+          modifiedDate: '2020-06-12T14:29:18',
         },
       ],
-      modifiedDate: "2020-06-12T14:29:18",
+      modifiedDate: '2020-06-12T14:29:18',
     };
     waveType.items.push(newTemplate);
-    waveType.newTemplate = "";
+    waveType.newTemplate = '';
   }
 
   removeTemplate(waveType, templateId) {
@@ -803,20 +760,9 @@ export class WaveListComponent implements OnInit {
   inputFocusOut(event, waveType) {
     setTimeout(() => {
       waveType.showAdd = false;
-      waveType.newTemplate = "";
+      waveType.newTemplate = '';
     }, 200);
   }
-
-  /**
-   *
-   * @param waveType for which name has to be edited
-   * @description make group name editable on hover
-   */
-  // groupNameEnter(waveType) {
-  //   this.waveData.groups.forEach((wave) => (wave.edit = false));
-  //   waveType.edit = true;
-  //   waveType.drag = true;
-  // }
 
   /**
    *
@@ -831,14 +777,8 @@ export class WaveListComponent implements OnInit {
    * @description reorders the dragged group
    */
   dropGroup(event: CdkDragDrop<string[]>) {
-    // moveItemInArray(
-    //   this.waveData.groups,
-    //   event.previousIndex,
-    //   event.currentIndex
-    // );
-
     let group: any = event.container.data[event.previousIndex];
-    console.log("group order before drag ", group.order);
+    console.log('group order before drag ', group.order);
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -858,7 +798,7 @@ export class WaveListComponent implements OnInit {
       if (event.container.data.length > 0) {
         if (event.container.data.length !== event.currentIndex + 1) {
           group.order =
-            0 + event.container.data[event.currentIndex + 1]["order"] / 2;
+            0 + event.container.data[event.currentIndex + 1]['order'] / 2;
         } else {
           group.order = 100;
         }
@@ -867,14 +807,14 @@ export class WaveListComponent implements OnInit {
       }
     } else if (event.currentIndex === event.container.data.length - 1) {
       group.order =
-        100 + event.container.data[event.container.data.length - 2]["order"];
+        100 + event.container.data[event.container.data.length - 2]['order'];
     } else {
       group.order =
-        (event.container.data[event.currentIndex - 1]["order"] +
-          event.container.data[event.currentIndex + 1]["order"]) /
+        (event.container.data[event.currentIndex - 1]['order'] +
+          event.container.data[event.currentIndex + 1]['order']) /
         2;
     }
-    console.log("group order after drag ", group.order);
+    console.log('group order after drag ', group.order);
   }
 
   /**
@@ -929,23 +869,23 @@ export class WaveListComponent implements OnInit {
    */
   getStatusClass(template) {
     let className;
-    if (template.status === "Working on it") {
-      className = "status-yellow";
+    if (template.status === 'Working on it') {
+      className = 'status-yellow';
     }
-    if (template.status === "Done") {
-      className = "status-green";
-    }
-
-    if (template.status === "Stuck") {
-      className = "status-red";
+    if (template.status === 'Done') {
+      className = 'status-green';
     }
 
-    if (template.status === "") {
-      className = "";
+    if (template.status === 'Stuck') {
+      className = 'status-red';
+    }
+
+    if (template.status === '') {
+      className = '';
     }
 
     if (template.showStatus) {
-      className += " show-status";
+      className += ' show-status';
     }
 
     return className;

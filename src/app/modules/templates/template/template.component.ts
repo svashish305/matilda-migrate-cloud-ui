@@ -4,12 +4,12 @@ import {
   Input,
   ViewChild,
   AfterViewInit,
-} from "@angular/core";
-import { DataService } from "src/services/data.service";
-import { DeviceDetectorService } from "ngx-device-detector";
-import { ActivatedRoute } from "@angular/router";
-import { Location } from "@angular/common";
-import * as uuid from "uuid";
+} from '@angular/core';
+import { DataService } from 'src/services/data.service';
+import { DeviceDetectorService } from 'ngx-device-detector';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import * as uuid from 'uuid';
 import { Group } from 'src/app/models/data.model';
 
 interface SelectInterface {
@@ -18,27 +18,28 @@ interface SelectInterface {
 }
 
 @Component({
-  selector: "app-template",
-  templateUrl: "./template.component.html",
-  styleUrls: ["./template.component.scss"],
+  selector: 'app-template',
+  templateUrl: './template.component.html',
+  styleUrls: ['./template.component.scss'],
 })
 export class TemplateComponent implements OnInit, AfterViewInit {
   @Input() templateData: any;
   searchKey;
   edit;
   showBackdrop;
-  @ViewChild("templateList", { static: false }) templateList;
+  @ViewChild('templateList', { static: false }) templateList;
 
   favourite = false;
   templateId: any;
   currTemplate: any;
+  currTemplateTags: any[];
   templatesToImport: any[] = [];
   selectedTemplatesToImport: any[] = [];
   stages: any[] = [];
-  titleState = "idle";
+  titleState = 'idle';
   oldTitle: string;
   newTitle: string;
-  descriptionState = "idle";
+  descriptionState = 'idle';
   oldDescription: string;
   newDescription: string;
 
@@ -61,14 +62,9 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
     private location: Location
-  ) { }
+  ) {}
 
   ngOnInit() {
-    // this.oldTitle = this.templateData.name;
-    // this.newTitle = this.oldTitle;
-    // this.oldDescription = this.templateData.desc;
-    // this.newDescription = this.oldDescription;
-
     this.route.params.subscribe((params: any) => {
       this.templateId = params.id;
     });
@@ -77,6 +73,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
       .getTemplate(this.templateId)
       .subscribe((currentTemplate: any) => {
         this.currTemplate = currentTemplate;
+        this.currTemplateTags = currentTemplate.tags;
       });
 
     this.isMobile = this.deviceService.isMobile();
@@ -126,7 +123,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   uploadFile(file) {
     this.dataService.upload(file).subscribe(
       (res: any) => {
-        console.log("file uploaded as", res);
+        console.log('file uploaded as', res);
       },
       (error) => {
         console.log(error);
@@ -134,26 +131,26 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     );
   }
 
-  setBadgeBgColor(stageState = "Defined") {
-    let backgroundColor = "#99a1a9";
+  setBadgeBgColor(stageState = 'Defined') {
+    let backgroundColor = '#99a1a9';
     switch (stageState) {
-      case "Defined":
-        backgroundColor = "#99a1a9";
+      case 'Defined':
+        backgroundColor = '#99a1a9';
         break;
-      case "Configured":
-        backgroundColor = "#012b7a";
+      case 'Configured':
+        backgroundColor = '#012b7a';
         break;
-      case "In Progress":
-        backgroundColor = "#006bd4";
+      case 'In Progress':
+        backgroundColor = '#006bd4';
         break;
-      case "Success":
-        backgroundColor = "#0ba73d";
+      case 'Success':
+        backgroundColor = '#0ba73d';
         break;
-      case "Failed":
-        backgroundColor = "#d91b1b";
+      case 'Failed':
+        backgroundColor = '#d91b1b';
         break;
-      case "Paused":
-        backgroundColor = "#fc9528";
+      case 'Paused':
+        backgroundColor = '#fc9528';
         break;
       default:
         break;
@@ -161,33 +158,28 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     return { backgroundColor };
   }
 
-  /**
-   *
-   * @description searches the wavelist using the search key
-   */
-
-  search(e) {
-    // if (!this.searchKey) {
-    //   this.templates = this.rawtemplates;
-    //   return true;
-    // }
-    // this.templates = this.rawtemplates.filter((x) => {
-    //   return x.name.toLowerCase().search(this.searchKey.toLowerCase()) !== -1;
-    // });
-  }
-
   goBack() {
     this.location.back();
+  }
+
+  updateTags(event: any) {
+    this.currTemplate.tags = event;
+    this.dataService
+      .updateTemplate(this.templateId, this.currTemplate)
+      .subscribe((newTemplate: any) => {
+        console.log('updated template ', newTemplate);
+        this.templateData = newTemplate;
+        this.currTemplate = newTemplate;
+      });
   }
 
   addStage() {
     const id = uuid.v4();
     let newStage = { id, ...new Group() };
-    
+
     this.currTemplate.groups.push(newStage);
-    this.templateData.groups.push(newStage);
+    this.templateData = this.currTemplate;
     console.log(newStage);
-   
   }
 
   onCheck(event, template) {
@@ -206,11 +198,11 @@ export class TemplateComponent implements OnInit, AfterViewInit {
         });
       }
     });
-    // console.log("new stuff to copy ", newStagesAndTasks);
+    // console.log('new stuff to copy ', newStagesAndTasks);
     newStagesAndTasks.forEach((newStageTask: any) => {
       this.currTemplate.groups.push(newStageTask);
     });
-    // console.log("updated ", this.currTemplate);
+    // console.log('updated ', this.currTemplate);
     this.templateData = this.currTemplate;
     this.selectedTemplatesToImport = [];
   }
@@ -229,26 +221,17 @@ export class TemplateComponent implements OnInit, AfterViewInit {
    * @description resizes the template details container
    */
   appyResize(event?) {
-    const wrapperWidth = document.getElementById("wave-content-id").offsetWidth;
-    const templateHolder = document.getElementById("resizable-holder");
-    const contentHolder = document.getElementById("wave-main-content");
+    const wrapperWidth = document.getElementById('wave-content-id').offsetWidth;
+    const templateHolder = document.getElementById('resizable-holder');
+    const contentHolder = document.getElementById('wave-main-content');
     let width;
     if (templateHolder) {
       const resizerWidth = templateHolder.offsetWidth;
       width = event ? resizerWidth - event.edges.left : 430;
-      templateHolder.style.width = width + "px";
+      templateHolder.style.width = width + 'px';
     } else {
       width = 0;
     }
-    // if (wrapperWidth > 750 + width) {
-    //   if (contentHolder) {
-    //     contentHolder.style.width = wrapperWidth - width + 40 + "px";
-    //   }
-    // } else {
-    //   if (contentHolder) {
-    //     contentHolder.style.width = "750px";
-    //   }
-    // }
   }
 
   /**
@@ -277,32 +260,32 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     } else {
       this.selectedTask = {
         id: 123,
-        name: "Untitled Task",
-        description: "Task Description",
+        name: 'Untitled Task',
+        description: 'Task Description',
         order: 100,
-        pluginName: "AWS",
+        pluginName: 'AWS',
         pluginId: 1,
-        serviceId: "1",
-        actionId: "1",
-        serviceName: "vm",
-        actionName: "Create",
-        status: "Configured",
+        serviceId: '1',
+        actionId: '1',
+        serviceName: 'vm',
+        actionName: 'Create',
+        status: 'Configured',
         progress: 10,
         keyVault: {
           id: 1,
-          name: "AWS",
+          name: 'AWS',
         },
         input:
           '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
         output: null,
-        startDate: "6/1/2020",
-        endDate: "12/11/2020",
+        startDate: '6/1/2020',
+        endDate: '12/11/2020',
         duration: null,
         dependencies: [
           {
             groupId: 1234,
             taskId: 345345,
-            mode: "before",
+            mode: 'before',
           },
         ],
         notification: '{"type":"email/hook","id":"1","payload":"emailid/url"}',
@@ -316,11 +299,10 @@ export class TemplateComponent implements OnInit, AfterViewInit {
    * @description Adds new group to wave
    */
   addNewGroup() {
-    console.log(this.templateList);
     const id = Math.random().toString(6);
     this.templateData.waveTypes.unshift({
       id: id,
-      name: "New group",
+      name: 'New group',
       theme: this.templateList.getRandomColor(),
       edit: true,
       templates: [],
@@ -328,11 +310,11 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   }
 
   onFocusTitle() {
-    this.titleState = "editing";
+    this.titleState = 'editing';
   }
 
   updateTitle() {
-    this.titleState = "idle";
+    this.titleState = 'idle';
     if (this.newTitle !== this.oldTitle) {
       // update title
       const newTemplate = {
@@ -346,11 +328,11 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   }
 
   onFocusDescription() {
-    this.descriptionState = "editing";
+    this.descriptionState = 'editing';
   }
 
   updateDescription() {
-    this.descriptionState = "idle";
+    this.descriptionState = 'idle';
     if (this.newDescription !== this.oldDescription) {
       // update description
       const newTemplate = {
@@ -363,14 +345,10 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     }
   }
 
-  onSaveConfig(payload: any) {
-
-  }
+  onSaveConfig(payload: any) {}
 
   onClose(event: any) {
     this.showTaskOptions = !event;
   }
-  onSaveTemplateFormat(formatPaylod:any){
-    
-  }
+  onSaveTemplateFormat(formatPaylod: any) {}
 }

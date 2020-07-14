@@ -1,22 +1,22 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-import { TemplatesComponent } from "./templates.component";
+import { TemplatesComponent } from './templates.component';
 
 const routes: Routes = [
-  { path: "", component: TemplatesComponent },
-  { path: ":id", component: TemplatesComponent },
+  { path: '', component: TemplatesComponent },
+  { path: ':id', component: TemplatesComponent },
   {
-    path: "add-task-modal-content",
+    path: 'add-task-modal-content',
     loadChildren: () =>
-      import("./add-task-modal-content/add-task-modal-content.module").then(
+      import('./add-task-modal-content/add-task-modal-content.module').then(
         (m) => m.AddTaskModalContentModule
       ),
   },
   {
-    path: "edit-tag",
+    path: 'edit-tag',
     loadChildren: () =>
-      import("./edit-tag/edit-tag.module").then((m) => m.EditTagModule),
+      import('./edit-tag/edit-tag.module').then((m) => m.EditTagModule),
   },
 ];
 

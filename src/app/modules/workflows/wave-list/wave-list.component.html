@@ -11,6 +11,7 @@
         id="wf-option"
         *ngFor="let wType of workflowTypes"
         [value]="wType.value"
+        (click)="optionClicked(wType.value)"
       >
         {{ wType.viewValue }}
       </mat-option>
@@ -22,7 +23,6 @@
   <span class="stage-action-collapse-text">Collapse All</span
   ><mat-slide-toggle
     (change)="collapseAll($event.checked)"
-    disableRipple="true"
     [color]="primaryColor"
   ></mat-slide-toggle>
 </div>
@@ -44,7 +44,6 @@
         matInput
         placeholder="Search"
         type="search"
-        (keyup)="search($event)"
         name="test"
         [(ngModel)]="searchKey"
       />
@@ -84,11 +83,6 @@
                   alt=""
                 />
               </div>
-              <!-- <div
-                [ngClass]="{ collapsed: groupCollapseList[i] }"
-                (click)="openGroupLevelActions(waveType)"
-                class="accordian"
-              > -->
               <div
                 [ngClass]="{ collapsed: groupCollapseList[i] }"
                 class="accordian"
@@ -102,29 +96,8 @@
                   alt=""
                   (click)="groupCollapseList[i] = !groupCollapseList[i]"
                 />
-                <!-- <div class="group-level-actions">
-                  <div
-                    (click)="groupCollapseList[i] = true"
-                    *ngIf="!groupCollapseList[i]"
-                  >
-                    Collapse
-                  </div>
-                  <div
-                    (click)="groupCollapseList[i] = false"
-                    *ngIf="groupCollapseList[i]"
-                  >
-                    Expand
-                  </div>
-                  <div (click)="deleteGroup(waveType)">Delete</div>
-                </div> -->
               </div>
               <!-- group level actions ends -->
-
-              <!-- <div
-                class="group-name-wrapper"
-                (mouseenter)="groupNameEnter(waveType)"
-                (mouseleave)="waveType.edit = false"
-              > -->
               <div class="group-name-wrapper">
                 <div class="group-name common-text">
                   {{ waveType.name }}
@@ -188,33 +161,6 @@
                 <span class="medium-text list-header-text">Name</span>
               </div>
               <div class="flex-lay">
-                <!-- <div
-                  class="cell-width"
-                  *ngIf="getWorkflowType() === 'time'"
-                >
-                  <span
-                    class="medium-text list-header-text"
-                    >Start Date</span
-                  >
-                </div>
-                <div
-                  class="cell-width"
-                  *ngIf="getWorkflowType() === 'time'"
-                >
-                  <span
-                    class="medium-text list-header-text"
-                    >End Date</span
-                  >
-                </div>
-                <div
-                  class="cell-width"
-                  *ngIf="getWorkflowType() === 'trigger'"
-                >
-                  <span
-                    class="medium-text list-header-text"
-                    >Trigger</span
-                  >
-                </div> -->
                 <div *ngIf="!isMobile" class="cell-width">
                   <span class="medium-text list-header-text">Status</span>
                 </div>
@@ -263,56 +209,11 @@
               cdkDrag
             >
               <div class="template-name">
-                <!-- template level actions starts -->
-                <!-- <div class="row-starter">
-                  <div (click)="$event.stopPropagation()" class="accordian">
-                    <img src="assets/imgs/chevron-down.svg" alt="" />
-                    <div class="group-level-actions">
-                      <div (click)="deleteTemplate(waveType, template)">
-                        Delete
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
-                <!-- template level actions starts -->
-
-                <!-- <div class="grid-start-line border-white"></div> -->
                 <div class="border-white template-name-main">
                   <span class="cell-text common-text">{{ template.name }}</span>
                 </div>
               </div>
               <div class="flex-lay">
-                <!-- <div
-                  class="flex-center plugin-val"
-                >
-                  <span class="cell-text common-text">{{
-                    template.plugin
-                  }}</span>
-                </div>
-                <div
-                  *ngIf="getWorkflowType() === 'time'"
-                  class="border-white template-start flex-center left-margin-20"
-                >
-                  <span class="cell-text common-text">{{
-                    template.startDate
-                  }}</span>
-                </div>
-                <div
-                  *ngIf="getWorkflowType() === 'time'"
-                  class="border-white template-end flex-center"
-                >
-                  <span class="cell-text common-text">{{
-                    template.endDate
-                  }}</span>
-                </div>
-                <div
-                  *ngIf="getWorkflowType() === 'trigger'"
-                  class="border-white template-end flex-center"
-                >
-                  <span class="cell-text common-text">{{
-                    template.trigger
-                  }}</span>
-                </div> -->
                 <div
                   *ngIf="!isMobile"
                   class="border-white template-status"
@@ -379,26 +280,6 @@
             <div class="template__row item row-items">
               <!-- add new template start -->
               <div class="template-name">
-                <!-- <div class="row-starter"></div>
-                <div class="grid-start-line border-white"></div> -->
-                <!-- <div class="border-white template-name-main">
-                  <input
-                    (focus)="stage.showAdd = true"
-                    (focusout)="inputFocusOut($event, stage)"
-                    class="template-add"
-                    (keydown.enter)="openDialog(addTaskModal)"
-                    [(ngModel)]="stage.newTemplate"
-                    type="text"
-                    placeholder="+ Add"
-                  />
-                </div>
-                <div
-                  *ngIf="stage.showAdd"
-                  (click)="openDialog(addTaskModal)"
-                  class="template-add-button"
-                >
-                  Add
-                </div> -->
                 <span
                   class="common-text add-new-text"
                   (click)="addTemplate(waveType)"
