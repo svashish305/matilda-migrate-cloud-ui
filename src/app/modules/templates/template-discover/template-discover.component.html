@@ -140,18 +140,23 @@
               <img
                 class="pointer-cursor task-collapser"
                 [src]="
-                  taskCollapseList[j]
+                  taskCollapseList[i + '_' + j]
                     ? 'assets/imgs/chevron-down.svg'
                     : 'assets/imgs/chevron-up.svg'
                 "
                 alt=""
-                (click)="taskCollapseList[j] = !taskCollapseList[j]"
+                (click)="
+                  taskCollapseList[i + '_' + j] = !taskCollapseList[i + '_' + j]
+                "
               />
               <span class="make-it-blue right-padding-one-fourth-rem">{{
                 task.name
               }}</span>
               <span class="gray-text">({{ task.contents.length }})</span>
-              <div class="task-indented" [ngbCollapse]="taskCollapseList[j]">
+              <div
+                class="task-indented"
+                [ngbCollapse]="taskCollapseList[i + '_' + j]"
+              >
                 <mat-checkbox></mat-checkbox>
                 <span class="left-padding-half-rem">Select All</span>
                 <div *ngFor="let content of task.contents">
@@ -197,13 +202,18 @@
                     : 'assets/imgs/chevron-up.svg'
                 "
                 alt=""
-                (click)="taskCollapseList[j] = !taskCollapseList[j]"
+                (click)="
+                  taskCollapseList[i + '_' + j] = !taskCollapseList[i + '_' + j]
+                "
               />
               <span class="make-it-blue right-padding-one-fourth-rem">{{
                 task.name
               }}</span>
               <span class="gray-text">({{ task.contents.length }})</span>
-              <div class="task-indented" [ngbCollapse]="taskCollapseList[i]">
+              <div
+                class="task-indented"
+                [ngbCollapse]="taskCollapseList[i + '_' + j]"
+              >
                 <mat-checkbox (click)="selectAll(source.tasks)"></mat-checkbox>
                 <span class="left-padding-half-rem">Select All</span>
                 <div *ngFor="let content of task.contents">
