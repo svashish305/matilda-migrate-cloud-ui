@@ -57,11 +57,14 @@ export class TemplateDiscoverComponent implements OnInit {
   }
 
   getCheckboxState(event, src, id) {
-    let sourceIndex = id.split('_')[0];
-    let taskIndex = id.split('_')[1];
-    let contentIndex = id.split('_')[2];
-    let contentToImport = this.selectedIPSources[sourceIndex].tasks[taskIndex]
-      .contents[contentIndex];
+    let contentToImport;
+    if (src === 'content') {
+      let sourceIndex = id.split('_')[0];
+      let taskIndex = id.split('_')[1];
+      let contentIndex = id.split('_')[2];
+      contentToImport = this.selectedIPSources[sourceIndex].tasks[taskIndex]
+        .contents[contentIndex];
+    }
     if (event.checked) {
       if (src === 'content') {
         if (!this.importContents.includes(contentToImport)) {
