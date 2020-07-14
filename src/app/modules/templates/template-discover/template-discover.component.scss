@@ -154,9 +154,22 @@ mat-card {
   font-size: 1.406rem !important;
   top: 25px;
   position: absolute;
+  padding-bottom: 1rem;
+  width: calc(100% - 120px);
+  border-bottom: solid 1px var(--btn-lightgray-border);
+}
+
+.sidebar-content {
+  position: absolute;
+  top: 90px;
+  height: 79vh;
+  width: calc(100% - 120px);
 }
 
 .sidebar-actions {
   position: absolute;
   bottom: 1rem;
+  padding-top: 1rem;
+  width: calc(100% - 120px);
+  border-top: solid 1px var(--btn-lightgray-border);
 }
