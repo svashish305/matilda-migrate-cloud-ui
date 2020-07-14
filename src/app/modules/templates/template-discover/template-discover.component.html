@@ -164,6 +164,7 @@
                 <span class="left-padding-half-rem">Select All</span>
                 <div *ngFor="let content of task.contents; let k = index">
                   <mat-checkbox
+                    (click)="contentClicked(i, j, k)"
                     [(ngModel)]="contentSelectList[i + '_' + j + '_' + k]"
                   ></mat-checkbox>
                   <span class="left-padding-half-rem">{{ content.name }}</span>
@@ -224,8 +225,11 @@
                   [(ngModel)]="taskSelectList[i + '_' + j]"
                 ></mat-checkbox>
                 <span class="left-padding-half-rem">Select All</span>
-                <div *ngFor="let content of task.contents">
-                  <mat-checkbox></mat-checkbox>
+                <div *ngFor="let content of task.contents; let k = index">
+                  <mat-checkbox
+                    (click)="contentClicked(i, j, k)"
+                    [(ngModel)]="contentSelectList[i + '_' + j + '_' + k]"
+                  ></mat-checkbox>
                   <span class="left-padding-half-rem">{{ content.name }}</span>
                 </div>
               </div>

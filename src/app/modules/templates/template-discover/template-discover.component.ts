@@ -83,8 +83,19 @@ export class TemplateDiscoverComponent implements OnInit {
     let task = currentTasks[taskIndex];
     let currentContents = task.contents;
     for (let i = 0; i < currentContents.length; i++) {
-      this.contentSelectList[sourceIndex + '_' + taskIndex + '_' + i] = !this
-        .contentSelectList[sourceIndex + '_' + taskIndex + '_' + i];
+      if (!this.taskSelectList[sourceIndex + '_' + taskIndex]) {
+        this.contentSelectList[sourceIndex + '_' + taskIndex + '_' + i] = true;
+      } else {
+        this.contentSelectList[sourceIndex + '_' + taskIndex + '_' + i] = false;
+      }
+    }
+  }
+
+  contentClicked(sourceIndex, taskIndex, contentIndex) {
+    if (
+      this.contentSelectList[sourceIndex + '_' + taskIndex + '_' + contentIndex]
+    ) {
+      this.taskSelectList[sourceIndex + '_' + taskIndex] = false;
     }
   }
 }
