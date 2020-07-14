@@ -163,6 +163,8 @@ mat-card {
   position: absolute;
   top: 90px;
   height: 79vh;
+  overflow-y: auto;
+  overflow-x: hidden;
   width: calc(100% - 120px);
 }
 
@@ -172,9 +174,6 @@ mat-card {
   margin-bottom: 1rem;
   padding: 0.5rem;
   background-color: var(--primary-light-bg);
-}
-
-.import-card-title {
 }
 
 .sidebar-actions {
