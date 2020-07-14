@@ -297,12 +297,6 @@
               class="task-indented"
               [ngbCollapse]="taskCollapseList[si + '_' + sj]"
             >
-              <mat-checkbox
-                (click)="selectAll(si, sj)"
-                (change)="getCheckboxState($event, 'task', si + '_' + sj)"
-                [(ngModel)]="taskSelectList[si + '_' + sj]"
-              ></mat-checkbox>
-              <span class="left-padding-half-rem">Select All</span>
               <div *ngFor="let content of task.contents; let sk = index">
                 <mat-checkbox
                   (click)="contentClicked(si, sj, sk)"
