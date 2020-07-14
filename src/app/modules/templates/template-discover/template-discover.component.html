@@ -164,8 +164,7 @@
                 <span class="left-padding-half-rem">Select All</span>
                 <div *ngFor="let content of task.contents; let k = index">
                   <mat-checkbox
-                    (click)="selectContentUnderTask(i, j, k)"
-                    [(checked)]="contentSelectList[i + '_' + j + '_' + k]"
+                    [(ngModel)]="contentSelectList[i + '_' + j + '_' + k]"
                   ></mat-checkbox>
                   <span class="left-padding-half-rem">{{ content.name }}</span>
                 </div>

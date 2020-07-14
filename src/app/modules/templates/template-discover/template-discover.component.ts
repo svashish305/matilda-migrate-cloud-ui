@@ -87,16 +87,4 @@ export class TemplateDiscoverComponent implements OnInit {
         .contentSelectList[sourceIndex + '_' + taskIndex + '_' + i];
     }
   }
-
-  selectContentUnderTask(sourceIndex, taskIndex, contentIndex) {
-    this.contentSelectList[
-      sourceIndex + '_' + taskIndex + '_' + contentIndex
-    ] = !this.contentSelectList[
-      sourceIndex + '_' + taskIndex + '_' + contentIndex
-    ];
-    console.log(
-      'content status ',
-      this.contentSelectList[sourceIndex + '_' + taskIndex + '_' + contentIndex]
-    );
-  }
 }
