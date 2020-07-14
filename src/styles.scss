@@ -258,6 +258,10 @@ body {
   padding: 12px 0 12px 0;
 }
 
+.tb-padding-half-rem {
+  padding: 0.5rem 0;
+}
+
 .left-padding-24 {
   padding-left: 24px;
 }
@@ -280,6 +284,11 @@ body {
 // end of custom paddings
 
 // misc common styles
+.img-right {
+  position: absolute;
+  right: 1rem;
+}
+
 .make-it-blue {
   color: var(--primary-light) !important;
 }

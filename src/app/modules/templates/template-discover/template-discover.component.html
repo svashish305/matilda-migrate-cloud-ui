@@ -261,10 +261,20 @@
         <span class="common-text">Import List</span>
       </div>
       <div class="sidebar-content">
-        {{ importedArray | json }}
-        <!-- <mat-card *ngFor="let source of c">
-          {{ source.name }}
-        </mat-card> -->
+        <div class="import-card" *ngFor="let source of selectedIPSources">
+          <div class="common-text import-card-title">
+            <span class="make-it-blue">{{ source.name }}</span>
+            <span class="left-padding-24">IP&nbsp;:&nbsp;</span>
+            <span class="make-it-blue">{{ selectedIPAddress }}</span>
+            <img class="img-right" src="assets/imgs/delete.svg" alt="delete" />
+          </div>
+          <div class="tb-padding-half-rem">
+            <mat-divider></mat-divider>
+          </div>
+          <div *ngFor="let task of source.tasks">
+            {{ task | json }}
+          </div>
+        </div>
       </div>
       <div class="sidebar-actions">
         <button

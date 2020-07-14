@@ -166,6 +166,17 @@ mat-card {
   width: calc(100% - 120px);
 }
 
+.import-card {
+  border: solid 1px var(--primary-light);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: var(--primary-light-bg);
+}
+
+.import-card-title {
+}
+
 .sidebar-actions {
   position: absolute;
   bottom: 1rem;

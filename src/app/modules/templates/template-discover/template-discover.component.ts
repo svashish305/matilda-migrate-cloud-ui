@@ -51,13 +51,13 @@ export class TemplateDiscoverComponent implements OnInit {
     this.dataService.getApp(appId).subscribe((res: any) => {
       this.selectedApp = res;
       this.selectedIPAddress = this.selectedApp.IP[0].address;
+      this.selectedIPSources = this.selectedApp.IP[0].sources;
     });
     this.accountClicked = true;
   }
 
   getCheckboxState(event, src, id) {
     if (event.checked) {
-      console.log('checkbox details ', src, id);
       this.importedArray.push({ src, id });
       this.showSidebar = true;
     } else {
