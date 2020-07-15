@@ -46,6 +46,7 @@
       color: #fff;
       margin-left: 2em;
       font-size: 1.5em;
+      text-transform: uppercase;
     }
   }
 
@@ -123,7 +124,15 @@
   }
 
   .matilda-text {
-    display: none;
+    visibility: visible;
+    color: #fff;
+    text-transform: uppercase;
+    position: absolute;
+    font-size: 1.25rem;
+    position: absolute;
+    margin-top: -26px;
+    margin-left: 3em;
+    font-size: 1.25rem;
   }
 
   .sidenav__wrapper:hover {
