@@ -159,15 +159,15 @@ export class TemplateDiscoverComponent implements OnInit {
     newGroup['name'] = this.selectedApp.name + ' : ' + this.selectedIPAddress;
     for (let i = 0; i < this.importContents.length; i++) {
       let taskId = uuid.v4();
+      let taskName = this.importContents[i].name;
       let newTask = {
         id: taskId,
         ...new Item(),
       };
-      newTask['name'] = this.importContents[i].name;
+      newTask['name'] = taskName;
       newGroup.items.push(newTask);
     }
     originalGroups.push(newGroup);
-    // this.currTemplate.groups = originalGroups
     let modifiedTemplate = { groups: originalGroups, ...this.currTemplate };
     // console.log('new template ', modifiedTemplate);
 
