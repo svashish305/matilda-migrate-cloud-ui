@@ -19,6 +19,11 @@
     border-top-color: #fff;
   }
 
+  .matilda-logo {
+    position: relative;
+    left: 24px;
+  }
+
   .migrate-section {
     display: flex;
   }
@@ -33,7 +38,7 @@
 
     .close-btn {
       position: absolute;
-      left: 24px;
+      left: 16px; //24
     }
 
     .logo {
@@ -51,7 +56,7 @@
   }
 
   .pos-migrate-text {
-    width: 119px;
+    width: 37.5px;
     height: 58px;
     display: flex;
     align-items: center;
