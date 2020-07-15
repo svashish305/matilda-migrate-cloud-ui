@@ -89,6 +89,12 @@ export class MainLeftNavbarComponent implements OnInit {
     };
   }
 
+  addFocusColor(migrateCollapsed) {
+    return {
+      backgroundColor: !migrateCollapsed ? 'cornflowerblue' : 'initial',
+    };
+  }
+
   addTemplate() {
     const id = uuid.v4();
     const newTemplate = {
