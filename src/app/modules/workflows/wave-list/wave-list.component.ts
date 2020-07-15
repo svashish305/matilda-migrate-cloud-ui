@@ -8,7 +8,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { DataService } from 'src/services/data.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ThemePalette } from '@angular/material/core';
 import {
@@ -46,7 +45,6 @@ export class WaveListComponent implements OnInit {
   accountCollapseState: Map<any, boolean> = new Map();
   selectedAccount: any;
 
-  editAccountFormGroup: FormGroup;
   accountProvider: any;
   accountName: string;
   accountClientID: any;
@@ -54,12 +52,6 @@ export class WaveListComponent implements OnInit {
 
   rightSidebarToggleState: boolean = false;
   selectedTemplateInSidebar: any;
-
-  providers: SelectInterface[] = [
-    { value: 'AWS', viewValue: 'AWS' },
-    { value: 'p-1', viewValue: 'Pizza' },
-    { value: 'p-2', viewValue: 'Tacos' },
-  ];
 
   workflowTypes: SelectInterface[] = [
     { value: 'time', viewValue: 'Time' },
@@ -80,7 +72,6 @@ export class WaveListComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
-    private _formBuilder: FormBuilder,
     public dialog: MatDialog,
     private router: Router
   ) {
