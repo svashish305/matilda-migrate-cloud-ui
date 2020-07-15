@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NotificationsService } from 'angular2-notifications';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 declare var require: any;
 interface SelectInterface {
   value: string;
@@ -31,15 +31,13 @@ export class EditTaskTemplateComponent implements OnInit {
   selectedFormat;
   selectedDataType;
   dataFile = {"foo": "test", "bar": 2};
-  schemaFile = {
-    "properties": {
-      "foo": { "type": "string" },
-      "bar": { "type": "number", "maximum": 3 }
+  schemaFile = {"properties": {"foo": { "type": "string" },"bar": { "type": "number", "maximum": 3 }
     }
   };
   dataFileJ;
   schemaFileJ;
   dataFileY;
+  testVar: any;
   constructor(private _notificationService: NotificationsService,private _formBuilder: FormBuilder,) { }
 
   ngOnInit() {
@@ -51,7 +49,11 @@ export class EditTaskTemplateComponent implements OnInit {
     this.form = this._formBuilder.group({
       format: ['', Validators.required],
       dataType: ['', Validators.nullValidator],
-      formatDataJson: ['', Validators.nullValidator],
+    //   formatDataJson: ['', Validators.compose([
+    //     Validators.required,      
+    //     this.isValidJSONFormat.bind(this)
+    // ]),],
+      formatDataJson:['',Validators.nullValidator],
       formatDataSchema: ['', Validators.nullValidator],
       formatDataYaml:['',Validators.nullValidator]    
     });
@@ -155,4 +157,21 @@ export class EditTaskTemplateComponent implements OnInit {
   get formatDataYaml() {
     return this.form.get('formatDataYaml');
   }
+
+  isValidJSONFormat(event,formType){
+   if(formType == 'data'){
+    let json= event.formatDataJson;    
+    let obj = JSON.parse(json);
+    let formattedJson = JSON.stringify(obj, null, 2);
+   this.form.controls['formatDataJson'].setValue(formattedJson);
+   }
+   if(formType == 'schema'){
+    let schema= event.formatDataSchema;    
+    let obj = JSON.parse(schema);
+    let formattedJson = JSON.stringify(obj, null, 2);
+   this.form.controls['formatDataSchema'].setValue(formattedJson);
+   }   
+    
+    }  
+ 
 }

@@ -441,7 +441,7 @@
 
   .lalign-import-template-icon {
     position: absolute;
-    left: 24px;
+    left: -62px;
   }
 
   .import-list-scroll-control {
@@ -1080,7 +1080,7 @@
 
   .lalign-import-template-icon {
     position: absolute;
-    left: 24px;
+    left: -62px;
   }
 
   .import-list-scroll-control {
@@ -1238,6 +1238,24 @@
       background-color: #fff;
     }
   }
+  .avatar-dd-btn-task {
+    padding: 0;
+    border-radius: 50%;
+    width: 40px;
+    min-width: unset;
+
+    .edit-avatar-img {
+      position: absolute;
+      right: 45px;
+      // height: 19px;
+      // width: 21px;
+      top: 38px;
+      // padding: 0.25em;
+      border-radius: 50%;
+      // border: 1px solid var(--btn-lightgray-border);
+      background-color: #fff;
+    }
+  }
 
   .avatar-upload-option {
     height: 100%;
@@ -1287,7 +1305,36 @@
 #templateAvatarFile {
   display: none;
 }
+#taskAvatarFile {
+  display: none;
+}
+
 
 ::ng-deep.mat-button .mat-button-focus-overlay {
   background-color: transparent !important;
+}
+
+.descriptiontask-styles {
+  // overflow: hidden;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  border: solid 1.5px transparent;
+  border-radius: 4px;
+  // text-overflow: ellipsis;
+  width: 200px;
+}
+
+.descriptiontask-styles:hover {
+  border-color: lightgray;
+}
+
+.descriptiontask-styles:focus {
+  border-radius: 4px !important;
+  border-color: #1a73e8;
+}
+.text-danger{
+  color: red;
+  font-family: LatoMedium;
+  font-size: 0.875rem;
 }
