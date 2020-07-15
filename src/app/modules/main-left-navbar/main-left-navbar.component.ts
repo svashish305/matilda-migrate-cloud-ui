@@ -85,6 +85,7 @@ export class MainLeftNavbarComponent implements OnInit {
   addActiveInd(selected) {
     return {
       borderRight: selected ? '3px solid white' : 'none',
+      backgroundColor: selected ? 'cornflowerblue' : 'initial',
     };
   }
 
