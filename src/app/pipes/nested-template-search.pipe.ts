@@ -1,19 +1,19 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: "nestedTemplateSearch",
+  name: 'nestedTemplateSearch',
 })
 export class NestedTemplateSearchPipe implements PipeTransform {
   transform(value: any, args?: any): any {
-    const search = args ? args : "";
-    const rootFields = ["name", "status", "progress"];
+    const search = args ? args : '';
+    const rootFields = ['name', 'status', 'progress'];
     const childFields = [
-      "name",
-      "pluginName",
-      "status",
-      "progress",
-      "startDate",
-      "endDate",
+      'name',
+      'pluginName',
+      'status',
+      'progress',
+      'startDate',
+      'endDate',
     ];
     let rootFound = false;
     let childFound = false;
@@ -25,7 +25,7 @@ export class NestedTemplateSearchPipe implements PipeTransform {
       rootFields.forEach((rootFieldKey) => {
         if (
           !rootFound &&
-          typeof group[rootFieldKey] !== "object" &&
+          typeof group[rootFieldKey] !== 'object' &&
           group[rootFieldKey]
             .toString()
             .toLowerCase()

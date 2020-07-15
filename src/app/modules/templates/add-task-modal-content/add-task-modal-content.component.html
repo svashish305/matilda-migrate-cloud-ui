@@ -1,18 +1,31 @@
 <div class="modal-body">
   <!-- modal body -->
-  <mat-tab-group [@.disabled]="true">
+  <mat-tab-group>
     <mat-tab label="General">
-      <app-task-general-config [task]="task" (taskGeneralConfig)="taskGeneralConfig($event)" (closeWindow)="closeWindow($event)"></app-task-general-config>
+      <app-task-general-config
+        [task]="task"
+        (taskGeneralConfig)="taskGeneralConfig($event)"
+        (closeWindow)="closeWindow($event)"
+      ></app-task-general-config>
     </mat-tab>
     <mat-tab label="Input">
-      <app-task-input [task]="task" [dataSource]="pluginFields" (saveConfig)="saveConfig($event)" (closeWidget)="closeWindow($event)"></app-task-input>
+      <app-task-input
+        [task]="task"
+        [dataSource]="pluginFields"
+        (saveConfig)="saveConfig($event)"
+        (closeWidget)="closeWindow($event)"
+      ></app-task-input>
     </mat-tab>
     <mat-tab label="Output">
       <app-task-output></app-task-output>
     </mat-tab>
-    <mat-tab label="Stack">    
-        <app-edit-task-template [task]="task" (taskTemplateFormat)="taskTemplateFormat($event)" (closeWindow)="closeWindow($event)"></app-edit-task-template>       
+    <mat-tab label="Stack">
+      <app-edit-task-template
+        [task]="task"
+        (taskTemplateFormat)="taskTemplateFormat($event)"
+        (closeWindow)="closeWindow($event)"
+      ></app-edit-task-template>
     </mat-tab>
-  </mat-tab-group>  
+  </mat-tab-group>
   <!-- end of modal body -->
 </div>

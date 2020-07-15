@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { Location } from "@angular/common";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-top-header",
-  templateUrl: "./top-header.component.html",
-  styleUrls: ["./top-header.component.scss"],
+  selector: 'app-top-header',
+  templateUrl: './top-header.component.html',
+  styleUrls: ['./top-header.component.scss'],
 })
 export class TopHeaderComponent implements OnInit {
   unreadNotifications = false;
@@ -13,7 +13,7 @@ export class TopHeaderComponent implements OnInit {
 
   constructor(private location: Location, private router: Router) {
     this.router.events.subscribe((val) => {
-      if (location.path().includes("hub")) {
+      if (location.path().includes('hub')) {
         this.onHub = true;
       } else {
         this.onHub = false;
@@ -26,7 +26,7 @@ export class TopHeaderComponent implements OnInit {
   }
 
   goToHub() {
-    this.router.navigate(["/hub"]);
+    this.router.navigate(['/hub']);
   }
   openUserSettings(){
 

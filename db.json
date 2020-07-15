@@ -3115,6 +3115,12 @@
           "name": "Name1",
           "value": "Value1",
           "modifiedDate": "2020-06-12T14:29:18"
+        },
+        {
+          "id": "bc896661-6ad4-473a-b526-7986d4cc0331",
+          "name": "name2 ",
+          "value": "value2",
+          "modifiedDate": null
         }
       ],
       "keyVault": [
@@ -3147,7 +3153,7 @@
       "name": "Template 1",
       "desc": "Template Description",
       "ver": "templateVersionNumber",
-      "type": "NONE/TRIGGER/EVENT",
+      "type": "trigger",
       "owner": "TEMPLATE OWNER",
       "progress": 10,
       "status": "Defined",
@@ -3478,6 +3484,11 @@
           "name": "Name1",
           "value": "Value1",
           "modifiedDate": "2020-06-12T14:29:18"
+        },
+        {
+          "id": "7be4c75a-0828-4c04-a3fb-4dcca4fe0d47",
+          "name": "Name 2",
+          "value": "Value 2"
         }
       ],
       "modifiedDate": "2020-06-12T14:29:18"
@@ -4838,6 +4849,12 @@
           "name": "Name1",
           "value": "Value1",
           "modifiedDate": "2020-06-12T14:29:18"
+        },
+        {
+          "id": "27d13168-c757-40c5-8495-1f771cfcf13e",
+          "name": "Name2",
+          "value": "Value2",
+          "modifiedDate": null
         }
       ],
       "modifiedDate": "2020-06-12T14:29:18"

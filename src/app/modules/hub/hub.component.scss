@@ -1,8 +1,4 @@
 @media only screen and (max-width: 426px) {
-  // .hub-container {
-  //   margin: 0 2.3em 0 1em;
-  // }
-
   #hub-tab {
     z-index: 1;
     position: relative;
@@ -48,7 +44,6 @@
   }
 
   .all-templates {
-    // height: 67vh;
     height: 72vh;
     overflow-y: scroll;
   }
@@ -85,7 +80,6 @@
     top: 3px;
     font-family: LatoRegular;
     font-size: 0.875em;
-    // line-height: 1.375em;
     letter-spacing: 0;
     color: var(--primary-light);
   }
@@ -214,8 +208,6 @@
 
 @media only screen and (min-width: 427px) {
   .hub-container {
-    // border-top: 1px solid var(--grayed-border);
-    // margin: 0 84px 0 24px;
     margin: 0 40px 0 24px; //40
   }
 
@@ -301,7 +293,6 @@
     top: 3px;
     font-family: LatoRegular;
     font-size: 1em; // 0.875em;
-    // line-height: 1.375em;
     letter-spacing: 0;
     color: var(--primary-light);
   }
@@ -314,7 +305,6 @@
     line-height: 1.375em;
     letter-spacing: 0;
     color: var(--primary-light);
-    // padding-right: 1em;
     padding-right: 0.65em;
   }
 
@@ -326,7 +316,6 @@
     line-height: 1.375em;
     letter-spacing: 0;
     color: var(--primary-light);
-    // padding-right: 10px;
     padding-right: 4px;
   }
 
@@ -386,8 +375,6 @@
 
   mat-card {
     cursor: pointer;
-    // width: 27.938em;
-    // height: 6.438em;
     width: 26em;
     height: 6em;
     margin: 12px;

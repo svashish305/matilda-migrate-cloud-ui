@@ -1,7 +1,7 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: "naiveSearch",
+  name: 'naiveSearch',
 })
 export class NaiveSearchPipe implements PipeTransform {
   transform(value: any, args?: any): any {
