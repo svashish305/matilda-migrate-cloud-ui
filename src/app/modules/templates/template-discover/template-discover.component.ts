@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { DataService } from 'src/services/data.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Item, Group } from 'src/app/models/data.model';
+import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-template-discover',
@@ -25,7 +28,15 @@ export class TemplateDiscoverComponent implements OnInit {
   importContents: any[] = [];
   showSidebar = false;
 
-  constructor(private location: Location, private dataService: DataService) {
+  templateId: any;
+  currTemplate: any;
+
+  constructor(
+    private location: Location,
+    private router: Router,
+    private route: ActivatedRoute,
+    private dataService: DataService
+  ) {
     for (let i = 0; i < this.MAXN; i++) {
       this.sourceSelectList.push(false);
       this.taskSelectList.push(false);
@@ -34,6 +45,14 @@ export class TemplateDiscoverComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.params.subscribe((params: any) => {
+      this.templateId = params.templateId;
+    });
+
+    this.dataService.getTemplate(this.templateId).subscribe((template: any) => {
+      this.currTemplate = template;
+    });
+
     this.getApps();
   }
 
@@ -131,6 +150,32 @@ export class TemplateDiscoverComponent implements OnInit {
   }
 
   import() {
-    console.log('import clicked!');
+    let originalGroups: any = this.currTemplate.groups;
+    let groupId = uuid.v4();
+    let newGroup = {
+      id: groupId,
+      ...new Group(),
+    };
+    newGroup['name'] = this.selectedApp.name + ' : ' + this.selectedIPAddress;
+    for (let i = 0; i < this.importContents.length; i++) {
+      let taskId = uuid.v4();
+      let newTask = {
+        id: taskId,
+        ...new Item(),
+      };
+      newTask['name'] = this.importContents[i].name;
+      newGroup.items.push(newTask);
+    }
+    originalGroups.push(newGroup);
+    // this.currTemplate.groups = originalGroups
+    let modifiedTemplate = { groups: originalGroups, ...this.currTemplate };
+    // console.log('new template ', modifiedTemplate);
+
+    this.dataService
+      .updateTemplate(this.templateId, modifiedTemplate)
+      .subscribe((newTemplate: any) => {
+        this.currTemplate = newTemplate;
+      });
+    this.router.navigate([`/templates/${this.templateId}`]);
   }
 }
