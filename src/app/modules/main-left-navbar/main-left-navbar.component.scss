@@ -119,27 +119,6 @@
     display: none;
   }
 
-  .strict-collapse {
-    width: 20px;
-    height: 20px;
-    top: 5px;
-    border: 1px solid #f7f7f7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    position: absolute;
-    right: -14px;
-    z-index: 1;
-    border-radius: 50%;
-    cursor: pointer;
-    img {
-      width: 25px;
-      height: 25px;
-    }
-    transform: rotate(180deg) !important;
-  }
-
   .close-btn {
     display: none;
     // width: 20px;
@@ -187,7 +166,7 @@
     position: absolute;
     font-size: 1.25rem;
     position: relative;
-    margin-top: -25px;
+    margin-top: -28px;
     margin-left: 3em;
     font-size: 1.25rem;
   }
