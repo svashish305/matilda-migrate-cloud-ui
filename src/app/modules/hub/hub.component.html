@@ -5,27 +5,32 @@
     </mat-tab>
     <mat-tab label="Template">
       <div class="align-searchbox">
-        <form>
-          <mat-form-field
-            id="mat-search"
-            floatLabel="never"
-            class="mat-typography full-width"
-          >
-            <img
-              matPrefix
-              src="assets/imgs/search-2.svg"
-              alt="search-icon"
-              class="new-search-icon"
-            />
-            <input
-              matInput
-              placeholder="Search"
-              type="search"
-              name="test"
-              [(ngModel)]="searchKey"
-            />
-          </mat-form-field>
-        </form>
+        <div class="row">
+          <div class="col-sm-8"></div>
+          <div class="col-sm-4">
+            <form>
+              <mat-form-field
+                id="mat-search"
+                floatLabel="never"
+                class="mat-typography full-width"
+              >
+                <img
+                  matPrefix
+                  src="assets/imgs/search-2.svg"
+                  alt="search-icon"
+                  class="new-search-icon"
+                />
+                <input
+                  matInput
+                  placeholder="Search"
+                  type="search"
+                  name="test"
+                  [(ngModel)]="searchKey"
+                />
+              </mat-form-field>
+            </form>
+          </div>
+        </div>
       </div>
 
       <div class="all-templates">
@@ -54,7 +59,7 @@
           </div>
 
           <div *ngIf="!isTemplateFavouritesCollapsed" class="grid-container">
-            <mat-card *ngFor="let favTemplate of favTemplates; let i = index">
+            <mat-card *ngFor="let favTemplate of favTemplates; let i = index" class="mat-elevation-z8">
               <div>
                 <ngx-avatar
                   [size]="!isMobile ? 56 : 68"
@@ -114,7 +119,7 @@
           </div>
 
           <div *ngIf="!isTemplateCollapsed" class="grid-container">
-            <mat-card
+            <mat-card class="mat-elevation-z8"
               *ngFor="let template of templates | search: searchKey"
               (click)="goToTemplate(template.id)"
             >
@@ -158,29 +163,33 @@
     </mat-tab>
     <mat-tab label="Workflow">
       <div class="align-searchbox">
-        <form>
-          <mat-form-field
-            id="mat-search"
-            floatLabel="never"
-            class="mat-typography full-width"
-          >
-            <img
-              matPrefix
-              src="assets/imgs/search-2.svg"
-              alt="search-icon"
-              class="new-search-icon"
-            />
-            <input
-              matInput
-              placeholder="Search"
-              type="search"
-              name="test"
-              [(ngModel)]="searchKey"
-            />
-          </mat-form-field>
-        </form>
-      </div>
-
+        <div class="row">
+          <div class="col-sm-8"></div>
+          <div class="col-sm-4">
+            <form>
+              <mat-form-field
+                id="mat-search"
+                floatLabel="never"
+                class="mat-typography full-width"
+              >
+                <img
+                  matPrefix
+                  src="assets/imgs/search-2.svg"
+                  alt="search-icon"
+                  class="new-search-icon"
+                />
+                <input
+                  matInput
+                  placeholder="Search"
+                  type="search"
+                  name="test"
+                  [(ngModel)]="searchKey"
+                />
+              </mat-form-field>
+            </form>
+          </div>
+        </div>
+      </div>   
       <div class="all-templates">
         <div>
           <div
@@ -207,7 +216,7 @@
           </div>
 
           <div *ngIf="!isWorkflowFavouritesCollapsed" class="grid-container">
-            <mat-card *ngFor="let favWorkflow of favWorkflows">
+            <mat-card *ngFor="let favWorkflow of favWorkflows" class="mat-elevation-z8">
               <div>
                 <ngx-avatar
                   [size]="!isMobile ? 56 : 68"
@@ -271,7 +280,7 @@
           </div>
 
           <div *ngIf="!isWorkflowCollapsed" class="grid-container">
-            <mat-card
+            <mat-card class="mat-elevation-z8"
               *ngFor="let workflow of workflows | search: searchKey"
               (click)="goToWorkflow(workflow.id)"
             >

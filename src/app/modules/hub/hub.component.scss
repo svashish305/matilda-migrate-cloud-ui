@@ -28,8 +28,8 @@
   }
 
   .align-searchbox {
-    margin-top: 25px;
-    width: 24.75em;
+    width: 80.813em !important;
+    text-align: right;
   }
 
   .new-search-icon {
@@ -234,12 +234,9 @@
   }
 
   .align-searchbox {
-    margin-top: 25px;
-    // width: 39.75em;
-    width: 23.813em !important;
-    margin-left: 910px;
+    width: 80.813em !important;
+    text-align: right;
   }
-
   .new-search-icon {
     position: relative;
     bottom: 2px;
@@ -438,7 +435,12 @@
     width: fit-content;
   }
 }
-
+@media only screen and (max-width: 1024px) {
+  .align-searchbox {
+    width: 63.813em !important;
+    text-align: right;
+  }
+}
 // common styles
 #fileInput {
   display: none;
