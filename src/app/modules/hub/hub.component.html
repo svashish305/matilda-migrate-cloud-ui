@@ -1,331 +1,337 @@
 <div class="hub-container">
   <mat-tab-group id="hub-tab">
     <mat-tab label="Dashboard">
+      <div class="tab-content">
+
+      </div>
       <!-- dashboard tab content -->
     </mat-tab>
     <mat-tab label="Template">
-      <div class="align-searchbox">
-        <div class="row">
-          <div class="col-sm-8"></div>
-          <div class="col-sm-4">
-            <form>
-              <mat-form-field
-                id="mat-search"
-                floatLabel="never"
-                class="mat-typography full-width"
-              >
-                <img
-                  matPrefix
-                  src="assets/imgs/search-2.svg"
-                  alt="search-icon"
-                  class="new-search-icon"
-                />
-                <input
-                  matInput
-                  placeholder="Search"
-                  type="search"
-                  name="test"
-                  [(ngModel)]="searchKey"
-                />
-              </mat-form-field>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      <div class="all-templates">
-        <div>
-          <div
-            class="set-margin-bottom"
-            (click)="
-              isTemplateFavouritesCollapsed = !isTemplateFavouritesCollapsed
-            "
-          >
-            <img
-              src="assets/imgs/favourite.svg"
-              alt="Favourites"
-              class="section-icon set-fav-margin-right"
-            />
-            <span class="label-text-fav">Favourites</span>
-            <img
-              class="collapse-icon section-icon"
-              [src]="
-                isTemplateFavouritesCollapsed
-                  ? 'assets/imgs/chevron-down.svg'
-                  : 'assets/imgs/chevron-up.svg'
-              "
-              alt=""
-            />
-          </div>
-
-          <div *ngIf="!isTemplateFavouritesCollapsed" class="grid-container">
-            <mat-card *ngFor="let favTemplate of favTemplates; let i = index" class="mat-elevation-z8">
-              <div>
-                <ngx-avatar
-                  [size]="!isMobile ? 56 : 68"
-                  name="{{ favTemplate.name }}"
-                  initialsSize="2"
+      <div class="tab-content">
+        <div class="align-searchbox">
+          <div class="row">
+            <div class="col-sm-8"></div>
+            <div class="col-sm-4">
+              <form>
+                <mat-form-field
+                  id="mat-search"
+                  floatLabel="never"
+                  class="mat-typography full-width"
                 >
-                </ngx-avatar>
-                <a (click)="toggleTemplateFavourite(favTemplate, $event)">
                   <img
-                    class="mark-fav-icon"
-                    [src]="
-                      templateFavStatus[favTemplate.id]
-                        ? 'assets/imgs/favourite.svg'
-                        : 'assets/imgs/unfavourite.svg'
-                    "
-                    alt="mark as favourite"
+                    matPrefix
+                    src="assets/imgs/search-2.svg"
+                    alt="search-icon"
+                    class="new-search-icon"
                   />
-                </a>
-                <span class="bold-text template-title">{{
-                  favTemplate.name
-                }}</span>
-                <span class="badge badge-pill badge-custom template-status">{{
-                  favTemplate.status
-                }}</span>
-                <div class="template-progress">
-                  <span class="common-text">Progress : </span>
-                  <mat-progress-bar
-                    value="{{ favTemplate.progress }}"
-                  ></mat-progress-bar>
-                  <span class="medium-text">{{ favTemplate.progress }}%</span>
-                </div>
-              </div>
-            </mat-card>
+                  <input
+                    matInput
+                    placeholder="Search"
+                    type="search"
+                    name="test"
+                    [(ngModel)]="searchKey"
+                  />
+                </mat-form-field>
+              </form>
+            </div>
           </div>
-        </div>
-
-        <div class="set-margin-top">
-          <div
-            class="set-margin-bottom"
-            (click)="isTemplateCollapsed = !isTemplateCollapsed"
-          >
-            <img
-              src="assets/imgs/bc-templates-blue.svg"
-              alt="Template"
-              class="set-margin-right template-icon"
-            />
-            <span class="label-text">Template</span>
-            <img
-              class="collapse-icon section-icon"
-              [src]="
-                isTemplateCollapsed
-                  ? 'assets/imgs/chevron-down.svg'
-                  : 'assets/imgs/chevron-up.svg'
+        </div>  
+        <div class="all-templates">
+          <div>
+            <div
+              class="set-margin-bottom"
+              (click)="
+                isTemplateFavouritesCollapsed = !isTemplateFavouritesCollapsed
               "
-              alt=""
-            />
-          </div>
-
-          <div *ngIf="!isTemplateCollapsed" class="grid-container">
-            <mat-card class="mat-elevation-z8"
-              *ngFor="let template of templates | search: searchKey"
-              (click)="goToTemplate(template.id)"
             >
-              <div>
-                <ngx-avatar
-                  [size]="!isMobile ? 56 : 68"
-                  name="{{ template.name }}"
-                  initialsSize="2"
-                ></ngx-avatar>
-                <a (click)="toggleTemplateFavourite(template, $event)">
-                  <img
-                    class="mark-fav-icon"
-                    [src]="
-                      templateFavStatus[template.id]
-                        ? 'assets/imgs/favourite.svg'
-                        : 'assets/imgs/unfavourite.svg'
-                    "
-                    alt="mark as favourite"
-                  />
-                </a>
-                <span class="bold-text template-title">{{
-                  template.name
-                }}</span>
-                <span
-                  class="badge badge-pill badge-custom template-status"
-                  [ngStyle]="setBadgeBgColor(template.status)"
-                  >{{ template.status }}</span
-                >
-                <div class="template-progress">
-                  <span class="common-text">Progress : </span>
-                  <mat-progress-bar
-                    value="{{ template.progress }}"
-                  ></mat-progress-bar>
-                  <span class="medium-text">{{ template.progress }}%</span>
+              <img
+                src="assets/imgs/favourite.svg"
+                alt="Favourites"
+                class="section-icon set-fav-margin-right"
+              />
+              <span class="label-text-fav">Favourites</span>
+              <img
+                class="collapse-icon section-icon"
+                [src]="
+                  isTemplateFavouritesCollapsed
+                    ? 'assets/imgs/chevron-down.svg'
+                    : 'assets/imgs/chevron-up.svg'
+                "
+                alt=""
+              />
+            </div>
+  
+            <div *ngIf="!isTemplateFavouritesCollapsed" class="grid-container">
+              <mat-card *ngFor="let favTemplate of favTemplates; let i = index" class="mat-elevation-z8">
+                <div>
+                  <ngx-avatar
+                    [size]="!isMobile ? 56 : 68"
+                    name="{{ favTemplate.name }}"
+                    initialsSize="2"
+                  >
+                  </ngx-avatar>
+                  <a (click)="toggleTemplateFavourite(favTemplate, $event)">
+                    <img
+                      class="mark-fav-icon"
+                      [src]="
+                        templateFavStatus[favTemplate.id]
+                          ? 'assets/imgs/favourite.svg'
+                          : 'assets/imgs/unfavourite.svg'
+                      "
+                      alt="mark as favourite"
+                    />
+                  </a>
+                  <span class="bold-text template-title">{{
+                    favTemplate.name
+                  }}</span>
+                  <span class="badge badge-pill badge-custom template-status">{{
+                    favTemplate.status
+                  }}</span>
+                  <div class="template-progress">
+                    <span class="common-text">Progress : </span>
+                    <mat-progress-bar
+                      value="{{ favTemplate.progress }}"
+                    ></mat-progress-bar>
+                    <span class="medium-text">{{ favTemplate.progress }}%</span>
+                  </div>
                 </div>
-              </div>
-            </mat-card>
+              </mat-card>
+            </div>
+          </div>
+  
+          <div class="set-margin-top">
+            <div
+              class="set-margin-bottom"
+              (click)="isTemplateCollapsed = !isTemplateCollapsed"
+            >
+              <img
+                src="assets/imgs/bc-templates-blue.svg"
+                alt="Template"
+                class="set-margin-right template-icon"
+              />
+              <span class="label-text">Template</span>
+              <img
+                class="collapse-icon section-icon"
+                [src]="
+                  isTemplateCollapsed
+                    ? 'assets/imgs/chevron-down.svg'
+                    : 'assets/imgs/chevron-up.svg'
+                "
+                alt=""
+              />
+            </div>
+  
+            <div *ngIf="!isTemplateCollapsed" class="grid-container">
+              <mat-card class="mat-elevation-z8"
+                *ngFor="let template of templates | search: searchKey"
+                (click)="goToTemplate(template.id)"
+              >
+                <div>
+                  <ngx-avatar
+                    [size]="!isMobile ? 56 : 68"
+                    name="{{ template.name }}"
+                    initialsSize="2"
+                  ></ngx-avatar>
+                  <a (click)="toggleTemplateFavourite(template, $event)">
+                    <img
+                      class="mark-fav-icon"
+                      [src]="
+                        templateFavStatus[template.id]
+                          ? 'assets/imgs/favourite.svg'
+                          : 'assets/imgs/unfavourite.svg'
+                      "
+                      alt="mark as favourite"
+                    />
+                  </a>
+                  <span class="bold-text template-title">{{
+                    template.name
+                  }}</span>
+                  <span
+                    class="badge badge-pill badge-custom template-status"
+                    [ngStyle]="setBadgeBgColor(template.status)"
+                    >{{ template.status }}</span
+                  >
+                  <div class="template-progress">
+                    <span class="common-text">Progress : </span>
+                    <mat-progress-bar
+                      value="{{ template.progress }}"
+                    ></mat-progress-bar>
+                    <span class="medium-text">{{ template.progress }}%</span>
+                  </div>
+                </div>
+              </mat-card>
+            </div>
           </div>
         </div>
-      </div>
+      </div>     
     </mat-tab>
     <mat-tab label="Workflow">
-      <div class="align-searchbox">
-        <div class="row">
-          <div class="col-sm-8"></div>
-          <div class="col-sm-4">
-            <form>
-              <mat-form-field
-                id="mat-search"
-                floatLabel="never"
-                class="mat-typography full-width"
-              >
-                <img
-                  matPrefix
-                  src="assets/imgs/search-2.svg"
-                  alt="search-icon"
-                  class="new-search-icon"
-                />
-                <input
-                  matInput
-                  placeholder="Search"
-                  type="search"
-                  name="test"
-                  [(ngModel)]="searchKey"
-                />
-              </mat-form-field>
-            </form>
-          </div>
-        </div>
-      </div>   
-      <div class="all-templates">
-        <div>
-          <div
-            class="set-margin-bottom"
-            (click)="
-              isWorkflowFavouritesCollapsed = !isWorkflowFavouritesCollapsed
-            "
-          >
-            <img
-              src="assets/imgs/favourite.svg"
-              alt="Favourites"
-              class="set-fav-margin-right section-icon"
-            />
-            <span class="label-text-fav">Favourites</span>
-            <img
-              class="collapse-icon section-icon"
-              [src]="
-                isWorkflowFavouritesCollapsed
-                  ? 'assets/imgs/chevron-down.svg'
-                  : 'assets/imgs/chevron-up.svg'
-              "
-              alt=""
-            />
-          </div>
-
-          <div *ngIf="!isWorkflowFavouritesCollapsed" class="grid-container">
-            <mat-card *ngFor="let favWorkflow of favWorkflows" class="mat-elevation-z8">
-              <div>
-                <ngx-avatar
-                  [size]="!isMobile ? 56 : 68"
-                  name="{{ favWorkflow.name }}"
-                  initialsSize="2"
-                ></ngx-avatar>
-                <a (click)="toggleWorkflowFavourite(favWorkflow, $event)">
-                  <img
-                    class="mark-fav-icon"
-                    [src]="
-                      workflowFavStatus[favWorkflow.id]
-                        ? 'assets/imgs/favourite.svg'
-                        : 'assets/imgs/unfavourite.svg'
-                    "
-                    alt="mark as favourite"
-                  />
-                </a>
-                <span class="bold-text template-title">{{
-                  favWorkflow.name
-                }}</span>
-                <img
-                  class="workflow-state-img"
-                  src="assets/imgs/wf-configured.svg"
-                  alt="Configured"
-                />
-                <span class="badge badge-pill badge-custom workflow-status">{{
-                  favWorkflow.status
-                }}</span>
-                <div class="workflow-progress">
-                  <span class="common-text">Progress : </span>
-                  <mat-progress-bar
-                    value="{{ favWorkflow.progress }}"
-                  ></mat-progress-bar>
-                  <span class="medium-text">{{ favWorkflow.progress }}%</span>
-                </div>
-              </div>
-            </mat-card>
-          </div>
-        </div>
-
-        <div class="set-margin-top">
-          <div
-            class="set-margin-bottom"
-            (click)="isWorkflowCollapsed = !isWorkflowCollapsed"
-          >
-            <img
-              src="assets/imgs/bc-workflows-blue.svg"
-              alt="Template"
-              class="set-margin-right template-icon"
-            />
-            <span class="wf-label-text">Workflow</span>
-            <img
-              class="collapse-icon section-icon"
-              [src]="
-                isWorkflowCollapsed
-                  ? 'assets/imgs/chevron-down.svg'
-                  : 'assets/imgs/chevron-up.svg'
-              "
-              alt=""
-            />
-          </div>
-
-          <div *ngIf="!isWorkflowCollapsed" class="grid-container">
-            <mat-card class="mat-elevation-z8"
-              *ngFor="let workflow of workflows | search: searchKey"
-              (click)="goToWorkflow(workflow.id)"
-            >
-              <div>
-                <ngx-avatar
-                  [size]="!isMobile ? 56 : 68"
-                  name="{{ workflow.name }}"
-                  initialsSize="2"
-                ></ngx-avatar>
-                <a (click)="toggleWorkflowFavourite(workflow, $event)">
-                  <img
-                    class="mark-fav-icon"
-                    [src]="
-                      workflowFavStatus[workflow.id]
-                        ? 'assets/imgs/favourite.svg'
-                        : 'assets/imgs/unfavourite.svg'
-                    "
-                    alt="mark as favourite"
-                  />
-                </a>
-                <span class="bold-text template-title">{{
-                  workflow.name
-                }}</span>
-                <img
-                  class="workflow-state-img"
-                  src="assets/imgs/wf-configured.svg"
-                  alt="Configured"
-                />
-                <span
-                  class="badge badge-pill badge-custom workflow-status"
-                  [ngStyle]="setBadgeBgColor(workflow.groups[0].status)"
-                  >{{ workflow.groups[0].status }}</span
+      <div class="tab-content">
+        <div class="align-searchbox">
+          <div class="row">
+            <div class="col-sm-8"></div>
+            <div class="col-sm-4">
+              <form>
+                <mat-form-field
+                  id="mat-search"
+                  floatLabel="never"
+                  class="mat-typography full-width"
                 >
-                <div class="workflow-progress">
-                  <span class="common-text">Progress : </span>
-                  <mat-progress-bar
-                    value="{{ workflow.progress }}"
-                  ></mat-progress-bar>
-                  <span class="medium-text">{{ workflow.progress }}%</span>
+                  <img
+                    matPrefix
+                    src="assets/imgs/search-2.svg"
+                    alt="search-icon"
+                    class="new-search-icon"
+                  />
+                  <input
+                    matInput
+                    placeholder="Search"
+                    type="search"
+                    name="test"
+                    [(ngModel)]="searchKey"
+                  />
+                </mat-form-field>
+              </form>
+            </div>
+          </div>
+        </div>   
+        <div class="all-templates">
+          <div>
+            <div
+              class="set-margin-bottom"
+              (click)="
+                isWorkflowFavouritesCollapsed = !isWorkflowFavouritesCollapsed
+              "
+            >
+              <img
+                src="assets/imgs/favourite.svg"
+                alt="Favourites"
+                class="set-fav-margin-right section-icon"
+              />
+              <span class="label-text-fav">Favourites</span>
+              <img
+                class="collapse-icon section-icon"
+                [src]="
+                  isWorkflowFavouritesCollapsed
+                    ? 'assets/imgs/chevron-down.svg'
+                    : 'assets/imgs/chevron-up.svg'
+                "
+                alt=""
+              />
+            </div>
+  
+            <div *ngIf="!isWorkflowFavouritesCollapsed" class="grid-container">
+              <mat-card *ngFor="let favWorkflow of favWorkflows" class="mat-elevation-z8">
+                <div>
+                  <ngx-avatar
+                    [size]="!isMobile ? 56 : 68"
+                    name="{{ favWorkflow.name }}"
+                    initialsSize="2"
+                  ></ngx-avatar>
+                  <a (click)="toggleWorkflowFavourite(favWorkflow, $event)">
+                    <img
+                      class="mark-fav-icon"
+                      [src]="
+                        workflowFavStatus[favWorkflow.id]
+                          ? 'assets/imgs/favourite.svg'
+                          : 'assets/imgs/unfavourite.svg'
+                      "
+                      alt="mark as favourite"
+                    />
+                  </a>
+                  <span class="bold-text template-title">{{
+                    favWorkflow.name
+                  }}</span>
+                  <img
+                    class="workflow-state-img"
+                    src="assets/imgs/wf-configured.svg"
+                    alt="Configured"
+                  />
+                  <span class="badge badge-pill badge-custom workflow-status">{{
+                    favWorkflow.status
+                  }}</span>
+                  <div class="workflow-progress">
+                    <span class="common-text">Progress : </span>
+                    <mat-progress-bar
+                      value="{{ favWorkflow.progress }}"
+                    ></mat-progress-bar>
+                    <span class="medium-text">{{ favWorkflow.progress }}%</span>
+                  </div>
                 </div>
-              </div>
-            </mat-card>
+              </mat-card>
+            </div>
+          </div>
+  
+          <div class="set-margin-top">
+            <div
+              class="set-margin-bottom"
+              (click)="isWorkflowCollapsed = !isWorkflowCollapsed"
+            >
+              <img
+                src="assets/imgs/bc-workflows-blue.svg"
+                alt="Template"
+                class="set-margin-right template-icon"
+              />
+              <span class="wf-label-text">Workflow</span>
+              <img
+                class="collapse-icon section-icon"
+                [src]="
+                  isWorkflowCollapsed
+                    ? 'assets/imgs/chevron-down.svg'
+                    : 'assets/imgs/chevron-up.svg'
+                "
+                alt=""
+              />
+            </div>
+  
+            <div *ngIf="!isWorkflowCollapsed" class="grid-container">
+              <mat-card class="mat-elevation-z8"
+                *ngFor="let workflow of workflows | search: searchKey"
+                (click)="goToWorkflow(workflow.id)"
+              >
+                <div>
+                  <ngx-avatar
+                    [size]="!isMobile ? 56 : 68"
+                    name="{{ workflow.name }}"
+                    initialsSize="2"
+                  ></ngx-avatar>
+                  <a (click)="toggleWorkflowFavourite(workflow, $event)">
+                    <img
+                      class="mark-fav-icon"
+                      [src]="
+                        workflowFavStatus[workflow.id]
+                          ? 'assets/imgs/favourite.svg'
+                          : 'assets/imgs/unfavourite.svg'
+                      "
+                      alt="mark as favourite"
+                    />
+                  </a>
+                  <span class="bold-text template-title">{{
+                    workflow.name
+                  }}</span>
+                  <img
+                    class="workflow-state-img"
+                    src="assets/imgs/wf-configured.svg"
+                    alt="Configured"
+                  />
+                  <span
+                    class="badge badge-pill badge-custom workflow-status"
+                    [ngStyle]="setBadgeBgColor(workflow.groups[0].status)"
+                    >{{ workflow.groups[0].status }}</span
+                  >
+                  <div class="workflow-progress">
+                    <span class="common-text">Progress : </span>
+                    <mat-progress-bar
+                      value="{{ workflow.progress }}"
+                    ></mat-progress-bar>
+                    <span class="medium-text">{{ workflow.progress }}%</span>
+                  </div>
+                </div>
+              </mat-card>
+            </div>
           </div>
         </div>
-      </div>
+      </div>     
     </mat-tab>
   </mat-tab-group>
 </div>
