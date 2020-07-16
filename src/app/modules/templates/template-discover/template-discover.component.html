@@ -184,7 +184,7 @@
       <div *ngIf="isIPSelected">
         <div
           class="divider-btm"
-          *ngFor="let source of selectedIPSources; let i = index"
+          *ngFor="let source of selectedIPSources | slice: 1; let i = index"
         >
           <div>
             <img
@@ -198,7 +198,7 @@
               (click)="sourceCollapseList[i] = !sourceCollapseList[i]"
             />
             <mat-checkbox
-              [(ngModel)]="sourceSelectList[i]"
+              (click)="importSourceTasks(i, source)"
               (change)="getCheckboxState($event, 'source', i)"
             ></mat-checkbox>
             <span class="make-it-blue left-padding-one-fourth-rem">
@@ -231,7 +231,7 @@
                 [ngbCollapse]="taskCollapseList[i + '_' + j]"
               >
                 <mat-checkbox
-                  (click)="selectAll(i, source.tasks)"
+                  (click)="selectAll(i, j)"
                   (change)="getCheckboxState($event, 'task', i + '_' + j)"
                   [(ngModel)]="taskSelectList[i + '_' + j]"
                 ></mat-checkbox>

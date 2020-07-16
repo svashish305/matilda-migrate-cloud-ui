@@ -5061,6 +5061,63 @@
               "notification": null
             }
           ]
+        },
+        {
+          "id": "349fe065-e5ed-4006-a73b-c1eb0a24c0bf",
+          "name": "SMR : 192.168.10.11",
+          "order": 0,
+          "statusCd": 1,
+          "progress": 0,
+          "items": [
+            {
+              "id": "0372806d-c8f7-4234-a39a-a62fc8db7ed9",
+              "name": "Version 1",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null,
+              "image": ""
+            },
+            {
+              "id": "a14ed7e8-8d9a-4d93-96f0-8a4b567e6ca9",
+              "name": "Version 2",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null,
+              "image": ""
+            }
+          ]
         }
       ],
       "tags": [
