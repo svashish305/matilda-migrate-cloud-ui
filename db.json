@@ -5118,6 +5118,38 @@
               "image": ""
             }
           ]
+        },
+        {
+          "id": "fbf669b5-00d6-4f02-958b-1e7276df784a",
+          "name": "SMR : 192.168.10.10",
+          "order": 0,
+          "statusCd": 1,
+          "progress": 0,
+          "items": [
+            {
+              "id": "0fae9ec6-c863-424d-af80-dc1710b44381",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null,
+              "image": ""
+            }
+          ]
         }
       ],
       "tags": [

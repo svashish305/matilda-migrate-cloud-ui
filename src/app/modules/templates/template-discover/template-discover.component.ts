@@ -79,9 +79,9 @@ export class TemplateDiscoverComponent implements OnInit {
 
   getCheckboxState(event, src, id) {
     let contentToImport;
-    let sourceIndex = id.split('_')[0];
-    let taskIndex = id.split('_')[1];
     if (src === 'content') {
+      let sourceIndex = id.split('_')[0];
+      let taskIndex = id.split('_')[1];
       let contentIndex = id.split('_')[2];
       contentToImport = this.selectedIPSources[sourceIndex].tasks[taskIndex]
         .contents[contentIndex];
@@ -90,7 +90,7 @@ export class TemplateDiscoverComponent implements OnInit {
       if (src === 'content') {
         if (!this.importContents.includes(contentToImport)) {
           this.importContents.push(contentToImport);
-          this.curSourceTaskLength[taskIndex]++;
+          this.curSourceTaskLength[id.split('_')[1]]++;
         }
       }
       this.showSidebar = true;
@@ -98,7 +98,9 @@ export class TemplateDiscoverComponent implements OnInit {
       this.importContents = this.importContents.filter(
         (c) => JSON.stringify(c) !== JSON.stringify(contentToImport)
       );
-      this.curSourceTaskLength[taskIndex]--;
+      if (id && id.split('_').length > 2) {
+        this.curSourceTaskLength[id.split('_')[1]]--;
+      }
     }
   }
 
@@ -137,7 +139,9 @@ export class TemplateDiscoverComponent implements OnInit {
         this.contentSelectList[sourceIndex + '_' + taskIndex + '_' + i] = false;
       }
     }
-    this.importContents.push(currentContents);
+    // this.importContents.push(currentContents);
+    this.importContents = currentContents;
+    this.curSourceTaskLength = currentContents.length;
   }
 
   contentClicked(sourceIndex, taskIndex, contentIndex) {
