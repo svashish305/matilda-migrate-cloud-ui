@@ -93,7 +93,7 @@ export class TemplateDiscoverComponent implements OnInit {
       this.showSidebar = true;
     } else {
       this.importContents = this.importContents.filter(
-        (c) => JSON.stringify(c) === JSON.stringify(contentToImport)
+        (c) => JSON.stringify(c) !== JSON.stringify(contentToImport)
       );
     }
   }
