@@ -123,6 +123,14 @@ export class TemplateDiscoverComponent implements OnInit {
         sourceIndex + '_' + i
       ];
     }
+    let currentSources = this.selectedApp.IP.find(
+      (ip) => ip.address === this.selectedIPAddress
+    ).sources;
+    let contents = [];
+    currentSources[sourceIndex].tasks.forEach((task) => {
+      contents.push(task.contents);
+    });
+    this.importContents = contents;
   }
 
   selectAll(sourceIndex, taskIndex) {
@@ -139,7 +147,6 @@ export class TemplateDiscoverComponent implements OnInit {
         this.contentSelectList[sourceIndex + '_' + taskIndex + '_' + i] = false;
       }
     }
-    // this.importContents.push(currentContents);
     this.importContents = currentContents;
     this.curSourceTaskLength = currentContents.length;
   }
