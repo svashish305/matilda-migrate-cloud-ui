@@ -133,7 +133,6 @@ export class TemplateDiscoverComponent implements OnInit {
         this.contentSelectList[sourceIndex + '_' + taskIndex + '_' + i] = false;
       }
     }
-    this.importContents.push(currentContents);
   }
 
   contentClicked(sourceIndex, taskIndex, contentIndex) {

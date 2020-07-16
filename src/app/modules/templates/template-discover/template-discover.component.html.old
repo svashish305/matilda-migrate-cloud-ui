@@ -1,0 +1,338 @@
+<div class="discover-container">
+  <div class="discover-header">
+    <div
+      (click)="goBack()"
+      (mouseover)="imgHovered = true"
+      (mouseleave)="imgHovered = false"
+      class="back-icon pointer-cursor"
+      [ngClass]="{ 'back-not-hover': !imgHovered }"
+    >
+      <img
+        [src]="
+          imgHovered
+            ? 'assets/imgs/back-icon.svg'
+            : 'assets/imgs/chevron-down.svg'
+        "
+        alt="back"
+      />
+    </div>
+
+    <span class="discover-header-text bold-text">Discover</span>
+
+    <div class="discover-searchbox">
+      <form>
+        <mat-form-field
+          id="mat-search"
+          floatLabel="never"
+          class="mat-typography full-width"
+        >
+          <img
+            matPrefix
+            src="assets/imgs/search-2.svg"
+            alt="search-icon"
+            class="new-search-icon"
+          />
+          <input
+            matInput
+            placeholder="Search Application"
+            type="search"
+            name="test"
+            [(ngModel)]="searchKey"
+          />
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+  <div>
+    <div *ngIf="!accountClicked" class="account-res">
+      <mat-card
+        class="top-margin-1em"
+        *ngFor="let app of apps | search: searchKey"
+        (click)="showAppDetails(app.id)"
+      >
+        <mat-card-title-group>
+          <mat-card-title
+            ><span class="common-text pos-card-title">{{
+              app.name
+            }}</span></mat-card-title
+          >
+          <mat-card-subtitle>
+            <span
+              class="medium-text pos-subtitle"
+              *ngIf="app.IP.length > 2; else lessIP"
+              >{{ app.IP[0].address }}, {{ app.IP[1].address }} and
+              {{ app.IP.length - 2 }} more</span
+            >
+            <ng-template #lessIP>
+              <span class="medium-text pos-subtitle" *ngIf="app.IP.length <= 2"
+                >{{ app.IP[0].address }}, {{ app.IP[1].address }}</span
+              >
+            </ng-template>
+            <span
+              class="medium-text pos-src-subtitle"
+              *ngIf="app.sources.length > 2; else lessSources"
+              >Sources: {{ app.sources[0].name }}, {{ app.sources[1].name }} and
+              {{ app.sources.length - 2 }} more</span
+            >
+            <ng-template #lessSources>
+              <span
+                class="medium-text pos-src-subtitle"
+                *ngIf="app.sources.length <= 2"
+                >Sources: {{ app.sources[0].name }},
+                {{ app.sources[1].name }}</span
+              >
+            </ng-template>
+          </mat-card-subtitle>
+        </mat-card-title-group>
+      </mat-card>
+    </div>
+
+    <div *ngIf="selectedApp && accountClicked" class="acc-search-container">
+      <div class="selected-app-header">
+        <div class="right-margin-12-half-rem">
+          <span class="common-text">Application</span>
+          <span class="common-text pad-colon">:</span>
+          <span class="common-text make-it-blue">{{ selectedApp.name }}</span>
+        </div>
+
+        <span class="common-text">IP</span>
+        <span class="common-text pad-colon">:</span>
+        <mat-form-field id="ip-select-field" class="ip-dd">
+          <mat-select [(ngModel)]="selectedIPAddress" (ngModelChange)="getIP()">
+            <mat-option
+              id="ip-option"
+              *ngFor="let ip of selectedApp.IP"
+              [value]="ip.address"
+              (click)="changeIP(ip.address)"
+            >
+              {{ ip.address }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="!isIPSelected">
+        <div
+          class="divider-btm"
+          *ngFor="let source of selectedApp.IP[0].sources; let i = index"
+        >
+          <div>
+            <img
+              class="pointer-cursor source-collapser"
+              [src]="
+                sourceCollapseList[i]
+                  ? 'assets/imgs/chevron-down.svg'
+                  : 'assets/imgs/chevron-up.svg'
+              "
+              alt=""
+              (click)="sourceCollapseList[i] = !sourceCollapseList[i]"
+            />
+            <mat-checkbox
+              (click)="importSourceTasks(i, source)"
+              (change)="getCheckboxState($event, 'source', i)"
+            ></mat-checkbox>
+            <span class="make-it-blue left-padding-one-fourth-rem">
+              {{ source.name }}
+            </span>
+          </div>
+          <div class="indented" [ngbCollapse]="sourceCollapseList[i]">
+            <span class="relative-left-4 common-text-mobile gray-text">{{
+              source.desc
+            }}</span>
+            <div *ngFor="let task of source.tasks; let j = index">
+              <img
+                class="pointer-cursor task-collapser"
+                [src]="
+                  taskCollapseList[i + '_' + j]
+                    ? 'assets/imgs/chevron-down.svg'
+                    : 'assets/imgs/chevron-up.svg'
+                "
+                alt=""
+                (click)="
+                  taskCollapseList[i + '_' + j] = !taskCollapseList[i + '_' + j]
+                "
+              />
+              <span class="make-it-blue right-padding-one-fourth-rem">{{
+                task.name
+              }}</span>
+              <span class="gray-text">({{ task.contents.length }})</span>
+              <div
+                class="task-indented"
+                [ngbCollapse]="taskCollapseList[i + '_' + j]"
+              >
+                <mat-checkbox
+                  (click)="selectAll(i, j)"
+                  (change)="getCheckboxState($event, 'task', i + '_' + j)"
+                  [(ngModel)]="taskSelectList[i + '_' + j]"
+                ></mat-checkbox>
+                <span class="left-padding-half-rem">Select All</span>
+                <div *ngFor="let content of task.contents; let k = index">
+                  <mat-checkbox
+                    (click)="contentClicked(i, j, k)"
+                    (change)="
+                      getCheckboxState($event, 'content', i + '_' + j + '_' + k)
+                    "
+                    [(ngModel)]="contentSelectList[i + '_' + j + '_' + k]"
+                  ></mat-checkbox>
+                  <span class="left-padding-half-rem">{{ content.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isIPSelected">
+        <div
+          class="divider-btm"
+          *ngFor="let source of selectedIPSources | slice: 1; let i = index"
+        >
+          <div>
+            <img
+              class="pointer-cursor source-collapser"
+              [src]="
+                sourceCollapseList[i]
+                  ? 'assets/imgs/chevron-down.svg'
+                  : 'assets/imgs/chevron-up.svg'
+              "
+              alt=""
+              (click)="sourceCollapseList[i] = !sourceCollapseList[i]"
+            />
+            <mat-checkbox
+              (click)="importSourceTasks(i, source)"
+              (change)="getCheckboxState($event, 'source', i)"
+            ></mat-checkbox>
+            <span class="make-it-blue left-padding-one-fourth-rem">
+              {{ source.name }}
+            </span>
+          </div>
+          <div class="indented" [ngbCollapse]="sourceCollapseList[i]">
+            <span class="relative-left-4 common-text-mobile gray-text">{{
+              source.desc
+            }}</span>
+            <div *ngFor="let task of source.tasks; let j = index">
+              <img
+                class="pointer-cursor task-collapser"
+                [src]="
+                  taskCollapseList[i + '_' + j]
+                    ? 'assets/imgs/chevron-down.svg'
+                    : 'assets/imgs/chevron-up.svg'
+                "
+                alt=""
+                (click)="
+                  taskCollapseList[i + '_' + j] = !taskCollapseList[i + '_' + j]
+                "
+              />
+              <span class="make-it-blue right-padding-one-fourth-rem">{{
+                task.name
+              }}</span>
+              <span class="gray-text">({{ task.contents.length }})</span>
+              <div
+                class="task-indented"
+                [ngbCollapse]="taskCollapseList[i + '_' + j]"
+              >
+                <mat-checkbox
+                  (click)="selectAll(i, j)"
+                  (change)="getCheckboxState($event, 'task', i + '_' + j)"
+                  [(ngModel)]="taskSelectList[i + '_' + j]"
+                ></mat-checkbox>
+                <span class="left-padding-half-rem">Select All</span>
+                <div *ngFor="let content of task.contents; let k = index">
+                  <mat-checkbox
+                    (click)="contentClicked(i, j, k)"
+                    (change)="
+                      getCheckboxState($event, 'content', i + '_' + j + '_' + k)
+                    "
+                    [(ngModel)]="contentSelectList[i + '_' + j + '_' + k]"
+                  ></mat-checkbox>
+                  <span class="left-padding-half-rem">{{ content.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      *ngIf="selectedApp && accountClicked && showSidebar"
+      class="import-sidebar"
+    >
+      <div class="import-header">
+        <span class="common-text">Import List</span>
+      </div>
+      <div class="sidebar-content">
+        <div
+          class="import-card"
+          *ngFor="let source of selectedIPSources; let si = index"
+        >
+          <div class="common-text">
+            <span class="make-it-blue">{{ source.name }}</span>
+            <span class="left-padding-24">IP&nbsp;:&nbsp;</span>
+            <span class="make-it-blue">{{ selectedIPAddress }}</span>
+            <a (click)="deleteSourceInSidebar(source)">
+              <img
+                class="pointer-cursor img-right"
+                src="assets/imgs/delete.svg"
+                alt="delete"
+              />
+            </a>
+          </div>
+          <div class="tb-padding-half-rem">
+            <mat-divider></mat-divider>
+          </div>
+          <div *ngFor="let task of source.tasks; let sj = index">
+            <img
+              class="pointer-cursor task-collapser"
+              [src]="
+                taskCollapseList[si + '_' + sj]
+                  ? 'assets/imgs/chevron-down.svg'
+                  : 'assets/imgs/chevron-up.svg'
+              "
+              alt=""
+              (click)="
+                taskCollapseList[si + '_' + sj] = !taskCollapseList[
+                  si + '_' + sj
+                ]
+              "
+            />
+            <span class="make-it-blue right-padding-one-fourth-rem">{{
+              task.name
+            }}</span>
+            <span class="gray-text">({{ importContents.length }})</span>
+            <div
+              class="task-indented"
+              [ngbCollapse]="taskCollapseList[si + '_' + sj]"
+            >
+              <div *ngFor="let content of importContents; let sk = index">
+                <mat-checkbox
+                  (click)="contentClicked(si, sj, sk)"
+                  (change)="
+                    getCheckboxState(
+                      $event,
+                      'content',
+                      si + '_' + sj + '_' + sk
+                    )
+                  "
+                  [(ngModel)]="contentSelectList[si + '_' + sj + '_' + sk]"
+                ></mat-checkbox>
+                <span class="left-padding-half-rem">{{ content.name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-actions">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="import(); showSidebar = false"
+        >
+          Import
+        </button>
+        <button mat-button color="primary" (click)="showSidebar = false">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
