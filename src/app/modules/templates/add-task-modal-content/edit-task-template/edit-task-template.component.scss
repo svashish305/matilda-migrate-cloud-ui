@@ -1,0 +1,19 @@
+.stack-container {
+  max-height: 56vh !important;
+	// display: flex !important;
+	// flex-wrap: wrap !important;
+	// overflow-x: auto; 
+	// overflow-y: auto;
+}
+.format-tarea { 
+  font-family: LatoRegular;
+  font-size: .9rem;
+  line-height: 1.45;
+  text-shadow: 0.015em 0.015em 0 #666;
+  color: #666;
+  padding: calc(.75rem - 1px);
+  resize: vertical;
+  height: 300px;
+  min-height: 300px;
+  width: 100% !important;
+}
