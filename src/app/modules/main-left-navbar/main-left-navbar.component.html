@@ -34,15 +34,19 @@
         templateSelected = false;
         workflowSelected = false
       "
+      [ngStyle]="addFocusColor(isMigrateCollapsed)"
     >
       <img
         class="migrate-logo logo-extra"
         src="assets/imgs/group-5.svg"
         alt=""
       />
-      <div class="migrate-section">
+      <div
+        class="migrate-section"
+        [ngStyle]="addFocusColor(isMigrateCollapsed)"
+      >
         <img class="logo logo-extra" src="assets/imgs/group-5.svg" alt="" />
-        <span class="menu-text white-color">Migrate</span>
+        <span class="menu-text white-color pos-migrate-text">Migrate</span>
         <img
           class="module-dd"
           src="assets/imgs/white-chevron-down.svg"
@@ -178,7 +182,7 @@
   <div class="sidenav__wrapper">
     <div class="logo__wrapper mobile-logo mobile-logo-header-padding">
       <a (click)="isCollapsed = !isCollapsed" class="close-btn"
-        ><img src="assets/imgs/leftnav-close.svg" alt="close"
+        ><img src="assets/imgs/arrow-dark.svg" alt="close"
       /></a>
       <img
         class="logo"
@@ -186,7 +190,9 @@
         alt=""
         class="matilda-logo"
       />
-      <span class="matilda-text common-text">matilda</span>
+      <div class="migrate-section">
+        <span class="matilda-text common-text">matilda</span>
+      </div>
     </div>
 
     <mat-divider></mat-divider>
@@ -199,15 +205,19 @@
         templateSelected = false;
         workflowSelected = false
       "
+      [ngStyle]="addFocusColor(isMigrateCollapsed)"
     >
       <img
         class="migrate-logo logo-extra"
         src="assets/imgs/group-5.svg"
         alt=""
       />
-      <div class="migrate-section">
+      <div
+        class="migrate-section"
+        [ngStyle]="addFocusColor(isMigrateCollapsed)"
+      >
         <img class="logo logo-extra" src="assets/imgs/group-5.svg" alt="" />
-        <span class="menu-text white-color">Migrate</span>
+        <span class="menu-text pos-migrate-text white-color">Migrate</span>
         <img
           class="module-dd"
           src="assets/imgs/white-chevron-down.svg"
@@ -332,10 +342,10 @@
 
     <!-- remaining logos in left sidebar end -->
 
-    <mat-divider class="divider-bottom"></mat-divider>
+    <!-- <mat-divider class="divider-bottom"></mat-divider> -->
 
-    <div class="logo__wrapper padding-17 logout-icon">
+    <!-- <div class="logo__wrapper padding-17 logout-icon">
       <img class="logo logout-pos" src="assets/imgs/group-8.svg" alt="" />
-    </div>
+    </div> -->
   </div>
 </div>

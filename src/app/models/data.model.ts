@@ -37,7 +37,8 @@ export class Item {
   endDate?: string | Date = null;
   duration?: string = null;
   dependencies?: ItemDependency[] = [];
-  notification?: string | any = null;
+  notification?: string|any = null;
+  image?: string = '';
 }
 
 export class Group {

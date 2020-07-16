@@ -396,19 +396,87 @@
           <img src="assets/imgs/close-circle.svg" alt="Close" />
         </a>
         <div class="task-header">
-          <ngx-avatar
-            [name]="selectedTask.name"
-            initialsSize="2"
-            size="56"
+          <button
+              class="avatar-dd-btn-task no-hover-effect"
+              mat-button
+              [matMenuTriggerFor]="avatarDropdown"
+              (mouseover)="taskImgHover = true"
+              (mouseleave)="taskImgHover = false"
+            >
+            <!-- <ngx-avatar
+            *ngIf="selectedTask.taskImage!= ''"
+            [src]="selectedTask.taskImage"
             class="lalign-import-template-icon"
+            name="{{ selectedTask.name }}"
+            initialsSize="2"
+            [size]="isMobile ? 40 : 56"
+          ></ngx-avatar> -->
+          <ngx-avatar
+            *ngIf="taskAvatarUrl; else initialsTaskAvatar"
+            [src]="taskAvatarUrl"
+            class="lalign-import-template-icon"
+            name="{{ selectedTask.name }}"
+            initialsSize="2"
+            [size]="isMobile ? 40 : 56"
           ></ngx-avatar>
+          <ng-template #initialsTaskAvatar>
+            <ngx-avatar
+              name="{{ selectedTask.name }}"
+              initialsSize="2"
+              [size]="isMobile ? 40 : 56"
+              class="lalign-import-template-icon"
+            ></ngx-avatar>
+          </ng-template>
+       
+        <img
+          *ngIf="taskImgHover"
+          class="edit-avatar-img"
+          src="assets/imgs/edit-img-2.svg"
+          alt="edit"
+        />
+      </button>
+      <mat-menu #avatarDropdown="matMenu">
+        <button mat-menu-item>
+          <label
+            for="taskAvatarFile"
+            class="avatar-upload-option pointer-cursor"
+            >Upload
+            <input
+              id="taskAvatarFile"
+              type="file"
+              (change)="changeTaskAvatar($event)"
+            />
+          </label>
+        </button>
+        <button mat-menu-item (click)="taskAvatarUrl = null">
+          Remove
+        </button>
+      </mat-menu>  
+          
           <div class="relative-top-5">
-            <div>
-              <span class="task-name">{{ selectedTask.name }}</span>
-              <span class="task-description">{{
-                selectedTask.description
-              }}</span>
-            </div>
+            <!-- <div> -->
+              <div class="task-name">
+                <input
+                  class="descriptiontask-styles"
+                  (click)="$event.target.select()"
+                  (focus)="onFocusTitle()"
+                  (keydown.enter)="updateTaskTitle(selectedTask.name)" 
+                  (keydown)="uniqueTaskTitle(selectedTask.name)"
+                  (blur)="updateTaskTitle(selectedTask.name)"
+                  [(ngModel)]="selectedTask.name"
+                />
+                <div class="text-danger" *ngIf="isEventNameUnique">Please enter unique task name</div>
+              </div>
+              <div class="task-description">
+                <input
+                class="descriptiontask-styles gray-text"
+                (click)="$event.target.select()"
+                (focus)="onFocusDescription()"
+                (keydown.enter)="updateTaskDescription(selectedTask.description)"                  
+                  (blur)="updateTaskDescription(selectedTask.description)"
+                  [(ngModel)]="selectedTask.description"               
+              />
+              </div>             
           </div>
         </div>
       </header>

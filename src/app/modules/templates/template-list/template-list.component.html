@@ -59,13 +59,13 @@
     <div
       class="templates__inner__wrapper"
       *ngFor="
-        let templateType of templateData.groups
+        let group of templateData.groups
           | nestedTemplateSearch: searchKey;
         let i = index
       "
       cdkDropListGroup
       cdkDrag
-      [cdkDragData]="templateType"
+      [cdkDragData]="group"
     >
       <!-- template list strats -->
       <div class="template-list-wrapper">
@@ -111,7 +111,7 @@
                 }"
               >
                 <div class="group-name common-text">
-                  {{ templateType.name }}
+                  {{ group.name }}
                 </div>
               </div>
             </div>
@@ -131,8 +131,8 @@
                 <span class="status-text">Status: </span>
                 <span
                   class="badge badge-pill badge-custom"
-                  [ngStyle]="setBadgeBgColor(templateType.statusCode)"
-                  >{{ statusCodes[templateType.statusCode] }}</span
+                  [ngStyle]="setBadgeBgColor(group.statusCode)"
+                  >{{ statusCodes[group.statusCode] }}</span
                 >
               </div>
               <div
@@ -145,7 +145,7 @@
                 <span class="status-text">Progress: </span>
                 <mat-progress-bar
                   class="list-progress-bar"
-                  value="{{ templateType.progress }}"
+                  value="{{ group.progress }}"
                 ></mat-progress-bar>
                 <span
                   [ngClass]="{
@@ -153,7 +153,7 @@
                     'medium-text': !isMobile
                   }"
                   class="list-percent-text"
-                  >{{ templateType.progress }} %</span
+                  >{{ group.progress }} %</span
                 >
               </div>
             </div>
@@ -237,16 +237,16 @@
           <div
             *ngIf="!groupCollapseList[i] && templateData.groups"
             cdkDropList
-            id="{{ templateType[i] }}"
-            [cdkDropListData]="templateType.items"
+            id="{{ group.id }}"
+            [cdkDropListData]="group.items"
             (cdkDropListDropped)="drop($event)"
             [cdkDropListConnectedTo]="getConnectedList()"
           >
             <div
               class="row-items template__row item"
-              [ngClass]="{ selected: templateType.selected }"
+              [ngClass]="{ selected: group.selected }"
               (click)="rowClick(task)"
-              *ngFor="let task of templateType.items"
+              *ngFor="let task of group.items"
               cdkDrag
             >
               <div class="template-name">
@@ -364,14 +364,14 @@
                   <span class="list-percent-text">{{ task.progress }} %</span>
                 </div>
                 <div class="right-options">
-                  <a (click)="deleteTask(templateType, task.id)">
+                  <a (click)="deleteTask(group, task.id)">
                     <img
                       class="set-margin-right"
                       src="assets/imgs/delete.svg"
                       alt="delete"
                     />
                   </a>
-                  <a (click)="taskSettings(templateType, task.id, $event)">
+                  <a (click)="taskSettings(group, task.id, $event)">
                     <img src="assets/imgs/vEllipsis.svg" alt="settings" />
                   </a>
                 </div>

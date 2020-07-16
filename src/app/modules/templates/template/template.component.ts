@@ -42,7 +42,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   descriptionState = 'idle';
   oldDescription: string;
   newDescription: string;
-
+  
   isMobile = false;
   isTablet = false;
   isDesktop = false;
@@ -57,6 +57,8 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   templateImgHover = false;
   templateAvatarUrl: any;
 
+  taskImgHover = false;
+  taskAvatarUrl: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -108,7 +110,6 @@ export class TemplateComponent implements OnInit, AfterViewInit {
       this.uploadFile(event.target.files[0]);
     }
   }
-
   uploadFile(file) {
     this.dataService.upload(file).subscribe(
       (res: any) => {
@@ -119,9 +120,56 @@ export class TemplateComponent implements OnInit, AfterViewInit {
       }
     );
   }
+  
+  changeTaskAvatar(event: any) {
+       if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
 
-  setBadgeBgColor(stageState = 'Defined') {
-    let backgroundColor = '#99a1a9';
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event: any) => {
+        // called once readAsDataURL is completed
+        this.taskAvatarUrl = event.target.result;
+      };
+      this.uploadTaskFile(event.target.files[0]);
+    }
+  }
+  uploadTaskFile(uploadFile:File){
+    const formData = new FormData();
+    let groupList = this.templateData.groups;
+    let filteredGroupList = groupList.filter(it=>{
+        return it.id === this.selectedTask.groupId;
+    })
+    let groupItems = filteredGroupList[0].items;
+    groupItems.forEach(it=>{
+      if(it.id == this.selectedTask.id){
+        this.fileToBase64(uploadFile).then(result => {
+          it.image= result;
+          //  API Task Avatar Update  
+   // this.dataService.updateTemplate(this.templateData).subscribe(res=>{
+   //   if(res){        
+   //   }
+   // })
+        });
+   
+      }
+    })     
+  }    
+  fileToBase64 = (filename:File) => {
+    return new Promise(resolve => {
+    
+      var reader = new FileReader();
+      // Read file content on file loaded event
+      reader.onload = function(event:any) {
+        resolve(event.target.result);
+      };
+      
+      // Convert data to base64 
+      reader.readAsDataURL(filename);
+    });
+  };
+  setBadgeBgColor(stageState = "Defined") {
+    let backgroundColor = "#99a1a9";
     switch (stageState) {
       case 'Defined':
         backgroundColor = '#99a1a9';
@@ -282,6 +330,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
           },
         ],
         notification: '{"type":"email/hook","id":"1","payload":"emailid/url"}',
+        image:'assets/imgs/favourite.svg'
       };
     }
     this.showTaskOptions = true;
@@ -292,7 +341,6 @@ export class TemplateComponent implements OnInit, AfterViewInit {
    * @description Adds new group to wave
    */
   addNewGroup() {
-    console.log(this.templateList);
     const id = Math.random().toString(6);
     this.templateData.waveTypes.unshift({
       id: id,
@@ -344,5 +392,48 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   onClose(event: any) {
     this.showTaskOptions = !event;
   }
-  onSaveTemplateFormat(formatPaylod: any) {}
+  onSaveTemplateFormat(formatPaylod:any){
+    
+  }
+  updateTaskTitle(taskName){
+  //  API Task Name Update  
+    // this.dataService.updateTaskName(taskName).subscribe(res=>{
+    //   if(res){        
+    //   }
+    // })
+  }
+  uniqueTaskTitle(taskName){    
+    let groupList = this.templateData.groups;
+    let filteredGroupList = groupList.filter(it=>{
+        return it.id === this.selectedTask.groupId;
+    })
+    let groupItems = filteredGroupList.items;
+    let keyExists;
+    for (let key of groupItems) {
+      if (key.name.toLowerCase() === taskName.toLowerCase()) {
+        keyExists = { isEventTaskUnique: true };
+        break;
+      }
+      else {
+        keyExists = null;
+      }
+    }
+    return keyExists;
+    // API Logic
+    // this.dataService.taskTitileValid(taskName).subscribe(res=>{
+    //   if(res == true){
+    //     this.isEventTaskUnique = true 
+    //   }
+    //   else{
+    //     this.isEventTaskUnique =  false
+    //   }
+    // })  
+  }
+  updateTaskDescription(taskDescription){
+    //  API Task Descripiton Update  
+    // this.dataService.updateTaskDescription(taskDescription).subscribe(res=>{
+    //   if(res){        
+    //   }
+    // })
+  }  
 }
