@@ -27,7 +27,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   searchKey;
   edit;
   showBackdrop;
-  @ViewChild('templateList', { static: false }) templateList;
+  @ViewChild('templateList') templateList;
 
   favourite = false;
   templateId: any;
@@ -59,6 +59,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
 
   taskImgHover = false;
   taskAvatarUrl: any;
+  isEventNameUnique: boolean;
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
