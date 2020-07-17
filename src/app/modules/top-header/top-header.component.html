@@ -28,12 +28,50 @@
       alt="notifications"
       class="notification-img"
     />
-    <ngx-avatar name="Robert Frost" initialsSize="2" size="24"></ngx-avatar
-    ><span class="std-text">Robert</span>
-    <img
-      class="profile-dd"
+    <ngx-avatar name="Robert Frost" initialsSize="2" size="24"  [matMenuTriggerFor]="userSettingsDropDown"></ngx-avatar
+    ><span class="std-text" [matMenuTriggerFor]="userSettingsDropDown">Robert</span>
+    <button
+    class="profile-dd"
+        mat-button style="height: 20px;min-width: 20px;padding: 0px;"
+        [matMenuTriggerFor]="userSettingsDropDown"
+      >
+      <img
+      class="profile-dd" style="margin-top: -20px;"
       src="assets/imgs/chevron-down.svg"
       alt="profile-settings"
     />
+      </button>
+      <mat-menu
+        id="settings-menu"
+        #userSettingsDropDown="matMenu"
+        xPosition="before"
+        yPosition="below"
+      >
+        <button mat-menu-item (click)="openUserSettings()">
+          <img
+          class="icon-usersettings"
+        src="assets/imgs/user-settings.svg"
+        alt=""
+      />
+          <span>Settings</span>
+        </button>
+        <button mat-menu-item  (click)="updatePassowrd()">
+          <img
+          class="icon-usersettings"
+        src="assets/imgs/update-password.svg"
+        alt=""
+      />
+          <span>Update Password</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <img
+          class="icon-usersettings"
+        src="assets/imgs/user-logout.svg"
+        alt=""
+      />
+          <span (click)="logout()">Logout</span>
+        </button>
+      </mat-menu>
+   
   </div>
 </div>
