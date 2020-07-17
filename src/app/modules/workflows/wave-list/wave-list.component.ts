@@ -38,7 +38,7 @@ export class WaveListComponent implements OnInit {
   edit;
   searchKey;
   showBackdrop;
-  @ViewChild('waveList') waveList;
+  @ViewChild('waveList', { static: false }) waveList;
 
   rawwaves: any[] = [];
   waves: any[] = [];

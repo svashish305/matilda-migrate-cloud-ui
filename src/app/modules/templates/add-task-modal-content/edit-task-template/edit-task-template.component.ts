@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+//import { NotificationsService } from 'angular2-notifications';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 declare var require: any;
 interface SelectInterface {
@@ -37,7 +38,7 @@ export class EditTaskTemplateComponent implements OnInit {
   schemaFileJ;
   dataFileY;
   testVar: any;
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder,) { }
 
   ngOnInit() {
     this.initForm();    
