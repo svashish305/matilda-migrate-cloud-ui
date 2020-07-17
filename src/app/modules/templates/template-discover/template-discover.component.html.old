@@ -184,7 +184,7 @@
       <div *ngIf="isIPSelected">
         <div
           class="divider-btm"
-          *ngFor="let source of selectedIPSources | slice: 1; let i = index"
+          *ngFor="let source of selectedIPSources; let i = index"
         >
           <div>
             <img
@@ -298,24 +298,26 @@
             <span class="make-it-blue right-padding-one-fourth-rem">{{
               task.name
             }}</span>
-            <span class="gray-text">({{ importContents.length }})</span>
+            <span class="gray-text">({{ curSourceTaskLength[sj] }})</span>
             <div
               class="task-indented"
               [ngbCollapse]="taskCollapseList[si + '_' + sj]"
             >
               <div *ngFor="let content of importContents; let sk = index">
-                <mat-checkbox
-                  (click)="contentClicked(si, sj, sk)"
-                  (change)="
-                    getCheckboxState(
-                      $event,
-                      'content',
-                      si + '_' + sj + '_' + sk
-                    )
-                  "
-                  [(ngModel)]="contentSelectList[si + '_' + sj + '_' + sk]"
-                ></mat-checkbox>
-                <span class="left-padding-half-rem">{{ content.name }}</span>
+                <div *ngIf="contentSelectList[si + '_' + sj + '_' + sk]">
+                  <mat-checkbox
+                    (click)="contentClicked(si, sj, sk)"
+                    (change)="
+                      getCheckboxState(
+                        $event,
+                        'content',
+                        si + '_' + sj + '_' + sk
+                      )
+                    "
+                    [(ngModel)]="contentSelectList[si + '_' + sj + '_' + sk]"
+                  ></mat-checkbox>
+                  <span class="left-padding-half-rem">{{ content.name }}</span>
+                </div>
               </div>
             </div>
           </div>

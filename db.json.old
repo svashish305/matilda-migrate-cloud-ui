@@ -3145,3146 +3145,6 @@
           ]
         }
       ]
-    },
-    {
-      "id": "fef85d26-2c43-46e7-8857-ff03c95436b5",
-      "name": "Untitled Workflow",
-      "desc": "Workflow Desc",
-      "ver": "workflowVersionNumber",
-      "type": "TRIGGER/EVENT",
-      "owner": "Workflow OWNER",
-      "progress": 10,
-      "groups": [
-        {
-          "id": 123,
-          "name": "App1",
-          "order": 100,
-          "status": "Defined",
-          "statusCode": 1,
-          "progress": 10,
-          "items": [
-            {
-              "id": "1",
-              "name": "Template 1",
-              "desc": "Template Description",
-              "ver": "templateVersionNumber",
-              "type": "NONE/TRIGGER/EVENT",
-              "owner": "TEMPLATE OWNER",
-              "progress": 10,
-              "status": "Defined",
-              "statusCode": 1,
-              "order": 100,
-              "groups": [
-                {
-                  "id": 1234,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 4567,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 6789,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                }
-              ],
-              "tags": [
-                {
-                  "id": 1,
-                  "name": "Name1",
-                  "value": "Value1",
-                  "modifiedDate": "2020-06-12T14:29:18"
-                }
-              ],
-              "modifiedDate": "2020-06-12T14:29:18"
-            },
-            {
-              "id": "2",
-              "name": "Template 2",
-              "desc": "Template Description",
-              "ver": "templateVersionNumber",
-              "type": "NONE/TRIGGER/EVENT",
-              "owner": "TEMPLATE OWNER",
-              "progress": 10,
-              "status": "Defined",
-              "statusCode": 1,
-              "order": 100,
-              "groups": [
-                {
-                  "id": 1234,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 4567,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 6789,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                }
-              ],
-              "tags": [
-                {
-                  "id": 1,
-                  "name": "Name1",
-                  "value": "Value1",
-                  "modifiedDate": "2020-06-12T14:29:18"
-                }
-              ],
-              "modifiedDate": "2020-06-12T14:29:18"
-            },
-            {
-              "id": "3",
-              "name": "Template 3",
-              "desc": "Template Description",
-              "ver": "templateVersionNumber",
-              "type": "NONE/TRIGGER/EVENT",
-              "owner": "TEMPLATE OWNER",
-              "progress": 10,
-              "status": "Defined",
-              "statusCode": 1,
-              "order": 100,
-              "groups": [
-                {
-                  "id": 1234,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 4567,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 6789,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                }
-              ],
-              "tags": [
-                {
-                  "id": 1,
-                  "name": "Name1",
-                  "value": "Value1",
-                  "modifiedDate": "2020-06-12T14:29:18"
-                }
-              ],
-              "modifiedDate": "2020-06-12T14:29:18"
-            }
-          ]
-        },
-        {
-          "id": 123,
-          "name": "App2",
-          "order": 100,
-          "status": "Defined",
-          "statusCode": 1,
-          "progress": 10,
-          "items": [
-            {
-              "id": "1",
-              "name": "Template 1",
-              "desc": "Template Description",
-              "ver": "templateVersionNumber",
-              "type": "NONE/TRIGGER/EVENT",
-              "owner": "TEMPLATE OWNER",
-              "progress": 10,
-              "status": "Defined",
-              "statusCode": 1,
-              "order": 100,
-              "groups": [
-                {
-                  "id": 1234,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 4567,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 6789,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                }
-              ],
-              "tags": [
-                {
-                  "id": 1,
-                  "name": "Name1",
-                  "value": "Value1",
-                  "modifiedDate": "2020-06-12T14:29:18"
-                }
-              ],
-              "modifiedDate": "2020-06-12T14:29:18"
-            },
-            {
-              "id": "2",
-              "name": "Template 2",
-              "desc": "Template Description",
-              "ver": "templateVersionNumber",
-              "type": "NONE/TRIGGER/EVENT",
-              "owner": "TEMPLATE OWNER",
-              "progress": 10,
-              "status": "Defined",
-              "statusCode": 1,
-              "order": 100,
-              "groups": [
-                {
-                  "id": 1234,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 4567,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 6789,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                }
-              ],
-              "tags": [
-                {
-                  "id": 1,
-                  "name": "Name1",
-                  "value": "Value1",
-                  "modifiedDate": "2020-06-12T14:29:18"
-                }
-              ],
-              "modifiedDate": "2020-06-12T14:29:18"
-            },
-            {
-              "id": "3",
-              "name": "Template 3",
-              "desc": "Template Description",
-              "ver": "templateVersionNumber",
-              "type": "NONE/TRIGGER/EVENT",
-              "owner": "TEMPLATE OWNER",
-              "progress": 10,
-              "status": "Defined",
-              "statusCode": 1,
-              "order": 100,
-              "groups": [
-                {
-                  "id": 1234,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 4567,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 6789,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                }
-              ],
-              "tags": [
-                {
-                  "id": 1,
-                  "name": "Name1",
-                  "value": "Value1",
-                  "modifiedDate": "2020-06-12T14:29:18"
-                }
-              ],
-              "modifiedDate": "2020-06-12T14:29:18"
-            }
-          ]
-        },
-        {
-          "id": 123,
-          "name": "App1",
-          "order": 100,
-          "status": "Defined",
-          "statusCode": 1,
-          "progress": 10,
-          "items": [
-            {
-              "id": "1",
-              "name": "Template 1",
-              "desc": "Template Description",
-              "ver": "templateVersionNumber",
-              "type": "NONE/TRIGGER/EVENT",
-              "owner": "TEMPLATE OWNER",
-              "progress": 10,
-              "status": "Defined",
-              "statusCode": 1,
-              "order": 100,
-              "groups": [
-                {
-                  "id": 1234,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 4567,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 6789,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                }
-              ],
-              "tags": [
-                {
-                  "id": 1,
-                  "name": "Name1",
-                  "value": "Value1",
-                  "modifiedDate": "2020-06-12T14:29:18"
-                }
-              ],
-              "modifiedDate": "2020-06-12T14:29:18"
-            },
-            {
-              "id": "2",
-              "name": "Template 2",
-              "desc": "Template Description",
-              "ver": "templateVersionNumber",
-              "type": "NONE/TRIGGER/EVENT",
-              "owner": "TEMPLATE OWNER",
-              "progress": 10,
-              "status": "Defined",
-              "statusCode": 1,
-              "order": 100,
-              "groups": [
-                {
-                  "id": 1234,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 4567,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 6789,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                }
-              ],
-              "tags": [
-                {
-                  "id": 1,
-                  "name": "Name1",
-                  "value": "Value1",
-                  "modifiedDate": "2020-06-12T14:29:18"
-                }
-              ],
-              "modifiedDate": "2020-06-12T14:29:18"
-            },
-            {
-              "id": "3",
-              "name": "Template 3",
-              "desc": "Template Description",
-              "ver": "templateVersionNumber",
-              "type": "NONE/TRIGGER/EVENT",
-              "owner": "TEMPLATE OWNER",
-              "progress": 10,
-              "status": "Defined",
-              "statusCode": 1,
-              "order": 100,
-              "groups": [
-                {
-                  "id": 1234,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 4567,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                },
-                {
-                  "id": 6789,
-                  "name": "Infrastructure",
-                  "order": 100,
-                  "status": "Defined",
-                  "statusCode": 1,
-                  "progress": 10,
-                  "items": [
-                    {
-                      "id": 123,
-                      "name": "Create Stack Instance",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 456,
-                      "name": "Create Stack Instance 2",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    },
-                    {
-                      "id": 789,
-                      "name": "Create Stack Instance 3",
-                      "description": "TaskDescription",
-                      "order": 100,
-                      "pluginName": "AWS",
-                      "pluginId": 1,
-                      "serviceId": "1",
-                      "actionId": "1",
-                      "serviceName": "vm",
-                      "actionName": "Create",
-                      "status": "Configured",
-                      "statusCode": 2,
-                      "progress": 10,
-                      "keyVault": {
-                        "id": 1,
-                        "name": "AWS"
-                      },
-                      "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
-                      "output": null,
-                      "startDate": "6/1/2020",
-                      "endDate": "12/11/2020",
-                      "duration": null,
-                      "dependencies": [
-                        {
-                          "groupId": 1234,
-                          "taskId": 345345,
-                          "mode": "before"
-                        }
-                      ],
-                      "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
-                    }
-                  ]
-                }
-              ],
-              "tags": [
-                {
-                  "id": 1,
-                  "name": "Name1",
-                  "value": "Value1",
-                  "modifiedDate": "2020-06-12T14:29:18"
-                }
-              ],
-              "modifiedDate": "2020-06-12T14:29:18"
-            }
-          ]
-        }
-      ],
-      "tags": [
-        {
-          "id": 1,
-          "name": "Name1",
-          "value": "Value1",
-          "modifiedDate": "2020-06-12T14:29:18"
-        }
-      ],
-      "keyVault": [
-        {
-          "id": 1,
-          "name": "AWS",
-          "credentials": [
-            {
-              "id": 1,
-              "name": "awsacc1"
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "name": "Jenkins",
-          "credentials": [
-            {
-              "id": 1,
-              "name": "jenkinsacc1"
-            }
-          ]
-        }
-      ]
     }
   ],
   "templates": [
@@ -7981,6 +4841,557 @@
               "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
             }
           ]
+        },
+        {
+          "id": "0268536b-d3e5-445c-9dd7-96b7383ec994",
+          "name": "SMR : 192.168.10.10",
+          "order": 0,
+          "statusCd": 1,
+          "progress": 0,
+          "items": [
+            {
+              "id": "af6e7bb0-e557-46df-aba3-f8828ebb1f5d",
+              "name": "Version 1",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null
+            },
+            {
+              "id": "b5da4e56-edba-485e-8d02-55904621bae1",
+              "name": "Version 1",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null
+            }
+          ]
+        },
+        {
+          "id": "69873ff0-4a36-47f8-b4bc-7702e0904e0e",
+          "name": "SMR : 192.168.10.10",
+          "order": 0,
+          "statusCd": 1,
+          "progress": 0,
+          "items": [
+            {
+              "id": "1b39214c-ad6d-4ece-9ac0-a27a0e769450",
+              "name": "Version 1",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null
+            },
+            {
+              "id": "26bf364b-505b-4043-9e3c-9172f97c7edb",
+              "name": "Version 1",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null
+            }
+          ]
+        },
+        {
+          "id": "7b6f6783-0608-486d-9912-c809f50c56f3",
+          "name": "SMR : 192.168.10.10",
+          "order": 0,
+          "statusCd": 1,
+          "progress": 0,
+          "items": [
+            {
+              "id": "1289e7ec-5f43-4154-b263-368ef67893df",
+              "name": "Version 1",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null
+            },
+            {
+              "id": "f97d8bee-53f9-4856-aa54-fdf655d1de55",
+              "name": "Version 2",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null
+            }
+          ]
+        },
+        {
+          "id": "efe607e2-110c-49d2-a163-9888d3a5dd55",
+          "name": "SMR : 192.168.10.10",
+          "order": 0,
+          "statusCd": 1,
+          "progress": 0,
+          "items": [
+            {
+              "id": "8b042a0f-cd28-4a6c-bd98-b4ecb66ea06c",
+              "name": "Version 1",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null
+            },
+            {
+              "id": "e171ef7c-5c8a-4d22-9257-655be900ca7a",
+              "name": "Version 2",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null
+            }
+          ]
+        },
+        {
+          "id": "349fe065-e5ed-4006-a73b-c1eb0a24c0bf",
+          "name": "SMR : 192.168.10.11",
+          "order": 0,
+          "statusCd": 1,
+          "progress": 0,
+          "items": [
+            {
+              "id": "0372806d-c8f7-4234-a39a-a62fc8db7ed9",
+              "name": "Version 1",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null,
+              "image": ""
+            },
+            {
+              "id": "a14ed7e8-8d9a-4d93-96f0-8a4b567e6ca9",
+              "name": "Version 2",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null,
+              "image": ""
+            }
+          ]
+        },
+        {
+          "id": "fbf669b5-00d6-4f02-958b-1e7276df784a",
+          "name": "SMR : 192.168.10.10",
+          "order": 0,
+          "statusCd": 1,
+          "progress": 0,
+          "items": [
+            {
+              "id": "0fae9ec6-c863-424d-af80-dc1710b44381",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null,
+              "image": ""
+            }
+          ]
+        },
+        {
+          "id": "0ca50beb-6d34-438e-a75d-e6e85669361b",
+          "name": "SMR : 192.168.10.12",
+          "order": 0,
+          "statusCd": 1,
+          "progress": 0,
+          "items": [
+            {
+              "id": "229b38a3-c1a6-4dc9-8199-32774ed05747",
+              "name": "Version 1",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null,
+              "image": ""
+            },
+            {
+              "id": "c49d118b-56e4-4268-9383-246ff4d4e0a9",
+              "name": "Version 2",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null,
+              "image": ""
+            },
+            {
+              "id": "2257f2e9-56b2-4cd8-8f4d-97510f8e552b",
+              "name": "Version 3",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null,
+              "image": ""
+            },
+            {
+              "id": "4c0df56f-1707-466b-b4cb-e40f8b253ec0",
+              "name": "config.yaml",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null,
+              "image": ""
+            }
+          ]
+        },
+        {
+          "id": "1f04a9b8-b83f-4e18-a61b-ac5ac1c18292",
+          "name": "SMR App 2 : 192.168.10.12",
+          "order": 0,
+          "statusCd": 1,
+          "progress": 0,
+          "items": [
+            {
+              "id": "47a264d6-98af-4295-a8d9-ca76d8929eae",
+              "name": "Version 1",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null,
+              "image": ""
+            },
+            {
+              "id": "850d6321-acf5-4e78-9fd7-0abcebaaff5b",
+              "name": "Version 2",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null,
+              "image": ""
+            },
+            {
+              "id": "7208fd02-e590-4a62-90c8-4b3372086fc7",
+              "name": "Version 3",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null,
+              "image": ""
+            },
+            {
+              "id": "c0becafb-ccfa-437e-9f7c-467c1a6875dc",
+              "name": "config.yaml",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null,
+              "image": ""
+            }
+          ]
+        },
+        {
+          "id": "35eeb59d-bf58-47ee-9a20-8093abe7d992",
+          "name": "SMR Toolkit : 192.168.10.11",
+          "order": 0,
+          "statusCd": 1,
+          "progress": 0,
+          "items": [
+            {
+              "id": "5a57cc6f-5d30-4187-9d91-d4b9a3e71557",
+              "desc": "",
+              "order": 0,
+              "statusCd": 1,
+              "progress": 0,
+              "pluginName": "",
+              "pluginId": null,
+              "serviceId": "",
+              "actionId": "",
+              "serviceName": "",
+              "actionName": "",
+              "itemsFields": null,
+              "keyVault": null,
+              "input": null,
+              "output": null,
+              "startDate": null,
+              "endDate": null,
+              "duration": null,
+              "dependencies": [],
+              "notification": null,
+              "image": ""
+            }
+          ]
         }
       ],
       "tags": [
@@ -7998,147 +5409,6 @@
         }
       ],
       "modifiedDate": "2020-06-12T14:29:18"
-    }
-  ],
-  "stages": [
-    {
-      "id": 1,
-      "name": "Stage Install YUM",
-      "progressPercentage": 50,
-      "state": "Configured",
-      "collapsed": false,
-      "data": {
-        "name": "Stage Install YUM",
-        "description": "Stage Description",
-        "taskTypes": [
-          {
-            "id": "1",
-            "name": "Task For Script",
-            "tasks": [
-              {
-                "id": 1,
-                "name": "Task For Script",
-                "plugin": "Azure",
-                "startDate": "6/1/2020",
-                "endDate": "12/11/2020",
-                "trigger": "Event 1",
-                "status": "Configured",
-                "statusCode": 2,
-                "progressPercentage": 50
-              },
-              {
-                "id": 2,
-                "name": "Task For Script",
-                "plugin": "Azure",
-                "startDate": "6/1/2020",
-                "endDate": "12/11/2020",
-                "trigger": "Event 1",
-                "status": "Configured",
-                "statusCode": 2,
-                "progressPercentage": 50
-              },
-              {
-                "id": 3,
-                "name": "Task For Script",
-                "plugin": "Azure",
-                "startDate": "6/1/2020",
-                "endDate": "12/11/2020",
-                "trigger": "Event 2",
-                "status": "Configured",
-                "statusCode": 2,
-                "progressPercentage": 50
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": 2,
-      "name": "Stage Install Resources",
-      "progressPercentage": 50,
-      "state": "Configured",
-      "collapsed": false,
-      "data": {
-        "name": "Stage Install Resources",
-        "description": "Stage Description",
-        "taskTypes": [
-          {
-            "id": "1",
-            "name": "Task For Script",
-            "tasks": [
-              {
-                "id": 1,
-                "name": "Task For Script",
-                "plugin": "Azure",
-                "startDate": "6/1/2020",
-                "endDate": "12/11/2020",
-                "trigger": "Event 1",
-                "status": "Configured",
-                "statusCode": 2,
-                "progressPercentage": 50
-              },
-              {
-                "id": 2,
-                "name": "Task For Script",
-                "plugin": "Azure",
-                "startDate": "6/1/2020",
-                "endDate": "12/11/2020",
-                "trigger": "Event 1",
-                "status": "Configured",
-                "statusCode": 2,
-                "progressPercentage": 50
-              },
-              {
-                "id": 3,
-                "name": "Task For Script",
-                "plugin": "Azure",
-                "startDate": "6/1/2020",
-                "endDate": "12/11/2020",
-                "trigger": "Event 2",
-                "status": "Configured",
-                "statusCode": 2,
-                "progressPercentage": 50
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ],
-  "tasks": [
-    {
-      "id": 1,
-      "name": "Task For Script",
-      "plugin": "Azure",
-      "startDate": "6/1/2020",
-      "endDate": "12/11/2020",
-      "trigger": "Event 1",
-      "status": "Configured",
-      "statusCode": 2,
-      "progressPercentage": 50
-    },
-    {
-      "id": 2,
-      "name": "Task For Script",
-      "plugin": "Azure",
-      "startDate": "6/1/2020",
-      "endDate": "12/11/2020",
-      "trigger": "Event 1",
-      "status": "Configured",
-      "statusCode": 2,
-      "progressPercentage": 50
-    },
-    {
-      "id": 3,
-      "name": "Task For Script",
-      "plugin": "Azure",
-      "startDate": "6/1/2020",
-      "endDate": "12/11/2020",
-      "trigger": "Event 1",
-      "status": "Configured",
-      "statusCode": 2,
-      "progressPercentage": 50
     }
   ],
   "accounts": [
@@ -8163,6 +5433,512 @@
         "clientID": "SMR - 123214",
         "region": "Ohio"
       }
+    }
+  ],
+  "apps": [
+    {
+      "id": 1,
+      "name": "SMR Toolkit",
+      "IP": [
+        {
+          "address": "192.168.10.10",
+          "sources": [
+            {
+              "id": 10,
+              "name": "NGINX",
+              "desc": "Source Description",
+              "groups": [
+                {
+                  "id": 100,
+                  "name": "NGINX Ansible",
+                  "items": [
+                    {
+                      "id": 1000,
+                      "type": "folder",
+                      "name": "Version 1"
+                    },
+                    {
+                      "id": 1001,
+                      "type": "file",
+                      "name": "config.yaml"
+                    }
+                  ]
+                },
+                {
+                  "id": 101,
+                  "name": "NGINX Container",
+                  "items": [
+                    {
+                      "id": 1002,
+                      "type": "folder",
+                      "name": "Version 1"
+                    },
+                    {
+                      "id": 1003,
+                      "type": "file",
+                      "name": "config.yaml"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 11,
+              "name": "Tomcat",
+              "desc": "Source Description",
+              "groups": [
+                {
+                  "id": 102,
+                  "name": "Tomcat Ansible",
+                  "items": [
+                    {
+                      "id": 1004,
+                      "type": "folder",
+                      "name": "Version 1"
+                    },
+                    {
+                      "id": 1005,
+                      "type": "file",
+                      "name": "config.yaml"
+                    }
+                  ]
+                },
+                {
+                  "id": 103,
+                  "name": "Tomcat Container",
+                  "items": [
+                    {
+                      "id": 1006,
+                      "type": "folder",
+                      "name": "Version 1"
+                    },
+                    {
+                      "id": 1007,
+                      "type": "file",
+                      "name": "config.yaml"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "address": "192.168.10.11",
+          "sources": [
+            {
+              "id": 12,
+              "name": "NGINX",
+              "desc": "Source Description",
+              "groups": [
+                {
+                  "id": 104,
+                  "name": "NGINX Ansible",
+                  "items": [
+                    {
+                      "id": 1008,
+                      "type": "folder",
+                      "name": "Version 1"
+                    },
+                    {
+                      "id": 1009,
+                      "type": "file",
+                      "name": "config.yaml"
+                    }
+                  ]
+                },
+                {
+                  "id": 105,
+                  "name": "NGINX Container",
+                  "items": [
+                    {
+                      "id": 1010,
+                      "type": "folder",
+                      "name": "Version 1"
+                    },
+                    {
+                      "id": 1011,
+                      "type": "file",
+                      "name": "config.yaml"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Tomcat",
+              "desc": "Source Description",
+              "groups": [
+                {
+                  "id": 106,
+                  "name": "Tomcat Ansible",
+                  "items": [
+                    {
+                      "id": 1012,
+                      "type": "folder",
+                      "name": "Version 1"
+                    },
+                    {
+                      "id": 1013,
+                      "type": "file",
+                      "name": "config.yaml"
+                    }
+                  ]
+                },
+                {
+                  "id": 107,
+                  "name": "Tomcat Container",
+                  "items": [
+                    {
+                      "id": 1014,
+                      "type": "folder",
+                      "name": "Version 1"
+                    },
+                    {
+                      "id": 1015,
+                      "type": "file",
+                      "name": "config.yaml"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": 14,
+          "name": "NGINX",
+          "desc": "Source Description",
+          "groups": [
+            {
+              "id": 108,
+              "name": "NGINX Ansible",
+              "items": [
+                {
+                  "id": 1016,
+                  "type": "folder",
+                  "name": "Version 1"
+                },
+                {
+                  "id": 1017,
+                  "type": "file",
+                  "name": "config.yaml"
+                }
+              ]
+            },
+            {
+              "id": 109,
+              "name": "NGINX Container",
+              "items": [
+                {
+                  "id": 1018,
+                  "type": "folder",
+                  "name": "Version 1"
+                },
+                {
+                  "id": 1019,
+                  "type": "file",
+                  "name": "config.yaml"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "name": "Tomcat",
+          "desc": "Source Description",
+          "groups": [
+            {
+              "id": 110,
+              "name": "Tomcat Ansible",
+              "items": [
+                {
+                  "id": 1020,
+                  "type": "folder",
+                  "name": "Version 1"
+                },
+                {
+                  "id": 1021,
+                  "type": "file",
+                  "name": "config.yaml"
+                }
+              ]
+            },
+            {
+              "id": 111,
+              "name": "Tomcat Container",
+              "items": [
+                {
+                  "id": 1022,
+                  "type": "folder",
+                  "name": "Version 1"
+                },
+                {
+                  "id": 1023,
+                  "type": "file",
+                  "name": "config.yaml"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "SMR App 2",
+      "IP": [
+        {
+          "address": "192.168.10.10",
+          "sources": [
+            {
+              "id": 16,
+              "name": "NGINX",
+              "desc": "Source Description",
+              "groups": [
+                {
+                  "id": 112,
+                  "name": "NGINX Ansible",
+                  "items": [
+                    {
+                      "id": 1024,
+                      "type": "folder",
+                      "name": "Version 1"
+                    },
+                    {
+                      "id": 1025,
+                      "type": "file",
+                      "name": "config.yaml"
+                    }
+                  ]
+                },
+                {
+                  "id": 113,
+                  "name": "NGINX Container",
+                  "items": [
+                    {
+                      "id": 1026,
+                      "type": "folder",
+                      "name": "Version 1"
+                    },
+                    {
+                      "id": 1027,
+                      "type": "file",
+                      "name": "config.yaml"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 17,
+              "name": "Tomcat",
+              "desc": "Source Description",
+              "groups": [
+                {
+                  "id": 114,
+                  "name": "Tomcat Ansible",
+                  "items": [
+                    {
+                      "id": 1028,
+                      "type": "folder",
+                      "name": "Version 1"
+                    },
+                    {
+                      "id": 1029,
+                      "type": "file",
+                      "name": "config.yaml"
+                    }
+                  ]
+                },
+                {
+                  "id": 115,
+                  "name": "Tomcat Container",
+                  "items": [
+                    {
+                      "id": 1030,
+                      "type": "folder",
+                      "name": "Version 1"
+                    },
+                    {
+                      "id": 1031,
+                      "type": "file",
+                      "name": "config.yaml"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "address": "192.168.10.11",
+          "sources": [
+            {
+              "id": 18,
+              "name": "NGINX",
+              "desc": "Source Description",
+              "groups": [
+                {
+                  "id": 116,
+                  "name": "NGINX Ansible",
+                  "items": [
+                    {
+                      "id": 1032,
+                      "type": "folder",
+                      "name": "Version 1"
+                    },
+                    {
+                      "id": 1033,
+                      "type": "file",
+                      "name": "config.yaml"
+                    }
+                  ]
+                },
+                {
+                  "id": 117,
+                  "name": "NGINX Container",
+                  "items": [
+                    {
+                      "id": 1034,
+                      "type": "folder",
+                      "name": "Version 1"
+                    },
+                    {
+                      "id": 1035,
+                      "type": "file",
+                      "name": "config.yaml"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 19,
+              "name": "Tomcat",
+              "desc": "Source Description",
+              "groups": [
+                {
+                  "id": 118,
+                  "name": "Tomcat Ansible",
+                  "items": [
+                    {
+                      "id": 1036,
+                      "type": "folder",
+                      "name": "Version 1"
+                    },
+                    {
+                      "id": 1037,
+                      "type": "file",
+                      "name": "config.yaml"
+                    }
+                  ]
+                },
+                {
+                  "id": 119,
+                  "name": "Tomcat Container",
+                  "items": [
+                    {
+                      "id": 1038,
+                      "type": "folder",
+                      "name": "Version 1"
+                    },
+                    {
+                      "id": 1039,
+                      "type": "file",
+                      "name": "config.yaml"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": 20,
+          "name": "NGINX",
+          "desc": "Source Description",
+          "groups": [
+            {
+              "id": 120,
+              "name": "NGINX Ansible",
+              "items": [
+                {
+                  "id": 1040,
+                  "type": "folder",
+                  "name": "Version 1"
+                },
+                {
+                  "id": 1041,
+                  "type": "file",
+                  "name": "config.yaml"
+                }
+              ]
+            },
+            {
+              "id": 121,
+              "name": "NGINX Container",
+              "items": [
+                {
+                  "id": 1042,
+                  "type": "folder",
+                  "name": "Version 1"
+                },
+                {
+                  "id": 1043,
+                  "type": "file",
+                  "name": "config.yaml"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "name": "Tomcat",
+          "desc": "Source Description",
+          "groups": [
+            {
+              "id": 122,
+              "name": "Tomcat Ansible",
+              "items": [
+                {
+                  "id": 1044,
+                  "type": "folder",
+                  "name": "Version 1"
+                },
+                {
+                  "id": 1045,
+                  "type": "file",
+                  "name": "config.yaml"
+                }
+              ]
+            },
+            {
+              "id": 123,
+              "name": "Tomcat Container",
+              "items": [
+                {
+                  "id": 1046,
+                  "type": "folder",
+                  "name": "Version 1"
+                },
+                {
+                  "id": 1047,
+                  "type": "file",
+                  "name": "config.yaml"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

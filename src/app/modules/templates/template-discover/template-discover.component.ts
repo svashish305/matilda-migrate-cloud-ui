@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { DataService } from 'src/services/data.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Item, Group } from 'src/app/models/data.model';
+import { Item, Group, Destination, Source } from 'src/app/models/data.model';
 import * as uuid from 'uuid';
 
 @Component({
@@ -18,19 +18,19 @@ export class TemplateDiscoverComponent implements OnInit {
   selectedApp: any;
   selectedIPAddress: any;
   isIPSelected = false;
-  selectedIPSources: any;
+  sources: Source[] = [];
+  destinations: Destination[] = [];
   sourceCollapseList: boolean[] = [];
-  taskCollapseList: boolean[] = [];
+  groupCollapseList: boolean[] = [];
   sourceSelectList: boolean[] = [];
-  taskSelectList: boolean[] = [];
-  contentSelectList: boolean[] = [];
+  groupSelectList: boolean[] = [];
+  itemSelectList: boolean[] = [];
   MAXN = 10000000;
-  importContents: any[] = [];
   showSidebar = false;
 
   templateId: any;
   currTemplate: any;
-  curSourceTaskLength: any[] = [];
+  curSourceGroupLength: any[] = [];
 
   constructor(
     private location: Location,
@@ -40,9 +40,9 @@ export class TemplateDiscoverComponent implements OnInit {
   ) {
     for (let i = 0; i < this.MAXN; i++) {
       this.sourceSelectList.push(false);
-      this.taskSelectList.push(false);
-      this.contentSelectList.push(false);
-      this.curSourceTaskLength.push(0);
+      this.groupSelectList.push(false);
+      this.itemSelectList.push(false);
+      this.curSourceGroupLength.push(0);
     }
   }
 
@@ -72,35 +72,189 @@ export class TemplateDiscoverComponent implements OnInit {
     this.dataService.getApp(appId).subscribe((res: any) => {
       this.selectedApp = res;
       this.selectedIPAddress = this.selectedApp.IP[0].address;
-      this.selectedIPSources = this.selectedApp.IP[0].sources;
+      this.sources = this.selectedApp.IP[0].sources;
     });
     this.accountClicked = true;
   }
 
-  getCheckboxState(event, src, id) {
-    let contentToImport;
-    if (src === 'content') {
-      let sourceIndex = id.split('_')[0];
-      let taskIndex = id.split('_')[1];
-      let contentIndex = id.split('_')[2];
-      contentToImport = this.selectedIPSources[sourceIndex].tasks[taskIndex]
-        .contents[contentIndex];
+  selectAll(sourceIndex, groupIndex) {
+    let currentSources = this.selectedApp.IP.find(
+      (ip) => ip.address === this.selectedIPAddress
+    ).sources;
+    let currentGroups = currentSources[sourceIndex].groups;
+    let group = currentGroups[groupIndex];
+    let currentItems = group.items;
+    for (let i = 0; i < currentItems.length; i++) {
+      this.itemSelectList[sourceIndex + '_' + groupIndex + '_' + i] = true;
     }
-    if (event.checked) {
-      if (src === 'content') {
-        if (!this.importContents.includes(contentToImport)) {
-          this.importContents.push(contentToImport);
-          this.curSourceTaskLength[id.split('_')[1]]++;
+  }
+
+  unselectAll(sourceIndex, groupIndex) {
+    let currentSources = this.selectedApp.IP.find(
+      (ip) => ip.address === this.selectedIPAddress
+    ).sources;
+    let currentGroups = currentSources[sourceIndex].groups;
+    let group = currentGroups[groupIndex];
+    let currentItems = group.items;
+    for (let i = 0; i < currentItems.length; i++) {
+      this.itemSelectList[sourceIndex + '_' + groupIndex + '_' + i] = false;
+    }
+  }
+
+  getCheckboxState(event, src, id) {
+    console.log('event checked, src and id ', event.checked, src, id);
+    switch (src) {
+      case 'source':
+        if (event.checked) {
+          this.sourceSelectList[id] = !this.sourceSelectList[id];
+          let source = this.sources[id];
+          for (let i = 0; i < source.groups.length; i++) {
+            this.selectAll(id, i);
+            this.groupSelectList[id + '_' + i] = true;
+          }
+
+          this.showSidebar = true;
+          this.destinations.push(source);
+        } else {
+          let source = this.sources[id];
+          for (let i = 0; i < source.groups.length; i++) {
+            this.unselectAll(id, i);
+            this.groupSelectList[id + '_' + i] = false;
+          }
+          this.destinations = this.destinations.filter(
+            (d) => JSON.stringify(d) !== JSON.stringify(source)
+          );
         }
-      }
-      this.showSidebar = true;
-    } else {
-      this.importContents = this.importContents.filter(
-        (c) => JSON.stringify(c) !== JSON.stringify(contentToImport)
-      );
-      if (id && id.split('_').length > 2) {
-        this.curSourceTaskLength[id.split('_')[1]]--;
-      }
+        console.log('destinations ', this.destinations);
+        break;
+      case 'group':
+        var sourceIndex = id.split('_')[0];
+        var groupIndex = id.split('_')[1];
+        var destination = new Destination();
+        destination.appName = this.selectedApp.name;
+        destination.ipAddress = this.selectedIPAddress;
+        destination.name = this.sources[sourceIndex].name;
+        destination.desc = this.sources[sourceIndex].desc;
+        destination.id = this.sources[sourceIndex].id;
+        destination.groups.push(this.sources[sourceIndex].groups[groupIndex]);
+        if (event.checked) {
+          this.selectAll(sourceIndex, groupIndex);
+          this.showSidebar = true;
+          if (this.destinations.find((d) => d.id === destination.id)) {
+            // console.log('same source!');
+            let prevIndex = this.destinations.findIndex(
+              (d) => d.id === destination.id
+            );
+            this.destinations[prevIndex].groups.push(
+              this.sources[sourceIndex].groups[groupIndex]
+            );
+          } else {
+            // console.log('different source');
+            this.destinations.push(destination);
+          }
+        } else {
+          this.unselectAll(sourceIndex, groupIndex);
+          if (this.destinations.find((d) => d.id === destination.id)) {
+            // console.log('same source!');
+            let prevIndex = this.destinations.findIndex(
+              (d) => d.id === destination.id
+            );
+            this.destinations[prevIndex].groups = this.destinations[
+              prevIndex
+            ].groups.filter(
+              (g) =>
+                JSON.stringify(g) !==
+                JSON.stringify(this.sources[sourceIndex].groups[groupIndex])
+            );
+          } else {
+            // console.log('different source');
+            this.destinations = this.destinations.filter(
+              (d) => JSON.stringify(d) !== JSON.stringify(destination)
+            );
+          }
+
+          if (
+            this.destinations.length == 1 &&
+            this.destinations[0].groups.length == 0
+          ) {
+            this.destinations = [];
+          }
+        }
+        console.log('destinations ', this.destinations);
+        break;
+      case 'item':
+        var sourceIndex = id.split('_')[0];
+        var groupIndex = id.split('_')[1];
+        var itemIndex = id.split('_')[2];
+        var destination = new Destination();
+        destination.appName = this.selectedApp.name;
+        destination.ipAddress = this.selectedIPAddress;
+        destination.name = this.sources[sourceIndex].name;
+        destination.desc = this.sources[sourceIndex].desc;
+        destination.id = this.sources[sourceIndex].id;
+        let emptyGroup = Object.assign(
+          {},
+          this.sources[sourceIndex].groups[groupIndex]
+        );
+        emptyGroup.items = [];
+        if (this.destinations.find((d) => d.id === destination.id)) {
+          // source already there
+          let prevSrcIndex = this.destinations.findIndex(
+            (d) => d.id === destination.id
+          );
+          this.destinations[prevSrcIndex].groups.push(
+            this.sources[sourceIndex].groups[groupIndex]
+          );
+        } else {
+          // source not there
+        }
+        // if (destination.groups.find((g) => g.id == emptyGroup.id)) {
+        //   console.log('group id exists');
+        //   let prevGrpIndex = destination.groups.findIndex(
+        //     (g) => g.id == emptyGroup.id
+        //   );
+        //   destination.groups[prevGrpIndex].items.push(
+        //     this.sources[sourceIndex].groups[groupIndex].items[itemIndex]
+        //   );
+        // } else {
+        //   console.log('group id doesnt exists');
+        //   emptyGroup.items.push(
+        //     this.sources[sourceIndex].groups[groupIndex].items[itemIndex]
+        //   );
+        //   destination.groups.push(emptyGroup);
+        // }
+        console.log('here destination is ', destination);
+        if (event.checked) {
+          this.itemSelectList[
+            sourceIndex + '_' + groupIndex + '_' + itemIndex
+          ] = true;
+          this.showSidebar = true;
+
+          if (!destination.groups.includes(emptyGroup)) {
+            destination.groups.push(emptyGroup);
+          }
+          this.destinations.push(destination);
+        } else {
+          this.itemSelectList[
+            sourceIndex + '_' + groupIndex + '_' + itemIndex
+          ] = false;
+          if (this.groupSelectList[sourceIndex + '_' + groupIndex]) {
+            this.groupSelectList[sourceIndex + '_' + groupIndex] = false;
+          }
+          if (this.sourceSelectList[sourceIndex]) {
+            this.sourceSelectList[sourceIndex] = false;
+          }
+
+          if (!destination.groups.includes(emptyGroup)) {
+            destination.groups.push(emptyGroup);
+          }
+          console.log('unchecked ', destination);
+        }
+        console.log('destinations ', this.destinations);
+        break;
+      default:
+        this.showSidebar = false;
+        break;
     }
   }
 
@@ -110,58 +264,14 @@ export class TemplateDiscoverComponent implements OnInit {
 
   changeIP(ipAddress) {
     this.isIPSelected = true;
-    this.selectedIPSources = this.selectedApp.IP.find(
+    this.sources = this.selectedApp.IP.find(
       (ip) => ip.address === ipAddress
     ).sources;
   }
 
-  importSourceTasks(sourceIndex, source) {
-    this.sourceSelectList[sourceIndex] = !this.sourceSelectList[sourceIndex];
-    for (let i = 0; i < source.tasks.length; i++) {
-      this.selectAll(sourceIndex, i);
-      this.taskSelectList[sourceIndex + '_' + i] = !this.taskSelectList[
-        sourceIndex + '_' + i
-      ];
-    }
-    let currentSources = this.selectedApp.IP.find(
-      (ip) => ip.address === this.selectedIPAddress
-    ).sources;
-    let contents = [];
-    currentSources[sourceIndex].tasks.forEach((task) => {
-      contents.push(task.contents);
-    });
-    this.importContents = contents;
-  }
-
-  selectAll(sourceIndex, taskIndex) {
-    let currentSources = this.selectedApp.IP.find(
-      (ip) => ip.address === this.selectedIPAddress
-    ).sources;
-    let currentTasks = currentSources[sourceIndex].tasks;
-    let task = currentTasks[taskIndex];
-    let currentContents = task.contents;
-    for (let i = 0; i < currentContents.length; i++) {
-      if (!this.taskSelectList[sourceIndex + '_' + taskIndex]) {
-        this.contentSelectList[sourceIndex + '_' + taskIndex + '_' + i] = true;
-      } else {
-        this.contentSelectList[sourceIndex + '_' + taskIndex + '_' + i] = false;
-      }
-    }
-    this.importContents = currentContents;
-    this.curSourceTaskLength = currentContents.length;
-  }
-
-  contentClicked(sourceIndex, taskIndex, contentIndex) {
-    if (
-      this.contentSelectList[sourceIndex + '_' + taskIndex + '_' + contentIndex]
-    ) {
-      this.taskSelectList[sourceIndex + '_' + taskIndex] = false;
-    }
-  }
-
-  deleteSourceInSidebar(source) {
-    this.selectedIPSources = this.selectedIPSources.filter(
-      (s) => JSON.stringify(s) !== JSON.stringify(source)
+  deleteInSidebar(destination) {
+    this.destinations = this.destinations.filter(
+      (d) => JSON.stringify(d) !== JSON.stringify(destination)
     );
   }
 
@@ -173,25 +283,25 @@ export class TemplateDiscoverComponent implements OnInit {
       ...new Group(),
     };
     newGroup['name'] = this.selectedApp.name + ' : ' + this.selectedIPAddress;
-    for (let i = 0; i < this.importContents.length; i++) {
-      let taskId = uuid.v4();
-      let taskName = this.importContents[i].name;
-      let newTask = {
-        id: taskId,
-        ...new Item(),
-      };
-      newTask['name'] = taskName;
-      newGroup.items.push(newTask);
-    }
-    originalGroups.push(newGroup);
+    // for (let i = 0; i < this.importContents.length; i++) {
+    //   let taskId = uuid.v4();
+    //   let taskName = this.importContents[i].name;
+    //   let newTask = {
+    //     id: taskId,
+    //     ...new Item(),
+    //   };
+    //   newTask['name'] = taskName;
+    //   newGroup.items.push(newTask);
+    // }
+    // originalGroups.push(newGroup);
     let modifiedTemplate = { groups: originalGroups, ...this.currTemplate };
     // console.log('new template ', modifiedTemplate);
 
-    this.dataService
-      .updateTemplate(this.templateId, modifiedTemplate)
-      .subscribe((newTemplate: any) => {
-        this.currTemplate = newTemplate;
-      });
-    this.router.navigate([`/templates/${this.templateId}`]);
+    // this.dataService
+    //   .updateTemplate(this.templateId, modifiedTemplate)
+    //   .subscribe((newTemplate: any) => {
+    //     this.currTemplate = newTemplate;
+    //   });
+    // this.router.navigate([`/templates/${this.templateId}`]);
   }
 }

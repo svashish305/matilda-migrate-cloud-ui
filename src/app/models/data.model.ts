@@ -16,6 +16,15 @@ export class Tag {
   modifiedDate: string | Date;
 }
 
+export class Group {
+  id: number | string;
+  name: string = '';
+  order: number = 0;
+  statusCd: number = 1;
+  progress: number = 0;
+  items: Item[] = [];
+}
+
 export class Item {
   id: string;
   name: string = '';
@@ -37,17 +46,26 @@ export class Item {
   endDate?: string | Date = null;
   duration?: string = null;
   dependencies?: ItemDependency[] = [];
-  notification?: string|any = null;
+  notification?: string | any = null;
   image?: string = '';
 }
 
-export class Group {
+export class Source {
   id: number | string;
+  appName: string = '';
+  ipAddress: string = '';
   name: string = '';
-  order: number = 0;
-  statusCd: number = 1;
-  progress: number = 0;
-  items: Item[] = [];
+  desc: string = '';
+  groups: Group[] = [];
+}
+
+export class Destination {
+  id: number | string;
+  appName: string = '';
+  ipAddress: string = '';
+  name: string = '';
+  desc: string = '';
+  groups: Group[] = [];
 }
 
 export class Template {

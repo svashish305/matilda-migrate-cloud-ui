@@ -30,6 +30,7 @@ export class TemplateDiscoverComponent implements OnInit {
 
   templateId: any;
   currTemplate: any;
+  curSourceTaskLength: any[] = [];
 
   constructor(
     private location: Location,
@@ -41,6 +42,7 @@ export class TemplateDiscoverComponent implements OnInit {
       this.sourceSelectList.push(false);
       this.taskSelectList.push(false);
       this.contentSelectList.push(false);
+      this.curSourceTaskLength.push(0);
     }
   }
 
@@ -88,6 +90,7 @@ export class TemplateDiscoverComponent implements OnInit {
       if (src === 'content') {
         if (!this.importContents.includes(contentToImport)) {
           this.importContents.push(contentToImport);
+          this.curSourceTaskLength[id.split('_')[1]]++;
         }
       }
       this.showSidebar = true;
@@ -95,6 +98,9 @@ export class TemplateDiscoverComponent implements OnInit {
       this.importContents = this.importContents.filter(
         (c) => JSON.stringify(c) !== JSON.stringify(contentToImport)
       );
+      if (id && id.split('_').length > 2) {
+        this.curSourceTaskLength[id.split('_')[1]]--;
+      }
     }
   }
 
@@ -117,6 +123,14 @@ export class TemplateDiscoverComponent implements OnInit {
         sourceIndex + '_' + i
       ];
     }
+    let currentSources = this.selectedApp.IP.find(
+      (ip) => ip.address === this.selectedIPAddress
+    ).sources;
+    let contents = [];
+    currentSources[sourceIndex].tasks.forEach((task) => {
+      contents.push(task.contents);
+    });
+    this.importContents = contents;
   }
 
   selectAll(sourceIndex, taskIndex) {
@@ -133,6 +147,8 @@ export class TemplateDiscoverComponent implements OnInit {
         this.contentSelectList[sourceIndex + '_' + taskIndex + '_' + i] = false;
       }
     }
+    this.importContents = currentContents;
+    this.curSourceTaskLength = currentContents.length;
   }
 
   contentClicked(sourceIndex, taskIndex, contentIndex) {
