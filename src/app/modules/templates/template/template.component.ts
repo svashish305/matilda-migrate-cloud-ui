@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import * as uuid from 'uuid';
 import { Group } from 'src/app/models/data.model';
+import { MatSnackBarConfig, MatSnackBar } from '@angular/material/snack-bar';
 
 interface SelectInterface {
   value: string;
@@ -63,7 +64,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
-    private location: Location
+    private location: Location,public snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -400,8 +401,14 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     this.showTaskOptions = !event;
   }
   onSaveTemplateFormat(formatPaylod:any){
-    
+    let config = new MatSnackBarConfig();
+    config.duration = 5000;
+    config.panelClass = ['snackbar-pass']
+    config.horizontalPosition = 'right';
+    config.verticalPosition = 'top';
+    this.snackBar.open('Template Task Updated', 'Close', config); 
   }
+
   updateTaskTitle(taskName){
   //  API Task Name Update  
     // this.dataService.updateTaskName(taskName).subscribe(res=>{

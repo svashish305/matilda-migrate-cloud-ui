@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 //import { NotificationsService } from 'angular2-notifications';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { MatSnackBarConfig, MatSnackBar } from '@angular/material/snack-bar';
 declare var require: any;
 interface SelectInterface {
   value: string;
@@ -38,7 +39,7 @@ export class EditTaskTemplateComponent implements OnInit {
   schemaFileJ;
   dataFileY;
   testVar: any;
-  constructor(private _formBuilder: FormBuilder,) { }
+  constructor(private _formBuilder: FormBuilder,public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.initForm();    
@@ -97,6 +98,12 @@ export class EditTaskTemplateComponent implements OnInit {
       formSData =  JSON.parse(form.formatDataSchema);
       var valid = ajv.validate(formSData, formData);
       if (!valid) {
+        let config = new MatSnackBarConfig();
+        config.duration = 5000;
+        config.panelClass = ['snackbar-fail']
+        config.horizontalPosition = 'right';
+        config.verticalPosition = 'top';
+        this.snackBar.open('Please Enter Valid JSON Data', 'Close', config); 
       }
       if(valid) {
         let templatePayload = {
@@ -117,6 +124,13 @@ export class EditTaskTemplateComponent implements OnInit {
       try {
         let doc = yaml.safeLoad(form.formatDataYaml)
       } catch (e) {
+        let config = new MatSnackBarConfig();
+        config.duration = 5000;
+        config.panelClass = ['snackbar-fail']
+        config.horizontalPosition = 'right';
+        config.verticalPosition = 'top';
+        this.snackBar.open('Please Enter Valid YAML Data', 'Close', config); 
+
       }
     }
   }
@@ -131,7 +145,14 @@ export class EditTaskTemplateComponent implements OnInit {
           }
           this.taskTemplateFormat.emit(templatePayload); 
           return true;
-      } catch (e) {      
+      } catch (e) {  
+        let config = new MatSnackBarConfig();
+        config.duration = 5000;
+        config.panelClass = ['snackbar-fail']
+        config.horizontalPosition = 'right';
+        config.verticalPosition = 'top';
+        this.snackBar.open('Please Enter Valid JSON Data', 'Close', config); 
+    
           return false;
       }
   }

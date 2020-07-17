@@ -1338,3 +1338,11 @@
   font-family: LatoMedium;
   font-size: 0.875rem;
 }
+::ng-deep .snackbar-pass{
+  font-family: LatoRegular;
+  font-size: 5rem;
+  line-height: 1.45;
+  // text-shadow: 0.015em 0.015em 0 #666;
+  background-color: #5cb85c;
+  color: #fff;
+}
