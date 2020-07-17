@@ -555,7 +555,7 @@
     top: -2px;
     height: 24px !important;
     width: 24px !important;
-    background: url("src/assets/imgs/chevron-down.svg") !important;
+    background: url('../../../../assets/imgs/chevron-down.svg') !important;
     border: none !important;
     margin: 0 !important;
   }
@@ -1731,10 +1731,10 @@
     margin-left: -6px;
     visibility: hidden;
   }
-  &.collapsed {
-    position: relative;
-    top: 1em;
-  }
+  // &.collapsed {
+  //   position: relative;
+  //   top: 1em;
+  // }
   .template__row {
     &:hover {
       .group-drag {
@@ -1970,7 +1970,7 @@
     bottom: 2px;
     height: 24px !important;
     width: 24px !important;
-    background: url("src/assets/imgs/chevron-down.svg") !important;
+    background: url('../../../../assets/imgs/chevron-down.svg') !important;
     border: none !important;
     margin: 0 !important;
   }
