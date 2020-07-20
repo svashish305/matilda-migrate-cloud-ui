@@ -30,7 +30,7 @@ export class TemplateDiscoverComponent implements OnInit {
 
   templateId: any;
   currTemplate: any;
-  curSourceGroupLength: any[] = [];
+  itemCountInGroup: any[] = [];
   itemsInSameGroup: any[] = [];
   itemsToAdd: any[] = [];
 
@@ -44,7 +44,7 @@ export class TemplateDiscoverComponent implements OnInit {
       this.sourceSelectList.push(false);
       this.groupSelectList.push(false);
       this.itemSelectList.push(false);
-      this.curSourceGroupLength.push(0);
+      this.itemCountInGroup.push(0);
     }
   }
 
@@ -127,7 +127,7 @@ export class TemplateDiscoverComponent implements OnInit {
         destination.desc = selectedSource.desc;
         destination.id = selectedSource.id;
         var selectedGroup = selectedSource.groups.find((g) => g.id == groupId);
-        this.curSourceGroupLength[groupId] = selectedGroup.items.length;
+        this.itemCountInGroup[groupId] = selectedGroup.items.length;
         destination.groups.push(selectedGroup);
         if (event.checked) {
           this.selectAll(sourceId, groupId);
@@ -147,7 +147,7 @@ export class TemplateDiscoverComponent implements OnInit {
           if (this.destinations.find((d) => d.id === destination.id)) {
             // console.log('same source!');
             let prevIndex = this.destinations.findIndex(
-              (d) => d.id === destination.id
+              (d) => d.id == destination.id
             );
             this.destinations[prevIndex].groups = this.destinations[
               prevIndex
@@ -184,9 +184,9 @@ export class TemplateDiscoverComponent implements OnInit {
         if (event.checked) {
           this.itemSelectList[sourceId + '_' + groupId + '_' + itemId] = true;
           this.showSidebar = true;
-          this.curSourceGroupLength[groupId]++;
+          this.itemCountInGroup[groupId]++;
           if (this.destinations.find((d) => d.id == destination.id)) {
-            // same destination
+            // console.log('same destination');
             let prevDestIndex = this.destinations.findIndex(
               (d) => d.id == destination.id
             );
@@ -194,31 +194,37 @@ export class TemplateDiscoverComponent implements OnInit {
             var newGroup = new Group();
             newGroup.id = selectedGroup.id;
             newGroup.name = selectedGroup.name;
-            if (prevDestination.groups.find((g) => g.id == selectedGroup.id)) {
-              // console.log('same group');
-              this.itemsInSameGroup.push(selectedItem);
-              newGroup.items = this.itemsInSameGroup;
-            } else {
-              // console.log('different group');
-              this.itemsToAdd.push(selectedItem);
-              newGroup.items = this.itemsToAdd;
-            }
+            // if (prevDestination.groups.find((g) => g.id == selectedGroup.id)) {
+            //   console.log('same dest and group');
+            //   // this.itemsInSameGroup.push(selectedItem);
+            //   // newGroup.items = this.itemsInSameGroup;
+            // } else {
+            //   console.log('same dest but different group');
+            //   // this.itemsToAdd.push(selectedItem);
+            //   // newGroup.items = this.itemsToAdd;
+            // }
+            this.itemsToAdd.push(selectedItem);
+            newGroup.items = this.itemsToAdd;
             destination.groups.push(newGroup);
-            this.destinations[prevDestIndex] = destination;
+            // this.destinations[prevDestIndex] = destination;
           } else {
-            // new destination
+            // console.log('new destination');
             var newGroup = new Group();
             newGroup.id = selectedGroup.id;
             newGroup.name = selectedGroup.name;
-            if (destination.groups.find((g) => g.id == selectedGroup.id)) {
-              // console.log('same group');
-              this.itemsInSameGroup.push(selectedItem);
-              newGroup.items = this.itemsInSameGroup;
-            } else {
-              // console.log('different group');
-              this.itemsToAdd.push(selectedItem);
-              newGroup.items = this.itemsToAdd;
-            }
+            // if (destination.groups.find((g) => g.id == selectedGroup.id)) {
+            //   // console.log('new dest same group');
+            //   this.itemsInSameGroup.push(selectedItem);
+            //   newGroup.items = this.itemsInSameGroup;
+            // } else {
+            //   // console.log('new dest different group');
+            //   this.itemsToAdd.push(selectedItem);
+            //   newGroup.items = this.itemsToAdd;
+            // }
+            this.itemsToAdd.push(selectedItem);
+            newGroup.items = this.itemsToAdd;
+
+            console.log('newGroup items ', newGroup.items);
             destination.groups.push(newGroup);
             this.destinations.push(destination);
           }
@@ -231,7 +237,17 @@ export class TemplateDiscoverComponent implements OnInit {
           if (this.sourceSelectList[sourceId]) {
             this.sourceSelectList[sourceId] = false;
           }
-          this.curSourceGroupLength[groupId]--;
+          this.itemCountInGroup[groupId]--;
+
+          if (this.itemCountInGroup[groupId] == 0) {
+            var curDest = this.destinations.find((d) => d.id == destination.id);
+            curDest.groups = curDest.groups.filter((g) => g.id !== groupId);
+            if (curDest.groups.length == 0) {
+              this.destinations = this.destinations.filter(
+                (d) => d.id !== curDest.id
+              );
+            }
+          }
         }
         console.log('destinations ', this.destinations);
         break;
@@ -259,32 +275,29 @@ export class TemplateDiscoverComponent implements OnInit {
   }
 
   import() {
-    let originalGroups: any = this.currTemplate.groups;
-    let groupId = uuid.v4();
-    let newGroup = {
-      id: groupId,
-      ...new Group(),
-    };
-    newGroup['name'] = this.selectedApp.name + ' : ' + this.selectedIPAddress;
-    // for (let i = 0; i < this.importContents.length; i++) {
-    //   let taskId = uuid.v4();
-    //   let taskName = this.importContents[i].name;
-    //   let newTask = {
-    //     id: taskId,
-    //     ...new Item(),
-    //   };
-    //   newTask['name'] = taskName;
-    //   newGroup.items.push(newTask);
-    // }
-    // originalGroups.push(newGroup);
-    let modifiedTemplate = { groups: originalGroups, ...this.currTemplate };
-    // console.log('new template ', modifiedTemplate);
+    // console.log('destinations to import ', this.destinations);
+    let allGroups: any[] = [];
+    this.destinations.forEach((d: any) => {
+      allGroups.push(...d.groups);
+    });
+    allGroups.forEach((g) => {
+      g.name =
+        this.selectedApp.name + ' : ' + this.selectedIPAddress + ' : ' + g.name;
+      g.id = uuid.v4();
+      g.items.forEach((i) => {
+        i.id = uuid.v4();
+      });
+    });
+    let modifiedTemplate = this.currTemplate;
+    allGroups.forEach((g) => {
+      modifiedTemplate.groups.push(g);
+    });
 
-    // this.dataService
-    //   .updateTemplate(this.templateId, modifiedTemplate)
-    //   .subscribe((newTemplate: any) => {
-    //     this.currTemplate = newTemplate;
-    //   });
-    // this.router.navigate([`/templates/${this.templateId}`]);
+    //   this.dataService
+    //     .updateTemplate(this.templateId, modifiedTemplate)
+    //     .subscribe((newTemplate: any) => {
+    //       this.currTemplate = newTemplate;
+    //     });
+    //   this.router.navigate([`/templates/${this.templateId}`]);
   }
 }
