@@ -50,6 +50,16 @@ export class Item {
   image?: string = '';
 }
 
+export class App {
+  id: number | string;
+  name: string;
+  ip: IP[] = [];
+}
+export class IP {
+  address: string;
+  sources: Source[] = [];
+}
+
 export class Source {
   id: number | string;
   appName: string = '';

@@ -78,27 +78,33 @@ export class TemplateDiscoverComponent implements OnInit {
     this.accountClicked = true;
   }
 
-  selectAll(sourceIndex, groupIndex) {
+  selectAll(sourceId, groupId) {
     let currentSources = this.selectedApp.IP.find(
       (ip) => ip.address === this.selectedIPAddress
     ).sources;
-    let currentGroups = currentSources[sourceIndex].groups;
-    let group = currentGroups[groupIndex];
+    let currentSource = currentSources.find((s) => s.id == sourceId);
+    let currentGroups = currentSource.groups;
+    let group = currentGroups.find((g) => g.id == groupId);
     let currentItems = group.items;
     for (let i = 0; i < currentItems.length; i++) {
-      this.itemSelectList[sourceIndex + '_' + groupIndex + '_' + i] = true;
+      this.itemSelectList[
+        sourceId + '_' + groupId + '_' + currentItems[i].id
+      ] = true;
     }
   }
 
-  unselectAll(sourceIndex, groupIndex) {
+  unselectAll(sourceId, groupId) {
     let currentSources = this.selectedApp.IP.find(
       (ip) => ip.address === this.selectedIPAddress
     ).sources;
-    let currentGroups = currentSources[sourceIndex].groups;
-    let group = currentGroups[groupIndex];
+    let currentSource = currentSources.find((s) => s.id == sourceId);
+    let currentGroups = currentSource.groups;
+    let group = currentGroups.find((g) => g.id == groupId);
     let currentItems = group.items;
     for (let i = 0; i < currentItems.length; i++) {
-      this.itemSelectList[sourceIndex + '_' + groupIndex + '_' + i] = false;
+      this.itemSelectList[
+        sourceId + '_' + groupId + '_' + currentItems[i].id
+      ] = false;
     }
   }
 
@@ -106,55 +112,37 @@ export class TemplateDiscoverComponent implements OnInit {
     console.log('event checked, src and id ', event.checked, src, id);
     switch (src) {
       case 'source':
-        if (event.checked) {
-          this.sourceSelectList[id] = !this.sourceSelectList[id];
-          let source = this.sources[id];
-          for (let i = 0; i < source.groups.length; i++) {
-            this.selectAll(id, i);
-            this.groupSelectList[id + '_' + i] = true;
-          }
-
-          this.showSidebar = true;
-          this.destinations.push(source);
-        } else {
-          let source = this.sources[id];
-          for (let i = 0; i < source.groups.length; i++) {
-            this.unselectAll(id, i);
-            this.groupSelectList[id + '_' + i] = false;
-          }
-          this.destinations = this.destinations.filter(
-            (d) => JSON.stringify(d) !== JSON.stringify(source)
-          );
-        }
+        // just indicates if any nested checkboxes are selected
         console.log('destinations ', this.destinations);
         break;
       case 'group':
-        var sourceIndex = id.split('_')[0];
-        var groupIndex = id.split('_')[1];
+        var sourceId = id.split('_')[0];
+        var groupId = id.split('_')[1];
         var destination = new Destination();
         destination.appName = this.selectedApp.name;
         destination.ipAddress = this.selectedIPAddress;
-        destination.name = this.sources[sourceIndex].name;
-        destination.desc = this.sources[sourceIndex].desc;
-        destination.id = this.sources[sourceIndex].id;
-        destination.groups.push(this.sources[sourceIndex].groups[groupIndex]);
+        var selectedSource = this.sources.find((s) => s.id == sourceId);
+        destination.name = selectedSource.name;
+        destination.desc = selectedSource.desc;
+        destination.id = selectedSource.id;
+        var selectedGroup = selectedSource.groups.find((g) => g.id == groupId);
+        this.curSourceGroupLength[groupId] = selectedGroup.items.length;
+        destination.groups.push(selectedGroup);
         if (event.checked) {
-          this.selectAll(sourceIndex, groupIndex);
+          this.selectAll(sourceId, groupId);
           this.showSidebar = true;
           if (this.destinations.find((d) => d.id === destination.id)) {
             // console.log('same source!');
             let prevIndex = this.destinations.findIndex(
               (d) => d.id === destination.id
             );
-            this.destinations[prevIndex].groups.push(
-              this.sources[sourceIndex].groups[groupIndex]
-            );
+            this.destinations[prevIndex].groups.push(selectedGroup);
           } else {
             // console.log('different source');
             this.destinations.push(destination);
           }
         } else {
-          this.unselectAll(sourceIndex, groupIndex);
+          this.unselectAll(sourceId, groupId);
           if (this.destinations.find((d) => d.id === destination.id)) {
             // console.log('same source!');
             let prevIndex = this.destinations.findIndex(
@@ -163,9 +151,7 @@ export class TemplateDiscoverComponent implements OnInit {
             this.destinations[prevIndex].groups = this.destinations[
               prevIndex
             ].groups.filter(
-              (g) =>
-                JSON.stringify(g) !==
-                JSON.stringify(this.sources[sourceIndex].groups[groupIndex])
+              (g) => JSON.stringify(g) !== JSON.stringify(selectedGroup)
             );
           } else {
             // console.log('different source');
@@ -184,29 +170,27 @@ export class TemplateDiscoverComponent implements OnInit {
         console.log('destinations ', this.destinations);
         break;
       case 'item':
-        var sourceIndex = id.split('_')[0];
-        var groupIndex = id.split('_')[1];
-        var itemIndex = id.split('_')[2];
+        var sourceId = id.split('_')[0];
+        var groupId = id.split('_')[1];
+        var itemId = id.split('_')[2];
         var destination = new Destination();
         destination.appName = this.selectedApp.name;
         destination.ipAddress = this.selectedIPAddress;
-        destination.name = this.sources[sourceIndex].name;
-        destination.desc = this.sources[sourceIndex].desc;
-        destination.id = this.sources[sourceIndex].id;
-
+        var selectedSource = this.sources.find((s) => s.id == sourceId);
+        destination.name = selectedSource.name;
+        destination.desc = selectedSource.desc;
+        destination.id = selectedSource.id;
+        var selectedGroup = selectedSource.groups.find((g) => g.id == groupId);
+        var selectedItem = selectedGroup.items.find((i) => i.id == itemId);
         if (event.checked) {
-          this.itemSelectList[
-            sourceIndex + '_' + groupIndex + '_' + itemIndex
-          ] = true;
+          this.itemSelectList[sourceId + '_' + groupId + '_' + itemId] = true;
           this.showSidebar = true;
-
+          this.curSourceGroupLength[groupId]++;
           if (destination.groups.length == 0) {
             var newGroup = new Group();
-            newGroup.id = this.sources[sourceIndex].groups[groupIndex].id;
-            newGroup.name = this.sources[sourceIndex].groups[groupIndex].name;
-            newGroup.items.push(
-              this.sources[sourceIndex].groups[groupIndex].items[itemIndex]
-            );
+            newGroup.id = selectedGroup.id;
+            newGroup.name = selectedGroup.name;
+            newGroup.items.push(selectedItem);
             destination.groups.push(newGroup);
           } else {
             if (this.destinations.find((d) => d.id === destination.id)) {
@@ -215,23 +199,16 @@ export class TemplateDiscoverComponent implements OnInit {
                 (d) => d.id === destination.id
               );
               let prevGroups = this.destinations[prevSrcIndex].groups;
-              if (
-                prevGroups.find(
-                  (g) =>
-                    g.id === this.sources[sourceIndex].groups[groupIndex].id
-                )
-              ) {
+              if (prevGroups.find((g) => g.id === selectedGroup.id)) {
                 console.log('same source same group');
                 let prevGrpIndex = prevGroups.findIndex(
-                  (g) => g.id == this.sources[sourceIndex].groups[groupIndex].id
+                  (g) => g.id == selectedGroup.id
                 );
-                destination.groups[prevGrpIndex].items.push(
-                  this.sources[sourceIndex].groups[groupIndex].items[itemIndex]
-                );
+                destination.groups[prevGrpIndex].items.push(selectedItem);
               } else {
                 console.log('group id doesnt exists');
                 // emptyGroup.items.push(
-                //   this.sources[sourceIndex].groups[groupIndex].items[itemIndex]
+                //   selectedItem
                 // );
                 // destination.groups.push(emptyGroup);
               }
@@ -242,16 +219,14 @@ export class TemplateDiscoverComponent implements OnInit {
 
           this.destinations.push(destination);
         } else {
-          this.itemSelectList[
-            sourceIndex + '_' + groupIndex + '_' + itemIndex
-          ] = false;
-          if (this.groupSelectList[sourceIndex + '_' + groupIndex]) {
-            this.groupSelectList[sourceIndex + '_' + groupIndex] = false;
+          this.itemSelectList[sourceId + '_' + groupId + '_' + itemId] = false;
+          if (this.groupSelectList[sourceId + '_' + groupId]) {
+            this.groupSelectList[sourceId + '_' + groupId] = false;
           }
-          if (this.sourceSelectList[sourceIndex]) {
-            this.sourceSelectList[sourceIndex] = false;
+          if (this.sourceSelectList[sourceId]) {
+            this.sourceSelectList[sourceId] = false;
           }
-
+          this.curSourceGroupLength[groupId]--;
           // if (!destination.groups.includes(emptyGroup)) {
           //   destination.groups.push(emptyGroup);
           // }

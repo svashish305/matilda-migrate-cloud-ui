@@ -112,63 +112,98 @@
       </div>
 
       <div *ngIf="!isIPSelected">
-        <div class="divider-btm" *ngFor="let source of sources; let i = index">
+        <div class="divider-btm" *ngFor="let source of sources">
           <div>
             <img
               class="pointer-cursor source-collapser"
               [src]="
-                sourceCollapseList[i]
+                sourceCollapseList[source.id]
                   ? 'assets/imgs/chevron-down.svg'
                   : 'assets/imgs/chevron-up.svg'
               "
               alt=""
-              (click)="sourceCollapseList[i] = !sourceCollapseList[i]"
+              (click)="
+                sourceCollapseList[source.id] = !sourceCollapseList[source.id]
+              "
             />
             <mat-checkbox
-              (change)="getCheckboxState($event, 'source', i)"
+              (change)="getCheckboxState($event, 'source', source.id)"
             ></mat-checkbox>
             <span class="make-it-blue left-padding-one-fourth-rem">
               {{ source.name }}
             </span>
           </div>
-          <div class="indented" [ngbCollapse]="sourceCollapseList[i]">
+          <div class="indented" [ngbCollapse]="sourceCollapseList[source.id]">
             <span class="relative-left-4 common-text-mobile gray-text">{{
               source.desc
             }}</span>
-            <div *ngFor="let group of source.groups; let j = index">
+            <div *ngFor="let group of source.groups">
               <img
                 class="pointer-cursor task-collapser"
                 [src]="
-                  groupCollapseList[i + '_' + j]
+                  groupCollapseList[
+                    source.id.toString() + '_' + group.id.toString()
+                  ]
                     ? 'assets/imgs/chevron-down.svg'
                     : 'assets/imgs/chevron-up.svg'
                 "
                 alt=""
                 (click)="
-                  groupCollapseList[i + '_' + j] = !groupCollapseList[
-                    i + '_' + j
+                  groupCollapseList[
+                    source.id.toString() + '_' + group.id.toString()
+                  ] = !groupCollapseList[
+                    source.id.toString() + '_' + group.id.toString()
                   ]
                 "
               />
               <span class="make-it-blue right-padding-one-fourth-rem">{{
                 group.name
               }}</span>
-              <!-- <span class="gray-text">({{ group.items.length }})</span> -->
               <div
                 class="task-indented"
-                [ngbCollapse]="groupCollapseList[i + '_' + j]"
+                [ngbCollapse]="
+                  groupCollapseList[
+                    source.id.toString() + '_' + group.id.toString()
+                  ]
+                "
               >
                 <mat-checkbox
-                  (change)="getCheckboxState($event, 'group', i + '_' + j)"
-                  [(ngModel)]="groupSelectList[i + '_' + j]"
+                  (change)="
+                    getCheckboxState(
+                      $event,
+                      'group',
+                      source.id.toString() + '_' + group.id.toString()
+                    )
+                  "
+                  [(ngModel)]="
+                    groupSelectList[
+                      source.id.toString() + '_' + group.id.toString()
+                    ]
+                  "
                 ></mat-checkbox>
                 <span class="left-padding-half-rem">Select All</span>
-                <div *ngFor="let item of group.items; let k = index">
+                <div *ngFor="let item of group.items">
                   <mat-checkbox
                     (change)="
-                      getCheckboxState($event, 'item', i + '_' + j + '_' + k)
+                      getCheckboxState(
+                        $event,
+                        'item',
+                        source.id.toString() +
+                          '_' +
+                          group.id.toString() +
+                          '_' +
+                          item.id.toString()
+                      )
                     "
-                    [(ngModel)]="itemSelectList[i + '_' + j + '_' + k]"
+                    [(ngModel)]="
+                      itemSelectList[
+                        source.id.toString() +
+                          '_' +
+                          group.id.toString() +
+                          '_' +
+                          item.id.toString()
+                      ]
+                    "
                   ></mat-checkbox>
                   <span class="left-padding-half-rem">{{ item.name }}</span>
                 </div>
@@ -178,63 +213,98 @@
         </div>
       </div>
       <div *ngIf="isIPSelected">
-        <div class="divider-btm" *ngFor="let source of sources; let i = index">
+        <div class="divider-btm" *ngFor="let source of sources">
           <div>
             <img
               class="pointer-cursor source-collapser"
               [src]="
-                sourceCollapseList[i]
+                sourceCollapseList[source.id]
                   ? 'assets/imgs/chevron-down.svg'
                   : 'assets/imgs/chevron-up.svg'
               "
               alt=""
-              (click)="sourceCollapseList[i] = !sourceCollapseList[i]"
+              (click)="
+                sourceCollapseList[source.id] = !sourceCollapseList[source.id]
+              "
             />
             <mat-checkbox
-              (change)="getCheckboxState($event, 'source', i)"
+              (change)="getCheckboxState($event, 'source', source.id)"
             ></mat-checkbox>
             <span class="make-it-blue left-padding-one-fourth-rem">
               {{ source.name }}
             </span>
           </div>
-          <div class="indented" [ngbCollapse]="sourceCollapseList[i]">
+          <div class="indented" [ngbCollapse]="sourceCollapseList[source.id]">
             <span class="relative-left-4 common-text-mobile gray-text">{{
               source.desc
             }}</span>
-            <div *ngFor="let group of source.groups; let j = index">
+            <div *ngFor="let group of source.groups">
               <img
                 class="pointer-cursor task-collapser"
                 [src]="
-                  groupCollapseList[i + '_' + j]
+                  groupCollapseList[
+                    source.id.toString() + '_' + group.id.toString()
+                  ]
                     ? 'assets/imgs/chevron-down.svg'
                     : 'assets/imgs/chevron-up.svg'
                 "
                 alt=""
                 (click)="
-                  groupCollapseList[i + '_' + j] = !groupCollapseList[
-                    i + '_' + j
+                  groupCollapseList[
+                    source.id.toString() + '_' + group.id.toString()
+                  ] = !groupCollapseList[
+                    source.id.toString() + '_' + group.id.toString()
                   ]
                 "
               />
               <span class="make-it-blue right-padding-one-fourth-rem">{{
                 group.name
               }}</span>
-              <!-- <span class="gray-text">({{ group.items.length }})</span> -->
               <div
                 class="task-indented"
-                [ngbCollapse]="groupCollapseList[i + '_' + j]"
+                [ngbCollapse]="
+                  groupCollapseList[
+                    source.id.toString() + '_' + group.id.toString()
+                  ]
+                "
               >
                 <mat-checkbox
-                  (change)="getCheckboxState($event, 'group', i + '_' + j)"
-                  [(ngModel)]="groupSelectList[i + '_' + j]"
+                  (change)="
+                    getCheckboxState(
+                      $event,
+                      'group',
+                      source.id.toString() + '_' + group.id.toString()
+                    )
+                  "
+                  [(ngModel)]="
+                    groupSelectList[
+                      source.id.toString() + '_' + group.id.toString()
+                    ]
+                  "
                 ></mat-checkbox>
                 <span class="left-padding-half-rem">Select All</span>
-                <div *ngFor="let item of group.items; let k = index">
+                <div *ngFor="let item of group.items">
                   <mat-checkbox
                     (change)="
-                      getCheckboxState($event, 'item', i + '_' + j + '_' + k)
+                      getCheckboxState(
+                        $event,
+                        'item',
+                        source.id.toString() +
+                          '_' +
+                          group.id.toString() +
+                          '_' +
+                          item.id.toString()
+                      )
                     "
-                    [(ngModel)]="itemSelectList[i + '_' + j + '_' + k]"
+                    [(ngModel)]="
+                      itemSelectList[
+                        source.id.toString() +
+                          '_' +
+                          group.id.toString() +
+                          '_' +
+                          item.id.toString()
+                      ]
+                    "
                   ></mat-checkbox>
                   <span class="left-padding-half-rem">{{ item.name }}</span>
                 </div>
@@ -253,10 +323,7 @@
         <span class="common-text">Import List</span>
       </div>
       <div class="sidebar-content">
-        <div
-          class="import-card"
-          *ngFor="let destination of destinations; let si = index"
-        >
+        <div class="import-card" *ngFor="let destination of destinations">
           <div class="common-text">
             <span class="make-it-blue">{{ destination.name }}</span>
             <span class="left-padding-24">IP&nbsp;:&nbsp;</span>
@@ -272,36 +339,72 @@
           <div class="tb-padding-half-rem">
             <mat-divider></mat-divider>
           </div>
-          <div *ngFor="let group of destination.groups; let sj = index">
+          <div *ngFor="let group of destination.groups">
             <img
               class="pointer-cursor task-collapser"
               [src]="
-                groupCollapseList[si + '_' + sj]
+                groupCollapseList[
+                  destination.id.toString() + '_' + group.id.toString()
+                ]
                   ? 'assets/imgs/chevron-down.svg'
                   : 'assets/imgs/chevron-up.svg'
               "
               alt=""
               (click)="
-                groupCollapseList[si + '_' + sj] = !groupCollapseList[
-                  si + '_' + sj
+                groupCollapseList[
+                  destination.id.toString() + '_' + group.id.toString()
+                ] = !groupCollapseList[
+                  destination.id.toString() + '_' + group.id.toString()
                 ]
               "
             />
             <span class="make-it-blue right-padding-one-fourth-rem">{{
               group.name
             }}</span>
-            <span class="gray-text">({{ curSourceGroupLength[sj] }})</span>
+            <span class="gray-text"
+              >({{ curSourceGroupLength[group.id] }})</span
+            >
             <div
               class="task-indented"
-              [ngbCollapse]="groupCollapseList[si + '_' + sj]"
+              [ngbCollapse]="
+                groupCollapseList[
+                  destination.id.toString() + '_' + group.id.toString()
+                ]
+              "
             >
-              <div *ngFor="let item of group.items; let sk = index">
-                <div *ngIf="itemSelectList[si + '_' + sj + '_' + sk]">
+              <div *ngFor="let item of group.items">
+                <div
+                  *ngIf="
+                    itemSelectList[
+                      destination.id.toString() +
+                        '_' +
+                        group.id.toString() +
+                        '_' +
+                        item.id.toString()
+                    ]
+                  "
+                >
                   <mat-checkbox
                     (change)="
-                      getCheckboxState($event, 'item', si + '_' + sj + '_' + sk)
+                      getCheckboxState(
+                        $event,
+                        'item',
+                        destination.id.toString() +
+                          '_' +
+                          group.id.toString() +
+                          '_' +
+                          item.id.toString()
+                      )
                     "
-                    [(ngModel)]="itemSelectList[si + '_' + sj + '_' + sk]"
+                    [(ngModel)]="
+                      itemSelectList[
+                        destination.id.toString() +
+                          '_' +
+                          group.id.toString() +
+                          '_' +
+                          item.id.toString()
+                      ]
+                    "
                   ></mat-checkbox>
                   <span class="left-padding-half-rem">{{ item.name }}</span>
                 </div>
