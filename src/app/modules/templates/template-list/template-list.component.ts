@@ -13,11 +13,9 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { ThemePalette } from '@angular/material/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DataService } from 'src/services/data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { Group, Item } from 'src/app/models/data.model';
 import { StatusCodes } from 'src/app/enums/enums';
 
 interface SelectInterface {
@@ -39,34 +37,6 @@ export class TemplateListComponent implements OnInit, OnChanges {
   tasks: any[] = [];
   groupCollapseList: boolean[];
   drag = true;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
-  plugins: SelectInterface[] = [
-    { value: 'p-0', viewValue: 'AWS' },
-    { value: 'p-1', viewValue: 'Pizza' },
-    { value: 'p-2', viewValue: 'Tacos' },
-  ];
-  services: SelectInterface[] = [
-    { value: 's-0', viewValue: 'RDS' },
-    { value: 's-1', viewValue: 'Pizza' },
-    { value: 's-2', viewValue: 'Tacos' },
-  ];
-  actions: SelectInterface[] = [
-    { value: 'create-0', viewValue: 'Create' },
-    { value: 'update-1', viewValue: 'Update' },
-    { value: 'delete-2', viewValue: 'Delete' },
-  ];
-  accounts: SelectInterface[] = [
-    { value: 'aws-acc-0', viewValue: 'AWS Account 1' },
-    { value: 'aws-acc-1', viewValue: 'AWS Account 2' },
-    { value: 'aws-acc-2', viewValue: 'AWS Account 3' },
-  ];
-  types: SelectInterface[] = [
-    { value: 'type-0', viewValue: 'T2 Micro' },
-    { value: 'type-1', viewValue: 'Type 2' },
-    { value: 'type-2', viewValue: 'Type 3' },
-  ];
 
   workflowTypes: SelectInterface[] = [
     { value: 'time', viewValue: 'Time' },
@@ -85,30 +55,15 @@ export class TemplateListComponent implements OnInit, OnChanges {
   constructor(
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
-    private _formBuilder: FormBuilder,
     public dialog: MatDialog
   ) {
     this.groupCollapseList = [];
   }
 
   ngOnInit() {
-   
     this.selectedWorkflowType = this.workflowTypes[0].value;
 
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
-    });
-    this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['', Validators.required],
-    });
-
     this.isMobile = this.deviceService.isMobile();
-
-    this.getStages();
-    this.getTasks();
   }
 
   ngOnChanges() {
@@ -117,18 +72,6 @@ export class TemplateListComponent implements OnInit, OnChanges {
         waveType.theme = this.getRandomColor();
       });
     }
-  }
-
-  getStages() {
-    this.dataService.getStages().subscribe((data: any[]) => {
-      this.stages = data;
-    });
-  }
-
-  getTasks() {
-    this.dataService.getTasks().subscribe((data: any[]) => {
-      this.tasks = data;
-    });
   }
 
   setBadgeBgColor(statusCode = 1) {
@@ -366,14 +309,19 @@ export class TemplateListComponent implements OnInit, OnChanges {
       event.currentIndex
     );
 
-    this.templateData.groups = [... this.templateData.groups];
+    this.templateData.groups = [...this.templateData.groups];
 
     if (event.currentIndex === 0) {
       group.order = (0 + this.templateData.groups[1].order) / 2;
     } else if (event.currentIndex === this.templateData.groups.length - 1) {
-      group.order = 100 + this.templateData.groups[this.templateData.groups.length - 2].order;
+      group.order =
+        100 +
+        this.templateData.groups[this.templateData.groups.length - 2].order;
     } else {
-      group.order = (this.templateData.groups[event.currentIndex - 1].order + this.templateData.groups[event.currentIndex + 1].order) / 2;
+      group.order =
+        (this.templateData.groups[event.currentIndex - 1].order +
+          this.templateData.groups[event.currentIndex + 1].order) /
+        2;
     }
   }
 
