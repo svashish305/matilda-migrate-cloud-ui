@@ -210,6 +210,25 @@
             >
               <div class="template-name">
                 <div class="border-white template-name-main">
+                  <div class="right-padding-half-rem">
+                    <ngx-avatar
+                      *ngIf="templateAvatarUrl; else initialsAvatar"
+                      [src]="templateAvatarUrl"
+                      class="flex-center"
+                      name="{{ template.name }}"
+                      initialsSize="2"
+                      [size]="18"
+                    >
+                    </ngx-avatar>
+                    <ng-template #initialsAvatar>
+                      <ngx-avatar
+                        name="{{ template.name }}"
+                        initialsSize="2"
+                        [size]="20"
+                      ></ngx-avatar>
+                    </ng-template>
+                  </div>
+
                   <span class="cell-text common-text">{{ template.name }}</span>
                 </div>
               </div>
