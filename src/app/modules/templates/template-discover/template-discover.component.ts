@@ -31,6 +31,7 @@ export class TemplateDiscoverComponent implements OnInit {
   templateId: any;
   currTemplate: any;
   curSourceGroupLength: any[] = [];
+  itemsInSameGroup: any[] = [];
   itemsToAdd: any[] = [];
 
   constructor(
@@ -153,18 +154,16 @@ export class TemplateDiscoverComponent implements OnInit {
             ].groups.filter(
               (g) => JSON.stringify(g) !== JSON.stringify(selectedGroup)
             );
+            if (!this.destinations[prevIndex].groups.length) {
+              this.destinations = this.destinations.filter(
+                (d) => d.id != this.destinations[prevIndex].id
+              );
+            }
           } else {
             // console.log('different source');
             this.destinations = this.destinations.filter(
               (d) => JSON.stringify(d) !== JSON.stringify(destination)
             );
-          }
-
-          if (
-            this.destinations.length == 1 &&
-            this.destinations[0].groups.length == 0
-          ) {
-            this.destinations = [];
           }
         }
         console.log('destinations ', this.destinations);
@@ -186,39 +185,45 @@ export class TemplateDiscoverComponent implements OnInit {
           this.itemSelectList[sourceId + '_' + groupId + '_' + itemId] = true;
           this.showSidebar = true;
           this.curSourceGroupLength[groupId]++;
-          if (destination.groups.length == 0) {
+          if (this.destinations.find((d) => d.id == destination.id)) {
+            // same destination
+            let prevDestIndex = this.destinations.findIndex(
+              (d) => d.id == destination.id
+            );
+            var prevDestination = this.destinations[prevDestIndex];
             var newGroup = new Group();
             newGroup.id = selectedGroup.id;
             newGroup.name = selectedGroup.name;
-            newGroup.items.push(selectedItem);
-            destination.groups.push(newGroup);
-          } else {
-            if (this.destinations.find((d) => d.id === destination.id)) {
-              console.log('adding in same source');
-              let prevSrcIndex = this.destinations.findIndex(
-                (d) => d.id === destination.id
-              );
-              let prevGroups = this.destinations[prevSrcIndex].groups;
-              if (prevGroups.find((g) => g.id === selectedGroup.id)) {
-                console.log('same source same group');
-                let prevGrpIndex = prevGroups.findIndex(
-                  (g) => g.id == selectedGroup.id
-                );
-                destination.groups[prevGrpIndex].items.push(selectedItem);
-              } else {
-                console.log('group id doesnt exists');
-                // emptyGroup.items.push(
-                //   selectedItem
-                // );
-                // destination.groups.push(emptyGroup);
-              }
+            if (prevDestination.groups.find((g) => g.id == selectedGroup.id)) {
+              // console.log('same group');
+              this.itemsInSameGroup.push(selectedItem);
+              newGroup.items = this.itemsInSameGroup;
             } else {
-              // source not there
+              // console.log('different group');
+              this.itemsToAdd.push(selectedItem);
+              newGroup.items = this.itemsToAdd;
             }
+            destination.groups.push(newGroup);
+            this.destinations[prevDestIndex] = destination;
+          } else {
+            // new destination
+            var newGroup = new Group();
+            newGroup.id = selectedGroup.id;
+            newGroup.name = selectedGroup.name;
+            if (destination.groups.find((g) => g.id == selectedGroup.id)) {
+              // console.log('same group');
+              this.itemsInSameGroup.push(selectedItem);
+              newGroup.items = this.itemsInSameGroup;
+            } else {
+              // console.log('different group');
+              this.itemsToAdd.push(selectedItem);
+              newGroup.items = this.itemsToAdd;
+            }
+            destination.groups.push(newGroup);
+            this.destinations.push(destination);
           }
-
-          this.destinations.push(destination);
         } else {
+          // unchecked
           this.itemSelectList[sourceId + '_' + groupId + '_' + itemId] = false;
           if (this.groupSelectList[sourceId + '_' + groupId]) {
             this.groupSelectList[sourceId + '_' + groupId] = false;
@@ -227,10 +232,6 @@ export class TemplateDiscoverComponent implements OnInit {
             this.sourceSelectList[sourceId] = false;
           }
           this.curSourceGroupLength[groupId]--;
-          // if (!destination.groups.includes(emptyGroup)) {
-          //   destination.groups.push(emptyGroup);
-          // }
-          // console.log('unchecked ', destination);
         }
         console.log('destinations ', this.destinations);
         break;
