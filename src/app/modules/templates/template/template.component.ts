@@ -12,6 +12,7 @@ import { Location } from '@angular/common';
 import * as uuid from 'uuid';
 import { Group } from 'src/app/models/data.model';
 import { MatSnackBarConfig, MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
 
 interface SelectInterface {
   value: string;
@@ -401,14 +402,27 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     this.showTaskOptions = !event;
   }
   onSaveTemplateFormat(formatPaylod:any){
-    let config = new MatSnackBarConfig();
-    config.duration = 5000;
-    config.panelClass = ['snackbar-pass']
-    config.horizontalPosition = 'right';
-    config.verticalPosition = 'top';
-    this.snackBar.open('Template Task Updated', 'Close', config); 
+    this.openSnackBar('Task Template Updated Successful','Success');
   }
-
+  openSnackBar(message: string, snackType: string) {
+    this.snackBar.openFromComponent(SnackbarComponent, {
+      data: { message: message, snackType: snackType, snackBar: this.snackBar },      
+      panelClass: this.panelClass(snackType),       
+    });
+  }
+  panelClass(snackType){    
+      switch (snackType) {
+        case 'Success':
+          return 'snackbar-success';
+        case 'Error':
+          return 'snackbar-error';
+        case 'Warn':
+          return 'snackbar-warning';
+        case 'Info':
+          return 'snackbar-info';
+      
+    }
+  }
   updateTaskTitle(taskName){
   //  API Task Name Update  
     // this.dataService.updateTaskName(taskName).subscribe(res=>{
