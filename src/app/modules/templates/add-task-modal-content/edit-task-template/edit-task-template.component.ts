@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { NotificationsService } from 'angular2-notifications';
+//import { NotificationsService } from 'angular2-notifications';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 declare var require: any;
 interface SelectInterface {
@@ -38,7 +38,7 @@ export class EditTaskTemplateComponent implements OnInit {
   schemaFileJ;
   dataFileY;
   testVar: any;
-  constructor(private _notificationService: NotificationsService,private _formBuilder: FormBuilder,) { }
+  constructor(private _formBuilder: FormBuilder,) { }
 
   ngOnInit() {
     this.initForm();    
@@ -97,7 +97,7 @@ export class EditTaskTemplateComponent implements OnInit {
       formSData =  JSON.parse(form.formatDataSchema);
       var valid = ajv.validate(formSData, formData);
       if (!valid) {
-        this._notificationService.error('Error Occurred', 'Please Enter Valid JSON');
+        //this._notificationService.error('Error Occurred', 'Please Enter Valid JSON');
       }
       if(valid) {
         let templatePayload = {
@@ -118,7 +118,7 @@ export class EditTaskTemplateComponent implements OnInit {
       try {
         let doc = yaml.safeLoad(form.formatDataYaml)
       } catch (e) {
-        this._notificationService.error('Error Occurred', 'Please Enter Valid YAML');
+        //this._notificationService.error('Error Occurred', 'Please Enter Valid YAML');
       }
     }
   }
@@ -134,7 +134,7 @@ export class EditTaskTemplateComponent implements OnInit {
           this.taskTemplateFormat.emit(templatePayload); 
           return true;
       } catch (e) {      
-        this._notificationService.error('Error Occurred', 'Please Enter Valid JSON')
+        //this._notificationService.error('Error Occurred', 'Please Enter Valid JSON')
           return false;
       }
   }
