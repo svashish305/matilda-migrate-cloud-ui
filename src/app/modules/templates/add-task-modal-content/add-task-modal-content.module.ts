@@ -10,6 +10,7 @@ import { TaskInputComponent } from './task-input/task-input.component';
 import { TaskOutputComponent } from './task-output/task-output.component';
 import { DynamicFormsModule } from './task-input/dynamic-forms/dynamic-forms.module';
 import { EditTaskTemplateComponent } from './edit-task-template/edit-task-template.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { EditTaskTemplateComponent } from './edit-task-template/edit-task-templa
     FormsModule,
     ReactiveFormsModule,
     DynamicFormsModule,
+    MatSnackBarModule
   ],
   exports: [AddTaskModalContentComponent],
 })

@@ -27,11 +27,8 @@ export class TopHeaderComponent implements OnInit {
 
   goToHub() {
     this.router.navigate(['/hub']);
-  }
-  openUserSettings(){
-
-  }
-  updatePassword(){
+  } 
+  openUserProfile(){
 
   }
   logout(){

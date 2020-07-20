@@ -47,7 +47,7 @@
         xPosition="before"
         yPosition="below"
       >
-        <button mat-menu-item (click)="openUserSettings()">
+        <!-- <button mat-menu-item (click)="openUserSettings()">
           <img
           class="icon-usersettings"
         src="assets/imgs/user-settings.svg"
@@ -62,6 +62,14 @@
         alt=""
       />
           <span>Update Password</span>
+        </button> -->
+        <button mat-menu-item (click)="openUserProfile()">
+          <img
+          class="icon-usersettings"
+        src="assets/imgs/user-profile.svg"
+        alt=""
+      />
+          <span>My Profile</span>
         </button>
         <button mat-menu-item (click)="logout()">
           <img
