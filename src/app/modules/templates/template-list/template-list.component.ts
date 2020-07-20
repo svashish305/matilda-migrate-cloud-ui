@@ -51,6 +51,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
   showAction = false;
 
   statusCodes = StatusCodes;
+  taskAvatarUrl: any = '';
 
   constructor(
     private dataService: DataService,
