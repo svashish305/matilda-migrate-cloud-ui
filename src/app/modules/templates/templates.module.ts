@@ -34,7 +34,7 @@ const avatarColors = ['#5fb8f1', '#012b7a'];
       colors: avatarColors,
       sourcePriorityOrder: avatarSourcesOrder,
     }),
-    //SimpleNotificationsModule.forRoot(),
+    // SimpleNotificationsModule.forRoot(),
     SearchPipeModule,
     TemplateModule,
   ],
