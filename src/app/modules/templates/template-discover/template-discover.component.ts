@@ -31,6 +31,7 @@ export class TemplateDiscoverComponent implements OnInit {
   templateId: any;
   currTemplate: any;
   curSourceGroupLength: any[] = [];
+  itemsToAdd: any[] = [];
 
   constructor(
     private location: Location,
@@ -192,47 +193,53 @@ export class TemplateDiscoverComponent implements OnInit {
         destination.name = this.sources[sourceIndex].name;
         destination.desc = this.sources[sourceIndex].desc;
         destination.id = this.sources[sourceIndex].id;
-        let emptyGroup = Object.assign(
-          {},
-          this.sources[sourceIndex].groups[groupIndex]
-        );
-        emptyGroup.items = [];
-        if (this.destinations.find((d) => d.id === destination.id)) {
-          // source already there
-          let prevSrcIndex = this.destinations.findIndex(
-            (d) => d.id === destination.id
-          );
-          this.destinations[prevSrcIndex].groups.push(
-            this.sources[sourceIndex].groups[groupIndex]
-          );
-        } else {
-          // source not there
-        }
-        // if (destination.groups.find((g) => g.id == emptyGroup.id)) {
-        //   console.log('group id exists');
-        //   let prevGrpIndex = destination.groups.findIndex(
-        //     (g) => g.id == emptyGroup.id
-        //   );
-        //   destination.groups[prevGrpIndex].items.push(
-        //     this.sources[sourceIndex].groups[groupIndex].items[itemIndex]
-        //   );
-        // } else {
-        //   console.log('group id doesnt exists');
-        //   emptyGroup.items.push(
-        //     this.sources[sourceIndex].groups[groupIndex].items[itemIndex]
-        //   );
-        //   destination.groups.push(emptyGroup);
-        // }
-        console.log('here destination is ', destination);
+
         if (event.checked) {
           this.itemSelectList[
             sourceIndex + '_' + groupIndex + '_' + itemIndex
           ] = true;
           this.showSidebar = true;
 
-          if (!destination.groups.includes(emptyGroup)) {
-            destination.groups.push(emptyGroup);
+          if (destination.groups.length == 0) {
+            var newGroup = new Group();
+            newGroup.id = this.sources[sourceIndex].groups[groupIndex].id;
+            newGroup.name = this.sources[sourceIndex].groups[groupIndex].name;
+            newGroup.items.push(
+              this.sources[sourceIndex].groups[groupIndex].items[itemIndex]
+            );
+            destination.groups.push(newGroup);
+          } else {
+            if (this.destinations.find((d) => d.id === destination.id)) {
+              console.log('adding in same source');
+              let prevSrcIndex = this.destinations.findIndex(
+                (d) => d.id === destination.id
+              );
+              let prevGroups = this.destinations[prevSrcIndex].groups;
+              if (
+                prevGroups.find(
+                  (g) =>
+                    g.id === this.sources[sourceIndex].groups[groupIndex].id
+                )
+              ) {
+                console.log('same source same group');
+                let prevGrpIndex = prevGroups.findIndex(
+                  (g) => g.id == this.sources[sourceIndex].groups[groupIndex].id
+                );
+                destination.groups[prevGrpIndex].items.push(
+                  this.sources[sourceIndex].groups[groupIndex].items[itemIndex]
+                );
+              } else {
+                console.log('group id doesnt exists');
+                // emptyGroup.items.push(
+                //   this.sources[sourceIndex].groups[groupIndex].items[itemIndex]
+                // );
+                // destination.groups.push(emptyGroup);
+              }
+            } else {
+              // source not there
+            }
           }
+
           this.destinations.push(destination);
         } else {
           this.itemSelectList[
@@ -245,10 +252,10 @@ export class TemplateDiscoverComponent implements OnInit {
             this.sourceSelectList[sourceIndex] = false;
           }
 
-          if (!destination.groups.includes(emptyGroup)) {
-            destination.groups.push(emptyGroup);
-          }
-          console.log('unchecked ', destination);
+          // if (!destination.groups.includes(emptyGroup)) {
+          //   destination.groups.push(emptyGroup);
+          // }
+          // console.log('unchecked ', destination);
         }
         console.log('destinations ', this.destinations);
         break;
