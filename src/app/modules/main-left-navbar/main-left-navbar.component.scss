@@ -19,6 +19,11 @@
     border-top-color: #fff;
   }
 
+  .matilda-logo {
+    position: relative;
+    left: 24px;
+  }
+
   .migrate-section {
     display: flex;
   }
@@ -33,7 +38,7 @@
 
     .close-btn {
       position: absolute;
-      left: 24px;
+      left: 16px; //24
     }
 
     .logo {
@@ -46,7 +51,20 @@
       color: #fff;
       margin-left: 2em;
       font-size: 1.5em;
+      text-transform: uppercase;
     }
+  }
+
+  .pos-migrate-text {
+    width: 37.5px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+  }
+
+  .module-dd {
+    position: relative;
+    right: 1rem;
   }
 
   .menu-text {
@@ -55,7 +73,8 @@
     font-size: 1.125em;
     line-height: 1.375em;
     letter-spacing: 0.51px;
-    margin: 2px 8em 0 14px;
+    // margin: 2px 8em 0 14px;
+    margin: 2px 7em 0 14px;
   }
 
   .logo__wrapper {
@@ -78,7 +97,8 @@
     height: 3.75em;
 
     .logo {
-      margin: 0;
+      // margin: 0;
+      margin: auto 0;
     }
     &:active {
       outline: none;
@@ -101,6 +121,23 @@
 
   .close-btn {
     display: none;
+    // width: 20px;
+    // height: 20px;
+    // top: 5px;
+    // border: 1px solid #f7f7f7;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // background: white;
+    // position: absolute;
+    // right: -14px;
+    // z-index: 1;
+    // border-radius: 50%;
+    // cursor: pointer;
+    // img {
+    //   width: 25px;
+    //   height: 25px;
+    // }
   }
 
   .mobile-logo {
@@ -123,7 +160,15 @@
   }
 
   .matilda-text {
-    display: none;
+    visibility: visible;
+    color: #fff;
+    text-transform: uppercase;
+    position: absolute;
+    font-size: 1.25rem;
+    position: relative;
+    margin-top: -28px;
+    margin-left: 3em;
+    font-size: 1.25rem;
   }
 
   .sidenav__wrapper:hover {
@@ -136,6 +181,13 @@
     .migrate-section {
       display: flex;
     }
+  }
+
+  .pos-migrate-text {
+    width: 74px;
+    height: 58px;
+    display: flex;
+    align-items: center;
   }
 
   .menu-text {
@@ -171,7 +223,8 @@
     height: 3.75em;
 
     .logo {
-      margin: 0;
+      // margin: 0;
+      margin: auto 0;
     }
     &:active {
       outline: none;
@@ -198,8 +251,7 @@
 }
 
 .active-module-extra {
-  margin: 5px 0 5px 0 !important;
-  padding: 16px !important;
+  padding: 5px 16px 5px 16px !important;
 }
 
 .logo-extra {

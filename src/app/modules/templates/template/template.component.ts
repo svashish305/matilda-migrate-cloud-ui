@@ -84,8 +84,6 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     this.isTablet = this.deviceService.isTablet();
     this.isDesktop = this.deviceService.isDesktop();
 
-    this.getStages();
-
     this.getTemplates();
   }
 
@@ -96,16 +94,6 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   getTemplates() {
     this.dataService.getTemplates().subscribe((data: any[]) => {
       this.templatesToImport = data.filter((d) => d.id !== this.templateId);
-    });
-  }
-
-  /**
-   *
-   * @description gets list of stages and calls first stage details
-   */
-  getStages() {
-    this.dataService.getStages().subscribe((data: any[]) => {
-      this.stages = data;
     });
   }
 
