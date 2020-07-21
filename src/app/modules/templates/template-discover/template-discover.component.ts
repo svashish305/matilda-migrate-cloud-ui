@@ -112,10 +112,6 @@ export class TemplateDiscoverComponent implements OnInit {
   getCheckboxState(event, src, id) {
     console.log('event checked, src and id ', event.checked, src, id);
     switch (src) {
-      case 'source':
-        // just indicates if any nested checkboxes are selected
-        console.log('destinations ', this.destinations);
-        break;
       case 'group':
         var sourceId = id.split('_')[0];
         var groupId = id.split('_')[1];
@@ -239,13 +235,43 @@ export class TemplateDiscoverComponent implements OnInit {
           }
           this.itemCountInGroup[groupId]--;
 
-          if (this.itemCountInGroup[groupId] == 0) {
-            var curDest = this.destinations.find((d) => d.id == destination.id);
-            curDest.groups = curDest.groups.filter((g) => g.id !== groupId);
-            if (curDest.groups.length == 0) {
-              this.destinations = this.destinations.filter(
-                (d) => d.id !== curDest.id
-              );
+          let matchedSource = this.destinations.find((d) => d.id == sourceId);
+          let matchedSrcIndex = this.destinations.findIndex(
+            (d) => d.id == sourceId
+          );
+          if (
+            matchedSource &&
+            matchedSource.groups &&
+            matchedSource.groups.length > 0
+          ) {
+            let matchedGrpIndex = matchedSource.groups.findIndex(
+              (g) => g.id == groupId
+            );
+            if (
+              this.destinations[matchedSrcIndex].groups[matchedGrpIndex]
+                .items &&
+              this.destinations[matchedSrcIndex].groups[matchedGrpIndex].items
+                .length > 0
+            ) {
+              this.destinations[matchedSrcIndex].groups[
+                matchedGrpIndex
+              ].items = this.destinations[matchedSrcIndex].groups[
+                matchedGrpIndex
+              ].items.filter((i) => i.id != itemId);
+            }
+
+            if (
+              this.destinations[matchedSrcIndex].groups[matchedGrpIndex].items
+                .length == 0
+            ) {
+              this.destinations[matchedGrpIndex].groups = this.destinations[
+                matchedGrpIndex
+              ].groups.filter((g) => g.id != groupId);
+              if (this.destinations[matchedGrpIndex].groups.length == 0) {
+                this.destinations = this.destinations.filter(
+                  (d) => d.id != sourceId
+                );
+              }
             }
           }
         }
@@ -254,6 +280,17 @@ export class TemplateDiscoverComponent implements OnInit {
       default:
         this.showSidebar = false;
         break;
+    }
+  }
+
+  isSourceChecked(sourceId): boolean {
+    let curSource = this.sources.find((s) => s.id == sourceId);
+    if (
+      this.destinations.find((d) => d.id == curSource.id && d.groups.length > 0)
+    ) {
+      return true;
+    } else {
+      return false;
     }
   }
 
