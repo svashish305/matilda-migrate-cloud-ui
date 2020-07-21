@@ -285,6 +285,9 @@ export class TemplateDiscoverComponent implements OnInit {
             }
           }
         }
+        if (this.destinations.length == 0) {
+          this.showSidebar = false;
+        }
         console.log('destinations ', this.destinations);
         break;
       default:
