@@ -4,6 +4,11 @@ import { Router } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { DataService } from 'src/services/data.service';
 import * as uuid from 'uuid';
+import { TemplateService } from '../templates/services/template.service';
+import { Template } from 'src/app/models/data.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
+
 
 @Component({
   selector: 'app-main-left-navbar',
@@ -24,7 +29,9 @@ export class MainLeftNavbarComponent implements OnInit {
     private location: Location,
     private router: Router,
     private deviceService: DeviceDetectorService,
-    private dataService: DataService
+    private dataService: DataService,
+    private _templateService: TemplateService,
+    private _snackBar: MatSnackBar
   ) {
     this.router.events.subscribe((val) => {
       if (location.path().includes('hub')) {
@@ -96,369 +103,20 @@ export class MainLeftNavbarComponent implements OnInit {
   }
 
   addTemplate() {
-    const id = uuid.v4();
-    const newTemplate = {
-      id: id,
-      name: 'Untitled Template',
-      desc: 'Template Description',
-      ver: 'templateVersionNumber',
-      type: 'NONE/TRIGGER/EVENT',
-      owner: 'TEMPLATE OWNER',
-      progress: 10,
-      status: 'Defined',
-      statusCode: 1,
-      groups: [
-        {
-          id: 1234,
-          name: 'Infrastructure',
-          order: 100,
-          status: 'Defined',
-          statusCode: 1,
-          progress: 10,
-          items: [
-            {
-              id: 123,
-              name: 'Create Stack Instance',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              statusCode: 2,
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-            {
-              id: 456,
-              name: 'Create Stack Instance 2',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              statusCode: 2,
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-            {
-              id: 789,
-              name: 'Create Stack Instance 3',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              statusCode: 2,
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-          ],
-        },
-        {
-          id: 4567,
-          name: 'Infrastructure 2',
-          order: 100,
-          status: 'Defined',
-          statusCode: 1,
-          progress: 10,
-          items: [
-            {
-              id: 123,
-              name: 'Create Stack Instance',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              statusCode: 2,
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-            {
-              id: 456,
-              name: 'Create Stack Instance 2',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              statusCode: 2,
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-            {
-              id: 789,
-              name: 'Create Stack Instance 3',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              statusCode: 2,
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-          ],
-        },
-        {
-          id: 6789,
-          name: 'Infrastructure 3',
-          order: 100,
-          status: 'Defined',
-          statusCode: 1,
-          progress: 10,
-          items: [
-            {
-              id: 123,
-              name: 'Create Stack Instance',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              statusCode: 2,
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-            {
-              id: 456,
-              name: 'Create Stack Instance 2',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              statusCode: 2,
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-            {
-              id: 789,
-              name: 'Create Stack Instance 3',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              statusCode: 2,
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-          ],
-        },
-      ],
-      tags: [
-        {
-          id: 1,
-          name: 'Name1',
-          value: 'Value1',
-          modifiedDate: '2020-06-12T14:29:18',
-        },
-      ],
-      modifiedDate: '2020-06-12T14:29:18',
-    };
+    
+    let template = new Template();
+    template.id = uuid.v4();
+    template.name = 'Untitled Template' + '_' + template.id;
 
-    this.dataService.addTemplate(newTemplate).subscribe((res: any) => {
-      this.router.navigate([`/templates/${res.id}`]);
-    });
+    this._templateService.createTemplate(template)
+      .subscribe(
+        (data: Template) => {
+          this.router.navigate([`/templates/${data.id}`]);
+        },
+        (error) => {
+          this.openSnackBar(error.error['message'], 'error');
+        }
+      );
   }
 
   addWorkflow() {
@@ -3767,6 +3425,13 @@ export class MainLeftNavbarComponent implements OnInit {
     };
     this.dataService.addWave(newWorkflow).subscribe((res: any) => {
       this.router.navigate([`/workflows/${res.id}`]);
+    });
+  }
+
+  openSnackBar(message: string, snackType: string) {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      data: { message: message, snackType: snackType, snackBar: this._snackBar },
+      panelClass: [snackType],
     });
   }
 }
