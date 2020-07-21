@@ -1,3 +1,31 @@
 .snackbar-close {
     cursor: pointer;    
-  }  
+  }   
+::ng-deep .success{
+  font-family: LatoRegular;
+  font-size: 1.1rem;
+  line-height: 1.45;
+  background-color: #5cb85c;
+  color: #fff;
+}
+::ng-deep .info{
+  font-family: LatoRegular;
+  font-size: 1.1rem;
+  line-height: 1.45;
+  background-color: #62bdea;
+  color: #fff;
+}
+::ng-deep .warning{
+  font-family: LatoRegular;
+  font-size: 1.1rem;
+  line-height: 1.45;
+  background-color: #fbce4a;
+  color: #fff;
+}
+::ng-deep .error{
+    font-family: LatoRegular;
+    font-size: 1.1rem;
+    line-height: 1.45;
+    background-color: #d9534f;
+    color: #f4e7d4;
+  }

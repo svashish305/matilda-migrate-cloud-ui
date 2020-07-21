@@ -390,26 +390,13 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     this.showTaskOptions = !event;
   }
   onSaveTemplateFormat(formatPaylod:any){
-    this.openSnackBar('Task Template Updated Successful','Success');
+    this.openSnackBar('Task Template Updated Successful','success');
   }
   openSnackBar(message: string, snackType: string) {
     this.snackBar.openFromComponent(SnackbarComponent, {
       data: { message: message, snackType: snackType, snackBar: this.snackBar },      
-      panelClass: this.panelClass(snackType),       
+      panelClass: [snackType]       
     });
-  }
-  panelClass(snackType){    
-      switch (snackType) {
-        case 'Success':
-          return 'snackbar-success';
-        case 'Error':
-          return 'snackbar-error';
-        case 'Warn':
-          return 'snackbar-warning';
-        case 'Info':
-          return 'snackbar-info';
-      
-    }
   }
   updateTaskTitle(taskName){
   //  API Task Name Update  
