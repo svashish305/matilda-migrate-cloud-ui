@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { DataService } from 'src/services/data.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Item, Group, Destination, Source } from 'src/app/models/data.model';
 import * as uuid from 'uuid';
 
@@ -30,16 +30,21 @@ export class TemplateDiscoverComponent implements OnInit {
   templateId: any;
   currTemplate: any;
   itemCountInGroup: any[] = [];
+  itemsToAdd: any[] = [];
+  groupItems: any[][];
 
   constructor(
     private location: Location,
+    private router: Router,
     private route: ActivatedRoute,
     private dataService: DataService
   ) {
+    this.groupItems = [];
     for (let i = 0; i < this.MAXN; i++) {
       this.groupSelectList.push(false);
       this.itemSelectList.push(false);
       this.itemCountInGroup.push(0);
+      this.groupItems[i] = [];
     }
   }
 
@@ -176,7 +181,66 @@ export class TemplateDiscoverComponent implements OnInit {
           this.itemSelectList[sourceId + '_' + groupId + '_' + itemId] = true;
           this.showSidebar = true;
           this.itemCountInGroup[groupId]++;
-          // add item at respective place in destinations
+          if (this.destinations.find((d) => d.id == destination.id)) {
+            // console.log('same destination');
+            let prevDestIndex = this.destinations.findIndex(
+              (d) => d.id == destination.id
+            );
+            var prevDestination = this.destinations[prevDestIndex];
+            var newGroup = new Group();
+            newGroup.id = selectedGroup.id;
+            newGroup.name = selectedGroup.name;
+            if (prevDestination.groups.find((g) => g.id == selectedGroup.id)) {
+              // console.log('same dest and group');
+              var prevGroup = prevDestination.groups.find(
+                (g) => g.id == selectedGroup.id
+              );
+              prevGroup.items.push(selectedItem);
+              if (!destination.groups.includes(prevGroup)) {
+                destination.groups.push(prevGroup);
+              }
+            }
+            if (!prevDestination.groups.find((g) => g.id == selectedGroup.id)) {
+              // console.log('same dest but different group');
+              this.groupItems[groupId].push(selectedItem);
+              var newGroup = new Group();
+              newGroup.id = selectedGroup.id;
+              newGroup.name = selectedGroup.name;
+              newGroup.items = this.groupItems[groupId];
+              destination.groups.push(newGroup);
+            }
+            console.log('groups inserted so far ', destination.groups);
+            // this.itemsToAdd.push(selectedItem);
+            // this.groupItems[groupId] = this.itemsToAdd;
+            // newGroup.items = this.itemsToAdd;
+
+            // destination.groups.push(newGroup);
+            // this.destinations[prevDestIndex] = destination;
+          } else {
+            // console.log('new destination');
+            var newGroup = new Group();
+            newGroup.id = selectedGroup.id;
+            newGroup.name = selectedGroup.name;
+            if (destination.groups.find((g) => g.id == selectedGroup.id)) {
+              // console.log('new dest same group');
+              var prevGroup = prevDestination.groups.find(
+                (g) => g.id == selectedGroup.id
+              );
+              prevGroup.items.push(selectedItem);
+            } else {
+              console.log('new dest different group');
+              this.groupItems[groupId].push(selectedItem);
+              newGroup.items = this.groupItems[groupId];
+              destination.groups.push(newGroup);
+            }
+
+            // this.itemsToAdd.push(selectedItem);
+            // this.groupItems[groupId] = this.itemsToAdd;
+            // newGroup.items = this.itemsToAdd;
+            console.log('newGroup items ', newGroup.items);
+            // destination.groups.push(newGroup);
+            this.destinations.push(destination);
+          }
         } else {
           // unchecked
           this.itemSelectList[sourceId + '_' + groupId + '_' + itemId] = false;
@@ -229,6 +293,11 @@ export class TemplateDiscoverComponent implements OnInit {
                   for (var key in destination) {
                     delete destination[key];
                   }
+                  // this.itemsToAdd = [];
+                  this.groupItems = [];
+                  for (let i = 0; i < this.MAXN; i++) {
+                    this.groupItems[i] = [];
+                  }
                 }
               }
             }
@@ -237,6 +306,9 @@ export class TemplateDiscoverComponent implements OnInit {
         if (this.destinations.length == 0) {
           this.showSidebar = false;
         }
+        // for (let [key, value] of Object.entries(this.groupItems)) {
+        //   console.log('map element ', key, value);
+        // }
         console.log('destinations ', this.destinations);
         break;
       default:
