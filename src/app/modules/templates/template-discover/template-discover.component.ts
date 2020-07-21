@@ -248,6 +248,7 @@ export class TemplateDiscoverComponent implements OnInit {
               (g) => g.id == groupId
             );
             if (
+              this.destinations[matchedSrcIndex].groups[matchedGrpIndex] &&
               this.destinations[matchedSrcIndex].groups[matchedGrpIndex]
                 .items &&
               this.destinations[matchedSrcIndex].groups[matchedGrpIndex].items
@@ -261,6 +262,9 @@ export class TemplateDiscoverComponent implements OnInit {
             }
 
             if (
+              this.destinations[matchedSrcIndex].groups[matchedGrpIndex] &&
+              this.destinations[matchedSrcIndex].groups[matchedGrpIndex]
+                .items &&
               this.destinations[matchedSrcIndex].groups[matchedGrpIndex].items
                 .length == 0
             ) {
@@ -271,6 +275,12 @@ export class TemplateDiscoverComponent implements OnInit {
                 this.destinations = this.destinations.filter(
                   (d) => d.id != sourceId
                 );
+                if (destination.groups && destination.groups.length == 0) {
+                  for (var key in destination) {
+                    delete destination[key];
+                  }
+                  this.itemsToAdd = [];
+                }
               }
             }
           }
