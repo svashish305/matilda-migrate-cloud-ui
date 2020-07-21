@@ -126,7 +126,10 @@
                 sourceCollapseList[source.id] = !sourceCollapseList[source.id]
               "
             />
-            <mat-checkbox [checked]="isSourceChecked(source.id)"></mat-checkbox>
+            <mat-checkbox
+              [checked]="isSourceChecked(source.id)"
+              (click)="$event.preventDefault()"
+            ></mat-checkbox>
             <span class="make-it-blue left-padding-one-fourth-rem">
               {{ source.name }}
             </span>
@@ -225,7 +228,10 @@
                 sourceCollapseList[source.id] = !sourceCollapseList[source.id]
               "
             />
-            <mat-checkbox [checked]="isSourceChecked(source.id)"></mat-checkbox>
+            <mat-checkbox
+              [checked]="isSourceChecked(source.id)"
+              (click)="$event.preventDefault()"
+            ></mat-checkbox>
             <span class="make-it-blue left-padding-one-fourth-rem">
               {{ source.name }}
             </span>
