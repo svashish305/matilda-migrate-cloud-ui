@@ -100,7 +100,7 @@ export class EditTaskTemplateComponent implements OnInit {
           formSData = JSON.parse(form.formatDataSchema);
           var valid = ajv.validate(formSData, formData);
           if (!valid) {
-            this.openSnackBar('Please Enter Valid JSON Data', 'Error');
+            this.openSnackBar('Please Enter Valid JSON Data', 'error');
           }
           if (valid) {
             let templatePayload = {
@@ -121,7 +121,7 @@ export class EditTaskTemplateComponent implements OnInit {
         try {
           let doc = yaml.safeLoad(form.formatDataYaml)
         } catch (e) {
-          this.snackBar.open('Please Enter Valid YAML Data', 'Error');
+          this.snackBar.open('Please Enter Valid YAML Data', 'error');
 
         }
       }
@@ -138,7 +138,7 @@ export class EditTaskTemplateComponent implements OnInit {
       this.taskTemplateFormat.emit(templatePayload);
       return true;
     } catch (e) {
-      this.openSnackBar('Please Enter Valid JSON Data', 'Error');
+      this.openSnackBar('Please Enter Valid JSON Data', 'error');
       return false;
     }
   }
@@ -180,20 +180,7 @@ export class EditTaskTemplateComponent implements OnInit {
   openSnackBar(message: string, snackType: string) {
     this.snackBar.openFromComponent(SnackbarComponent, {
       data: { message: message, snackType: snackType, snackBar: this.snackBar },
-      panelClass: this.panelClass(snackType),
+      panelClass: [snackType],
     });
-  }
-  panelClass(snackType) {
-    switch (snackType) {
-      case 'Success':
-        return 'snackbar-success';
-      case 'Error':
-        return 'snackbar-error';
-      case 'Warn':
-        return 'snackbar-warning';
-      case 'Info':
-        return 'snackbar-info';
-
-    }
-  }
+  }  
 }
