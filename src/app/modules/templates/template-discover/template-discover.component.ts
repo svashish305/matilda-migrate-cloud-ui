@@ -187,63 +187,14 @@ export class TemplateDiscoverComponent implements OnInit {
           }
           this.itemCountInGroup[groupId]--;
 
-          //   let matchedSource = this.destinations.find((d) => d.id == sourceId);
-          //   let matchedSrcIndex = this.destinations.findIndex(
-          //     (d) => d.id == sourceId
-          //   );
-          //   if (
-          //     matchedSource &&
-          //     matchedSource.groups &&
-          //     matchedSource.groups.length > 0
-          //   ) {
-          //     let matchedGrpIndex = matchedSource.groups.findIndex(
-          //       (g) => g.id == groupId
-          //     );
-          //     if (
-          //       this.destinations[matchedSrcIndex].groups[matchedGrpIndex] &&
-          //       this.destinations[matchedSrcIndex].groups[matchedGrpIndex]
-          //         .items &&
-          //       this.destinations[matchedSrcIndex].groups[matchedGrpIndex].items
-          //         .length > 0
-          //     ) {
-          //       this.destinations[matchedSrcIndex].groups[
-          //         matchedGrpIndex
-          //       ].items = this.destinations[matchedSrcIndex].groups[
-          //         matchedGrpIndex
-          //       ].items.filter((i) => i.id != itemId);
-          //     }
-
-          //     if (
-          //       this.destinations[matchedSrcIndex].groups[matchedGrpIndex] &&
-          //       this.destinations[matchedSrcIndex].groups[matchedGrpIndex]
-          //         .items &&
-          //       this.destinations[matchedSrcIndex].groups[matchedGrpIndex].items
-          //         .length == 0
-          //     ) {
-          //       this.destinations[matchedGrpIndex].groups = this.destinations[
-          //         matchedGrpIndex
-          //       ].groups.filter((g) => g.id != groupId);
-          //       if (this.destinations[matchedGrpIndex].groups.length == 0) {
-          //         this.destinations = this.destinations.filter(
-          //           (d) => d.id != sourceId
-          //         );
-          //         if (destination.groups && destination.groups.length == 0) {
-          //           for (var key in destination) {
-          //             delete destination[key];
-          //           }
-          //         }
-          //       }
-          //     }
-          //   }
           let markUncheckedID: checkedID = { ipAddress, sourceId, groupId, itemId };
           this.checkedIDs = this.checkedIDs.filter(cID => JSON.stringify(cID) != JSON.stringify(markUncheckedID));
         }
-        this.pushToDestinations(this.checkedIDs);
-        // this.destinations = this.pushToDestinations(this.checkedIDs);
+        this.destinations = this.pushToDestinations(this.checkedIDs);
         if (this.destinations.length == 0) {
           this.showSidebar = false;
         }
-        // console.log('destinations ', this.destinations);
+        console.log('destinations ', this.destinations);
         break;
       default:
         this.showSidebar = false;
@@ -262,7 +213,6 @@ export class TemplateDiscoverComponent implements OnInit {
     // console.log('checked final list ', checkedIDs);
     let groupByIP = this.groupBy(checkedIDs, 'ipAddress');
     let dests: any[] = [];
-    // let dest: Destination = new Destination();
     let destinationsLen = 0;
     for (let [key, value] of Object.entries(groupByIP)) {
       // here key is IP
@@ -282,9 +232,6 @@ export class TemplateDiscoverComponent implements OnInit {
         let curSrc = sourcesOfIP.find(s => s.id == key);
         let newSource = Object.assign({}, curSrc);
         let src: Destination = new Destination();
-        // dest.id = newSource.id;
-        // dest.name = newSource.name;
-        // dest.desc = newSource.desc;
         src.appName = this.selectedApp.name;
         src.ipAddress = curIP.address;
         src.id = key;
@@ -312,10 +259,9 @@ export class TemplateDiscoverComponent implements OnInit {
         }
       }
       dests.push(srcs);
-      // console.log('dests ', dests);
     }
-    console.log('dests ', dests);
-    // return this.destinations;
+    // console.log('dests ', dests);
+    return dests;
   }
 
   isSourceChecked(sourceId): boolean {
