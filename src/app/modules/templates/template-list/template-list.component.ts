@@ -17,6 +17,7 @@ import { DataService } from 'src/services/data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { StatusCodes } from 'src/app/enums/enums';
+import { Item, Group } from 'src/app/models/data.model';
 
 interface SelectInterface {
   value: string;
@@ -236,17 +237,8 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @param task - for which the details has to be shown
    * @description emits event to open task details
    */
-  rowClick(task) {
-    if (task) {
-      this.templateData.groups.forEach((templateType) => {
-        templateType.items.forEach((task) => {
-          task.selected = false;
-        });
-      });
-      task.selected = true;
-    }
-    this.rowClicked.emit(task);
-    console.log('row clicked');
+  loadTask(task: Item, group: Group) {
+    this.rowClicked.emit({task: task, group: group});
   }
 
   /**

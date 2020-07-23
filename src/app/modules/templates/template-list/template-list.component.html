@@ -245,7 +245,7 @@
             <div
               class="row-items template__row item"
               [ngClass]="{ selected: group.selected }"
-              (click)="rowClick(task)"
+              (click)="loadTask(task, group)"
               *ngFor="let task of group.items"
               cdkDrag
             >
@@ -380,7 +380,7 @@
             <div class="template__row item row-items">
               <!-- add new template start -->
               <div class="template-name">
-                <span class="common-text add-new-text" (click)="rowClick(null)"
+                <span class="common-text add-new-text" (click)="loadTask(null, group)"
                   >+ Add New Task</span
                 >
               </div>

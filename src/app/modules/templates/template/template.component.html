@@ -412,8 +412,8 @@
             [size]="isMobile ? 40 : 56"
           ></ngx-avatar> -->
           <ngx-avatar
-            *ngIf="taskAvatarUrl; else initialsTaskAvatar"
-            [src]="taskAvatarUrl"
+            *ngIf="selectedTask?.image; else initialsTaskAvatar"
+            [src]="selectedTask?.image"
             class="lalign-import-template-icon"
             name="{{ selectedTask.name }}"
             initialsSize="2"

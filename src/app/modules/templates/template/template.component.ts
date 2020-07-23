@@ -14,9 +14,10 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import * as uuid from 'uuid';
-import { Group, Template } from 'src/app/models/data.model';
+import { Group, Template, Item } from 'src/app/models/data.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
+import { group } from 'console';
 
 
 interface SelectInterface {
@@ -59,34 +60,26 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   showImportOptions = false;
   importStatus = false;
   showTagOptions = false;
-  selectedTask: any;
+  selectedTask: Item;
   showTaskOptions = false;
 
   templateImgHover = false;
   templateAvatarUrl: any;
 
   taskImgHover = false;
-  taskAvatarUrl: any;
+
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
-    private location: Location, public snackBar: MatSnackBar
+    private location: Location,
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
       this.templateId = params.id;
     });
-
-    console.log(this.templateData);
-
-    // this.dataService
-    //   .getTemplate(this.templateId)
-    //   .subscribe((currentTemplate: any) => {
-    //     this.currTemplate = currentTemplate;
-    //     this.currTemplateTags = currentTemplate.tags;
-    //   });
 
     this.isMobile = this.deviceService.isMobile();
     this.isTablet = this.deviceService.isTablet();
@@ -133,45 +126,22 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
 
       reader.onload = (event: any) => {
         // called once readAsDataURL is completed
-        this.taskAvatarUrl = event.target.result;
+        this.selectedTask.image = event.target.result;
       };
-      this.uploadTaskFile(event.target.files[0]);
+
+      this.templateData.groups.forEach((_group: Group) => {
+        if (_group.id === this.selectedTask.groupId) {
+          _group.items.forEach((_item: Item) => {
+            _item.image = this.selectedTask.image;
+          });
+        }
+      });
+
+      this.updateTemplate.emit(this.templateData);
+
     }
   }
-  uploadTaskFile(uploadFile: File) {
-    const formData = new FormData();
-    let groupList = this.templateData.groups;
-    let filteredGroupList = groupList.filter(it => {
-      return it.id === this.selectedTask.groupId;
-    })
-    let groupItems = filteredGroupList[0].items;
-    groupItems.forEach((it: any) => {
-      if (it.id == this.selectedTask.id) {
-        this.fileToBase64(uploadFile).then(result => {
-          it.image = result;
-          //  API Task Avatar Update  
-          // this.dataService.updateTemplate(this.templateData).subscribe(res=>{
-          //   if(res){        
-          //   }
-          // })
-        });
 
-      }
-    })
-  }
-  fileToBase64 = (filename: File) => {
-    return new Promise(resolve => {
-
-      var reader = new FileReader();
-      // Read file content on file loaded event
-      reader.onload = function (event: any) {
-        resolve(event.target.result);
-      };
-
-      // Convert data to base64 
-      reader.readAsDataURL(filename);
-    });
-  };
   setBadgeBgColor(stageState = "Defined") {
     let backgroundColor = "#99a1a9";
     switch (stageState) {
@@ -302,61 +272,46 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     }, 0);
   }
 
-  openTaskDetails(task) {
+  openTaskDetails(payload: any) {
+    
+    let task: Item = payload.task;
+    let group: Group = payload.group;
+
     if (task) {
+
       this.selectedTask = task;
+      this.templateData.groups.forEach((_group: Group) => {
+        if (_group.id === this.selectedTask.groupId) {
+          _group.items.forEach((_item: Item) => {
+            if (_item.id === this.selectedTask.id) {
+              _item = this.selectedTask;
+            }
+          });
+        }
+      });
+
     } else {
-      this.selectedTask = {
-        id: 123,
-        name: 'Untitled Task',
-        description: 'Task Description',
-        order: 100,
-        pluginName: 'AWS',
-        pluginId: 1,
-        serviceId: '1',
-        actionId: '1',
-        serviceName: 'vm',
-        actionName: 'Create',
-        status: 'Configured',
-        progress: 10,
-        keyVault: {
-          id: 1,
-          name: 'AWS',
-        },
-        input:
-          '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-        output: null,
-        startDate: '6/1/2020',
-        endDate: '12/11/2020',
-        duration: null,
-        dependencies: [
-          {
-            groupId: 1234,
-            taskId: 345345,
-            mode: 'before',
-          },
-        ],
-        notification: '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-        image: 'assets/imgs/favourite.svg'
-      };
+
+      let _task = new Item();
+      _task.id = uuid.v4();
+      _task.name = 'Untitled Task' + '_' + _task.id;
+      _task.groupId = group.id;
+      _task.order = group.items.length >= 1 ? group.items[group.items.length - 1].order + 100 : 100;
+
+      this.selectedTask = _task;
+
+      this.templateData.groups.forEach((_group: Group) => {
+        if (_group.id === this.selectedTask.groupId) {
+          _group.items.push(this.selectedTask);
+        }
+      });
     }
+    this.openSnackBar('Please Wait..', 'info')
+    this.updateTemplate.emit(this.templateData);
+
     this.showTaskOptions = true;
   }
 
-  /**
-   *
-   * @description Adds new group to wave
-   */
-  addNewGroup() {
-    const id = Math.random().toString(6);
-    // this.templateData.waveTypes.unshift({
-    //   id: id,
-    //   name: 'New group',
-    //   theme: this.templateList.getRandomColor(),
-    //   edit: true,
-    //   templates: [],
-    // });
-  }
 
   onFocusTitle() {
     this.titleState = 'editing';
@@ -394,7 +349,9 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
-  onSaveConfig(payload: any) { }
+  onSaveConfig(payload: any) {
+
+  }
 
   onClose(event: any) {
     this.showTaskOptions = !event;
