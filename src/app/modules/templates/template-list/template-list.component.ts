@@ -399,5 +399,11 @@ export class TemplateListComponent implements OnInit, OnChanges {
   showStatuses($event, template) {
     template.showStatus = !template.showStatus;
     $event.stopPropagation();
+  }  
+  onFocusTitle() {
+  }
+
+  updateGroupTitle() {  
+    // Group title API update
   }
 }
