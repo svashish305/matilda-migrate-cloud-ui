@@ -32,8 +32,8 @@
           (mouseleave)="templateImgHover = false"
         >
           <ngx-avatar
-            *ngIf="templateAvatarUrl; else initialsAvatar"
-            [src]="templateAvatarUrl"
+            *ngIf="templateData?.image; else initialsAvatar"
+            [src]="templateData?.image"
             class="my-avatar flex-center"
             name="{{ templateData.name }}"
             initialsSize="2"
@@ -66,7 +66,7 @@
               />
             </label>
           </button>
-          <button mat-menu-item (click)="templateAvatarUrl = null">
+          <button mat-menu-item (click)="templateData = null">
             Remove
           </button>
         </mat-menu>

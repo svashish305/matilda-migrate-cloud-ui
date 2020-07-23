@@ -29,6 +29,7 @@ export class Item {
   actionId?: string = '';
   serviceName?: string = '';
   actionName?: string = '';
+  groupId: number | string;
   itemsFields?: string = null;
   keyVault?: KeyVault = null;
   input?: string | any = null;
@@ -56,6 +57,7 @@ export class Template {
   desc: string = '';
   ver: string = '';
   type: string = '';
+  image: string = '';
   owner: string = '';
   statusCd: number = 1;
   progress: number = 0;
@@ -70,6 +72,7 @@ export class Workflow {
   desc: string = '';
   ver: string = '';
   type: string = '';
+  image: string = '';
   owner: string = '';
   statusCd: number = 1;
   progress: number = 0;

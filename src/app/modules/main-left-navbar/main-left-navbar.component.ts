@@ -108,7 +108,7 @@ export class MainLeftNavbarComponent implements OnInit {
     template.id = uuid.v4();
     template.name = 'Untitled Template' + '_' + template.id;
 
-    this._templateService.createTemplate(template)
+    this._templateService.updateTemplate(template)
       .subscribe(
         (data: Template) => {
           this.router.navigate([`/templates/${data.id}`]);

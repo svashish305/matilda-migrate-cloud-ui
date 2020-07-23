@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TemplateService } from './services/template.service';
 import { Template } from 'src/app/models/data.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-templates',
@@ -10,9 +12,10 @@ import { Template } from 'src/app/models/data.model';
 })
 export class TemplatesComponent implements OnInit {
   templateData: Template;
-  
+
   constructor(
     private _templateService: TemplateService,
+    private _snackBar: MatSnackBar,
     private route: ActivatedRoute
   ) { }
 
@@ -26,7 +29,33 @@ export class TemplatesComponent implements OnInit {
   getTemplate(id: any) {
     this._templateService.getTemplateById(id)
       .subscribe(
-        (data: any) => this.templateData = data,
-        (error) => { });
+        (data: any) => {
+          this.templateData = data;
+          console.log(this.templateData);
+        },
+        (error) => { 
+
+        });
+  }
+
+  updateTemplate(template: Template) {
+    console.log(template);
+    this._templateService.updateTemplate(template, template.id)
+        .subscribe(
+          (data: any) => {
+            this.templateData = data;
+          },
+          (error) => {
+            this.openSnackBar(error.error['message'], 'error');
+            this.getTemplate(template.id);
+          }
+        )
+  }
+
+  openSnackBar(message: string, snackType: string) {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      data: { message: message, snackType: snackType, snackBar: this._snackBar },
+      panelClass: [snackType],
+    });
   }
 }

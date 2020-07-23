@@ -22,8 +22,8 @@ export class TemplateService {
     return this._http.post(this.BASE_URL + '/template/create', payload);
   }
 
-  updateTemplate(templateId: any, payload: any) {
-    return this._http.put(this.BASE_URL + `/template/${templateId}/update`, payload);
+  updateTemplate(payload: any, templateId?: any) {
+    return this._http.put(this.BASE_URL + '/template/save', payload);
   }
 
   deleteTemplate(templateId: any) {

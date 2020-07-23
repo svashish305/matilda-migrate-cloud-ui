@@ -4,15 +4,20 @@ import {
   Input,
   ViewChild,
   AfterViewInit,
+  OnChanges,
+  SimpleChanges,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { DataService } from 'src/services/data.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import * as uuid from 'uuid';
-import { Group } from 'src/app/models/data.model';
-import { MatSnackBarConfig, MatSnackBar } from '@angular/material/snack-bar';
+import { Group, Template } from 'src/app/models/data.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
+
 
 interface SelectInterface {
   value: string;
@@ -24,8 +29,9 @@ interface SelectInterface {
   templateUrl: './template.component.html',
   styleUrls: ['./template.component.scss'],
 })
-export class TemplateComponent implements OnInit, AfterViewInit {
-  @Input() templateData: any;
+export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
+  @Input() templateData: Template;
+  @Output() updateTemplate = new EventEmitter();
   searchKey;
   edit;
   showBackdrop;
@@ -44,7 +50,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   descriptionState = 'idle';
   oldDescription: string;
   newDescription: string;
-  
+
   isMobile = false;
   isTablet = false;
   isDesktop = false;
@@ -65,26 +71,33 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
-    private location: Location,public snackBar: MatSnackBar
-  ) {}
+    private location: Location, public snackBar: MatSnackBar
+  ) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
       this.templateId = params.id;
     });
 
-    this.dataService
-      .getTemplate(this.templateId)
-      .subscribe((currentTemplate: any) => {
-        this.currTemplate = currentTemplate;
-        this.currTemplateTags = currentTemplate.tags;
-      });
+    console.log(this.templateData);
+
+    // this.dataService
+    //   .getTemplate(this.templateId)
+    //   .subscribe((currentTemplate: any) => {
+    //     this.currTemplate = currentTemplate;
+    //     this.currTemplateTags = currentTemplate.tags;
+    //   });
 
     this.isMobile = this.deviceService.isMobile();
     this.isTablet = this.deviceService.isTablet();
     this.isDesktop = this.deviceService.isDesktop();
 
     this.getTemplates();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(this.templateData);
+    console.log(changes);
   }
 
   ngAfterViewInit() {
@@ -105,25 +118,15 @@ export class TemplateComponent implements OnInit, AfterViewInit {
 
       reader.onload = (event: any) => {
         // called once readAsDataURL is completed
-        this.templateAvatarUrl = event.target.result;
+        this.templateData.image = event.target.result;
+        this.updateTemplate.emit(this.templateData);
       };
-
-      this.uploadFile(event.target.files[0]);
     }
   }
-  uploadFile(file) {
-    this.dataService.upload(file).subscribe(
-      (res: any) => {
-        console.log('file uploaded as', res);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
-  
+
+
   changeTaskAvatar(event: any) {
-       if (event.target.files && event.target.files[0]) {
+    if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
 
       reader.readAsDataURL(event.target.files[0]); // read file as data url
@@ -135,36 +138,36 @@ export class TemplateComponent implements OnInit, AfterViewInit {
       this.uploadTaskFile(event.target.files[0]);
     }
   }
-  uploadTaskFile(uploadFile:File){
+  uploadTaskFile(uploadFile: File) {
     const formData = new FormData();
     let groupList = this.templateData.groups;
-    let filteredGroupList = groupList.filter(it=>{
-        return it.id === this.selectedTask.groupId;
+    let filteredGroupList = groupList.filter(it => {
+      return it.id === this.selectedTask.groupId;
     })
     let groupItems = filteredGroupList[0].items;
-    groupItems.forEach(it=>{
-      if(it.id == this.selectedTask.id){
+    groupItems.forEach((it: any) => {
+      if (it.id == this.selectedTask.id) {
         this.fileToBase64(uploadFile).then(result => {
-          it.image= result;
+          it.image = result;
           //  API Task Avatar Update  
-   // this.dataService.updateTemplate(this.templateData).subscribe(res=>{
-   //   if(res){        
-   //   }
-   // })
+          // this.dataService.updateTemplate(this.templateData).subscribe(res=>{
+          //   if(res){        
+          //   }
+          // })
         });
-   
+
       }
-    })     
-  }    
-  fileToBase64 = (filename:File) => {
+    })
+  }
+  fileToBase64 = (filename: File) => {
     return new Promise(resolve => {
-    
+
       var reader = new FileReader();
       // Read file content on file loaded event
-      reader.onload = function(event:any) {
+      reader.onload = function (event: any) {
         resolve(event.target.result);
       };
-      
+
       // Convert data to base64 
       reader.readAsDataURL(filename);
     });
@@ -212,12 +215,19 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   }
 
   addStage() {
-    const id = uuid.v4();
-    let newStage = { id, ...new Group() };
 
-    this.currTemplate.groups.push(newStage);
-    this.templateData = this.currTemplate;
-    console.log(newStage);
+    let group = new Group();
+    group.id = uuid.v4();
+    group.name = 'Untitled Group' + '_' + group.id;
+    group.order = this.templateData.groups.length >= 1 ? this.templateData.groups[this.templateData.groups.length - 1].order + 100 : 100;
+
+    this.templateData.groups.push(group);
+    this.templateData.groups = [...this.templateData.groups];
+
+    console.log(this.templateData);
+
+    this.updateTemplate.emit(this.templateData);
+
   }
 
   onCheck(event, template) {
@@ -279,14 +289,14 @@ export class TemplateComponent implements OnInit, AfterViewInit {
    */
   openDetails(edit) {
     this.edit = edit;
-    if (!edit) {
-      this.showBackdrop = false;
-      this.templateData.waveTypes.forEach((waveType) => {
-        waveType.templates.forEach((template) => {
-          template.selected = false;
-        });
-      });
-    }
+    // if (!edit) {
+    //   this.showBackdrop = false;
+    //   this.templateData.waveTypes.forEach((waveType) => {
+    //     waveType.templates.forEach((template) => {
+    //       template.selected = false;
+    //     });
+    //   });
+    // }
     setTimeout(() => {
       this.appyResize();
     }, 0);
@@ -327,7 +337,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
           },
         ],
         notification: '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-        image:'assets/imgs/favourite.svg'
+        image: 'assets/imgs/favourite.svg'
       };
     }
     this.showTaskOptions = true;
@@ -339,13 +349,13 @@ export class TemplateComponent implements OnInit, AfterViewInit {
    */
   addNewGroup() {
     const id = Math.random().toString(6);
-    this.templateData.waveTypes.unshift({
-      id: id,
-      name: 'New group',
-      theme: this.templateList.getRandomColor(),
-      edit: true,
-      templates: [],
-    });
+    // this.templateData.waveTypes.unshift({
+    //   id: id,
+    //   name: 'New group',
+    //   theme: this.templateList.getRandomColor(),
+    //   edit: true,
+    //   templates: [],
+    // });
   }
 
   onFocusTitle() {
@@ -384,33 +394,33 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     }
   }
 
-  onSaveConfig(payload: any) {}
+  onSaveConfig(payload: any) { }
 
   onClose(event: any) {
     this.showTaskOptions = !event;
   }
-  onSaveTemplateFormat(formatPaylod:any){
-    this.openSnackBar('Task Template Updated Successful','success');
+  onSaveTemplateFormat(formatPaylod: any) {
+    this.openSnackBar('Task Template Updated Successful', 'success');
   }
   openSnackBar(message: string, snackType: string) {
     this.snackBar.openFromComponent(SnackbarComponent, {
-      data: { message: message, snackType: snackType, snackBar: this.snackBar },      
-      panelClass: [snackType]       
+      data: { message: message, snackType: snackType, snackBar: this.snackBar },
+      panelClass: [snackType]
     });
   }
-  updateTaskTitle(taskName){
-  //  API Task Name Update  
+  updateTaskTitle(taskName) {
+    //  API Task Name Update  
     // this.dataService.updateTaskName(taskName).subscribe(res=>{
     //   if(res){        
     //   }
     // })
   }
-  uniqueTaskTitle(taskName){    
-    let groupList = this.templateData.groups;
-    let filteredGroupList = groupList.filter(it=>{
-        return it.id === this.selectedTask.groupId;
+  uniqueTaskTitle(taskName) {
+    let groupList: Group[] = this.templateData.groups;
+    let filteredGroupList = groupList.filter(it => {
+      return it.id === this.selectedTask.groupId;
     })
-    let groupItems = filteredGroupList.items;
+    let groupItems = filteredGroupList[0].items;
     let keyExists;
     for (let key of groupItems) {
       if (key.name.toLowerCase() === taskName.toLowerCase()) {
@@ -432,11 +442,11 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     //   }
     // })  
   }
-  updateTaskDescription(taskDescription){
+  updateTaskDescription(taskDescription) {
     //  API Task Descripiton Update  
     // this.dataService.updateTaskDescription(taskDescription).subscribe(res=>{
     //   if(res){        
     //   }
     // })
-  }  
+  }
 }

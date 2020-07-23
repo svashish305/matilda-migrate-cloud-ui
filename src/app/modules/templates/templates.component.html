@@ -7,7 +7,7 @@
     <!-- template details start -->
     <div class="wave__content">
       <!-- {{ templateData | json }} -->
-      <app-template [templateData]="templateData"></app-template>
+      <app-template [templateData]="templateData" (updateTemplate)="updateTemplate($event)"></app-template>
     </div>
     <!-- template details end -->
   </div>
