@@ -17,7 +17,6 @@ import * as uuid from 'uuid';
 import { Group, Template, Item } from 'src/app/models/data.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
-import { group } from 'console';
 
 
 interface SelectInterface {
