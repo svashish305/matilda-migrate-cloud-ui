@@ -43,6 +43,7 @@ export class TemplatesComponent implements OnInit {
     this._templateService.updateTemplate(template, template.id)
         .subscribe(
           (data: any) => {
+            this._snackBar.dismiss();
             this.templateData = data;
           },
           (error) => {

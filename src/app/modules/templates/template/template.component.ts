@@ -67,6 +67,8 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
 
   taskImgHover = false;
 
+  public currentTemplate: Template;
+
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
@@ -127,11 +129,15 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
         // called once readAsDataURL is completed
         this.selectedTask.image = event.target.result;
       };
+      console.log(this.selectedTask);
 
       this.templateData.groups.forEach((_group: Group) => {
         if (_group.id === this.selectedTask.groupId) {
           _group.items.forEach((_item: Item) => {
-            _item.image = this.selectedTask.image;
+            if(_item.id === this.selectedTask.id) {
+              _item.image = this.selectedTask.image;
+              console.log(_item);
+            }
           });
         }
       });
@@ -299,14 +305,22 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
 
       this.selectedTask = _task;
 
-      this.templateData.groups.forEach((_group: Group) => {
+      // this.templateData.groups.forEach((_group: Group) => {
+      //   if (_group.id === this.selectedTask.groupId) {
+      //     _group.items.push(this.selectedTask);
+      //   }
+      // });
+      this.currTemplate = Object.assign({},this.templateData);
+      this.currTemplate.groups.forEach((_group: Group) => {
         if (_group.id === this.selectedTask.groupId) {
           _group.items.push(this.selectedTask);
         }
       });
+
+      this.openSnackBar('Please Wait.. While we are waiting for the server to respond', 'info')
+      this.updateTemplate.emit(this.currTemplate);
     }
-    this.openSnackBar('Please Wait..', 'info')
-    this.updateTemplate.emit(this.templateData);
+   
 
     this.showTaskOptions = true;
   }
