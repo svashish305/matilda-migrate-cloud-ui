@@ -26,7 +26,8 @@ export class TemplateDiscoverComponent implements OnInit {
   selectedIPAddress: any;
   isIPSelected = false;
   sources: Source[] = [];
-  destinations: Destination[] = [];
+  // destinations: Destination[] = [];
+  destinations: any[] = [];
   sourceCollapseList: boolean[] = [];
   groupCollapseList: boolean[] = [];
   groupSelectList: boolean[] = [];
@@ -143,6 +144,7 @@ export class TemplateDiscoverComponent implements OnInit {
             this.destinations.push(destination);
           }
         } else {
+          this.itemCountInGroup[groupId] = 0;
           this.unselectAll(sourceId, groupId);
           if (this.destinations.find((d) => d.id === destination.id)) {
             // console.log('same source!');
@@ -190,11 +192,12 @@ export class TemplateDiscoverComponent implements OnInit {
           let markUncheckedID: checkedID = { ipAddress, sourceId, groupId, itemId };
           this.checkedIDs = this.checkedIDs.filter(cID => JSON.stringify(cID) != JSON.stringify(markUncheckedID));
         }
+        // console.log('dests ', this.pushToDestinations(this.checkedIDs));
         this.destinations = this.pushToDestinations(this.checkedIDs);
         if (this.destinations.length == 0) {
           this.showSidebar = false;
         }
-        console.log('destinations ', this.destinations);
+        // console.log('destinations ', this.destinations);
         break;
       default:
         this.showSidebar = false;
@@ -260,6 +263,7 @@ export class TemplateDiscoverComponent implements OnInit {
       }
       dests.push(srcs);
     }
+    dests = [].concat.apply([], dests);
     // console.log('dests ', dests);
     return dests;
   }
