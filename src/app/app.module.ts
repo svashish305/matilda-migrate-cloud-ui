@@ -11,7 +11,7 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [AppComponent, SnackbarComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -19,15 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
     HomeModule,
     SharedModule,
     MatIconModule
-  ],
-  entryComponents: [SnackbarComponent],
-  providers: [
-    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,  useValue: {
-      duration: 5000,
-      horizontalPosition: 'right',
-      verticalPosition: 'top'
-  }}
-  ],
+  ], 
   bootstrap: [AppComponent],
 })
 export class AppModule {}
