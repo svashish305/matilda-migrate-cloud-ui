@@ -173,7 +173,8 @@
                     getCheckboxState(
                       $event,
                       'group',
-                      source.id.toString() + '_' + group.id.toString()
+                      source.id.toString() + '_' + group.id.toString(),
+                      selectedIPAddress
                     )
                   "
                   [(ngModel)]="
@@ -193,7 +194,8 @@
                           '_' +
                           group.id.toString() +
                           '_' +
-                          item.id.toString()
+                          item.id.toString(),
+                        selectedIPAddress
                       )
                     "
                     [(ngModel)]="
@@ -275,7 +277,8 @@
                     getCheckboxState(
                       $event,
                       'group',
-                      source.id.toString() + '_' + group.id.toString()
+                      source.id.toString() + '_' + group.id.toString(),
+                      selectedIPAddress
                     )
                   "
                   [(ngModel)]="
@@ -295,7 +298,8 @@
                           '_' +
                           group.id.toString() +
                           '_' +
-                          item.id.toString()
+                          item.id.toString(),
+                        selectedIPAddress
                       )
                     "
                     [(ngModel)]="
@@ -329,7 +333,7 @@
           <div class="common-text">
             <span class="make-it-blue">{{ destination.name }}</span>
             <span class="left-padding-24">IP&nbsp;:&nbsp;</span>
-            <span class="make-it-blue">{{ selectedIPAddress }}</span>
+            <span class="make-it-blue">{{ destination.ipAddress }}</span>
             <a (click)="deleteInSidebar(destination)">
               <img
                 class="pointer-cursor img-right"
@@ -393,7 +397,8 @@
                           '_' +
                           group.id.toString() +
                           '_' +
-                          item.id.toString()
+                          item.id.toString(),
+                        selectedIPAddress
                       )
                     "
                     [(ngModel)]="
