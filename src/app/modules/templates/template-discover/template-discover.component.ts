@@ -261,9 +261,8 @@ export class TemplateDiscoverComponent implements OnInit {
   pushToDestinations(checkedIDs: checkedID[]) {
     // console.log('checked final list ', checkedIDs);
     let groupByIP = this.groupBy(checkedIDs, 'ipAddress');
-    let dests: Destination[] = [];
-    let dest: Destination = new Destination();
-    dest.appName = this.selectedApp.name;
+    let dests: any[] = [];
+    // let dest: Destination = new Destination();
     let destinationsLen = 0;
     for (let [key, value] of Object.entries(groupByIP)) {
       // here key is IP
@@ -271,20 +270,26 @@ export class TemplateDiscoverComponent implements OnInit {
       let sourceIDsOfIP = this.groupBy(valuesOfIP, 'sourceId');
       let noOfCards = Object.keys(sourceIDsOfIP).length;
       destinationsLen += noOfCards;
+      let curIP = this.selectedApp.IP.find(ip => ip.address == key);
       let curIPIndex = this.selectedApp.IP.findIndex(ip => ip.address == key);
       let sourcesOfIP = this.selectedApp.IP[curIPIndex].sources;
-      dest.ipAddress = key;
+      // dest.ipAddress = key;
+      let srcs: Destination[] = [];
       for (let [key, value] of Object.entries(sourceIDsOfIP)) {
         // here key is sourceId
         let valuesOfSrc = value;
         let groupIDsOfSrc = this.groupBy(valuesOfSrc, 'groupId');
         let curSrc = sourcesOfIP.find(s => s.id == key);
         let newSource = Object.assign({}, curSrc);
-        dest.id = newSource.id;
-        dest.name = newSource.name;
-        dest.desc = newSource.desc;
-        // newSource.groups = [];
-        // dest.groups = [];
+        let src: Destination = new Destination();
+        // dest.id = newSource.id;
+        // dest.name = newSource.name;
+        // dest.desc = newSource.desc;
+        src.appName = this.selectedApp.name;
+        src.ipAddress = curIP.address;
+        src.id = key;
+        src.name = newSource.name;
+        src.desc = newSource.desc;
         for (let [key, value] of Object.entries(groupIDsOfSrc)) {
           // here key is groupId
           let valuesOfGrp = value;
@@ -298,14 +303,18 @@ export class TemplateDiscoverComponent implements OnInit {
             let curItem = itemsOfGrp.find(i => i.id == key);
             newGroup.items.push(curItem);
           }
-          dest.groups.push(newGroup);
+          if (src.groups.length <= curSrc.groups.length) {
+            src.groups.push(newGroup);
+          }
         }
-        // console.log('newSrc ', newSource);
-        dests.push(dest);
+        if (srcs.length <= noOfCards) {
+          srcs.push(src);
+        }
       }
-      console.log('dests ', dests);
+      dests.push(srcs);
+      // console.log('dests ', dests);
     }
-
+    console.log('dests ', dests);
     // return this.destinations;
   }
 
