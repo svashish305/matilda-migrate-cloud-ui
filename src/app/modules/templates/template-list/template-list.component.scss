@@ -2116,3 +2116,39 @@
   width: 100px !important;
   margin-left: 8px !important;
 }
+.icon-usersettings{
+  height:18px;
+  width: 18px;
+  padding-right: 5px;
+  padding-bottom: 2px;
+}
+.group-title-font {
+  font-family: LatoSemiBold;
+  font-size: 0.9em;
+  font-weight: 600;
+  letter-spacing: 0.51px;
+  color: #000;
+  // position: absolute;
+  left: 3.5em;
+}
+
+
+.group-styles {
+  overflow: hidden;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  border: solid 1.5px transparent;
+  border-radius: 4px;
+  text-overflow: ellipsis;
+  width: 170px;
+}
+
+.group-styles:hover {
+  border-color: lightgray;
+}
+
+.group-styles:focus {
+  border-radius: 4px !important;
+  border-color: #1a73e8;
+}

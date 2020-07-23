@@ -408,4 +408,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
     template.showStatus = !template.showStatus;
     $event.stopPropagation();
   }
+  deleteStage(){
+    // Stage delete API binding
+  }
 }
