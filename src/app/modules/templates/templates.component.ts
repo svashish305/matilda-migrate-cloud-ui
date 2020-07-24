@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TemplateService } from './services/template.service';
-import { Template } from 'src/app/models/data.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
+import { Template } from 'src/app/utils/models/data.model';
 
 @Component({
   selector: 'app-templates',

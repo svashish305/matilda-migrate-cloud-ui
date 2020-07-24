@@ -16,8 +16,10 @@ import { ThemePalette } from '@angular/material/core';
 import { DataService } from 'src/services/data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { StatusCodes } from 'src/app/enums/enums';
-import { Item, Group } from 'src/app/models/data.model';
+import { Template, Item, Group } from 'src/app/utils/models/data.model';
+import { StatusCodes } from 'src/app/utils/enums/enums';
+import { Utilities } from 'src/app/utils/helpers/utilities';
+
 
 interface SelectInterface {
   value: string;
@@ -30,8 +32,11 @@ interface SelectInterface {
   styleUrls: ['./template-list.component.scss'],
 })
 export class TemplateListComponent implements OnInit, OnChanges {
-  @Input() templateData: any;
+  @Input() templateData: Template;
   @Output() rowClicked: EventEmitter<any> = new EventEmitter();
+  @Output() updateGroupInfo: EventEmitter<any> = new EventEmitter();
+
+  private currentTemplate: Template;
 
   searchKey;
   stages: any[] = [];
@@ -56,6 +61,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
   constructor(
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
+    private _utilities: Utilities,
     public dialog: MatDialog
   ) {
     this.groupCollapseList = [];
@@ -68,11 +74,11 @@ export class TemplateListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    if (this.templateData && this.templateData.Types) {
-      this.tasks.forEach((waveType) => {
-        waveType.theme = this.getRandomColor();
-      });
-    }
+    // if (this.templateData && this.templateData.Types) {
+    //   this.tasks.forEach((waveType) => {
+    //     waveType.theme = this.getRandomColor();
+    //   });
+    // }
   }
 
   setBadgeBgColor(statusCode = 1) {
@@ -238,7 +244,7 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @description emits event to open task details
    */
   loadTask(task: Item, group: Group) {
-    this.rowClicked.emit({task: task, group: group});
+    this.rowClicked.emit({ task: task, group: group });
   }
 
   /**
@@ -259,10 +265,13 @@ export class TemplateListComponent implements OnInit, OnChanges {
     templateType.newTemplate = '';
   }
 
-  deleteTask(templateType, taskId) {
-    templateType.items = templateType.items.filter(
-      (item) => item.id !== taskId
-    );
+  deleteTask(group: Group, task: Item) {
+    this.templateData.groups.forEach((_group) => {
+      if (_group.id === group.id) {
+        _group.items= _group.items.filter(_item => _item.id !== task.id);
+        this.updateGroupInfo.emit(this.templateData);
+      } 
+    });
   }
 
   taskSettings(templateType, taskId, event) {
@@ -324,11 +333,11 @@ export class TemplateListComponent implements OnInit, OnChanges {
    */
   openGroupLevelActions(templateType) {
     templateType.openActions = !templateType.openActions;
-    this.templateData.groups.forEach((type) => {
-      if (type.id !== templateType.id) {
-        type.openActions = false;
-      }
-    });
+    // this.templateData.groups.forEach((type) => {
+    //   if (type.id !== templateType.id) {
+    //     type.openActions = false;
+    //   }
+    // });
   }
 
   /**
@@ -336,10 +345,10 @@ export class TemplateListComponent implements OnInit, OnChanges {
    * @param templateType - which is being deleted
    * @description resizes the template details container
    */
-  deleteGroup(templateType) {
-    this.tasks = this.tasks.filter((Type) => {
-      return templateType.id !== Type.id;
-    });
+  deleteGroup(group: Group) {
+    console.log(this.templateData.groups.filter(_group => _group.id !== group.id));
+    this.templateData.groups = this.templateData.groups.filter(_group => _group.id !== group.id);
+    this.updateGroupInfo.emit(this.templateData);
   }
 
   /**
@@ -399,11 +408,19 @@ export class TemplateListComponent implements OnInit, OnChanges {
   showStatuses($event, template) {
     template.showStatus = !template.showStatus;
     $event.stopPropagation();
-  }  
+  }
   onFocusTitle() {
   }
 
-  updateGroupTitle() {  
-    // Group title API update
+  updateGroupTitle(group: Group) {
+    this.currentTemplate = Object.assign({}, this.templateData);
+    this.currentTemplate.groups.filter(_group => {
+      if (_group.id === group.id) {
+        _group.name = group.name;
+      }
+    });
+
+    this.updateGroupInfo.emit(this.currentTemplate);
   }
+
 }

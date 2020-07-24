@@ -18,7 +18,8 @@ import {
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { Router } from '@angular/router';
 import * as uuid from 'uuid';
-import { StatusCodes } from 'src/app/enums/enums';
+import { StatusCodes } from 'src/app/utils/enums/enums';
+
 
 interface SelectInterface {
   value: string;

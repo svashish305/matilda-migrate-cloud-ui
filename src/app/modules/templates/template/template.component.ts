@@ -14,9 +14,9 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import * as uuid from 'uuid';
-import { Group, Template, Item } from 'src/app/models/data.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
+import { Template, Item, Group } from 'src/app/utils/models/data.model';
 
 
 interface SelectInterface {
@@ -364,6 +364,11 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
 
   onSaveConfig(payload: any) {
 
+  }
+
+  updateGroupInfo(payload: Template) {
+    console.log(payload);
+    this.updateTemplate.emit(payload);
   }
 
   onClose(event: any) {

@@ -116,9 +116,9 @@
                   (click)="$event.target.select()"
                   (focus)="onFocusTitle()"
                   (keydown.enter)="
-                    $event.preventDefault() && updateGroupTitle(); $event.target.blur()
+                    $event.preventDefault() && updateGroupTitle(group); $event.target.blur()
                   "
-                  (blur)="updateGroupTitle()"
+                  (blur)="updateGroupTitle(group)"
                   [(ngModel)]="newTitle ? newTitle : group.name"
                 />
                 </div>
@@ -188,7 +188,7 @@
             yPosition="below"
           >
             <div>              
-              <button mat-menu-item (click)="deleteGroup()">   
+              <button mat-menu-item (click)="deleteGroup(group)">   
                 <img 
                 class="icon-usersettings"
               src="assets/imgs/delete-stage.svg"
@@ -396,7 +396,7 @@
                   <span class="list-percent-text">{{ task.progress }} %</span>
                 </div>
                 <div class="right-options">
-                  <a (click)="deleteTask(group, task.id)">
+                  <a (click)="deleteTask(group, task)">
                     <img
                       class="set-margin-right"
                       src="assets/imgs/delete.svg"

@@ -196,6 +196,7 @@
             <app-template-list
               #templateList
               (rowClicked)="openTaskDetails($event)"
+              (updateGroupInfo)="updateGroupInfo($event)"
               [templateData]="templateData"
             >
             </app-template-list>
