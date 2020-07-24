@@ -17,7 +17,8 @@ import { DataService } from 'src/services/data.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import * as uuid from 'uuid';
 import { ActivatedRoute } from '@angular/router';
-import { Group } from 'src/app/models/data.model';
+import { Group } from 'src/app/utils/models/data.model';
+
 
 interface SelectInterface {
   value: string;

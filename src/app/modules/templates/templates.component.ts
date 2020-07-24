@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TemplateService } from './services/template.service';
-import { Template } from 'src/app/models/data.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
+import { Template } from 'src/app/utils/models/data.model';
 
 @Component({
   selector: 'app-templates',
@@ -43,6 +43,7 @@ export class TemplatesComponent implements OnInit {
     this._templateService.updateTemplate(template, template.id)
         .subscribe(
           (data: any) => {
+            this._snackBar.dismiss();
             this.templateData = data;
           },
           (error) => {

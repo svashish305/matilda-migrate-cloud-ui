@@ -5,9 +5,10 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { DataService } from 'src/services/data.service';
 import * as uuid from 'uuid';
 import { TemplateService } from '../templates/services/template.service';
-import { Template } from 'src/app/models/data.model';
+
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
+import { Template } from 'src/app/utils/models/data.model';
 
 
 @Component({

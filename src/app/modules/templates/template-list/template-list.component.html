@@ -185,7 +185,7 @@
             yPosition="below"
           >
             <div>              
-              <button mat-menu-item (click)="deleteGroup()">   
+              <button mat-menu-item (click)="deleteGroup(group)">   
                 <img 
                 class="icon-usersettings"
               src="assets/imgs/delete-stage.svg"
@@ -268,7 +268,7 @@
             cdkDropList
             id="{{ group.id }}"
             [cdkDropListData]="group.items"
-            (cdkDropListDropped)="drop($event)"
+            (cdkDropListDropped)="dropTask($event)"
             [cdkDropListConnectedTo]="getConnectedList()"
           >
             <div
@@ -392,7 +392,7 @@
                   <span class="list-percent-text">{{ task.progress }} %</span>
                 </div>
                 <div class="right-options">
-                  <a (click)="deleteTask(group, task.id)">
+                  <a (click)="deleteTask(group, task)">
                     <img
                       class="set-margin-right"
                       src="assets/imgs/delete.svg"

@@ -14,9 +14,9 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import * as uuid from 'uuid';
-import { Group, Template, Item } from 'src/app/models/data.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
+import { Template, Item, Group } from 'src/app/utils/models/data.model';
 
 
 interface SelectInterface {
@@ -66,6 +66,8 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   templateAvatarUrl: any;
 
   taskImgHover = false;
+
+  public currentTemplate: Template;
 
   constructor(
     private route: ActivatedRoute,
@@ -127,11 +129,15 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
         // called once readAsDataURL is completed
         this.selectedTask.image = event.target.result;
       };
+      console.log(this.selectedTask);
 
       this.templateData.groups.forEach((_group: Group) => {
         if (_group.id === this.selectedTask.groupId) {
           _group.items.forEach((_item: Item) => {
-            _item.image = this.selectedTask.image;
+            if(_item.id === this.selectedTask.id) {
+              _item.image = this.selectedTask.image;
+              console.log(_item);
+            }
           });
         }
       });
@@ -299,14 +305,22 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
 
       this.selectedTask = _task;
 
-      this.templateData.groups.forEach((_group: Group) => {
+      // this.templateData.groups.forEach((_group: Group) => {
+      //   if (_group.id === this.selectedTask.groupId) {
+      //     _group.items.push(this.selectedTask);
+      //   }
+      // });
+      this.currTemplate = Object.assign({},this.templateData);
+      this.currTemplate.groups.forEach((_group: Group) => {
         if (_group.id === this.selectedTask.groupId) {
           _group.items.push(this.selectedTask);
         }
       });
+
+      this.openSnackBar('Please Wait.. While we are waiting for the server to respond', 'info')
+      this.updateTemplate.emit(this.currTemplate);
     }
-    this.openSnackBar('Please Wait..', 'info')
-    this.updateTemplate.emit(this.templateData);
+   
 
     this.showTaskOptions = true;
   }
@@ -350,6 +364,11 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
 
   onSaveConfig(payload: any) {
 
+  }
+
+  updateGroupInfo(payload: Template) {
+    console.log(payload);
+    this.updateTemplate.emit(payload);
   }
 
   onClose(event: any) {
