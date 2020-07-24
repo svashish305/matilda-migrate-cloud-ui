@@ -341,6 +341,7 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
       //   .updateTemplate(newTemplate)
       //   .subscribe((res: any) => console.log(res));
     }
+    this.updateTemplate.emit({ payload: this.templateData, message: 'Template Updated Successfully', type: 'success'});
   }
 
   onFocusDescription() {
@@ -355,10 +356,12 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
         description: this.newDescription,
         ...this.templateData,
       };
-      // this.dataService
+      // this.dataService 
       //   .updateTemplate(newTemplate)
       //   .subscribe((res: any) => console.log(res));
     }
+    console.log(this.templateData);
+    this.updateTemplate.emit({ payload: this.templateData, message: 'Template Updated Successfully', type: 'success'});
   }
 
   onSaveConfig(payload: any) {

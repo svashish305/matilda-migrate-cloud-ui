@@ -9,7 +9,7 @@ import { Utilities } from 'src/app/utils/helpers/utilities';
   styleUrls: ['./edit-tag.component.scss'],
 })
 export class EditTagComponent implements OnInit {
-  @Input() tags: any[];
+  @Input() tags: any[] = [];
   @Output() newTags: EventEmitter<any> = new EventEmitter();
 
   form: FormGroup;
