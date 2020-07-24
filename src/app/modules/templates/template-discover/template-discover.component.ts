@@ -176,10 +176,10 @@ export class TemplateDiscoverComponent implements OnInit {
         var itemId = id.split('_')[2];
 
         if (event.checked) {
+          // checked
           this.itemSelectList[sourceId + '_' + groupId + '_' + itemId] = true;
           this.showSidebar = true;
           this.itemCountInGroup[groupId]++;
-          // add item at respective place in destinations
           this.checkedIDs.push({ ipAddress, sourceId, groupId, itemId });
         } else {
           // unchecked
@@ -192,7 +192,6 @@ export class TemplateDiscoverComponent implements OnInit {
           let markUncheckedID: checkedID = { ipAddress, sourceId, groupId, itemId };
           this.checkedIDs = this.checkedIDs.filter(cID => JSON.stringify(cID) != JSON.stringify(markUncheckedID));
         }
-        // console.log('dests ', this.pushToDestinations(this.checkedIDs));
         this.destinations = this.pushToDestinations(this.checkedIDs);
         if (this.destinations.length == 0) {
           this.showSidebar = false;
@@ -226,7 +225,6 @@ export class TemplateDiscoverComponent implements OnInit {
       let curIP = this.selectedApp.IP.find(ip => ip.address == key);
       let curIPIndex = this.selectedApp.IP.findIndex(ip => ip.address == key);
       let sourcesOfIP = this.selectedApp.IP[curIPIndex].sources;
-      // dest.ipAddress = key;
       let srcs: Destination[] = [];
       for (let [key, value] of Object.entries(sourceIDsOfIP)) {
         // here key is sourceId
