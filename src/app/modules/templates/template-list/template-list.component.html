@@ -271,7 +271,7 @@
             cdkDropList
             id="{{ group.id }}"
             [cdkDropListData]="group.items"
-            (cdkDropListDropped)="drop($event)"
+            (cdkDropListDropped)="dropTask($event)"
             [cdkDropListConnectedTo]="getConnectedList()"
           >
             <div
