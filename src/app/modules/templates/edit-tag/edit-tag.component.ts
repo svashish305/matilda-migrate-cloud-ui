@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Tag } from 'src/app/utils/models/data.model';
-import * as uuid from 'uuid';
-
+import { Utilities } from 'src/app/utils/helpers/utilities';
 
 @Component({
   selector: 'app-edit-tag',
@@ -13,35 +12,51 @@ export class EditTagComponent implements OnInit {
   @Input() tags: any[];
   @Output() newTags: EventEmitter<any> = new EventEmitter();
 
-  firstFormGroup: FormGroup;
-  newTagName = '';
-  newTagValue = '';
-
-  constructor(private _formBuilder: FormBuilder) {}
+  form: FormGroup;
+  
+  constructor(private _formBuilder: FormBuilder, private _utilities: Utilities) { }
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
+    this.form = this._formBuilder.group({
+      configuredTags: this._formBuilder.array([this.addNewTag()]),
     });
+
+    if(this.tags.length > 0) {
+      this.configuredTags.removeAt(0);
+      this.tags.forEach(_tag => this.configuredTags.push(this.addNewTag(_tag, 'auto')));
+    }
+
+    // this.form.valueChanges.subscribe(val => {
+    //   console.log(val);
+    //   console.log(this.form);
+    //   this.newTags.emit({tags: val.configuredTags, valid: this.form.valid })
+    // });
+  }
+
+  valueChange(form: any) {
+    this.newTags.emit({tags: form.value.configuredTags, valid: form.valid, operation: 'update'});
+  }
+
+  addNewTag(tag?: Tag, eventTrigger?: string) {
+    const newTag = this._formBuilder.group({
+      id: [tag ? tag.id : this._utilities.generateId(), Validators.nullValidator],
+      name: [tag ? tag.name : '', Validators.required],
+      value: [tag ? tag.value : '', Validators.required]
+    });
+    return newTag;
   }
 
   addTag() {
-    const id = uuid.v4();
-    let newTag: Tag = {
-      id,
-      name: this.newTagName,
-      value: this.newTagValue,
-      ...new Tag(),
-    };
-    this.tags.push(newTag);
-    this.newTagName = '';
-    this.newTagValue = '';
-
-    this.newTags.emit(this.tags);
+    this.configuredTags.push(this.addNewTag(null, 'manual'));
   }
 
-  deleteTag(tagId) {
-    this.tags = this.tags.filter((tag) => tag.id !== tagId);
-    this.newTags.emit(this.tags);
+  deleteTag(index: number, form?:any) {
+    this.configuredTags.removeAt(index);
+    this.newTags.emit({tags: this.form.value.configuredTags, valid: this.form.valid, operation: 'delete'});
   }
+
+  get configuredTags() {
+    return this.form.get('configuredTags') as FormArray;
+  }
+
 }

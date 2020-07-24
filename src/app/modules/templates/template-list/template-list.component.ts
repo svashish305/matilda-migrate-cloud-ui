@@ -67,19 +67,19 @@ export class TemplateListComponent implements OnInit {
     this.templateData.groups.forEach((_group) => {
       if (_group.id === group.id) {
         _group.items = _group.items.filter(_item => _item.id !== task.id);
-        this.updateGroupInfo.emit(this.templateData);
+        this.updateGroupInfo.emit({payload: this.templateData, message: 'Task Deleted Successfully', type: 'error'});
       }
     });
   }
 
   deleteGroup(group: Group) {
     this.templateData.groups = this.templateData.groups.filter(_group => _group.id !== group.id);
-    this.updateGroupInfo.emit(this.templateData);
+    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Group Deleted Successfully', type: 'error'});
   }
 
   dropTask(event: CdkDragDrop<string[]>) {
     let task: any = event.container.data[event.previousIndex];
-    console.log('order before drag ', task.order);
+  
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -115,7 +115,9 @@ export class TemplateListComponent implements OnInit {
           event.container.data[event.currentIndex + 1]['order']) /
         2;
     }
-    console.log('order after drag ', task.order);
+
+    this.updateGroupInfo.emit({payload: this.templateData, message: 'Task Updated Successfully', type: 'success'});
+   
   }
 
   dropGroup(event: CdkDragDrop<string[]>) {
@@ -141,6 +143,8 @@ export class TemplateListComponent implements OnInit {
           this.templateData.groups[event.currentIndex + 1].order) /
         2;
     }
+
+    this.updateGroupInfo.emit({payload: this.templateData, message: 'Group Updated Successfully', type: 'success'});
   }
 
   getConnectedList() {
@@ -161,6 +165,8 @@ export class TemplateListComponent implements OnInit {
   }
 
   updateGroupTitle(group: Group) {
+    console.log(group);
+    
     this.currentTemplate = Object.assign({}, this.templateData);
     this.currentTemplate.groups.filter(_group => {
       if (_group.id === group.id) {
@@ -168,7 +174,9 @@ export class TemplateListComponent implements OnInit {
       }
     });
 
-    this.updateGroupInfo.emit(this.currentTemplate);
+    console.log(this.currentTemplate);
+
+    this.updateGroupInfo.emit({payload: this.currentTemplate, message: 'Group Updated Successfully', type: 'success'});
   }
 
   changeStatus(template, status) {
