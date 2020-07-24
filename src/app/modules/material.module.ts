@@ -105,7 +105,7 @@ import { SnackbarComponent } from '../shared/components/snackbar/snackbar.compon
   entryComponents: [SnackbarComponent], 
   providers: [MatDatepickerModule,
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,  useValue: {
-      duration: 5000,
+      duration: 1500,
       horizontalPosition: 'right',
       verticalPosition: 'top'
   },

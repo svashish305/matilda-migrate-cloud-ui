@@ -32,6 +32,10 @@ interface SelectInterface {
 export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() templateData: Template;
   @Output() updateTemplate = new EventEmitter();
+  @Output() onTagsUpdate = new EventEmitter();
+
+  public isTagsFormValid: boolean;
+
   searchKey;
   edit;
   showBackdrop;
@@ -113,7 +117,7 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
       reader.onload = (event: any) => {
         // called once readAsDataURL is completed
         this.templateData.image = event.target.result;
-        this.updateTemplate.emit(this.templateData);
+        this.updateTemplate.emit({ payload: this.templateData, message: 'Template Icon Updated Successfully', type: 'success' });
       };
     }
   }
@@ -134,7 +138,7 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
       this.templateData.groups.forEach((_group: Group) => {
         if (_group.id === this.selectedTask.groupId) {
           _group.items.forEach((_item: Item) => {
-            if(_item.id === this.selectedTask.id) {
+            if (_item.id === this.selectedTask.id) {
               _item.image = this.selectedTask.image;
               console.log(_item);
             }
@@ -142,7 +146,7 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
         }
       });
 
-      this.updateTemplate.emit(this.templateData);
+      this.updateTemplate.emit({ payload: this.templateData, message: 'Task Icon Updated Successfully', type: 'success' });
 
     }
   }
@@ -179,14 +183,14 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   updateTags(event: any) {
-    this.currTemplate.tags = event;
-    this.dataService
-      .updateTemplate(this.templateId, this.currTemplate)
-      .subscribe((newTemplate: any) => {
-        console.log('updated template ', newTemplate);
-        this.templateData = newTemplate;
-        this.currTemplate = newTemplate;
-      });
+    this.isTagsFormValid = !event.valid;
+    this.templateData.tags = event.tags;
+    // this.updateTemplate.emit({ payload: this.templateData, message: 'Tags Updated Successfully'});
+    //this.onTagsUpdate.emit({ payload: event.tags, message: 'Tags Updated Successfully', type: 'success' });
+  }
+
+  saveTags() {
+    this.onTagsUpdate.emit({ tags: this.templateData.tags, message: 'Tags Updated Successfully', type: 'success' });
   }
 
   addStage() {
@@ -199,9 +203,7 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     this.templateData.groups.push(group);
     this.templateData.groups = [...this.templateData.groups];
 
-    console.log(this.templateData);
-
-    this.updateTemplate.emit(this.templateData);
+    this.updateTemplate.emit({ payload: this.templateData, message: 'Stage Added Successfully', type: 'success' });
 
   }
 
@@ -278,12 +280,11 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   openTaskDetails(payload: any) {
-    
+
     let task: Item = payload.task;
     let group: Group = payload.group;
 
     if (task) {
-
       this.selectedTask = task;
       this.templateData.groups.forEach((_group: Group) => {
         if (_group.id === this.selectedTask.groupId) {
@@ -295,8 +296,9 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
         }
       });
 
-    } else {
+      this.showTaskOptions = true;
 
+    } else {
       let _task = new Item();
       _task.id = uuid.v4();
       _task.name = 'Untitled Task' + '_' + _task.id;
@@ -310,21 +312,18 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
       //     _group.items.push(this.selectedTask);
       //   }
       // });
-      this.currTemplate = Object.assign({},this.templateData);
+      this.currTemplate = Object.assign({}, this.templateData);
       this.currTemplate.groups.forEach((_group: Group) => {
         if (_group.id === this.selectedTask.groupId) {
           _group.items.push(this.selectedTask);
         }
       });
 
-      this.openSnackBar('Please Wait.. While we are waiting for the server to respond', 'info')
-      this.updateTemplate.emit(this.currTemplate);
+      //this.openSnackBar('Please Wait.. While we are waiting for the server to respond', 'info');
+      this.updateTemplate.emit({ payload: this.currTemplate, message: 'Task Added Successfully', type: 'success' });
+
     }
-   
-
-    this.showTaskOptions = true;
   }
-
 
   onFocusTitle() {
     this.titleState = 'editing';

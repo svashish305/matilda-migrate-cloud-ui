@@ -30,4 +30,16 @@ export class TemplateService {
     return this._http.delete(this.BASE_URL + `/template/${templateId}/delete`);
   }
 
+  createTag(payload: any, templateId: any) {
+    return this._http.post(this.BASE_URL + `/template/${templateId}/tag/create`, payload);
+  }
+
+  updateTag(payload: any, templateId: any) {
+    return this._http.post(this.BASE_URL + `/template/${templateId}/tag/save`, payload);
+  }
+
+  deleteTag(tagId: any) {
+    return this._http.delete(this.BASE_URL + `/template/tag/${tagId}/delete`);
+  }
+
 }
