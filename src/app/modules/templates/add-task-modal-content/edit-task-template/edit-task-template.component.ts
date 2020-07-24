@@ -178,9 +178,13 @@ export class EditTaskTemplateComponent implements OnInit {
 
   }
   openSnackBar(message: string, snackType: string) {
-    this.snackBar.openFromComponent(SnackbarComponent, {
+  let snackBarRef=   this.snackBar.openFromComponent(SnackbarComponent, {
       data: { message: message, snackType: snackType, snackBar: this.snackBar },
       panelClass: [snackType],
     });
+    snackBarRef.onAction().subscribe(() => {
+      this.snackBar.dismiss();      
+    })
   }  
+  
 }

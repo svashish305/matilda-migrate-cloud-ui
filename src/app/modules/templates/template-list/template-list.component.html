@@ -115,10 +115,7 @@
                   class="group-styles group-title-font"
                   (click)="$event.target.select()"
                   (focus)="onFocusTitle()"
-                  (keydown.enter)="
-                    $event.preventDefault() && updateGroupTitle(); $event.target.blur()
-                  "
-                  (blur)="updateGroupTitle()"
+                  (keydown.enter)="updateGroupTitle()"
                   [(ngModel)]="newTitle ? newTitle : group.name"
                 />
                 </div>
@@ -276,8 +273,7 @@
           >
             <div
               class="row-items template__row item"
-              [ngClass]="{ selected: group.selected }"
-              (click)="loadTask(task, group)"
+              [ngClass]="{ selected: group.selected }"             
               *ngFor="let task of group.items"
               cdkDrag
             >
@@ -287,7 +283,7 @@
                     [ngClass]="{
                       'mobile-text': isMobile,
                       'common-text': !isMobile
-                    }"
+                    }"  (click)="loadTask(task, group)"
                     class="cell-text"
                     >{{ task.name }}</span
                   >
