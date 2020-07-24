@@ -339,10 +339,28 @@
     width: 20px;
   }
 
-  @media only screen and (max-width: 1060px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 0fr);
+    position: relative;
+    right: 0.7em;
+    bottom: 1.125em;
+  }
+
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
     .grid-container {
       display: grid;
-      grid-template-columns: auto;
+      grid-template-columns: 1fr 2fr;
+      position: relative;
+      right: 0.7em;
+      bottom: 1.125em;
+    }
+  }
+
+  @media only screen and (min-width: 1025px) and (max-width: 1060px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
       position: relative;
       right: 0.7em;
       bottom: 1.125em;
