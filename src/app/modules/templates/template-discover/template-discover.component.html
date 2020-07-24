@@ -182,6 +182,13 @@
                       source.id.toString() + '_' + group.id.toString()
                     ]
                   "
+                  [checked]="
+                    selectAllIfChildsTrue(
+                      selectedIPAddress,
+                      source.id,
+                      group.id
+                    )
+                  "
                 ></mat-checkbox>
                 <span class="left-padding-half-rem">Select All</span>
                 <div *ngFor="let item of group.items">
@@ -285,6 +292,13 @@
                     groupSelectList[
                       source.id.toString() + '_' + group.id.toString()
                     ]
+                  "
+                  [checked]="
+                    selectAllIfChildsTrue(
+                      selectedIPAddress,
+                      source.id,
+                      group.id
+                    )
                   "
                 ></mat-checkbox>
                 <span class="left-padding-half-rem">Select All</span>

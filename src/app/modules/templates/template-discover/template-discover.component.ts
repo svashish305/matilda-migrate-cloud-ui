@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { DataService } from 'src/services/data.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Item, Group, Destination, Source } from 'src/app/models/data.model';
 import * as uuid from 'uuid';
 
@@ -26,8 +26,7 @@ export class TemplateDiscoverComponent implements OnInit {
   selectedIPAddress: any;
   isIPSelected = false;
   sources: Source[] = [];
-  // destinations: Destination[] = [];
-  destinations: any[] = [];
+  destinations: Destination[] = [];
   sourceCollapseList: boolean[] = [];
   groupCollapseList: boolean[] = [];
   groupSelectList: boolean[] = [];
@@ -42,6 +41,7 @@ export class TemplateDiscoverComponent implements OnInit {
 
   constructor(
     private location: Location,
+    private router: Router,
     private route: ActivatedRoute,
     private dataService: DataService
   ) {
@@ -118,57 +118,18 @@ export class TemplateDiscoverComponent implements OnInit {
       case 'group':
         var sourceId = id.split('_')[0];
         var groupId = id.split('_')[1];
-        var destination = new Destination();
-        destination.appName = this.selectedApp.name;
-        destination.ipAddress = ipAddress;
-        var selectedIPIndex = this.selectedApp.IP.findIndex(ip => ip.address == ipAddress);
-        var curSources = this.selectedApp.IP[selectedIPIndex].sources;
-        var selectedSource = curSources.find((s) => s.id == sourceId);
-        destination.name = selectedSource.name;
-        destination.desc = selectedSource.desc;
-        destination.id = selectedSource.id;
-        var selectedGroup = selectedSource.groups.find((g) => g.id == groupId);
-        this.itemCountInGroup[groupId] = selectedGroup.items.length;
-        destination.groups.push(selectedGroup);
-        if (event.checked) {
-          this.selectAll(sourceId, groupId);
-          this.showSidebar = true;
-          if (this.destinations.find((d) => d.id === destination.id)) {
-            // console.log('same source!');
-            let prevIndex = this.destinations.findIndex(
-              (d) => d.id === destination.id
-            );
-            this.destinations[prevIndex].groups.push(selectedGroup);
-          } else {
-            // console.log('different source');
-            this.destinations.push(destination);
-          }
-        } else {
-          this.itemCountInGroup[groupId] = 0;
-          this.unselectAll(sourceId, groupId);
-          if (this.destinations.find((d) => d.id === destination.id)) {
-            // console.log('same source!');
-            let prevIndex = this.destinations.findIndex(
-              (d) => d.id == destination.id
-            );
-            this.destinations[prevIndex].groups = this.destinations[
-              prevIndex
-            ].groups.filter(
-              (g) => JSON.stringify(g) !== JSON.stringify(selectedGroup)
-            );
-            if (!this.destinations[prevIndex].groups.length) {
-              this.destinations = this.destinations.filter(
-                (d) => d.id != this.destinations[prevIndex].id
-              );
-            }
-          } else {
-            // console.log('different source');
-            this.destinations = this.destinations.filter(
-              (d) => JSON.stringify(d) !== JSON.stringify(destination)
-            );
-          }
-        }
-        console.log('destinations ', this.destinations);
+
+        let selectedIPIndex = this.selectedApp.IP.findIndex(ip => ip.address == ipAddress);
+        let curSources = this.selectedApp.IP[selectedIPIndex].sources;
+        let selectedSource = curSources.find((s) => s.id == sourceId);
+        let selectedGrpIndex = selectedSource.groups.findIndex((g) => g.id == groupId);
+        let markedItems = selectedSource.groups[selectedGrpIndex].items;
+        this.itemCountInGroup[groupId] = 0;
+        markedItems.forEach(item => {
+          let id = sourceId + '_' + groupId + '_' + item.id;
+          this.getCheckboxState(event, 'item', id, ipAddress);
+        });
+        // console.log('destinations at grp level ', this.destinations);
         break;
       case 'item':
         var sourceId = id.split('_')[0];
@@ -180,7 +141,10 @@ export class TemplateDiscoverComponent implements OnInit {
           this.itemSelectList[sourceId + '_' + groupId + '_' + itemId] = true;
           this.showSidebar = true;
           this.itemCountInGroup[groupId]++;
-          this.checkedIDs.push({ ipAddress, sourceId, groupId, itemId });
+          let markChecked: checkedID = { ipAddress, sourceId, groupId, itemId };
+          if (!this.checkedIDs.find(cID => JSON.stringify(cID) == JSON.stringify(markChecked))) {    // taking care of duplicates
+            this.checkedIDs.push(markChecked);
+          }
         } else {
           // unchecked
           this.itemSelectList[sourceId + '_' + groupId + '_' + itemId] = false;
@@ -194,9 +158,10 @@ export class TemplateDiscoverComponent implements OnInit {
         }
         this.destinations = this.pushToDestinations(this.checkedIDs);
         if (this.destinations.length == 0) {
+          this.itemCountInGroup[groupId] = 0;
           this.showSidebar = false;
         }
-        // console.log('destinations ', this.destinations);
+        // console.log('destinations at item level ', this.destinations);
         break;
       default:
         this.showSidebar = false;
@@ -213,6 +178,7 @@ export class TemplateDiscoverComponent implements OnInit {
 
   pushToDestinations(checkedIDs: checkedID[]) {
     // console.log('checked final list ', checkedIDs);
+
     let groupByIP = this.groupBy(checkedIDs, 'ipAddress');
     let dests: any[] = [];
     let destinationsLen = 0;
@@ -277,6 +243,20 @@ export class TemplateDiscoverComponent implements OnInit {
     }
   }
 
+  selectAllIfChildsTrue(ipAddress, sourceId, groupId): boolean {
+    let selectedIPIndex = this.selectedApp.IP.findIndex(ip => ip.address == ipAddress);
+    let curSources = this.selectedApp.IP[selectedIPIndex].sources;
+    let selectedSource = curSources.find((s) => s.id == sourceId);
+    let selectedGrpIndex = selectedSource.groups.findIndex((g) => g.id == groupId);
+    let markedItems = selectedSource.groups[selectedGrpIndex].items;
+    for (let i = 0; i < markedItems.length; i++) {
+      if (!this.itemSelectList[sourceId + '_' + groupId + '_' + markedItems[i].id]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   getIP() {
     return this.selectedIPAddress;
   }
@@ -313,11 +293,11 @@ export class TemplateDiscoverComponent implements OnInit {
       modifiedTemplate.groups.push(g);
     });
 
-    //   this.dataService
-    //     .updateTemplate(this.templateId, modifiedTemplate)
-    //     .subscribe((newTemplate: any) => {
-    //       this.currTemplate = newTemplate;
-    //     });
-    //   this.router.navigate([`/templates/${this.templateId}`]);
+    this.dataService
+      .updateTemplate(this.templateId, modifiedTemplate)
+      .subscribe((newTemplate: any) => {
+        this.currTemplate = newTemplate;
+      });
+    this.router.navigate([`/templates/${this.templateId}`]);
   }
 }

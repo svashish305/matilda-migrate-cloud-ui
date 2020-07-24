@@ -8016,6 +8016,55 @@
               "name": "config.yaml"
             }
           ]
+        },
+        {
+          "id": "09f04eda-cdfb-40a9-80f2-960fafba4b59",
+          "name": "SMR App 2 : 192.168.10.11 : NGINX Ansible",
+          "items": [
+            {
+              "id": "b9db11ab-388c-4a72-b247-d98c278dab92",
+              "type": "file",
+              "name": "config.yaml"
+            }
+          ]
+        },
+        {
+          "id": "4ef3a9ac-7de9-4f33-9399-2e7a43ad8dec",
+          "name": "SMR App 2 : 192.168.10.11 : Tomcat Ansible",
+          "items": [
+            {
+              "id": "b9dfad66-aed2-453b-981d-2b7aae27f362",
+              "type": "folder",
+              "name": "Version 1"
+            }
+          ]
+        },
+        {
+          "id": "290ca6c1-ad31-462c-82df-9c096c836ef9",
+          "name": "SMR App 2 : 192.168.10.11 : NGINX Ansible",
+          "items": [
+            {
+              "id": "39a364b4-5849-4274-a413-324ddecf2bae",
+              "type": "file",
+              "name": "config.yaml"
+            }
+          ]
+        },
+        {
+          "id": "19932a60-a3eb-4a68-95d7-040ca1fbf244",
+          "name": "SMR App 2 : 192.168.10.11 : Tomcat Container",
+          "items": [
+            {
+              "id": "50a5b48a-a561-4011-83b2-d14dcd2ddcd8",
+              "type": "folder",
+              "name": "Version 1"
+            },
+            {
+              "id": "778095e4-1255-4959-9b8a-c4bb7dd30ee5",
+              "type": "file",
+              "name": "config.yaml"
+            }
+          ]
         }
       ],
       "tags": [
