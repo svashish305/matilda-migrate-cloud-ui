@@ -37,9 +37,9 @@ export class TemplateListComponent implements OnInit {
   drag = true;
 
   workflowTypes: SelectInterface[] = [
-    { value: 'time', viewValue: 'Time' },
     { value: 'trigger', viewValue: 'Trigger' },
-  ];
+    { value: 'time', viewValue: 'Time' }
+  ]; //{ value: 'time', viewValue: 'Time' }
 
   selectedWorkflowType: any;
   isMobile = false;
@@ -55,7 +55,8 @@ export class TemplateListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.selectedWorkflowType = this.workflowTypes[0].value;
+    this.selectedWorkflowType = this.templateData.type ? this.templateData.type : this.workflowTypes[0].value;
+    console.log(this.selectedWorkflowType);
     this.isMobile = this.deviceService.isMobile();
   }
 
@@ -166,7 +167,7 @@ export class TemplateListComponent implements OnInit {
 
   updateGroupTitle(group: Group) {
     console.log(group);
-    
+
     this.currentTemplate = Object.assign({}, this.templateData);
     this.currentTemplate.groups.filter(_group => {
       if (_group.id === group.id) {
@@ -255,10 +256,11 @@ export class TemplateListComponent implements OnInit {
   getWorkflowType() {
     this.templateData.type = this.selectedWorkflowType;
     return this.selectedWorkflowType;
+    
   }
 
-  optionClicked(wfType) {
-
+  optionClicked(wfType: any) {
+    this.updateGroupInfo.emit({payload: this.templateData, message: 'Template Updated Successfully', type: 'success'});
   }
 
   toggleTemplateHeight(collapsed) {
