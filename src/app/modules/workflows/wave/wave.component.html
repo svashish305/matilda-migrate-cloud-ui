@@ -32,8 +32,8 @@
           (mouseleave)="waveImgHover = false"
         >
           <ngx-avatar
-            *ngIf="waveAvatarUrl; else initialsAvatar"
-            [src]="waveAvatarUrl"
+            *ngIf="waveData?.image; else initialsAvatar"
+            [src]="waveData?.image"
             class="my-avatar flex-center"
             name="{{ waveData.name }}"
             initialsSize="2"
@@ -64,7 +64,7 @@
               />
             </label>
           </button>
-          <button mat-menu-item (click)="waveAvatarUrl = null">
+          <button mat-menu-item (click)="removeAvatar()">
             Remove
           </button>
         </mat-menu>
@@ -270,7 +270,8 @@
             <!-- wave templates list start-->
             <app-wave-list
               #waveList
-              (rowClicked)="openDetails($event)"
+              (rowClicked)="openTaskDetails($event)"
+              (updateGroupInfo)="updateGroupInfo($event)"
               [waveData]="waveData"
             >
             </app-wave-list>
@@ -416,7 +417,7 @@
     (resizeEnd)="onResizeEnd($event)"
   >
     <header>
-      <a
+      <a 
         (click)="showTagOptions = false"
         class="pointer-cursor left-24-top-1em"
       >
@@ -427,8 +428,7 @@
     <mat-divider></mat-divider>
     <!-- tag edit body -->
     <app-edit-tag
-      [tags]="currWaveTags"
-      (newTags)="updateTags($event)"
+    [tags]="waveData?.tags" (newTags)="updateTags($event)"
     ></app-edit-tag>
     <!-- end of tag edit body -->
     <div
@@ -436,10 +436,10 @@
       class="edit-tag-footer-btns"
     >
       <div class="import-btns-1">
-        <button
+        <button [disabled]="isTagsFormValid"
           mat-flat-button
           color="primary"
-          (click)="showTagOptions = false"
+          (click)="showTagOptions = false; saveTags()"
           cdkFocusInitial
         >
           Save

@@ -6,7 +6,7 @@
   <div class="content__wrapper">
     <!-- wave details start -->
     <div class="wave__content">
-      <app-wave [waveData]="waveData"></app-wave>
+      <app-wave [waveData]="waveData" (updateWorkflow)="updateWorkflow($event)" (onTagsUpdate)="onTagsUpdate($event)"></app-wave>
     </div>
     <!-- wave details end -->
   </div>

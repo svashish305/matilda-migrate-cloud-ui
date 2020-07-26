@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/services/data.service';
 import { ActivatedRoute } from '@angular/router';
+import { WorkflowService } from './services/workflow.service';
+import { Utilities } from 'src/app/utils/helpers/utilities';
 
 @Component({
   selector: 'app-workflows',
@@ -23,16 +25,19 @@ export class WorkflowsComponent implements OnInit {
 
   constructor(
     private dataService: DataService,
+    private _workflowService: WorkflowService,
+    private _utilities: Utilities,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
       console.log(params);
-      this.waveId = params.id;
+      this.waveId = params.id; 
+      this.getWaveData(params.id);
     });
 
-    this.getWaves();
+    //this.getWaves();
   }
 
   /**
@@ -58,17 +63,18 @@ export class WorkflowsComponent implements OnInit {
    * @description gets details of specific wave using id
    */
   getWaveData(id) {
-    this.waves.forEach((wave) => {
-      if (wave.id === id) {
-        wave.selected = true;
-      } else {
-        wave.selected = false;
-      }
-    });
+    // this.waves.forEach((wave) => {
+    //   if (wave.id === id) {
+    //     wave.selected = true;
+    //   } else {
+    //     wave.selected = false;
+    //   }
+    // });
 
-    this.dataService.getWave(id).subscribe((res: any) => {
-      this.waveData = res;
-    });
+    // this.dataService.getWave(id).subscribe((res: any) => {
+    //   this.waveData = res;
+    // });
+    this._workflowService.getWorkflowById(id).subscribe((data: any) => this.waveData = data);
   }
 
   /**
@@ -131,5 +137,35 @@ export class WorkflowsComponent implements OnInit {
   cancelAdd() {
     this.showPopup = false;
     this.waveName = '';
+  }
+
+  updateWorkflow(payload: any) {
+    console.log(payload);
+    const workflow = payload.payload;
+    const message = payload.message;
+    const type = payload.type;
+    console.log(workflow);
+    this._workflowService.updateWorkflow(workflow, workflow.id)
+      .subscribe(
+        (data: any) => {
+          this.waveData = data;
+          this._utilities.openSnackBar(message, type);
+        },
+        (error) => {
+          this._utilities.errorNotification(error);
+          this.getWaveData(workflow.id);
+        }
+      )
+  }
+
+  onTagsUpdate(payload: any) {
+    this._workflowService.updateTag(payload.tags, this.waveData.id)
+      .subscribe((data) => {
+        this._utilities.openSnackBar(payload.message, payload.type);
+      },
+        (error) => {
+          this._utilities.errorNotification(error);
+          this.getWaveData(this.waveData.id);
+        });
   }
 }

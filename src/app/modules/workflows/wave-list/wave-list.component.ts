@@ -19,6 +19,8 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { Router } from '@angular/router';
 import * as uuid from 'uuid';
 import { StatusCodes } from 'src/app/utils/enums/enums';
+import { Utilities } from 'src/app/utils/helpers/utilities';
+import { Item, Group } from 'src/app/utils/models/data.model';
 
 
 interface SelectInterface {
@@ -34,6 +36,7 @@ interface SelectInterface {
 export class WaveListComponent implements OnInit {
   @Input() waveData: any = {};
   @Output() rowClicked: EventEmitter<any> = new EventEmitter();
+  @Output() updateGroupInfo: EventEmitter<any> = new EventEmitter();
 
   edit;
   searchKey;
@@ -73,6 +76,7 @@ export class WaveListComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
+    private _utilities: Utilities,
     public dialog: MatDialog,
     private router: Router
   ) {
@@ -374,12 +378,12 @@ export class WaveListComponent implements OnInit {
    * @param template - for which the details has to be shown
    * @description emits event to open template details
    */
-  rowClick(template) {
+  rowClick(template: any) {
     this.router.navigate([
       `workflows/${this.waveData.id}/templates/${template.id}`,
     ]);
-    this.rowClicked.emit(true);
-    console.log('row clicked');
+    // this.rowClicked.emit({task: template, group: null});
+    // console.log('row clicked');
   }
 
   /**
@@ -387,358 +391,18 @@ export class WaveListComponent implements OnInit {
    * @param waveType - for which new template has to be added
    * @description Adds new template to group
    */
-  addTemplate(waveType) {
-    const id = uuid.v4();
-    const newTemplate = {
-      id: id,
-      name: 'Untitled Template',
-      desc: 'Template Description',
-      ver: 'templateVersionNumber',
-      type: 'NONE/TRIGGER/EVENT',
-      owner: 'TEMPLATE OWNER',
-      progress: 10,
-      groups: [
-        {
-          id: 1,
-          name: 'Infrastructure',
-          order: 100,
-          status: 'Defined',
-          progress: 10,
-          items: [
-            {
-              id: 123,
-              name: 'Create Stack Instance',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-            {
-              id: 456,
-              name: 'Create Stack Instance 2',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-            {
-              id: 789,
-              name: 'Create Stack Instance 3',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-          ],
-        },
-        {
-          id: 2,
-          name: 'Infrastructure',
-          order: 100,
-          status: 'Defined',
-          progress: 10,
-          items: [
-            {
-              id: 123,
-              name: 'Create Stack Instance',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-            {
-              id: 456,
-              name: 'Create Stack Instance 2',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-            {
-              id: 789,
-              name: 'Create Stack Instance 3',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-          ],
-        },
-        {
-          id: 3,
-          name: 'Infrastructure',
-          order: 100,
-          status: 'Defined',
-          progress: 10,
-          items: [
-            {
-              id: 123,
-              name: 'Create Stack Instance',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-            {
-              id: 456,
-              name: 'Create Stack Instance 2',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-            {
-              id: 789,
-              name: 'Create Stack Instance 3',
-              description: 'TaskDescription',
-              order: 100,
-              pluginName: 'AWS',
-              pluginId: 1,
-              serviceId: '1',
-              actionId: '1',
-              serviceName: 'vm',
-              actionName: 'Create',
-              status: 'Configured',
-              progress: 10,
-              keyVault: {
-                id: 1,
-                name: 'AWS',
-              },
-              input:
-                '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-              output: null,
-              startDate: '6/1/2020',
-              endDate: '12/11/2020',
-              duration: null,
-              dependencies: [
-                {
-                  groupId: 1234,
-                  taskId: 345345,
-                  mode: 'before',
-                },
-              ],
-              notification:
-                '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-            },
-          ],
-        },
-      ],
-      tags: [
-        {
-          id: 1,
-          name: 'Name1',
-          value: 'Value1',
-          modifiedDate: '2020-06-12T14:29:18',
-        },
-      ],
-      modifiedDate: '2020-06-12T14:29:18',
-    };
-    waveType.items.push(newTemplate);
-    waveType.newTemplate = '';
+  addTemplate(task: Item, group: Group) {
+    this.rowClicked.emit({ task: task, group: group });
   }
 
-  removeTemplate(waveType, templateId) {
-    waveType.items = waveType.items.filter((item) => item.id !== templateId);
+  removeTemplate(group: Group, templateId: any) {
+    //waveType.items = waveType.items.filter((item) => item.id !== templateId);
+    this.waveData.groups.forEach((_group) => {
+      if (_group.id === group.id) {
+        _group.items = _group.items.filter(_item => _item.id !== templateId);
+        this.updateGroupInfo.emit({ payload: this.waveData, message: 'Template Deleted Successfully', type: 'error' });
+      }
+    });
   }
 
   templateSettings(waveType, templateId, event) {

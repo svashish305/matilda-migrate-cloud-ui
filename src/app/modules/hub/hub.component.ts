@@ -3,6 +3,7 @@ import { DataService } from 'src/services/data.service';
 import { Router } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { TemplateService } from '../templates/services/template.service';
+import { WorkflowService } from '../workflows/services/workflow.service';
 
 @Component({
   selector: 'app-hub',
@@ -30,6 +31,7 @@ export class HubComponent implements OnInit {
     private dataService: DataService,
     private router: Router,
     private _templateService: TemplateService,
+    private _workflowService: WorkflowService,
     private deviceService: DeviceDetectorService
   ) {
     this.templateFavStatus = [];
@@ -53,9 +55,12 @@ export class HubComponent implements OnInit {
   }
 
   getWorkflows() {
-    this.dataService.getWaves().subscribe((waves: any) => {
+    this._workflowService.getAllWorkflows().subscribe((waves: any) => {
       this.workflows = waves;
     });
+    // this.dataService.getWaves().subscribe((waves: any) => {
+    //   this.workflows = waves;
+    // });
   }
 
   toggleTemplateFavourite(template, event) {
