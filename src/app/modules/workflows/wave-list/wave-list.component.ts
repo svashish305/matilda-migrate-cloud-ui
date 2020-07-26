@@ -58,8 +58,8 @@ export class WaveListComponent implements OnInit {
   selectedTemplateInSidebar: any;
 
   workflowTypes: SelectInterface[] = [
-    { value: 'time', viewValue: 'Time' },
     { value: 'trigger', viewValue: 'Trigger' },
+    { value: 'time', viewValue: 'Time' }
   ];
 
   selectedWorkflowType: any;
@@ -113,12 +113,13 @@ export class WaveListComponent implements OnInit {
   }
 
   optionClicked(wfType) {
-    this.waveData.type = wfType;
-    this.dataService
-      .updateTemplate(this.waveData.id, this.waveData)
-      .subscribe((newWave: any) => {
-        console.log('new wave type ', newWave.type);
-      });
+    // this.waveData.type = wfType;
+    // this.dataService
+    //   .updateTemplate(this.waveData.id, this.waveData)
+    //   .subscribe((newWave: any) => {
+    //     console.log('new wave type ', newWave.type);
+    //   });
+    this.updateGroupInfo.emit({ payload: this.waveData, message: 'Template Updated Successfully', type: 'success' });
   }
 
   setBadgeBgColor(statusCode = 1) {
