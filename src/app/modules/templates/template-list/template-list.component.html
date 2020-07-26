@@ -68,13 +68,13 @@
       [cdkDragData]="group"
     >
       <!-- template list strats -->
-      <div class="template-list-wrapper">
+      <div class="template-list-wrapper" #loadedStage>
         <div>
           <div
             id="stage-header"
             class="template__row"
             [ngStyle]="toggleTemplateHeight(groupCollapseList[i])"
-          >
+          > 
             <div class="template-name">
               <div
                 class="group-drag"

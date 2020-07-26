@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/services/data.service';
 import { Router } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { TemplateService } from '../templates/services/template.service';
 
 @Component({
   selector: 'app-hub',
@@ -28,6 +29,7 @@ export class HubComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private router: Router,
+    private _templateService: TemplateService,
     private deviceService: DeviceDetectorService
   ) {
     this.templateFavStatus = [];
@@ -42,9 +44,12 @@ export class HubComponent implements OnInit {
   }
 
   getTemplates() {
-    this.dataService.getTemplates().subscribe((templates: any) => {
+    this._templateService.getAllTemplates().subscribe((templates: any)=>{
       this.templates = templates;
-    });
+    })
+    // this.dataService.getTemplates().subscribe((templates: any) => {
+    //   this.templates = templates;
+    // });
   }
 
   getWorkflows() {

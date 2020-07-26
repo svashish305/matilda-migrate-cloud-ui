@@ -30,7 +30,7 @@ export class Item {
   serviceName?: string = '';
   actionName?: string = '';
   groupId: number | string;
-  itemsFields?: string = null;
+  itemsFields?: any[] = [];
   keyVault?: KeyVault = null;
   input?: string | any = null;
   output?: string | any = null;
@@ -39,7 +39,7 @@ export class Item {
   duration?: string = null;
   dependencies?: ItemDependency[] = [];
   notification?: string|any = null;
-  image?: string = '';
+  image: any = null;
 }
 
 export class Group {

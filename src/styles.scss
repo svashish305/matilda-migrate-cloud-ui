@@ -272,6 +272,7 @@ body {
 // end of misc common styles
 
 .task-config {
+ // min-height: 56vh;
   max-height: 56vh;
   overflow-y: auto;
   overflow-x: auto;
@@ -317,4 +318,22 @@ body {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+}
+
+.edit-tag-footer-btns {
+  position: absolute;
+  width: calc(100% - 120px);
+  top: 89vh; //42.25em;
+}
+
+.modal-footer-mobile {
+  position: absolute !important;
+  top: 91vh !important;
+  display: flex;
+  width: 100%;
+}
+
+.modal-footer {
+  position: relative;
+  top: 4.688em;
 }

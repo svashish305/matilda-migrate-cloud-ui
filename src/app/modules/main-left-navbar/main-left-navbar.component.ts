@@ -3,12 +3,9 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { DataService } from 'src/services/data.service';
-import * as uuid from 'uuid';
 import { TemplateService } from '../templates/services/template.service';
-
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
 import { Template } from 'src/app/utils/models/data.model';
+import { Utilities } from 'src/app/utils/helpers/utilities';
 
 
 @Component({
@@ -31,8 +28,8 @@ export class MainLeftNavbarComponent implements OnInit {
     private router: Router,
     private deviceService: DeviceDetectorService,
     private dataService: DataService,
-    private _templateService: TemplateService,
-    private _snackBar: MatSnackBar
+    private _utilities: Utilities,
+    private _templateService: TemplateService
   ) {
     this.router.events.subscribe((val) => {
       if (location.path().includes('hub')) {
@@ -106,7 +103,7 @@ export class MainLeftNavbarComponent implements OnInit {
   addTemplate() {
     
     let template = new Template();
-    template.id = uuid.v4();
+    template.id = this._utilities.generateId();
     template.name = 'Untitled Template' + '_' + template.id;
 
     this._templateService.updateTemplate(template)
@@ -115,13 +112,13 @@ export class MainLeftNavbarComponent implements OnInit {
           this.router.navigate([`/templates/${data.id}`]);
         },
         (error) => {
-          this.openSnackBar(error.error['message'], 'error');
+          this._utilities.errorNotification(error);
         }
       );
   }
 
   addWorkflow() {
-    const id = uuid.v4();
+    const id = this._utilities.generateId();
     const newWorkflow = {
       id: id,
       name: 'Untitled Workflow',
@@ -3429,10 +3426,4 @@ export class MainLeftNavbarComponent implements OnInit {
     });
   }
 
-  openSnackBar(message: string, snackType: string) {
-    this._snackBar.openFromComponent(SnackbarComponent, {
-      data: { message: message, snackType: snackType, snackBar: this._snackBar },
-      panelClass: [snackType],
-    });
-  }
 }

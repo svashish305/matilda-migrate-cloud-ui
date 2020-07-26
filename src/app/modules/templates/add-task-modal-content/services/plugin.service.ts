@@ -6,13 +6,12 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class PluginService {
-  private BASE_URL = environment.baseurl;
-  private PLUGIN_URL = '/plugin/service/action/';
+  private BASE_URL = environment.pluginBaseUrl;
 
   constructor(private _httpClient: HttpClient) { }
 
   getTaskInputFields(actionId: any) {
-    return this._httpClient.get('../../../../../assets/migration/taskFields.json');
+    return this._httpClient.get(this.BASE_URL + `/plugin/service/action/${actionId}/inputs`);
   }
 
   getTaskFieldsByKey(actionId: any, actionFieldKey: any, selectedFieldKey: any) {

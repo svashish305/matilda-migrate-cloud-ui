@@ -3,7 +3,9 @@ import {
   OnInit,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  ViewChildren,
+  QueryList
 } from '@angular/core';
 import {
   CdkDragDrop,
@@ -31,6 +33,8 @@ export class TemplateListComponent implements OnInit {
   @Output() rowClicked: EventEmitter<any> = new EventEmitter();
   @Output() updateGroupInfo: EventEmitter<any> = new EventEmitter();
 
+  @ViewChildren('loadedStage') loadedStages: QueryList<any>;
+
   private currentTemplate: Template;
   public searchKey: string;
   public groupCollapseList: boolean[] = [];
@@ -52,11 +56,10 @@ export class TemplateListComponent implements OnInit {
 
   constructor(
     private deviceService: DeviceDetectorService,
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.selectedWorkflowType = this.templateData.type ? this.templateData.type : this.workflowTypes[0].value;
-    console.log(this.selectedWorkflowType);
     this.isMobile = this.deviceService.isMobile();
   }
 
@@ -68,19 +71,19 @@ export class TemplateListComponent implements OnInit {
     this.templateData.groups.forEach((_group) => {
       if (_group.id === group.id) {
         _group.items = _group.items.filter(_item => _item.id !== task.id);
-        this.updateGroupInfo.emit({payload: this.templateData, message: 'Task Deleted Successfully', type: 'error'});
+        this.updateGroupInfo.emit({ payload: this.templateData, message: 'Task Deleted Successfully', type: 'error' });
       }
     });
   }
 
   deleteGroup(group: Group) {
     this.templateData.groups = this.templateData.groups.filter(_group => _group.id !== group.id);
-    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Group Deleted Successfully', type: 'error'});
+    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Group Deleted Successfully', type: 'error' });
   }
 
   dropTask(event: CdkDragDrop<string[]>) {
     let task: any = event.container.data[event.previousIndex];
-  
+
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -117,8 +120,8 @@ export class TemplateListComponent implements OnInit {
         2;
     }
 
-    this.updateGroupInfo.emit({payload: this.templateData, message: 'Task Updated Successfully', type: 'success'});
-   
+    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Task Updated Successfully', type: 'success' });
+
   }
 
   dropGroup(event: CdkDragDrop<string[]>) {
@@ -145,7 +148,7 @@ export class TemplateListComponent implements OnInit {
         2;
     }
 
-    this.updateGroupInfo.emit({payload: this.templateData, message: 'Group Updated Successfully', type: 'success'});
+    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Group Updated Successfully', type: 'success' });
   }
 
   getConnectedList() {
@@ -166,8 +169,6 @@ export class TemplateListComponent implements OnInit {
   }
 
   updateGroupTitle(group: Group) {
-    console.log(group);
-
     this.currentTemplate = Object.assign({}, this.templateData);
     this.currentTemplate.groups.filter(_group => {
       if (_group.id === group.id) {
@@ -175,15 +176,16 @@ export class TemplateListComponent implements OnInit {
       }
     });
 
-    console.log(this.currentTemplate);
-
-    this.updateGroupInfo.emit({payload: this.currentTemplate, message: 'Group Updated Successfully', type: 'success'});
+    this.updateGroupInfo.emit({ payload: this.currentTemplate, message: 'Group Updated Successfully', type: 'success' });
   }
 
   changeStatus(template, status) {
     // template.status = status;
   }
 
+  focusNewGroup() {
+    this.loadedStages.toArray()[this.loadedStages.length - 1].nativeElement.scrollIntoView({ behavior: "smooth" });
+  }
 
   getStatusClass(template) {
     let className;
@@ -256,11 +258,10 @@ export class TemplateListComponent implements OnInit {
   getWorkflowType() {
     this.templateData.type = this.selectedWorkflowType;
     return this.selectedWorkflowType;
-    
   }
 
   optionClicked(wfType: any) {
-    this.updateGroupInfo.emit({payload: this.templateData, message: 'Template Updated Successfully', type: 'success'});
+    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Template Updated Successfully', type: 'success' });
   }
 
   toggleTemplateHeight(collapsed) {

@@ -84,12 +84,12 @@
               )<span class="align-tags-colon">:</span>
             </span>
             <span class="badge badge-pill badge-custom" [ngStyle]="{ 'margin-left': isMobile ? '0' : '1em' }">
-              <span *ngIf="isMobile" class="badge-key-value">{{ templateData.tags[0].name }} :
-                {{ templateData.tags[0].value }}</span>
+              <span *ngIf="isMobile" class="badge-key-value">{{ templateData?.tags[0]?.name }} :
+                {{ templateData?.tags[0]?.value }}</span>
             </span>
             <span *ngIf="isMobile" class="badge badge-pill badge-custom">
               <span *ngIf="templateData.tags.length > 1"
-                class="badge-key-value">+{{ templateData.tags.length - 1 }}</span>
+                class="badge-key-value">+{{ templateData?.tags?.length - 1 }}</span>
             </span>
             <div *ngIf="!isMobile">
               <span class="badge badge-pill badge-custom" *ngFor="let tag of templateData.tags">
@@ -255,7 +255,7 @@
                 <input id="taskAvatarFile" type="file" (change)="changeTaskAvatar($event)" />
               </label>
             </button>
-            <button mat-menu-item (click)="taskAvatarUrl = null">
+            <button mat-menu-item (click)="removeTaskAvatar(selectedTask)">
               Remove
             </button>
           </mat-menu>
@@ -278,8 +278,12 @@
       </header>
       <mat-divider></mat-divider>
 
-      <app-add-task-modal-content (onSaveConfig)="onSaveConfig($event)" (onClose)="onClose($event)"
-        (onSaveTemplateFormat)="onSaveTemplateFormat($event)"></app-add-task-modal-content>
+      <app-add-task-modal-content [task]="selectedTask" 
+      (onSaveConfig)="onSaveConfig($event)"  
+      (onSaveGeneralConfig)="onSaveGeneralConfig($event)" 
+      (onSaveTemplateFormat)="onSaveTemplateFormat($event)"
+      (onClose)="onClose($event)"
+      ></app-add-task-modal-content>
     </div>
   </div>
   <!-- end of task options -->
