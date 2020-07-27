@@ -129,7 +129,7 @@
         <button mat-menu-item (click)="showImportOptions = true">
           Import
         </button>
-        <button mat-menu-item>Discover</button>
+        <button mat-menu-item (click)="goToDiscover()">Discover</button>
         <button mat-menu-item (click)="showTagOptions = true">Tag</button>
       </mat-menu>
     </div>
@@ -143,7 +143,7 @@
 
       <mat-tab label="Stages">
         <!-- Stages tab content -->
-        <div *ngIf="stages" class="stages-height">
+        <div class="stages-height">
           <div class="badge-container">
             <span class="stage-tags"
               >Tags (
