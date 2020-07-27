@@ -152,7 +152,9 @@ export class TemplateDiscoverComponent implements OnInit {
             this.groupSelectList[sourceId + '_' + groupId] = false;
           }
           this.itemCountInGroup[groupId]--;
-
+          if(this.itemCountInGroup[groupId] < 0) {
+            this.itemCountInGroup[groupId] = 0;
+          }
           let markUncheckedID: checkedID = { ipAddress, sourceId, groupId, itemId };
           this.checkedIDs = this.checkedIDs.filter(cID => JSON.stringify(cID) != JSON.stringify(markUncheckedID));
         }
@@ -178,7 +180,6 @@ export class TemplateDiscoverComponent implements OnInit {
 
   pushToDestinations(checkedIDs: checkedID[]) {
     // console.log('checked final list ', checkedIDs);
-
     let groupByIP = this.groupBy(checkedIDs, 'ipAddress');
     let dests: any[] = [];
     let destinationsLen = 0;
