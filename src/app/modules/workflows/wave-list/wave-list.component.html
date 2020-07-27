@@ -31,7 +31,7 @@
         let i = index
       " cdkDropListGroup cdkDrag [cdkDragData]="group">
       <!-- template list strats -->
-      <div class="template-list-wrapper">
+      <div class="template-list-wrapper" #loadedGroup>
         <div>
           <div id="stage-header" class="template__row" [ngStyle]="toggleWorkflowHeight(groupCollapseList[i])">
             <div class="template-name">
@@ -100,7 +100,7 @@
                   <span class="medium-text list-header-text">Status</span>
                 </div>
                 <div *ngIf="!isMobile" class="cell-width">
-                  <span class="medium-text list-header-text">Progress</span>
+                  <span class="medium-text list-header-text">Progress</span> 
                 </div>
                 <button class="stage-btn" mat-button [matMenuTriggerFor]="stageDropdown">
                   <img src="assets/imgs/vEllipsis.svg" alt="Stage Settings" />

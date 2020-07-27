@@ -153,10 +153,9 @@ export class WaveComponent implements OnInit, AfterViewInit {
     this.waveData.groups.push(group);
     this.waveData.groups = [...this.waveData.groups];
 
-    // setTimeout(() =>{
-    //   this.templateList.focusNewGroup();
-    // },0);
-
+    setTimeout(() =>{
+      this.waveList.focusNewGroup();
+    },0);
 
     this.updateWorkflow.emit({ payload: this.waveData, message: 'Group Added Successfully', type: 'success' });
   }

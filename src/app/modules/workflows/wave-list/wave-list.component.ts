@@ -6,6 +6,8 @@ import {
   Output,
   EventEmitter,
   ViewChild,
+  ViewChildren,
+  QueryList,
 } from '@angular/core';
 import { DataService } from 'src/services/data.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -40,6 +42,7 @@ export class WaveListComponent implements OnInit {
   searchKey;
   showBackdrop;
   @ViewChild('waveList', { static: false }) waveList;
+  @ViewChildren('loadedGroup') loadedStages: QueryList<any>;
 
   rawwaves: any[] = [];
   waves: any[] = [];
@@ -208,6 +211,10 @@ export class WaveListComponent implements OnInit {
       }
     });
     this.updateGroupInfo.emit({ payload: this.waveData, message: 'Group Updated Successfully', type: 'success' });
+  }
+
+  focusNewGroup() {
+    this.loadedStages.toArray()[this.loadedStages.length - 1].nativeElement.scrollIntoView({ behavior: "smooth" });
   }
 
   setBadgeBgColor(statusCode = 1) {
