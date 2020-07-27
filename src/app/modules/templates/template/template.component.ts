@@ -101,8 +101,6 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(this.templateData);
-    console.log(changes);
   }
 
   ngAfterViewInit() {
@@ -110,15 +108,10 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   getTemplates() {
-
     this._templateService.getAllTemplates()
       .subscribe((data: any[]) => {
         this.templatesToImport = data.filter((d) => d.id !== this.templateId);
-        console.log(this.templatesToImport);
       });
-    // this.dataService.getTemplates().subscribe((data: any[]) => {
-    //   this.templatesToImport = data.filter((d) => d.id !== this.templateId);
-    // });
   }
 
   changeAvatar(event: any) {
@@ -209,15 +202,12 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   goToDiscover() {
-    console.log(this.route);
     this.router.navigate(['./discover'], { relativeTo: this.route });
   }
 
   updateTags(event: any) {
     this.isTagsFormValid = !event.valid;
     this.templateData.tags = event.tags;
-    // this.updateTemplate.emit({ payload: this.templateData, message: 'Tags Updated Successfully'});
-    //this.onTagsUpdate.emit({ payload: event.tags, message: 'Tags Updated Successfully', type: 'success' });
   }
 
   saveTags() {
@@ -237,12 +227,8 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     setTimeout(() =>{
       this.templateList.focusNewGroup();
     },0);
-    
-    
+     
     this.updateTemplate.emit({ payload: this.templateData, message: 'Stage Added Successfully', type: 'success' });
-
-    
-
   }
 
   onCheck(event, template) {
@@ -262,7 +248,6 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
       }
     });
     
-    console.log('new stuff to copy ', newStagesAndTasks);
     newStagesAndTasks.forEach((newStageTask: any) => {
       this.templateData.groups.push(newStageTask);
     });
@@ -275,19 +260,11 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     //this.updateTemplate.emit({payload: this.templateData, message: 'Template(s) Imported Successfully', type: 'success'});
   }
 
-  /**
-   *
-   * @description triggers when resize is released
-   */
   onResizeEnd(event) {
     console.log(event);
     this.appyResize(event);
   }
 
-  /**
-   *
-   * @description resizes the template details container
-   */
   appyResize(event?) {
     const wrapperWidth = document.getElementById('wave-content-id').offsetWidth;
     const templateHolder = document.getElementById('resizable-holder');
@@ -302,11 +279,6 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
-  /**
-   *
-   * @param edit - edit specifies whether user is editing or not
-   * @description opens or closes the template details
-   */
   openDetails(edit) {
     this.edit = edit;
     // if (!edit) {
@@ -323,9 +295,6 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   openTaskDetails(payload: any) {
-
-    console.log(payload);
-
     let task: Item = payload.task;
     let group: Group = payload.group;
 
@@ -367,7 +336,6 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
 
       //this.openSnackBar('Please Wait.. While we are waiting for the server to respond', 'info');
       this.updateTemplate.emit({ payload: this.templateData, message: 'Task Added Successfully', type: 'success' });
-
     }
   }
 
@@ -387,9 +355,6 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
         title: this.newTitle,
         ...this.templateData,
       };
-      // this.dataService
-      //   .updateTemplate(newTemplate)
-      //   .subscribe((res: any) => console.log(res));
     }
     this.updateTemplate.emit({ payload: this.templateData, message: 'Template Updated Successfully', type: 'success' });
   }
@@ -406,17 +371,12 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
         description: this.newDescription,
         ...this.templateData,
       };
-      // this.dataService 
-      //   .updateTemplate(newTemplate)
-      //   .subscribe((res: any) => console.log(res));
     }
-    console.log(this.templateData);
+
     this.updateTemplate.emit({ payload: this.templateData, message: 'Template Updated Successfully', type: 'success' });
   }
 
   onSaveConfig(payload: any) {
-    console.log(payload);
-    console.log(this.templateData);
     this.updateTemplate.emit({ payload: this.templateData, message: 'Task Configuration Updated Successfully', type: 'success' });
   }
 
@@ -425,7 +385,6 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   updateGroupInfo(payload: Template) {
-    console.log(payload);
     this.updateTemplate.emit(payload);
   }
 

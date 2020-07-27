@@ -17,7 +17,6 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { Template, Item, Group } from 'src/app/utils/models/data.model';
 import { StatusCodes } from 'src/app/utils/enums/enums';
 
-
 interface SelectInterface {
   value: string;
   viewValue: string;

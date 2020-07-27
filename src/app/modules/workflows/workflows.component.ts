@@ -32,18 +32,11 @@ export class WorkflowsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
-      console.log(params);
       this.waveId = params.id; 
       this.getWaveData(params.id);
     });
-
-    //this.getWaves();
   }
 
-  /**
-   *
-   * @description gets list of waves and calls first wave details
-   */
   getWaves() {
     this.dataService.getWaves().subscribe((data: any[]) => {
       this.waves = data;
@@ -57,38 +50,14 @@ export class WorkflowsComponent implements OnInit {
     });
   }
 
-  /**
-   *
-   * @param id, id of wave must be passed as param
-   * @description gets details of specific wave using id
-   */
   getWaveData(id) {
-    // this.waves.forEach((wave) => {
-    //   if (wave.id === id) {
-    //     wave.selected = true;
-    //   } else {
-    //     wave.selected = false;
-    //   }
-    // });
-
-    // this.dataService.getWave(id).subscribe((res: any) => {
-    //   this.waveData = res;
-    // });
     this._workflowService.getWorkflowById(id).subscribe((data: any) => this.waveData = data);
   }
 
-  /**
-   *
-   * @description Show popup to add new wave
-   */
   addNewWave() {
     this.showPopup = true;
   }
 
-  /**
-   *
-   * @description Adds new wave using the user inputs
-   */
   addWave() {
     if (this.waveName) {
       const id = Math.random().toString(6);
@@ -103,10 +72,6 @@ export class WorkflowsComponent implements OnInit {
     }
   }
 
-  /**
-   *
-   * @description toggles collapse of waves list
-   */
   collapseWaveList() {
     this.waveListCollapsed = !this.waveListCollapsed;
     if (this.waveListCollapsed) {
@@ -114,20 +79,12 @@ export class WorkflowsComponent implements OnInit {
     }
   }
 
-  /**
-   *
-   * @description expands waves list  on hover when in collapsed state
-   */
   waveListEntered() {
     if (this.waveListCollapsed) {
       this.showWaveList = true;
     }
   }
 
-  /**
-   *
-   * @description collases waves list on leaving the list area when in collapsed state
-   */
   waveListExit() {
     if (this.waveListCollapsed) {
       this.showWaveList = false;
@@ -140,11 +97,9 @@ export class WorkflowsComponent implements OnInit {
   }
 
   updateWorkflow(payload: any) {
-    console.log(payload);
     const workflow = payload.payload;
     const message = payload.message;
     const type = payload.type;
-    console.log(workflow);
     this._workflowService.updateWorkflow(workflow, workflow.id)
       .subscribe(
         (data: any) => {

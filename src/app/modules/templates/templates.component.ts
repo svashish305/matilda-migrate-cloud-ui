@@ -29,7 +29,6 @@ export class TemplatesComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.templateData = data;
-          console.log(this.templateData);
         },
         (error) => {
 
@@ -37,11 +36,9 @@ export class TemplatesComponent implements OnInit {
   }
 
   updateTemplate(payload: any) {
-    console.log(payload);
     const template = payload.payload;
     const message = payload.message;
     const type = payload.type;
-    console.log(template);
     this._templateService.updateTemplate(template, template.id)
       .subscribe(
         (data: any) => {
@@ -52,7 +49,7 @@ export class TemplatesComponent implements OnInit {
           this._utitlies.errorNotification(error);
           this.getTemplate(template.id);
         }
-      )
+      );
   }
 
   onTagsUpdate(payload: any) {

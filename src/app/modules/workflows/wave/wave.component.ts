@@ -113,7 +113,6 @@ export class WaveComponent implements OnInit, AfterViewInit {
   }
 
   changeAvatar(event: any) {
-    console.log(this.waveData);
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
 
@@ -122,7 +121,6 @@ export class WaveComponent implements OnInit, AfterViewInit {
       reader.onload = (event: any) => {
         // called once readAsDataURL is completed
         this.waveData.image = event.target.result;
-        console.log( this.waveData.image);
         this.updateWorkflow.emit({ payload: this.waveData, message: 'Workflow Icon Updated Successfully', type: 'success' });
       };
     }
@@ -186,19 +184,10 @@ export class WaveComponent implements OnInit, AfterViewInit {
     this.accountCollapseState[accountId] = false;
   }
 
-  /**
-   *
-   * @description triggers when resize is released
-   */
   onResizeEnd(event) {
-    console.log(event);
     this.appyResize(event);
   }
 
-  /**
-   *
-   * @description resizes the template details container
-   */
   appyResize(event?) {
     const wrapperWidth = document.getElementById('wave-content-id').offsetWidth;
     const templateHolder = document.getElementById('resizable-holder');
@@ -213,11 +202,6 @@ export class WaveComponent implements OnInit, AfterViewInit {
     }
   }
 
-  /**
-   *
-   * @param edit - edit specifies whether user is editing or not
-   * @description opens or closes the template details
-   */
   openDetails(edit) {
     this.edit = edit;
     if (!edit) {
@@ -301,11 +285,6 @@ export class WaveComponent implements OnInit, AfterViewInit {
   }
 
   rowClick(template) {
-    // this.waveData.data.waveTypes.forEach((waveType) => {
-    //   waveType.templates.forEach((t) => {
-    //     t.selected = false;
-    //   });
-    // });
     template.selected = true;
     this.rowClicked.emit(true);
   }

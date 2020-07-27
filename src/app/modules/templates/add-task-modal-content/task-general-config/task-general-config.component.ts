@@ -27,9 +27,7 @@ export class TaskGeneralConfigComponent implements OnInit {
    
     this.initForm();
     this.getPlugins();
-
-    console.log(this.task)
-
+    
   }
 
   initForm() {

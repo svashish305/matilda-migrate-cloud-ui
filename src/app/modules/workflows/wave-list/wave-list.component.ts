@@ -82,8 +82,6 @@ export class WaveListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('wavedata ', this.waveData);
-
     this.selectedWorkflowType = this.workflowTypes[0].value;
 
     this.isMobile = this.deviceService.isMobile();
@@ -105,7 +103,6 @@ export class WaveListComponent implements OnInit {
       template = event.previousContainer.data[event.previousIndex];
     }
 
-    console.log('order before drag ', template.order);
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -141,14 +138,13 @@ export class WaveListComponent implements OnInit {
           event.container.data[event.currentIndex + 1]['order']) /
         2;
     }
-    console.log('order after drag ', template.order);
+   
     this.updateGroupInfo.emit({ payload: this.waveData, message: 'Template Updated Successfully', type: 'success' });
   }
   
   
   dropGroup(event: CdkDragDrop<string[]>) {
     let group: any = event.container.data[event.previousIndex];
-   console.log(group);
 
     moveItemInArray(
       this.waveData.groups,
@@ -170,8 +166,6 @@ export class WaveListComponent implements OnInit {
           this.waveData.groups[event.currentIndex + 1].order) /
         2;
     }
-
-    console.log(this.waveData);
 
     this.updateGroupInfo.emit({ payload: this.waveData, message: 'Group Updated Successfully', type: 'success' });
   }
