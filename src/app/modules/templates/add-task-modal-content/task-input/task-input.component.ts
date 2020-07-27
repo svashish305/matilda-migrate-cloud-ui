@@ -134,7 +134,7 @@ export class TaskInputComponent implements OnInit, OnChanges {
 
   onSubmit(form: any, testForm?:any) {
     this.task.input = form;
-    this.task.itemsFields = this.dataSource;
+    this.task.itemFields = this.dataSource;
     this.saveConfig.emit(this.task);
   }
 

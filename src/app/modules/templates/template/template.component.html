@@ -27,7 +27,7 @@
               <input id="templateAvatarFile" type="file" (change)="changeAvatar($event)" />
             </label>
           </button>
-          <button mat-menu-item (click)="templateData = null">
+          <button mat-menu-item (click)="removeAvatar()">
             Remove
           </button>
         </mat-menu>
@@ -264,14 +264,14 @@
             <!-- <div> -->
             <div class="task-name">
               <input class="descriptiontask-styles" (click)="$event.target.select()" (focus)="onFocusTitle()"
-                (keydown.enter)="updateTaskTitle(selectedTask.name)" (keydown)="uniqueTaskTitle(selectedTask.name)"
-                (blur)="updateTaskTitle(selectedTask.name)" [(ngModel)]="selectedTask.name" />
+                (keydown.enter)="updateTaskTitle(selectedTask)"
+                 [(ngModel)]="selectedTask.name" />
               <div class="text-danger" *ngIf="isEventNameUnique">Please enter unique task name</div>
             </div>
             <div class="task-description">
               <input class="descriptiontask-styles gray-text" (click)="$event.target.select()"
-                (focus)="onFocusDescription()" (keydown.enter)="updateTaskDescription(selectedTask.description)"
-                (blur)="updateTaskDescription(selectedTask.description)" [(ngModel)]="selectedTask.description" />
+                (focus)="onFocusDescription()" (keydown.enter)="updateTaskDescription(selectedTask)"
+                [(ngModel)]="selectedTask.description" />
             </div>
           </div>
         </div>

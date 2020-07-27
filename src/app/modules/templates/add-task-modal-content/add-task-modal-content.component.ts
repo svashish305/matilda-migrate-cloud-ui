@@ -42,7 +42,7 @@ export class AddTaskModalContentComponent implements OnInit {
   getPluginFields() {
     if (this.task.actionId) {
       if (this.task.input) {
-        this.pluginFields = this.task.itemsFields;
+        this.pluginFields = this.task.itemFields;
       } else {
         this._pluginService
           .getTaskInputFields(this.task.actionId)

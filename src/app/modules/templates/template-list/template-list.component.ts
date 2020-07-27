@@ -85,6 +85,10 @@ export class TemplateListComponent implements OnInit {
   dropTask(event: CdkDragDrop<string[]>) {
     let task: any = event.container.data[event.previousIndex];
 
+    if (!task) {
+      task = event.previousContainer.data[event.previousIndex];
+    }
+
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,

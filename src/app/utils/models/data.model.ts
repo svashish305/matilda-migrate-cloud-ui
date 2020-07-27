@@ -28,7 +28,7 @@ export class Group {
 export class Item {
   id: string;
   name: string = '';
-  desc: string = '';
+  description: string = '';
   order: number = 0;
   statusCd: number = 1;
   progress: number = 0;
@@ -39,7 +39,7 @@ export class Item {
   serviceName?: string = '';
   actionName?: string = '';
   groupId: number | string;
-  itemsFields?: any[] = [];
+  itemFields?: any[] = [];
   keyVault?: KeyVault = null;
   input?: string | any = null;
   output?: string | any = null;

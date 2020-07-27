@@ -111,24 +111,15 @@
               >
                 <div class="group-name common-text">
                   <input
-<<<<<<< HEAD
-                  class="group-styles group-title-font"
-                  (click)="$event.target.select()"
-                  (focus)="onFocusTitle()"
-                  (keydown.enter)="updateGroupTitle(group)"
-                  [(ngModel)]="newTitle ? newTitle : group.name"
-                />
-=======
                     class="description-styles"
                     (click)="$event.target.select()"
                     (focus)="onFocusTitle()"
                     (keydown.enter)="
-                      $event.preventDefault() && updateGroupTitle(); $event.target.blur()
+                      $event.preventDefault() && updateGroupTitle(group); $event.target.blur()
                     "
-                    (blur)="updateGroupTitle()"
+                    (blur)="updateGroupTitle(group)"
                     [(ngModel)]="newGroupTitle ? newGroupTitle : group.name"
                   />
->>>>>>> merge-styles-discover
                 </div>
               </div>
             </div>
@@ -325,7 +316,7 @@
                       'mobile-text': isMobile,
                       'common-text': !isMobile
                     }"
-                    class="cell-text handle-text-overflow" matTooltip="{{task.name}}"
+                    class="cell-text handle-text-overflow" matTooltip="{{task.name}}" (click)="loadTask(task, group)"
                     >{{ task.name }}</span
                   >
                 </div>

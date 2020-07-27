@@ -134,6 +134,11 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
+  removeAvatar() {
+    this.templateData.image = null;
+    this.updateTemplate.emit({ payload: this.templateData, message: 'Template Icon Deleted Successfully', type: 'error' });
+  }
+
 
   changeTaskAvatar(event: any) {
     if (event.target.files && event.target.files[0]) {
@@ -435,12 +440,9 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
       panelClass: [snackType]
     });
   }
-  updateTaskTitle(taskName) {
-    //  API Task Name Update  
-    // this.dataService.updateTaskName(taskName).subscribe(res=>{
-    //   if(res){        
-    //   }
-    // })
+
+  updateTaskTitle(task: Item) {
+    this.updateTemplate.emit({ payload: this.templateData, message: 'Task Updated Successfully', type: 'success' });
   }
   uniqueTaskTitle(taskName) {
     let groupList: Group[] = this.templateData.groups;
@@ -469,11 +471,7 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     //   }
     // })  
   }
-  updateTaskDescription(taskDescription) {
-    //  API Task Descripiton Update  
-    // this.dataService.updateTaskDescription(taskDescription).subscribe(res=>{
-    //   if(res){        
-    //   }
-    // })
+  updateTaskDescription(task: Item) {
+    this.updateTemplate.emit({ payload: this.templateData, message: 'Task Updated Successfully', type: 'success' });
   }
 }
