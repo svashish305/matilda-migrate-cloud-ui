@@ -2650,6 +2650,10 @@
     right: 4em;
   }
 
+  .cell-text {
+    width: 5rem !important;
+  }
+
   // .stage-name-width {
   //   display: flex;
   //   margin-right: auto;
@@ -3418,7 +3422,8 @@
 
 .plugin-val {
   width: 100px !important;
-  margin-left: 8px !important;
+  // margin-left: 8px !important;
+  padding-left: 30px !important;
 }
 
 .description-styles {
