@@ -64,13 +64,14 @@ export class TemplatesComponent implements OnInit {
   }
 
   onCloneTemplates(payload: any) {
-    // this._templateService.importTemplates(payload)
-    //     .subscribe((data) => {
-    //       this._utitlies.openSnackBar(payload.message, payload.type);
-    //     },
-    //     (error) => {
-    //       this._utitlies.errorNotification(error);
-    //       this.getTemplate(this.templateData.id);
-    //     });
+    this._templateService.importTemplates(payload.destination, payload.source)
+        .subscribe((data) => {
+          this._utitlies.openSnackBar(payload.message, payload.type);
+          this.getTemplate(this.templateData.id);
+        },
+        (error) => {
+          this._utitlies.errorNotification(error);
+          this.getTemplate(this.templateData.id);
+        });
   }
 }

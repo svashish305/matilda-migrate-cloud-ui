@@ -239,29 +239,15 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   importTemplates() {
-    let newStagesAndTasks = [];
-    this.selectedTemplatesToImport.forEach((selectedTemplate: any) => {
-      if (selectedTemplate.groups && selectedTemplate.groups.length) {
-        selectedTemplate.groups.forEach((group) => {
-          newStagesAndTasks.push(group);
-        });
-      }
-    });
-    
-    newStagesAndTasks.forEach((newStageTask: any) => {
-      this.templateData.groups.push(newStageTask);
-    });
-    // console.log('updated ', this.currTemplate);
-    // this.templateData.groups = this.currTemplate.groups ? this.currTemplate.groups : [];
+   
+    const selectedTemplates = this.selectedTemplatesToImport.map((_template: Template) => _template.id);
+
     this.selectedTemplatesToImport = []; 
 
-    this.cloneTemplates.emit({payload: null,  message: 'Template(s) Imported Successfully', type: 'success'});
-    
-    //this.updateTemplate.emit({payload: this.templateData, message: 'Template(s) Imported Successfully', type: 'success'});
+    this.cloneTemplates.emit({source: selectedTemplates, destination: this.templateData.id,  message: 'Template(s) Imported Successfully', type: 'success'});
   }
 
   onResizeEnd(event) {
-    console.log(event);
     this.appyResize(event);
   }
 

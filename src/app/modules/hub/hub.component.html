@@ -316,8 +316,8 @@
                   />
                   <span
                     class="badge badge-pill badge-custom workflow-status"
-                    [ngStyle]="setBadgeBgColor(workflow.groups[0].status)"
-                    >{{ workflow.groups[0].status }}</span
+                    [ngStyle]="setBadgeBgColor(workflow?.status)"
+                    >{{ workflow?.status }}</span
                   >
                   <div class="workflow-progress">
                     <span class="common-text">Progress : </span>

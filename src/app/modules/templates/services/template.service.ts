@@ -30,8 +30,8 @@ export class TemplateService {
     return this._http.delete(this.BASE_URL + `/template/${templateId}/delete`);
   }
 
-  importTemplates(payload) {
-    return ;
+  importTemplates(templateId: any, payload: any) {
+    return this._http.post(this.BASE_URL + `/template/${templateId}/import`, payload);
   }
 
   createTag(payload: any, templateId: any) {
