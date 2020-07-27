@@ -70,10 +70,6 @@
     padding-right: 0.5em;
   }
 
-  .drag-drop-parent {
-    margin-top: 2em;
-  }
-
   #stage-header {
     display: flex;
     flex-direction: row;
@@ -88,6 +84,15 @@
     top: 2em;
   }
 
+  .pos-name {
+    position: absolute !important;
+    left: 0 !important;
+  }
+
+  .drag-drop-parent {
+    margin-top: 2em;
+  }
+
   .list-progress-bar {
     position: relative;
     top: 14px;
@@ -96,6 +101,7 @@
 
   .list-percent-text {
     margin: 8px 0 0 8px !important;
+    min-width: fit-content;
   }
 
   .template-name {
@@ -115,7 +121,7 @@
   .stage-btn {
     bottom: -5px;
     position: absolute;
-    left: 8.65rem; // 14.65rem;
+    left: 14rem; // 23.25em;
   }
 
   .template__row {
@@ -141,7 +147,7 @@
 
   .right-options {
     position: relative;
-    right: 2px; //-1.1rem;
+    right: 0.25rem; //-14px;
   }
 
   .set-margin-right {
@@ -193,8 +199,8 @@
     width: 24px !important;
     height: 24px !important;
     position: relative;
-    top: 4px;
-    left: 2rem;
+    top: 6px;
+    left: -6em;
   }
 
   .accordian-icon {
@@ -202,7 +208,7 @@
     height: 24px !important;
     position: relative;
     top: 2px;
-    left: -8rem; //-4em;
+    left: -4em;
   }
 
   .row-starter {
@@ -301,8 +307,8 @@
 
   .group-name {
     flex: 1;
-    // min-width: max-content;
-    width: 8rem; // 2em;
+    min-width: max-content;
+    width: 2em;
   }
 
   .mobile-text {
@@ -415,6 +421,7 @@
   .status__list__item {
     width: 100%;
     margin-bottom: 10px;
+    // padding: 10px 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -613,7 +620,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -11rem; // -30%
+    left: -6rem //-17%;
   }
 
   .list-right-menu-collapsed {
@@ -624,16 +631,10 @@
     left: 20%;
   }
 
-  .pos-name{
-    position: relative;
-    top: 0 !important;
-    right: 4rem;
-  }
-
   .stage-option {
     bottom: 2em;
     position: relative;
-    right: 16.1rem; //10.1rem;
+    right: 10.75rem //5em;
   }
 
   .stage-option-collapsed {
@@ -722,10 +723,6 @@
     padding-right: 0.5em;
   }
 
-  .drag-drop-parent {
-    margin-top: 2em;
-  }
-
   #stage-header {
     display: flex;
     flex-direction: row;
@@ -740,6 +737,15 @@
     top: 2em;
   }
 
+  .pos-name {
+    position: absolute !important;
+    left: 0 !important;
+  }
+
+  .drag-drop-parent {
+    margin-top: 2em;
+  }
+
   .list-progress-bar {
     position: relative;
     top: 14px;
@@ -748,6 +754,7 @@
 
   .list-percent-text {
     margin: 8px 0 0 8px !important;
+    min-width: fit-content;
   }
 
   .template-name {
@@ -767,7 +774,7 @@
   .stage-btn {
     bottom: -5px;
     position: absolute;
-    left: 11.75rem; // 14.65rem;
+    left: 17.25rem; //23.25em;
   }
 
   .template__row {
@@ -793,7 +800,7 @@
 
   .right-options {
     position: relative;
-    right: -0.5rem; // -1.1rem;
+    right: -0.5rem; //-14px;
   }
 
   .set-margin-right {
@@ -845,8 +852,8 @@
     width: 24px !important;
     height: 24px !important;
     position: relative;
-    top: 4px;
-    left: 2rem;
+    top: 6px;
+    left: -6em;
   }
 
   .accordian-icon {
@@ -953,8 +960,8 @@
 
   .group-name {
     flex: 1;
-    // min-width: max-content;
-    width: 8rem; // 2em;
+    min-width: max-content;
+    width: 2em;
   }
 
   .mobile-text {
@@ -1067,6 +1074,7 @@
   .status__list__item {
     width: 100%;
     margin-bottom: 10px;
+    // padding: 10px 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1265,7 +1273,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -11rem; // -30%
+    left: -5rem; //-17%;
   }
 
   .list-right-menu-collapsed {
@@ -1276,16 +1284,10 @@
     left: 20%;
   }
 
-  .pos-name{
-    position: relative;
-    top: 0 !important;
-    right: 4rem;
-  }
-
   .stage-option {
     bottom: 2em;
     position: relative;
-    right: 13rem; //10.1rem;
+    right: 7.5rem; // 5em;
   }
 
   .stage-option-collapsed {
@@ -1374,10 +1376,6 @@
     padding-right: 0.5em;
   }
 
-  .drag-drop-parent {
-    margin-top: 2em;
-  }
-
   #stage-header {
     display: flex;
     flex-direction: row;
@@ -1392,6 +1390,15 @@
     top: 2em;
   }
 
+  .pos-name {
+    position: absolute !important;
+    left: 0 !important;
+  }
+
+  .drag-drop-parent {
+    margin-top: 2em;
+  }
+
   .list-progress-bar {
     position: relative;
     top: 14px;
@@ -1400,6 +1407,7 @@
 
   .list-percent-text {
     margin: 8px 0 0 8px !important;
+    min-width: fit-content;
   }
 
   .template-name {
@@ -1419,7 +1427,7 @@
   .stage-btn {
     bottom: -5px;
     position: absolute;
-    left: 14.65rem; // 16.1rem;
+    left: 23.25em;
   }
 
   .template__row {
@@ -1445,7 +1453,7 @@
 
   .right-options {
     position: relative;
-    right: -1.1rem; //-19px;
+    right: -1.25rem; //-14px;
   }
 
   .set-margin-right {
@@ -1497,8 +1505,8 @@
     width: 24px !important;
     height: 24px !important;
     position: relative;
-    top: 4px;
-    left: 2rem;
+    top: 6px;
+    left: -6em;
   }
 
   .accordian-icon {
@@ -1605,8 +1613,8 @@
 
   .group-name {
     flex: 1;
-    // min-width: max-content;
-    width: 8rem; // 2em;
+    min-width: max-content;
+    width: 2em;
   }
 
   .mobile-text {
@@ -1719,6 +1727,7 @@
   .status__list__item {
     width: 100%;
     margin-bottom: 10px;
+    // padding: 10px 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1917,7 +1926,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -11rem; // -30%
+    left: -17%;
   }
 
   .list-right-menu-collapsed {
@@ -1928,16 +1937,10 @@
     left: 20%;
   }
 
-  .pos-name{
-    position: relative;
-    top: 0 !important;
-    right: 4rem;
-  }
-
   .stage-option {
     bottom: 2em;
     position: relative;
-    right: 10.1rem; //8.75em;
+    right: 5em;
   }
 
   .stage-option-collapsed {
@@ -1967,7 +1970,7 @@
     color: var(--blackish-text);
     position: absolute;
     left: 0;
-    top: 6.25em;
+    top: 6em;
   }
 
   .align-workflow-colon {
@@ -1996,7 +1999,7 @@
   .workflow-type-dd {
     width: 7.25em;
     position: absolute;
-    top: 3.5em;
+    top: 3.3em;
     left: 11.5em;
   }
 
@@ -2043,9 +2046,63 @@
     width: 4.375em;
   }
 
-  .pos-name {
-    position: relative;
-    top: 0.3em;
+  .list-percent-text {
+    margin-left: 8px;
+    min-width: fit-content;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .stage-list-subheader {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      right: 27em;
+      top: 2em;
+    }
+
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: -35.5%;
+      bottom: 2.1em;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      position: relative !important;
+      right: 35.5% !important;
+    }
+
+    .stage-option {
+      position: absolute;
+      margin-top: -2em;
+      right: 2em;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 30px;
+    }
+
+    .template-name {
+      display: flex;
+      height: 100%;
+      width: 54.75vw;
+    }
+
+    // .stage-name-width {
+    //   width: 66.5vw;
+    // }
+
+    // .stage-btn {
+    //   bottom: -5px;
+    //   position: absolute;
+    //   right: -2em;
+    // }
   }
 
   .template__row {
@@ -2102,24 +2159,17 @@
     height: 14px;
     width: 14px;
     border-radius: 50%;
+    position: relative;
     img {
       height: 7px;
       width: 6px;
       margin: 0 auto;
     }
 
-    position: relative;
-    bottom: 1.5em;
-    left: 1em;
-
     &.collapsed {
       img {
         transform: rotate(-90deg);
       }
-
-      position: relative;
-      top: -0.35em;
-      left: 1em;
     }
   }
 
@@ -2240,29 +2290,12 @@
   .group-name-wrapper {
     flex: 1;
     display: flex;
-
-    position: relative;
-    bottom: 3.1em;
-    left: 3em;
-  }
-
-  .group-name-wrapper-collapsed {
-    flex: 1;
-    display: flex;
-
-    position: relative;
-    bottom: 2.1em;
-    left: 3em;
   }
 
   .group-drag {
     width: 24px;
     margin-left: -6px;
     visibility: hidden;
-  }
-  &.collapsed {
-    position: relative;
-    top: 1em;
   }
   .template__row {
     &:hover {
@@ -2495,8 +2528,8 @@
 
   ::ng-deep.mat-select-arrow {
     position: relative;
-    right: 14px;
     bottom: 2px;
+    right: 14px;
     height: 24px !important;
     width: 24px !important;
     background: url("src/assets/imgs/chevron-down.svg") !important;
@@ -2510,6 +2543,10 @@
 
   ::ng-deep.modal-body {
     padding: 0 !important;
+  }
+
+  #search-form {
+    height: 8vh;
   }
 
   mat-form-field {
@@ -2553,23 +2590,6 @@
     align-items: center;
   }
 
-  .list-right-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: 16%;
-    bottom: 2.1em;
-  }
-
-  .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    right: 32.5%;
-  }
-
   .stage-option {
     position: absolute;
     margin-top: -2em;
@@ -2604,99 +2624,13 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .stage-list-subheader {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    width: 100%;
-  }
-
-  .list-right-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: -35.5% !important;
-    bottom: 1.35em !important;
-  }
-
-  .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    right: 35.5% !important;
-  }
-
-  .stage-option {
-    position: absolute !important;
-    margin-top: -1.25em !important;
-    right: 1.5em !important;
-  }
-
-  .stage-option-collapsed {
-    position: absolute;
-    right: 0;
-  }
-
-  .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
-  }
-
-  // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -44em;
-  // }
-
-  // .stage-btn {
-  //   bottom: -40px;
-  //   position: absolute;
-  //   left: 49em;
-  // }
-
-  .group-drag {
-    &.collapsed {
-      position: relative;
-      top: 1.35em !important;
-    }
-  }
-
-  .accordian {
-    &.collapsed {
-      position: relative;
-      top: -0.1em !important;
-      left: 1em;
-    }
-  }
-
-  .group-name-wrapper-collapsed {
-    flex: 1;
-    display: flex;
-    position: relative;
-    bottom: 1.75em !important;
-    left: 3em;
-  }
-}
-
 @media only screen and (min-width: 769px) and (max-width: 991px) {
   .stage-list-subheader {
     display: flex;
     flex-direction: row;
-    position: absolute;
-    width: 100%;
+    position: relative;
+    right: 27em;
+    top: 2em;
   }
 
   .list-right-menu {
@@ -2704,22 +2638,22 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -35.5% !important;
-    bottom: 1.35em !important;
+    left: -35.5%;
+    bottom: 2.1em;
   }
 
   .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
     right: 35.5% !important;
   }
 
   .stage-option {
-    position: absolute !important;
-    margin-top: -1.25em !important;
-    right: 1.5em !important;
+    position: absolute;
+    margin-top: -2em;
+    right: 1.7em;
   }
 
   .stage-option-collapsed {
@@ -2728,62 +2662,29 @@
   }
 
   .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
+    display: flex;
+    height: 100%;
+    width: 51vw;
   }
 
   // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -44em;
+  //   width: 55vw;
   // }
 
   // .stage-btn {
-  //   bottom: -40px;
+  //   bottom: -5px;
   //   position: absolute;
-  //   left: 49em;
+  //   right: -6em;
   // }
-
-  .group-drag {
-    &.collapsed {
-      position: relative;
-      top: 1.35em !important;
-    }
-  }
-
-  .accordian {
-    &.collapsed {
-      position: relative;
-      top: -0.1em !important;
-      left: 1em;
-    }
-  }
-
-  .group-name-wrapper-collapsed {
-    flex: 1;
-    display: flex;
-    position: relative;
-    bottom: 1.75em !important;
-    left: 3em;
-  }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1041px) {
   .stage-list-subheader {
     display: flex;
     flex-direction: row;
-    position: absolute;
-    width: 100%;
+    position: relative;
+    right: 27em;
+    top: 2em;
   }
 
   .list-right-menu {
@@ -2791,22 +2692,22 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -35.5% !important;
-    bottom: 1.35em !important;
+    left: -35.5%;
+    bottom: 2.1em;
   }
 
   .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
     right: 35.5% !important;
   }
 
   .stage-option {
-    position: absolute !important;
-    margin-top: -1.25em !important;
-    right: 1.5em !important;
+    position: absolute;
+    margin-top: -2em;
+    right: 1.7em;
   }
 
   .stage-option-collapsed {
@@ -2815,62 +2716,29 @@
   }
 
   .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
+    display: flex;
+    height: 100%;
+    width: 58vw;
   }
 
   // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -55em;
+  //   width: 60vw;
   // }
 
   // .stage-btn {
-  //   bottom: -40px;
+  //   bottom: -5px;
   //   position: absolute;
-  //   left: 60.35em;
+  //   right: -7.1em;
   // }
-
-  .group-drag {
-    &.collapsed {
-      position: relative;
-      top: 1.35em !important;
-    }
-  }
-
-  .accordian {
-    &.collapsed {
-      position: relative;
-      top: -0.1em !important;
-      left: 1em;
-    }
-  }
-
-  .group-name-wrapper-collapsed {
-    flex: 1;
-    display: flex;
-    position: relative;
-    bottom: 1.75em !important;
-    left: 3em;
-  }
 }
 
 @media only screen and (min-width: 1042px) and (max-width: 1117px) {
   .stage-list-subheader {
     display: flex;
     flex-direction: row;
-    position: absolute;
-    width: 100%;
+    position: relative;
+    right: 27em;
+    top: 2em;
   }
 
   .list-right-menu {
@@ -2878,22 +2746,22 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -35.5% !important;
-    bottom: 1.35em !important;
+    left: -35.5%;
+    bottom: 2.1em;
   }
 
   .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
     right: 35.5% !important;
   }
 
   .stage-option {
-    position: absolute !important;
-    margin-top: -1.25em !important;
-    right: 1.5em !important;
+    position: absolute;
+    margin-top: -2em;
+    right: 1.6em;
   }
 
   .stage-option-collapsed {
@@ -2902,62 +2770,29 @@
   }
 
   .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
+    display: flex;
+    height: 100%;
+    width: 60vw;
   }
 
   // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -58em;
+  //   width: 61.5vw;
   // }
 
   // .stage-btn {
-  //   bottom: -40px;
+  //   bottom: -5px;
   //   position: absolute;
-  //   left: 64.1em;
+  //   right: -7.5em;
   // }
-
-  .group-drag {
-    &.collapsed {
-      position: relative;
-      top: 1.35em !important;
-    }
-  }
-
-  .accordian {
-    &.collapsed {
-      position: relative;
-      top: -0.1em !important;
-      left: 1em;
-    }
-  }
-
-  .group-name-wrapper-collapsed {
-    flex: 1;
-    display: flex;
-    position: relative;
-    bottom: 1.75em !important;
-    left: 3em;
-  }
 }
 
 @media only screen and (min-width: 1118px) and (max-width: 1186px) {
   .stage-list-subheader {
     display: flex;
     flex-direction: row;
-    position: absolute;
-    width: 100%;
+    position: relative;
+    right: 27em;
+    top: 2em;
   }
 
   .list-right-menu {
@@ -2965,22 +2800,22 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -55.5% !important;
-    bottom: 1.35em !important;
+    left: -55.5%;
+    bottom: 2.1em;
   }
 
   .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
     right: 55.5% !important;
   }
 
   .stage-option {
-    position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
+    position: absolute;
+    margin-top: -2em;
+    right: 1.1em;
   }
 
   .stage-option-collapsed {
@@ -2989,62 +2824,29 @@
   }
 
   .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
+    display: flex;
+    height: 100%;
+    width: 63vw;
   }
 
   // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -64em;
+  //   width: 64.5vw;
   // }
 
   // .stage-btn {
-  //   bottom: -40px;
+  //   bottom: -5px;
   //   position: absolute;
-  //   left: 69.65em;
+  //   right: -7.5em;
   // }
-
-  .group-drag {
-    &.collapsed {
-      position: relative;
-      top: 1.35em !important;
-    }
-  }
-
-  .accordian {
-    &.collapsed {
-      position: relative;
-      top: -0.1em !important;
-      left: 1em;
-    }
-  }
-
-  .group-name-wrapper-collapsed {
-    flex: 1;
-    display: flex;
-    position: relative;
-    bottom: 1.75em !important;
-    left: 3em;
-  }
 }
 
 @media only screen and (min-width: 1187px) and (max-width: 1291px) {
   .stage-list-subheader {
     display: flex;
     flex-direction: row;
-    position: absolute;
-    width: 100%;
+    position: relative;
+    right: 27em;
+    top: 2em;
   }
 
   .list-right-menu {
@@ -3052,22 +2854,22 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -55.5% !important;
-    bottom: 1.35em !important;
+    left: -55.5%;
+    bottom: 2.1em;
   }
 
   .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
     right: 55.5% !important;
   }
 
   .stage-option {
-    position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
+    position: absolute;
+    margin-top: -2em;
+    right: 2em;
   }
 
   .stage-option-collapsed {
@@ -3076,30 +2878,19 @@
   }
 
   .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
+    display: flex;
+    height: 100%;
+    width: 65vw;
   }
 
   // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -72em;
+  //   width: 66.5vw;
   // }
 
   // .stage-btn {
-  //   bottom: -40px;
+  //   bottom: -5px;
   //   position: absolute;
-  //   left: 77.8em;
+  //   right: -7.4em;
   // }
 }
 
@@ -3107,8 +2898,9 @@
   .stage-list-subheader {
     display: flex;
     flex-direction: row;
-    position: absolute;
-    width: 100%;
+    position: relative;
+    right: 27em;
+    top: 2em;
   }
 
   .list-right-menu {
@@ -3116,22 +2908,22 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -55.5% !important;
-    bottom: 1.35em !important;
+    left: -55.5%;
+    bottom: 2.1em;
   }
 
   .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
     right: 55.5% !important;
   }
 
   .stage-option {
-    position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
+    position: absolute;
+    margin-top: -2em;
+    right: 2em;
   }
 
   .stage-option-collapsed {
@@ -3140,30 +2932,19 @@
   }
 
   .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
+    display: flex;
+    height: 100%;
+    width: 67vw;
   }
 
   // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -78em;
+  //   width: 68.5vw;
   // }
 
   // .stage-btn {
-  //   bottom: -40px;
+  //   bottom: -5px;
   //   position: absolute;
-  //   left: 83.75em;
+  //   right: -7.3em;
   // }
 }
 
@@ -3171,8 +2952,9 @@
   .stage-list-subheader {
     display: flex;
     flex-direction: row;
-    position: absolute;
-    width: 100%;
+    position: relative;
+    right: 27em;
+    top: 2em;
   }
 
   .list-right-menu {
@@ -3180,22 +2962,22 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -55.5% !important;
-    bottom: 1.35em !important;
+    left: -55.5%;
+    bottom: 2.1em;
   }
 
   .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
     right: 55.5% !important;
   }
 
   .stage-option {
-    position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
+    position: absolute;
+    margin-top: -2em;
+    right: 1.9em;
   }
 
   .stage-option-collapsed {
@@ -3204,56 +2986,19 @@
   }
 
   .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
+    display: flex;
+    height: 100%;
+    width: 68.5vw;
   }
 
   // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -83em;
+  //   width: 70vw;
   // }
 
   // .stage-btn {
-  //   bottom: -40px;
+  //   bottom: -5px;
   //   position: absolute;
-  //   left: 88.8em;
-  // }
-}
-
-@media only screen and (width: 1496px) {
-  // .right-headers {
-  //   position: absolute;
-  //   right: -76rem !important;
-  // }
-
-  // .stage-btn {
-  //   bottom: -40px;
-  //   position: absolute;
-  //   left: 81.1rem !important;
-  // }
-}
-
-@media only screen and (width: 1836px) {
-  // .right-headers {
-  //   position: absolute;
-  //   right: -96rem !important;
-  // }
-
-  // .stage-btn {
-  //   bottom: -40px;
-  //   position: absolute;
-  //   left: 101.5rem !important;
+  //   right: -7.3em;
   // }
 }
 
@@ -3261,8 +3006,9 @@
   .stage-list-subheader {
     display: flex;
     flex-direction: row;
-    position: absolute;
-    width: 100%;
+    position: relative;
+    right: 27em;
+    top: 2em;
   }
 
   .list-right-menu {
@@ -3270,8 +3016,8 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -55.5% !important;
-    bottom: 1.35em !important;
+    left: -55.5%;
+    bottom: 2.1em;
   }
 
   .list-right-menu-collapsed {
@@ -3279,13 +3025,13 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    right: 55.5% !important;
+    right: 55.5%;
   }
 
   .stage-option {
-    position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
+    position: absolute;
+    margin-top: -2em;
+    right: 2.1em;
   }
 
   .stage-option-collapsed {
@@ -3294,30 +3040,19 @@
   }
 
   .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
+    display: flex;
+    height: 100%;
+    width: 70vw;
   }
 
   // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -90em;
+  //   width: 71vw;
   // }
 
   // .stage-btn {
-  //   bottom: -40px;
+  //   bottom: -5px;
   //   position: absolute;
-  //   left: 95.4em;
+  //   right: -7.8em !important;
   // }
 }
 
@@ -3325,8 +3060,9 @@
   .stage-list-subheader {
     display: flex;
     flex-direction: row;
-    position: absolute;
-    width: 100%;
+    position: relative;
+    right: 27em;
+    top: 2em;
   }
 
   .list-right-menu {
@@ -3334,8 +3070,8 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -55.5% !important;
-    bottom: 1.35em !important;
+    left: -55.5%;
+    bottom: 2.1em;
   }
 
   .list-right-menu-collapsed {
@@ -3343,13 +3079,13 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    right: 55.5% !important;
+    right: 55.5%;
   }
 
   .stage-option {
-    position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
+    position: absolute;
+    margin-top: -2em;
+    right: 2em;
   }
 
   .stage-option-collapsed {
@@ -3358,41 +3094,25 @@
   }
 
   .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
+    display: flex;
+    height: 100%;
+    width: 80vw;
   }
 
   // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -159em;
+  //   width: 81vw;
   // }
 
   // .stage-btn {
-  //   bottom: -40px;
+  //   bottom: -5px;
   //   position: absolute;
-  //   left: 165.75em;
+  //   right: -7.9em;
   // }
 }
 
 // common styles
 .list-item-progress-bar {
   width: 57px;
-}
-
-.list-percent-text {
-  margin: 2px 0 0 8px;
-  min-width: fit-content;
 }
 
 .list-header-text {
@@ -3425,19 +3145,19 @@
   width: 100%;
 }
 
-.pos-name{
+.stage-btn {
+  bottom: 8px;
+  right: -2rem;
+}
+
+.pos-name {
   position: absolute;
-  top: 25px; //40px;
+  left: -37rem;
 }
 
 .right-headers{
   float: right;
-  margin-top: 20px; //35px;
   position: absolute;
-  right: 0; //110px;
-}
-
-.stage-btn {
-  bottom: 10px; //-23px;
-  right: 1px;
+  top: -8px;
+  right: -22rem;
 }

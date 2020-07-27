@@ -10,12 +10,12 @@
     color: var(--blackish-text);
     position: absolute;
     left: 0;
-    top: 10em;
+    top: 8.85em;
   }
 
   .align-workflow-colon {
     position: relative;
-    left: 2.5em;
+    left: 2.25em;
   }
 
   #workflow-select-field::ng-deep .mat-form-field-underline {
@@ -37,13 +37,13 @@
   .workflow-type-dd {
     width: 7.25em;
     position: absolute;
-    top: 6.9em;
+    top: 5.8em;
     left: 8.5em;
   }
 
   .collapse-container {
     position: absolute;
-    top: 15.5em;
+    top: 12.5em;
 
     .stage-action-collapse-text {
       font-family: LatoRegular;
@@ -57,7 +57,7 @@
   .right-align-searchbox {
     width: 23.813em !important;
     position: absolute;
-    top: 16.25em;
+    top: 14.25em;
   }
 
   #mat-search ::ng-deep .mat-form-field-underline {
@@ -662,12 +662,12 @@
     color: var(--blackish-text);
     position: absolute;
     left: 0;
-    top: 10em;
+    top: 8.85em;
   }
 
   .align-workflow-colon {
     position: relative;
-    left: 2.5em;
+    left: 2.25em;
   }
 
   #workflow-select-field::ng-deep .mat-form-field-underline {
@@ -689,13 +689,13 @@
   .workflow-type-dd {
     width: 7.25em;
     position: absolute;
-    top: 6.9em;
+    top: 5.8em;
     left: 8.5em;
   }
 
   .collapse-container {
     position: absolute;
-    top: 15.5em;
+    top: 12.5em;
 
     .stage-action-collapse-text {
       font-family: LatoRegular;
@@ -709,7 +709,7 @@
   .right-align-searchbox {
     width: 23.813em !important;
     position: absolute;
-    top: 16.25em;
+    top: 14.25em;
   }
 
   #mat-search ::ng-deep .mat-form-field-underline {
@@ -1314,12 +1314,12 @@
     color: var(--blackish-text);
     position: absolute;
     left: 0;
-    top: 10em;
+    top: 8.85em;
   }
 
   .align-workflow-colon {
     position: relative;
-    left: 2.5em;
+    left: 2.25em;
   }
 
   #workflow-select-field::ng-deep .mat-form-field-underline {
@@ -1341,13 +1341,13 @@
   .workflow-type-dd {
     width: 7.25em;
     position: absolute;
-    top: 6.9em;
+    top: 5.8em;
     left: 8.5em;
   }
 
   .collapse-container {
     position: absolute;
-    top: 15.5em;
+    top: 12.5em;
 
     .stage-action-collapse-text {
       font-family: LatoRegular;
@@ -1361,7 +1361,7 @@
   .right-align-searchbox {
     width: 23.813em !important;
     position: absolute;
-    top: 16.25em;
+    top: 14.25em;
   }
 
   #mat-search ::ng-deep .mat-form-field-underline {
@@ -1967,12 +1967,12 @@
     color: var(--blackish-text);
     position: absolute;
     left: 0;
-    top: 6.25em;
+    top: 3.85em;
   }
 
   .align-workflow-colon {
     position: relative;
-    left: 2.9em;
+    left: 0.6em;
   }
 
   #workflow-select-field::ng-deep .mat-form-field-underline {
@@ -1996,13 +1996,13 @@
   .workflow-type-dd {
     width: 7.25em;
     position: absolute;
-    top: 3.5em;
-    left: 11.5em;
+    top: 1.5em;
+    left: 9.5em;
   }
 
   .collapse-container {
     position: absolute;
-    top: 9.1em; //10.3em
+    top: 6.688em; //7.688em
 
     .stage-action-collapse-text {
       font-family: LatoRegular;
@@ -2018,7 +2018,7 @@
     width: 23.813em !important;
     position: absolute;
     right: 0;
-    top: 7.5em; //8.5em
+    top: 5em; //6em
   }
 
   #mat-search ::ng-deep .mat-form-field-underline {
@@ -2046,6 +2046,787 @@
   .pos-name {
     position: relative;
     top: 0.3em;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .stage-list-subheader {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      width: 100%;
+    }
+
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: -35.5% !important;
+      bottom: 1.35em !important;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      right: 35.5% !important;
+    }
+
+    .stage-option {
+      position: absolute !important;
+      margin-top: -1.25em !important;
+      right: 1.5em !important;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
+    }
+
+    .template-name {
+      margin-right: auto;
+    }
+
+    .right-cols {
+      position: absolute;
+      right: 4em;
+    }
+
+    // .stage-name-width {
+    //   display: flex;
+    //   margin-right: auto;
+    //   position: relative;
+    //   top: 2em;
+    // }
+
+    // .right-headers {
+    //   position: absolute;
+    //   right: -44em;
+    // }
+
+    // .stage-btn {
+    //   bottom: -40px;
+    //   position: absolute;
+    //   left: 49em;
+    // }
+
+    .group-drag {
+      &.collapsed {
+        position: relative;
+        top: 1.35em !important;
+      }
+    }
+
+    .accordian {
+      &.collapsed {
+        position: relative;
+        top: -0.1em !important;
+        left: 1em;
+      }
+    }
+
+    .group-name-wrapper-collapsed {
+      flex: 1;
+      display: flex;
+      position: relative;
+      bottom: 1.75em !important;
+      left: 3em;
+    }
+  }
+
+  @media only screen and (min-width: 769px) and (max-width: 991px) {
+    .stage-list-subheader {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      width: 100%;
+    }
+
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: -35.5% !important;
+      bottom: 1.35em !important;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      right: 35.5% !important;
+    }
+
+    .stage-option {
+      position: absolute !important;
+      margin-top: -1.25em !important;
+      right: 1.5em !important;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
+    }
+
+    .template-name {
+      margin-right: auto;
+    }
+
+    .right-cols {
+      position: absolute;
+      right: 4em;
+    }
+
+    // .stage-name-width {
+    //   display: flex;
+    //   margin-right: auto;
+    //   position: relative;
+    //   top: 2em;
+    // }
+
+    // .right-headers {
+    //   position: absolute;
+    //   right: -44em;
+    // }
+
+    // .stage-btn {
+    //   bottom: -40px;
+    //   position: absolute;
+    //   left: 49em;
+    // }
+
+    .group-drag {
+      &.collapsed {
+        position: relative;
+        top: 1.35em !important;
+      }
+    }
+
+    .accordian {
+      &.collapsed {
+        position: relative;
+        top: -0.1em !important;
+        left: 1em;
+      }
+    }
+
+    .group-name-wrapper-collapsed {
+      flex: 1;
+      display: flex;
+      position: relative;
+      bottom: 1.75em !important;
+      left: 3em;
+    }
+  }
+
+  @media only screen and (min-width: 992px) and (max-width: 1041px) {
+    .stage-list-subheader {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      width: 100%;
+    }
+
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: -35.5% !important;
+      bottom: 1.35em !important;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      right: 35.5% !important;
+    }
+
+    .stage-option {
+      position: absolute !important;
+      margin-top: -1.25em !important;
+      right: 1.5em !important;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
+    }
+
+    .template-name {
+      margin-right: auto;
+    }
+
+    .right-cols {
+      position: absolute;
+      right: 4em;
+    }
+
+    // .stage-name-width {
+    //   display: flex;
+    //   margin-right: auto;
+    //   position: relative;
+    //   top: 2em;
+    // }
+
+    // .right-headers {
+    //   position: absolute;
+    //   right: -55em;
+    // }
+
+    // .stage-btn {
+    //   bottom: -40px;
+    //   position: absolute;
+    //   left: 60.35em;
+    // }
+
+    .group-drag {
+      &.collapsed {
+        position: relative;
+        top: 1.35em !important;
+      }
+    }
+
+    .accordian {
+      &.collapsed {
+        position: relative;
+        top: -0.1em !important;
+        left: 1em;
+      }
+    }
+
+    .group-name-wrapper-collapsed {
+      flex: 1;
+      display: flex;
+      position: relative;
+      bottom: 1.75em !important;
+      left: 3em;
+    }
+  }
+
+  @media only screen and (min-width: 1042px) and (max-width: 1117px) {
+    .stage-list-subheader {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      width: 100%;
+    }
+
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: -35.5% !important;
+      bottom: 1.35em !important;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      right: 35.5% !important;
+    }
+
+    .stage-option {
+      position: absolute !important;
+      margin-top: -1.25em !important;
+      right: 1.5em !important;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
+    }
+
+    .template-name {
+      margin-right: auto;
+    }
+
+    .right-cols {
+      position: absolute;
+      right: 4em;
+    }
+
+    // .stage-name-width {
+    //   display: flex;
+    //   margin-right: auto;
+    //   position: relative;
+    //   top: 2em;
+    // }
+
+    // .right-headers {
+    //   position: absolute;
+    //   right: -58em;
+    // }
+
+    // .stage-btn {
+    //   bottom: -40px;
+    //   position: absolute;
+    //   left: 64.1em;
+    // }
+
+    .group-drag {
+      &.collapsed {
+        position: relative;
+        top: 1.35em !important;
+      }
+    }
+
+    .accordian {
+      &.collapsed {
+        position: relative;
+        top: -0.1em !important;
+        left: 1em;
+      }
+    }
+
+    .group-name-wrapper-collapsed {
+      flex: 1;
+      display: flex;
+      position: relative;
+      bottom: 1.75em !important;
+      left: 3em;
+    }
+  }
+
+  @media only screen and (min-width: 1118px) and (max-width: 1186px) {
+    .stage-list-subheader {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      width: 100%;
+    }
+
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: -55.5% !important;
+      bottom: 1.35em !important;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      right: 55.5% !important;
+    }
+
+    .stage-option {
+      position: absolute !important;
+      margin-top: -2em !important;
+      right: 1.5em !important;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
+    }
+
+    .template-name {
+      margin-right: auto;
+    }
+
+    .right-cols {
+      position: absolute;
+      right: 4em;
+    }
+
+    // .stage-name-width {
+    //   display: flex;
+    //   margin-right: auto;
+    //   position: relative;
+    //   top: 2em;
+    // }
+
+    // .right-headers {
+    //   position: absolute;
+    //   right: -64em;
+    // }
+
+    // .stage-btn {
+    //   bottom: -40px;
+    //   position: absolute;
+    //   left: 69.65em;
+    // }
+
+    .group-drag {
+      &.collapsed {
+        position: relative;
+        top: 1.35em !important;
+      }
+    }
+
+    .accordian {
+      &.collapsed {
+        position: relative;
+        top: -0.1em !important;
+        left: 1em;
+      }
+    }
+
+    .group-name-wrapper-collapsed {
+      flex: 1;
+      display: flex;
+      position: relative;
+      bottom: 1.75em !important;
+      left: 3em;
+    }
+  }
+
+  @media only screen and (min-width: 1187px) and (max-width: 1291px) {
+    .stage-list-subheader {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      width: 100%;
+    }
+
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: -55.5% !important;
+      bottom: 1.35em !important;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      right: 55.5% !important;
+    }
+
+    .stage-option {
+      position: absolute !important;
+      margin-top: -2em !important;
+      right: 1.5em !important;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
+    }
+
+    .template-name {
+      margin-right: auto;
+    }
+
+    .right-cols {
+      position: absolute;
+      right: 4em;
+    }
+
+    // .stage-name-width {
+    //   display: flex;
+    //   margin-right: auto;
+    //   position: relative;
+    //   top: 2em;
+    // }
+
+    // .right-headers {
+    //   position: absolute;
+    //   right: -72em;
+    // }
+
+    // .stage-btn {
+    //   bottom: -40px;
+    //   position: absolute;
+    //   left: 77.8em;
+    // }
+  }
+
+  @media only screen and (min-width: 1292px) and (max-width: 1366px) {
+    .stage-list-subheader {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      width: 100%;
+    }
+
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: -55.5% !important;
+      bottom: 1.35em !important;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      right: 55.5% !important;
+    }
+
+    .stage-option {
+      position: absolute !important;
+      margin-top: -2em !important;
+      right: 1.5em !important;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
+    }
+
+    .template-name {
+      margin-right: auto;
+    }
+
+    .right-cols {
+      position: absolute;
+      right: 4em;
+    }
+
+    // .stage-name-width {
+    //   display: flex;
+    //   margin-right: auto;
+    //   position: relative;
+    //   top: 2em;
+    // }
+
+    // .right-headers {
+    //   position: absolute;
+    //   right: -78em;
+    // }
+
+    // .stage-btn {
+    //   bottom: -40px;
+    //   position: absolute;
+    //   left: 83.75em;
+    // }
+  }
+
+  @media only screen and (min-width: 1367px) and (max-width: 1440px) {
+    .stage-list-subheader {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      width: 100%;
+    }
+
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: -55.5% !important;
+      bottom: 1.35em !important;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      right: 55.5% !important;
+    }
+
+    .stage-option {
+      position: absolute !important;
+      margin-top: -2em !important;
+      right: 1.5em !important;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
+    }
+
+    .template-name {
+      margin-right: auto;
+    }
+
+    .right-cols {
+      position: absolute;
+      right: 4em;
+    }
+
+    // .stage-name-width {
+    //   display: flex;
+    //   margin-right: auto;
+    //   position: relative;
+    //   top: 2em;
+    // }
+
+    // .right-headers {
+    //   position: absolute;
+    //   right: -83em;
+    // }
+
+    // .stage-btn {
+    //   bottom: -40px;
+    //   position: absolute;
+    //   left: 88.8em;
+    // }
+  }
+
+  @media only screen and (width: 1496px) {
+    // .right-headers {
+    //   position: absolute;
+    //   right: -76rem !important;
+    // }
+
+    // .stage-btn {
+    //   bottom: -40px;
+    //   position: absolute;
+    //   left: 81.1rem !important;
+    // }
+  }
+
+  @media only screen and (width: 1836px) {
+    // .right-headers {
+    //   position: absolute;
+    //   right: -96rem !important;
+    // }
+
+    // .stage-btn {
+    //   bottom: -40px;
+    //   position: absolute;
+    //   left: 101.5rem !important;
+    // }
+  }
+
+  @media only screen and (min-width: 1441px) and (max-width: 1980px) {
+    .stage-list-subheader {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      width: 100%;
+    }
+
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: -55.5% !important;
+      bottom: 1.35em !important;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      right: 55.5% !important;
+    }
+
+    .stage-option {
+      position: absolute !important;
+      margin-top: -2em !important;
+      right: 1.5em !important;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
+    }
+
+    .template-name {
+      margin-right: auto;
+    }
+
+    .right-cols {
+      position: absolute;
+      right: 4em;
+    }
+
+    // .stage-name-width {
+    //   display: flex;
+    //   margin-right: auto;
+    //   position: relative;
+    //   top: 2em;
+    // }
+
+    // .right-headers {
+    //   position: absolute;
+    //   right: -90em;
+    // }
+
+    // .stage-btn {
+    //   bottom: -40px;
+    //   position: absolute;
+    //   left: 95.4em;
+    // }
+  }
+
+  @media only screen and (min-width: 1981px) and (max-width: 2560px) {
+    .stage-list-subheader {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      width: 100%;
+    }
+
+    .list-right-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: -55.5% !important;
+      bottom: 1.35em !important;
+    }
+
+    .list-right-menu-collapsed {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      right: 55.5% !important;
+    }
+
+    .stage-option {
+      position: absolute !important;
+      margin-top: -2em !important;
+      right: 1.5em !important;
+    }
+
+    .stage-option-collapsed {
+      position: absolute;
+      right: 0;
+    }
+
+    .template-name {
+      margin-right: auto;
+    }
+
+    .right-cols {
+      position: absolute;
+      right: 4em;
+    }
+
+    // .stage-name-width {
+    //   display: flex;
+    //   margin-right: auto;
+    //   position: relative;
+    //   top: 2em;
+    // }
+
+    // .right-headers {
+    //   position: absolute;
+    //   right: -159em;
+    // }
+
+    // .stage-btn {
+    //   bottom: -40px;
+    //   position: absolute;
+    //   left: 165.75em;
+    // }
   }
 
   .template__row {
@@ -2594,7 +3375,7 @@
     width: 23.813em !important;
     position: absolute;
     right: 0;
-    bottom: 25.2em;
+    bottom: 4.5em;
   }
 
   .new-search-icon {
@@ -2602,787 +3383,6 @@
     bottom: 2px;
     padding-right: 0.5em;
   }
-}
-
-@media only screen and (max-width: 768px) {
-  .stage-list-subheader {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    width: 100%;
-  }
-
-  .list-right-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: -35.5% !important;
-    bottom: 1.35em !important;
-  }
-
-  .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    right: 35.5% !important;
-  }
-
-  .stage-option {
-    position: absolute !important;
-    margin-top: -1.25em !important;
-    right: 1.5em !important;
-  }
-
-  .stage-option-collapsed {
-    position: absolute;
-    right: 0;
-  }
-
-  .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
-  }
-
-  // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -44em;
-  // }
-
-  // .stage-btn {
-  //   bottom: -40px;
-  //   position: absolute;
-  //   left: 49em;
-  // }
-
-  .group-drag {
-    &.collapsed {
-      position: relative;
-      top: 1.35em !important;
-    }
-  }
-
-  .accordian {
-    &.collapsed {
-      position: relative;
-      top: -0.1em !important;
-      left: 1em;
-    }
-  }
-
-  .group-name-wrapper-collapsed {
-    flex: 1;
-    display: flex;
-    position: relative;
-    bottom: 1.75em !important;
-    left: 3em;
-  }
-}
-
-@media only screen and (min-width: 769px) and (max-width: 991px) {
-  .stage-list-subheader {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    width: 100%;
-  }
-
-  .list-right-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: -35.5% !important;
-    bottom: 1.35em !important;
-  }
-
-  .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    right: 35.5% !important;
-  }
-
-  .stage-option {
-    position: absolute !important;
-    margin-top: -1.25em !important;
-    right: 1.5em !important;
-  }
-
-  .stage-option-collapsed {
-    position: absolute;
-    right: 0;
-  }
-
-  .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
-  }
-
-  // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -44em;
-  // }
-
-  // .stage-btn {
-  //   bottom: -40px;
-  //   position: absolute;
-  //   left: 49em;
-  // }
-
-  .group-drag {
-    &.collapsed {
-      position: relative;
-      top: 1.35em !important;
-    }
-  }
-
-  .accordian {
-    &.collapsed {
-      position: relative;
-      top: -0.1em !important;
-      left: 1em;
-    }
-  }
-
-  .group-name-wrapper-collapsed {
-    flex: 1;
-    display: flex;
-    position: relative;
-    bottom: 1.75em !important;
-    left: 3em;
-  }
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1041px) {
-  .stage-list-subheader {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    width: 100%;
-  }
-
-  .list-right-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: -35.5% !important;
-    bottom: 1.35em !important;
-  }
-
-  .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    right: 35.5% !important;
-  }
-
-  .stage-option {
-    position: absolute !important;
-    margin-top: -1.25em !important;
-    right: 1.5em !important;
-  }
-
-  .stage-option-collapsed {
-    position: absolute;
-    right: 0;
-  }
-
-  .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
-  }
-
-  // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -55em;
-  // }
-
-  // .stage-btn {
-  //   bottom: -40px;
-  //   position: absolute;
-  //   left: 60.35em;
-  // }
-
-  .group-drag {
-    &.collapsed {
-      position: relative;
-      top: 1.35em !important;
-    }
-  }
-
-  .accordian {
-    &.collapsed {
-      position: relative;
-      top: -0.1em !important;
-      left: 1em;
-    }
-  }
-
-  .group-name-wrapper-collapsed {
-    flex: 1;
-    display: flex;
-    position: relative;
-    bottom: 1.75em !important;
-    left: 3em;
-  }
-}
-
-@media only screen and (min-width: 1042px) and (max-width: 1117px) {
-  .stage-list-subheader {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    width: 100%;
-  }
-
-  .list-right-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: -35.5% !important;
-    bottom: 1.35em !important;
-  }
-
-  .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    right: 35.5% !important;
-  }
-
-  .stage-option {
-    position: absolute !important;
-    margin-top: -1.25em !important;
-    right: 1.5em !important;
-  }
-
-  .stage-option-collapsed {
-    position: absolute;
-    right: 0;
-  }
-
-  .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
-  }
-
-  // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -58em;
-  // }
-
-  // .stage-btn {
-  //   bottom: -40px;
-  //   position: absolute;
-  //   left: 64.1em;
-  // }
-
-  .group-drag {
-    &.collapsed {
-      position: relative;
-      top: 1.35em !important;
-    }
-  }
-
-  .accordian {
-    &.collapsed {
-      position: relative;
-      top: -0.1em !important;
-      left: 1em;
-    }
-  }
-
-  .group-name-wrapper-collapsed {
-    flex: 1;
-    display: flex;
-    position: relative;
-    bottom: 1.75em !important;
-    left: 3em;
-  }
-}
-
-@media only screen and (min-width: 1118px) and (max-width: 1186px) {
-  .stage-list-subheader {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    width: 100%;
-  }
-
-  .list-right-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: -55.5% !important;
-    bottom: 1.35em !important;
-  }
-
-  .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    right: 55.5% !important;
-  }
-
-  .stage-option {
-    position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
-  }
-
-  .stage-option-collapsed {
-    position: absolute;
-    right: 0;
-  }
-
-  .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
-  }
-
-  // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -64em;
-  // }
-
-  // .stage-btn {
-  //   bottom: -40px;
-  //   position: absolute;
-  //   left: 69.65em;
-  // }
-
-  .group-drag {
-    &.collapsed {
-      position: relative;
-      top: 1.35em !important;
-    }
-  }
-
-  .accordian {
-    &.collapsed {
-      position: relative;
-      top: -0.1em !important;
-      left: 1em;
-    }
-  }
-
-  .group-name-wrapper-collapsed {
-    flex: 1;
-    display: flex;
-    position: relative;
-    bottom: 1.75em !important;
-    left: 3em;
-  }
-}
-
-@media only screen and (min-width: 1187px) and (max-width: 1291px) {
-  .stage-list-subheader {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    width: 100%;
-  }
-
-  .list-right-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: -55.5% !important;
-    bottom: 1.35em !important;
-  }
-
-  .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    right: 55.5% !important;
-  }
-
-  .stage-option {
-    position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
-  }
-
-  .stage-option-collapsed {
-    position: absolute;
-    right: 0;
-  }
-
-  .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
-  }
-
-  // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -72em;
-  // }
-
-  // .stage-btn {
-  //   bottom: -40px;
-  //   position: absolute;
-  //   left: 77.8em;
-  // }
-}
-
-@media only screen and (min-width: 1292px) and (max-width: 1366px) {
-  .stage-list-subheader {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    width: 100%;
-  }
-
-  .list-right-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: -55.5% !important;
-    bottom: 1.35em !important;
-  }
-
-  .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    right: 55.5% !important;
-  }
-
-  .stage-option {
-    position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
-  }
-
-  .stage-option-collapsed {
-    position: absolute;
-    right: 0;
-  }
-
-  .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
-  }
-
-  // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -78em;
-  // }
-
-  // .stage-btn {
-  //   bottom: -40px;
-  //   position: absolute;
-  //   left: 83.75em;
-  // }
-}
-
-@media only screen and (min-width: 1367px) and (max-width: 1440px) {
-  .stage-list-subheader {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    width: 100%;
-  }
-
-  .list-right-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: -55.5% !important;
-    bottom: 1.35em !important;
-  }
-
-  .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    right: 55.5% !important;
-  }
-
-  .stage-option {
-    position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
-  }
-
-  .stage-option-collapsed {
-    position: absolute;
-    right: 0;
-  }
-
-  .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
-  }
-
-  // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -83em;
-  // }
-
-  // .stage-btn {
-  //   bottom: -40px;
-  //   position: absolute;
-  //   left: 88.8em;
-  // }
-}
-
-@media only screen and (width: 1496px) {
-  // .right-headers {
-  //   position: absolute;
-  //   right: -76rem !important;
-  // }
-
-  // .stage-btn {
-  //   bottom: -40px;
-  //   position: absolute;
-  //   left: 81.1rem !important;
-  // }
-}
-
-@media only screen and (width: 1836px) {
-  // .right-headers {
-  //   position: absolute;
-  //   right: -96rem !important;
-  // }
-
-  // .stage-btn {
-  //   bottom: -40px;
-  //   position: absolute;
-  //   left: 101.5rem !important;
-  // }
-}
-
-@media only screen and (min-width: 1441px) and (max-width: 1980px) {
-  .stage-list-subheader {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    width: 100%;
-  }
-
-  .list-right-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: -55.5% !important;
-    bottom: 1.35em !important;
-  }
-
-  .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    right: 55.5% !important;
-  }
-
-  .stage-option {
-    position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
-  }
-
-  .stage-option-collapsed {
-    position: absolute;
-    right: 0;
-  }
-
-  .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
-  }
-
-  // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -90em;
-  // }
-
-  // .stage-btn {
-  //   bottom: -40px;
-  //   position: absolute;
-  //   left: 95.4em;
-  // }
-}
-
-@media only screen and (min-width: 1981px) and (max-width: 2560px) {
-  .stage-list-subheader {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    width: 100%;
-  }
-
-  .list-right-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: -55.5% !important;
-    bottom: 1.35em !important;
-  }
-
-  .list-right-menu-collapsed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    right: 55.5% !important;
-  }
-
-  .stage-option {
-    position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
-  }
-
-  .stage-option-collapsed {
-    position: absolute;
-    right: 0;
-  }
-
-  .template-name {
-    margin-right: auto;
-  }
-
-  .right-cols {
-    position: absolute;
-    right: 4em;
-  }
-
-  // .stage-name-width {
-  //   display: flex;
-  //   margin-right: auto;
-  //   position: relative;
-  //   top: 2em;
-  // }
-
-  // .right-headers {
-  //   position: absolute;
-  //   right: -159em;
-  // }
-
-  // .stage-btn {
-  //   bottom: -40px;
-  //   position: absolute;
-  //   left: 165.75em;
-  // }
 }
 
 // common styles
@@ -3427,17 +3427,17 @@
 
 .pos-name{
   position: absolute;
-  top: 25px; //40px;
+  top: 40px;
 }
 
 .right-headers{
   float: right;
-  margin-top: 20px; //35px;
+  margin-top: 35px;
   position: absolute;
-  right: 0; //110px;
+  right: 110px;
 }
 
 .stage-btn {
-  bottom: 10px; //-23px;
+  bottom: -23px;
   right: 1px;
 }
