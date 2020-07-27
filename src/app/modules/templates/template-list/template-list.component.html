@@ -73,7 +73,7 @@
             id="stage-header"
             class="template__row"
             [ngStyle]="toggleTemplateHeight(groupCollapseList[i])"
-          > 
+          >
             <div class="template-name">
               <div
                 class="group-drag"
@@ -175,7 +175,7 @@
               </div>
             </div>
             <button
-           
+
             mat-button
             [matMenuTriggerFor]="stageDropdown"
           >
@@ -195,18 +195,18 @@
             xPosition="before"
             yPosition="below"
           >
-            <div>              
-              <button mat-menu-item (click)="deleteGroup(group)">   
-                <img 
+            <div>
+              <button mat-menu-item (click)="deleteGroup(group)">
+                <img
                 class="icon-usersettings"
               src="assets/imgs/delete.svg"
               alt=""
-            />            
+            />
                 <span>Delete</span>
               </button>
             </div>
           </mat-menu>
-          
+
             <div *ngIf="!groupCollapseList[i]" class="stage-list-subheader">
               <div class="stage-name-width">
                 <span
@@ -284,7 +284,7 @@
           >
             <div
               class="row-items template__row item"
-              [ngClass]="{ selected: group.selected }"             
+              [ngClass]="{ selected: group.selected }"
               *ngFor="let task of group.items"
               cdkDrag
             >
@@ -324,13 +324,8 @@
                     [ngClass]="{
                       'mobile-text': isMobile,
                       'common-text': !isMobile
-<<<<<<< HEAD
-                    }"  (click)="loadTask(task, group)"
-                    class="cell-text"
-=======
                     }"
                     class="cell-text handle-text-overflow" matTooltip="{{task.name}}"
->>>>>>> merge-styles-discover
                     >{{ task.name }}</span
                   >
                 </div>
