@@ -6293,7 +6293,7 @@
       "name": "Template 1",
       "desc": "Template Description",
       "ver": "templateVersionNumber",
-      "type": "trigger",
+      "type": "time",
       "owner": "TEMPLATE OWNER",
       "progress": 10,
       "status": "Defined",
@@ -6337,7 +6337,8 @@
                   "mode": "before"
                 }
               ],
-              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
+              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}",
+              "showStatus": false
             },
             {
               "id": 456,
@@ -6369,7 +6370,8 @@
                   "mode": "before"
                 }
               ],
-              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
+              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}",
+              "showStatus": false
             },
             {
               "id": 789,
@@ -6401,7 +6403,8 @@
                   "mode": "before"
                 }
               ],
-              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
+              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}",
+              "showStatus": false
             }
           ]
         },
