@@ -48,7 +48,7 @@ export class HubComponent implements OnInit {
   getTemplates() {
     this._templateService.getAllTemplates().subscribe((templates: any)=>{
       this.templates = templates;
-    })
+    });
     // this.dataService.getTemplates().subscribe((templates: any) => {
     //   this.templates = templates;
     // });

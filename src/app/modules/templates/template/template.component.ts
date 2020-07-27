@@ -34,6 +34,7 @@ interface SelectInterface {
 export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() templateData: Template;
   @Output() updateTemplate = new EventEmitter();
+  @Output() cloneTemplates = new EventEmitter();
   @Output() onTagsUpdate = new EventEmitter();
 
   public isTagsFormValid: boolean;
@@ -148,7 +149,6 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
 
       reader.onload = (event: any) => {
         // called once readAsDataURL is completed
-        console.log(event.target.result);
         this.selectedTask.image = event.target.result;
 
         this.templateData.groups.forEach((_group: Group) => {
@@ -156,8 +156,6 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
             _group.items.forEach((_item: Item) => {
               if (_item.id === this.selectedTask.id) {
                 _item.image = this.selectedTask.image;
-                console.log(_item);
-                console.log('idkfdfbdsf');
               }
             });
           }
@@ -211,6 +209,7 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   goToDiscover() {
+    console.log(this.route);
     this.router.navigate(['./discover'], { relativeTo: this.route });
   }
 
@@ -269,9 +268,11 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     });
     // console.log('updated ', this.currTemplate);
     // this.templateData.groups = this.currTemplate.groups ? this.currTemplate.groups : [];
-    this.selectedTemplatesToImport = [];
+    this.selectedTemplatesToImport = []; 
+
+    this.cloneTemplates.emit({payload: null,  message: 'Template(s) Imported Successfully', type: 'success'});
     
-    this.updateTemplate.emit({payload: this.templateData, message: 'Template(s) Imported Successfully', type: 'success'});
+    //this.updateTemplate.emit({payload: this.templateData, message: 'Template(s) Imported Successfully', type: 'success'});
   }
 
   /**

@@ -21,7 +21,7 @@ export class EditTagComponent implements OnInit {
       configuredTags: this._formBuilder.array([this.addNewTag()]),
     });
 
-    if(this.tags.length > 0) {
+    if(this.tags && this.tags.length > 0) {
       this.configuredTags.removeAt(0);
       this.tags.forEach(_tag => this.configuredTags.push(this.addNewTag(_tag, 'auto')));
     }

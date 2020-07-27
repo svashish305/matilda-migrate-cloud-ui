@@ -17,11 +17,9 @@ import {
 } from '@angular/cdk/drag-drop';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { Router } from '@angular/router';
-import * as uuid from 'uuid';
 import { StatusCodes } from 'src/app/utils/enums/enums';
 import { Utilities } from 'src/app/utils/helpers/utilities';
 import { Item, Group } from 'src/app/utils/models/data.model';
-
 
 interface SelectInterface {
   value: string;
@@ -67,7 +65,7 @@ export class WaveListComponent implements OnInit {
   primaryColor: ThemePalette = 'primary';
 
   drag = true;
-  groupCollapseList: boolean[];
+  groupCollapseList: boolean[] = [];
 
   isMobile = false;
 
@@ -81,7 +79,6 @@ export class WaveListComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router
   ) {
-    this.groupCollapseList = [];
   }
 
   ngOnInit() {
@@ -89,23 +86,7 @@ export class WaveListComponent implements OnInit {
 
     this.selectedWorkflowType = this.workflowTypes[0].value;
 
-    this.getWaves();
-    this.getAccounts();
-
     this.isMobile = this.deviceService.isMobile();
-  }
-
-  getWaves() {
-    this.dataService.getWaves().subscribe((data: any[]) => {
-      this.rawwaves = data;
-      this.waves = data;
-    });
-  }
-
-  getAccounts() {
-    this.dataService.getAccounts().subscribe((data: any[]) => {
-      this.accounts = data;
-    });
   }
 
   getWorkflowType() {
@@ -113,14 +94,126 @@ export class WaveListComponent implements OnInit {
     return this.selectedWorkflowType;
   }
 
-  optionClicked(wfType) {
-    // this.waveData.type = wfType;
-    // this.dataService
-    //   .updateTemplate(this.waveData.id, this.waveData)
-    //   .subscribe((newWave: any) => {
-    //     console.log('new wave type ', newWave.type);
-    //   });
+  optionClicked(wfType: any) {
     this.updateGroupInfo.emit({ payload: this.waveData, message: 'Template Updated Successfully', type: 'success' });
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    let template: any = event.container.data[event.previousIndex];
+
+    if (!template) {
+      template = event.previousContainer.data[event.previousIndex];
+    }
+
+    console.log('order before drag ', template.order);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+
+    if (event.currentIndex === 0) {
+      if (event.container.data.length > 0) {
+        if (event.container.data.length !== event.currentIndex + 1) {
+          template.order =
+            0 + event.container.data[event.currentIndex + 1]['order'] / 2;
+        } else {
+          template.order = 100;
+        }
+      } else {
+        template.order = 100;
+      }
+    } else if (event.currentIndex === event.container.data.length - 1) {
+      template.order =
+        100 + event.container.data[event.container.data.length - 2]['order'];
+    } else {
+      template.order =
+        (event.container.data[event.currentIndex - 1]['order'] +
+          event.container.data[event.currentIndex + 1]['order']) /
+        2;
+    }
+    console.log('order after drag ', template.order);
+    this.updateGroupInfo.emit({ payload: this.waveData, message: 'Template Updated Successfully', type: 'success' });
+  }
+  
+  
+  dropGroup(event: CdkDragDrop<string[]>) {
+    let group: any = event.container.data[event.previousIndex];
+   console.log(group);
+
+    moveItemInArray(
+      this.waveData.groups,
+      event.previousIndex,
+      event.currentIndex
+    );
+
+    this.waveData.groups = [...this.waveData.groups];
+
+    if (event.currentIndex === 0) {
+      group.order = (0 + this.waveData.groups[1].order) / 2;
+    } else if (event.currentIndex === this.waveData.groups.length - 1) {
+      group.order =
+        100 +
+        this.waveData.groups[this.waveData.groups.length - 2].order;
+    } else {
+      group.order =
+        (this.waveData.groups[event.currentIndex - 1].order +
+          this.waveData.groups[event.currentIndex + 1].order) /
+        2;
+    }
+
+    console.log(this.waveData);
+
+    this.updateGroupInfo.emit({ payload: this.waveData, message: 'Group Updated Successfully', type: 'success' });
+  }
+
+  getConnectedList() {
+    return this.waveData.groups.map((x) => `${x.id}`);
+  }
+
+  loadTemplate(template: Item) {
+    this.router.navigate([
+      `workflows/${this.waveData.id}/templates/${template.id}`,
+    ]);
+  }
+
+  addTemplate(task: Item, group: Group) {
+    this.rowClicked.emit({ task: task, group: group });
+  }
+
+  deleteTemplate(group: Group, templateId: any) {
+    this.waveData.groups.forEach((_group) => {
+      if (_group.id === group.id) {
+        _group.items = _group.items.filter(_item => _item.id !== templateId);
+        this.updateGroupInfo.emit({ payload: this.waveData, message: 'Template Deleted Successfully', type: 'error' });
+      }
+    });
+  }
+
+  deleteGroup(group: Group) {
+    this.waveData.groups = this.waveData.groups.filter(_group => _group.id !== group.id);
+    this.updateGroupInfo.emit({ payload: this.waveData, message: 'Group Deleted Successfully', type: 'error' });
+  }
+
+  onFocusTitle() {
+  }
+
+  updateGroupTitle(group: Group) {
+    this.waveData.groups.filter(_group => {
+      if (_group.id === group.id) {
+        _group.name = group.name;
+      }
+    });
+    this.updateGroupInfo.emit({ payload: this.waveData, message: 'Group Updated Successfully', type: 'success' });
   }
 
   setBadgeBgColor(statusCode = 1) {
@@ -192,16 +285,6 @@ export class WaveListComponent implements OnInit {
     return { height };
   }
 
-  openDialog(template: TemplateRef<any>) {
-    const dialogRef = this.dialog.open(template, {
-      width: '36.1111111%',
-      height: '66.3333333%',
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
 
   openEditAccountModal(template: TemplateRef<any>, accountId) {
     this.dataService.getAccount(accountId).subscribe((res) => {
@@ -247,19 +330,10 @@ export class WaveListComponent implements OnInit {
     this.selectedTemplateInSidebar = template;
   }
 
-  /**
-   *
-   * @description triggers when resize is released
-   */
   onResizeEnd(event) {
-    console.log(event);
     this.appyResize(event);
   }
 
-  /**
-   *
-   * @description resizes the template details container
-   */
   appyResize(event?) {
     const wrapperWidth = document.getElementById('wave-content-id').offsetWidth;
     const templateHolder = document.getElementById('template-holder');
@@ -274,147 +348,16 @@ export class WaveListComponent implements OnInit {
     }
   }
 
-  /**
-   *
-   * @param edit - edit specifies whether user is editing or not
-   * @description opens or closes the template details
-   */
-  openDetails(edit) {
-    this.edit = edit;
-    if (!edit) {
-      this.showBackdrop = false;
-      this.waveData.groups.forEach((waveType) => {
-        waveType.templates.forEach((template) => {
-          template.selected = false;
-        });
-      });
-    }
-    setTimeout(() => {
-      this.appyResize();
-    }, 0);
-  }
-
-  /**
-   *
-   * @description Adds new group to wave
-   */
-  addNewGroup() {
-    console.log(this.waveList);
-    const id = Math.random().toString(6);
-    this.waveData.groups.unshift({
-      id: id,
-      name: 'New group',
-      theme: this.waveList.getRandomColor(),
-      edit: true,
-      templates: [],
-    });
-  }
-
-  /**
-   *
-   * @description generates new color for groups
-   */
   getRandomColor() {
     return '#' + Math.random().toString(16).substr(-6);
   }
 
-  /**
-   *
-   * @description reorders the template to other groups or within the groups
-   */
-  drop(event: CdkDragDrop<string[]>) {
-    let template: any = event.container.data[event.previousIndex];
-    console.log('order before drag ', template.order);
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
-
-    if (event.currentIndex === 0) {
-      if (event.container.data.length > 0) {
-        if (event.container.data.length !== event.currentIndex + 1) {
-          template.order =
-            0 + event.container.data[event.currentIndex + 1]['order'] / 2;
-        } else {
-          template.order = 100;
-        }
-      } else {
-        template.order = 100;
-      }
-    } else if (event.currentIndex === event.container.data.length - 1) {
-      template.order =
-        100 + event.container.data[event.container.data.length - 2]['order'];
-    } else {
-      template.order =
-        (event.container.data[event.currentIndex - 1]['order'] +
-          event.container.data[event.currentIndex + 1]['order']) /
-        2;
-    }
-    console.log('order after drag ', template.order);
-  }
-
-  /**
-   *
-   * @description reorders groups
-   */
-  mainDrop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(
-      this.waveData.groups,
-      event.previousIndex,
-      event.currentIndex
-    );
-  }
-
-  /**
-   *
-   * @param template - for which the details has to be shown
-   * @description emits event to open template details
-   */
-  rowClick(template: any) {
-    this.router.navigate([
-      `workflows/${this.waveData.id}/templates/${template.id}`,
-    ]);
-    // this.rowClicked.emit({task: template, group: null});
-    // console.log('row clicked');
-  }
-
-  /**
-   *
-   * @param waveType - for which new template has to be added
-   * @description Adds new template to group
-   */
-  addTemplate(task: Item, group: Group) {
-    this.rowClicked.emit({ task: task, group: group });
-  }
-
-  removeTemplate(group: Group, templateId: any) {
-    //waveType.items = waveType.items.filter((item) => item.id !== templateId);
-    this.waveData.groups.forEach((_group) => {
-      if (_group.id === group.id) {
-        _group.items = _group.items.filter(_item => _item.id !== templateId);
-        this.updateGroupInfo.emit({ payload: this.waveData, message: 'Template Deleted Successfully', type: 'error' });
-      }
-    });
-  }
+ 
 
   templateSettings(waveType, templateId, event) {
     event.stopPropagation();
   }
 
-  /**
-   *
-   * @description clears entered template name and hides add button
-   */
   inputFocusOut(event, waveType) {
     setTimeout(() => {
       waveType.showAdd = false;
@@ -422,64 +365,6 @@ export class WaveListComponent implements OnInit {
     }, 200);
   }
 
-  /**
-   *
-   * @description passes the ids of groups to angular material to make them reorderable
-   */
-  getConnectedList() {
-    return this.waveData.groups.map((x) => `${x.id}`);
-  }
-
-  /**
-   *
-   * @description reorders the dragged group
-   */
-  dropGroup(event: CdkDragDrop<string[]>) {
-    let group: any = event.container.data[event.previousIndex];
-    console.log('group order before drag ', group.order);
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
-
-    if (event.currentIndex === 0) {
-      if (event.container.data.length > 0) {
-        if (event.container.data.length !== event.currentIndex + 1) {
-          group.order =
-            0 + event.container.data[event.currentIndex + 1]['order'] / 2;
-        } else {
-          group.order = 100;
-        }
-      } else {
-        group.order = 100;
-      }
-    } else if (event.currentIndex === event.container.data.length - 1) {
-      group.order =
-        100 + event.container.data[event.container.data.length - 2]['order'];
-    } else {
-      group.order =
-        (event.container.data[event.currentIndex - 1]['order'] +
-          event.container.data[event.currentIndex + 1]['order']) /
-        2;
-    }
-    console.log('group order after drag ', group.order);
-  }
-
-  /**
-   *
-   * @param waveType - for which actions has to be opened
-   * @description shows group level actions
-   */
   openGroupLevelActions(waveType) {
     waveType.openActions = !waveType.openActions;
     this.waveData.groups.forEach((type) => {
@@ -489,42 +374,11 @@ export class WaveListComponent implements OnInit {
     });
   }
 
-  /**
-   *
-   * @param waveType - which is being deleted
-   * @description resizes the template details container
-   */
-  deleteGroup(waveType) {
-    this.waveData.groups = this.waveData.groups.filter((Type) => {
-      return waveType.id !== Type.id;
-    });
-  }
 
-  /**
-   *
-   * @param waveType of template which is being deleted and template
-   * @description deletes template of group
-   */
-  deleteTemplate(waveType, template) {
-    waveType.templates = waveType.templates.filter((temp) => {
-      return template.id !== temp.id;
-    });
-  }
-
-  /**
-   *
-   * @param template and status - nely changed status
-   * @description changes  status of template
-   */
   changeStatus(template, status) {
     template.status = status;
   }
 
-  /**
-   *
-   * @param template- template to getcllas for status should be passed
-   * @description get class to apply color to status column depending on status
-   */
   getStatusClass(template) {
     let className;
     if (template.status === 'Working on it') {
@@ -549,11 +403,6 @@ export class WaveListComponent implements OnInit {
     return className;
   }
 
-  /**
-   *
-   * @param template - template for which status list has to be shown
-   * @description shows status list to change status of passed template
-   */
   showStatuses($event, template) {
     template.showStatus = !template.showStatus;
     $event.stopPropagation();

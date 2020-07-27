@@ -7,11 +7,6 @@ import {
   EventEmitter,
   Output,
 } from '@angular/core';
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
 import { ResizeEvent } from 'angular-resizable-element';
 import { DataService } from 'src/services/data.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
@@ -88,20 +83,15 @@ export class WaveComponent implements OnInit, AfterViewInit {
     private deviceService: DeviceDetectorService,
     private _utilities: Utilities,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getAccounts();
-    this.getWaves();
 
     this.route.params.subscribe((params: any) => {
       this.waveId = params.id;
     });
-    // +this.dataService.getWave(this.waveId).subscribe((currentWorkflow: any) => {
-    //   this.currWave = currentWorkflow;
-    //   this.currWaveTags = currentWorkflow.tags;
-    // });
-
+  
     this.isMobile = this.deviceService.isMobile();
     this.isTablet = this.deviceService.isTablet();
     this.isDesktop = this.deviceService.isDesktop();
@@ -111,15 +101,6 @@ export class WaveComponent implements OnInit, AfterViewInit {
     this.appyResize();
   }
 
-  /**
-   *
-   * @description gets list of Waves and calls first wave details
-   */
-  getWaves() {
-    this.dataService.getWaves().subscribe((data: any[]) => {
-      this.waves = data;
-    });
-  }
 
   /**
    *
@@ -132,16 +113,16 @@ export class WaveComponent implements OnInit, AfterViewInit {
   }
 
   changeAvatar(event: any) {
+    console.log(this.waveData);
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
 
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
-      reader.onload = (event: any) => { 
+      reader.onload = (event: any) => {
         // called once readAsDataURL is completed
-        //this.waveAvatarUrl = event.target.result;
         this.waveData.image = event.target.result;
-        console.log(this.waveData);
+        console.log( this.waveData.image);
         this.updateWorkflow.emit({ payload: this.waveData, message: 'Workflow Icon Updated Successfully', type: 'success' });
       };
     }
@@ -152,37 +133,13 @@ export class WaveComponent implements OnInit, AfterViewInit {
     this.updateWorkflow.emit({ payload: this.waveData, message: 'Workflow Icon Deleted Successfully', type: 'error' });
   }
 
-  uploadFile(file) {
-    this.dataService.upload(file).subscribe(
-      (res: any) => {
-        console.log('file uploaded as', res);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
-
   onCheck(event) {
     event.stopPropagation();
   }
 
-  // updateTags(event: any) {
-  //   this.currWave.tags = event;
-  //   this.dataService
-  //     .updateWave(this.waveId, this.currWave)
-  //     .subscribe((newWave: any) => {
-  //       console.log('updated template ', newWave);
-  //       this.waveData = newWave;
-  //       this.currWave = newWave; 
-  //     });
-  // }
-
   updateTags(event: any) {
     this.isTagsFormValid = !event.valid;
     this.waveData.tags = event.tags;
-    // this.updateTemplate.emit({ payload: this.templateData, message: 'Tags Updated Successfully'});
-    //this.onTagsUpdate.emit({ payload: event.tags, message: 'Tags Updated Successfully', type: 'success' });
   }
 
   saveTags() {
@@ -201,8 +158,8 @@ export class WaveComponent implements OnInit, AfterViewInit {
     // setTimeout(() =>{
     //   this.templateList.focusNewGroup();
     // },0);
-    
-    
+
+
     this.updateWorkflow.emit({ payload: this.waveData, message: 'Group Added Successfully', type: 'success' });
   }
 
@@ -279,13 +236,13 @@ export class WaveComponent implements OnInit, AfterViewInit {
   openTaskDetails(payload: any) {
     let task: Item = payload.task;
     let group: Group = payload.group;
-    if(!task) {
+    if (!task) {
       let _task = new Item();
       _task.id = this._utilities.generateId();
       _task.name = 'Untitled Template' + '_' + _task.id;
       _task.groupId = group.id;
       _task.order = group.items.length >= 1 ? group.items[group.items.length - 1].order + 100 : 100;
-  
+
       this.waveData.groups.forEach((_group: Group) => {
         if (_group.id === group.id) {
           _group.items.push(_task);
@@ -301,22 +258,6 @@ export class WaveComponent implements OnInit, AfterViewInit {
     this.updateWorkflow.emit(payload);
   }
 
-  /**
-   *
-   * @description Adds new group to wave
-   */
-  addNewGroup() {
-    console.log(this.waveList);
-    const id = Math.random().toString(6);
-    // this.waveData.data.waveTypes.unshift({
-    //   id: id,
-    //   name: 'New group',
-    //   theme: this.waveList.getRandomColor(),
-    //   edit: true,
-    //   templates: [],
-    // });
-  }
-
   onFocusTitle() {
     this.titleState = 'editing';
   }
@@ -327,12 +268,10 @@ export class WaveComponent implements OnInit, AfterViewInit {
       // update title
       const newTemplate = {
         title: this.newTitle,
-        ...this.waveData, 
+        ...this.waveData,
       };
-      // this.dataService
-      //   .updateTemplate(newTemplate)
-      //   .subscribe((res: any) => console.log(res));
     }
+
     this.updateWorkflow.emit({ payload: this.waveData, message: 'Workflow Updated Successfully', type: 'success' });
   }
 
@@ -348,9 +287,6 @@ export class WaveComponent implements OnInit, AfterViewInit {
         description: this.newDescription,
         ...this.waveData,
       };
-      // this.dataService
-      //   .updateTemplate(newTemplate)
-      //   .subscribe((res: any) => console.log(res));
     }
 
     this.updateWorkflow.emit({ payload: this.waveData, message: 'Workflow Updated Successfully', type: 'success' });
@@ -364,44 +300,6 @@ export class WaveComponent implements OnInit, AfterViewInit {
     return '#' + Math.random().toString(16).substr(-6);
   }
 
-  /**
-   *
-   * @description reorders the template to other groups or within the groups
-   */
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
-  }
-
-  /**
-   *
-   * @description reorders groups
-   */
-  mainDrop(event: CdkDragDrop<string[]>) {
-    // moveItemInArray(
-    //   this.waveData.data.waveTypes,
-    //   event.previousIndex,
-    //   event.currentIndex
-    // );
-  }
-
-  /**
-   *
-   * @param template - for which the details has to be shown
-   * @description emits event to open template details
-   */
   rowClick(template) {
     // this.waveData.data.waveTypes.forEach((waveType) => {
     //   waveType.templates.forEach((t) => {
@@ -410,31 +308,8 @@ export class WaveComponent implements OnInit, AfterViewInit {
     // });
     template.selected = true;
     this.rowClicked.emit(true);
-    console.log('row clicked');
   }
 
-  /**
-   *
-   * @param waveType - for which new template has to be added
-   * @description Adds new template to group
-   */
-  addTemplate(waveType) {
-    const id = Math.random().toString(6);
-
-    waveType.templates.push({
-      id: id,
-      name: waveType.newTemplate,
-      status: '',
-      startDate: '',
-      endDate: '',
-    });
-    waveType.newTemplate = '';
-  }
-
-  /**
-   *
-   * @description clears entered template name and hides add button
-   */
   inputFocusOut(event, waveType) {
     setTimeout(() => {
       waveType.showAdd = false;
@@ -442,43 +317,12 @@ export class WaveComponent implements OnInit, AfterViewInit {
     }, 200);
   }
 
-  /**
-   *
-   * @param waveType for which name has to be edited
-   * @description make group name editable on hover
-   */
   groupNameEnter(waveType) {
-   // this.waveData.data.waveTypes.forEach((wave) => (wave.edit = false));
+    // this.waveData.data.waveTypes.forEach((wave) => (wave.edit = false));
     waveType.edit = true;
     waveType.drag = true;
   }
 
-  /**
-   *
-   * @description passes the ids of groups to angular material to make them reorderable
-   */
-  getConnectedList() {
-    return null;
-    //this.waveData.data.waveTypes.map((x) => `${x.id}`);
-  }
-
-  /**
-   *
-   * @description reorders the dragged group
-   */
-  dropGroup(event: CdkDragDrop<string[]>) {
-    // moveItemInArray(
-    //   this.waveData.data.waveTypes,
-    //   event.previousIndex,
-    //   event.currentIndex
-    // );
-  }
-
-  /**
-   *
-   * @param waveType - for which actions has to be opened
-   * @description shows group level actions
-   */
   openGroupLevelActions(waveType) {
     waveType.openActions = !waveType.openActions;
     // this.waveData.data.waveTypes.forEach((type) => {
@@ -488,44 +332,11 @@ export class WaveComponent implements OnInit, AfterViewInit {
     // });
   }
 
-  /**
-   *
-   * @param waveType - which is being deleted
-   * @description resizes the template details container
-   */
-  deleteGroup(waveType) {
-    // this.waveData.data.waveTypes = this.waveData.data.waveTypes.filter(
-    //   (Type) => {
-    //     return waveType.id !== Type.id;
-    //   }
-    // );
-  }
 
-  /**
-   *
-   * @param waveType of template which is being deleted and template
-   * @description deletes template of group
-   */
-  deleteTemplate(waveType, template) {
-    waveType.templates = waveType.templates.filter((temp) => {
-      return template.id !== temp.id;
-    });
-  }
-
-  /**
-   *
-   * @param template and status - nely changed status
-   * @description changes  status of template
-   */
   changeStatus(template, status) {
     template.status = status;
   }
 
-  /**
-   *
-   * @param template- template to getcllas for status should be passed
-   * @description get class to apply color to status column depending on status
-   */
   getStatusClass(template) {
     let className;
     if (template.status === 'Working on it') {
@@ -550,11 +361,6 @@ export class WaveComponent implements OnInit, AfterViewInit {
     return className;
   }
 
-  /**
-   *
-   * @param template - template for which status list has to be shown
-   * @description shows status list to change status of passed template
-   */
   showStatuses($event, template) {
     template.showStatus = !template.showStatus;
     $event.stopPropagation();
