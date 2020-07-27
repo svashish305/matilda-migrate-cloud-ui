@@ -111,7 +111,16 @@
                 }"
               >
                 <div class="group-name common-text">
-                  {{ group.name }}
+                  <input
+                    class="description-styles"
+                    (click)="$event.target.select()"
+                    (focus)="onFocusTitle()"
+                    (keydown.enter)="
+                      $event.preventDefault() && updateGroupTitle(); $event.target.blur()
+                    "
+                    (blur)="updateGroupTitle()"
+                    [(ngModel)]="newGroupTitle ? newGroupTitle : group.name"
+                  />
                 </div>
               </div>
             </div>

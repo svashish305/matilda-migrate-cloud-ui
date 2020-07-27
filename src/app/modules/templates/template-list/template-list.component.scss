@@ -2116,3 +2116,23 @@
   width: 100px !important;
   margin-left: 8px !important;
 }
+
+.description-styles {
+  overflow: hidden;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  border: solid 1.5px transparent;
+  border-radius: 4px;
+  text-overflow: ellipsis;
+  width: 100px;
+}
+
+.description-styles:hover {
+  border-color: lightgray;
+}
+
+.description-styles:focus {
+  border-radius: 4px !important;
+  border-color: #1a73e8;
+}

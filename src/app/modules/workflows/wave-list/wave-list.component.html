@@ -100,7 +100,16 @@
               <!-- group level actions ends -->
               <div class="group-name-wrapper">
                 <div class="group-name common-text">
-                  {{ waveType.name }}
+                  <input
+                    class="description-styles"
+                    (click)="$event.target.select()"
+                    (focus)="onFocusTitle()"
+                    (keydown.enter)="
+                      $event.preventDefault() && updateGroupTitle(); $event.target.blur()
+                    "
+                    (blur)="updateGroupTitle()"
+                    [(ngModel)]="newGroupTitle ? newGroupTitle : waveType.name"
+                  />
                 </div>
               </div>
             </div>
