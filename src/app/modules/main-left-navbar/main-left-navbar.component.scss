@@ -239,7 +239,6 @@
     bottom: 0;
   }
 }
-
 // common styles
 .mobile-logo-header-padding {
   padding: 18px 16px 18px 17px !important;
@@ -291,4 +290,18 @@
   width: 26px !important;
   height: 26px !important;
   opacity: 1 !important;
+}
+.logo__wrapper button.migrate-section.mat-button.mat-button-base{
+  padding: 0px;
+  width: 100%;
+}
+.logo__wrapper ::ng-deep .mat-button-wrapper{
+  display: flex;
+    padding: 14px;
+    width: 100%;
+}
+@media (min-width: 768px){
+  .sidenav__wrapper:hover .collapse .logo__wrapper{
+    padding: 0px !important;
+  }
 }

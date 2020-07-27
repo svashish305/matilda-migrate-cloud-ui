@@ -248,7 +248,7 @@
           alt=""
           [ngStyle]="isSelected(hubSelected)"
         />
-        <div class="migrate-section">
+        <button mat-button class="migrate-section">
           <img
             class="logo icon-extra"
             [src]="
@@ -264,7 +264,7 @@
             [ngStyle]="setActiveColor(hubSelected)"
             >Hub</span
           >
-        </div>
+        </button>
       </div>
       <div
         (click)="
@@ -286,7 +286,7 @@
           alt=""
           [ngStyle]="isSelected(templateSelected)"
         />
-        <div class="migrate-section">
+        <button mat-button class="migrate-section">
           <img
             class="logo img-size"
             [src]="
@@ -300,7 +300,7 @@
           <span class="menu-text" [ngStyle]="setActiveColor(templateSelected)"
             >Template</span
           >
-        </div>
+        </button>
       </div>
       <div
         (click)="
@@ -322,7 +322,7 @@
           alt=""
           [ngStyle]="workflowIsSelected()"
         />
-        <div class="migrate-section">
+        <button mat-button class="migrate-section">
           <img
             class="logo img-size"
             [src]="
@@ -336,16 +336,16 @@
           <span class="menu-text" [ngStyle]="setActiveColor(workflowSelected)"
             >Workflow</span
           >
-        </div>
+        </button>
       </div>
     </div>
 
     <!-- remaining logos in left sidebar end -->
 
-    <!-- <mat-divider class="divider-bottom"></mat-divider> -->
+    <mat-divider class="divider-bottom"></mat-divider>
 
-    <!-- <div class="logo__wrapper padding-17 logout-icon">
+    <div class="logo__wrapper padding-17 logout-icon">
       <img class="logo logout-pos" src="assets/imgs/group-8.svg" alt="" />
-    </div> -->
+    </div>
   </div>
 </div>

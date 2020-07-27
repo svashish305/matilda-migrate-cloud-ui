@@ -59,8 +59,7 @@
     <div
       class="templates__inner__wrapper"
       *ngFor="
-        let group of templateData.groups
-          | nestedTemplateSearch: searchKey;
+        let group of templateData.groups | nestedTemplateSearch: searchKey;
         let i = index
       "
       cdkDropListGroup
@@ -112,12 +111,24 @@
               >
                 <div class="group-name common-text">
                   <input
+<<<<<<< HEAD
                   class="group-styles group-title-font"
                   (click)="$event.target.select()"
                   (focus)="onFocusTitle()"
                   (keydown.enter)="updateGroupTitle(group)"
                   [(ngModel)]="newTitle ? newTitle : group.name"
                 />
+=======
+                    class="description-styles"
+                    (click)="$event.target.select()"
+                    (focus)="onFocusTitle()"
+                    (keydown.enter)="
+                      $event.preventDefault() && updateGroupTitle(); $event.target.blur()
+                    "
+                    (blur)="updateGroupTitle()"
+                    [(ngModel)]="newGroupTitle ? newGroupTitle : group.name"
+                  />
+>>>>>>> merge-styles-discover
                 </div>
               </div>
             </div>
@@ -279,12 +290,47 @@
             >
               <div class="template-name">
                 <div class="border-white template-name-main">
+                  <img
+                    *ngIf="task.type; else avatar"
+                    [src]="
+                      task.type == 'folder'
+                        ? 'assets/imgs/folder.svg'
+                        : 'assets/imgs/file.svg'
+                    "
+                    class="right-padding-half-rem"
+                  />
+                  <ng-template #avatar>
+                    <div class="right-padding-half-rem">
+                      <ngx-avatar
+                        *ngIf="taskAvatarUrl; else initialsAvatar"
+                        [src]="taskAvatarUrl"
+                        class="flex-center"
+                        name="{{ templateData.name }}"
+                        initialsSize="2"
+                        [size]="18"
+                      >
+                      </ngx-avatar>
+                      <ng-template #initialsAvatar>
+                        <ngx-avatar
+                          name="{{ task.name }}"
+                          initialsSize="2"
+                          [size]="20"
+                        ></ngx-avatar>
+                      </ng-template>
+                    </div>
+                  </ng-template>
+
                   <span
                     [ngClass]="{
                       'mobile-text': isMobile,
                       'common-text': !isMobile
+<<<<<<< HEAD
                     }"  (click)="loadTask(task, group)"
                     class="cell-text"
+=======
+                    }"
+                    class="cell-text handle-text-overflow" matTooltip="{{task.name}}"
+>>>>>>> merge-styles-discover
                     >{{ task.name }}</span
                   >
                 </div>

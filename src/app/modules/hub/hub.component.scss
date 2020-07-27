@@ -8,12 +8,12 @@
   // #hub-tab::ng-deep.mat-tab-label {
   //   margin-top: 0;
   // }
-  #hub-tab::ng-deep.mat-tab-header{
+  #hub-tab::ng-deep.mat-tab-header {
     position: absolute;
-    z-index:100000;
+    z-index: 3; //100000;
   }
-  .tab-content{
-    margin-top: 60px
+  .tab-content {
+    margin-top: 60px;
   }
   #hub-tab::ng-deep.mat-tab-label .mat-tab-label-content {
     font-family: LatoMedium;
@@ -27,6 +27,10 @@
   //   min-width: 7.313em !important;
   //   margin-top: 2.313em;
   // }
+
+  #hub-tab::ng-deep .mat-tab-body-content {
+    overflow-x: hidden !important;
+  }
 
   #mat-search ::ng-deep .mat-form-field-underline {
     background-color: var(--btn-lightgray-border);
@@ -156,6 +160,7 @@
     position: absolute;
     bottom: 2.5em;
     left: 4.75em;
+    width: 16rem;
   }
 
   .workflow-state-img {
@@ -214,16 +219,16 @@
 @media only screen and (min-width: 427px) {
   .hub-container {
     margin: 0 40px 0 24px; //40
-  }  
+  }
   // #hub-tab {
   //   z-index: 1;
   // }
-  #hub-tab::ng-deep.mat-tab-header{
+  #hub-tab::ng-deep.mat-tab-header {
     position: absolute;
-    z-index:100000;
+    z-index: 3; //100000;
   }
-  .tab-content{
-    margin-top: 60px
+  .tab-content {
+    margin-top: 60px;
   }
   #hub-tab::ng-deep.mat-tab-label .mat-tab-label-content {
     font-family: LatoMedium;
@@ -237,6 +242,10 @@
   //   min-width: 7.313em !important;
   //   margin-top: 2.313em;
   // }
+
+  #hub-tab::ng-deep .mat-tab-body-content {
+    overflow: hidden !important;
+  }
 
   #mat-search ::ng-deep .mat-form-field-underline {
     background-color: var(--btn-lightgray-border);
@@ -339,10 +348,38 @@
     width: 20px;
   }
 
-  @media only screen and (max-width: 1060px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 0fr);
+    position: relative;
+    right: 0.7em;
+    bottom: 1.125em;
+  }
+
+  @media only screen and (max-width: 768px) {
     .grid-container {
       display: grid;
-      grid-template-columns: auto;
+      grid-template-columns: 1fr;
+      position: relative;
+      right: 0.7em;
+      bottom: 1.125em;
+    }
+  }
+
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      position: relative;
+      right: 0.7em;
+      bottom: 1.125em;
+    }
+  }
+
+  @media only screen and (min-width: 1025px) and (max-width: 1060px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
       position: relative;
       right: 0.7em;
       bottom: 1.125em;
@@ -372,7 +409,17 @@
   @media only screen and (min-width: 1441px) and (max-width: 1980px) {
     .grid-container {
       display: grid;
-      grid-template-columns: 1fr 2fr 3fr;
+      grid-template-columns: 1fr 1fr 3fr;
+      position: relative;
+      right: 0.7em;
+      bottom: 1.125em;
+    }
+  }
+
+  @media only screen and (min-width: 1981px) and (max-width: 2560px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 0fr);
       position: relative;
       right: 0.7em;
       bottom: 1.125em;
@@ -390,6 +437,7 @@
     position: absolute;
     bottom: 2.5em;
     left: 4.1em;
+    width: 18rem;
   }
 
   .workflow-state-img {

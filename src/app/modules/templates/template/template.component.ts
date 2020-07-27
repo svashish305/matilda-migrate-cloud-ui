@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { DataService } from 'src/services/data.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import * as uuid from 'uuid';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -78,6 +78,7 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
     private location: Location,
@@ -202,6 +203,10 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
 
   goBack() {
     this.location.back();
+  }
+
+  goToDiscover() {
+    this.router.navigate(['./discover'], { relativeTo: this.route });
   }
 
   updateTags(event: any) {

@@ -100,7 +100,16 @@
               <!-- group level actions ends -->
               <div class="group-name-wrapper">
                 <div class="group-name common-text">
-                  {{ waveType.name }}
+                  <input
+                    class="description-styles"
+                    (click)="$event.target.select()"
+                    (focus)="onFocusTitle()"
+                    (keydown.enter)="
+                      $event.preventDefault() && updateGroupTitle(); $event.target.blur()
+                    "
+                    (blur)="updateGroupTitle()"
+                    [(ngModel)]="newGroupTitle ? newGroupTitle : waveType.name"
+                  />
                 </div>
               </div>
             </div>
@@ -158,9 +167,9 @@
 
             <div *ngIf="!groupCollapseList[i]" class="stage-list-subheader">
               <div class="stage-name-width">
-                <span class="medium-text list-header-text">Name</span>
+                <span class="medium-text list-header-text pos-name">Name</span>
               </div>
-              <div class="flex-lay">
+              <div class="flex-lay right-headers">
                 <div *ngIf="!isMobile" class="cell-width">
                   <span class="medium-text list-header-text">Status</span>
                 </div>
@@ -210,10 +219,29 @@
             >
               <div class="template-name">
                 <div class="border-white template-name-main">
+                  <div class="right-padding-half-rem">
+                    <ngx-avatar
+                      *ngIf="templateAvatarUrl; else initialsAvatar"
+                      [src]="templateAvatarUrl"
+                      class="flex-center"
+                      name="{{ template.name }}"
+                      initialsSize="2"
+                      [size]="18"
+                    >
+                    </ngx-avatar>
+                    <ng-template #initialsAvatar>
+                      <ngx-avatar
+                        name="{{ template.name }}"
+                        initialsSize="2"
+                        [size]="20"
+                      ></ngx-avatar>
+                    </ng-template>
+                  </div>
+
                   <span class="cell-text common-text">{{ template.name }}</span>
                 </div>
               </div>
-              <div class="flex-lay">
+              <div class="flex-lay right-cols">
                 <div
                   *ngIf="!isMobile"
                   class="border-white template-status"

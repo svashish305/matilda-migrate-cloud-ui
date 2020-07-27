@@ -53,6 +53,7 @@ export class TemplateListComponent implements OnInit {
   showAction = false;
 
   statusCodes = StatusCodes;
+  taskAvatarUrl: any = '';
 
   constructor(
     private deviceService: DeviceDetectorService,

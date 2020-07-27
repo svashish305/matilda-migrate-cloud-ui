@@ -72,6 +72,7 @@ export class WaveListComponent implements OnInit {
   isMobile = false;
 
   statusCodes = StatusCodes;
+  templateAvatarUrl: any = '';
 
   constructor(
     private dataService: DataService,

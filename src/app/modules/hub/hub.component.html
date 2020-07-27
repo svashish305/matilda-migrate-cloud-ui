@@ -35,7 +35,7 @@
               </form>
             </div>
           </div>
-        </div>  
+        </div>
         <div class="all-templates">
           <div>
             <div
@@ -60,7 +60,7 @@
                 alt=""
               />
             </div>
-  
+
             <div *ngIf="!isTemplateFavouritesCollapsed" class="grid-container">
               <mat-card *ngFor="let favTemplate of favTemplates; let i = index" class="mat-elevation-z8">
                 <div>
@@ -81,7 +81,7 @@
                       alt="mark as favourite"
                     />
                   </a>
-                  <span class="bold-text template-title">{{
+                  <span class="bold-text template-title handle-text-overflow" matTooltip="{{favTemplate.name}}">{{
                     favTemplate.name
                   }}</span>
                   <span class="badge badge-pill badge-custom template-status">{{
@@ -98,7 +98,7 @@
               </mat-card>
             </div>
           </div>
-  
+
           <div class="set-margin-top">
             <div
               class="set-margin-bottom"
@@ -120,7 +120,7 @@
                 alt=""
               />
             </div>
-  
+
             <div *ngIf="!isTemplateCollapsed" class="grid-container">
               <mat-card class="mat-elevation-z8"
                 *ngFor="let template of templates | search: searchKey"
@@ -143,7 +143,7 @@
                       alt="mark as favourite"
                     />
                   </a>
-                  <span class="bold-text template-title">{{
+                  <span class="bold-text template-title handle-text-overflow" matTooltip="{{template.name}}">{{
                     template.name
                   }}</span>
                   <span
@@ -163,7 +163,7 @@
             </div>
           </div>
         </div>
-      </div>     
+      </div>
     </mat-tab>
     <mat-tab label="Workflow">
       <div class="tab-content">
@@ -194,7 +194,7 @@
               </form>
             </div>
           </div>
-        </div>   
+        </div>
         <div class="all-templates">
           <div>
             <div
@@ -219,7 +219,7 @@
                 alt=""
               />
             </div>
-  
+
             <div *ngIf="!isWorkflowFavouritesCollapsed" class="grid-container">
               <mat-card *ngFor="let favWorkflow of favWorkflows" class="mat-elevation-z8">
                 <div>
@@ -239,7 +239,7 @@
                       alt="mark as favourite"
                     />
                   </a>
-                  <span class="bold-text template-title">{{
+                  <span class="bold-text template-title handle-text-overflow" matTooltip="{{favWorkflow.name}}">{{
                     favWorkflow.name
                   }}</span>
                   <img
@@ -261,7 +261,7 @@
               </mat-card>
             </div>
           </div>
-  
+
           <div class="set-margin-top">
             <div
               class="set-margin-bottom"
@@ -283,7 +283,7 @@
                 alt=""
               />
             </div>
-  
+
             <div *ngIf="!isWorkflowCollapsed" class="grid-container">
               <mat-card class="mat-elevation-z8"
                 *ngFor="let workflow of workflows | search: searchKey"
@@ -306,7 +306,7 @@
                       alt="mark as favourite"
                     />
                   </a>
-                  <span class="bold-text template-title">{{
+                  <span class="bold-text template-title handle-text-overflow" matTooltip="{{workflow.name}}">{{
                     workflow.name
                   }}</span>
                   <img
@@ -331,7 +331,7 @@
             </div>
           </div>
         </div>
-      </div>     
+      </div>
     </mat-tab>
   </mat-tab-group>
 </div>
