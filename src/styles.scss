@@ -111,6 +111,12 @@ body {
   cursor: move;
 }
 
+.handle-text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .common-text {
   font-family: LatoRegular;
   font-size: 0.875em;
