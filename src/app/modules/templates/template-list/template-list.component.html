@@ -166,38 +166,30 @@
                 >
               </div>
             </div>
-            <button
-
-            mat-button
-            [matMenuTriggerFor]="stageDropdown"
-          >
-          <img
-          [ngClass]="{
-            'stage-option-collapsed': groupCollapseList[i],
-            'stage-option': !groupCollapseList[i]
-          }"
-          src="assets/imgs/vEllipsis.svg"
-          alt="stage-options"
-        />
-
-          </button>
-          <mat-menu
-            id="stage-dd"
-            #stageDropdown="matMenu"
-            xPosition="before"
-            yPosition="below"
-          >
-            <div>
-              <button mat-menu-item (click)="deleteGroup(group)">
-                <img
-                class="icon-usersettings"
-              src="assets/imgs/delete.svg"
-              alt=""
-            />
-                <span>Delete</span>
-              </button>
-            </div>
-          </mat-menu>
+            <button mat-button [matMenuTriggerFor]="stageDropdownHighLevel">
+              <img
+              [ngClass]="{
+                'stage-option-collapsed': groupCollapseList[i],
+                'stage-option': !groupCollapseList[i]
+              }"
+              src="assets/imgs/vEllipsis.svg"
+              alt="stage-options"
+              />
+            </button>
+            <mat-menu
+              #stageDropdownHighLevel="matMenu"
+            >
+              <div>
+                <button mat-menu-item (click)="deleteGroup(group)">
+                  <img
+                  class="icon-usersettings"
+                src="assets/imgs/delete.svg"
+                alt=""
+              />
+                  <span>Delete</span>
+                </button>
+              </div>
+            </mat-menu>
 
             <div *ngIf="!groupCollapseList[i]" class="stage-list-subheader">
               <div class="stage-name-width">
