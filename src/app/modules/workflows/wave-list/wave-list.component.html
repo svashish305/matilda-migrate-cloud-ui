@@ -76,7 +76,7 @@
             [ngStyle]="toggleWorkflowHeight(groupCollapseList[i])"
           >
             <div class="template-name">
-              <div class="group-drag" [ngClass]="{ 'do-not-show': !drag }">
+              <div class="group-drag" [ngClass]="{ 'do-not-show': !drag, collapsed: groupCollapseList[i] }">
                 <img
                   class="move-cursor"
                   src="assets/imgs/dragIcon-2.svg"
@@ -98,7 +98,10 @@
                 />
               </div>
               <!-- group level actions ends -->
-              <div class="group-name-wrapper">
+              <div [ngClass]="{
+                'group-name-wrapper-collapsed': groupCollapseList[i],
+                'group-name-wrapper': !groupCollapseList[i]
+              }">
                 <div class="group-name common-text">
                   <input
                     class="description-styles"
