@@ -7661,7 +7661,7 @@
       "name": "Untitled Template",
       "desc": "Template Description",
       "ver": "templateVersionNumber",
-      "type": "NONE/TRIGGER/EVENT",
+      "type": "trigger",
       "owner": "TEMPLATE OWNER",
       "progress": 10,
       "status": "Defined",
@@ -8066,6 +8066,74 @@
               "id": "778095e4-1255-4959-9b8a-c4bb7dd30ee5",
               "type": "file",
               "name": "config.yaml"
+            }
+          ]
+        },
+        {
+          "id": "19932a60-a3eb-4a68-95d7-040ca1fbf244",
+          "name": "Test Group",
+          "order": 100,
+          "status": "Defined",
+          "statusCode": 1,
+          "progress": 10,
+          "items": [
+            {
+              "id": 123,
+              "name": "Untitled Task_dadfadfafSD-ADASGAFDSFS-sdfsdfsdfs",
+              "description": "TaskDescription",
+              "order": 100,
+              "pluginName": "AWS",
+              "pluginId": 1,
+              "serviceId": "1",
+              "actionId": "1",
+              "serviceName": "vm",
+              "actionName": "Create",
+              "keyVault": {
+                "id": 1,
+                "name": "AWS"
+              },
+              "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
+              "output": null,
+              "startDate": "6/1/2020",
+              "endDate": "12/11/2020",
+              "duration": null,
+              "dependencies": [
+                {
+                  "groupId": 1234,
+                  "taskId": 345345,
+                  "mode": "before"
+                }
+              ],
+              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
+            },
+            {
+              "id": 456,
+              "name": "Untitled Task_dadfadfafSD-ADASGAFDSFS-sdfgewfdsvngf",
+              "description": "TaskDescription",
+              "order": 100,
+              "pluginName": "AWS",
+              "pluginId": 1,
+              "serviceId": "1",
+              "actionId": "1",
+              "serviceName": "vm",
+              "actionName": "Create",
+              "keyVault": {
+                "id": 1,
+                "name": "AWS"
+              },
+              "input": "{\"select_account\":\"1\",\"stackname\":\"fgjdgfhg\",\"instance_name\":\"ghh\",\"keyname\":\"gghgh\",\"instance\":\"hhkvh\",\"zone\":\"hgjh\",\"vpc\":\"hg\",\"subnet\":\"ghg\",\"security\":\"ghgjhhgh\",\"security_allowed\":\"hgj\",\"ami\":\"hg\"}",
+              "output": null,
+              "startDate": "6/1/2020",
+              "endDate": "12/11/2020",
+              "duration": null,
+              "dependencies": [
+                {
+                  "groupId": 1234,
+                  "taskId": 345345,
+                  "mode": "before"
+                }
+              ],
+              "notification": "{\"type\":\"email/hook\",\"id\":\"1\",\"payload\":\"emailid/url\"}"
             }
           ]
         }
