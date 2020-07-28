@@ -3391,9 +3391,15 @@
   width: 57px;
 }
 
+.status-margin-collapsed{
+  margin-right: 57px;
+}
+
 .list-percent-text {
   margin: 2px 0 0 8px;
   min-width: fit-content;
+  width: 30px;
+  text-align: end;
 }
 
 .list-header-text {
