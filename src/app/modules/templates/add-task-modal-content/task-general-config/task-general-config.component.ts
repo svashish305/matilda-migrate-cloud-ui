@@ -119,12 +119,21 @@ export class TaskGeneralConfigComponent implements OnInit {
 
   onSubmit(form: any) {
     if(this.form.valid){
+      const previousActionId = this.task.actionId;
+
       this.task.pluginId = form.pluginId;
       this.task.serviceId = form.serviceId;
       this.task.actionId = form.actionId;
       this.task.pluginName = this._pluginName;
       this.task.serviceName = this._serviceName;
       this.task.actionName = this._actionName;
+
+      if(previousActionId) {
+        if(previousActionId !== this.task.actionId) {
+          this.task.input = null;
+          this.task.itemFields = [];
+        }
+      }
 
       this.taskGeneralConfig.emit(this.task);
     }

@@ -39,6 +39,7 @@ export class TemplatesComponent implements OnInit {
     const template = payload.payload;
     const message = payload.message;
     const type = payload.type;
+  
     this._templateService.updateTemplate(template, template.id)
       .subscribe(
         (data: any) => {
