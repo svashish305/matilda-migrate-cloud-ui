@@ -410,6 +410,11 @@
 
   ::ng-deep.mat-card {
     border: solid 1px var(--btn-lightgray-border);
+    zoom: 0.7;
+    -moz-transform: scale(0.7); /* Firefox */
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.7); /* Opera */
+    -o-transform-origin: 0 0;
   }
 
   mat-card-content {
