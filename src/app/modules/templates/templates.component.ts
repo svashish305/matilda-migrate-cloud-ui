@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TemplateService } from './services/template.service';
 import { Template } from 'src/app/utils/models/data.model';
 import { Utilities } from 'src/app/utils/helpers/utilities';
+import { DataService } from 'src/services/data.service';
 
 @Component({
   selector: 'app-templates',
@@ -13,6 +14,7 @@ export class TemplatesComponent implements OnInit {
   templateData: Template;
 
   constructor(
+    private dataService: DataService,
     private _templateService: TemplateService,
     private _utitlies: Utilities,
     private route: ActivatedRoute
@@ -25,21 +27,25 @@ export class TemplatesComponent implements OnInit {
   }
 
   getTemplate(id: any) {
-    this._templateService.getTemplateById(id)
-      .subscribe(
-        (data: any) => {
-          this.templateData = data;
-        },
-        (error) => {
+    // this._templateService.getTemplateById(id)
+    //   .subscribe(
+    //     (data: any) => {
+    //       this.templateData = data;
+    //     },
+    //     (error) => {
 
-        });
+    //     });
+
+    this.dataService.getTemplate(id).subscribe((data: any) => {
+      this.templateData = data;
+    });
   }
 
   updateTemplate(payload: any) {
     const template = payload.payload;
     const message = payload.message;
     const type = payload.type;
-  
+
     this._templateService.updateTemplate(template, template.id)
       .subscribe(
         (data: any) => {
