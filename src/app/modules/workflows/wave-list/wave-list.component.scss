@@ -115,7 +115,7 @@
   .stage-btn {
     bottom: 0 !important;
     position: absolute;
-    left: 10.5rem;
+    left: 9.6rem; //10.5rem;
   }
 
   .template__row {
@@ -141,7 +141,7 @@
 
   .right-options {
     position: relative;
-    right: 2px; //-1.1rem;
+    right: -12px; //2px;
   }
 
   .set-margin-right {
@@ -613,7 +613,8 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -11rem; // -30%
+    left: -12rem;
+    transform: scale(0.9);
   }
 
   .list-right-menu-collapsed {
@@ -633,7 +634,7 @@
   .stage-option {
     bottom: 2em;
     position: relative;
-    right: 16.1rem; //10.1rem;
+    right: 17rem; //16.1rem;
   }
 
   .stage-option-collapsed {
@@ -647,6 +648,11 @@
     border: 1px solid white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     border-left: 3px solid var(--primary-light);
+  }
+
+  .right-cols {
+    position: relative !important;
+    right: 1rem !important;
   }
 }
 
@@ -767,7 +773,7 @@
   .stage-btn {
     bottom: 0 !important;
     position: absolute;
-    left: 13.6rem;
+    left: 12.85rem; //13.6rem;
   }
 
   .template__row {
@@ -793,7 +799,7 @@
 
   .right-options {
     position: relative;
-    right: -0.5rem; // -1.1rem;
+    right: -0.8rem; // -0.5rem;
   }
 
   .set-margin-right {
@@ -1285,7 +1291,7 @@
   .stage-option {
     bottom: 2em;
     position: relative;
-    right: 13rem; //10.1rem;
+    right: 13.8rem; //13rem;
   }
 
   .stage-option-collapsed {
@@ -1299,6 +1305,11 @@
     border: 1px solid white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     border-left: 3px solid var(--primary-light);
+  }
+
+  .right-cols {
+    position: relative !important;
+    right: 1rem !important;
   }
 }
 
@@ -1419,7 +1430,7 @@
   .stage-btn {
     bottom: 0 !important;
     position: absolute;
-    left: 16.5rem; // 14.65rem;
+    left: 15.6rem; // 16.5rem;
   }
 
   .template__row {
@@ -1445,7 +1456,7 @@
 
   .right-options {
     position: relative;
-    right: -1.1rem; //-19px;
+    right: -0.65rem;
   }
 
   .set-margin-right {
@@ -1938,7 +1949,7 @@
   .stage-option {
     bottom: 2em;
     position: relative;
-    right: 10.1rem; //8.75em;
+    right: 11.1rem; //10.1rem;
   }
 
   .stage-option-collapsed {
@@ -1952,6 +1963,11 @@
     border: 1px solid white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     border-left: 3px solid var(--primary-light);
+  }
+
+  .right-cols {
+    position: relative !important;
+    right: 1rem !important;
   }
 }
 
