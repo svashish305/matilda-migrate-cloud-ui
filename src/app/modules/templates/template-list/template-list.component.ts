@@ -82,6 +82,9 @@ export class TemplateListComponent implements OnInit {
   }
 
   dropTask(event: CdkDragDrop<string[]>) {
+
+    const targetGroupId = event.container.id;
+
     let task: any = event.container.data[event.previousIndex];
 
     if (!task) {
@@ -123,6 +126,18 @@ export class TemplateListComponent implements OnInit {
           event.container.data[event.currentIndex + 1]['order']) /
         2;
     }
+    
+    task.groupId = targetGroupId;
+   
+    this.templateData.groups.forEach(_group => {
+      if(_group.id === targetGroupId) {
+        _group.items.forEach(_task => {
+          _task.groupId = targetGroupId;
+        });
+      }
+    });
+
+    this.templateData.groups = [...this.templateData.groups];
 
     this.updateGroupInfo.emit({ payload: this.templateData, message: 'Task Updated Successfully', type: 'success' });
 

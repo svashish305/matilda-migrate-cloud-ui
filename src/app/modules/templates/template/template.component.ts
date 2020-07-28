@@ -362,7 +362,19 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     this.updateTemplate.emit({ payload: this.templateData, message: 'Template Updated Successfully', type: 'success' });
   }
 
-  onSaveConfig(payload: any) {
+  onSaveConfig(task: Item) {
+    this.templateData.groups.forEach(_group => {
+      if(_group.id = task.groupId) {
+        _group.items.forEach(_task => {
+          if(_task.id === task.id) {
+            _task.input = task.input;
+            _task.itemFields = task.itemFields;
+          }
+        });
+      }
+    });
+
+    this.templateData.groups = [...this.templateData.groups];
     this.updateTemplate.emit({ payload: this.templateData, message: 'Task Configuration Updated Successfully', type: 'success' });
   }
 
