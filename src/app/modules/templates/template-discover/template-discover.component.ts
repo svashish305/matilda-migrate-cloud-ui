@@ -4,6 +4,7 @@ import { DataService } from 'src/services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as uuid from 'uuid';
 import { Source, Destination } from 'src/app/utils/models/data.model';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 export interface checkedID {
   ipAddress: any;
@@ -33,7 +34,7 @@ export class TemplateDiscoverComponent implements OnInit {
   itemSelectList: boolean[] = [];
   MAXN = 10000000;
   showSidebar = false;
-
+  isMobile = false;
   templateId: any;
   currTemplate: any;
   itemCountInGroup: any[] = [];
@@ -43,7 +44,8 @@ export class TemplateDiscoverComponent implements OnInit {
     private location: Location,
     private router: Router,
     private route: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+    private deviceService: DeviceDetectorService
   ) {
     for (let i = 0; i < this.MAXN; i++) {
       this.groupSelectList.push(false);
@@ -53,6 +55,8 @@ export class TemplateDiscoverComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isMobile = this.deviceService.isMobile();
+
     this.route.params.subscribe((params: any) => {
       this.templateId = params.templateId;
     });
