@@ -38,6 +38,7 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   @Output() onTagsUpdate = new EventEmitter();
 
   public isTagsFormValid: boolean;
+  public selectedTabIndex: number = 1;
 
   searchKey;
   edit;

@@ -134,14 +134,14 @@
                 class="flex-padding-r-2"
                 [ngClass]="{
                   'flex-padding-r-4': isMobile && !groupCollapseList[i],
-                  'status-margin-collapsed': !statusCodes[group.statusCode]
+                  'status-margin-collapsed': !statusCodes[group.statusCd]
                 }"
               >
                 <span class="status-text">Status: </span>
                 <span
                   class="badge badge-pill badge-custom"
-                  [ngStyle]="setBadgeBgColor(group.statusCode)"
-                  >{{ statusCodes[group.statusCode] }}</span
+                  [ngStyle]="setBadgeBgColor(group.statusCd)"
+                  >{{ statusCodes[group.statusCd] }}</span
                 >
               </div>
               <div
@@ -379,8 +379,8 @@
                 >
                   <span
                     class="badge badge-pill badge-custom"
-                    [ngStyle]="setBadgeBgColor(task.statusCode)"
-                    >{{ statusCodes[task.statusCode] }}</span
+                    [ngStyle]="setBadgeBgColor(task.statusCd)"
+                    >{{ statusCodes[task.statusCd] }}</span
                   >
                   <!-- template status start -->
                   <div class="status-dropdown">
