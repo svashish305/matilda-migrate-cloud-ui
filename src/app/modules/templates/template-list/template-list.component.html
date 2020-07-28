@@ -133,7 +133,8 @@
                 *ngIf="!(isMobile && groupCollapseList[i])"
                 class="flex-padding-r-2"
                 [ngClass]="{
-                  'flex-padding-r-4': isMobile && !groupCollapseList[i]
+                  'flex-padding-r-4': isMobile && !groupCollapseList[i],
+                  'status-margin-collapsed': !statusCodes[group.statusCode]
                 }"
               >
                 <span class="status-text">Status: </span>

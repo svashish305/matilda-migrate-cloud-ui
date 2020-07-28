@@ -35,8 +35,17 @@
         <div>
           <div id="stage-header" class="template__row" [ngStyle]="toggleWorkflowHeight(groupCollapseList[i])">
             <div class="template-name">
+<<<<<<< HEAD
               <div class="group-drag" [ngClass]="{ 'do-not-show': !drag }">
                 <img class="move-cursor" src="assets/imgs/dragIcon-2.svg" alt="" />
+=======
+              <div class="group-drag" [ngClass]="{ 'do-not-show': !drag, collapsed: groupCollapseList[i] }">
+                <img
+                  class="move-cursor"
+                  src="assets/imgs/dragIcon-2.svg"
+                  alt=""
+                />
+>>>>>>> merge-styles-discover
               </div>
               <div [ngClass]="{ collapsed: groupCollapseList[i] }" class="accordian">
                 <img [ngClass]="{
@@ -46,7 +55,10 @@
                   (click)="groupCollapseList[i] = !groupCollapseList[i]" />
               </div>
               <!-- group level actions ends -->
-              <div class="group-name-wrapper">
+              <div [ngClass]="{
+                'group-name-wrapper-collapsed': groupCollapseList[i],
+                'group-name-wrapper': !groupCollapseList[i]
+              }">
                 <div class="group-name common-text">
                   <input class="description-styles" (click)="$event.target.select()" (focus)="onFocusTitle()"
                     (keydown.enter)="
@@ -58,10 +70,16 @@
             <div [ngClass]="{
                 'list-right-menu-collapsed': groupCollapseList[i],
                 'list-right-menu': !groupCollapseList[i]
-              }">
-              <div *ngIf="!(isMobile && groupCollapseList[i])" class="flex-padding-r-2" [ngClass]="{
-                  'flex-padding-r-4': isMobile && !groupCollapseList[i]
-                }">
+              }"
+            >
+              <div
+                *ngIf="!(isMobile && groupCollapseList[i])"
+                class="flex-padding-r-2"
+                [ngClass]="{
+                  'flex-padding-r-4': isMobile && !groupCollapseList[i],
+                  'status-margin-collapsed': !statusCodes[waveType.statusCode]
+                }"
+              >
                 <span class="status-text">Status: </span>
                 <span class="badge badge-pill badge-custom"
                   [ngStyle]="setBadgeBgColor(group.statusCd)">{{ statusCodes[group.statusCd] }}</span>
@@ -100,7 +118,7 @@
                   <span class="medium-text list-header-text">Status</span>
                 </div>
                 <div *ngIf="!isMobile" class="cell-width">
-                  <span class="medium-text list-header-text">Progress</span> 
+                  <span class="medium-text list-header-text">Progress</span>
                 </div>
                 <button class="stage-btn" mat-button [matMenuTriggerFor]="stageDropdown">
                   <img src="assets/imgs/vEllipsis.svg" alt="Stage Settings" />
@@ -121,7 +139,7 @@
             <div class="row-items template__row item" [ngClass]="{ selected: template.selected }"
                *ngFor="let template of group.items" cdkDrag>
               <div class="template-name">
-                <div class="border-white template-name-main"> 
+                <div class="border-white template-name-main">
                   <div class="right-padding-half-rem">
                     <ngx-avatar *ngIf="templateAvatarUrl; else initialsAvatar" [src]="templateAvatarUrl"
                       class="flex-center" name="{{ template.name }}" initialsSize="2" [size]="18">
