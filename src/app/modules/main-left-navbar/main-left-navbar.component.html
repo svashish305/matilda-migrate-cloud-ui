@@ -63,7 +63,7 @@
         (click)="
           hubSelected = true; templateSelected = false; workflowSelected = false
         "
-        class="logo__wrapper padding-14"
+        class="logo__wrapper"
         [routerLink]="['/hub']"
         [ngStyle]="addActiveInd(hubSelected)"
       >
@@ -77,7 +77,7 @@
           alt=""
           [ngStyle]="isSelected(hubSelected)"
         />
-        <div class="migrate-section">
+        <button mat-button class="migrate-section">
           <img
             class="logo icon-extra"
             [src]="
@@ -93,7 +93,7 @@
             [ngStyle]="setActiveColor(hubSelected)"
             >Hub</span
           >
-        </div>
+        </button>
       </div>
       <div
         (click)="
@@ -102,7 +102,7 @@
           workflowSelected = false;
           addTemplate()
         "
-        class="logo__wrapper padding-14"
+        class="logo__wrapper"
         [ngStyle]="addActiveInd(templateSelected)"
       >
         <img
@@ -115,7 +115,7 @@
           alt=""
           [ngStyle]="isSelected(templateSelected)"
         />
-        <div class="migrate-section">
+        <button mat-button class="migrate-section">
           <img
             class="logo img-size"
             [src]="
@@ -129,7 +129,7 @@
           <span class="menu-text" [ngStyle]="setActiveColor(templateSelected)"
             >Template</span
           >
-        </div>
+        </button>
       </div>
       <div
         (click)="
@@ -138,7 +138,7 @@
           templateSelected = false;
           addWorkflow()
         "
-        class="logo__wrapper padding-14"
+        class="logo__wrapper"
         [ngStyle]="addActiveInd(workflowSelected)"
       >
         <img
@@ -151,7 +151,7 @@
           alt=""
           [ngStyle]="workflowIsSelected()"
         />
-        <div class="migrate-section">
+        <button mat-button class="migrate-section">
           <img
             class="logo img-size"
             [src]="
@@ -165,7 +165,7 @@
           <span class="menu-text" [ngStyle]="setActiveColor(workflowSelected)"
             >Workflow</span
           >
-        </div>
+        </button>
       </div>
     </div>
     <!-- remaining logos in left sidebar end -->
