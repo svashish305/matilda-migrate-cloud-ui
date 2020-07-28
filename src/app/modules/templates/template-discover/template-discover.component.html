@@ -57,7 +57,34 @@
             }}</span></mat-card-title
           >
           <mat-card-subtitle>
-            <span
+
+            <div *ngIf="isMobile">
+              <span class="medium-text pos-subtitle"
+                *ngIf="app.IP.length > 1; else lessIP">
+                {{ app.IP[0].address }} and
+                {{ app.IP.length - 1 }} more
+              </span>
+              <ng-template #lessIP>
+                <span class="medium-text pos-subtitle" *ngIf="app.IP.length <= 1"
+                  >{{ app.IP[0].address }}</span
+                >
+              </ng-template>
+              <span
+                class="medium-text pos-src-subtitle"
+                *ngIf="app.sources.length > 1; else lessSources"
+                >Sources: {{ app.sources[0].name }} and
+                {{ app.sources.length - 1 }} more</span
+              >
+              <ng-template #lessSources>
+                <span
+                  class="medium-text pos-src-subtitle"
+                  *ngIf="app.sources.length <= 1"
+                  >Sources: {{ app.sources[0].name }}</span
+                >
+              </ng-template>
+            </div>
+            <div *ngIf="!isMobile">
+              <span
               class="medium-text pos-subtitle"
               *ngIf="app.IP.length > 2; else lessIP"
               >{{ app.IP[0].address }}, {{ app.IP[1].address }} and
@@ -82,6 +109,7 @@
                 {{ app.sources[1].name }}</span
               >
             </ng-template>
+            </div>
           </mat-card-subtitle>
         </mat-card-title-group>
       </mat-card>
@@ -89,26 +117,28 @@
 
     <div *ngIf="selectedApp && accountClicked" class="acc-search-container">
       <div class="selected-app-header">
-        <div class="right-margin-12-half-rem">
+        <div class="flex-center app-mobile" [ngClass]="{'right-margin-12-half-rem': !isMobile}">
           <span class="common-text">Application</span>
           <span class="common-text pad-colon">:</span>
           <span class="common-text make-it-blue">{{ selectedApp.name }}</span>
         </div>
 
-        <span class="common-text">IP</span>
-        <span class="common-text pad-colon">:</span>
-        <mat-form-field id="ip-select-field" class="ip-dd">
-          <mat-select [(ngModel)]="selectedIPAddress" (ngModelChange)="getIP()">
-            <mat-option
-              id="ip-option"
-              *ngFor="let ip of selectedApp.IP"
-              [value]="ip.address"
-              (click)="changeIP(ip.address)"
-            >
-              {{ ip.address }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <div class="flex-center ip-mobile">
+          <span class="common-text">IP</span>
+          <span class="common-text pad-colon">:</span>
+          <mat-form-field id="ip-select-field" class="ip-dd">
+            <mat-select [(ngModel)]="selectedIPAddress" (ngModelChange)="getIP()">
+              <mat-option
+                id="ip-option"
+                *ngFor="let ip of selectedApp.IP"
+                [value]="ip.address"
+                (click)="changeIP(ip.address)"
+              >
+                {{ ip.address }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
 
       <div *ngIf="!isIPSelected">
