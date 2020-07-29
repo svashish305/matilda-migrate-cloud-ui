@@ -6,15 +6,18 @@ import {
   AfterViewInit,
   EventEmitter,
   Output,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { ResizeEvent } from 'angular-resizable-element';
 import { DataService } from 'src/services/data.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import * as uuid from 'uuid';
 import { ActivatedRoute } from '@angular/router';
-import { Group, Workflow, Item } from 'src/app/utils/models/data.model';
+import { Group, Workflow, Item, KeyVault } from 'src/app/utils/models/data.model';
 import { WorkflowService } from '../services/workflow.service';
 import { Utilities } from 'src/app/utils/helpers/utilities';
+
 
 
 interface SelectInterface {
@@ -27,10 +30,11 @@ interface SelectInterface {
   templateUrl: './wave.component.html',
   styleUrls: ['./wave.component.scss'],
 })
-export class WaveComponent implements OnInit, AfterViewInit {
+export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() waveData: Workflow;
   @Output() updateWorkflow = new EventEmitter();
   @Output() onTagsUpdate = new EventEmitter();
+  @Output() onUpdateAccounts = new EventEmitter();
   @Output() rowClicked: EventEmitter<any> = new EventEmitter();
   edit;
   showBackdrop;
@@ -38,7 +42,7 @@ export class WaveComponent implements OnInit, AfterViewInit {
 
   favourite = false;
   waves: any[] = [];
-  accounts: any[] = [];
+  accounts: KeyVault[] = [];
   titleState: string = 'idle';
   oldTitle: string;
   newTitle: string;
@@ -56,6 +60,7 @@ export class WaveComponent implements OnInit, AfterViewInit {
 
   public isTagsFormValid: boolean;
   public selectedTabIndex: number = 1;
+  public selectedAccounts = [];
 
   waveState = 'start';
 
@@ -87,29 +92,44 @@ export class WaveComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
-    this.getAccounts();
 
     this.route.params.subscribe((params: any) => {
       this.waveId = params.id;
     });
+
+    this.getAccounts();
   
     this.isMobile = this.deviceService.isMobile();
     this.isTablet = this.deviceService.isTablet();
     this.isDesktop = this.deviceService.isDesktop();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+   
+    if(changes.waveData.currentValue !== changes.waveData.previousValue) {
+      this.waveData = changes.waveData.currentValue;
+    }
+  }
+
   ngAfterViewInit() {
     this.appyResize();
   }
 
-
-  /**
-   *
-   * @description gets list of accounts and calls first stage details
-   */
   getAccounts() {
-    this.dataService.getAccounts().subscribe((data: any[]) => {
+    // this.dataService.getAccounts().subscribe((data: any[]) => {
+    //   this.accounts = data;
+    // });
+    this._workflowService.getAllAccounts().subscribe((data: any[]) => {
       this.accounts = data;
+      this.selectedAccounts = this.waveData.keyVault;
+      this.accounts.map(_account => {
+        _account.accountId = _account.accountId,
+        _account.accountName = _account.accountName,
+        _account.cpId = _account.cpId,
+        _account.cpName = _account.cpName,
+        _account.selected =  (this.waveData.keyVault.filter(_keyVault => _keyVault.accountId === _account.accountId).length === 0 ? false : true);
+      
+      });
     });
   }
 
@@ -132,8 +152,51 @@ export class WaveComponent implements OnInit, AfterViewInit {
     this.updateWorkflow.emit({ payload: this.waveData, message: 'Workflow Icon Deleted Successfully', type: 'error' });
   }
 
-  onCheck(event) {
-    event.stopPropagation();
+  isExistingAccount(account: any) {
+    console.log(account);
+    if(this.waveData.keyVault) {
+      console.log(this.waveData.keyVault.includes(account));
+      return this.waveData.keyVault.filter(_keyvault => _keyvault.accountId === account.accountId).length === 0 ? false : true;
+    }else {
+      return false;
+    }
+  }
+
+  onCheck(event: any, account: any) {
+   // this.selectedAccounts = [];
+    let existingAccount = this.selectedAccounts.filter(_account => _account.accountId === account.accountId);
+    console.log(existingAccount);
+    if(event.checked) {
+      if (existingAccount.length === 0) {
+        this.selectedAccounts.push(account);
+      }
+
+    } else{
+      if(existingAccount.length !== 0) {
+        this.selectedAccounts.splice(0,1);
+      }
+    }
+  }
+
+  addAccounts() {
+  
+    this.waveData.keyVault = [...this.selectedAccounts];
+   
+    this.accounts.forEach((_account: KeyVault) => {
+      this.waveData.keyVault.forEach((_selectedAccount: KeyVault) => {
+        if(_account.accountId === _selectedAccount.accountId) {
+          _account.selected = true;
+        }
+      }) ;
+    });
+    
+    this.onUpdateAccounts.emit({ workflowId: this.waveData.id, accounts: this.waveData.keyVault,  message: 'Accounts Added Successfully', type: 'success'});
+    this.selectedAccounts = [];
+    
+  }
+
+  clearSelectedAccounts() {
+    this.selectedAccounts = [];
   }
 
   updateTags(event: any) {
