@@ -1,6 +1,11 @@
 export class KeyVault {
-  id: number | string;
-  name: string;
+  // id?: number | string;
+  // name?: string;
+  accountId?: number | string;
+  accountName?: string;
+  cpId?: number | string;
+  cpName?: string;
+  selected?: boolean;
 }
 
 export class ItemDependency {
