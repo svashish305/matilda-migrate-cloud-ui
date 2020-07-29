@@ -54,7 +54,8 @@ export class WaveComponent implements OnInit, AfterViewInit {
   showAccountOptions = false;
   showTagOptions = false;
 
-  isTagsFormValid: boolean;
+  public isTagsFormValid: boolean;
+  public selectedTabIndex: number = 1;
 
   waveState = 'start';
 

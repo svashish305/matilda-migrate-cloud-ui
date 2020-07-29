@@ -134,14 +134,14 @@
                 class="flex-padding-r-2"
                 [ngClass]="{
                   'flex-padding-r-4': isMobile && !groupCollapseList[i],
-                  'status-margin-collapsed': !statusCodes[group.statusCode]
+                  'status-margin-collapsed': !statusCodes[group.statusCd]
                 }"
               >
                 <span class="status-text">Status: </span>
                 <span
                   class="badge badge-pill badge-custom"
-                  [ngStyle]="setBadgeBgColor(group.statusCode)"
-                  >{{ statusCodes[group.statusCode] }}</span
+                  [ngStyle]="setBadgeBgColor(group.statusCd)"
+                  >{{ statusCodes[group.statusCd] }}</span
                 >
               </div>
               <div
@@ -166,38 +166,30 @@
                 >
               </div>
             </div>
-            <button
-
-            mat-button
-            [matMenuTriggerFor]="stageDropdown"
-          >
-          <img
-          [ngClass]="{
-            'stage-option-collapsed': groupCollapseList[i],
-            'stage-option': !groupCollapseList[i]
-          }"
-          src="assets/imgs/vEllipsis.svg"
-          alt="stage-options"
-        />
-
-          </button>
-          <mat-menu
-            id="stage-dd"
-            #stageDropdown="matMenu"
-            xPosition="before"
-            yPosition="below"
-          >
-            <div>
-              <button mat-menu-item (click)="deleteGroup(group)">
-                <img
-                class="icon-usersettings"
-              src="assets/imgs/delete.svg"
-              alt=""
-            />
-                <span>Delete</span>
-              </button>
-            </div>
-          </mat-menu>
+            <button mat-button [matMenuTriggerFor]="stageDropdownHighLevel">
+              <img
+              [ngClass]="{
+                'stage-option-collapsed': groupCollapseList[i],
+                'stage-option': !groupCollapseList[i]
+              }"
+              src="assets/imgs/vEllipsis.svg"
+              alt="stage-options"
+              />
+            </button>
+            <mat-menu
+              #stageDropdownHighLevel="matMenu"
+            >
+              <div>
+                <button mat-menu-item (click)="deleteGroup(group)">
+                  <img
+                  class="icon-usersettings"
+                src="assets/imgs/delete.svg"
+                alt=""
+              />
+                  <span>Delete</span>
+                </button>
+              </div>
+            </mat-menu>
 
             <div *ngIf="!groupCollapseList[i]" class="stage-list-subheader">
               <div class="stage-name-width">
@@ -387,8 +379,8 @@
                 >
                   <span
                     class="badge badge-pill badge-custom"
-                    [ngStyle]="setBadgeBgColor(task.statusCode)"
-                    >{{ statusCodes[task.statusCode] }}</span
+                    [ngStyle]="setBadgeBgColor(task.statusCd)"
+                    >{{ statusCodes[task.statusCd] }}</span
                   >
                   <!-- template status start -->
                   <div class="status-dropdown">

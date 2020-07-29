@@ -115,7 +115,7 @@
   .stage-btn {
     bottom: -5px;
     position: absolute;
-    left: 7.77rem; //8.65rem;
+    left: 5.3rem; //7.77rem; //8.65rem;
   }
 
   .template__row {
@@ -634,7 +634,7 @@
   .stage-option {
     bottom: 2em;
     position: relative;
-    right: 17rem; //16.1rem;
+    right: 18.25rem; //17rem; //16.1rem;
   }
 
   .stage-option-collapsed {
@@ -773,7 +773,7 @@
   .stage-btn {
     bottom: -5px;
     position: absolute;
-    left: 11rem; // 11.75rem;
+    left: 8.4rem; //11rem; // 11.75rem;
   }
 
   .template__row {
@@ -799,7 +799,7 @@
 
   .right-options {
     position: relative;
-    right: -0.8rem; // -0.5rem;
+    right: -0.75rem; //-0.8rem; // -0.5rem;
   }
 
   .set-margin-right {
@@ -1291,7 +1291,7 @@
   .stage-option {
     bottom: 2em;
     position: relative;
-    right: 13.8rem; //13rem;
+    right: 15.2rem; //13.8rem; //13rem;
   }
 
   .stage-option-collapsed {
@@ -1430,7 +1430,7 @@
   .stage-btn {
     bottom: -5px;
     position: absolute;
-    left: 13.65rem; // 14.65rem;
+    left: 11.1rem; //13.65rem; // 14.65rem;
   }
 
   .template__row {
@@ -1456,7 +1456,7 @@
 
   .right-options {
     position: relative;
-    right: -0.65rem;
+    right: -0.55rem; //-0.65rem;
   }
 
   .set-margin-right {
@@ -1949,7 +1949,7 @@
   .stage-option {
     bottom: 2em;
     position: relative;
-    right: 11.1rem; //10.1rem;
+    right: 12.5rem; // 11.1rem; //10.1rem;
   }
 
   .stage-option-collapsed {
@@ -2634,7 +2634,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -35.5% !important;
+    left: -18.5% !important;
     bottom: 1.35em !important;
   }
 
@@ -2744,8 +2744,9 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -1.25em !important;
+    margin-top: -2.25em !important;
     right: 1.5em !important;
+    z-index: 2;
   }
 
   .stage-option-collapsed {
@@ -2831,8 +2832,9 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -1.25em !important;
+    margin-top: -2.25em !important;
     right: 1.5em !important;
+    z-index: 2;
   }
 
   .stage-option-collapsed {
@@ -2918,8 +2920,9 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -1.25em !important;
+    margin-top: -2.25em !important;
     right: 1.5em !important;
+    z-index: 2;
   }
 
   .stage-option-collapsed {
@@ -2991,7 +2994,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -55.5% !important;
+    left: -35.5% !important;
     bottom: 1.35em !important;
   }
 
@@ -3000,13 +3003,14 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    right: 55.5% !important;
+    right: 35.5% !important;
   }
 
   .stage-option {
     position: absolute !important;
     margin-top: -2em !important;
     right: 1.5em !important;
+    z-index: 2;
   }
 
   .stage-option-collapsed {
@@ -3078,7 +3082,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -55.5% !important;
+    left: -35.5% !important;
     bottom: 1.35em !important;
   }
 
@@ -3087,13 +3091,14 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    right: 55.5% !important;
+    right: 35.5% !important;
   }
 
   .stage-option {
     position: absolute !important;
     margin-top: -2em !important;
     right: 1.5em !important;
+    z-index: 2;
   }
 
   .stage-option-collapsed {
@@ -3142,7 +3147,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -55.5% !important;
+    left: -35.5% !important;
     bottom: 1.35em !important;
   }
 
@@ -3151,13 +3156,14 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    right: 55.5% !important;
+    right: 35.5% !important;
   }
 
   .stage-option {
     position: absolute !important;
     margin-top: -2em !important;
     right: 1.5em !important;
+    z-index: 2;
   }
 
   .stage-option-collapsed {
@@ -3206,7 +3212,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -55.5% !important;
+    left: -35.5% !important;
     bottom: 1.35em !important;
   }
 
@@ -3215,13 +3221,14 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    right: 55.5% !important;
+    right: 35.5% !important;
   }
 
   .stage-option {
     position: absolute !important;
     margin-top: -2em !important;
     right: 1.5em !important;
+    z-index: 2;
   }
 
   .stage-option-collapsed {
@@ -3296,7 +3303,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -55.5% !important;
+    left: -35.5% !important;
     bottom: 1.35em !important;
   }
 
@@ -3305,13 +3312,14 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    right: 55.5% !important;
+    right: 35.5% !important;
   }
 
   .stage-option {
     position: absolute !important;
     margin-top: -2em !important;
     right: 1.5em !important;
+    z-index: 2;
   }
 
   .stage-option-collapsed {
@@ -3360,7 +3368,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -55.5% !important;
+    left: -35.5% !important;
     bottom: 1.35em !important;
   }
 
@@ -3369,13 +3377,14 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    right: 55.5% !important;
+    right: 35.5% !important;
   }
 
   .stage-option {
     position: absolute !important;
     margin-top: -2em !important;
     right: 1.5em !important;
+    z-index: 2;
   }
 
   .stage-option-collapsed {

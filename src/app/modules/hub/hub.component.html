@@ -85,7 +85,7 @@
                     favTemplate.name
                   }}</span>
                   <span class="badge badge-pill badge-custom template-status">{{
-                    favTemplate.status
+                    favTemplate.statusDescription
                   }}</span>
                   <div class="template-progress">
                     <span class="common-text">Progress : </span>
@@ -148,8 +148,8 @@
                   }}</span>
                   <span
                     class="badge badge-pill badge-custom template-status"
-                    [ngStyle]="setBadgeBgColor(template.status)"
-                    >{{ template.status }}</span
+                    [ngStyle]="setBadgeBgColor(template.statusDescription)"
+                    >{{ template.statusDescription }}</span
                   >
                   <div class="template-progress">
                     <span class="common-text">Progress : </span>
@@ -248,7 +248,7 @@
                     alt="Configured"
                   />
                   <span class="badge badge-pill badge-custom workflow-status">{{
-                    favWorkflow.status
+                    favWorkflow.statusDescription
                   }}</span>
                   <div class="workflow-progress">
                     <span class="common-text">Progress : </span>
@@ -316,8 +316,8 @@
                   />
                   <span
                     class="badge badge-pill badge-custom workflow-status"
-                    [ngStyle]="setBadgeBgColor(workflow?.status)"
-                    >{{ workflow?.status }}</span
+                    [ngStyle]="setBadgeBgColor(workflow?.statusDescription)"
+                    >{{ workflow?.statusDescription }}</span
                   >
                   <div class="workflow-progress">
                     <span class="common-text">Progress : </span>

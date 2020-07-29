@@ -35,17 +35,12 @@
         <div>
           <div id="stage-header" class="template__row" [ngStyle]="toggleWorkflowHeight(groupCollapseList[i])">
             <div class="template-name">
-<<<<<<< HEAD
-              <div class="group-drag" [ngClass]="{ 'do-not-show': !drag }">
-                <img class="move-cursor" src="assets/imgs/dragIcon-2.svg" alt="" />
-=======
               <div class="group-drag" [ngClass]="{ 'do-not-show': !drag, collapsed: groupCollapseList[i] }">
                 <img
                   class="move-cursor"
                   src="assets/imgs/dragIcon-2.svg"
                   alt=""
                 />
->>>>>>> merge-styles-discover
               </div>
               <div [ngClass]="{ collapsed: groupCollapseList[i] }" class="accordian">
                 <img [ngClass]="{
@@ -77,7 +72,7 @@
                 class="flex-padding-r-2"
                 [ngClass]="{
                   'flex-padding-r-4': isMobile && !groupCollapseList[i],
-                  'status-margin-collapsed': !statusCodes[waveType.statusCode]
+                  'status-margin-collapsed': !statusCodes[group.statusCd]
                 }"
               >
                 <span class="status-text">Status: </span>

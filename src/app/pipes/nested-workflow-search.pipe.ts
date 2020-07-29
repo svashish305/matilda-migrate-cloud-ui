@@ -6,8 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class NestedWorkflowSearchPipe implements PipeTransform {
   transform(value: any, args?: any): any {
     const search = args ? args : '';
-    const rootFields = ['name', 'status', 'progress'];
-    const childFields = ['name', 'status', 'progress'];
+    const rootFields = ['name', 'statusDescription', 'progress'];
+    const childFields = ['name', 'statusDescription', 'progress'];
     let rootFound = false;
     let childFound = false;
     const groups = [];

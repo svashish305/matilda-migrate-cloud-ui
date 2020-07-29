@@ -32,7 +32,7 @@ export class WorkflowsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
-      this.waveId = params.id; 
+      this.waveId = params.id;
       this.getWaveData(params.id);
     });
   }
@@ -52,6 +52,10 @@ export class WorkflowsComponent implements OnInit {
 
   getWaveData(id) {
     this._workflowService.getWorkflowById(id).subscribe((data: any) => this.waveData = data);
+
+    // this.dataService.getWave(id).subscribe((data: any) => {
+    //   this.waveData = data;
+    // });
   }
 
   addNewWave() {
