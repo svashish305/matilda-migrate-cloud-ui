@@ -651,23 +651,28 @@
 
   mat-card {
     cursor: pointer;
-    height: 4rem;
+    height: 3.75rem;
     border: solid 1px var(--grayed-border);
     border-left: solid 4px var(--light-blue) !important;
     box-shadow: 2px 3px var(--btn-gray-border) !important;
+  }
+
+  .standard-font {
+    font-size: 1.1rem !important;
   }
 
   .pos-card-title {
     position: absolute;
     top: 8px;
     color: var(--primary-light);
+    font-size: 1.1rem !important;
   }
 
   .pos-subtitle {
     position: absolute;
     top: 2.5rem;
 
-    font-size: 1rem !important;
+    font-size: 12.25px !important;
     color: var(--alt-gray-text);
   }
 
@@ -675,7 +680,7 @@
     position: absolute;
     top: 2.5rem;
     margin-left: 22rem;
-    font-size: 1rem !important;
+    font-size: 12.25px !important;
     color: var(--alt-gray-text);
   }
 
