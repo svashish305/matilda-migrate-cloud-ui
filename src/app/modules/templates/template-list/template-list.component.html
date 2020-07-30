@@ -266,6 +266,7 @@
             [cdkDropListConnectedTo]="getConnectedList()"
           >
             <div
+            (click)="loadTask(task, group)"
               class="row-items template__row item"
               [ngClass]="{ selected: group.selected }"
               *ngFor="let task of group.items"
@@ -308,12 +309,12 @@
                       'mobile-text': isMobile,
                       'common-text': !isMobile
                     }"
-                    class="cell-text handle-text-overflow" matTooltip="{{task.name}}" (click)="loadTask(task, group)"
+                    class="cell-text handle-text-overflow" matTooltip="{{task.name}}" 
                     >{{ task.name }}</span
                   >
                 </div>
               </div>
-              <div class="flex-lay right-cols">
+              <div class="flex-lay right-cols" (click)="$event.preventDefault(); $event.stopPropagation()">
                 <div *ngIf="!isMobile" class="flex-center plugin-val">
                   <span class="cell-text common-text">{{
                     task.pluginName
@@ -374,7 +375,7 @@
                   class="border-white template-status"
                   [ngClass]="getStatusClass(task)"
                   (mouseleave)="task.showStatus = false"
-                  (click)="showStatuses($event, task)"
+                 
                 >
                   <span
                     class="badge badge-pill badge-custom"
@@ -429,10 +430,10 @@
                 </div>
               </div>
             </div>
-            <div class="template__row item row-items">
+            <div class="template__row item row-items" >
               <!-- add new template start -->
-              <div class="template-name">
-                <span class="common-text add-new-text" (click)="loadTask(null, group)"
+              <div class="template-name" (click)="loadTask(null, group)">
+                <span class="common-text add-new-text" 
                   >+ Add New Task</span
                 >
               </div>

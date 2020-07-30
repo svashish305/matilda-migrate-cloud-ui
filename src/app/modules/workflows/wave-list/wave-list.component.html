@@ -148,7 +148,7 @@
               </div>
               <div class="flex-lay right-cols">
                 <div *ngIf="!isMobile" class="border-white template-status" [ngClass]="getStatusClass(template)"
-                  (mouseleave)="template.showStatus = false" (click)="showStatuses($event, template)">
+                  (mouseleave)="template.showStatus = false" >
                   <span class="badge badge-pill badge-custom"
                     [ngStyle]="setBadgeBgColor(template.statusCd)">{{ statusCodes[template.statusCd] }}</span>
                   <!-- template status start -->
