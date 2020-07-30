@@ -258,6 +258,10 @@
   100%{ left : 100%;}
 }
 
+::ng-deep .mat-button:hover{
+  background-color: cornflowerblue;
+}
+
 .mobile-logo-header-padding {
   padding: 18px 16px 18px 17px !important;
 }
@@ -312,11 +316,12 @@
 .logo__wrapper button.migrate-section.mat-button.mat-button-base{
   padding: 0px;
   width: 100%;
+  height: 100%;
 }
 .logo__wrapper ::ng-deep .mat-button-wrapper{
   display: flex;
-    padding: 14px;
-    width: 100%;
+  padding: 14px;
+  width: 100%;
 }
 @media (min-width: 768px){
   .sidenav__wrapper:hover .collapse .logo__wrapper{
