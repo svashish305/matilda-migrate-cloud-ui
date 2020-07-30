@@ -33,12 +33,11 @@ export class TemplatesComponent implements OnInit {
     //       this.templateData = data;
     //     },
     //     (error) => {
+    // });
 
-        });
-
-    // this.dataService.getTemplate(id).subscribe((data: any) => {
-    //   this.templateData = data;
-    // })
+    this.dataService.getTemplate(id).subscribe((data: any) => {
+      this.templateData = data;
+    })
   }
 
   updateTemplate(payload: any) {

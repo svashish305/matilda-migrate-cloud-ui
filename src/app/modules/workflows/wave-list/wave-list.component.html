@@ -90,11 +90,11 @@
                   }" class="list-percent-text">{{ group.progress }} %</span>
               </div>
             </div>
-            <button mat-button [matMenuTriggerFor]="stageDropdownHighLevel">
-            <img [ngClass]="{
-                'stage-option-collapsed': groupCollapseList[i],
-                'stage-option': !groupCollapseList[i]
-              }" src="assets/imgs/vEllipsis.svg" alt="stage-options" />
+            <button mat-button [matMenuTriggerFor]="stageDropdownHighLevel" [ngClass]="{
+              'stage-option-collapsed': groupCollapseList[i],
+              'stage-option': !groupCollapseList[i]
+            }">
+            <img src="assets/imgs/vEllipsis.svg" alt="stage-options" />
             </button>
             <mat-menu id="stage-dd" #stageDropdownHighLevel="matMenu" xPosition="before" yPosition="below">
               <div>
