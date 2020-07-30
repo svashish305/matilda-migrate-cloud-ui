@@ -127,4 +127,16 @@ export class WorkflowsComponent implements OnInit {
           this.getWaveData(this.waveData.id);
         });
   }
+
+  onUpdateAccounts(payload: any) {
+    this._workflowService.updateWorkflowAccounts(this.waveData.id, payload.accounts)
+      .subscribe((data) => {
+        this.getWaveData(this.waveData.id);
+        this._utilities.openSnackBar(payload.message, payload.type);
+      },
+        (error) => {
+          this._utilities.errorNotification(error);
+          this.getWaveData(this.waveData.id);
+        });
+  }
 }

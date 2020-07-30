@@ -27,6 +27,8 @@ export class HubComponent implements OnInit {
   isMobile = false;
   avatarUrl: any;
 
+  public selectedTabIndex: number = 2;
+
   constructor(
     private dataService: DataService,
     private router: Router,

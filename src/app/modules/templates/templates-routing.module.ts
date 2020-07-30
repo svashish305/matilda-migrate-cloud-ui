@@ -13,6 +13,11 @@ const routes: Routes = [
     data: { breadcrumb: 'Discover' },
   },
   {
+    path: ':workflowId/templates/:templateId/discover',
+    component: TemplateDiscoverComponent,
+    data: { breadcrumb: 'Discover' },
+  },
+  {
     path: 'add-task-modal-content',
     loadChildren: () =>
       import('./add-task-modal-content/add-task-modal-content.module').then(

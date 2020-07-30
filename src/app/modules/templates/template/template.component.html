@@ -84,17 +84,29 @@
               )<span class="align-tags-colon">:</span>
             </span>
             <span class="badge badge-pill badge-custom" [ngStyle]="{ 'margin-left': isMobile ? '0' : '1em' }">
-              <span *ngIf="isMobile" class="badge-key-value">{{ templateData?.tags[0]?.name }} :
-                {{ templateData?.tags[0]?.value }}</span>
+              <span *ngIf="isMobile" class="badge-key-value">
+                <span *ngIf="waveData?.tags &&  waveData?.tags?.length > 0; else noTags">
+                  {{ templateData?.tags[0]?.name }} : {{ templateData?.tags[0]?.value }}
+                </span>
+                <ng-template #noTags>
+                  N/A
+                </ng-template>
+              </span>
             </span>
             <span *ngIf="isMobile" class="badge badge-pill badge-custom">
               <span *ngIf="templateData.tags.length > 1"
                 class="badge-key-value">+{{ templateData?.tags?.length - 1 }}</span>
             </span>
             <div *ngIf="!isMobile">
-              <span class="badge badge-pill badge-custom" *ngFor="let tag of templateData.tags">
-                <span class="badge-key-value">{{ tag.name }} : {{ tag.value }}</span>
+              <span *ngIf="templateData?.tags?.length !== 0; else noTagsDesktop">
+                <span class="badge badge-pill badge-custom" *ngFor="let tag of templateData.tags">
+                  <span class="badge-key-value">{{ tag.name }} : {{ tag.value }}</span>
+                </span>
               </span>
+              <ng-template #noTagsDesktop>
+                <span class="badge badge-pill badge-custom">N/A</span>
+              </ng-template>
+
             </div>
           </div>
 
@@ -143,33 +155,37 @@
           </mat-form-field>
         </form>
       </div>
-
-      <!-- template cards -->
-      <div class="import-list-scroll-control">
-        <mat-card class="mat-elevation-z0 bottom-margin-1em"
-          *ngFor="let template of templatesToImport | search: searchKey">
-          <mat-card-content>
-            <mat-checkbox (click)="onCheck($event, template)" class="relative-top-14">
-            </mat-checkbox>
-            <div class="checkbox-label-with-icon">
-              <ngx-avatar name="{{ template.name }}" initialsSize="2" class="import-avatar"></ngx-avatar>
-              <span class="import-list-template-name">{{ template.name }}</span>
-              <span class="import-list-template-description">{{
-                template.desc
-              }}</span>
+      <div class="account-section p-2">
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let template of templatesToImport | search: searchKey">
+            <mat-expansion-panel-header>
+              <mat-panel-title style="align-items: center !important;" (click)="$event.stopPropagation();">
+                <mat-checkbox (change)="onCheck($event, template)" style="margin:1rem">
+                </mat-checkbox> &nbsp;  &nbsp; &nbsp;
+                <ngx-avatar *ngIf="template?.image; else importInitialsAvatar" [src]="template?.image"
+                class="my-avatar flex-center" name="{{ template?.name }}" initialsSize="2" [size]="30">
+              </ngx-avatar>
+              <ng-template #importInitialsAvatar>
+                <ngx-avatar name="{{ template?.name }}" initialsSize="2" [size]="30"></ngx-avatar>
+              </ng-template>
+              </mat-panel-title>
+              <mat-panel-description style="align-items: center !important;">
+                <span  matTooltip="{{ template?.name }}" class="common-text"> {{ template?.name }}</span>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="common-text" style="margin-left: 1rem;">
+              <p *ngIf="template?.desc">Description: &nbsp;{{ template?.desc}}</p>
+            <div clas="flex-container"> 
+              <span *ngIf="template?.tags && template?.tags?.length > 0">Tags: &nbsp;</span> 
+              <span class="badge badge-pill badge-custom" *ngFor="let tag of template?.tags">
+                <span><span class="badge-key-value">{{ tag?.name }} :</span><span
+                    class="badge-key-value">&nbsp;{{ tag?.value }}</span></span>
+              </span> &nbsp;
             </div>
-
-            <div class="sidebar-tag-text">
-              <span class="tag-text">Tags (Key : Value)</span>
             </div>
-            <div class="sidebar-badge-container">
-              <span class="badge badge-pill badge-custom">
-                <span *ngFor="let tag of template.tags"><span class="badge-key-value">{{ tag.name }} :</span><span
-                    class="badge-key-value">&nbsp;{{ tag.value }}</span></span>
-              </span>
-            </div>
-          </mat-card-content>
-        </mat-card>
+            
+          </mat-expansion-panel>
+        </mat-accordion>
       </div>
       <div [ngClass]="{
           'modal-footer-mobile': isMobile,
@@ -207,8 +223,8 @@
     <!-- end of tag edit body -->
     <div [ngClass]="{ 'modal-footer-mobile': isMobile, 'modal-footer': !isMobile }" class="edit-tag-footer-btns">
       <div class="import-btns-1">
-        <button [disabled]="isTagsFormValid" mat-flat-button color="primary" (click)="showTagOptions = false; saveTags()"
-          cdkFocusInitial>
+        <button [disabled]="isTagsFormValid" mat-flat-button color="primary"
+          (click)="showTagOptions = false; saveTags()" cdkFocusInitial>
           Save
         </button>
         <button mat-button color="primary" (click)="showTagOptions = false" class="left-margin-1em">
@@ -264,8 +280,7 @@
             <!-- <div> -->
             <div class="task-name">
               <input class="descriptiontask-styles" (click)="$event.target.select()" (focus)="onFocusTitle()"
-                (keydown.enter)="updateTaskTitle(selectedTask)"
-                 [(ngModel)]="selectedTask.name" />
+                (keydown.enter)="updateTaskTitle(selectedTask)" [(ngModel)]="selectedTask.name" />
               <div class="text-danger" *ngIf="isEventNameUnique">Please enter unique task name</div>
             </div>
             <div class="task-description">
@@ -278,12 +293,9 @@
       </header>
       <mat-divider></mat-divider>
 
-      <app-add-task-modal-content [task]="selectedTask" 
-      (onSaveConfig)="onSaveConfig($event)"  
-      (onSaveGeneralConfig)="onSaveGeneralConfig($event)" 
-      (onSaveTemplateFormat)="onSaveTemplateFormat($event)"
-      (onClose)="onClose($event)"
-      ></app-add-task-modal-content>
+      <app-add-task-modal-content [task]="selectedTask" (onSaveConfig)="onSaveConfig($event)"
+        (onSaveGeneralConfig)="onSaveGeneralConfig($event)" (onSaveTemplateFormat)="onSaveTemplateFormat($event)"
+        (onClose)="onClose($event)"></app-add-task-modal-content>
     </div>
   </div>
   <!-- end of task options -->

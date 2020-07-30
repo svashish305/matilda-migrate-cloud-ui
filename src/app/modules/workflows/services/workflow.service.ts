@@ -30,4 +30,12 @@ export class WorkflowService {
     return this._http.post(this.BASE_URL + `/workflow/${workflowId}/tag/save`, payload);
   }
 
+  getAllAccounts() {
+    return this._http.get(this.BASE_URL + `/account/selectall`);
+  }
+
+  updateWorkflowAccounts(workflowId: any, payload: any) {
+    return this._http.put(this.BASE_URL + `/account/workflow/${workflowId}/save`, payload);
+  }
+
 }
