@@ -90,11 +90,11 @@
                   }" class="list-percent-text">{{ group.progress }} %</span>
               </div>
             </div>
-            <button mat-button [matMenuTriggerFor]="stageDropdownHighLevel">
-            <img [ngClass]="{
-                'stage-option-collapsed': groupCollapseList[i],
-                'stage-option': !groupCollapseList[i]
-              }" src="assets/imgs/vEllipsis.svg" alt="stage-options" />
+            <button mat-button [matMenuTriggerFor]="stageDropdownHighLevel" [ngClass]="{
+              'stage-option-collapsed': groupCollapseList[i],
+              'stage-option': !groupCollapseList[i]
+            }">
+            <img src="assets/imgs/vEllipsis.svg" alt="stage-options" />
             </button>
             <mat-menu id="stage-dd" #stageDropdownHighLevel="matMenu" xPosition="before" yPosition="below">
               <div>
@@ -143,7 +143,7 @@
                       <ngx-avatar name="{{ template.name }}" initialsSize="2" [size]="20"></ngx-avatar>
                     </ng-template>
                   </div>
-                  <span class="cell-text common-text" (click)="loadTemplate(template, group)">{{ template.name }}</span>
+                  <span class="cell-text common-text handle-text-overflow" (click)="loadTemplate(template, group)">{{ template.name }}</span>
                 </div>
               </div>
               <div class="flex-lay right-cols">
