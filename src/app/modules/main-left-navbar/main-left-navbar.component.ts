@@ -117,6 +117,13 @@ export class MainLeftNavbarComponent implements OnInit {
           this._utilities.errorNotification(error);
         }
       );
+
+    // this.dataService.addTemplate(template).subscribe((data: Template) => {
+    //     this.router.navigate([`/templates/${data.id}`]);
+    //   },
+    //   (error) => {
+    //     this._utilities.errorNotification(error);
+    //   });
   }
 
   addWorkflow() {
@@ -133,6 +140,13 @@ export class MainLeftNavbarComponent implements OnInit {
           this._utilities.errorNotification(error);
         }
       );
+
+    // this.dataService.addWave(workflow).subscribe((data: Workflow) => {
+    //   this.router.navigate([`/workflows/${data.id}`]);
+    // },
+    // (error) => {
+    //   this._utilities.errorNotification(error);
+    // });
   }
 
 }
