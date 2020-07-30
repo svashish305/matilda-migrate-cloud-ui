@@ -385,3 +385,14 @@ body {
   position: relative;
   top: 4.688em;
 }
+
+.flex-container {
+
+	display: flex !important;
+	flex-wrap: wrap !important;
+	overflow-x: auto; 
+	overflow-y: auto;
+}
+.list-item {
+  margin: 8px !important;
+}

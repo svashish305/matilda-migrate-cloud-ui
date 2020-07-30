@@ -78,7 +78,7 @@
               <div
                 class="group-drag"
                 [ngClass]="{
-                  'do-not-show': !drag,
+                 
                   collapsed: groupCollapseList[i]
                 }"
               >
@@ -166,18 +166,17 @@
                 >
               </div>
             </div>
-            <button mat-button [matMenuTriggerFor]="stageDropdownHighLevel">
+            <button mat-button [matMenuTriggerFor]="stageDropdownHighLevel" [ngClass]="{
+              'stage-option-collapsed': groupCollapseList[i],
+              'stage-option': !groupCollapseList[i]
+            }">
               <img
-              [ngClass]="{
-                'stage-option-collapsed': groupCollapseList[i],
-                'stage-option': !groupCollapseList[i]
-              }"
               src="assets/imgs/vEllipsis.svg"
               alt="stage-options"
               />
             </button>
             <mat-menu
-              #stageDropdownHighLevel="matMenu"
+              #stageDropdownHighLevel="matMenu" xPosition="before" yPosition="below"
             >
               <div>
                 <button mat-menu-item (click)="deleteGroup(group)">

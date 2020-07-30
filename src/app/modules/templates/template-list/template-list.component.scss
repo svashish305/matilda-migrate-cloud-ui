@@ -654,6 +654,13 @@
     position: relative !important;
     right: 1rem !important;
   }
+
+  .pos-grp-menu-mobile {
+    bottom: 2.5em;
+    position: relative;
+    right: 12.5rem;
+  }
+
 }
 
 @media only screen and (min-width: 322px) and (max-width: 376px) {
@@ -1310,6 +1317,12 @@
   .right-cols {
     position: relative !important;
     right: 1rem !important;
+  }
+
+  .pos-grp-menu-mobile {
+    bottom: 2.5em;
+    position: relative;
+    right: 12.5rem;
   }
 }
 
@@ -1969,6 +1982,12 @@
     position: relative !important;
     right: 1rem !important;
   }
+
+  .pos-grp-menu-mobile {
+    bottom: 2.5em;
+    position: relative;
+    right: 12.5rem;
+  }
 }
 
 @media only screen and (min-width: 427px) {
@@ -2275,7 +2294,7 @@
   .group-drag {
     width: 24px;
     margin-left: -6px;
-    visibility: hidden;
+    visibility: visible; //hidden
   }
   &.collapsed {
     position: relative;
@@ -2648,8 +2667,9 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -1.25em !important;
-    right: 1.5em !important;
+    margin-top: -2.5em !important;
+    right: 0.1em !important;
+    z-index: 2;   
   }
 
   .stage-option-collapsed {
@@ -2744,8 +2764,8 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -2.25em !important;
-    right: 1.5em !important;
+    margin-top: -2.5em !important;
+    right: 0.1em !important;
     z-index: 2;
   }
 
@@ -2832,8 +2852,8 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -2.25em !important;
-    right: 1.5em !important;
+    margin-top: -2.5em !important;
+    right: 0.1em !important;
     z-index: 2;
   }
 
@@ -2920,8 +2940,8 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -2.25em !important;
-    right: 1.5em !important;
+    margin-top: -2.5em !important;
+    right: 0.1em !important;
     z-index: 2;
   }
 
@@ -3008,8 +3028,8 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
+    margin-top: -3em !important;
+    right: 0.1em !important;
     z-index: 2;
   }
 
@@ -3096,8 +3116,8 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
+    margin-top: -3em !important;
+    right: 0.1em !important;
     z-index: 2;
   }
 
@@ -3161,8 +3181,8 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
+    margin-top: -3em !important;
+    right: 0.1em !important;
     z-index: 2;
   }
 
@@ -3226,8 +3246,8 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
+    margin-top: -3em !important;
+    right: 0.1em !important;
     z-index: 2;
   }
 
@@ -3317,8 +3337,8 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
+    margin-top: -3em !important;
+    right: 0.1em !important;
     z-index: 2;
   }
 
@@ -3382,8 +3402,8 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
+    margin-top: -3em !important;
+    right: 0.1em !important;
     z-index: 2;
   }
 

@@ -233,7 +233,7 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   onCheck(event, template) {
-    event.stopPropagation();
+    //event.stopPropagation();
     if (!this.selectedTemplatesToImport.includes(template)) {
       this.selectedTemplatesToImport.push(template);
     }

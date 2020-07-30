@@ -115,7 +115,7 @@
   .stage-btn {
     bottom: 0 !important;
     position: absolute;
-    left: 9.6rem; //10.5rem;
+    left: 7.1rem; //9.6rem
   }
 
   .template__row {
@@ -141,7 +141,7 @@
 
   .right-options {
     position: relative;
-    right: -12px; //2px;
+    right: -12.5px; //12px;
   }
 
   .set-margin-right {
@@ -634,7 +634,7 @@
   .stage-option {
     bottom: 2em;
     position: relative;
-    right: 17rem; //16.1rem;
+    right: 18.25rem; //17rem
   }
 
   .stage-option-collapsed {
@@ -773,7 +773,7 @@
   .stage-btn {
     bottom: 0 !important;
     position: absolute;
-    left: 12.85rem; //13.6rem;
+    left: 10.4rem; //12.85rem
   }
 
   .template__row {
@@ -799,7 +799,7 @@
 
   .right-options {
     position: relative;
-    right: -0.8rem; // -0.5rem;
+    right: -0.9rem; //-0.8rem
   }
 
   .set-margin-right {
@@ -1291,7 +1291,7 @@
   .stage-option {
     bottom: 2em;
     position: relative;
-    right: 13.8rem; //13rem;
+    right: 15rem; //13.8rem
   }
 
   .stage-option-collapsed {
@@ -1430,7 +1430,7 @@
   .stage-btn {
     bottom: 0 !important;
     position: absolute;
-    left: 15.6rem; // 16.5rem;
+    left: 13.25rem; //15.6rem
   }
 
   .template__row {
@@ -1456,7 +1456,7 @@
 
   .right-options {
     position: relative;
-    right: -0.65rem;
+    right: -0.75rem;
   }
 
   .set-margin-right {
@@ -1949,7 +1949,7 @@
   .stage-option {
     bottom: 2em;
     position: relative;
-    right: 11.1rem; //10.1rem;
+    right: 12.1rem; //11.1rem;
   }
 
   .stage-option-collapsed {
@@ -2275,7 +2275,7 @@
   .group-drag {
     width: 24px;
     margin-left: -6px;
-    visibility: hidden;
+    visibility: visible; //hiden
   }
   &.collapsed {
     position: relative;
@@ -2287,7 +2287,7 @@
         visibility: visible;
       }
       .group-drag.do-not-show {
-        visibility: hidden;
+        visibility: visible; // hidden
       }
     }
   }
@@ -2648,13 +2648,18 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -1.25em !important;
-    right: 1.5em !important;
+    margin-top: -2.25em !important;
+    right: 0.1em !important;
   }
 
   .stage-option-collapsed {
     position: absolute;
     right: 0;
+  }
+
+  .wave-states{
+    position: absolute !important;
+    right: 85px !important;
   }
 
   .template-name {
@@ -2735,8 +2740,8 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -1.25em !important;
-    right: 1.5em !important;
+    margin-top: -2.25em !important;
+    right: 0.1em !important;
   }
 
   .stage-option-collapsed {
@@ -2822,8 +2827,8 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -1.25em !important;
-    right: 1.5em !important;
+    margin-top: -2.25em !important;
+    right: 0.1em !important;
   }
 
   .stage-option-collapsed {
@@ -2909,8 +2914,8 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -1.25em !important;
-    right: 1.5em !important;
+    margin-top: -2.25em !important;
+    right: 0.1em !important;
   }
 
   .stage-option-collapsed {
@@ -3083,8 +3088,8 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
+    margin-top: -3em !important;
+    right: 0.1em !important;
   }
 
   .stage-option-collapsed {
@@ -3147,8 +3152,8 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
+    margin-top: -3em !important;
+    right: 0.1em !important;
   }
 
   .stage-option-collapsed {
@@ -3211,8 +3216,8 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
+    margin-top: -3em !important;
+    right: 0.1em !important;
   }
 
   .stage-option-collapsed {
@@ -3302,7 +3307,7 @@
   .stage-option {
     position: absolute !important;
     margin-top: -2em !important;
-    right: 1.5em !important;
+    right: 0.1em !important;
   }
 
   .stage-option-collapsed {
@@ -3365,8 +3370,8 @@
 
   .stage-option {
     position: absolute !important;
-    margin-top: -2em !important;
-    right: 1.5em !important;
+    margin-top: -3em !important;
+    right: 0.1em !important;
   }
 
   .stage-option-collapsed {
