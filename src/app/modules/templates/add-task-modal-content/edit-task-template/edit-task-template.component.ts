@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBarConfig, MatSnackBar } from '@angular/material/snack-bar';
-import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
+import { SnackbarComponent } from 'src/app/modules/material/snackbar/snackbar.component';
 declare var require: any;
 interface SelectInterface {
   value: string;

@@ -1,7 +1,7 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Injectable } from "@angular/core";
 import * as uuid from 'uuid';
-import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
+import { SnackbarComponent } from 'src/app/modules/material/snackbar/snackbar.component';
 
 @Injectable({
   providedIn: 'root'

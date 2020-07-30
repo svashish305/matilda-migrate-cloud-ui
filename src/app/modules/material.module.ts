@@ -31,7 +31,7 @@ import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/mater
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { SnackbarComponent } from '../shared/components/snackbar/snackbar.component';
+import { SnackbarComponent } from './material/snackbar/snackbar.component';
 
 @NgModule({
   declarations: [SnackbarComponent],
@@ -105,7 +105,7 @@ import { SnackbarComponent } from '../shared/components/snackbar/snackbar.compon
   entryComponents: [SnackbarComponent], 
   providers: [MatDatepickerModule,
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,  useValue: {
-      duration: 1500,
+      // duration: 1500,
       horizontalPosition: 'right',
       verticalPosition: 'top'
   },
