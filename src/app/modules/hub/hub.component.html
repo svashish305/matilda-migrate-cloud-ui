@@ -1,5 +1,5 @@
 <div class="hub-container">
-  <mat-tab-group id="hub-tab">
+  <mat-tab-group id="hub-tab" [(selectedIndex)]="selectedTabIndex">
     <mat-tab label="Dashboard">
       <div class="tab-content">
 
@@ -8,7 +8,7 @@
     </mat-tab>
     <mat-tab label="Template">
       <div class="tab-content">
-        <div class="align-searchbox">
+        <div class="align-searchbox"> 
           <div class="row">
             <div class="col-sm-8"></div>
             <div class="col-sm-4">
@@ -35,7 +35,7 @@
               </form>
             </div>
           </div>
-        </div>  
+        </div>
         <div class="all-templates">
           <div>
             <div
@@ -60,7 +60,7 @@
                 alt=""
               />
             </div>
-  
+
             <div *ngIf="!isTemplateFavouritesCollapsed" class="grid-container">
               <mat-card *ngFor="let favTemplate of favTemplates; let i = index" class="mat-elevation-z8">
                 <div>
@@ -81,11 +81,12 @@
                       alt="mark as favourite"
                     />
                   </a>
-                  <span class="bold-text template-title">{{
+                  <span class="template-title handle-text-overflow" matTooltip="{{favTemplate.name}}">{{
                     favTemplate.name
                   }}</span>
+                     <!-- bold-text -->
                   <span class="badge badge-pill badge-custom template-status">{{
-                    favTemplate.status
+                    favTemplate.statusDescription
                   }}</span>
                   <div class="template-progress">
                     <span class="common-text">Progress : </span>
@@ -98,7 +99,7 @@
               </mat-card>
             </div>
           </div>
-  
+
           <div class="set-margin-top">
             <div
               class="set-margin-bottom"
@@ -120,7 +121,7 @@
                 alt=""
               />
             </div>
-  
+
             <div *ngIf="!isTemplateCollapsed" class="grid-container">
               <mat-card class="mat-elevation-z8"
                 *ngFor="let template of templates | search: searchKey"
@@ -143,13 +144,14 @@
                       alt="mark as favourite"
                     />
                   </a>
-                  <span class="bold-text template-title">{{
+                  <span class="template-title handle-text-overflow" matTooltip="{{template.name}}">{{
                     template.name
                   }}</span>
+                     <!-- bold-text -->
                   <span
                     class="badge badge-pill badge-custom template-status"
-                    [ngStyle]="setBadgeBgColor(template.status)"
-                    >{{ template.status }}</span
+                    [ngStyle]="setBadgeBgColor(template.statusDescription)"
+                    >{{ template.statusDescription }}</span
                   >
                   <div class="template-progress">
                     <span class="common-text">Progress : </span>
@@ -163,7 +165,7 @@
             </div>
           </div>
         </div>
-      </div>     
+      </div>
     </mat-tab>
     <mat-tab label="Workflow">
       <div class="tab-content">
@@ -194,7 +196,7 @@
               </form>
             </div>
           </div>
-        </div>   
+        </div>
         <div class="all-templates">
           <div>
             <div
@@ -219,7 +221,7 @@
                 alt=""
               />
             </div>
-  
+
             <div *ngIf="!isWorkflowFavouritesCollapsed" class="grid-container">
               <mat-card *ngFor="let favWorkflow of favWorkflows" class="mat-elevation-z8">
                 <div>
@@ -239,16 +241,17 @@
                       alt="mark as favourite"
                     />
                   </a>
-                  <span class="bold-text template-title">{{
+                  <span class="template-title handle-text-overflow" matTooltip="{{favWorkflow.name}}">{{
                     favWorkflow.name
                   }}</span>
+                     <!-- bold-text -->
                   <img
                     class="workflow-state-img"
                     src="assets/imgs/wf-configured.svg"
                     alt="Configured"
                   />
                   <span class="badge badge-pill badge-custom workflow-status">{{
-                    favWorkflow.status
+                    favWorkflow.statusDescription
                   }}</span>
                   <div class="workflow-progress">
                     <span class="common-text">Progress : </span>
@@ -261,7 +264,7 @@
               </mat-card>
             </div>
           </div>
-  
+
           <div class="set-margin-top">
             <div
               class="set-margin-bottom"
@@ -283,7 +286,7 @@
                 alt=""
               />
             </div>
-  
+
             <div *ngIf="!isWorkflowCollapsed" class="grid-container">
               <mat-card class="mat-elevation-z8"
                 *ngFor="let workflow of workflows | search: searchKey"
@@ -306,9 +309,10 @@
                       alt="mark as favourite"
                     />
                   </a>
-                  <span class="bold-text template-title">{{
+                  <span class="template-title handle-text-overflow" matTooltip="{{workflow.name}}">{{
                     workflow.name
                   }}</span>
+                  <!-- bold-text -->
                   <img
                     class="workflow-state-img"
                     src="assets/imgs/wf-configured.svg"
@@ -316,8 +320,8 @@
                   />
                   <span
                     class="badge badge-pill badge-custom workflow-status"
-                    [ngStyle]="setBadgeBgColor(workflow.groups[0].status)"
-                    >{{ workflow.groups[0].status }}</span
+                    [ngStyle]="setBadgeBgColor(workflow?.statusDescription)"
+                    >{{ workflow?.statusDescription }}</span
                   >
                   <div class="workflow-progress">
                     <span class="common-text">Progress : </span>
@@ -331,7 +335,7 @@
             </div>
           </div>
         </div>
-      </div>     
+      </div>
     </mat-tab>
   </mat-tab-group>
 </div>

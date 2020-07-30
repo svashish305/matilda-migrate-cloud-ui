@@ -445,7 +445,7 @@
   }
 
   .import-list-scroll-control {
-    height: 75vh;
+    height: 65vh; //75vh;
     overflow-y: scroll;
     overflow-x: hidden;
   }
@@ -1337,4 +1337,24 @@
   color: red;
   font-family: LatoMedium;
   font-size: 0.875rem;
+}
+
+.template-truncate-text {
+  
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+}
+
+.account-section {
+  height: calc(100vh - 35vh);
+  overflow-y: auto;
+}
+
+mat-panel-title {
+  flex-basis: 0;
+}
+mat-panel-description {
+  flex-basis: 100%;
 }

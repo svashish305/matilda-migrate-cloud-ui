@@ -49,7 +49,7 @@
     .matilda-text {
       visibility: visible;
       color: #fff;
-      margin-left: 2em;
+      margin-left: 2rem; //2em
       font-size: 1.5em;
       text-transform: uppercase;
     }
@@ -83,6 +83,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+
+    height: 60px;
   }
 
   .logo {
@@ -167,7 +169,7 @@
     font-size: 1.25rem;
     position: relative;
     margin-top: -28px;
-    margin-left: 3em;
+    margin-left: 2.25rem; //3em
     font-size: 1.25rem;
   }
 
@@ -210,6 +212,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+
+    height: 60px;
   }
 
   .logo {
@@ -239,8 +243,21 @@
     bottom: 0;
   }
 }
-
 // common styles
+.active-bar-ind {
+  position: absolute;
+  right: 0;
+
+  -webkit-animation: run 0.1s linear alternate;
+  -moz-animation: run 0.1s linear alternate;
+  -o-animation: run 0.1s linear alternate;
+  animation: run 0.1s linear alternate;
+}
+@-webkit-keyframes run {
+  0% { left: 0;}
+  100%{ left : 100%;}
+}
+
 .mobile-logo-header-padding {
   padding: 18px 16px 18px 17px !important;
 }
@@ -292,3 +309,33 @@
   height: 26px !important;
   opacity: 1 !important;
 }
+.logo__wrapper button.migrate-section.mat-button.mat-button-base{
+  padding: 0px;
+  width: 100%;
+}
+.logo__wrapper ::ng-deep .mat-button-wrapper{
+  display: flex;
+    padding: 14px;
+    width: 100%;
+}
+@media (min-width: 768px){
+  .sidenav__wrapper:hover .collapse .logo__wrapper{
+    padding: 0px !important;
+  }
+}
+
+// @media only screen and (width: 768px) {
+//   .sidenav__wrapper {
+//     width: 35vh;
+//     height: 108vh;
+//     background: var(--primary-light);
+//   }
+// }
+
+// @media only screen and (width: 1024px) {
+//   .sidenav__wrapper {
+//     width: 35vh;
+//     height: 101vh;
+//     background: var(--primary-light);
+//   }
+// }

@@ -1,18 +1,9 @@
 <div>
-  <span class="stage-tags"
-    >Workflow Type<span class="align-workflow-colon">:</span></span
-  >
+  <span class="stage-tags">Workflow Type<span class="align-workflow-colon">:</span></span>
   <mat-form-field id="workflow-select-field" class="workflow-type-dd">
-    <mat-select
-      [(ngModel)]="selectedWorkflowType"
-      (ngModelChange)="getWorkflowType()"
-    >
-      <mat-option
-        id="wf-option"
-        *ngFor="let wType of workflowTypes"
-        [value]="wType.value"
-        (click)="optionClicked(wType.value)"
-      >
+    <mat-select [(ngModel)]="selectedWorkflowType" (ngModelChange)="getWorkflowType()">
+      <mat-option id="wf-option" *ngFor="let wType of workflowTypes" [value]="wType.value"
+        (click)="optionClicked(wType.value)">
         {{ wType.viewValue }}
       </mat-option>
     </mat-select>
@@ -20,92 +11,58 @@
 </div>
 
 <div class="collapse-container">
-  <span class="stage-action-collapse-text">Collapse All</span
-  ><mat-slide-toggle
-    (change)="collapseAll($event.checked)"
-    [color]="primaryColor"
-  ></mat-slide-toggle>
+  <span class="stage-action-collapse-text">Collapse All</span>
+  <mat-slide-toggle (change)="collapseAll($event.checked)" [color]="primaryColor"></mat-slide-toggle>
 </div>
 
 <div class="right-align-searchbox">
   <form id="search-form">
-    <mat-form-field
-      id="mat-search"
-      floatLabel="never"
-      class="mat-typography full-width"
-    >
-      <img
-        matPrefix
-        src="assets/imgs/search-2.svg"
-        alt="search-icon"
-        class="new-search-icon"
-      />
-      <input
-        matInput
-        placeholder="Search"
-        type="search"
-        name="test"
-        [(ngModel)]="searchKey"
-      />
+    <mat-form-field id="mat-search" floatLabel="never" class="mat-typography full-width">
+      <img matPrefix src="assets/imgs/search-2.svg" alt="search-icon" class="new-search-icon" />
+      <input matInput placeholder="Search" type="search" name="test" [(ngModel)]="searchKey" />
     </mat-form-field>
   </form>
 </div>
 
 <div class="drag-drop-parent">
-  <div
-    cdkDropList
-    [cdkDropListData]="waveData.groups"
-    (cdkDropListDropped)="dropGroup($event)"
-  >
-    <div
-      class="templates__inner__wrapper"
-      *ngFor="
-        let waveType of waveData.groups | nestedWorkflowSearch: searchKey;
+  <div cdkDropList [cdkDropListData]="waveData.groups" (cdkDropListDropped)="dropGroup($event)">
+    <div class="templates__inner__wrapper" *ngFor="
+        let group of waveData.groups | nestedWorkflowSearch: searchKey;
         let i = index
-      "
-      cdkDropListGroup
-      cdkDrag
-      [cdkDragData]="waveType"
-    >
+      " cdkDropListGroup cdkDrag [cdkDragData]="group">
       <!-- template list strats -->
-      <div class="template-list-wrapper">
+      <div class="template-list-wrapper" #loadedGroup>
         <div>
-          <div
-            id="stage-header"
-            class="template__row"
-            [ngStyle]="toggleWorkflowHeight(groupCollapseList[i])"
-          >
+          <div id="stage-header" class="template__row" [ngStyle]="toggleWorkflowHeight(groupCollapseList[i])">
             <div class="template-name">
-              <div class="group-drag" [ngClass]="{ 'do-not-show': !drag }">
+              <div class="group-drag" [ngClass]="{ 'do-not-show': !drag, collapsed: groupCollapseList[i] }">
                 <img
                   class="move-cursor"
                   src="assets/imgs/dragIcon-2.svg"
                   alt=""
                 />
               </div>
-              <div
-                [ngClass]="{ collapsed: groupCollapseList[i] }"
-                class="accordian"
-              >
-                <img
-                  [ngClass]="{
+              <div [ngClass]="{ collapsed: groupCollapseList[i] }" class="accordian">
+                <img [ngClass]="{
                     'accordian-icon-collapsed': groupCollapseList[i],
                     'accordian-icon': !groupCollapseList[i]
-                  }"
-                  src="assets/imgs/chevron-down.svg"
-                  alt=""
-                  (click)="groupCollapseList[i] = !groupCollapseList[i]"
-                />
+                  }" src="assets/imgs/chevron-down.svg" alt=""
+                  (click)="groupCollapseList[i] = !groupCollapseList[i]" />
               </div>
               <!-- group level actions ends -->
-              <div class="group-name-wrapper">
+              <div [ngClass]="{
+                'group-name-wrapper-collapsed': groupCollapseList[i],
+                'group-name-wrapper': !groupCollapseList[i]
+              }">
                 <div class="group-name common-text">
-                  {{ waveType.name }}
+                  <input class="description-styles" (click)="$event.target.select()" (focus)="onFocusTitle()"
+                    (keydown.enter)="
+                      $event.preventDefault() && updateGroupTitle(group); $event.target.blur()
+                    " (blur)="updateGroupTitle(group)" [(ngModel)]="newGroupTitle ? newGroupTitle : group.name" />
                 </div>
               </div>
             </div>
-            <div
-              [ngClass]="{
+            <div [ngClass]="{
                 'list-right-menu-collapsed': groupCollapseList[i],
                 'list-right-menu': !groupCollapseList[i]
               }"
@@ -114,163 +71,110 @@
                 *ngIf="!(isMobile && groupCollapseList[i])"
                 class="flex-padding-r-2"
                 [ngClass]="{
-                  'flex-padding-r-4': isMobile && !groupCollapseList[i]
+                  'flex-padding-r-4': isMobile && !groupCollapseList[i],
+                  'status-margin-collapsed': !statusCodes[group.statusCd]
                 }"
               >
                 <span class="status-text">Status: </span>
-                <span
-                  class="badge badge-pill badge-custom"
-                  [ngStyle]="setBadgeBgColor(waveType.statusCode)"
-                  >{{ statusCodes[waveType.statusCode] }}</span
-                >
+                <span class="badge badge-pill badge-custom"
+                  [ngStyle]="setBadgeBgColor(group.statusCd)">{{ statusCodes[group.statusCd] }}</span>
               </div>
-              <div
-                *ngIf="!(isMobile && groupCollapseList[i])"
-                class="flex-padding-r-2"
-                [ngClass]="{
+              <div *ngIf="!(isMobile && groupCollapseList[i])" class="flex-padding-r-2" [ngClass]="{
                   'flex-padding-r-4': isMobile && !groupCollapseList[i]
-                }"
-              >
+                }">
                 <span class="status-text">Progress: </span>
-                <mat-progress-bar
-                  class="list-progress-bar"
-                  value="{{ waveType.progress }}"
-                ></mat-progress-bar>
-                <span
-                  [ngClass]="{
+                <mat-progress-bar class="list-progress-bar" value="{{ group.progress }}"></mat-progress-bar>
+                <span [ngClass]="{
                     'medium-text-mobile': isMobile,
                     'medium-text': !isMobile
-                  }"
-                  class="list-percent-text"
-                  >{{ waveType.progress }} %</span
-                >
+                  }" class="list-percent-text">{{ group.progress }} %</span>
               </div>
             </div>
-
-            <img
-              [ngClass]="{
-                'stage-option-collapsed': groupCollapseList[i],
-                'stage-option': !groupCollapseList[i]
-              }"
-              src="assets/imgs/vEllipsis.svg"
-              alt="stage-options"
-            />
-
+            <button mat-button [matMenuTriggerFor]="stageDropdownHighLevel" [ngClass]="{
+              'stage-option-collapsed': groupCollapseList[i],
+              'stage-option': !groupCollapseList[i]
+            }">
+            <img src="assets/imgs/vEllipsis.svg" alt="stage-options" />
+            </button>
+            <mat-menu id="stage-dd" #stageDropdownHighLevel="matMenu" xPosition="before" yPosition="below">
+              <div>
+                <button mat-menu-item (click)="deleteGroup(group)">
+                  <img class="icon-usersettings" src="assets/imgs/delete.svg" alt="" />
+                  <span> &nbsp;Delete</span>
+                </button>
+              </div>
+            </mat-menu>
             <div *ngIf="!groupCollapseList[i]" class="stage-list-subheader">
               <div class="stage-name-width">
-                <span class="medium-text list-header-text">Name</span>
+                <span class="medium-text list-header-text pos-name">Name</span>
               </div>
-              <div class="flex-lay">
+              <div class="flex-lay right-headers">
                 <div *ngIf="!isMobile" class="cell-width">
                   <span class="medium-text list-header-text">Status</span>
                 </div>
                 <div *ngIf="!isMobile" class="cell-width">
                   <span class="medium-text list-header-text">Progress</span>
                 </div>
-                <button
-                  class="stage-btn"
-                  mat-button
-                  [matMenuTriggerFor]="stageDropdown"
-                >
+                <button class="stage-btn" mat-button [matMenuTriggerFor]="stageDropdown">
                   <img src="assets/imgs/vEllipsis.svg" alt="Stage Settings" />
                 </button>
-                <mat-menu
-                  id="stage-dd"
-                  #stageDropdown="matMenu"
-                  xPosition="before"
-                  yPosition="below"
-                >
+                <mat-menu id="stage-dd" #stageDropdown="matMenu" xPosition="before" yPosition="below">
                   <div class="service-menu">
-                    <mat-checkbox (click)="onCheck($event)"
-                      >Service</mat-checkbox
-                    >
-                    <mat-checkbox (click)="onCheck($event)"
-                      >Action</mat-checkbox
-                    >
+                    <mat-checkbox (click)="onCheck($event)">Service</mat-checkbox>
+                    <mat-checkbox (click)="onCheck($event)">Action</mat-checkbox>
                   </div>
                 </mat-menu>
               </div>
             </div>
           </div>
           <!-- cdkdroplist for template re ordering among and across groups -->
-          <div
-            *ngIf="!groupCollapseList[i] && waveData.groups"
-            cdkDropList
-            id="{{ waveType.id }}"
-            [cdkDropListData]="waveType.items"
-            (cdkDropListDropped)="drop($event)"
-            [cdkDropListConnectedTo]="getConnectedList()"
-          >
-            <div
-              class="row-items template__row item"
-              [ngClass]="{ selected: template.selected }"
-              (click)="rowClick(template)"
-              *ngFor="let template of waveType.items"
-              cdkDrag
-            >
+          <div *ngIf="!groupCollapseList[i] && waveData.groups" cdkDropList id="{{ group.id }}"
+            [cdkDropListData]="group.items" (cdkDropListDropped)="drop($event)"
+            [cdkDropListConnectedTo]="getConnectedList()">
+            <div class="row-items template__row item" [ngClass]="{ selected: template.selected }"
+               *ngFor="let template of group.items" cdkDrag>
               <div class="template-name">
                 <div class="border-white template-name-main">
-                  <span class="cell-text common-text">{{ template.name }}</span>
+                  <div class="right-padding-half-rem">
+                    <ngx-avatar *ngIf="templateAvatarUrl; else initialsAvatar" [src]="templateAvatarUrl"
+                      class="flex-center" name="{{ template.name }}" initialsSize="2" [size]="18">
+                    </ngx-avatar>
+                    <ng-template #initialsAvatar>
+                      <ngx-avatar name="{{ template.name }}" initialsSize="2" [size]="20"></ngx-avatar>
+                    </ng-template>
+                  </div>
+                  <span class="cell-text common-text handle-text-overflow" (click)="loadTemplate(template, group)">{{ template.name }}</span>
                 </div>
               </div>
-              <div class="flex-lay">
-                <div
-                  *ngIf="!isMobile"
-                  class="border-white template-status"
-                  [ngClass]="getStatusClass(template)"
-                  (mouseleave)="template.showStatus = false"
-                  (click)="showStatuses($event, template)"
-                >
-                  <span
-                    class="badge badge-pill badge-custom"
-                    [ngStyle]="setBadgeBgColor(template.statusCode)"
-                    >{{ statusCodes[template.statusCode] }}</span
-                  >
+              <div class="flex-lay right-cols">
+                <div *ngIf="!isMobile" class="border-white template-status" [ngClass]="getStatusClass(template)"
+                  (mouseleave)="template.showStatus = false" (click)="showStatuses($event, template)">
+                  <span class="badge badge-pill badge-custom"
+                    [ngStyle]="setBadgeBgColor(template.statusCd)">{{ statusCodes[template.statusCd] }}</span>
                   <!-- template status start -->
                   <div class="status-dropdown">
-                    <div
-                      (click)="changeStatus(template, 'Working on it')"
-                      class="status__list__item status-yellow"
-                    >
+                    <div (click)="changeStatus(template, 'Working on it')" class="status__list__item status-yellow">
                       Working on it
                     </div>
-                    <div
-                      (click)="changeStatus(template, 'Done')"
-                      class="status__list__item status-green"
-                    >
+                    <div (click)="changeStatus(template, 'Done')" class="status__list__item status-green">
                       Done
                     </div>
-                    <div
-                      (click)="changeStatus(template, 'Stuck')"
-                      class="status__list__item status-red"
-                    >
+                    <div (click)="changeStatus(template, 'Stuck')" class="status__list__item status-red">
                       Stuck
                     </div>
-                    <div
-                      (click)="changeStatus(template, '')"
-                      class="status__list__item"
-                    ></div>
+                    <div (click)="changeStatus(template, '')" class="status__list__item"></div>
                   </div>
                   <!-- template status end -->
                 </div>
                 <div *ngIf="!isMobile" class="flex-center left-margin-1vw">
-                  <mat-progress-bar
-                    class="list-item-progress-bar"
-                    value="{{ template.progress }}"
-                  ></mat-progress-bar>
-                  <span class="list-percent-text"
-                    >{{ template.progress }} %</span
-                  >
+                  <mat-progress-bar class="list-item-progress-bar" value="{{ template.progress }}"></mat-progress-bar>
+                  <span class="list-percent-text">{{ template.progress }} %</span>
                 </div>
                 <div class="right-options">
-                  <a (click)="removeTemplate(waveType, template.id)">
-                    <img
-                      class="set-margin-right"
-                      src="assets/imgs/delete.svg"
-                      alt="delete"
-                    />
+                  <a (click)="deleteTemplate(group, template.id)">
+                    <img class="set-margin-right" src="assets/imgs/delete.svg" alt="delete" />
                   </a>
-                  <a (click)="templateSettings(waveType, template.id, $event)">
+                  <a (click)="templateSettings(group, template.id, $event)">
                     <img src="assets/imgs/vEllipsis.svg" alt="settings" />
                   </a>
                 </div>
@@ -280,11 +184,7 @@
             <div class="template__row item row-items">
               <!-- add new template start -->
               <div class="template-name">
-                <span
-                  class="common-text add-new-text"
-                  (click)="addTemplate(waveType)"
-                  >+ Add New Template</span
-                >
+                <span class="common-text add-new-text" (click)="addTemplate(null, group)">+ Add New Template</span>
               </div>
               <!-- add new template end -->
             </div>

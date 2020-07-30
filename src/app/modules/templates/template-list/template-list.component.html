@@ -59,8 +59,7 @@
     <div
       class="templates__inner__wrapper"
       *ngFor="
-        let group of templateData.groups
-          | nestedTemplateSearch: searchKey;
+        let group of templateData.groups | nestedTemplateSearch: searchKey;
         let i = index
       "
       cdkDropListGroup
@@ -68,7 +67,7 @@
       [cdkDragData]="group"
     >
       <!-- template list strats -->
-      <div class="template-list-wrapper">
+      <div class="template-list-wrapper" #loadedStage>
         <div>
           <div
             id="stage-header"
@@ -111,7 +110,16 @@
                 }"
               >
                 <div class="group-name common-text">
-                  {{ group.name }}
+                  <input
+                    class="description-styles"
+                    (click)="$event.target.select()"
+                    (focus)="onFocusTitle()"
+                    (keydown.enter)="
+                      $event.preventDefault() && updateGroupTitle(group); $event.target.blur()
+                    "
+                    (blur)="updateGroupTitle(group)"
+                    [(ngModel)]="newGroupTitle ? newGroupTitle : group.name"
+                  />
                 </div>
               </div>
             </div>
@@ -125,14 +133,15 @@
                 *ngIf="!(isMobile && groupCollapseList[i])"
                 class="flex-padding-r-2"
                 [ngClass]="{
-                  'flex-padding-r-4': isMobile && !groupCollapseList[i]
+                  'flex-padding-r-4': isMobile && !groupCollapseList[i],
+                  'status-margin-collapsed': !statusCodes[group.statusCd]
                 }"
               >
                 <span class="status-text">Status: </span>
                 <span
                   class="badge badge-pill badge-custom"
-                  [ngStyle]="setBadgeBgColor(group.statusCode)"
-                  >{{ statusCodes[group.statusCode] }}</span
+                  [ngStyle]="setBadgeBgColor(group.statusCd)"
+                  >{{ statusCodes[group.statusCd] }}</span
                 >
               </div>
               <div
@@ -157,15 +166,29 @@
                 >
               </div>
             </div>
-
-            <img
-              [ngClass]="{
-                'stage-option-collapsed': groupCollapseList[i],
-                'stage-option': !groupCollapseList[i]
-              }"
+            <button mat-button [matMenuTriggerFor]="stageDropdownHighLevel" [ngClass]="{
+              'stage-option-collapsed': groupCollapseList[i],
+              'stage-option': !groupCollapseList[i]
+            }">
+              <img
               src="assets/imgs/vEllipsis.svg"
               alt="stage-options"
-            />
+              />
+            </button>
+            <mat-menu
+              #stageDropdownHighLevel="matMenu" xPosition="before" yPosition="below"
+            >
+              <div>
+                <button mat-menu-item (click)="deleteGroup(group)">
+                  <img
+                  class="icon-usersettings"
+                src="assets/imgs/delete.svg"
+                alt=""
+              />
+                  <span>Delete</span>
+                </button>
+              </div>
+            </mat-menu>
 
             <div *ngIf="!groupCollapseList[i]" class="stage-list-subheader">
               <div class="stage-name-width">
@@ -239,24 +262,53 @@
             cdkDropList
             id="{{ group.id }}"
             [cdkDropListData]="group.items"
-            (cdkDropListDropped)="drop($event)"
+            (cdkDropListDropped)="dropTask($event)"
             [cdkDropListConnectedTo]="getConnectedList()"
           >
             <div
               class="row-items template__row item"
               [ngClass]="{ selected: group.selected }"
-              (click)="rowClick(task)"
               *ngFor="let task of group.items"
               cdkDrag
             >
               <div class="template-name">
                 <div class="border-white template-name-main">
+                  <img
+                    *ngIf="task.type; else avatar"
+                    [src]="
+                      task.type == 'folder'
+                        ? 'assets/imgs/folder.svg'
+                        : 'assets/imgs/file.svg'
+                    "
+                    class="right-padding-half-rem"
+                  />
+                  <ng-template #avatar>
+                    <div class="right-padding-half-rem">
+                      <ngx-avatar
+                        *ngIf="taskAvatarUrl; else initialsAvatar"
+                        [src]="taskAvatarUrl"
+                        class="flex-center"
+                        name="{{ templateData.name }}"
+                        initialsSize="2"
+                        [size]="18"
+                      >
+                      </ngx-avatar>
+                      <ng-template #initialsAvatar>
+                        <ngx-avatar
+                          name="{{ task.name }}"
+                          initialsSize="2"
+                          [size]="20"
+                        ></ngx-avatar>
+                      </ng-template>
+                    </div>
+                  </ng-template>
+
                   <span
                     [ngClass]="{
                       'mobile-text': isMobile,
                       'common-text': !isMobile
                     }"
-                    class="cell-text"
+                    class="cell-text handle-text-overflow" matTooltip="{{task.name}}" (click)="loadTask(task, group)"
                     >{{ task.name }}</span
                   >
                 </div>
@@ -270,7 +322,7 @@
                 <div *ngIf="!isMobile">
                   <div
                     *ngIf="getWorkflowType() === 'time'"
-                    class="border-white template-start flex-center left-margin-20"
+                    class="border-white template-start flex-center"
                   >
                     <span class="cell-text common-text">{{
                       task.startDate
@@ -326,8 +378,8 @@
                 >
                   <span
                     class="badge badge-pill badge-custom"
-                    [ngStyle]="setBadgeBgColor(task.statusCode)"
-                    >{{ statusCodes[task.statusCode] }}</span
+                    [ngStyle]="setBadgeBgColor(task.statusCd)"
+                    >{{ statusCodes[task.statusCd] }}</span
                   >
                   <!-- template status start -->
                   <div class="status-dropdown">
@@ -364,7 +416,7 @@
                   <span class="list-percent-text">{{ task.progress }} %</span>
                 </div>
                 <div class="right-options">
-                  <a (click)="deleteTask(group, task.id)">
+                  <a (click)="deleteTask(group, task)">
                     <img
                       class="set-margin-right"
                       src="assets/imgs/delete.svg"
@@ -380,7 +432,7 @@
             <div class="template__row item row-items">
               <!-- add new template start -->
               <div class="template-name">
-                <span class="common-text add-new-text" (click)="rowClick(null)"
+                <span class="common-text add-new-text" (click)="loadTask(null, group)"
                   >+ Add New Task</span
                 >
               </div>

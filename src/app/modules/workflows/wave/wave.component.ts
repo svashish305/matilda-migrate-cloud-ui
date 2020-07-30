@@ -6,18 +6,19 @@ import {
   AfterViewInit,
   EventEmitter,
   Output,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
 import { ResizeEvent } from 'angular-resizable-element';
 import { DataService } from 'src/services/data.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import * as uuid from 'uuid';
 import { ActivatedRoute } from '@angular/router';
-import { Group } from 'src/app/models/data.model';
+import { Group, Workflow, Item, KeyVault } from 'src/app/utils/models/data.model';
+import { WorkflowService } from '../services/workflow.service';
+import { Utilities } from 'src/app/utils/helpers/utilities';
+
+
 
 interface SelectInterface {
   value: string;
@@ -29,8 +30,11 @@ interface SelectInterface {
   templateUrl: './wave.component.html',
   styleUrls: ['./wave.component.scss'],
 })
-export class WaveComponent implements OnInit, AfterViewInit {
-  @Input() waveData: any;
+export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
+  @Input() waveData: Workflow;
+  @Output() updateWorkflow = new EventEmitter();
+  @Output() onTagsUpdate = new EventEmitter();
+  @Output() onUpdateAccounts = new EventEmitter();
   @Output() rowClicked: EventEmitter<any> = new EventEmitter();
   edit;
   showBackdrop;
@@ -38,7 +42,7 @@ export class WaveComponent implements OnInit, AfterViewInit {
 
   favourite = false;
   waves: any[] = [];
-  accounts: any[] = [];
+  accounts: KeyVault[] = [];
   titleState: string = 'idle';
   oldTitle: string;
   newTitle: string;
@@ -53,6 +57,10 @@ export class WaveComponent implements OnInit, AfterViewInit {
 
   showAccountOptions = false;
   showTagOptions = false;
+
+  public isTagsFormValid: boolean;
+  public selectedTabIndex: number = 1;
+  public selectedAccounts = [];
 
   waveState = 'start';
 
@@ -77,48 +85,51 @@ export class WaveComponent implements OnInit, AfterViewInit {
 
   constructor(
     private dataService: DataService,
+    private _workflowService: WorkflowService,
     private deviceService: DeviceDetectorService,
+    private _utilities: Utilities,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.getAccounts();
-    this.getWaves();
 
     this.route.params.subscribe((params: any) => {
       this.waveId = params.id;
     });
-    +this.dataService.getWave(this.waveId).subscribe((currentWorkflow: any) => {
-      this.currWave = currentWorkflow;
-      this.currWaveTags = currentWorkflow.tags;
-    });
 
+    this.getAccounts();
+  
     this.isMobile = this.deviceService.isMobile();
     this.isTablet = this.deviceService.isTablet();
     this.isDesktop = this.deviceService.isDesktop();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+   
+    if(changes.waveData.currentValue !== changes.waveData.previousValue) {
+      this.waveData = changes.waveData.currentValue;
+    }
   }
 
   ngAfterViewInit() {
     this.appyResize();
   }
 
-  /**
-   *
-   * @description gets list of Waves and calls first wave details
-   */
-  getWaves() {
-    this.dataService.getWaves().subscribe((data: any[]) => {
-      this.waves = data;
-    });
-  }
-
-  /**
-   *
-   * @description gets list of accounts and calls first stage details
-   */
   getAccounts() {
-    this.dataService.getAccounts().subscribe((data: any[]) => {
+    // this.dataService.getAccounts().subscribe((data: any[]) => {
+    //   this.accounts = data;
+    // });
+    this._workflowService.getAllAccounts().subscribe((data: any[]) => {
       this.accounts = data;
+      this.selectedAccounts = this.waveData.keyVault;
+      this.accounts.map(_account => {
+        _account.accountId = _account.accountId,
+        _account.accountName = _account.accountName,
+        _account.cpId = _account.cpId,
+        _account.cpName = _account.cpName,
+        _account.selected =  (this.waveData.keyVault.filter(_keyVault => _keyVault.accountId === _account.accountId).length === 0 ? false : true);
+      
+      });
     });
   }
 
@@ -130,48 +141,87 @@ export class WaveComponent implements OnInit, AfterViewInit {
 
       reader.onload = (event: any) => {
         // called once readAsDataURL is completed
-        this.waveAvatarUrl = event.target.result;
+        this.waveData.image = event.target.result;
+        this.updateWorkflow.emit({ payload: this.waveData, message: 'Workflow Icon Updated Successfully', type: 'success' });
       };
-
-      this.uploadFile(event.target.files[0]);
     }
   }
 
-  uploadFile(file) {
-    this.dataService.upload(file).subscribe(
-      (res: any) => {
-        console.log('file uploaded as', res);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  removeAvatar() {
+    this.waveData.image = null;
+    this.updateWorkflow.emit({ payload: this.waveData, message: 'Workflow Icon Deleted Successfully', type: 'error' });
   }
 
-  onCheck(event) {
-    event.stopPropagation();
+  isExistingAccount(account: any) {
+    console.log(account);
+    if(this.waveData.keyVault) {
+      console.log(this.waveData.keyVault.includes(account));
+      return this.waveData.keyVault.filter(_keyvault => _keyvault.accountId === account.accountId).length === 0 ? false : true;
+    }else {
+      return false;
+    }
+  }
+
+  onCheck(event: any, account: any) {
+   // this.selectedAccounts = [];
+    let existingAccount = this.selectedAccounts.filter(_account => _account.accountId === account.accountId);
+    console.log(existingAccount);
+    if(event.checked) {
+      if (existingAccount.length === 0) {
+        this.selectedAccounts.push(account);
+      }
+
+    } else{
+      if(existingAccount.length !== 0) {
+        this.selectedAccounts.splice(0,1);
+      }
+    }
+  }
+
+  addAccounts() {
+  
+    this.waveData.keyVault = [...this.selectedAccounts];
+   
+    this.accounts.forEach((_account: KeyVault) => {
+      this.waveData.keyVault.forEach((_selectedAccount: KeyVault) => {
+        if(_account.accountId === _selectedAccount.accountId) {
+          _account.selected = true;
+        }
+      }) ;
+    });
+    
+    this.onUpdateAccounts.emit({ workflowId: this.waveData.id, accounts: this.waveData.keyVault,  message: 'Accounts Added Successfully', type: 'success'});
+    this.selectedAccounts = [];
+    
+  }
+
+  clearSelectedAccounts() {
+    this.selectedAccounts = [];
   }
 
   updateTags(event: any) {
-    this.currWave.tags = event;
-    this.dataService
-      .updateWave(this.waveId, this.currWave)
-      .subscribe((newWave: any) => {
-        console.log('updated template ', newWave);
-        this.waveData = newWave;
-        this.currWave = newWave;
-      });
+    this.isTagsFormValid = !event.valid;
+    this.waveData.tags = event.tags;
+  }
+
+  saveTags() {
+    this.onTagsUpdate.emit({ tags: this.waveData.tags, message: 'Tags Updated Successfully', type: 'success' });
   }
 
   addGroup() {
-    const id = uuid.v4();
-    let newGroup = {
-      id,
-      ...new Group(),
-    };
-    this.currWave.groups.push(newGroup);
-    this.waveData = this.currWave;
-    console.log('modified wave ', this.currWave);
+    let group = new Group();
+    group.id = uuid.v4();
+    group.name = 'Untitled Group' + '_' + group.id;
+    group.order = this.waveData.groups.length >= 1 ? this.waveData.groups[this.waveData.groups.length - 1].order + 100 : 100;
+
+    this.waveData.groups.push(group);
+    this.waveData.groups = [...this.waveData.groups];
+
+    setTimeout(() =>{
+      this.waveList.focusNewGroup();
+    },0);
+
+    this.updateWorkflow.emit({ payload: this.waveData, message: 'Group Added Successfully', type: 'success' });
   }
 
   toggleRightSidebar(template: any) {
@@ -197,19 +247,10 @@ export class WaveComponent implements OnInit, AfterViewInit {
     this.accountCollapseState[accountId] = false;
   }
 
-  /**
-   *
-   * @description triggers when resize is released
-   */
   onResizeEnd(event) {
-    console.log(event);
     this.appyResize(event);
   }
 
-  /**
-   *
-   * @description resizes the template details container
-   */
   appyResize(event?) {
     const wrapperWidth = document.getElementById('wave-content-id').offsetWidth;
     const templateHolder = document.getElementById('resizable-holder');
@@ -224,40 +265,44 @@ export class WaveComponent implements OnInit, AfterViewInit {
     }
   }
 
-  /**
-   *
-   * @param edit - edit specifies whether user is editing or not
-   * @description opens or closes the template details
-   */
   openDetails(edit) {
     this.edit = edit;
     if (!edit) {
       this.showBackdrop = false;
-      this.waveData.data.waveTypes.forEach((waveType) => {
-        waveType.templates.forEach((template) => {
-          template.selected = false;
-        });
-      });
+      // this.waveData.data.waveTypes.forEach((waveType) => {
+      //   waveType.templates.forEach((template) => {
+      //     template.selected = false;
+      //   });
+      // });
     }
     setTimeout(() => {
       this.appyResize();
     }, 0);
   }
 
-  /**
-   *
-   * @description Adds new group to wave
-   */
-  addNewGroup() {
-    console.log(this.waveList);
-    const id = Math.random().toString(6);
-    this.waveData.data.waveTypes.unshift({
-      id: id,
-      name: 'New group',
-      theme: this.waveList.getRandomColor(),
-      edit: true,
-      templates: [],
-    });
+  openTaskDetails(payload: any) {
+    let task: Item = payload.task;
+    let group: Group = payload.group;
+    if (!task) {
+      let _task = new Item();
+      _task.id = this._utilities.generateId();
+      _task.name = 'Untitled Template' + '_' + _task.id;
+      _task.groupId = group.id;
+      _task.order = group.items.length >= 1 ? group.items[group.items.length - 1].order + 100 : 100;
+
+      this.waveData.groups.forEach((_group: Group) => {
+        if (_group.id === group.id) {
+          _group.items.push(_task);
+        }
+      });
+
+      this.updateWorkflow.emit({ payload: this.waveData, message: 'Template Added Successfully', type: 'success' });
+    }
+
+  }
+
+  updateGroupInfo(payload: Workflow) {
+    this.updateWorkflow.emit(payload);
   }
 
   onFocusTitle() {
@@ -272,10 +317,9 @@ export class WaveComponent implements OnInit, AfterViewInit {
         title: this.newTitle,
         ...this.waveData,
       };
-      // this.dataService
-      //   .updateTemplate(newTemplate)
-      //   .subscribe((res: any) => console.log(res));
     }
+
+    this.updateWorkflow.emit({ payload: this.waveData, message: 'Workflow Updated Successfully', type: 'success' });
   }
 
   onFocusDescription() {
@@ -290,10 +334,9 @@ export class WaveComponent implements OnInit, AfterViewInit {
         description: this.newDescription,
         ...this.waveData,
       };
-      // this.dataService
-      //   .updateTemplate(newTemplate)
-      //   .subscribe((res: any) => console.log(res));
     }
+
+    this.updateWorkflow.emit({ payload: this.waveData, message: 'Workflow Updated Successfully', type: 'success' });
   }
 
   /**
@@ -304,77 +347,11 @@ export class WaveComponent implements OnInit, AfterViewInit {
     return '#' + Math.random().toString(16).substr(-6);
   }
 
-  /**
-   *
-   * @description reorders the template to other groups or within the groups
-   */
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
-  }
-
-  /**
-   *
-   * @description reorders groups
-   */
-  mainDrop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(
-      this.waveData.data.waveTypes,
-      event.previousIndex,
-      event.currentIndex
-    );
-  }
-
-  /**
-   *
-   * @param template - for which the details has to be shown
-   * @description emits event to open template details
-   */
   rowClick(template) {
-    this.waveData.data.waveTypes.forEach((waveType) => {
-      waveType.templates.forEach((t) => {
-        t.selected = false;
-      });
-    });
     template.selected = true;
     this.rowClicked.emit(true);
-    console.log('row clicked');
   }
 
-  /**
-   *
-   * @param waveType - for which new template has to be added
-   * @description Adds new template to group
-   */
-  addTemplate(waveType) {
-    const id = Math.random().toString(6);
-
-    waveType.templates.push({
-      id: id,
-      name: waveType.newTemplate,
-      status: '',
-      startDate: '',
-      endDate: '',
-    });
-    waveType.newTemplate = '';
-  }
-
-  /**
-   *
-   * @description clears entered template name and hides add button
-   */
   inputFocusOut(event, waveType) {
     setTimeout(() => {
       waveType.showAdd = false;
@@ -382,89 +359,26 @@ export class WaveComponent implements OnInit, AfterViewInit {
     }, 200);
   }
 
-  /**
-   *
-   * @param waveType for which name has to be edited
-   * @description make group name editable on hover
-   */
   groupNameEnter(waveType) {
-    this.waveData.data.waveTypes.forEach((wave) => (wave.edit = false));
+    // this.waveData.data.waveTypes.forEach((wave) => (wave.edit = false));
     waveType.edit = true;
     waveType.drag = true;
   }
 
-  /**
-   *
-   * @description passes the ids of groups to angular material to make them reorderable
-   */
-  getConnectedList() {
-    return this.waveData.data.waveTypes.map((x) => `${x.id}`);
-  }
-
-  /**
-   *
-   * @description reorders the dragged group
-   */
-  dropGroup(event: CdkDragDrop<string[]>) {
-    moveItemInArray(
-      this.waveData.data.waveTypes,
-      event.previousIndex,
-      event.currentIndex
-    );
-  }
-
-  /**
-   *
-   * @param waveType - for which actions has to be opened
-   * @description shows group level actions
-   */
   openGroupLevelActions(waveType) {
     waveType.openActions = !waveType.openActions;
-    this.waveData.data.waveTypes.forEach((type) => {
-      if (type.id !== waveType.id) {
-        type.openActions = false;
-      }
-    });
+    // this.waveData.data.waveTypes.forEach((type) => {
+    //   if (type.id !== waveType.id) {
+    //     type.openActions = false;
+    //   }
+    // });
   }
 
-  /**
-   *
-   * @param waveType - which is being deleted
-   * @description resizes the template details container
-   */
-  deleteGroup(waveType) {
-    this.waveData.data.waveTypes = this.waveData.data.waveTypes.filter(
-      (Type) => {
-        return waveType.id !== Type.id;
-      }
-    );
-  }
 
-  /**
-   *
-   * @param waveType of template which is being deleted and template
-   * @description deletes template of group
-   */
-  deleteTemplate(waveType, template) {
-    waveType.templates = waveType.templates.filter((temp) => {
-      return template.id !== temp.id;
-    });
-  }
-
-  /**
-   *
-   * @param template and status - nely changed status
-   * @description changes  status of template
-   */
   changeStatus(template, status) {
     template.status = status;
   }
 
-  /**
-   *
-   * @param template- template to getcllas for status should be passed
-   * @description get class to apply color to status column depending on status
-   */
   getStatusClass(template) {
     let className;
     if (template.status === 'Working on it') {
@@ -489,11 +403,6 @@ export class WaveComponent implements OnInit, AfterViewInit {
     return className;
   }
 
-  /**
-   *
-   * @param template - template for which status list has to be shown
-   * @description shows status list to change status of passed template
-   */
   showStatuses($event, template) {
     template.showStatus = !template.showStatus;
     $event.stopPropagation();

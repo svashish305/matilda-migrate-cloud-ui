@@ -13,5 +13,7 @@ export class SnackbarComponent implements OnInit {
 
   ngOnInit() {
   }  
-
+  onActionBtnClick() {
+    this.snackBarRef.dismissWithAction();
+  }
 }
