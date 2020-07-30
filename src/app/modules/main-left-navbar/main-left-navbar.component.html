@@ -265,6 +265,9 @@
             >Hub</span
           >
         </button>
+        <div *ngIf="hubSelected" class="active-bar-ind">
+          <img src="assets/imgs/active-bar-ind.svg" alt="" />
+        </div>
       </div>
       <div
         (click)="
@@ -301,6 +304,9 @@
             >Template</span
           >
         </button>
+        <div *ngIf="templateSelected" class="active-bar-ind">
+          <img src="assets/imgs/active-bar-ind.svg" alt="" />
+        </div>
       </div>
       <div
         (click)="
@@ -337,6 +343,9 @@
             >Workflow</span
           >
         </button>
+        <div *ngIf="workflowSelected" class="active-bar-ind">
+          <img src="assets/imgs/active-bar-ind.svg" alt="" />
+        </div>
       </div>
     </div>
 

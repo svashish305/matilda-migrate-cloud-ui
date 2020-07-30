@@ -83,6 +83,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+
+    height: 60px;
   }
 
   .logo {
@@ -210,6 +212,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+
+    height: 60px;
   }
 
   .logo {
@@ -240,6 +244,20 @@
   }
 }
 // common styles
+.active-bar-ind {
+  position: absolute;
+  right: 0;
+
+  -webkit-animation: run 0.1s linear alternate;
+  -moz-animation: run 0.1s linear alternate;
+  -o-animation: run 0.1s linear alternate;
+  animation: run 0.1s linear alternate;
+}
+@-webkit-keyframes run {
+  0% { left: 0;}
+  100%{ left : 100%;}
+}
+
 .mobile-logo-header-padding {
   padding: 18px 16px 18px 17px !important;
 }
