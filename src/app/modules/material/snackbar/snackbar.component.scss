@@ -1,0 +1,64 @@
+.snackbar-close {
+    cursor: pointer;    
+  }   
+::ng-deep .success{
+  font-family: LatoRegular;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  font-weight: 400;
+  // background-color: #8bc34a;
+  // color: #fff;
+  background-color: #ffff;
+  color: #000;
+}
+::ng-deep .info{
+  font-family: LatoRegular;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  font-weight: 400;
+  // background-color: #03a9f4;
+  // color: #fff;
+  background-color: #ffff;
+  color: #000;
+}
+::ng-deep .warning{
+  font-family: LatoRegular;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  font-weight: 400;
+  // background-color: #ffdb5b;
+  // color: #fff;
+  background-color: #ffff;
+  color: #000;
+}
+::ng-deep .error{
+    font-family: LatoRegular;
+    font-size: 0.75rem;
+    line-height: 1.45;
+    font-weight: 400;
+    // background-color:#f44336;
+    // color: #fff;
+    background-color: #ffff;
+    color: #000;
+  }  
+  .snackbar-avatar {
+    padding-right: 25px;
+    margin: auto 0;
+    position: absolute;
+    left: 6px;
+  }
+ .snackbar-avatar-img{
+  width: 20px;
+  height: 30px;
+  position: relative;
+  bottom: 4px;
+  left:8px
+  }
+  .snackbar-data {
+    margin-left: 30px;
+  }
+  .snackbar-dismiss{
+    width: 25px;
+    height: 25px;
+    margin-left: 1px;
+  }

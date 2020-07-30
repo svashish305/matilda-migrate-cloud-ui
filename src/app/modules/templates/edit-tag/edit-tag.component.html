@@ -19,7 +19,7 @@
           <input matInput placeholder="Enter Value" formControlName="value" (change)="valueChange(form)"/>
         </mat-form-field>
         <span>
-          <mat-icon style="vertical-align: middle" [style.visibility]="configuredTags?.length - 1 === i ? 'visible' : 'hidden'" color="primary" 
+          <mat-icon style="vertical-align: middle" [style.visibility]="configuredTags?.length - 1 === i ? 'visible' : 'hidden'" [ngStyle]="{'color':'#7cbef6'}" 
             (click)="addTag()">add_circle</mat-icon> &nbsp;
           <a (click)="deleteTag(i)">
             <img src="assets/imgs/delete.svg" alt="delete" />

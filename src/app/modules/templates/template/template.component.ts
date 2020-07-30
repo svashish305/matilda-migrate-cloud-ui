@@ -15,10 +15,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import * as uuid from 'uuid';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
 import { Template, Item, Group } from 'src/app/utils/models/data.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TemplateService } from '../services/template.service';
+import { SnackbarComponent } from '../../material/snackbar/snackbar.component';
 
 
 interface SelectInterface {
