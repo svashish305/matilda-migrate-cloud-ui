@@ -2294,7 +2294,7 @@
   .group-drag {
     width: 24px;
     margin-left: -6px;
-    visibility: hidden;
+    visibility: visible; //hidden
   }
   &.collapsed {
     position: relative;

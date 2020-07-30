@@ -83,17 +83,20 @@
               </a>
               )<span class="align-tags-colon">:</span>
             </span>
-            <span class="badge badge-pill badge-custom" [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }">
+            <span *ngIf="waveData?.tags &&  waveData?.tags?.length > 0; else noTags" class="badge badge-pill badge-custom" [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }">
               <span *ngIf="isMobile" class="badge-key-value">
-                <span *ngIf="waveData?.tags &&  waveData?.tags?.length > 0; else noTags">
+                <span >
                   {{ waveData.tags[0].name }} :
                   {{ waveData.tags[0].value }}
                 </span>
-                <ng-template #noTags>
-                  N/A
-                </ng-template>
+               
               </span>
             </span>
+            <ng-template #noTags>
+              <span [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.25em' }">
+                <a href="javascript: void(0)" (click)="showTagOptions = true" class="common-text" style="color: #006bd4;">Click to add Tag</a>
+              </span>
+            </ng-template>
             <span *ngIf="isMobile" class="badge badge-pill badge-custom">
               <span *ngIf="waveData.tags.length > 1" class="badge-key-value">+{{ waveData.tags.length - 1 }}</span>
             </span>
@@ -101,41 +104,47 @@
               <span class="badge badge-pill badge-custom" *ngFor="let tag of waveData.tags">
                 <span class="badge-key-value">{{ tag.name }} : {{ tag.value }}</span>
               </span>
+              <span class="badge badge-pill badge-custom">
+                <span *ngIf="waveData.tags.length > 1" class="badge-key-value">+{{ waveData.tags.length - 1 }}</span>
+              </span>
             </div>
           </div>
-          <div class="badge-container" [ngStyle]="{ 'margin-top': isMobile ? '0' : '7px' }">
+          <div class="badge-container" [ngStyle]="{ 'margin-top': isMobile ? '0' : '7px'  }">
             <span class="stage-tags">Accounts (
               <a (click)="showAccountOptions = true" class="pointer-cursor">
                 <span class="stage-tags-blue">Change</span>
               </a>
               )<span class="align-accounts-colon">:</span>
             </span>
-            <span *ngIf="isMobile" class="badge badge-pill badge-custom margin-left-zero">
-              <span *ngIf="waveData?.keyVault &&  waveData?.keyVault?.length > 0; else accountsMobile">
-                {{ waveData?.keyVault[0]?.provider }} :
-                {{ waveData?.keyVault[0]?.accountName }}
+            <span *ngIf="waveData?.keyVault &&  waveData?.keyVault?.length > 0; else noAccounts" class="badge badge-pill badge-custom" [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }">
+              <span *ngIf="isMobile" class="badge-key-value">
+                <span >
+                  {{ waveData.keyVault[0].cpName }} :
+                  {{ waveData.keyVault[0].accountName }}
+                </span>
               </span>
-              <ng-template #accountsMobile>
-                N/A
-              </ng-template>
             </span>
-            <span *ngIf="isMobile" class="badge badge-pill badge-custom">
+            <ng-template #noAccounts>
+              <span [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.25em' }">
+                <a href="javascript: void(0); $event.stopPropagation()" (click)="showAccountOptions = true" class="common-text" style="color: #006bd4;">Click to add Account</a>
+                
+              </span>
+            </ng-template>
+            <!-- <span *ngIf="isMobile" class="badge badge-pill badge-custom">
               <span *ngIf="waveData?.keyVault?.length > 1" class="badge-key-value">+{{ waveData?.keyVault?.length - 1 }}</span>
-            </span>
+            </span> -->
             <span *ngIf="!isMobile" class="badge badge-pill badge-custom"
               [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }">
               <span *ngIf="waveData?.keyVault &&  waveData?.keyVault?.length > 0; else NotAccountsMobile" class="badge-key-value">
                 {{ waveData?.keyVault[0]?.cpName }} :
                 {{ waveData?.keyVault[0]?.accountName }}
               </span>
-              <ng-template #NotAccountsMobile>
-                N/A
-              </ng-template>
             </span>
-            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
+            <span  class="badge badge-pill badge-custom">
               <span *ngIf="waveData?.keyVault?.length > 1" class="badge-key-value">+{{ waveData?.keyVault?.length - 1 }}</span>
             </span>
           </div>
+
 
           <div class="wave-states">
             <a (click)="waveState = 'start'">

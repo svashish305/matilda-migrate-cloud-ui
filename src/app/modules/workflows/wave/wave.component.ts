@@ -133,6 +133,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     });
   }
 
+ 
   changeAvatar(event: any) {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
