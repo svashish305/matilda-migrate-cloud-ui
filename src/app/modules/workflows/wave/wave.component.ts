@@ -35,7 +35,6 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   @Output() rowClicked: EventEmitter<any> = new EventEmitter();
   edit;
   showBackdrop;
-  @ViewChild('waveList', { static: false }) waveList;
 
   favourite = false;
   waves: any[] = [];
