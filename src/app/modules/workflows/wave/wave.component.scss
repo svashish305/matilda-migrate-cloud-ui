@@ -82,7 +82,7 @@
 
   #stage-tab::ng-deep.mat-tab-header {
     position: absolute !important;
-    top: 7.5em !important;
+    top: 6.5em !important; //7.5em !important;
     z-index: 2;
     width: 100%;
   }
@@ -368,7 +368,7 @@
 
   .wave-states {
     position: absolute;
-    top: 11.2em;
+    top: 10em;
     left: 0;
   }
 

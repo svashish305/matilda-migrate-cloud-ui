@@ -77,7 +77,7 @@ export class TemplateListComponent implements OnInit {
     });
   }
 
-  addStage() {
+  addGroup() {
     let group = new Group();
     group.id = uuid.v4();
     group.name = 'Untitled Group' + '_' + group.id;
@@ -88,6 +88,8 @@ export class TemplateListComponent implements OnInit {
     if(this.areAllCollapsed) {
       this.groupCollapseList[this.templateData.groups.length - 1] = true;
     }
+
+    this.focusNewGroup();
   }
 
   deleteGroup(group: Group) {

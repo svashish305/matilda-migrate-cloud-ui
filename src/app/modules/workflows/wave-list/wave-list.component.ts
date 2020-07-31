@@ -209,6 +209,8 @@ export class WaveListComponent implements OnInit {
     if(this.areAllCollapsed) {
       this.groupCollapseList[this.waveData.groups.length - 1] = true;
     }
+
+    this.focusNewGroup();
   }
 
   deleteGroup(group: Group) {
