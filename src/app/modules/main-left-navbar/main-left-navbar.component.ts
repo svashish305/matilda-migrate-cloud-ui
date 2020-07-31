@@ -108,22 +108,22 @@ export class MainLeftNavbarComponent implements OnInit {
     template.id = this._utilities.generateId();
     template.name = 'Untitled Template' + '_' + template.id;
 
-    // this._templateService.updateTemplate(template)
-    //   .subscribe(
-    //     (data: Template) => {
-    //       this.router.navigate([`/templates/${data.id}`]);
-    //     },
-    //     (error) => {
-    //       this._utilities.errorNotification(error);
-    //     }
-    //   );
+    this._templateService.updateTemplate(template)
+      .subscribe(
+        (data: Template) => {
+          this.router.navigate([`/templates/${data.id}`]);
+        },
+        (error) => {
+          this._utilities.errorNotification(error);
+        }
+      );
 
-    this.dataService.addTemplate(template).subscribe((data: Template) => {
-        this.router.navigate([`/templates/${data.id}`]);
-      },
-      (error) => {
-        this._utilities.errorNotification(error);
-      });
+    // this.dataService.addTemplate(template).subscribe((data: Template) => {
+    //     this.router.navigate([`/templates/${data.id}`]);
+    //   },
+    //   (error) => {
+    //     this._utilities.errorNotification(error);
+    //   });
   }
 
   addWorkflow() {

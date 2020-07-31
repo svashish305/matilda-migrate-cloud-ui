@@ -210,7 +210,12 @@ export class WaveListComponent implements OnInit {
       this.groupCollapseList[this.waveData.groups.length - 1] = true;
     }
 
-    this.focusNewGroup();
+    setTimeout(() =>{ 
+      this.focusNewGroup();
+    }, 0);
+
+    this.updateGroupInfo.emit({ payload: this.waveData, message: 'Group Added Successfully', type: 'success' });
+
   }
 
   deleteGroup(group: Group) {

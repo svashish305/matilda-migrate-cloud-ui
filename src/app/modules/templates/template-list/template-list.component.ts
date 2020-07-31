@@ -85,16 +85,21 @@ export class TemplateListComponent implements OnInit {
     this.templateData.groups.push(group);
     this.templateData.groups = [...this.templateData.groups];
 
-    if(this.areAllCollapsed) {
+    if (this.areAllCollapsed) {
       this.groupCollapseList[this.templateData.groups.length - 1] = true;
     }
 
-    this.focusNewGroup();
+    setTimeout(() => {
+      this.focusNewGroup();
+    }, 0);
+
+    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Stage Added Successfully', type: 'success' });
+
   }
 
   deleteGroup(group: Group) {
     this.templateData.groups = this.templateData.groups.filter(_group => _group.id !== group.id);
-    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Group Deleted Successfully', type: 'error' });
+    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Stage Deleted Successfully', type: 'error' });
   }
 
   dropTask(event: CdkDragDrop<string[]>) {
@@ -142,11 +147,11 @@ export class TemplateListComponent implements OnInit {
           event.container.data[event.currentIndex + 1]['order']) /
         2;
     }
-    
+
     task.groupId = targetGroupId;
-   
+
     this.templateData.groups.forEach(_group => {
-      if(_group.id === targetGroupId) {
+      if (_group.id === targetGroupId) {
         _group.items.forEach(_task => {
           _task.groupId = targetGroupId;
         });

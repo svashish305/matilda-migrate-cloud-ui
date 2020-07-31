@@ -112,22 +112,22 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   getAccounts() {
-    // this._workflowService.getAllAccounts().subscribe((data: any[]) => {
-    //   this.accounts = data;
-    //   this.selectedAccounts = this.waveData.keyVault;
-    //   this.accounts.map(_account => {
-    //     _account.accountId = _account.accountId,
-    //     _account.accountName = _account.accountName,
-    //     _account.cpId = _account.cpId,
-    //     _account.cpName = _account.cpName,
-    //     _account.selected =  (this.waveData.keyVault.filter(_keyVault => _keyVault.accountId === _account.accountId).length === 0 ? false : true);
-      
-    //   });
-    // });
-
-    this.dataService.getAccounts().subscribe((data: any[]) => {
+    this._workflowService.getAllAccounts().subscribe((data: any[]) => {
       this.accounts = data;
+      this.selectedAccounts = this.waveData.keyVault;
+      this.accounts.map(_account => {
+        _account.accountId = _account.accountId,
+        _account.accountName = _account.accountName,
+        _account.cpId = _account.cpId,
+        _account.cpName = _account.cpName,
+        _account.selected =  (this.waveData.keyVault.filter(_keyVault => _keyVault.accountId === _account.accountId).length === 0 ? false : true);
+      
+      });
     });
+
+    // this.dataService.getAccounts().subscribe((data: any[]) => {
+    //   this.accounts = data;
+    // });
   }
 
  
@@ -153,7 +153,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   isExistingAccount(account: any) {
     console.log(account);
     if(this.waveData.keyVault) {
-      console.log(this.waveData.keyVault.includes(account));
+     // console.log(this.waveData.keyVault.includes(account));
       return this.waveData.keyVault.filter(_keyvault => _keyvault.accountId === account.accountId).length === 0 ? false : true;
     }else {
       return false;
@@ -163,7 +163,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   onCheck(event: any, account: any) {
    // this.selectedAccounts = [];
     let existingAccount = this.selectedAccounts.filter(_account => _account.accountId === account.accountId);
-    console.log(existingAccount);
+   // console.log(existingAccount);
     if(event.checked) {
       if (existingAccount.length === 0) {
         this.selectedAccounts.push(account);
