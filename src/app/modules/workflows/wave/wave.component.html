@@ -227,11 +227,12 @@
               </ngx-avatar>
               <ng-template #accountAddIntialsAvatar>
                 <ngx-avatar name="{{ account?.accountName }}" initialsSize="2" [size]="30"></ngx-avatar>
-              </ng-template>
+              </ng-template> &nbsp;&nbsp; &nbsp;
+              <span  matTooltip="{{ account?.accountName }}" class="common-text"> {{ account?.accountName }}</span>
               </mat-panel-title>
-              <mat-panel-description style="align-items: center !important;">
-                <span  matTooltip="{{ account?.accountName }}" class="common-text"> {{ account?.accountName }}</span>
-              </mat-panel-description>
+              <!-- <mat-panel-description style="align-items: center !important;">
+               
+              </mat-panel-description> -->
             </mat-expansion-panel-header>
             <div class="common-text" style="margin-left:1rem;">
               <p >Provider: {{account?.cpName}}</p>
