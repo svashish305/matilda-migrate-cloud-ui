@@ -16,6 +16,7 @@ import { ThemePalette } from '@angular/material/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { Template, Item, Group } from 'src/app/utils/models/data.model';
 import { StatusCodes } from 'src/app/utils/enums/enums';
+import * as uuid from 'uuid';
 
 interface SelectInterface {
   value: string;
@@ -38,7 +39,7 @@ export class TemplateListComponent implements OnInit {
   public searchKey: string;
   public groupCollapseList: boolean[] = [];
   drag = true;
-
+  areAllCollapsed = false;
   workflowTypes: SelectInterface[] = [
     { value: 'trigger', viewValue: 'Trigger' },
     { value: 'time', viewValue: 'Time' }
@@ -74,6 +75,19 @@ export class TemplateListComponent implements OnInit {
         this.updateGroupInfo.emit({ payload: this.templateData, message: 'Task Deleted Successfully', type: 'error' });
       }
     });
+  }
+
+  addStage() {
+    let group = new Group();
+    group.id = uuid.v4();
+    group.name = 'Untitled Group' + '_' + group.id;
+    group.order = this.templateData.groups.length >= 1 ? this.templateData.groups[this.templateData.groups.length - 1].order + 100 : 100;
+    this.templateData.groups.push(group);
+    this.templateData.groups = [...this.templateData.groups];
+
+    if(this.areAllCollapsed) {
+      this.groupCollapseList[this.templateData.groups.length - 1] = true;
+    }
   }
 
   deleteGroup(group: Group) {
@@ -302,6 +316,7 @@ export class TemplateListComponent implements OnInit {
   }
 
   collapseAll(checked: boolean) {
+    this.areAllCollapsed = checked;
     if (checked) {
       for (let i = 0; i < this.templateData.groups.length; i++) {
         this.groupCollapseList[i] = true;
