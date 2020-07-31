@@ -17,7 +17,7 @@
             class="my-avatar flex-center" name="{{ templateData.name }}" initialsSize="2" [size]="isMobile ? 40 : 56">
           </ngx-avatar>
           <ng-template #initialsAvatar>
-            <ngx-avatar name="{{ templateData.name }}" initialsSize="2" [size]="isMobile ? 40 : 56"></ngx-avatar>
+            <ngx-avatar name="{{ getTemplateName(templateData.name) }}" initialsSize="2" [size]="isMobile ? 40 : 56"></ngx-avatar>
           </ng-template>
           <img *ngIf="templateImgHover" class="edit-avatar-img" src="assets/imgs/edit-img-2.svg" alt="edit" />
         </button>
@@ -153,7 +153,7 @@
                 class="my-avatar flex-center" name="{{ template?.name }}" initialsSize="2" [size]="30">
               </ngx-avatar>
               <ng-template #importInitialsAvatar>
-                <ngx-avatar name="{{ template?.name }}" initialsSize="2" [size]="30"></ngx-avatar>
+                <ngx-avatar name="{{ getTemplateName(template?.name) }}" initialsSize="2" [size]="30"></ngx-avatar>
               </ng-template>
               </mat-panel-title>
               <mat-panel-description style="align-items: center !important;">
@@ -246,7 +246,7 @@
               class="lalign-import-template-icon" name="{{ selectedTask.name }}" initialsSize="2" [borderColor]="'1px solid black'"
               [size]="isMobile ? 40 : 56"></ngx-avatar>
             <ng-template #initialsTaskAvatar>
-              <ngx-avatar name="{{ selectedTask.name }}" initialsSize="2" [size]="isMobile ? 40 : 56"
+              <ngx-avatar name="{{ getTemplateName(selectedTask.name) }}" initialsSize="2" [size]="isMobile ? 40 : 56"
                 class="lalign-import-template-icon"></ngx-avatar>
             </ng-template>
 

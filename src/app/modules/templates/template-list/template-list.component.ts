@@ -340,5 +340,17 @@ export class TemplateListComponent implements OnInit {
       }
     }
   }
+  getTemplateName(templateName){
+    let initialLetter;
+    let letterArray = [];
+    let stringArr = templateName.split(/(?<=^\S+)\s/);
+    stringArr.forEach(it => {
+      initialLetter = it.substring(1, 0);
+      letterArray.push(initialLetter);
+    });
+    let tempName = letterArray[0] + ' '+ letterArray[1];
+    return tempName;
+    
+  }
 
 }

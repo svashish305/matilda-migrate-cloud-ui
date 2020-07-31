@@ -296,15 +296,15 @@
                       <ngx-avatar
                         *ngIf="task?.image; else initialsAvatar"
                         [src]="sanitizeUrl(task?.image)"
-                        class="flex-center"
-                        name="{{ task?.name }}"
+                        class="flex-center"                       
+                        name="{{getTemplateName(task?.name ) }}"
                         initialsSize="2"
                         [size]="18"
                       >
                       </ngx-avatar>
                       <ng-template #initialsAvatar>
                         <ngx-avatar
-                          name="{{ task.name }}"
+                          name="{{ getTemplateName(task.name) }}"
                           initialsSize="2"
                           [size]="20"
                         ></ngx-avatar>

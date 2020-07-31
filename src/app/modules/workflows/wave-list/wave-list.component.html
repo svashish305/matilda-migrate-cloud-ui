@@ -165,7 +165,7 @@
                       class="flex-center" name="{{ template.name }}" initialsSize="2" [size]="18">
                     </ngx-avatar>
                     <ng-template #initialsAvatar>
-                      <ngx-avatar name="{{ template.name }}" initialsSize="2" [size]="20"></ngx-avatar>
+                      <ngx-avatar name="{{getWaveName(template.name) }}" initialsSize="2" [size]="20"></ngx-avatar>
                     </ng-template>
                   </div>
                   <span class="cell-text common-text handle-text-overflow" (click)="loadTemplate(template, group)">{{ template.name }}</span>

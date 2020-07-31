@@ -16,7 +16,7 @@
           <ngx-avatar *ngIf="waveData?.image; else initialsAvatar" [src]="sanitizeUrl(waveData?.image)" class="my-avatar flex-center"
             name="{{ waveData.name }}" initialsSize="2" [size]="isMobile ? 40 : 56"></ngx-avatar>
           <ng-template #initialsAvatar>
-            <ngx-avatar name="{{ waveData.name }}" initialsSize="2" [size]="isMobile ? 40 : 56"></ngx-avatar>
+            <ngx-avatar name="{{getWaveName(waveData.name) }}" initialsSize="2" [size]="isMobile ? 40 : 56"></ngx-avatar>
           </ng-template>
           <img *ngIf="waveImgHover" class="edit-avatar-img" src="assets/imgs/edit-img-2.svg" alt="edit" />
         </button>
@@ -220,7 +220,7 @@
                 class="my-avatar flex-center" name="{{ account?.accountName }}" initialsSize="2" [size]="30">
               </ngx-avatar>
               <ng-template #accountAddIntialsAvatar>
-                <ngx-avatar name="{{ account?.accountName }}" initialsSize="2" [size]="30"></ngx-avatar>
+                <ngx-avatar name="{{ getWaveName(account?.accountName) }}" initialsSize="2" [size]="30"></ngx-avatar>
               </ng-template> &nbsp;&nbsp; &nbsp;
               <span  matTooltip="{{ account?.accountName }}" class="common-text"> {{ account?.accountName }}</span>
               </mat-panel-title>

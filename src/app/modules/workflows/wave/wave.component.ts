@@ -395,4 +395,16 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     template.showStatus = !template.showStatus;
     $event.stopPropagation();
   }
+  getWaveName(waveName){
+    let initialLetter;
+    let letterArray = [];
+    let stringArr = waveName.split(/(?<=^\S+)\s/);
+    stringArr.forEach(it => {
+      initialLetter = it.substring(1, 0);
+      letterArray.push(initialLetter);
+    });
+    let wName = letterArray[0] + ' '+ letterArray[1];
+    return wName;
+    
+  }
 }

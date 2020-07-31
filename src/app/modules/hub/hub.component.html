@@ -49,7 +49,7 @@
                   <ngx-avatar *ngIf="favTemplate?.image; else favInitialsAvatar" [src]="sanitizeUrl(favTemplate?.image)"
                     name="{{ favTemplate?.name }}" initialsSize="2" [size]="!isMobile ? 56 : 68"></ngx-avatar>
                   <ng-template #favInitialsAvatar>
-                    <ngx-avatar name="{{ favTemplate?.name }}" initialsSize="2" [size]="!isMobile ? 56 : 68">
+                    <ngx-avatar name="{{ getTemplateName(favTemplate?.name) }}" initialsSize="2" [size]="!isMobile ? 56 : 68">
                     </ngx-avatar>
                   </ng-template>
                   <a (click)="toggleTemplateFavourite(favTemplate, $event)">
@@ -106,7 +106,7 @@
                   <ngx-avatar *ngIf="template?.image; else tempinitialsAvatar" [src]="sanitizeUrl(template?.image)"
                     name="{{ template.name }}" initialsSize="2" [size]="!isMobile ? 56 : 68"></ngx-avatar>
                   <ng-template #tempinitialsAvatar>
-                    <ngx-avatar name="{{ template.name }}" initialsSize="2" [size]="!isMobile ? 56 : 68"></ngx-avatar>
+                    <ngx-avatar name="{{ getTemplateName(template.name) }}" initialsSize="2" [size]="!isMobile ? 56 : 68"></ngx-avatar>
                   </ng-template>
                   <a (click)="toggleTemplateFavourite(template, $event)">
                     <img class="mark-fav-icon" [src]="
@@ -169,7 +169,7 @@
                   <ngx-avatar *ngIf="favWorkflow?.image; else favWorkflowAvatar" [src]="sanitizeUrl(favWorkflow?.image)"
                     name="{{ favWorkflow?.name }}" initialsSize="2" [size]="!isMobile ? 56 : 68"></ngx-avatar>
                   <ng-template #favWorkflowAvatar>
-                    <ngx-avatar name="{{ favWorkflow?.name }}" initialsSize="2" [size]="!isMobile ? 56 : 68">
+                    <ngx-avatar name="{{ getTemplateName(favWorkflow?.name) }}" initialsSize="2" [size]="!isMobile ? 56 : 68">
                     </ngx-avatar>
                   </ng-template>
                   <a (click)="toggleWorkflowFavourite(favWorkflow, $event)">
@@ -215,7 +215,7 @@
                   <ngx-avatar *ngIf="workflow?.image; else workflowAvatar" [src]="sanitizeUrl(workflow?.image)"
                     name="{{ workflow?.name }}" initialsSize="2" [size]="!isMobile ? 56 : 68"></ngx-avatar>
                   <ng-template #workflowAvatar>
-                    <ngx-avatar name="{{ workflow?.name }}" initialsSize="2" [size]="!isMobile ? 56 : 68"></ngx-avatar>
+                    <ngx-avatar name="{{ getTemplateName(workflow?.name) }}" initialsSize="2" [size]="!isMobile ? 56 : 68"></ngx-avatar>
                   </ng-template>
                   <a (click)="toggleWorkflowFavourite(workflow, $event)">
                     <img class="mark-fav-icon" [src]="
