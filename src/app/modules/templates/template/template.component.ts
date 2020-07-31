@@ -136,7 +136,7 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     this.templateData.image = null;
     this.updateTemplate.emit({ payload: this.templateData, message: 'Template Icon Deleted Successfully', type: 'error' });
   }
-
+  
 
   changeTaskAvatar(event: any) {
     if (event.target.files && event.target.files[0]) {
@@ -313,7 +313,7 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   sanitizeUrl(image) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(this.selectedTask.image);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(image);
   }
 
   onFocusTitle() {

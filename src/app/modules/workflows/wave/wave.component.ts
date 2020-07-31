@@ -16,6 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Group, Workflow, Item, KeyVault } from 'src/app/utils/models/data.model';
 import { WorkflowService } from '../services/workflow.service';
 import { Utilities } from 'src/app/utils/helpers/utilities';
+import { DomSanitizer } from '@angular/platform-browser';
 
 interface SelectInterface {
   value: string;
@@ -84,6 +85,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     private _workflowService: WorkflowService,
     private deviceService: DeviceDetectorService,
     private _utilities: Utilities,
+    private sanitizer: DomSanitizer,
     private route: ActivatedRoute
   ) { }
 
@@ -148,6 +150,10 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   removeAvatar() {
     this.waveData.image = null;
     this.updateWorkflow.emit({ payload: this.waveData, message: 'Workflow Icon Deleted Successfully', type: 'error' });
+  }
+
+  sanitizeUrl(image) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(image);
   }
 
   isExistingAccount(account: any) {
