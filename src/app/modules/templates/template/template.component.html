@@ -13,7 +13,7 @@
       <div class="ngx-template-header-avatar">
         <button class="avatar-dd-btn no-hover-effect" mat-button [matMenuTriggerFor]="avatarDropdown"
           (mouseover)="templateImgHover = true" (mouseleave)="templateImgHover = false">
-          <ngx-avatar *ngIf="templateData?.image; else initialsAvatar" [src]="templateData?.image"
+          <ngx-avatar *ngIf="templateData?.image; else initialsAvatar" [src]="sanitizeUrl(templateData?.image)"
             class="my-avatar flex-center" name="{{ templateData.name }}" initialsSize="2" [size]="isMobile ? 40 : 56">
           </ngx-avatar>
           <ng-template #initialsAvatar>
@@ -102,17 +102,12 @@
             </ng-template>
           </div>
 
-          <div class="stage-action-bar">
-            <button mat-flat-button color="primary" class="new-stage-btn" (click)="addStage()">
-              <span class="new-stage-btn-text">+ New</span>
-            </button>
-          </div>
         </div>
 
         <div class="template-container">
           <div class="templates__wrapper">
             <!-- wave templates list start-->
-            <app-template-list #templateList (rowClicked)="openTaskDetails($event)"
+            <app-template-list (rowClicked)="openTaskDetails($event)"
               (updateGroupInfo)="updateGroupInfo($event)" [templateData]="templateData">
             </app-template-list>
             <!-- wave templates list end-->
@@ -247,7 +242,7 @@
             initialsSize="2"
             [size]="isMobile ? 40 : 56"
           ></ngx-avatar> -->
-            <ngx-avatar *ngIf="selectedTask?.image; else initialsTaskAvatar" [src]="selectedTask?.image"
+            <ngx-avatar *ngIf="selectedTask?.image; else initialsTaskAvatar" [src]="sanitizeUrl(selectedTask?.image)"
               class="lalign-import-template-icon" name="{{ selectedTask.name }}" initialsSize="2"
               [size]="isMobile ? 40 : 56"></ngx-avatar>
             <ng-template #initialsTaskAvatar>

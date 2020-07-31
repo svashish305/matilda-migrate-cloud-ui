@@ -19,37 +19,45 @@
   </mat-form-field>
 </div>
 
-<div class="collapse-container">
-  <span class="stage-action-collapse-text">Collapse All</span
-  ><mat-slide-toggle
-    (change)="collapseAll($event.checked)"
-    [color]="primaryColor"
-  ></mat-slide-toggle>
+<div class="stage-action-bar">
+  <div class="collapse-container">
+    <span class="stage-action-collapse-text">Collapse All</span
+    ><mat-slide-toggle
+      (change)="collapseAll($event.checked)"
+      [(ngModel)]="areAllCollapsed"
+      [color]="primaryColor"
+    ></mat-slide-toggle>
+  </div>
+
+  <button mat-flat-button color="primary" class="new-stage-btn" (click)="addGroup()">
+    <span class="new-stage-btn-text">+ New</span>
+  </button>
+
+  <div class="right-align-searchbox">
+    <form>
+      <mat-form-field
+        id="mat-search"
+        floatLabel="never"
+        class="mat-typography full-width"
+      >
+        <img
+          matPrefix
+          src="assets/imgs/search-2.svg"
+          alt="search-icon"
+          class="new-search-icon"
+        />
+        <input
+          matInput
+          placeholder="Search"
+          type="search"
+          name="test"
+          [(ngModel)]="searchKey"
+        />
+      </mat-form-field>
+    </form>
+  </div>
 </div>
 
-<div class="right-align-searchbox">
-  <form>
-    <mat-form-field
-      id="mat-search"
-      floatLabel="never"
-      class="mat-typography full-width"
-    >
-      <img
-        matPrefix
-        src="assets/imgs/search-2.svg"
-        alt="search-icon"
-        class="new-search-icon"
-      />
-      <input
-        matInput
-        placeholder="Search"
-        type="search"
-        name="test"
-        [(ngModel)]="searchKey"
-      />
-    </mat-form-field>
-  </form>
-</div>
 <div class="drag-drop-parent">
   <div
     cdkDropList
@@ -266,6 +274,7 @@
             [cdkDropListConnectedTo]="getConnectedList()"
           >
             <div
+            (click)="loadTask(task, group)"
               class="row-items template__row item"
               [ngClass]="{ selected: group.selected }"
               *ngFor="let task of group.items"
@@ -308,12 +317,12 @@
                       'mobile-text': isMobile,
                       'common-text': !isMobile
                     }"
-                    class="cell-text handle-text-overflow" matTooltip="{{task.name}}" (click)="loadTask(task, group)"
+                    class="cell-text handle-text-overflow" matTooltip="{{task.name}}" 
                     >{{ task.name }}</span
                   >
                 </div>
               </div>
-              <div class="flex-lay right-cols">
+              <div class="flex-lay right-cols" (click)="$event.preventDefault(); $event.stopPropagation()">
                 <div *ngIf="!isMobile" class="flex-center plugin-val">
                   <span class="cell-text common-text">{{
                     task.pluginName
@@ -374,7 +383,7 @@
                   class="border-white template-status"
                   [ngClass]="getStatusClass(task)"
                   (mouseleave)="task.showStatus = false"
-                  (click)="showStatuses($event, task)"
+                 
                 >
                   <span
                     class="badge badge-pill badge-custom"
@@ -429,10 +438,10 @@
                 </div>
               </div>
             </div>
-            <div class="template__row item row-items">
+            <div class="template__row item row-items" >
               <!-- add new template start -->
-              <div class="template-name">
-                <span class="common-text add-new-text" (click)="loadTask(null, group)"
+              <div class="template-name" (click)="loadTask(null, group)">
+                <span class="common-text add-new-text" 
                   >+ Add New Task</span
                 >
               </div>

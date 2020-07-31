@@ -12,13 +12,11 @@ import {
 import { ResizeEvent } from 'angular-resizable-element';
 import { DataService } from 'src/services/data.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import * as uuid from 'uuid';
 import { ActivatedRoute } from '@angular/router';
 import { Group, Workflow, Item, KeyVault } from 'src/app/utils/models/data.model';
 import { WorkflowService } from '../services/workflow.service';
 import { Utilities } from 'src/app/utils/helpers/utilities';
-
-
+import { DomSanitizer } from '@angular/platform-browser';
 
 interface SelectInterface {
   value: string;
@@ -38,7 +36,6 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   @Output() rowClicked: EventEmitter<any> = new EventEmitter();
   edit;
   showBackdrop;
-  @ViewChild('waveList', { static: false }) waveList;
 
   favourite = false;
   waves: any[] = [];
@@ -88,6 +85,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     private _workflowService: WorkflowService,
     private deviceService: DeviceDetectorService,
     private _utilities: Utilities,
+    private sanitizer: DomSanitizer,
     private route: ActivatedRoute
   ) { }
 
@@ -116,9 +114,6 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   getAccounts() {
-    // this.dataService.getAccounts().subscribe((data: any[]) => {
-    //   this.accounts = data;
-    // });
     this._workflowService.getAllAccounts().subscribe((data: any[]) => {
       this.accounts = data;
       this.selectedAccounts = this.waveData.keyVault;
@@ -131,6 +126,10 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
       
       });
     });
+
+    // this.dataService.getAccounts().subscribe((data: any[]) => {
+    //   this.accounts = data;
+    // });
   }
 
  
@@ -153,10 +152,14 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
     this.updateWorkflow.emit({ payload: this.waveData, message: 'Workflow Icon Deleted Successfully', type: 'error' });
   }
 
+  sanitizeUrl(image) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(image);
+  }
+
   isExistingAccount(account: any) {
     console.log(account);
     if(this.waveData.keyVault) {
-      console.log(this.waveData.keyVault.includes(account));
+     // console.log(this.waveData.keyVault.includes(account));
       return this.waveData.keyVault.filter(_keyvault => _keyvault.accountId === account.accountId).length === 0 ? false : true;
     }else {
       return false;
@@ -166,7 +169,7 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   onCheck(event: any, account: any) {
    // this.selectedAccounts = [];
     let existingAccount = this.selectedAccounts.filter(_account => _account.accountId === account.accountId);
-    console.log(existingAccount);
+   // console.log(existingAccount);
     if(event.checked) {
       if (existingAccount.length === 0) {
         this.selectedAccounts.push(account);
@@ -207,22 +210,6 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
 
   saveTags() {
     this.onTagsUpdate.emit({ tags: this.waveData.tags, message: 'Tags Updated Successfully', type: 'success' });
-  }
-
-  addGroup() {
-    let group = new Group();
-    group.id = uuid.v4();
-    group.name = 'Untitled Group' + '_' + group.id;
-    group.order = this.waveData.groups.length >= 1 ? this.waveData.groups[this.waveData.groups.length - 1].order + 100 : 100;
-
-    this.waveData.groups.push(group);
-    this.waveData.groups = [...this.waveData.groups];
-
-    setTimeout(() =>{
-      this.waveList.focusNewGroup();
-    },0);
-
-    this.updateWorkflow.emit({ payload: this.waveData, message: 'Group Added Successfully', type: 'success' });
   }
 
   toggleRightSidebar(template: any) {

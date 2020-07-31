@@ -274,9 +274,22 @@ export class TemplateDiscoverComponent implements OnInit {
   }
 
   deleteInSidebar(destination) {
+    // console.log('destination to be deleted ', destination);
+
+    let itemsToUncheck: checkedID[] = this.checkedIDs.filter((cID: checkedID) => cID.sourceId == destination.id);    
+    for(let i=0; i<itemsToUncheck.length; i++) {
+      this.itemSelectList[itemsToUncheck[i].sourceId + '_' + itemsToUncheck[i].groupId + '_' + itemsToUncheck[i].itemId] = false;
+    }
+
     this.destinations = this.destinations.filter(
       (d) => JSON.stringify(d) !== JSON.stringify(destination)
     );
+
+    if (this.destinations.length == 0) {
+      this.showSidebar = false;
+    }
+
+    this.checkedIDs = this.checkedIDs.filter((cID: checkedID) => (cID.sourceId !== destination.id));
   }
 
   import() {

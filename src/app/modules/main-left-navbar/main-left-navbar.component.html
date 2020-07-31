@@ -1,4 +1,4 @@
-<div *ngIf="mobileDevice" class="navbar-toggle">
+<div *ngIf="mobileDevice && isCollapsed" class="navbar-toggle">
   <button
     mat-button
     class="navbar-toggle-btn"
@@ -79,7 +79,7 @@
         />
         <button mat-button class="migrate-section">
           <img
-            class="logo icon-extra"
+            class="logo icon-extra hub-mob-icon"
             [src]="
               hubSelected
                 ? 'assets/imgs/white-hub.svg'

@@ -16,6 +16,7 @@ import { ThemePalette } from '@angular/material/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { Template, Item, Group } from 'src/app/utils/models/data.model';
 import { StatusCodes } from 'src/app/utils/enums/enums';
+import * as uuid from 'uuid';
 
 interface SelectInterface {
   value: string;
@@ -38,7 +39,7 @@ export class TemplateListComponent implements OnInit {
   public searchKey: string;
   public groupCollapseList: boolean[] = [];
   drag = true;
-
+  areAllCollapsed = false;
   workflowTypes: SelectInterface[] = [
     { value: 'trigger', viewValue: 'Trigger' },
     { value: 'time', viewValue: 'Time' }
@@ -76,9 +77,29 @@ export class TemplateListComponent implements OnInit {
     });
   }
 
+  addGroup() {
+    let group = new Group();
+    group.id = uuid.v4();
+    group.name = 'Untitled Group' + '_' + group.id;
+    group.order = this.templateData.groups.length >= 1 ? this.templateData.groups[this.templateData.groups.length - 1].order + 100 : 100;
+    this.templateData.groups.push(group);
+    this.templateData.groups = [...this.templateData.groups];
+
+    if (this.areAllCollapsed) {
+      this.groupCollapseList[this.templateData.groups.length - 1] = true;
+    }
+
+    setTimeout(() => {
+      this.focusNewGroup();
+    }, 0);
+
+    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Stage Added Successfully', type: 'success' });
+
+  }
+
   deleteGroup(group: Group) {
     this.templateData.groups = this.templateData.groups.filter(_group => _group.id !== group.id);
-    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Group Deleted Successfully', type: 'error' });
+    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Stage Deleted Successfully', type: 'error' });
   }
 
   dropTask(event: CdkDragDrop<string[]>) {
@@ -126,11 +147,11 @@ export class TemplateListComponent implements OnInit {
           event.container.data[event.currentIndex + 1]['order']) /
         2;
     }
-    
+
     task.groupId = targetGroupId;
-   
+
     this.templateData.groups.forEach(_group => {
-      if(_group.id === targetGroupId) {
+      if (_group.id === targetGroupId) {
         _group.items.forEach(_task => {
           _task.groupId = targetGroupId;
         });
@@ -302,6 +323,7 @@ export class TemplateListComponent implements OnInit {
   }
 
   collapseAll(checked: boolean) {
+    this.areAllCollapsed = checked;
     if (checked) {
       for (let i = 0; i < this.templateData.groups.length; i++) {
         this.groupCollapseList[i] = true;

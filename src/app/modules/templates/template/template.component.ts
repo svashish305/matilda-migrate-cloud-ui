@@ -43,7 +43,6 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   searchKey;
   edit;
   showBackdrop;
-  @ViewChild('templateList', { static: false }) templateList;
 
   favourite = false;
   templateId: any;
@@ -113,6 +112,10 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
       .subscribe((data: any[]) => {
         this.templatesToImport = data.filter((d) => d.id !== this.templateId);
       });
+
+    // this.dataService.getTemplates().subscribe((data: any[]) => {
+    //   this.templatesToImport = data.filter((d) => d.id !== this.templateId);
+    // });
   }
 
   changeAvatar(event: any) {
@@ -133,7 +136,7 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     this.templateData.image = null;
     this.updateTemplate.emit({ payload: this.templateData, message: 'Template Icon Deleted Successfully', type: 'error' });
   }
-
+  
 
   changeTaskAvatar(event: any) {
     if (event.target.files && event.target.files[0]) {
@@ -213,23 +216,6 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
 
   saveTags() {
     this.onTagsUpdate.emit({ tags: this.templateData.tags, message: 'Tags Updated Successfully', type: 'success' });
-  }
-
-  addStage() {
-
-    let group = new Group();
-    group.id = uuid.v4();
-    group.name = 'Untitled Group' + '_' + group.id;
-    group.order = this.templateData.groups.length >= 1 ? this.templateData.groups[this.templateData.groups.length - 1].order + 100 : 100;
-
-    this.templateData.groups.push(group);
-    this.templateData.groups = [...this.templateData.groups];
-
-    setTimeout(() =>{
-      this.templateList.focusNewGroup();
-    },0);
-     
-    this.updateTemplate.emit({ payload: this.templateData, message: 'Stage Added Successfully', type: 'success' });
   }
 
   onCheck(event, template) {
@@ -327,7 +313,7 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   sanitizeUrl(image) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(this.selectedTask.image);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(image);
   }
 
   onFocusTitle() {

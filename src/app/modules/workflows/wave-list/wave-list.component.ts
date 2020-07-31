@@ -22,6 +22,7 @@ import { Router } from '@angular/router';
 import { StatusCodes } from 'src/app/utils/enums/enums';
 import { Utilities } from 'src/app/utils/helpers/utilities';
 import { Item, Group } from 'src/app/utils/models/data.model';
+import * as uuid from 'uuid';
 
 interface SelectInterface {
   value: string;
@@ -69,7 +70,7 @@ export class WaveListComponent implements OnInit {
 
   drag = true;
   groupCollapseList: boolean[] = [];
-
+  areAllCollapsed = false;
   isMobile = false;
 
   statusCodes = StatusCodes;
@@ -196,6 +197,27 @@ export class WaveListComponent implements OnInit {
     });
   }
 
+  addGroup() {
+    let group = new Group();
+    group.id = uuid.v4();
+    group.name = 'Untitled Group' + '_' + group.id;
+    group.order = this.waveData.groups.length >= 1 ? this.waveData.groups[this.waveData.groups.length - 1].order + 100 : 100;
+
+    this.waveData.groups.push(group);
+    this.waveData.groups = [...this.waveData.groups];
+
+    if(this.areAllCollapsed) {
+      this.groupCollapseList[this.waveData.groups.length - 1] = true;
+    }
+
+    setTimeout(() =>{ 
+      this.focusNewGroup();
+    }, 0);
+
+    this.updateGroupInfo.emit({ payload: this.waveData, message: 'Group Added Successfully', type: 'success' });
+
+  }
+
   deleteGroup(group: Group) {
     this.waveData.groups = this.waveData.groups.filter(_group => _group.id !== group.id);
     this.updateGroupInfo.emit({ payload: this.waveData, message: 'Group Deleted Successfully', type: 'error' });
@@ -263,6 +285,7 @@ export class WaveListComponent implements OnInit {
   }
 
   collapseAll(checked: boolean) {
+    this.areAllCollapsed = checked;
     if (checked) {
       for (let i = 0; i < this.waveData.groups.length; i++) {
         this.groupCollapseList[i] = true;
