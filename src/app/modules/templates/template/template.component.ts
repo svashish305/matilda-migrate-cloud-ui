@@ -436,4 +436,16 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   updateTaskDescription(task: Item) {
     this.updateTemplate.emit({ payload: this.templateData, message: 'Task Updated Successfully', type: 'success' });
   }
+  getTemplateName(templateName){
+    let initialLetter;
+    let letterArray = [];
+    let stringArr = templateName.split(/(?<=^\S+)\s/);
+    stringArr.forEach(it => {
+      initialLetter = it.substring(1, 0);
+      letterArray.push(initialLetter);
+    });
+    let tempName = letterArray[0] + ' '+ letterArray[1];
+    return tempName;
+    
+  }
 }
