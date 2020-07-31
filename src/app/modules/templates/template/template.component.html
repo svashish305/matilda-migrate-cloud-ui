@@ -149,7 +149,7 @@
               <mat-panel-title style="align-items: center !important;" (click)="$event.stopPropagation();">
                 <mat-checkbox (change)="onCheck($event, template)" style="margin:1rem">
                 </mat-checkbox> &nbsp;  &nbsp; &nbsp;
-                <ngx-avatar *ngIf="template?.image; else importInitialsAvatar" [src]="template?.image"
+                <ngx-avatar *ngIf="template?.image; else importInitialsAvatar" [src]="sanitizeUrl(template?.image)"
                 class="my-avatar flex-center" name="{{ template?.name }}" initialsSize="2" [size]="30">
               </ngx-avatar>
               <ng-template #importInitialsAvatar>
@@ -243,7 +243,7 @@
             [size]="isMobile ? 40 : 56"
           ></ngx-avatar> -->
             <ngx-avatar *ngIf="selectedTask?.image; else initialsTaskAvatar" [src]="sanitizeUrl(selectedTask?.image)"
-              class="lalign-import-template-icon" name="{{ selectedTask.name }}" initialsSize="2"
+              class="lalign-import-template-icon" name="{{ selectedTask.name }}" initialsSize="2" [borderColor]="'1px solid black'"
               [size]="isMobile ? 40 : 56"></ngx-avatar>
             <ng-template #initialsTaskAvatar>
               <ngx-avatar name="{{ selectedTask.name }}" initialsSize="2" [size]="isMobile ? 40 : 56"

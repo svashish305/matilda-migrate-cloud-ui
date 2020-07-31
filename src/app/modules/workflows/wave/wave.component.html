@@ -216,7 +216,7 @@
               <mat-panel-title style="align-items: center !important;" (click)="$event.stopPropagation();">
                 <mat-checkbox [checked]="account.selected" (change)="onCheck($event, account)" style="margin:1rem">
                 </mat-checkbox> &nbsp;  &nbsp; &nbsp;
-                <ngx-avatar *ngIf="account?.image; else accountAddIntialsAvatar" [src]="account?.image"
+                <ngx-avatar *ngIf="account?.image; else accountAddIntialsAvatar" [src]="sanitizeUrl(account?.image)"
                 class="my-avatar flex-center" name="{{ account?.accountName }}" initialsSize="2" [size]="30">
               </ngx-avatar>
               <ng-template #accountAddIntialsAvatar>

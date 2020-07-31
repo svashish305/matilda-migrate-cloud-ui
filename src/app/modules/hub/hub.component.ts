@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { TemplateService } from '../templates/services/template.service';
 import { WorkflowService } from '../workflows/services/workflow.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-hub',
@@ -34,7 +35,8 @@ export class HubComponent implements OnInit {
     private router: Router,
     private _templateService: TemplateService,
     private _workflowService: WorkflowService,
-    private deviceService: DeviceDetectorService
+    private deviceService: DeviceDetectorService,
+    private sanitizer: DomSanitizer
   ) {
     this.templateFavStatus = [];
     this.workflowFavStatus = [];
@@ -130,5 +132,9 @@ export class HubComponent implements OnInit {
     this.router.navigate([`/workflows/${workflowId}`], {
       preserveQueryParams: true,
     });
+  }
+
+  sanitizeUrl(image) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(image);
   }
 }
