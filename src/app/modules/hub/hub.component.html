@@ -62,7 +62,7 @@
             </div>
 
             <div *ngIf="!isTemplateFavouritesCollapsed" class="grid-container">
-              <mat-card *ngFor="let favTemplate of favTemplates; let i = index" class="mat-elevation-z8">
+              <mat-card *ngFor="let favTemplate of favTemplates; let i = index" class="mat-elevation-z8" (click)="goToTemplate(favTemplate.id)">
                 <div>
                   <ngx-avatar
                     [size]="!isMobile ? 56 : 68"
@@ -223,7 +223,7 @@
             </div>
 
             <div *ngIf="!isWorkflowFavouritesCollapsed" class="grid-container">
-              <mat-card *ngFor="let favWorkflow of favWorkflows" class="mat-elevation-z8">
+              <mat-card *ngFor="let favWorkflow of favWorkflows" class="mat-elevation-z8" (click)="goToWorkflow(favWorkflow.id)">
                 <div>
                   <ngx-avatar
                     [size]="!isMobile ? 56 : 68"

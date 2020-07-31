@@ -43,7 +43,6 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   searchKey;
   edit;
   showBackdrop;
-  @ViewChild('templateList', { static: false }) templateList;
 
   favourite = false;
   templateId: any;
@@ -109,10 +108,14 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   getTemplates() {
-    this._templateService.getAllTemplates()
-      .subscribe((data: any[]) => {
-        this.templatesToImport = data.filter((d) => d.id !== this.templateId);
-      });
+    // this._templateService.getAllTemplates()
+    //   .subscribe((data: any[]) => {
+    //     this.templatesToImport = data.filter((d) => d.id !== this.templateId);
+    //   });
+
+    this.dataService.getTemplates().subscribe((data: any[]) => {
+      this.templatesToImport = data.filter((d) => d.id !== this.templateId);
+    });
   }
 
   changeAvatar(event: any) {
@@ -213,23 +216,6 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
 
   saveTags() {
     this.onTagsUpdate.emit({ tags: this.templateData.tags, message: 'Tags Updated Successfully', type: 'success' });
-  }
-
-  addStage() {
-
-    let group = new Group();
-    group.id = uuid.v4();
-    group.name = 'Untitled Group' + '_' + group.id;
-    group.order = this.templateData.groups.length >= 1 ? this.templateData.groups[this.templateData.groups.length - 1].order + 100 : 100;
-
-    this.templateData.groups.push(group);
-    this.templateData.groups = [...this.templateData.groups];
-
-    setTimeout(() =>{
-      this.templateList.focusNewGroup();
-    },0);
-     
-    this.updateTemplate.emit({ payload: this.templateData, message: 'Stage Added Successfully', type: 'success' });
   }
 
   onCheck(event, template) {

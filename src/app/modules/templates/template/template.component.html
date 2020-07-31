@@ -102,17 +102,12 @@
             </ng-template>
           </div>
 
-          <div class="stage-action-bar">
-            <button mat-flat-button color="primary" class="new-stage-btn" (click)="addStage()">
-              <span class="new-stage-btn-text">+ New</span>
-            </button>
-          </div>
         </div>
 
         <div class="template-container">
           <div class="templates__wrapper">
             <!-- wave templates list start-->
-            <app-template-list #templateList (rowClicked)="openTaskDetails($event)"
+            <app-template-list (rowClicked)="openTaskDetails($event)"
               (updateGroupInfo)="updateGroupInfo($event)" [templateData]="templateData">
             </app-template-list>
             <!-- wave templates list end-->

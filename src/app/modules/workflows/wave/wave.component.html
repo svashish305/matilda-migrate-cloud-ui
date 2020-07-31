@@ -76,7 +76,7 @@
       <mat-tab label="Workflows">
         <!-- Workflows tab content -->
         <div *ngIf="waves" class="workflows-height">
-          <div class="badge-container" [ngStyle]="{ 'margin-top': isMobile ? '3.938em' : '7px' }">
+          <div class="badge-container" [ngStyle]="{ 'margin-top': isMobile ? '2.938em' : '7px' }">
             <span class="stage-tags">Tags (
               <a (click)="showTagOptions = true" class="pointer-cursor">
                 <span class="stage-tags-blue">Change</span>
@@ -169,18 +169,12 @@
                 " alt="stop" />
             </a>
           </div>
-
-          <div class="stage-action-bar">
-            <button mat-flat-button color="primary" class="new-stage-btn" (click)="addGroup()">
-              <span class="new-stage-btn-text">+ New</span>
-            </button>
-          </div>
         </div>
 
         <div class="template-container">
           <div class="templates__wrapper">
             <!-- wave templates list start-->
-            <app-wave-list #waveList (rowClicked)="openTaskDetails($event)" (updateGroupInfo)="updateGroupInfo($event)"
+            <app-wave-list (rowClicked)="openTaskDetails($event)" (updateGroupInfo)="updateGroupInfo($event)"
               [waveData]="waveData">
             </app-wave-list>
             <!-- wave templates list end-->

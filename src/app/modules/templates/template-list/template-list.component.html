@@ -19,37 +19,45 @@
   </mat-form-field>
 </div>
 
-<div class="collapse-container">
-  <span class="stage-action-collapse-text">Collapse All</span
-  ><mat-slide-toggle
-    (change)="collapseAll($event.checked)"
-    [color]="primaryColor"
-  ></mat-slide-toggle>
+<div class="stage-action-bar">
+  <div class="collapse-container">
+    <span class="stage-action-collapse-text">Collapse All</span
+    ><mat-slide-toggle
+      (change)="collapseAll($event.checked)"
+      [(ngModel)]="areAllCollapsed"
+      [color]="primaryColor"
+    ></mat-slide-toggle>
+  </div>
+
+  <button mat-flat-button color="primary" class="new-stage-btn" (click)="addGroup()">
+    <span class="new-stage-btn-text">+ New</span>
+  </button>
+
+  <div class="right-align-searchbox">
+    <form>
+      <mat-form-field
+        id="mat-search"
+        floatLabel="never"
+        class="mat-typography full-width"
+      >
+        <img
+          matPrefix
+          src="assets/imgs/search-2.svg"
+          alt="search-icon"
+          class="new-search-icon"
+        />
+        <input
+          matInput
+          placeholder="Search"
+          type="search"
+          name="test"
+          [(ngModel)]="searchKey"
+        />
+      </mat-form-field>
+    </form>
+  </div>
 </div>
 
-<div class="right-align-searchbox">
-  <form>
-    <mat-form-field
-      id="mat-search"
-      floatLabel="never"
-      class="mat-typography full-width"
-    >
-      <img
-        matPrefix
-        src="assets/imgs/search-2.svg"
-        alt="search-icon"
-        class="new-search-icon"
-      />
-      <input
-        matInput
-        placeholder="Search"
-        type="search"
-        name="test"
-        [(ngModel)]="searchKey"
-      />
-    </mat-form-field>
-  </form>
-</div>
 <div class="drag-drop-parent">
   <div
     cdkDropList
