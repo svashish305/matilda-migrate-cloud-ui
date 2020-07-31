@@ -829,7 +829,7 @@
 
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(5, 0fr);
+    grid-template-columns: repeat(6, 0fr);
     position: relative;
     right: 0.7em;
     bottom: 1.125em;
@@ -905,11 +905,100 @@
     }
   }
 
-  @media only screen and (min-width: 1981px) and (max-width: 2560px) {
+  @media only screen and (min-width: 1981px) and (max-width: 2320px) {
     .grid-container {
       display: grid;
       grid-template-columns: repeat(4, 0fr);
-      // grid-template-columns: repeat(5, 0fr);
+      position: relative;
+      right: 0.7em;
+      bottom: 1.125em;
+    }
+  }
+
+  @media only screen and (min-width: 2321px) and (max-width: 2560px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 0fr);
+      position: relative;
+      right: 0.7em;
+      bottom: 1.125em;
+    }
+  }
+
+  @media only screen and (min-width: 2561px) and (max-width: 3666px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(6, 0fr);
+      position: relative;
+      right: 0.7em;
+      bottom: 1.125em;
+    }
+  }
+
+  @media only screen and (min-width: 3667px) and (max-width: 3800px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(9, 0fr) !important;
+      position: relative;
+      right: 0.7em;
+      bottom: 1.125em;
+    }
+  }
+
+  @media only screen and (min-width: 3801px) and (max-width: 4408px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(8, 0fr);
+      position: relative;
+      right: 0.7em;
+      bottom: 1.125em;
+    }
+  }
+
+  @media only screen and (min-width: 4409px) and (max-width: 4608px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(9, 0fr);
+      position: relative;
+      right: 0.7em;
+      bottom: 1.125em;
+    }
+  }
+
+  @media only screen and (min-width: 4609px) and (max-width: 5706px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(13, 0fr) !important;
+      position: relative;
+      right: 0.7em;
+      bottom: 1.125em;
+    }
+  }
+
+  @media only screen and (min-width: 5608px) and (max-width: 6000px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(12, 0fr);
+      position: relative;
+      right: 0.7em;
+      bottom: 1.125em;
+    }
+  }
+
+  @media only screen and (min-width: 6001px) and (max-width: 6500px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(13, 0fr);
+      position: relative;
+      right: 0.7em;
+      bottom: 1.125em;
+    }
+  }
+
+  @media only screen and (min-width: 6501px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(16, 0fr);
       position: relative;
       right: 0.7em;
       bottom: 1.125em;
