@@ -41,9 +41,21 @@
     left: 8.5em;
   }
 
+  .stage-action-bar {
+    border-top: solid 1px var(--btn-lightgray-border);
+    border-bottom: solid 1px var(--btn-lightgray-border);
+    width: 100%;
+    height: 8em;
+    position: absolute;
+    top: 13.5em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
   .collapse-container {
     position: absolute;
-    top: 15.5em;
+    top: 1.5em;
 
     .stage-action-collapse-text {
       font-family: LatoRegular;
@@ -54,10 +66,27 @@
     }
   }
 
+  .new-stage-btn {
+    position: absolute;
+    right: 0;
+    bottom: 5.1em;
+  }
+
+  .new-stage-btn-text {
+    border-radius: 4px;
+    font-family: LatoMedium;
+    font-size: 1em;
+    color: #fff;
+    display: flex;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+  }
+
   .right-align-searchbox {
     width: 23.813em !important;
     position: absolute;
-    top: 16.25em;
+    top: 3.5em;
   }
 
   #mat-search ::ng-deep .mat-form-field-underline {
@@ -703,9 +732,21 @@
     left: 8.5em;
   }
 
+  .stage-action-bar {
+    border-top: solid 1px var(--btn-lightgray-border);
+    border-bottom: solid 1px var(--btn-lightgray-border);
+    width: 100%;
+    height: 8em;
+    position: absolute;
+    top: 13.5em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
   .collapse-container {
     position: absolute;
-    top: 15.5em;
+    top: 1.5em;
 
     .stage-action-collapse-text {
       font-family: LatoRegular;
@@ -716,10 +757,27 @@
     }
   }
 
+  .new-stage-btn {
+    position: absolute;
+    right: 0;
+    bottom: 5.1em;
+  }
+
+  .new-stage-btn-text {
+    border-radius: 4px;
+    font-family: LatoMedium;
+    font-size: 1em;
+    color: #fff;
+    display: flex;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+  }
+
   .right-align-searchbox {
     width: 23.813em !important;
     position: absolute;
-    top: 16.25em;
+    top: 3.5em;
   }
 
   #mat-search ::ng-deep .mat-form-field-underline {
@@ -1364,9 +1422,21 @@
     left: 8.5em;
   }
 
+  .stage-action-bar {
+    border-top: solid 1px var(--btn-lightgray-border);
+    border-bottom: solid 1px var(--btn-lightgray-border);
+    width: 100%;
+    height: 8em;
+    position: absolute;
+    top: 13.5em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
   .collapse-container {
     position: absolute;
-    top: 15.5em;
+    top: 1.5em;
 
     .stage-action-collapse-text {
       font-family: LatoRegular;
@@ -1377,10 +1447,27 @@
     }
   }
 
+  .new-stage-btn {
+    position: absolute;
+    right: 0;
+    bottom: 5.1em;
+  }
+
+  .new-stage-btn-text {
+    border-radius: 4px;
+    font-family: LatoMedium;
+    font-size: 1em;
+    color: #fff;
+    display: flex;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+  }
+
   .right-align-searchbox {
     width: 23.813em !important;
     position: absolute;
-    top: 16.25em;
+    top: 3.5em;
   }
 
   #mat-search ::ng-deep .mat-form-field-underline {
@@ -2029,9 +2116,21 @@
     left: 11.5em;
   }
 
+  .stage-action-bar {
+    border-top: solid 1px var(--btn-lightgray-border);
+    border-bottom: solid 1px var(--btn-lightgray-border);
+    width: 100%;
+    height: 4em; //6em
+    position: absolute;
+    top: 8.5em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
   .collapse-container {
     position: absolute;
-    top: 9.1em; //10.3em
+    top: 1.1em;
 
     .stage-action-collapse-text {
       font-family: LatoRegular;
@@ -2043,11 +2142,28 @@
     }
   }
 
+  .new-stage-btn {
+    position: absolute;
+    right: 30em;
+  }
+
+  .new-stage-btn-text {
+    border-radius: 4px;
+    font-family: LatoRegular;
+    font-size: 0.875em;
+    line-height: 1.375em;
+    color: #fff;
+    display: flex;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+  }
+
   .right-align-searchbox {
     width: 23.813em !important;
     position: absolute;
     right: 0;
-    top: 7.5em; //8.5em
+    top: -0.5em;
   }
 
   #mat-search ::ng-deep .mat-form-field-underline {

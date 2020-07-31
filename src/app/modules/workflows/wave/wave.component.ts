@@ -12,13 +12,10 @@ import {
 import { ResizeEvent } from 'angular-resizable-element';
 import { DataService } from 'src/services/data.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import * as uuid from 'uuid';
 import { ActivatedRoute } from '@angular/router';
 import { Group, Workflow, Item, KeyVault } from 'src/app/utils/models/data.model';
 import { WorkflowService } from '../services/workflow.service';
 import { Utilities } from 'src/app/utils/helpers/utilities';
-
-
 
 interface SelectInterface {
   value: string;
@@ -208,22 +205,6 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
 
   saveTags() {
     this.onTagsUpdate.emit({ tags: this.waveData.tags, message: 'Tags Updated Successfully', type: 'success' });
-  }
-
-  addGroup() {
-    let group = new Group();
-    group.id = uuid.v4();
-    group.name = 'Untitled Group' + '_' + group.id;
-    group.order = this.waveData.groups.length >= 1 ? this.waveData.groups[this.waveData.groups.length - 1].order + 100 : 100;
-
-    this.waveData.groups.push(group);
-    this.waveData.groups = [...this.waveData.groups];
-
-    setTimeout(() =>{
-      this.waveList.focusNewGroup();
-    },0);
-
-    this.updateWorkflow.emit({ payload: this.waveData, message: 'Group Added Successfully', type: 'success' });
   }
 
   toggleRightSidebar(template: any) {
