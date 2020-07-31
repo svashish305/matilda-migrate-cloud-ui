@@ -654,6 +654,10 @@
     position: relative !important;
     right: 1rem !important;
   }
+
+  .cell-text {
+    width: 10rem !important;
+  }
 }
 
 @media only screen and (min-width: 322px) and (max-width: 376px) {
@@ -1310,6 +1314,10 @@
   .right-cols {
     position: relative !important;
     right: 1rem !important;
+  }
+
+  .cell-text {
+    width: 13.125rem !important;
   }
 }
 
@@ -1968,6 +1976,10 @@
   .right-cols {
     position: relative !important;
     right: 1rem !important;
+  }
+
+  .cell-text {
+    width: 16rem !important;
   }
 }
 

@@ -661,6 +661,9 @@
     right: 12.5rem;
   }
 
+  .cell-text {
+    width: 10rem !important;
+  }
 }
 
 @media only screen and (min-width: 322px) and (max-width: 376px) {
@@ -1323,6 +1326,10 @@
     bottom: 2.5em;
     position: relative;
     right: 12.5rem;
+  }
+
+  .cell-text {
+    width: 13.125rem !important;
   }
 }
 
@@ -1987,6 +1994,10 @@
     bottom: 2.5em;
     position: relative;
     right: 12.5rem;
+  }
+
+  .cell-text {
+    width: 16rem !important;
   }
 }
 
