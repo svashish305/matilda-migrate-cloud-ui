@@ -6,7 +6,7 @@ import { TemplatesComponent } from './templates.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AvatarModule, AvatarSource } from 'ngx-avatar';
-import { MaterialModule } from '../material.module';
+import { MaterialModule } from '../material/material.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ResizableModule } from 'angular-resizable-element';
 import { SearchPipeModule } from '../searchpipe.module';
