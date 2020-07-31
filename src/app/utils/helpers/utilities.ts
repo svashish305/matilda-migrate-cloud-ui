@@ -2,12 +2,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Injectable } from "@angular/core";
 import * as uuid from 'uuid';
 import { SnackbarComponent } from 'src/app/modules/material/snackbar/snackbar.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Utilities {
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(private _snackBar: MatSnackBar, private _sanitizer: DomSanitizer) { }
 
   public generateId() {
     return uuid.v4();
@@ -36,6 +37,10 @@ export class Utilities {
       data: { message: message, snackType: snackType, snackBar: this._snackBar },
       panelClass: [snackType]
     });
+  }
+
+  public sanitizeUrl(image: any) {
+    return this._sanitizer.bypassSecurityTrustResourceUrl(image);
   }
 
 }

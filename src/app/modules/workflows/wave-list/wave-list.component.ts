@@ -239,6 +239,10 @@ export class WaveListComponent implements OnInit {
     this.loadedStages.toArray()[this.loadedStages.length - 1].nativeElement.scrollIntoView({ behavior: "smooth" });
   }
 
+  sanitizeUrl(image: any) {
+    return this._utilities.sanitizeUrl(image);
+ }
+
   setBadgeBgColor(statusCode = 1) {
     let backgroundColor = '#99a1a9';
     switch (statusCode) {

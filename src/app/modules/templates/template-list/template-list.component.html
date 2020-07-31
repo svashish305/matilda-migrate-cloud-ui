@@ -294,10 +294,10 @@
                   <ng-template #avatar>
                     <div class="right-padding-half-rem">
                       <ngx-avatar
-                        *ngIf="taskAvatarUrl; else initialsAvatar"
-                        [src]="taskAvatarUrl"
+                        *ngIf="task?.image; else initialsAvatar"
+                        [src]="sanitizeUrl(task?.image)"
                         class="flex-center"
-                        name="{{ templateData.name }}"
+                        name="{{ task?.name }}"
                         initialsSize="2"
                         [size]="18"
                       >

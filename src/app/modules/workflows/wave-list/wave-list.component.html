@@ -161,7 +161,7 @@
               <div class="template-name">
                 <div class="border-white template-name-main">
                   <div class="right-padding-half-rem">
-                    <ngx-avatar *ngIf="templateAvatarUrl; else initialsAvatar" [src]="templateAvatarUrl"
+                    <ngx-avatar *ngIf="template?.image; else initialsAvatar" [src]="sanitizeUrl(template?.image)"
                       class="flex-center" name="{{ template.name }}" initialsSize="2" [size]="18">
                     </ngx-avatar>
                     <ng-template #initialsAvatar>

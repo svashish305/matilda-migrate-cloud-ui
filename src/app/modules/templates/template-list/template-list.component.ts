@@ -17,6 +17,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { Template, Item, Group } from 'src/app/utils/models/data.model';
 import { StatusCodes } from 'src/app/utils/enums/enums';
 import * as uuid from 'uuid';
+import { Utilities } from 'src/app/utils/helpers/utilities';
 
 interface SelectInterface {
   value: string;
@@ -57,6 +58,7 @@ export class TemplateListComponent implements OnInit {
 
   constructor(
     private deviceService: DeviceDetectorService,
+    private _utilites: Utilities
   ) { }
 
   ngOnInit() {
@@ -225,6 +227,10 @@ export class TemplateListComponent implements OnInit {
 
   focusNewGroup() {
     this.loadedStages.toArray()[this.loadedStages.length - 1].nativeElement.scrollIntoView({ behavior: "smooth" });
+  }
+
+  sanitizeUrl(image: any) {
+     return this._utilites.sanitizeUrl(image);
   }
 
   getStatusClass(template) {
