@@ -284,6 +284,11 @@ export class TemplateDiscoverComponent implements OnInit {
     this.destinations = this.destinations.filter(
       (d) => JSON.stringify(d) !== JSON.stringify(destination)
     );
+
+    if (this.destinations.length == 0) {
+      this.showSidebar = false;
+    }
+
     this.checkedIDs = this.checkedIDs.filter((cID: checkedID) => (cID.sourceId !== destination.id));
   }
 
