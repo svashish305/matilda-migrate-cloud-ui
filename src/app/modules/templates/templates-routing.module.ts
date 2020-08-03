@@ -8,12 +8,7 @@ const routes: Routes = [
   { path: '', component: TemplatesComponent },
   { path: ':id', component: TemplatesComponent },
   {
-    path: ':templateId/discover',
-    component: TemplateDiscoverComponent,
-    data: { breadcrumb: 'Discover' },
-  },
-  {
-    path: ':workflowId/templates/:templateId/discover',
+    path: ':id/discover',
     component: TemplateDiscoverComponent,
     data: { breadcrumb: 'Discover' },
   },

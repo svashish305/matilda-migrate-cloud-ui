@@ -124,13 +124,13 @@ export class HubComponent implements OnInit {
 
   goToTemplate(templateId) {
     this.router.navigate([`/templates/${templateId}`], {
-      preserveQueryParams: true,
+      queryParamsHandling: 'merge',
     });
   }
 
   goToWorkflow(workflowId) {
     this.router.navigate([`/workflows/${workflowId}`], {
-      preserveQueryParams: true,
+      queryParamsHandling: 'merge',
     });
   }
 
