@@ -1,3 +1,4 @@
+import { TemplateService } from './../services/template.service';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { DataService } from 'src/services/data.service';
@@ -45,6 +46,7 @@ export class TemplateDiscoverComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private dataService: DataService,
+    private templateService: TemplateService,
     private deviceService: DeviceDetectorService
   ) {
     for (let i = 0; i < this.MAXN; i++) {
@@ -61,14 +63,23 @@ export class TemplateDiscoverComponent implements OnInit {
       this.templateId = params.id;
     });
 
-    this.dataService.getTemplate(this.templateId).subscribe((template: any) => {
-      this.currTemplate = template;
-    });
+    // this.dataService.getTemplate(this.templateId).subscribe((template: any) => {
+    //   this.currTemplate = template;
+    // });
+
+    this.templateService
+      .getTemplateById(this.templateId)
+      .subscribe((template: any) => {
+        this.currTemplate = template;
+      });
 
     this.getApps();
   }
 
   getApps() {
+    // this.dataService.getApps().subscribe((res: any) => {
+    //   this.apps = res;
+    // });
     this.dataService.getApps().subscribe((res: any) => {
       this.apps = res;
     });
@@ -123,13 +134,17 @@ export class TemplateDiscoverComponent implements OnInit {
         var sourceId = id.split('_')[0];
         var groupId = id.split('_')[1];
 
-        let selectedIPIndex = this.selectedApp.IP.findIndex(ip => ip.address == ipAddress);
+        let selectedIPIndex = this.selectedApp.IP.findIndex(
+          (ip) => ip.address == ipAddress
+        );
         let curSources = this.selectedApp.IP[selectedIPIndex].sources;
         let selectedSource = curSources.find((s) => s.id == sourceId);
-        let selectedGrpIndex = selectedSource.groups.findIndex((g) => g.id == groupId);
+        let selectedGrpIndex = selectedSource.groups.findIndex(
+          (g) => g.id == groupId
+        );
         let markedItems = selectedSource.groups[selectedGrpIndex].items;
         this.itemCountInGroup[groupId] = 0;
-        markedItems.forEach(item => {
+        markedItems.forEach((item) => {
           let id = sourceId + '_' + groupId + '_' + item.id;
           this.getCheckboxState(event, 'item', id, ipAddress);
         });
@@ -146,7 +161,12 @@ export class TemplateDiscoverComponent implements OnInit {
           this.showSidebar = true;
           this.itemCountInGroup[groupId]++;
           let markChecked: checkedID = { ipAddress, sourceId, groupId, itemId };
-          if (!this.checkedIDs.find(cID => JSON.stringify(cID) == JSON.stringify(markChecked))) {    // taking care of duplicates
+          if (
+            !this.checkedIDs.find(
+              (cID) => JSON.stringify(cID) == JSON.stringify(markChecked)
+            )
+          ) {
+            // taking care of duplicates
             this.checkedIDs.push(markChecked);
           }
         } else {
@@ -156,11 +176,18 @@ export class TemplateDiscoverComponent implements OnInit {
             this.groupSelectList[sourceId + '_' + groupId] = false;
           }
           this.itemCountInGroup[groupId]--;
-          if(this.itemCountInGroup[groupId] < 0) {
+          if (this.itemCountInGroup[groupId] < 0) {
             this.itemCountInGroup[groupId] = 0;
           }
-          let markUncheckedID: checkedID = { ipAddress, sourceId, groupId, itemId };
-          this.checkedIDs = this.checkedIDs.filter(cID => JSON.stringify(cID) != JSON.stringify(markUncheckedID));
+          let markUncheckedID: checkedID = {
+            ipAddress,
+            sourceId,
+            groupId,
+            itemId,
+          };
+          this.checkedIDs = this.checkedIDs.filter(
+            (cID) => JSON.stringify(cID) != JSON.stringify(markUncheckedID)
+          );
         }
         this.destinations = this.pushToDestinations(this.checkedIDs);
         if (this.destinations.length == 0) {
@@ -193,15 +220,15 @@ export class TemplateDiscoverComponent implements OnInit {
       let sourceIDsOfIP = this.groupBy(valuesOfIP, 'sourceId');
       let noOfCards = Object.keys(sourceIDsOfIP).length;
       destinationsLen += noOfCards;
-      let curIP = this.selectedApp.IP.find(ip => ip.address == key);
-      let curIPIndex = this.selectedApp.IP.findIndex(ip => ip.address == key);
+      let curIP = this.selectedApp.IP.find((ip) => ip.address == key);
+      let curIPIndex = this.selectedApp.IP.findIndex((ip) => ip.address == key);
       let sourcesOfIP = this.selectedApp.IP[curIPIndex].sources;
       let srcs: Destination[] = [];
       for (let [key, value] of Object.entries(sourceIDsOfIP)) {
         // here key is sourceId
         let valuesOfSrc = value;
         let groupIDsOfSrc = this.groupBy(valuesOfSrc, 'groupId');
-        let curSrc = sourcesOfIP.find(s => s.id == key);
+        let curSrc = sourcesOfIP.find((s) => s.id == key);
         let newSource = Object.assign({}, curSrc);
         let src: Destination = new Destination();
         src.appName = this.selectedApp.name;
@@ -213,13 +240,13 @@ export class TemplateDiscoverComponent implements OnInit {
           // here key is groupId
           let valuesOfGrp = value;
           let itemIDsOfGrp = this.groupBy(valuesOfGrp, 'itemId');
-          let curGrp = newSource.groups.find(g => g.id == key);
+          let curGrp = newSource.groups.find((g) => g.id == key);
           let itemsOfGrp = curGrp.items;
           let newGroup = Object.assign({}, curGrp);
           newGroup.items = [];
           for (let [key, value] of Object.entries(itemIDsOfGrp)) {
             // here key is itemId
-            let curItem = itemsOfGrp.find(i => i.id == key);
+            let curItem = itemsOfGrp.find((i) => i.id == key);
             newGroup.items.push(curItem);
           }
           if (src.groups.length <= curSrc.groups.length) {
@@ -249,13 +276,19 @@ export class TemplateDiscoverComponent implements OnInit {
   }
 
   selectAllIfChildsTrue(ipAddress, sourceId, groupId): boolean {
-    let selectedIPIndex = this.selectedApp.IP.findIndex(ip => ip.address == ipAddress);
+    let selectedIPIndex = this.selectedApp.IP.findIndex(
+      (ip) => ip.address == ipAddress
+    );
     let curSources = this.selectedApp.IP[selectedIPIndex].sources;
     let selectedSource = curSources.find((s) => s.id == sourceId);
-    let selectedGrpIndex = selectedSource.groups.findIndex((g) => g.id == groupId);
+    let selectedGrpIndex = selectedSource.groups.findIndex(
+      (g) => g.id == groupId
+    );
     let markedItems = selectedSource.groups[selectedGrpIndex].items;
     for (let i = 0; i < markedItems.length; i++) {
-      if (!this.itemSelectList[sourceId + '_' + groupId + '_' + markedItems[i].id]) {
+      if (
+        !this.itemSelectList[sourceId + '_' + groupId + '_' + markedItems[i].id]
+      ) {
         return false;
       }
     }
@@ -276,9 +309,17 @@ export class TemplateDiscoverComponent implements OnInit {
   deleteInSidebar(destination) {
     // console.log('destination to be deleted ', destination);
 
-    let itemsToUncheck: checkedID[] = this.checkedIDs.filter((cID: checkedID) => cID.sourceId == destination.id);    
-    for(let i=0; i<itemsToUncheck.length; i++) {
-      this.itemSelectList[itemsToUncheck[i].sourceId + '_' + itemsToUncheck[i].groupId + '_' + itemsToUncheck[i].itemId] = false;
+    let itemsToUncheck: checkedID[] = this.checkedIDs.filter(
+      (cID: checkedID) => cID.sourceId == destination.id
+    );
+    for (let i = 0; i < itemsToUncheck.length; i++) {
+      this.itemSelectList[
+        itemsToUncheck[i].sourceId +
+          '_' +
+          itemsToUncheck[i].groupId +
+          '_' +
+          itemsToUncheck[i].itemId
+      ] = false;
     }
 
     this.destinations = this.destinations.filter(
@@ -289,7 +330,9 @@ export class TemplateDiscoverComponent implements OnInit {
       this.showSidebar = false;
     }
 
-    this.checkedIDs = this.checkedIDs.filter((cID: checkedID) => (cID.sourceId !== destination.id));
+    this.checkedIDs = this.checkedIDs.filter(
+      (cID: checkedID) => cID.sourceId !== destination.id
+    );
   }
 
   import() {

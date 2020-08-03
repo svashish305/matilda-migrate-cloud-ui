@@ -23,7 +23,8 @@ export class DataService {
   }
 
   public getApps() {
-    return this.httpClient.get(this.REST_API_SERVER + '/apps');
+    //this.REST_API_SERVER + '/apps'
+    return this.httpClient.get('../assets/migration/app.json');
   }
 
   public getWave(waveId) {
@@ -41,7 +42,7 @@ export class DataService {
   }
 
   public getApp(appId) {
-    return this.httpClient.get(this.REST_API_SERVER + `/apps/${appId}`);
+    return this.httpClient.get('../assets/migration/app1.json');
   }
 
   public addWave(wave) {

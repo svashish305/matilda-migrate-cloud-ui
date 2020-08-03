@@ -5,7 +5,7 @@ import {
   Output,
   EventEmitter,
   ViewChildren,
-  QueryList
+  QueryList,
 } from '@angular/core';
 import {
   CdkDragDrop,
@@ -43,7 +43,7 @@ export class TemplateListComponent implements OnInit {
   areAllCollapsed = false;
   workflowTypes: SelectInterface[] = [
     { value: 'trigger', viewValue: 'Trigger' },
-    { value: 'time', viewValue: 'Time' }
+    { value: 'time', viewValue: 'Time' },
   ]; //{ value: 'time', viewValue: 'Time' }
 
   selectedWorkflowType: any;
@@ -55,14 +55,17 @@ export class TemplateListComponent implements OnInit {
 
   statusCodes = StatusCodes;
   taskAvatarUrl: any = '';
+  newGroupTitle;
 
   constructor(
     private deviceService: DeviceDetectorService,
     private _utilites: Utilities
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.selectedWorkflowType = this.templateData.type ? this.templateData.type : this.workflowTypes[0].value;
+    this.selectedWorkflowType = this.templateData.type
+      ? this.templateData.type
+      : this.workflowTypes[0].value;
     this.isMobile = this.deviceService.isMobile();
   }
 
@@ -73,8 +76,12 @@ export class TemplateListComponent implements OnInit {
   deleteTask(group: Group, task: Item) {
     this.templateData.groups.forEach((_group) => {
       if (_group.id === group.id) {
-        _group.items = _group.items.filter(_item => _item.id !== task.id);
-        this.updateGroupInfo.emit({ payload: this.templateData, message: 'Task Deleted Successfully', type: 'error' });
+        _group.items = _group.items.filter((_item) => _item.id !== task.id);
+        this.updateGroupInfo.emit({
+          payload: this.templateData,
+          message: 'Task Deleted Successfully',
+          type: 'error',
+        });
       }
     });
   }
@@ -83,7 +90,11 @@ export class TemplateListComponent implements OnInit {
     let group = new Group();
     group.id = uuid.v4();
     group.name = 'Untitled Group' + '_' + group.id;
-    group.order = this.templateData.groups.length >= 1 ? this.templateData.groups[this.templateData.groups.length - 1].order + 100 : 100;
+    group.order =
+      this.templateData.groups.length >= 1
+        ? this.templateData.groups[this.templateData.groups.length - 1].order +
+          100
+        : 100;
     this.templateData.groups.push(group);
     this.templateData.groups = [...this.templateData.groups];
 
@@ -95,17 +106,25 @@ export class TemplateListComponent implements OnInit {
       this.focusNewGroup();
     }, 0);
 
-    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Stage Added Successfully', type: 'success' });
-
+    this.updateGroupInfo.emit({
+      payload: this.templateData,
+      message: 'Stage Added Successfully',
+      type: 'success',
+    });
   }
 
   deleteGroup(group: Group) {
-    this.templateData.groups = this.templateData.groups.filter(_group => _group.id !== group.id);
-    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Stage Deleted Successfully', type: 'error' });
+    this.templateData.groups = this.templateData.groups.filter(
+      (_group) => _group.id !== group.id
+    );
+    this.updateGroupInfo.emit({
+      payload: this.templateData,
+      message: 'Stage Deleted Successfully',
+      type: 'error',
+    });
   }
 
   dropTask(event: CdkDragDrop<string[]>) {
-
     const targetGroupId = event.container.id;
 
     let task: any = event.container.data[event.previousIndex];
@@ -152,9 +171,9 @@ export class TemplateListComponent implements OnInit {
 
     task.groupId = targetGroupId;
 
-    this.templateData.groups.forEach(_group => {
+    this.templateData.groups.forEach((_group) => {
       if (_group.id === targetGroupId) {
-        _group.items.forEach(_task => {
+        _group.items.forEach((_task) => {
           _task.groupId = targetGroupId;
         });
       }
@@ -162,8 +181,11 @@ export class TemplateListComponent implements OnInit {
 
     this.templateData.groups = [...this.templateData.groups];
 
-    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Task Updated Successfully', type: 'success' });
-
+    this.updateGroupInfo.emit({
+      payload: this.templateData,
+      message: 'Task Updated Successfully',
+      type: 'success',
+    });
   }
 
   dropGroup(event: CdkDragDrop<string[]>) {
@@ -190,7 +212,11 @@ export class TemplateListComponent implements OnInit {
         2;
     }
 
-    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Group Updated Successfully', type: 'success' });
+    this.updateGroupInfo.emit({
+      payload: this.templateData,
+      message: 'Group Updated Successfully',
+      type: 'success',
+    });
   }
 
   getConnectedList() {
@@ -212,13 +238,17 @@ export class TemplateListComponent implements OnInit {
 
   updateGroupTitle(group: Group) {
     this.currentTemplate = Object.assign({}, this.templateData);
-    this.currentTemplate.groups.filter(_group => {
+    this.currentTemplate.groups.filter((_group) => {
       if (_group.id === group.id) {
         _group.name = group.name;
       }
     });
 
-    this.updateGroupInfo.emit({ payload: this.currentTemplate, message: 'Group Updated Successfully', type: 'success' });
+    this.updateGroupInfo.emit({
+      payload: this.currentTemplate,
+      message: 'Group Updated Successfully',
+      type: 'success',
+    });
   }
 
   changeStatus(template, status) {
@@ -226,11 +256,15 @@ export class TemplateListComponent implements OnInit {
   }
 
   focusNewGroup() {
-    this.loadedStages.toArray()[this.loadedStages.length - 1].nativeElement.scrollIntoView({ behavior: "smooth" });
+    this.loadedStages
+      .toArray()
+      [this.loadedStages.length - 1].nativeElement.scrollIntoView({
+        behavior: 'smooth',
+      });
   }
 
   sanitizeUrl(image: any) {
-     return this._utilites.sanitizeUrl(image);
+    return this._utilites.sanitizeUrl(image);
   }
 
   getStatusClass(template) {
@@ -261,8 +295,7 @@ export class TemplateListComponent implements OnInit {
     template.showStatus = !template.showStatus;
     $event.stopPropagation();
   }
-  onFocusTitle() {
-  }
+  onFocusTitle() {}
 
   setBadgeBgColor(statusCode = 1) {
     let backgroundColor = '#99a1a9';
@@ -307,7 +340,11 @@ export class TemplateListComponent implements OnInit {
   }
 
   optionClicked(wfType: any) {
-    this.updateGroupInfo.emit({ payload: this.templateData, message: 'Template Updated Successfully', type: 'success' });
+    this.updateGroupInfo.emit({
+      payload: this.templateData,
+      message: 'Template Updated Successfully',
+      type: 'success',
+    });
   }
 
   toggleTemplateHeight(collapsed) {
@@ -340,17 +377,15 @@ export class TemplateListComponent implements OnInit {
       }
     }
   }
-  getTemplateName(templateName){
+  getTemplateName(templateName) {
     let initialLetter;
     let letterArray = [];
     let stringArr = templateName.split(/(?<=^\S+)\s/);
-    stringArr.forEach(it => {
+    stringArr.forEach((it) => {
       initialLetter = it.substring(1, 0);
       letterArray.push(initialLetter);
     });
-    let tempName = letterArray[0] + ' '+ letterArray[1];
+    let tempName = letterArray[0] + ' ' + letterArray[1];
     return tempName;
-    
   }
-
 }

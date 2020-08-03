@@ -74,6 +74,7 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   taskAvatarUrl: any;
 
   taskImgHover = false;
+  isEventNameUnique;
 
   public currentTemplate: Template;
 

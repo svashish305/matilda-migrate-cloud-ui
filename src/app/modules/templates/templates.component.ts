@@ -12,13 +12,14 @@ import { DataService } from 'src/services/data.service';
 })
 export class TemplatesComponent implements OnInit {
   templateData: Template;
-
+  waveListCollapsed;
+  showWaveList;
   constructor(
     private dataService: DataService,
     private _templateService: TemplateService,
     private _utitlies: Utilities,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
@@ -27,13 +28,12 @@ export class TemplatesComponent implements OnInit {
   }
 
   getTemplate(id: any) {
-    this._templateService.getTemplateById(id)
-      .subscribe(
-        (data: any) => {
-          this.templateData = data;
-        },
-        (error) => {
-    });
+    this._templateService.getTemplateById(id).subscribe(
+      (data: any) => {
+        this.templateData = data;
+      },
+      (error) => {}
+    );
 
     // this.dataService.getTemplate(id).subscribe((data: any) => {
     //   this.templateData = data;
@@ -45,39 +45,44 @@ export class TemplatesComponent implements OnInit {
     const message = payload.message;
     const type = payload.type;
 
-    this._templateService.updateTemplate(template, template.id)
+    this._templateService.updateTemplate(template, template.id).subscribe(
+      (data: any) => {
+        this.templateData = data;
+        this._utitlies.openSnackBar(message, type);
+      },
+      (error) => {
+        this._utitlies.errorNotification(error);
+        this.getTemplate(template.id);
+      }
+    );
+  }
+
+  onTagsUpdate(payload: any) {
+    this._templateService
+      .updateTag(payload.tags, this.templateData.id)
       .subscribe(
-        (data: any) => {
-          this.templateData = data;
-          this._utitlies.openSnackBar(message, type);
+        (data) => {
+          this._utitlies.openSnackBar(payload.message, payload.type);
         },
         (error) => {
           this._utitlies.errorNotification(error);
-          this.getTemplate(template.id);
+          this.getTemplate(this.templateData.id);
         }
       );
   }
 
-  onTagsUpdate(payload: any) {
-    this._templateService.updateTag(payload.tags, this.templateData.id)
-      .subscribe((data) => {
-        this._utitlies.openSnackBar(payload.message, payload.type);
-      },
-        (error) => {
-          this._utitlies.errorNotification(error);
-          this.getTemplate(this.templateData.id);
-        });
-  }
-
   onCloneTemplates(payload: any) {
-    this._templateService.importTemplates(payload.destination, payload.source)
-        .subscribe((data) => {
+    this._templateService
+      .importTemplates(payload.destination, payload.source)
+      .subscribe(
+        (data) => {
           this._utitlies.openSnackBar(payload.message, payload.type);
           this.getTemplate(this.templateData.id);
         },
         (error) => {
           this._utitlies.errorNotification(error);
           this.getTemplate(this.templateData.id);
-        });
+        }
+      );
   }
 }

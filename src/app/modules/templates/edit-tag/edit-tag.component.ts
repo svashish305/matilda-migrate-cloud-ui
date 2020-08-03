@@ -13,17 +13,22 @@ export class EditTagComponent implements OnInit {
   @Output() newTags: EventEmitter<any> = new EventEmitter();
 
   form: FormGroup;
-  
-  constructor(private _formBuilder: FormBuilder, private _utilities: Utilities) { }
+
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _utilities: Utilities
+  ) {}
 
   ngOnInit() {
     this.form = this._formBuilder.group({
       configuredTags: this._formBuilder.array([this.addNewTag()]),
     });
 
-    if(this.tags && this.tags.length > 0) {
+    if (this.tags && this.tags.length > 0) {
       this.configuredTags.removeAt(0);
-      this.tags.forEach(_tag => this.configuredTags.push(this.addNewTag(_tag, 'auto')));
+      this.tags.forEach((_tag) =>
+        this.configuredTags.push(this.addNewTag(_tag, 'auto'))
+      );
     }
 
     // this.form.valueChanges.subscribe(val => {
@@ -34,14 +39,21 @@ export class EditTagComponent implements OnInit {
   }
 
   valueChange(form: any) {
-    this.newTags.emit({tags: form.value.configuredTags, valid: form.valid, operation: 'update'});
+    this.newTags.emit({
+      tags: form.value.configuredTags,
+      valid: form.valid,
+      operation: 'update',
+    });
   }
 
   addNewTag(tag?: Tag, eventTrigger?: string) {
     const newTag = this._formBuilder.group({
-      id: [tag ? tag.id : this._utilities.generateId(), Validators.nullValidator],
+      id: [
+        tag ? tag.id : this._utilities.generateId(),
+        Validators.nullValidator,
+      ],
       name: [tag ? tag.name : '', Validators.required],
-      value: [tag ? tag.value : '', Validators.required]
+      value: [tag ? tag.value : '', Validators.required],
     });
     return newTag;
   }
@@ -50,13 +62,18 @@ export class EditTagComponent implements OnInit {
     this.configuredTags.push(this.addNewTag(null, 'manual'));
   }
 
-  deleteTag(index: number, form?:any) {
+  deleteTag(index: number, form?: any) {
     this.configuredTags.removeAt(index);
-    this.newTags.emit({tags: this.form.value.configuredTags, valid: this.form.valid, operation: 'delete'});
+    this.newTags.emit({
+      tags: this.form.value.configuredTags,
+      valid: this.form.valid,
+      operation: 'delete',
+    });
   }
 
   get configuredTags() {
     return this.form.get('configuredTags') as FormArray;
   }
 
+  onSubmit(event: any, form?: any) {}
 }

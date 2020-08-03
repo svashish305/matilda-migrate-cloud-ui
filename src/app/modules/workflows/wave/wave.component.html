@@ -1,29 +1,67 @@
 <div id="wave-content-id" class="wave__content__main__wrapper">
-  <div id="wave-main-content" *ngIf="waveData" [ngClass]="{ 'side-open': edit }" class="wave__content__wrapper">
+  <div
+    id="wave-main-content"
+    *ngIf="waveData"
+    [ngClass]="{ 'side-open': edit }"
+    class="wave__content__wrapper"
+  >
     <!-- wave name and desription start -->
     <div class="wave__header">
-      <div [routerLink]="['/hub']" (mouseover)="imgHovered = true" (mouseleave)="imgHovered = false"
-        class="back-icon pointer-cursor" [ngClass]="{ 'back-not-hover': !imgHovered }">
-        <img [src]="
+      <div
+        [routerLink]="['/hub']"
+        (mouseover)="imgHovered = true"
+        (mouseleave)="imgHovered = false"
+        class="back-icon pointer-cursor"
+        [ngClass]="{ 'back-not-hover': !imgHovered }"
+      >
+        <img
+          [src]="
             imgHovered
               ? 'assets/imgs/back-icon.svg'
               : 'assets/imgs/chevron-down.svg'
-          " alt="back" />
+          "
+          alt="back"
+        />
       </div>
       <div class="ngx-template-header-avatar">
-        <button class="avatar-dd-btn" mat-button [matMenuTriggerFor]="avatarDropdown" (mouseover)="waveImgHover = true"
-          (mouseleave)="waveImgHover = false">
-          <ngx-avatar *ngIf="waveData?.image; else initialsAvatar" [src]="sanitizeUrl(waveData?.image)" class="my-avatar flex-center"
-            name="{{ waveData.name }}" initialsSize="2" [size]="isMobile ? 40 : 56"></ngx-avatar>
+        <button
+          class="avatar-dd-btn"
+          mat-button
+          [matMenuTriggerFor]="avatarDropdown"
+          (mouseover)="waveImgHover = true"
+          (mouseleave)="waveImgHover = false"
+        >
+          <ngx-avatar
+            *ngIf="waveData?.image; else initialsAvatar"
+            [src]="sanitizeUrl(waveData?.image)"
+            class="my-avatar flex-center"
+            name="{{ waveData.name }}"
+            initialsSize="2"
+            [size]="isMobile ? 40 : 56"
+          ></ngx-avatar>
           <ng-template #initialsAvatar>
-            <ngx-avatar name="{{getWaveName(waveData.name) }}" initialsSize="2" [size]="isMobile ? 40 : 56"></ngx-avatar>
+            <ngx-avatar
+              name="{{ getWaveName(waveData.name) }}"
+              initialsSize="2"
+              [size]="isMobile ? 40 : 56"
+            ></ngx-avatar>
           </ng-template>
-          <img *ngIf="waveImgHover" class="edit-avatar-img" src="assets/imgs/edit-img-2.svg" alt="edit" />
+          <img
+            *ngIf="waveImgHover"
+            class="edit-avatar-img"
+            src="assets/imgs/edit-img-2.svg"
+            alt="edit"
+          />
         </button>
         <mat-menu #avatarDropdown="matMenu">
           <button mat-menu-item>
-            <label for="waveAvatarFile" class="avatar-upload-option">Upload
-              <input id="waveAvatarFile" type="file" (change)="changeAvatar($event)" />
+            <label for="waveAvatarFile" class="avatar-upload-option"
+              >Upload
+              <input
+                id="waveAvatarFile"
+                type="file"
+                (change)="changeAvatar($event)"
+              />
             </label>
           </button>
           <button mat-menu-item (click)="removeAvatar()">
@@ -32,31 +70,60 @@
         </mat-menu>
       </div>
       <div class="wave__heading">
-        <input class="description-styles template-title-font" (click)="$event.target.select()" (focus)="onFocusTitle()"
+        <input
+          class="description-styles template-title-font"
+          (click)="$event.target.select()"
+          (focus)="onFocusTitle()"
           (keydown.enter)="
             $event.preventDefault() && updateTitle(); $event.target.blur()
-          " (blur)="updateTitle()" [(ngModel)]="newTitle ? newTitle : waveData.name" />
+          "
+          (blur)="updateTitle()"
+          [(ngModel)]="newTitle ? newTitle : waveData.name"
+        />
       </div>
 
       <div class="wave-description">
-        <input class="description-styles template-desc-font" (click)="$event.target.select()"
-          (focus)="onFocusDescription()" (keydown.enter)="
+        <input
+          class="description-styles template-desc-font"
+          (click)="$event.target.select()"
+          (focus)="onFocusDescription()"
+          (keydown.enter)="
             $event.preventDefault() && updateDescription(); $event.target.blur()
-          " (blur)="updateDescription()" [(ngModel)]="newDescription ? newDescription : waveData.desc" />
+          "
+          (blur)="updateDescription()"
+          [(ngModel)]="newDescription ? newDescription : waveData.desc"
+        />
       </div>
 
       <a (click)="favourite = !favourite">
-        <img class="fav-icon" [src]="
+        <img
+          class="fav-icon"
+          [src]="
             favourite
               ? 'assets/imgs/favourite.svg'
               : 'assets/imgs/unfavourite.svg'
-          " alt="mark-as-favourite" />
+          "
+          alt="mark-as-favourite"
+        />
       </a>
 
-      <button class="template-dd-btn" mat-button [matMenuTriggerFor]="templateDropdown">
-        <img src="assets/imgs/vEllipsis.svg" class="template-dd-icon" alt="Template Settings" />
+      <button
+        class="template-dd-btn"
+        mat-button
+        [matMenuTriggerFor]="templateDropdown"
+      >
+        <img
+          src="assets/imgs/vEllipsis.svg"
+          class="template-dd-icon"
+          alt="Template Settings"
+        />
       </button>
-      <mat-menu id="account-menu" #templateDropdown="matMenu" xPosition="before" yPosition="below">
+      <mat-menu
+        id="account-menu"
+        #templateDropdown="matMenu"
+        xPosition="before"
+        yPosition="below"
+      >
         <button mat-menu-item (click)="showAccountOptions = true">
           Accounts
         </button>
@@ -76,49 +143,82 @@
       <mat-tab label="Workflows">
         <!-- Workflows tab content -->
         <div *ngIf="waves" class="workflows-height">
-          <div class="badge-container" [ngStyle]="{ 'margin-top': isMobile ? '2.938em' : '7px' }">
-            <span class="stage-tags">Tags (
+          <div
+            class="badge-container"
+            [ngStyle]="{ 'margin-top': isMobile ? '2.938em' : '7px' }"
+          >
+            <span class="stage-tags"
+              >Tags (
               <a (click)="showTagOptions = true" class="pointer-cursor">
                 <span class="stage-tags-blue">Change</span>
               </a>
               )<span class="align-tags-colon">:</span>
             </span>
-            <span *ngIf="waveData?.tags &&  waveData?.tags?.length > 0; else noTags" class="badge badge-pill badge-custom" [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }">
+            <span
+              *ngIf="waveData?.tags && waveData?.tags?.length > 0; else noTags"
+              class="badge badge-pill badge-custom"
+              [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }"
+            >
               <span *ngIf="isMobile" class="badge-key-value">
-                <span >
+                <span>
                   {{ waveData.tags[0].name }} :
                   {{ waveData.tags[0].value }}
                 </span>
-               
               </span>
             </span>
             <ng-template #noTags>
               <span [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.25em' }">
-                <a href="javascript: void(0)" (click)="showTagOptions = true" class="common-text" style="color: #006bd4;">Click to add Tag</a>
+                <a
+                  href="javascript: void(0)"
+                  (click)="showTagOptions = true"
+                  class="common-text"
+                  style="color: #006bd4;"
+                  >Click to add Tag</a
+                >
               </span>
             </ng-template>
             <span *ngIf="isMobile" class="badge badge-pill badge-custom">
-              <span *ngIf="waveData.tags.length > 1" class="badge-key-value">+{{ waveData.tags.length - 1 }}</span>
+              <span *ngIf="waveData.tags.length > 1" class="badge-key-value"
+                >+{{ waveData.tags.length - 1 }}</span
+              >
             </span>
             <div *ngIf="!isMobile" class="pos-tags">
-              <span class="badge badge-pill badge-custom" *ngFor="let tag of waveData.tags">
-                <span class="badge-key-value">{{ tag.name }} : {{ tag.value }}</span>
+              <span
+                class="badge badge-pill badge-custom"
+                *ngFor="let tag of waveData.tags"
+              >
+                <span class="badge-key-value"
+                  >{{ tag.name }} : {{ tag.value }}</span
+                >
               </span>
               <span class="badge badge-pill badge-custom">
-                <span *ngIf="waveData.tags.length > 1" class="badge-key-value">+{{ waveData.tags.length - 1 }}</span>
+                <span *ngIf="waveData.tags.length > 1" class="badge-key-value"
+                  >+{{ waveData.tags.length - 1 }}</span
+                >
               </span>
             </div>
           </div>
-          <div class="badge-container" [ngStyle]="{ 'margin-top': isMobile ? '0' : '7px'  }">
-            <span class="stage-tags">Accounts (
+          <div
+            class="badge-container"
+            [ngStyle]="{ 'margin-top': isMobile ? '0' : '7px' }"
+          >
+            <span class="stage-tags"
+              >Accounts (
               <a (click)="showAccountOptions = true" class="pointer-cursor">
                 <span class="stage-tags-blue">Change</span>
               </a>
               )<span class="align-accounts-colon">:</span>
             </span>
-            <span *ngIf="waveData?.keyVault &&  waveData?.keyVault?.length > 0; else noAccounts" class="badge badge-pill badge-custom" [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }">
+            <span
+              *ngIf="
+                waveData?.keyVault && waveData?.keyVault?.length > 0;
+                else noAccounts
+              "
+              class="badge badge-pill badge-custom"
+              [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }"
+            >
               <span *ngIf="isMobile" class="badge-key-value">
-                <span >
+                <span>
                   {{ waveData.keyVault[0].cpName }} :
                   {{ waveData.keyVault[0].accountName }}
                 </span>
@@ -126,47 +226,73 @@
             </span>
             <ng-template #noAccounts>
               <span [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.25em' }">
-                <a href="javascript: void(0); $event.stopPropagation()" (click)="showAccountOptions = true" class="common-text" style="color: #006bd4;">Click to add Account</a>
-                
+                <a
+                  href="javascript: void(0); $event.stopPropagation()"
+                  (click)="showAccountOptions = true"
+                  class="common-text"
+                  style="color: #006bd4;"
+                  >Click to add Account</a
+                >
               </span>
             </ng-template>
             <!-- <span *ngIf="isMobile" class="badge badge-pill badge-custom">
               <span *ngIf="waveData?.keyVault?.length > 1" class="badge-key-value">+{{ waveData?.keyVault?.length - 1 }}</span>
             </span> -->
-            <span *ngIf="!isMobile" class="badge badge-pill badge-custom"
-              [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }">
-              <span *ngIf="waveData?.keyVault &&  waveData?.keyVault?.length > 0; else NotAccountsMobile" class="badge-key-value">
-                {{ waveData?.keyVault[0]?.cpName }} :
-                {{ waveData?.keyVault[0]?.accountName }}
+            <span
+              *ngIf="!isMobile"
+              class="badge badge-pill badge-custom"
+              [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }"
+            >
+              <span
+                *ngIf="waveData?.keyVault && waveData?.keyVault?.length > 0"
+                class="badge-key-value"
+              >
+                {{ (waveData?.keyVault)[0]?.cpName }} :
+                {{ (waveData?.keyVault)[0]?.accountName }}
               </span>
             </span>
-            <span  class="badge badge-pill badge-custom">
-              <span *ngIf="waveData?.keyVault?.length > 1" class="badge-key-value">+{{ waveData?.keyVault?.length - 1 }}</span>
+            <span class="badge badge-pill badge-custom">
+              <span
+                *ngIf="waveData?.keyVault?.length > 1"
+                class="badge-key-value"
+                >+{{ waveData?.keyVault?.length - 1 }}</span
+              >
             </span>
           </div>
 
-
           <div class="wave-states">
             <a (click)="waveState = 'start'">
-              <img class="pointer-cursor" [src]="
+              <img
+                class="pointer-cursor"
+                [src]="
                   waveState === 'start'
                     ? 'assets/imgs/start-active.svg'
                     : 'assets/imgs/start-inactive.svg'
-                " alt="start" />
+                "
+                alt="start"
+              />
             </a>
             <a (click)="waveState = 'pause'">
-              <img class="pointer-cursor left-padding-24" [src]="
+              <img
+                class="pointer-cursor left-padding-24"
+                [src]="
                   waveState === 'pause'
                     ? 'assets/imgs/pause-active.svg'
                     : 'assets/imgs/pause-inactive.svg'
-                " alt="pause" />
+                "
+                alt="pause"
+              />
             </a>
             <a (click)="waveState = 'stop'">
-              <img class="pointer-cursor left-padding-24" [src]="
+              <img
+                class="pointer-cursor left-padding-24"
+                [src]="
                   waveState === 'stop'
                     ? 'assets/imgs/stop-active.svg'
                     : 'assets/imgs/stop-inactive.svg'
-                " alt="stop" />
+                "
+                alt="stop"
+              />
             </a>
           </div>
         </div>
@@ -174,8 +300,11 @@
         <div class="template-container">
           <div class="templates__wrapper">
             <!-- wave templates list start-->
-            <app-wave-list (rowClicked)="openTaskDetails($event)" (updateGroupInfo)="updateGroupInfo($event)"
-              [waveData]="waveData">
+            <app-wave-list
+              (rowClicked)="openTaskDetails($event)"
+              (updateGroupInfo)="updateGroupInfo($event)"
+              [waveData]="waveData"
+            >
             </app-wave-list>
             <!-- wave templates list end-->
           </div>
@@ -190,87 +319,166 @@
   </div>
 
   <!-- account options start -->
-  <div *ngIf="showAccountOptions" id="resizable-holder" class="import-options resizable" mwlResizable
-    [enableGhostResize]="true" [resizeEdges]="{ bottom: false, right: false, top: false, left: true }"
-    (resizeEnd)="onResizeEnd($event)">
-    
-      <header>
-        <a (click)="showAccountOptions = false" class="pointer-cursor left-24-top-1em">
-          <img src="assets/imgs/close-circle.svg" alt="Close" />
-        </a>
-        Account
-      </header>
-      <mat-divider></mat-divider>
-      <div class="sidebar-search top-margin-1em">
-        <form>
-          <mat-form-field id="mat-search" floatLabel="never" class="mat-typography full-width">
-            <img matPrefix src="assets/imgs/search-2.svg" alt="search-icon" class="new-search-icon" />
-            <input matInput placeholder="Search" type="search" name="test" [(ngModel)]="searchKey" />
-          </mat-form-field>
-        </form>
-      </div>
-      <div class="account-section p-2">
-        <mat-accordion >
-          <mat-expansion-panel *ngFor="let account of accounts | search: searchKey">
-            <mat-expansion-panel-header>
-              <mat-panel-title style="align-items: center !important;" (click)="$event.stopPropagation();">
-                <mat-checkbox [checked]="account.selected" (change)="onCheck($event, account)" style="margin:1rem">
-                </mat-checkbox> &nbsp;  &nbsp; &nbsp;
-                <ngx-avatar *ngIf="account?.image; else accountAddIntialsAvatar" [src]="sanitizeUrl(account?.image)"
-                class="my-avatar flex-center" name="{{ account?.accountName }}" initialsSize="2" [size]="30">
+  <div
+    *ngIf="showAccountOptions"
+    id="resizable-holder"
+    class="import-options resizable"
+    mwlResizable
+    [enableGhostResize]="true"
+    [resizeEdges]="{ bottom: false, right: false, top: false, left: true }"
+    (resizeEnd)="onResizeEnd($event)"
+  >
+    <header>
+      <a
+        (click)="showAccountOptions = false"
+        class="pointer-cursor left-24-top-1em"
+      >
+        <img src="assets/imgs/close-circle.svg" alt="Close" />
+      </a>
+      Account
+    </header>
+    <mat-divider></mat-divider>
+    <div class="sidebar-search top-margin-1em">
+      <form>
+        <mat-form-field
+          id="mat-search"
+          floatLabel="never"
+          class="mat-typography full-width"
+        >
+          <img
+            matPrefix
+            src="assets/imgs/search-2.svg"
+            alt="search-icon"
+            class="new-search-icon"
+          />
+          <input
+            matInput
+            placeholder="Search"
+            type="search"
+            name="test"
+            [(ngModel)]="searchKey"
+          />
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="account-section p-2">
+      <mat-accordion>
+        <mat-expansion-panel
+          *ngFor="let account of accounts | search: searchKey"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              style="align-items: center !important;"
+              (click)="$event.stopPropagation()"
+            >
+              <mat-checkbox
+                [checked]="account.selected"
+                (change)="onCheck($event, account)"
+                style="margin: 1rem;"
+              >
+              </mat-checkbox>
+              &nbsp; &nbsp; &nbsp;
+              <ngx-avatar
+                *ngIf="account?.image; else accountAddIntialsAvatar"
+                [src]="sanitizeUrl(account?.image)"
+                class="my-avatar flex-center"
+                name="{{ account?.accountName }}"
+                initialsSize="2"
+                [size]="30"
+              >
               </ngx-avatar>
               <ng-template #accountAddIntialsAvatar>
-                <ngx-avatar name="{{ getWaveName(account?.accountName) }}" initialsSize="2" [size]="30"></ngx-avatar>
-              </ng-template> &nbsp;&nbsp; &nbsp;
-              <span  matTooltip="{{ account?.accountName }}" class="common-text"> {{ account?.accountName }}</span>
-              </mat-panel-title>
-              <!-- <mat-panel-description style="align-items: center !important;">
+                <ngx-avatar
+                  name="{{ getWaveName(account?.accountName) }}"
+                  initialsSize="2"
+                  [size]="30"
+                ></ngx-avatar>
+              </ng-template>
+              &nbsp;&nbsp; &nbsp;
+              <span matTooltip="{{ account?.accountName }}" class="common-text">
+                {{ account?.accountName }}</span
+              >
+            </mat-panel-title>
+            <!-- <mat-panel-description style="align-items: center !important;">
                
               </mat-panel-description> -->
-            </mat-expansion-panel-header>
-            <div class="common-text" style="margin-left:1rem;">
-              <p >Provider: {{account?.cpName}}</p>
-            </div>
-          
-          </mat-expansion-panel>
-        </mat-accordion>
+          </mat-expansion-panel-header>
+          <div class="common-text" style="margin-left: 1rem;">
+            <p>Provider: {{ account?.cpName }}</p>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div class="account-footer">
+      <div class="account-sidebar-footer-btns">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="showAccountOptions = false; addAccounts()"
+          cdkFocusInitial
+        >
+          Add
+        </button>
+        <button
+          mat-button
+          color="primary"
+          (click)="showAccountOptions = false"
+          class="left-margin-1em"
+        >
+          Cancel
+        </button>
       </div>
-     
-      <div class="account-footer">
-        <div class="account-sidebar-footer-btns">
-          <button mat-flat-button color="primary" (click)="showAccountOptions = false; addAccounts()" cdkFocusInitial>
-            Add
-          </button>
-          <button mat-button color="primary" (click)="showAccountOptions = false;" class="left-margin-1em">
-            Cancel
-          </button>
-        </div>
-      </div>
-    
+    </div>
   </div>
   <!-- end of account options -->
 
   <!-- tag options start -->
-  <div *ngIf="showTagOptions" id="resizable-holder" class="import-options resizable" mwlResizable
-    [enableGhostResize]="true" [resizeEdges]="{ bottom: false, right: false, top: false, left: true }"
-    (resizeEnd)="onResizeEnd($event)">
+  <div
+    *ngIf="showTagOptions"
+    id="resizable-holder"
+    class="import-options resizable"
+    mwlResizable
+    [enableGhostResize]="true"
+    [resizeEdges]="{ bottom: false, right: false, top: false, left: true }"
+    (resizeEnd)="onResizeEnd($event)"
+  >
     <header>
-      <a (click)="showTagOptions = false" class="pointer-cursor left-24-top-1em">
+      <a
+        (click)="showTagOptions = false"
+        class="pointer-cursor left-24-top-1em"
+      >
         <img src="assets/imgs/close-circle.svg" alt="Close" />
       </a>
       Edit Tags
     </header>
     <mat-divider></mat-divider>
     <!-- tag edit body -->
-    <app-edit-tag [tags]="waveData?.tags" (newTags)="updateTags($event)"></app-edit-tag>
+    <app-edit-tag
+      [tags]="waveData?.tags"
+      (newTags)="updateTags($event)"
+    ></app-edit-tag>
     <!-- end of tag edit body -->
-    <div [ngClass]="{ 'modal-footer-mobile': isMobile, 'modal-footer': !isMobile }" class="edit-tag-footer-btns">
+    <div
+      [ngClass]="{ 'modal-footer-mobile': isMobile, 'modal-footer': !isMobile }"
+      class="edit-tag-footer-btns"
+    >
       <div class="import-btns-1">
-        <button [disabled]="isTagsFormValid" mat-flat-button color="primary"
-          (click)="showTagOptions = false; saveTags()" cdkFocusInitial>
+        <button
+          [disabled]="isTagsFormValid"
+          mat-flat-button
+          color="primary"
+          (click)="showTagOptions = false; saveTags()"
+          cdkFocusInitial
+        >
           Save
         </button>
-        <button mat-button color="primary" (click)="showTagOptions = false" class="left-margin-1em">
+        <button
+          mat-button
+          color="primary"
+          (click)="showTagOptions = false"
+          class="left-margin-1em"
+        >
           Cancel
         </button>
       </div>
