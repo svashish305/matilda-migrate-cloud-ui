@@ -20,7 +20,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { TemplateService } from '../services/template.service';
 import { SnackbarComponent } from '../../material/snackbar/snackbar.component';
 
-
 interface SelectInterface {
   value: string;
   viewValue: string;
@@ -87,11 +86,11 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     public snackBar: MatSnackBar,
     private sanitizer: DomSanitizer,
     private _templateService: TemplateService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
-      if(params.workflowId) {
+      if (params.workflowId) {
         this.workflowId = params.workflowId;
       }
       this.templateId = params.id;
@@ -104,18 +103,16 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     this.getTemplates();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-  }
+  ngOnChanges(changes: SimpleChanges) {}
 
   ngAfterViewInit() {
     this.appyResize();
   }
 
   getTemplates() {
-    this._templateService.getAllTemplates()
-      .subscribe((data: any[]) => {
-        this.templatesToImport = data.filter((d) => d.id !== this.templateId);
-      });
+    this._templateService.getAllTemplates().subscribe((data: any[]) => {
+      this.templatesToImport = data.filter((d) => d.id !== this.templateId);
+    });
 
     // this.dataService.getTemplates().subscribe((data: any[]) => {
     //   this.templatesToImport = data.filter((d) => d.id !== this.templateId);
@@ -131,16 +128,23 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
       reader.onload = (event: any) => {
         // called once readAsDataURL is completed
         this.templateData.image = event.target.result;
-        this.updateTemplate.emit({ payload: this.templateData, message: 'Template Icon Updated Successfully', type: 'success' });
+        this.updateTemplate.emit({
+          payload: this.templateData,
+          message: 'Template Icon Updated Successfully',
+          type: 'success',
+        });
       };
     }
   }
 
   removeAvatar() {
     this.templateData.image = null;
-    this.updateTemplate.emit({ payload: this.templateData, message: 'Template Icon Deleted Successfully', type: 'error' });
+    this.updateTemplate.emit({
+      payload: this.templateData,
+      message: 'Template Icon Deleted Successfully',
+      type: 'error',
+    });
   }
-  
 
   changeTaskAvatar(event: any) {
     if (event.target.files && event.target.files[0]) {
@@ -161,25 +165,32 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
             });
           }
         });
-        this.updateTemplate.emit({ payload: this.templateData, message: 'Task Icon Updated Successfully', type: 'success' });
+        this.updateTemplate.emit({
+          payload: this.templateData,
+          message: 'Task Icon Updated Successfully',
+          type: 'success',
+        });
       };
-
     }
   }
 
   removeTaskAvatar(currentTask: Item) {
-    this.templateData.groups.forEach(_group => {
+    this.templateData.groups.forEach((_group) => {
       if (_group.id === currentTask.groupId) {
-        _group.items.forEach(_item => {
+        _group.items.forEach((_item) => {
           _item.image = null;
         });
       }
     });
-    this.updateTemplate.emit({ payload: this.templateData, message: 'Task Icon Deleted Successfully', type: 'error' });
+    this.updateTemplate.emit({
+      payload: this.templateData,
+      message: 'Task Icon Deleted Successfully',
+      type: 'error',
+    });
   }
 
-  setBadgeBgColor(stageState = "Defined") {
-    let backgroundColor = "#99a1a9";
+  setBadgeBgColor(stageState = 'Defined') {
+    let backgroundColor = '#99a1a9';
     switch (stageState) {
       case 'Defined':
         backgroundColor = '#99a1a9';
@@ -211,8 +222,11 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
 
   goToDiscover() {
     // this.router.navigate(['./discover'], { relativeTo: this.route, queryParamsHandling: 'merge' });
-    if(this.router.url.includes('workflows')) {
-      this.router.navigate(['./discover'], { relativeTo: this.route, queryParamsHandling: 'merge' });
+    if (this.router.url.includes('workflows')) {
+      this.router.navigate(['./discover'], {
+        relativeTo: this.route,
+        queryParamsHandling: 'merge',
+      });
       // this.router.navigate([`workflows/${this.workflowId}/templates/${this.templateId}/discover`]);
     } else {
       this.router.navigate([`templates/${this.templateId}/discover`]);
@@ -225,7 +239,11 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   saveTags() {
-    this.onTagsUpdate.emit({ tags: this.templateData.tags, message: 'Tags Updated Successfully', type: 'success' });
+    this.onTagsUpdate.emit({
+      tags: this.templateData.tags,
+      message: 'Tags Updated Successfully',
+      type: 'success',
+    });
   }
 
   onCheck(event, template) {
@@ -236,12 +254,18 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   importTemplates() {
-   
-    const selectedTemplates = this.selectedTemplatesToImport.map((_template: Template) => _template.id);
+    const selectedTemplates = this.selectedTemplatesToImport.map(
+      (_template: Template) => _template.id
+    );
 
-    this.selectedTemplatesToImport = []; 
+    this.selectedTemplatesToImport = [];
 
-    this.cloneTemplates.emit({source: selectedTemplates, destination: this.templateData.id,  message: 'Template(s) Imported Successfully', type: 'success'});
+    this.cloneTemplates.emit({
+      source: selectedTemplates,
+      destination: this.templateData.id,
+      message: 'Template(s) Imported Successfully',
+      type: 'success',
+    });
   }
 
   onResizeEnd(event) {
@@ -295,13 +319,15 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
       });
 
       this.showTaskOptions = true;
-
     } else {
       let _task = new Item();
       _task.id = uuid.v4();
       _task.name = 'Untitled Task' + '_' + _task.id;
       _task.groupId = group.id;
-      _task.order = group.items.length >= 1 ? group.items[group.items.length - 1].order + 100 : 100;
+      _task.order =
+        group.items.length >= 1
+          ? group.items[group.items.length - 1].order + 100
+          : 100;
 
       this.selectedTask = _task;
 
@@ -318,7 +344,13 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
       // });
 
       //this.openSnackBar('Please Wait.. While we are waiting for the server to respond', 'info');
-      this.updateTemplate.emit({ payload: this.templateData, message: 'Task Added Successfully', type: 'success' });
+      this.updateTemplate.emit({
+        payload: this.templateData,
+        message: 'Task Added Successfully',
+        type: 'success',
+      });
+
+      this.showTaskOptions = true;
     }
   }
 
@@ -339,7 +371,11 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
         ...this.templateData,
       };
     }
-    this.updateTemplate.emit({ payload: this.templateData, message: 'Template Updated Successfully', type: 'success' });
+    this.updateTemplate.emit({
+      payload: this.templateData,
+      message: 'Template Updated Successfully',
+      type: 'success',
+    });
   }
 
   onFocusDescription() {
@@ -356,14 +392,18 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
       };
     }
 
-    this.updateTemplate.emit({ payload: this.templateData, message: 'Template Updated Successfully', type: 'success' });
+    this.updateTemplate.emit({
+      payload: this.templateData,
+      message: 'Template Updated Successfully',
+      type: 'success',
+    });
   }
 
   onSaveConfig(task: Item) {
-    this.templateData.groups.forEach(_group => {
-      if(_group.id = task.groupId) {
-        _group.items.forEach(_task => {
-          if(_task.id === task.id) {
+    this.templateData.groups.forEach((_group) => {
+      if ((_group.id = task.groupId)) {
+        _group.items.forEach((_task) => {
+          if (_task.id === task.id) {
             _task.input = task.input;
             _task.itemFields = task.itemFields;
           }
@@ -372,14 +412,18 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     });
 
     this.templateData.groups = [...this.templateData.groups];
-    this.updateTemplate.emit({ payload: this.templateData, message: 'Task Configuration Updated Successfully', type: 'success' });
+    this.updateTemplate.emit({
+      payload: this.templateData,
+      message: 'Task Configuration Updated Successfully',
+      type: 'success',
+    });
   }
 
   onSaveGeneralConfig(task: Item) {
-    this.templateData.groups.forEach(_group => {
-      if(_group.id === task.groupId) {
-        _group.items.forEach(_task => {
-          if(_task.id === task.id) {
+    this.templateData.groups.forEach((_group) => {
+      if (_group.id === task.groupId) {
+        _group.items.forEach((_task) => {
+          if (_task.id === task.id) {
             _task.pluginId = task.pluginId;
             _task.pluginName = task.pluginName;
             _task.serviceId = task.serviceId;
@@ -393,7 +437,11 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
         });
       }
     });
-    this.updateTemplate.emit({ payload: this.templateData, message: 'Task Updated Successfully', type: 'success' });
+    this.updateTemplate.emit({
+      payload: this.templateData,
+      message: 'Task Updated Successfully',
+      type: 'success',
+    });
   }
 
   updateGroupInfo(payload: Template) {
@@ -409,26 +457,29 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   openSnackBar(message: string, snackType: string) {
     this.snackBar.openFromComponent(SnackbarComponent, {
       data: { message: message, snackType: snackType, snackBar: this.snackBar },
-      panelClass: [snackType]
+      panelClass: [snackType],
     });
   }
 
   updateTaskTitle(task: Item) {
-    this.updateTemplate.emit({ payload: this.templateData, message: 'Task Updated Successfully', type: 'success' });
+    this.updateTemplate.emit({
+      payload: this.templateData,
+      message: 'Task Updated Successfully',
+      type: 'success',
+    });
   }
   uniqueTaskTitle(taskName) {
     let groupList: Group[] = this.templateData.groups;
-    let filteredGroupList = groupList.filter(it => {
+    let filteredGroupList = groupList.filter((it) => {
       return it.id === this.selectedTask.groupId;
-    })
+    });
     let groupItems = filteredGroupList[0].items;
     let keyExists;
     for (let key of groupItems) {
       if (key.name.toLowerCase() === taskName.toLowerCase()) {
         keyExists = { isEventTaskUnique: true };
         break;
-      }
-      else {
+      } else {
         keyExists = null;
       }
     }
@@ -436,26 +487,29 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     // API Logic
     // this.dataService.taskTitileValid(taskName).subscribe(res=>{
     //   if(res == true){
-    //     this.isEventTaskUnique = true 
+    //     this.isEventTaskUnique = true
     //   }
     //   else{
     //     this.isEventTaskUnique =  false
     //   }
-    // })  
+    // })
   }
   updateTaskDescription(task: Item) {
-    this.updateTemplate.emit({ payload: this.templateData, message: 'Task Updated Successfully', type: 'success' });
+    this.updateTemplate.emit({
+      payload: this.templateData,
+      message: 'Task Updated Successfully',
+      type: 'success',
+    });
   }
-  getTemplateName(templateName){
+  getTemplateName(templateName) {
     let initialLetter;
     let letterArray = [];
     let stringArr = templateName.split(/(?<=^\S+)\s/);
-    stringArr.forEach(it => {
+    stringArr.forEach((it) => {
       initialLetter = it.substring(1, 0);
       letterArray.push(initialLetter);
     });
-    let tempName = letterArray[0] + ' '+ letterArray[1];
+    let tempName = letterArray[0] + ' ' + letterArray[1];
     return tempName;
-    
   }
 }
