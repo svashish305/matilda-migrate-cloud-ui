@@ -58,7 +58,7 @@ export class TemplateDiscoverComponent implements OnInit {
     this.isMobile = this.deviceService.isMobile();
 
     this.route.params.subscribe((params: any) => {
-      this.templateId = params.templateId;
+      this.templateId = params.id;
     });
 
     this.dataService.getTemplate(this.templateId).subscribe((template: any) => {

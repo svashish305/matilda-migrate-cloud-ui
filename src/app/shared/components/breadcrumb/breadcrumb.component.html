@@ -16,8 +16,17 @@
       "
       [alt]="breadcrumb.label"
     />
-    <span
+    <!-- <span
       [routerLink]="breadcrumb.url"
+      routerLinkActive="router-link-active"
+      class="pointer-cursor breadcrumb-text"
+      [ngClass]="{
+        'set-primary-color':
+          breadcrumb.label === breadcrumbs[breadcrumbs.length - 1].label
+      }"
+    > -->
+    <span
+      (click)="navigateToRoute(breadcrumbs, breadcrumb)"
       routerLinkActive="router-link-active"
       class="pointer-cursor breadcrumb-text"
       [ngClass]="{

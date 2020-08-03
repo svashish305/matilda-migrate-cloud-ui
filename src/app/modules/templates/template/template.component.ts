@@ -46,6 +46,7 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
 
   favourite = false;
   templateId: any;
+  workflowId: any;
   currTemplate: Template;
   currTemplateTags: any[];
   templatesToImport: any[] = [];
@@ -90,6 +91,9 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
+      if(params.workflowId) {
+        this.workflowId = params.workflowId;
+      }
       this.templateId = params.id;
     });
 
@@ -108,14 +112,14 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   getTemplates() {
-    this._templateService.getAllTemplates()
-      .subscribe((data: any[]) => {
-        this.templatesToImport = data.filter((d) => d.id !== this.templateId);
-      });
+    // this._templateService.getAllTemplates()
+    //   .subscribe((data: any[]) => {
+    //     this.templatesToImport = data.filter((d) => d.id !== this.templateId);
+    //   });
 
-    // this.dataService.getTemplates().subscribe((data: any[]) => {
-    //   this.templatesToImport = data.filter((d) => d.id !== this.templateId);
-    // });
+    this.dataService.getTemplates().subscribe((data: any[]) => {
+      this.templatesToImport = data.filter((d) => d.id !== this.templateId);
+    });
   }
 
   changeAvatar(event: any) {
@@ -206,7 +210,13 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   goToDiscover() {
-    this.router.navigate(['./discover'], { relativeTo: this.route });
+    // this.router.navigate(['./discover'], { relativeTo: this.route, queryParamsHandling: 'merge' });
+    if(this.router.url.includes('workflows')) {
+      this.router.navigate(['./discover'], { relativeTo: this.route, queryParamsHandling: 'merge' });
+      // this.router.navigate([`workflows/${this.workflowId}/templates/${this.templateId}/discover`]);
+    } else {
+      this.router.navigate([`templates/${this.templateId}/discover`]);
+    }
   }
 
   updateTags(event: any) {
