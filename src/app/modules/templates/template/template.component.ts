@@ -112,14 +112,14 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   getTemplates() {
-    // this._templateService.getAllTemplates()
-    //   .subscribe((data: any[]) => {
-    //     this.templatesToImport = data.filter((d) => d.id !== this.templateId);
-    //   });
+    this._templateService.getAllTemplates()
+      .subscribe((data: any[]) => {
+        this.templatesToImport = data.filter((d) => d.id !== this.templateId);
+      });
 
-    this.dataService.getTemplates().subscribe((data: any[]) => {
-      this.templatesToImport = data.filter((d) => d.id !== this.templateId);
-    });
+    // this.dataService.getTemplates().subscribe((data: any[]) => {
+    //   this.templatesToImport = data.filter((d) => d.id !== this.templateId);
+    // });
   }
 
   changeAvatar(event: any) {
