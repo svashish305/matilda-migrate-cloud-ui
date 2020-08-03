@@ -1,6 +1,6 @@
 .left-nav-styles {
   position: fixed;
-  z-index: 4;
+  z-index: 5;
 }
 
 @media only screen and (max-width: 426px) {
@@ -27,7 +27,7 @@
     top: 0;
     left: 60px;
     width: 96.05vw;
-    z-index: 3;
+    z-index: 4;
   }
 
   .nav-body-container {

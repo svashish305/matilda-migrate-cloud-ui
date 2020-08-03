@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseurl: 'http://192.168.20.159:8081/'
+  baseurl: 'http://192.168.10.169:8090',
+  pluginBaseUrl: 'http://192.168.20.159:8081'
 };
 
 /*

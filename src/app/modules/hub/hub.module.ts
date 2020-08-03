@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HubRoutingModule } from './hub-routing.module';
 import { HubComponent } from './hub.component';
-import { MaterialModule } from '../material.module';
+import { MaterialModule } from '../material/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AvatarModule, AvatarSource } from 'ngx-avatar';

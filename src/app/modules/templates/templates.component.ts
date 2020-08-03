@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/services/data.service';
 import { ActivatedRoute } from '@angular/router';
+import { TemplateService } from './services/template.service';
+import { Template } from 'src/app/utils/models/data.model';
+import { Utilities } from 'src/app/utils/helpers/utilities';
+import { DataService } from 'src/services/data.service';
 
 @Component({
   selector: 'app-templates',
@@ -8,142 +11,73 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./templates.component.scss'],
 })
 export class TemplatesComponent implements OnInit {
-  templates = [];
-  rawtemplates = [];
-  templateData: any;
-  searchKey;
-  showPopup;
-  templateName = 'Untitled Template';
-  waveListCollapsed;
-  showWaveList;
-  isRecentCollapsed = true;
-  isFavouritesCollapsed = true;
-
-  templateId: any;
+  templateData: Template;
 
   constructor(
     private dataService: DataService,
+    private _templateService: TemplateService,
+    private _utitlies: Utilities,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
-      console.log(params);
-      this.templateId = params.id;
-    });
-
-    this.getTemplates();
-  }
-
-  /**
-   *
-   * @description gets list of templates and calls first template details
-   */
-  getTemplates() {
-    this.dataService.getTemplates().subscribe((data: any[]) => {
-      this.templates = data;
-      this.rawtemplates = this.templates;
-      if (this.templateId) {
-        this.templateData = this.getTemplateData(this.templateId);
-      } else {
-        this.templateData = this.getTemplateData(this.templates[0].id);
-      }
+      this.getTemplate(params.id);
     });
   }
 
-  /**
-   *
-   * @param id, id of template must be passed as param
-   * @description gets details of specific template using id
-   */
-  getTemplateData(id) {
-    this.templates.forEach((template) => {
-      if (template.id === id) {
-        template.selected = true;
-      } else {
-        template.selected = false;
-      }
-    });
+  getTemplate(id: any) {
+    // this._templateService.getTemplateById(id)
+    //   .subscribe(
+    //     (data: any) => {
+    //       this.templateData = data;
+    //     },
+    //     (error) => {
+    // });
 
-    this.dataService.getTemplate(id).subscribe((res: any) => {
-      this.templateData = res;
+    this.dataService.getTemplate(id).subscribe((data: any) => {
+      this.templateData = data;
     });
   }
 
-  /**
-   *
-   * @description Show popup to add new wave
-   */
-  // addNewTemplate() {
-  //   this.showPopup = true;
-  // }
+  updateTemplate(payload: any) {
+    const template = payload.payload;
+    const message = payload.message;
+    const type = payload.type;
 
-  /**
-   *
-   * @description Adds new template using the user inputs
-   */
-  addTemplate() {
-    if (this.templateName) {
-      // const id = Math.random().toString(6);
-      const id = this.templates.length + 1;
-      this.templates.forEach((template) => (template.selected = false));
-      // this.templateData = {
-      //   waveTypes: [{ name: 'New group', edit: true, templates: [] }],
-      // };
-      const newTemplate = {
-        id: id,
-        name: this.templateName,
-        data: {
-          id: id,
-          name: this.templateName,
-          description: 'Template Description',
-          TemplateTypes: [],
+    this._templateService.updateTemplate(template, template.id)
+      .subscribe(
+        (data: any) => {
+          this.templateData = data;
+          this._utitlies.openSnackBar(message, type);
         },
-        selected: true,
-      };
-      this.dataService
-        .addTemplate(newTemplate)
-        .subscribe((res: any) => console.log(res));
-      this.templates.unshift(newTemplate);
-      // this.gettemplateData(id);
-      this.showPopup = false;
-      this.templateName = '';
-    }
+        (error) => {
+          this._utitlies.errorNotification(error);
+          this.getTemplate(template.id);
+        }
+      );
   }
 
-  /**
-   *
-   * @description toggles collapse of templates list
-   */
-  collapseWaveList() {
-    this.waveListCollapsed = !this.waveListCollapsed;
-    if (this.waveListCollapsed) {
-      this.showWaveList = false;
-    }
+  onTagsUpdate(payload: any) {
+    this._templateService.updateTag(payload.tags, this.templateData.id)
+      .subscribe((data) => {
+        this._utitlies.openSnackBar(payload.message, payload.type);
+      },
+        (error) => {
+          this._utitlies.errorNotification(error);
+          this.getTemplate(this.templateData.id);
+        });
   }
 
-  /**
-   *
-   * @description expands templates list  on hover when in collapsed state
-   */
-  waveListEntered() {
-    if (this.waveListCollapsed) {
-      this.showWaveList = true;
-    }
-  }
-
-  /**
-   *
-   * @description collases templates list on leaving the list area when in collapsed state
-   */
-  waveListExit() {
-    if (this.waveListCollapsed) {
-      this.showWaveList = false;
-    }
-  }
-
-  cancelAdd() {
-    this.showPopup = false;
-    this.templateName = '';
+  onCloneTemplates(payload: any) {
+    this._templateService.importTemplates(payload.destination, payload.source)
+        .subscribe((data) => {
+          this._utitlies.openSnackBar(payload.message, payload.type);
+          this.getTemplate(this.templateData.id);
+        },
+        (error) => {
+          this._utitlies.errorNotification(error);
+          this.getTemplate(this.templateData.id);
+        });
   }
 }

@@ -28,8 +28,8 @@
       alt="notifications"
       class="notification-img"
     />
-    <ngx-avatar name="Robert Frost" initialsSize="2" size="24"  [matMenuTriggerFor]="userSettingsDropDown"></ngx-avatar
-    ><span class="std-text" [matMenuTriggerFor]="userSettingsDropDown">Robert</span>
+    <ngx-avatar name="Admin" initialsSize="2" size="24" [matMenuTriggerFor]="userSettingsDropDown"></ngx-avatar
+    ><span class="std-text" [matMenuTriggerFor]="userSettingsDropDown" >Admin</span>
     <button
     class="profile-dd"
         mat-button style="height: 20px;min-width: 20px;padding: 0px;"
@@ -44,9 +44,10 @@
       <mat-menu
         id="settings-menu"
         #userSettingsDropDown="matMenu"
-        xPosition="before"
-        yPosition="below"
+       
       >
+      <!-- xPosition="before"
+      yPosition="below" -->
         <!-- <button mat-menu-item (click)="openUserSettings()">
           <img
           class="icon-usersettings"

@@ -1,0 +1,481 @@
+<div class="discover-container">
+  <div class="discover-header">
+    <div
+      (click)="goBack()"
+      (mouseover)="imgHovered = true"
+      (mouseleave)="imgHovered = false"
+      class="back-icon pointer-cursor"
+      [ngClass]="{ 'back-not-hover': !imgHovered }"
+    >
+      <img
+        [src]="
+          imgHovered
+            ? 'assets/imgs/back-icon.svg'
+            : 'assets/imgs/chevron-down.svg'
+        "
+        alt="back"
+      />
+    </div>
+
+    <span class="discover-header-text bold-text">Discover</span>
+
+    <div class="discover-searchbox">
+      <form>
+        <mat-form-field
+          id="mat-search"
+          floatLabel="never"
+          class="mat-typography full-width"
+        >
+          <img
+            matPrefix
+            src="assets/imgs/search-2.svg"
+            alt="search-icon"
+            class="new-search-icon"
+          />
+          <input
+            matInput
+            placeholder="Search Application"
+            type="search"
+            name="test"
+            [(ngModel)]="searchKey"
+          />
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+  <div>
+    <div *ngIf="!accountClicked" class="account-res">
+      <mat-card
+        class="top-margin-1em"
+        *ngFor="let app of apps | search: searchKey"
+        (click)="showAppDetails(app.id)"
+      >
+        <mat-card-title-group>
+          <mat-card-title
+            ><span class="common-text pos-card-title">{{
+              app.name
+            }}</span></mat-card-title
+          >
+          <mat-card-subtitle>
+
+            <div *ngIf="isMobile">
+              <span class="medium-text pos-subtitle"
+                *ngIf="app.IP.length > 1; else lessIP">
+                {{ app.IP[0].address }} and
+                {{ app.IP.length - 1 }} more
+              </span>
+              <ng-template #lessIP>
+                <span class="medium-text pos-subtitle" *ngIf="app.IP.length <= 1"
+                  >{{ app.IP[0].address }}</span
+                >
+              </ng-template>
+              <span
+                class="medium-text pos-src-subtitle"
+                *ngIf="app.sources.length > 1; else lessSources"
+                >Sources: {{ app.sources[0].name }} and
+                {{ app.sources.length - 1 }} more</span
+              >
+              <ng-template #lessSources>
+                <span
+                  class="medium-text pos-src-subtitle"
+                  *ngIf="app.sources.length <= 1"
+                  >Sources: {{ app.sources[0].name }}</span
+                >
+              </ng-template>
+            </div>
+            <div *ngIf="!isMobile">
+              <span
+              class="medium-text pos-subtitle"
+              *ngIf="app.IP.length > 2; else lessIP"
+              >{{ app.IP[0].address }}, {{ app.IP[1].address }} and
+              {{ app.IP.length - 2 }} more</span
+            >
+            <ng-template #lessIP>
+              <span class="medium-text pos-subtitle" *ngIf="app.IP.length <= 2"
+                >{{ app.IP[0].address }}, {{ app.IP[1].address }}</span
+              >
+            </ng-template>
+            <span
+              class="medium-text pos-src-subtitle"
+              *ngIf="app.sources.length > 2; else lessSources"
+              >Sources: {{ app.sources[0].name }}, {{ app.sources[1].name }} and
+              {{ app.sources.length - 2 }} more</span
+            >
+            <ng-template #lessSources>
+              <span
+                class="medium-text pos-src-subtitle"
+                *ngIf="app.sources.length <= 2"
+                >Sources: {{ app.sources[0].name }},
+                {{ app.sources[1].name }}</span
+              >
+            </ng-template>
+            </div>
+          </mat-card-subtitle>
+        </mat-card-title-group>
+      </mat-card>
+    </div>
+
+    <div *ngIf="selectedApp && accountClicked" class="acc-search-container">
+      <div class="selected-app-header">
+        <div class="flex-center app-mobile" [ngClass]="{'right-margin-12-half-rem': !isMobile}">
+          <span class="common-text standard-font">Application</span>
+          <span class="common-text pad-colon">:</span>
+          <span class="common-text standard-font make-it-blue">{{ selectedApp.name }}</span>
+        </div>
+
+        <div class="flex-center ip-mobile">
+          <span class="common-text standard-font">IP</span>
+          <span class="common-text pad-colon">:</span>
+          <mat-form-field id="ip-select-field" class="ip-dd standard-font">
+            <mat-select [(ngModel)]="selectedIPAddress" (ngModelChange)="getIP()">
+              <mat-option
+                id="ip-option"
+                *ngFor="let ip of selectedApp.IP"
+                [value]="ip.address"
+                (click)="changeIP(ip.address)"
+              >
+                {{ ip.address }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div *ngIf="!isIPSelected">
+        <div class="divider-btm" *ngFor="let source of sources">
+          <div>
+            <img
+              class="pointer-cursor source-collapser"
+              [src]="
+                sourceCollapseList[source.id]
+                  ? 'assets/imgs/chevron-down.svg'
+                  : 'assets/imgs/chevron-up.svg'
+              "
+              alt=""
+              (click)="
+                sourceCollapseList[source.id] = !sourceCollapseList[source.id]
+              "
+            />
+            <mat-checkbox
+              [checked]="isSourceChecked(source.id)"
+              (click)="$event.preventDefault()"
+            ></mat-checkbox>
+            <span class="make-it-blue left-padding-one-fourth-rem">
+              {{ source.name }}
+            </span>
+          </div>
+          <div class="indented" [ngbCollapse]="sourceCollapseList[source.id]">
+            <span class="relative-left-4 common-text-mobile gray-text">{{
+              source.desc
+            }}</span>
+            <div *ngFor="let group of source.groups">
+              <img
+                class="pointer-cursor task-collapser"
+                [src]="
+                  groupCollapseList[
+                    source.id.toString() + '_' + group.id.toString()
+                  ]
+                    ? 'assets/imgs/chevron-down.svg'
+                    : 'assets/imgs/chevron-up.svg'
+                "
+                alt=""
+                (click)="
+                  groupCollapseList[
+                    source.id.toString() + '_' + group.id.toString()
+                  ] = !groupCollapseList[
+                    source.id.toString() + '_' + group.id.toString()
+                  ]
+                "
+              />
+              <span class="make-it-blue right-padding-one-fourth-rem">{{
+                group.name
+              }}</span>
+              <div
+                class="task-indented"
+                [ngbCollapse]="
+                  groupCollapseList[
+                    source.id.toString() + '_' + group.id.toString()
+                  ]
+                "
+              >
+                <mat-checkbox
+                  (change)="
+                    getCheckboxState(
+                      $event,
+                      'group',
+                      source.id.toString() + '_' + group.id.toString(),
+                      selectedIPAddress
+                    )
+                  "
+                  [(ngModel)]="
+                    groupSelectList[
+                      source.id.toString() + '_' + group.id.toString()
+                    ]
+                  "
+                  [checked]="
+                    selectAllIfChildsTrue(
+                      selectedIPAddress,
+                      source.id,
+                      group.id
+                    )
+                  "
+                ></mat-checkbox>
+                <span class="left-padding-half-rem">Select All</span>
+                <div *ngFor="let item of group.items">
+                  <mat-checkbox
+                    (change)="
+                      getCheckboxState(
+                        $event,
+                        'item',
+                        source.id.toString() +
+                          '_' +
+                          group.id.toString() +
+                          '_' +
+                          item.id.toString(),
+                        selectedIPAddress
+                      )
+                    "
+                    [(ngModel)]="
+                      itemSelectList[
+                        source.id.toString() +
+                          '_' +
+                          group.id.toString() +
+                          '_' +
+                          item.id.toString()
+                      ]
+                    "
+                  ></mat-checkbox>
+                  <span class="left-padding-half-rem">{{ item.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isIPSelected">
+        <div class="divider-btm" *ngFor="let source of sources">
+          <div>
+            <img
+              class="pointer-cursor source-collapser"
+              [src]="
+                sourceCollapseList[source.id]
+                  ? 'assets/imgs/chevron-down.svg'
+                  : 'assets/imgs/chevron-up.svg'
+              "
+              alt=""
+              (click)="
+                sourceCollapseList[source.id] = !sourceCollapseList[source.id]
+              "
+            />
+            <mat-checkbox
+              [checked]="isSourceChecked(source.id)"
+              (click)="$event.preventDefault()"
+            ></mat-checkbox>
+            <span class="make-it-blue left-padding-one-fourth-rem">
+              {{ source.name }}
+            </span>
+          </div>
+          <div class="indented" [ngbCollapse]="sourceCollapseList[source.id]">
+            <span class="relative-left-4 common-text-mobile gray-text">{{
+              source.desc
+            }}</span>
+            <div *ngFor="let group of source.groups">
+              <img
+                class="pointer-cursor task-collapser"
+                [src]="
+                  groupCollapseList[
+                    source.id.toString() + '_' + group.id.toString()
+                  ]
+                    ? 'assets/imgs/chevron-down.svg'
+                    : 'assets/imgs/chevron-up.svg'
+                "
+                alt=""
+                (click)="
+                  groupCollapseList[
+                    source.id.toString() + '_' + group.id.toString()
+                  ] = !groupCollapseList[
+                    source.id.toString() + '_' + group.id.toString()
+                  ]
+                "
+              />
+              <span class="make-it-blue right-padding-one-fourth-rem">{{
+                group.name
+              }}</span>
+              <div
+                class="task-indented"
+                [ngbCollapse]="
+                  groupCollapseList[
+                    source.id.toString() + '_' + group.id.toString()
+                  ]
+                "
+              >
+                <mat-checkbox
+                  (change)="
+                    getCheckboxState(
+                      $event,
+                      'group',
+                      source.id.toString() + '_' + group.id.toString(),
+                      selectedIPAddress
+                    )
+                  "
+                  [(ngModel)]="
+                    groupSelectList[
+                      source.id.toString() + '_' + group.id.toString()
+                    ]
+                  "
+                  [checked]="
+                    selectAllIfChildsTrue(
+                      selectedIPAddress,
+                      source.id,
+                      group.id
+                    )
+                  "
+                ></mat-checkbox>
+                <span class="left-padding-half-rem">Select All</span>
+                <div *ngFor="let item of group.items">
+                  <mat-checkbox
+                    (change)="
+                      getCheckboxState(
+                        $event,
+                        'item',
+                        source.id.toString() +
+                          '_' +
+                          group.id.toString() +
+                          '_' +
+                          item.id.toString(),
+                        selectedIPAddress
+                      )
+                    "
+                    [(ngModel)]="
+                      itemSelectList[
+                        source.id.toString() +
+                          '_' +
+                          group.id.toString() +
+                          '_' +
+                          item.id.toString()
+                      ]
+                    "
+                  ></mat-checkbox>
+                  <span class="left-padding-half-rem">{{ item.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      *ngIf="selectedApp && accountClicked && showSidebar"
+      class="import-sidebar"
+    >
+      <div class="import-header">
+        <span class="common-text">Import List</span>
+      </div>
+      <div class="sidebar-content">
+        <!-- {{ destinations | json }} -->
+        <div class="import-card" *ngFor="let destination of destinations">
+          <div class="common-text">
+            <span class="make-it-blue">{{ destination.name }}</span>
+            <span class="left-padding-24">IP&nbsp;:&nbsp;</span>
+            <span class="make-it-blue">{{ destination.ipAddress }}</span>
+            <a (click)="deleteInSidebar(destination)">
+              <img
+                class="pointer-cursor img-right"
+                src="assets/imgs/delete.svg"
+                alt="delete"
+              />
+            </a>
+          </div>
+          <div class="tb-padding-half-rem">
+            <mat-divider></mat-divider>
+          </div>
+          <div *ngFor="let group of destination.groups">
+            <img
+              class="pointer-cursor task-collapser"
+              [src]="
+                groupCollapseList[
+                  destination.id.toString() + '_' + group.id.toString()
+                ]
+                  ? 'assets/imgs/chevron-down.svg'
+                  : 'assets/imgs/chevron-up.svg'
+              "
+              alt=""
+              (click)="
+                groupCollapseList[
+                  destination.id.toString() + '_' + group.id.toString()
+                ] = !groupCollapseList[
+                  destination.id.toString() + '_' + group.id.toString()
+                ]
+              "
+            />
+            <span class="make-it-blue right-padding-one-fourth-rem">{{
+              group.name
+            }}</span>
+            <!-- <span class="gray-text">({{ itemCountInGroup[group.id] }})</span> -->
+            <span class="gray-text">({{ itemCountInGroup[group.id] }})</span>
+            <div
+              class="task-indented"
+              [ngbCollapse]="
+                groupCollapseList[
+                  destination.id.toString() + '_' + group.id.toString()
+                ]
+              "
+            >
+              <div *ngFor="let item of group.items">
+                <div
+                  *ngIf="
+                    itemSelectList[
+                      destination.id.toString() +
+                        '_' +
+                        group.id.toString() +
+                        '_' +
+                        item.id.toString()
+                    ]
+                  "
+                >
+                  <mat-checkbox
+                    (change)="
+                      getCheckboxState(
+                        $event,
+                        'item',
+                        destination.id.toString() +
+                          '_' +
+                          group.id.toString() +
+                          '_' +
+                          item.id.toString(),
+                        selectedIPAddress
+                      )
+                    "
+                    [(ngModel)]="
+                      itemSelectList[
+                        destination.id.toString() +
+                          '_' +
+                          group.id.toString() +
+                          '_' +
+                          item.id.toString()
+                      ]
+                    "
+                  ></mat-checkbox>
+                  <span class="left-padding-half-rem">{{ item.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-actions">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="import(); showSidebar = false"
+        >
+          Import
+        </button>
+        <button mat-button color="primary" (click)="showSidebar = false">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
