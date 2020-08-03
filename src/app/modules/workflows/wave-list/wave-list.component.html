@@ -79,8 +79,8 @@
                 'group-name-wrapper-collapsed': groupCollapseList[i],
                 'group-name-wrapper': !groupCollapseList[i]
               }">
-                <div class="group-name common-text">
-                  <input class="description-styles" (click)="$event.target.select()" (focus)="onFocusTitle()"
+                <div class="group-name common-text" matTooltip="{{group.name}}">
+                  <input class="group-align description-styles" (click)="$event.target.select()" (focus)="onFocusTitle()"
                     (keydown.enter)="
                       $event.preventDefault() && updateGroupTitle(group); $event.target.blur()
                     " (blur)="updateGroupTitle(group)" [(ngModel)]="newGroupTitle ? newGroupTitle : group.name" />
@@ -168,7 +168,7 @@
                       <ngx-avatar name="{{getWaveName(template.name) }}" initialsSize="2" [size]="20"></ngx-avatar>
                     </ng-template>
                   </div>
-                  <span class="cell-text common-text handle-text-overflow" (click)="loadTemplate(template, group)">{{ template.name }}</span>
+                  <span class="cell-text common-text handle-text-overflow" matTooltip="{{template.name}}"  (click)="loadTemplate(template, group)">{{ template.name }}</span>
                 </div>
               </div>
               <div class="flex-lay right-cols">
