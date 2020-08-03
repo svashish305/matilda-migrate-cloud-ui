@@ -1,4 +1,4 @@
-node ("MIGRATION-TEST") {
+node ("MIGRATION-QA") {
  def app
  
  stage('Clone repository') {
