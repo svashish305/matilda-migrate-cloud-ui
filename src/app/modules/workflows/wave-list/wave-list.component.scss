@@ -222,7 +222,7 @@
     width: 24px !important;
     height: 24px !important;
     position: relative;
-    top: 4px;
+    top: 5px;
     left: 2rem;
   }
 
@@ -230,7 +230,7 @@
     width: 24px !important;
     height: 24px !important;
     position: relative;
-    top: 2px;
+    top: 4px;
     left: -8rem; //-4em;
   }
 
@@ -612,6 +612,8 @@
     letter-spacing: 0.33px;
     color: #fff;
     margin: 8px 0 8px 0;
+    border: none;
+
   }
 
   .status-section {
@@ -913,7 +915,7 @@
     width: 24px !important;
     height: 24px !important;
     position: relative;
-    top: 4px;
+    top: 5px;
     left: 2rem;
   }
 
@@ -921,7 +923,7 @@
     width: 24px !important;
     height: 24px !important;
     position: relative;
-    top: 2px;
+    top: 4px;
     left: -4em;
   }
 
@@ -1303,6 +1305,8 @@
     letter-spacing: 0.33px;
     color: #fff;
     margin: 8px 0 8px 0;
+    border: none;
+
   }
 
   .status-section {
@@ -1603,7 +1607,7 @@
     width: 24px !important;
     height: 24px !important;
     position: relative;
-    top: 4px;
+    top: 5px;
     left: 2rem;
   }
 
@@ -1611,7 +1615,7 @@
     width: 24px !important;
     height: 24px !important;
     position: relative;
-    top: 2px;
+    top: 4px;
     left: -4em;
   }
 
@@ -1993,6 +1997,8 @@
     letter-spacing: 0.33px;
     color: #fff;
     margin: 8px 0 8px 0;
+    border: none;
+
   }
 
   .status-section {
@@ -2272,14 +2278,14 @@
     width: 24px !important;
     height: 24px !important;
     position: relative;
-    top: 2px;
+    top: 3px;
   }
 
   .accordian-icon {
     width: 24px !important;
     height: 24px !important;
     position: relative;
-    top: 2px;
+    top: 4px;
   }
 
   .row-starter {
@@ -2671,6 +2677,8 @@
     font-weight: 600;
     letter-spacing: 0.33px;
     color: #fff;
+    border: none;
+
   }
 
   .status-section {
@@ -3574,6 +3582,10 @@
 .plugin-val {
   width: 100px !important;
   margin-left: 8px !important;
+}
+.group-align{
+  position: relative;
+  top: -2px;
 }
 
 .description-styles {

@@ -117,9 +117,9 @@
                   'group-name-wrapper': !groupCollapseList[i]
                 }"
               >
-                <div class="group-name common-text">
+                <div class="group-name common-text" matTooltip="{{group.name}}">
                   <input
-                    class="description-styles"
+                    class=" group-align description-styles"
                     (click)="$event.target.select()"
                     (focus)="onFocusTitle()"
                     (keydown.enter)="
