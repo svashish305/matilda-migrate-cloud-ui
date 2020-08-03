@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/services/data.service';
 import { Router } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { TemplateService } from '../templates/services/template.service';
+import { WorkflowService } from '../workflows/services/workflow.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-hub',
@@ -25,10 +28,15 @@ export class HubComponent implements OnInit {
   isMobile = false;
   avatarUrl: any;
 
+  public selectedTabIndex: number = 2;
+
   constructor(
     private dataService: DataService,
     private router: Router,
-    private deviceService: DeviceDetectorService
+    private _templateService: TemplateService,
+    private _workflowService: WorkflowService,
+    private deviceService: DeviceDetectorService,
+    private sanitizer: DomSanitizer
   ) {
     this.templateFavStatus = [];
     this.workflowFavStatus = [];
@@ -42,15 +50,21 @@ export class HubComponent implements OnInit {
   }
 
   getTemplates() {
-    this.dataService.getTemplates().subscribe((templates: any) => {
+    this._templateService.getAllTemplates().subscribe((templates: any)=>{
       this.templates = templates;
     });
+    // this.dataService.getTemplates().subscribe((templates: any) => {
+    //   this.templates = templates;
+    // });
   }
 
   getWorkflows() {
-    this.dataService.getWaves().subscribe((waves: any) => {
+    this._workflowService.getAllWorkflows().subscribe((waves: any) => {
       this.workflows = waves;
     });
+    // this.dataService.getWaves().subscribe((waves: any) => {
+    //   this.workflows = waves;
+    // });
   }
 
   toggleTemplateFavourite(template, event) {
@@ -118,5 +132,21 @@ export class HubComponent implements OnInit {
     this.router.navigate([`/workflows/${workflowId}`], {
       preserveQueryParams: true,
     });
+  }
+
+  sanitizeUrl(image) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(image);
+  }
+  getTemplateName(templateName){
+    let initialLetter;
+    let letterArray = [];
+    let stringArr = templateName.split(/(?<=^\S+)\s/);
+    stringArr.forEach(it => {
+      initialLetter = it.substring(1, 0);
+      letterArray.push(initialLetter);
+    });
+    let tempName = letterArray[0] + ' '+ letterArray[1];
+    return tempName;
+    
   }
 }

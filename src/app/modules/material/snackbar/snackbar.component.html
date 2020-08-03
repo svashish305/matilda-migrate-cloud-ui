@@ -1,0 +1,15 @@
+      <div class="flex">
+        <div class="snackbar-avatar">
+          <img src="{{getSnackAvatar(data.snackType)}}" class="snackbar-avatar-img" alt="success" />  
+        </div>
+        <div class="snackbar-data">
+          {{data.message}}
+        </div>
+        <div class="dismiss">
+          <a (click)="onActionBtnClick()" class="snackbar-close">
+              <img src="assets/imgs/close-circle.svg" class="snackbar-dismiss" alt="Close" />
+            </a>
+      </div>
+      </div>
+ 
+  

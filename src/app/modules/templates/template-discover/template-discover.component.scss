@@ -1,0 +1,803 @@
+@media only screen and (max-width: 321px) {
+  // .discover-container {
+  //   margin: 0 2.5em 0 1.5em;
+  // }
+
+  .discover-header {
+    height: 120px; //80px
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid var(--grayed-border);
+  }
+
+  .discover-header-text {
+    font-family: LatoSemiBold !important;
+    float: left;
+  }
+
+  .back-icon {
+    display: none;
+  }
+
+  .discover-searchbox {
+    width: 24.5em !important;
+    position: absolute;
+    top: 4rem;
+  }
+
+  #mat-search ::ng-deep .mat-form-field-underline {
+    background-color: var(--btn-lightgray-border);
+  }
+
+  .new-search-icon {
+    position: relative;
+    bottom: 2px;
+    padding-right: 0.5em;
+  }
+
+  .account-res {
+    margin-top: 1.25rem;
+  }
+
+  mat-card {
+    cursor: pointer;
+    height: 4rem;
+    border: solid 1px var(--grayed-border);
+    border-left: solid 4px var(--light-blue) !important;
+    box-shadow: 2px 3px var(--btn-gray-border) !important;
+  }
+
+  .pos-card-title {
+    position: absolute;
+    top: 8px;
+    color: var(--primary-light);
+  }
+
+  .pos-subtitle {
+    position: absolute;
+    top: 2.5rem;
+
+    font-size: 1rem !important;
+    color: var(--alt-gray-text);
+  }
+
+  .pos-src-subtitle {
+    position: absolute;
+    top: 2.5rem;
+    margin-left: 22rem;
+    font-size: 1rem !important;
+    color: var(--alt-gray-text);
+
+    display: none;
+  }
+
+  .selected-app-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 4rem;
+    border-bottom: solid 1px var(--grayed-border);
+  }
+
+  .pad-colon {
+    padding: 0 12px;
+  }
+
+  .app-mobile {
+    position: absolute;
+    top: 8rem;
+  }
+
+  .ip-mobile {
+    position: absolute;
+    top: 8.25rem;
+  }
+
+  #ip-select-field::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+
+  #ip-select-field::ng-deep.mat-select-value-text {
+    position: relative;
+    top: 2.5px;
+    color: var(--primary-light);
+  }
+
+  #ip-option ::ng-deep .mat-option-text {
+    color: var(--primary-light);
+  }
+
+  .divider-btm {
+    padding: 25px 0;
+    border-bottom: solid 1px var(--grayed-border);
+  }
+
+  .source-collapser {
+    position: relative;
+    bottom: 3px;
+  }
+
+  ::ng-deep.mat-select-arrow {
+    position: relative;
+    right: 40px;
+    height: 18px !important;
+    width: 18px !important;
+    background: url("src/assets/imgs/chevron-down.svg") !important;
+    border: none !important;
+    margin: 0 !important;
+  }
+
+  ::ng-deep.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+  .mat-accent .mat-pseudo-checkbox-checked,
+  .mat-accent .mat-pseudo-checkbox-indeterminate,
+  .mat-pseudo-checkbox-checked,
+  .mat-pseudo-checkbox-indeterminate {
+    background-color: var(--primary-light);
+  }
+
+  ::ng-deep.mat-checkbox-frame {
+    border-color: var(--primary-light);
+    border-width: 1px !important;
+  }
+
+  .indented {
+    position: relative;
+    left: 2.688rem;
+  }
+
+  .task-indented {
+    position: relative;
+    left: 1.5rem;
+  }
+
+  .import-sidebar {
+    height: 100vh;
+    margin: 0 1.5rem 0 1rem;
+    padding: 0 0 0 0.5rem;
+    position: fixed;
+    top: 0;
+    width: calc(100% - 55px);
+    right: -4.625em;
+    z-index: 1000;
+    background-color: #fff;
+    border-left: solid 1px var(--btn-lightgray-border);
+  }
+
+  .import-header {
+    font-family: LatoSemiBold;
+    font-size: 1.406rem !important;
+    top: 25px;
+    position: absolute;
+    padding-bottom: 1rem;
+    width: calc(100% - 120px);
+    border-bottom: solid 1px var(--btn-lightgray-border);
+  }
+
+  .sidebar-content {
+    position: absolute;
+    top: 50px;
+    height: 79vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: calc(100% - 118px);
+    transform: scale(0.85);
+    left: -10px;
+  }
+
+  .import-card {
+    border: solid 1px var(--primary-light);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: var(--primary-light-bg);
+  }
+
+  .sidebar-actions {
+    position: absolute;
+    bottom: 1rem;
+    padding-top: 1rem;
+    width: calc(100% - 120px);
+    border-top: solid 1px var(--btn-lightgray-border);
+  }
+}
+
+@media only screen and (min-width: 322px) and (max-width: 376px) {
+  // .discover-container {
+  //   margin: 0 2.5em 0 1.5em;
+  // }
+
+  .discover-header {
+    height: 120px; //80px
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid var(--grayed-border);
+  }
+
+  .discover-header-text {
+    font-family: LatoSemiBold !important;
+    float: left;
+  }
+
+  .back-icon {
+    display: none;
+  }
+
+  .discover-searchbox {
+    width: 24.5em !important;
+    position: absolute;
+    top: 4rem;
+  }
+
+  #mat-search ::ng-deep .mat-form-field-underline {
+    background-color: var(--btn-lightgray-border);
+  }
+
+  .new-search-icon {
+    position: relative;
+    bottom: 2px;
+    padding-right: 0.5em;
+  }
+
+  .account-res {
+    margin-top: 1.25rem;
+  }
+
+  mat-card {
+    cursor: pointer;
+    height: 4rem;
+    border: solid 1px var(--grayed-border);
+    border-left: solid 4px var(--light-blue) !important;
+    box-shadow: 2px 3px var(--btn-gray-border) !important;
+  }
+
+  .pos-card-title {
+    position: absolute;
+    top: 8px;
+    color: var(--primary-light);
+  }
+
+  .pos-subtitle {
+    position: absolute;
+    top: 2.5rem;
+
+    font-size: 1rem !important;
+    color: var(--alt-gray-text);
+  }
+
+  .pos-src-subtitle {
+    position: absolute;
+    top: 2.5rem;
+    margin-left: 22rem;
+    font-size: 1rem !important;
+    color: var(--alt-gray-text);
+
+    display: none;
+  }
+
+  .selected-app-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 4rem;
+    border-bottom: solid 1px var(--grayed-border);
+  }
+
+  .pad-colon {
+    padding: 0 12px;
+  }
+
+  .app-mobile {
+    position: absolute;
+    top: 8rem;
+  }
+
+  .ip-mobile {
+    position: absolute;
+    top: 8.25rem;
+  }
+
+  #ip-select-field::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+
+  #ip-select-field::ng-deep.mat-select-value-text {
+    position: relative;
+    top: 2.5px;
+    color: var(--primary-light);
+  }
+
+  #ip-option ::ng-deep .mat-option-text {
+    color: var(--primary-light);
+  }
+
+  .divider-btm {
+    padding: 25px 0;
+    border-bottom: solid 1px var(--grayed-border);
+  }
+
+  .source-collapser {
+    position: relative;
+    bottom: 3px;
+  }
+
+  ::ng-deep.mat-select-arrow {
+    position: relative;
+    right: 40px;
+    height: 18px !important;
+    width: 18px !important;
+    background: url("src/assets/imgs/chevron-down.svg") !important;
+    border: none !important;
+    margin: 0 !important;
+  }
+
+  ::ng-deep.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+  .mat-accent .mat-pseudo-checkbox-checked,
+  .mat-accent .mat-pseudo-checkbox-indeterminate,
+  .mat-pseudo-checkbox-checked,
+  .mat-pseudo-checkbox-indeterminate {
+    background-color: var(--primary-light);
+  }
+
+  ::ng-deep.mat-checkbox-frame {
+    border-color: var(--primary-light);
+    border-width: 1px !important;
+  }
+
+  .indented {
+    position: relative;
+    left: 2.688rem;
+  }
+
+  .task-indented {
+    position: relative;
+    left: 1.5rem;
+  }
+
+  .import-sidebar {
+    height: 100vh;
+    margin: 0 1.5rem 0 1rem;
+    padding: 0 0 0 0.5rem;
+    position: fixed;
+    top: 0;
+    width: calc(100% - 75px);
+    right: -4.625em;
+    z-index: 1000;
+    background-color: #fff;
+    border-left: solid 1px var(--btn-lightgray-border)
+  }
+
+  .import-header {
+    font-family: LatoSemiBold;
+    font-size: 1.406rem !important;
+    top: 25px;
+    position: absolute;
+    padding-bottom: 1rem;
+    width: calc(100% - 120px);
+    border-bottom: solid 1px var(--btn-lightgray-border);
+  }
+
+  .sidebar-content {
+    position: absolute;
+    top: 90px;
+    height: 79vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: calc(100% - 118px);
+  }
+
+  .import-card {
+    border: solid 1px var(--primary-light);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: var(--primary-light-bg);
+  }
+
+  .sidebar-actions {
+    position: absolute;
+    bottom: 1rem;
+    padding-top: 1rem;
+    width: calc(100% - 120px);
+    border-top: solid 1px var(--btn-lightgray-border);
+  }
+}
+
+@media only screen and (min-width: 377px) and (max-width: 426px) {
+  // .discover-container {
+  //   margin: 0 2.5em 0 1.5em;
+  // }
+
+  .discover-header {
+    height: 120px; //80px
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid var(--grayed-border);
+  }
+
+  .discover-header-text {
+    font-family: LatoSemiBold !important;
+    float: left;
+  }
+
+  .back-icon {
+    display: none;
+  }
+
+  .discover-searchbox {
+    width: 24.5em !important;
+    position: absolute;
+    top: 4rem;
+  }
+
+  #mat-search ::ng-deep .mat-form-field-underline {
+    background-color: var(--btn-lightgray-border);
+  }
+
+  .new-search-icon {
+    position: relative;
+    bottom: 2px;
+    padding-right: 0.5em;
+  }
+
+  .account-res {
+    margin-top: 1.25rem;
+  }
+
+  mat-card {
+    cursor: pointer;
+    height: 4rem;
+    border: solid 1px var(--grayed-border);
+    border-left: solid 4px var(--light-blue) !important;
+    box-shadow: 2px 3px var(--btn-gray-border) !important;
+  }
+
+  .pos-card-title {
+    position: absolute;
+    top: 8px;
+    color: var(--primary-light);
+  }
+
+  .pos-subtitle {
+    position: absolute;
+    top: 2.5rem;
+
+    font-size: 1rem !important;
+    color: var(--alt-gray-text);
+  }
+
+  .pos-src-subtitle {
+    position: absolute;
+    top: 2.5rem;
+    margin-left: 22rem;
+    font-size: 1rem !important;
+    color: var(--alt-gray-text);
+
+    display: none;
+  }
+
+  .selected-app-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 4rem;
+    border-bottom: solid 1px var(--grayed-border);
+  }
+
+  .pad-colon {
+    padding: 0 12px;
+  }
+
+  .app-mobile {
+    position: absolute;
+    top: 8rem;
+  }
+
+  .ip-mobile {
+    position: absolute;
+    top: 8.25rem;
+  }
+
+  #ip-select-field::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+
+  #ip-select-field::ng-deep.mat-select-value-text {
+    position: relative;
+    top: 2.5px;
+    color: var(--primary-light);
+  }
+
+  #ip-option ::ng-deep .mat-option-text {
+    color: var(--primary-light);
+  }
+
+  .divider-btm {
+    padding: 25px 0;
+    border-bottom: solid 1px var(--grayed-border);
+  }
+
+  .source-collapser {
+    position: relative;
+    bottom: 3px;
+  }
+
+  ::ng-deep.mat-select-arrow {
+    position: relative;
+    right: 40px;
+    height: 18px !important;
+    width: 18px !important;
+    background: url("src/assets/imgs/chevron-down.svg") !important;
+    border: none !important;
+    margin: 0 !important;
+  }
+
+  ::ng-deep.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+  .mat-accent .mat-pseudo-checkbox-checked,
+  .mat-accent .mat-pseudo-checkbox-indeterminate,
+  .mat-pseudo-checkbox-checked,
+  .mat-pseudo-checkbox-indeterminate {
+    background-color: var(--primary-light);
+  }
+
+  ::ng-deep.mat-checkbox-frame {
+    border-color: var(--primary-light);
+    border-width: 1px !important;
+  }
+
+  .indented {
+    position: relative;
+    left: 2.688rem;
+  }
+
+  .task-indented {
+    position: relative;
+    left: 1.5rem;
+  }
+
+  .import-sidebar {
+    height: 100vh;
+    margin: 0 1.5rem 0 1rem;
+    padding: 0 0 0 0.5rem;
+    position: fixed;
+    top: 0;
+    width: calc(100% - 75px);
+    right: -4.625em;
+    z-index: 1000;
+    background-color: #fff;
+    border-left: solid 1px var(--btn-lightgray-border)
+  }
+
+  .import-header {
+    font-family: LatoSemiBold;
+    font-size: 1.406rem !important;
+    top: 25px;
+    position: absolute;
+    padding-bottom: 1rem;
+    width: calc(100% - 120px);
+    border-bottom: solid 1px var(--btn-lightgray-border);
+  }
+
+  .sidebar-content {
+    position: absolute;
+    top: 90px;
+    height: 79vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: calc(100% - 118px);
+  }
+
+  .import-card {
+    border: solid 1px var(--primary-light);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: var(--primary-light-bg);
+  }
+
+  .sidebar-actions {
+    position: absolute;
+    bottom: 1rem;
+    padding-top: 1rem;
+    width: calc(100% - 120px);
+    border-top: solid 1px var(--btn-lightgray-border);
+  }
+}
+
+@media only screen and (min-width: 427px) {
+  .discover-container {
+    margin: 0 2.5em 0 1.5em;
+  }
+
+  .discover-header {
+    height: 80px; //118px
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid var(--grayed-border);
+  }
+
+  .discover-header-text {
+    font-family: LatoSemiBold !important;
+    position: absolute;
+    left: 6.375rem;
+  }
+
+  .discover-searchbox {
+    width: 23.813em !important;
+    position: absolute;
+    top: 9px;
+    left: 16.375rem;
+  }
+
+  #mat-search ::ng-deep .mat-form-field-underline {
+    background-color: var(--btn-lightgray-border);
+  }
+
+  .new-search-icon {
+    position: relative;
+    bottom: 2px;
+    padding-right: 0.5em;
+  }
+
+  .account-res {
+    margin-top: 1.25rem;
+  }
+
+  mat-card {
+    cursor: pointer;
+    height: 3.75rem;
+    border: solid 1px var(--grayed-border);
+    border-left: solid 4px var(--light-blue) !important;
+    box-shadow: 2px 3px var(--btn-gray-border) !important;
+  }
+
+  .standard-font {
+    font-size: 1.1rem !important;
+  }
+
+  .pos-card-title {
+    position: absolute;
+    top: 8px;
+    color: var(--primary-light);
+    font-size: 1.1rem !important;
+  }
+
+  .pos-subtitle {
+    position: absolute;
+    top: 2.5rem;
+
+    font-size: 12.25px !important;
+    color: var(--alt-gray-text);
+  }
+
+  .pos-src-subtitle {
+    position: absolute;
+    top: 2.5rem;
+    margin-left: 22rem;
+    font-size: 12.25px !important;
+    color: var(--alt-gray-text);
+  }
+
+  .selected-app-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 3.5rem;
+    border-bottom: solid 1px var(--grayed-border);
+  }
+
+  .pad-colon {
+    padding: 0 24px;
+  }
+
+  #ip-select-field::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+
+  #ip-select-field::ng-deep.mat-select-value-text {
+    position: relative;
+    top: 2.5px;
+    color: var(--primary-light);
+  }
+
+  #ip-option ::ng-deep .mat-option-text {
+    color: var(--primary-light);
+  }
+
+  .divider-btm {
+    padding: 25px 0;
+    border-bottom: solid 1px var(--grayed-border);
+  }
+
+  .source-collapser {
+    position: relative;
+    bottom: 3px;
+  }
+
+  ::ng-deep.mat-select-arrow {
+    position: relative;
+    right: 40px;
+    height: 18px !important;
+    width: 18px !important;
+    background: url("src/assets/imgs/chevron-down.svg") !important;
+    border: none !important;
+    margin: 0 !important;
+  }
+
+  ::ng-deep.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+  .mat-accent .mat-pseudo-checkbox-checked,
+  .mat-accent .mat-pseudo-checkbox-indeterminate,
+  .mat-pseudo-checkbox-checked,
+  .mat-pseudo-checkbox-indeterminate {
+    background-color: var(--primary-light);
+  }
+
+  ::ng-deep.mat-checkbox-frame {
+    border-color: var(--primary-light);
+    border-width: 1px !important;
+  }
+
+  .indented {
+    position: relative;
+    left: 2.688rem;
+  }
+
+  .task-indented {
+    position: relative;
+    left: 1.5rem;
+  }
+
+  .import-sidebar {
+    height: 100vh;
+    width: 40vw;
+    padding: 0 94px 0 24px;
+    position: fixed;
+    top: 0;
+    right: -4.625em;
+    z-index: 1000;
+    background-color: #fff;
+    border-left: solid 1px var(--btn-lightgray-border);
+  }
+
+  .import-header {
+    font-family: LatoSemiBold;
+    font-size: 1.406rem !important;
+    top: 25px;
+    position: absolute;
+    padding-bottom: 1rem;
+    width: calc(100% - 120px);
+    border-bottom: solid 1px var(--btn-lightgray-border);
+  }
+
+  .sidebar-content {
+    position: absolute;
+    top: 90px;
+    height: 79vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: calc(100% - 118px);
+  }
+
+  .import-card {
+    border: solid 1px var(--primary-light);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: var(--primary-light-bg);
+  }
+
+  .sidebar-actions {
+    position: absolute;
+    bottom: 1rem;
+    padding-top: 1rem;
+    width: calc(100% - 120px);
+    border-top: solid 1px var(--btn-lightgray-border);
+  }
+}

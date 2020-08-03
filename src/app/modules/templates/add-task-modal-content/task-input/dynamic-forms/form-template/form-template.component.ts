@@ -21,8 +21,13 @@ export class FormTemplateComponent implements OnInit {
   }
 
   checkForRequiredField(dataItem: FormBase) {
-   const reqField = dataItem.validations.filter(_validation => _validation.name === 'required');
-   return reqField.length === 0 ? false : true;
+    if(dataItem.validations){
+      const reqField = dataItem.validations.filter(_validation => _validation.name === 'required');
+      return reqField.length === 0 ? false : true;
+    }else{
+      return false;
+    }
+  
   }
 
   onDropdownChange(event: any, dataItem: FormBase) {
