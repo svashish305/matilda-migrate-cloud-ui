@@ -32,8 +32,8 @@
           (mouseleave)="waveImgHover = false"
         >
           <ngx-avatar
-            *ngIf="waveAvatarUrl; else initialsAvatar"
-            [src]="waveAvatarUrl"
+            *ngIf="waveData?.image; else initialsAvatar"
+            [src]="sanitizeUrl(waveData?.image)"
             class="my-avatar flex-center"
             name="{{ waveData.name }}"
             initialsSize="2"
@@ -41,7 +41,7 @@
           ></ngx-avatar>
           <ng-template #initialsAvatar>
             <ngx-avatar
-              name="{{ waveData.name }}"
+              name="{{ getWaveName(waveData.name) }}"
               initialsSize="2"
               [size]="isMobile ? 40 : 56"
             ></ngx-avatar>
@@ -64,7 +64,7 @@
               />
             </label>
           </button>
-          <button mat-menu-item (click)="waveAvatarUrl = null">
+          <button mat-menu-item (click)="removeAvatar()">
             Remove
           </button>
         </mat-menu>
@@ -135,7 +135,7 @@
     <!-- wave name and desription end -->
 
     <!-- template subheader -->
-    <mat-tab-group id="stage-tab">
+    <mat-tab-group id="stage-tab" [(selectedIndex)]="selectedTabIndex">
       <mat-tab label="Charts">
         <!-- put chart tab content here -->
       </mat-tab>
@@ -145,7 +145,7 @@
         <div *ngIf="waves" class="workflows-height">
           <div
             class="badge-container"
-            [ngStyle]="{ 'margin-top': isMobile ? '3.938em' : '7px' }"
+            [ngStyle]="{ 'margin-top': isMobile ? '2.938em' : '7px' }"
           >
             <span class="stage-tags"
               >Tags (
@@ -155,14 +155,28 @@
               )<span class="align-tags-colon">:</span>
             </span>
             <span
+              *ngIf="waveData?.tags && waveData?.tags?.length > 0; else noTags"
               class="badge badge-pill badge-custom"
               [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }"
             >
-              <span *ngIf="isMobile" class="badge-key-value"
-                >{{ waveData.tags[0].name }} :
-                {{ waveData.tags[0].value }}</span
-              >
+              <span *ngIf="isMobile" class="badge-key-value">
+                <span>
+                  {{ waveData.tags[0].name }} :
+                  {{ waveData.tags[0].value }}
+                </span>
+              </span>
             </span>
+            <ng-template #noTags>
+              <span [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.25em' }">
+                <a
+                  href="javascript: void(0)"
+                  (click)="showTagOptions = true"
+                  class="common-text"
+                  style="color: #006bd4;"
+                  >Click to add Tag</a
+                >
+              </span>
+            </ng-template>
             <span *ngIf="isMobile" class="badge badge-pill badge-custom">
               <span *ngIf="waveData.tags.length > 1" class="badge-key-value"
                 >+{{ waveData.tags.length - 1 }}</span
@@ -177,9 +191,13 @@
                   >{{ tag.name }} : {{ tag.value }}</span
                 >
               </span>
+              <span class="badge badge-pill badge-custom">
+                <span *ngIf="waveData.tags.length > 1" class="badge-key-value"
+                  >+{{ waveData.tags.length - 1 }}</span
+                >
+              </span>
             </div>
           </div>
-
           <div
             class="badge-container"
             [ngStyle]="{ 'margin-top': isMobile ? '0' : '7px' }"
@@ -192,28 +210,53 @@
               )<span class="align-accounts-colon">:</span>
             </span>
             <span
-              *ngIf="isMobile"
-              class="badge badge-pill badge-custom margin-left-zero"
+              *ngIf="
+                waveData?.keyVault && waveData?.keyVault?.length > 0;
+                else noAccounts
+              "
+              class="badge badge-pill badge-custom"
+              [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }"
             >
-              <span class="badge-key-value">AWS : SMR</span>
+              <span *ngIf="isMobile" class="badge-key-value">
+                <span>
+                  {{ waveData.keyVault[0].cpName }} :
+                  {{ waveData.keyVault[0].accountName }}
+                </span>
+              </span>
             </span>
-            <span *ngIf="isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">+4</span>
-            </span>
+            <ng-template #noAccounts>
+              <span [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.25em' }">
+                <a
+                  href="javascript: void(0); $event.stopPropagation()"
+                  (click)="showAccountOptions = true"
+                  class="common-text"
+                  style="color: #006bd4;"
+                  >Click to add Account</a
+                >
+              </span>
+            </ng-template>
+            <!-- <span *ngIf="isMobile" class="badge badge-pill badge-custom">
+              <span *ngIf="waveData?.keyVault?.length > 1" class="badge-key-value">+{{ waveData?.keyVault?.length - 1 }}</span>
+            </span> -->
             <span
               *ngIf="!isMobile"
               class="badge badge-pill badge-custom"
               [ngStyle]="{ 'margin-left': isMobile ? '0' : '3.5em' }"
             >
-              <span *ngIf="!isMobile" class="badge-key-value"
-                >Provider Name : Account Name</span
+              <span
+                *ngIf="waveData?.keyVault && waveData?.keyVault?.length > 0"
+                class="badge-key-value"
               >
+                {{ (waveData?.keyVault)[0]?.cpName }} :
+                {{ (waveData?.keyVault)[0]?.accountName }}
+              </span>
             </span>
-            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">Jenkins : JKSMR</span>
-            </span>
-            <span *ngIf="!isMobile" class="badge badge-pill badge-custom">
-              <span class="badge-key-value">+1</span>
+            <span class="badge badge-pill badge-custom">
+              <span
+                *ngIf="waveData?.keyVault?.length > 1"
+                class="badge-key-value"
+                >+{{ waveData?.keyVault?.length - 1 }}</span
+              >
             </span>
           </div>
 
@@ -252,25 +295,14 @@
               />
             </a>
           </div>
-
-          <div class="stage-action-bar">
-            <button
-              mat-flat-button
-              color="primary"
-              class="new-stage-btn"
-              (click)="addGroup()"
-            >
-              <span class="new-stage-btn-text">+ New</span>
-            </button>
-          </div>
         </div>
 
         <div class="template-container">
           <div class="templates__wrapper">
             <!-- wave templates list start-->
             <app-wave-list
-              #waveList
-              (rowClicked)="openDetails($event)"
+              (rowClicked)="openTaskDetails($event)"
+              (updateGroupInfo)="updateGroupInfo($event)"
               [waveData]="waveData"
             >
             </app-wave-list>
@@ -296,110 +328,106 @@
     [resizeEdges]="{ bottom: false, right: false, top: false, left: true }"
     (resizeEnd)="onResizeEnd($event)"
   >
-    <div>
-      <header>
-        <a
-          (click)="showAccountOptions = false"
-          class="pointer-cursor left-24-top-1em"
-        >
-          <img src="assets/imgs/close-circle.svg" alt="Close" />
-        </a>
-        Account
-      </header>
-      <mat-divider></mat-divider>
-      <div class="sidebar-search top-margin-1em">
-        <form>
-          <mat-form-field
-            id="mat-search"
-            floatLabel="never"
-            class="mat-typography full-width"
-          >
-            <img
-              matPrefix
-              src="assets/imgs/search-2.svg"
-              alt="search-icon"
-              class="new-search-icon"
-            />
-            <input
-              matInput
-              placeholder="Search"
-              type="search"
-              name="test"
-              [(ngModel)]="searchKey"
-            />
-          </mat-form-field>
-        </form>
-      </div>
-
-      <!-- account cards -->
-      <mat-card
-        class="mat-elevation-z0 bottom-margin-1em"
-        *ngFor="let account of accounts | search: searchKey"
-        [ngStyle]="toggleHeight(account.id)"
+    <header>
+      <a
+        (click)="showAccountOptions = false"
+        class="pointer-cursor left-24-top-1em"
       >
-        <mat-card-content>
-          <mat-checkbox (click)="onCheck($event)" class="relative-top-14">
-          </mat-checkbox>
-          <div class="checkbox-label-with-icon">
-            <ngx-avatar name="S M" initialsSize="2"></ngx-avatar>
-            <span class="import-list-template-name">{{ account.name }}</span>
-            <span class="import-list-template-description">{{
-              account.data.description
-            }}</span>
-            <div class="collapse-icon pointer-cursor">
-              <a (click)="toggleCollapse(account.id)">
-                <img
-                  [src]="
-                    accountCollapseState[account.id]
-                      ? 'assets/imgs/chevron-up.svg'
-                      : 'assets/imgs/chevron-down.svg'
-                  "
-                />
-              </a>
-            </div>
+        <img src="assets/imgs/close-circle.svg" alt="Close" />
+      </a>
+      Account
+    </header>
+    <mat-divider></mat-divider>
+    <div class="sidebar-search top-margin-1em">
+      <form>
+        <mat-form-field
+          id="mat-search"
+          floatLabel="never"
+          class="mat-typography full-width"
+        >
+          <img
+            matPrefix
+            src="assets/imgs/search-2.svg"
+            alt="search-icon"
+            class="new-search-icon"
+          />
+          <input
+            matInput
+            placeholder="Search"
+            type="search"
+            name="test"
+            [(ngModel)]="searchKey"
+          />
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="account-section p-2">
+      <mat-accordion>
+        <mat-expansion-panel
+          *ngFor="let account of accounts | search: searchKey"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              style="align-items: center !important;"
+              (click)="$event.stopPropagation()"
+            >
+              <mat-checkbox
+                [checked]="account.selected"
+                (change)="onCheck($event, account)"
+                style="margin: 1rem;"
+              >
+              </mat-checkbox>
+              &nbsp; &nbsp; &nbsp;
+              <ngx-avatar
+                *ngIf="account?.image; else accountAddIntialsAvatar"
+                [src]="sanitizeUrl(account?.image)"
+                class="my-avatar flex-center"
+                name="{{ account?.accountName }}"
+                initialsSize="2"
+                [size]="30"
+              >
+              </ngx-avatar>
+              <ng-template #accountAddIntialsAvatar>
+                <ngx-avatar
+                  name="{{ getWaveName(account?.accountName) }}"
+                  initialsSize="2"
+                  [size]="30"
+                ></ngx-avatar>
+              </ng-template>
+              &nbsp;&nbsp; &nbsp;
+              <span matTooltip="{{ account?.accountName }}" class="common-text">
+                {{ account?.accountName }}</span
+              >
+            </mat-panel-title>
+            <!-- <mat-panel-description style="align-items: center !important;">
+               
+              </mat-panel-description> -->
+          </mat-expansion-panel-header>
+          <div class="common-text" style="margin-left: 1rem;">
+            <p>Provider: {{ account?.cpName }}</p>
           </div>
-          <div [ngbCollapse]="!accountCollapseState[account.id]">
-            <mat-card-subtitle>
-              <div class="account-details">
-                <span class="medium-text">{{ account.data.description }}</span>
-                <div class="padding-t12-b12">
-                  <mat-label class="account-details-text"
-                    >Provider :
-                  </mat-label>
-                  <span class="account-detail-text">{{
-                    account.data.provider
-                  }}</span>
-                </div>
-                <div class="bottom-padding-12">
-                  <mat-label class="account-details-text">Region : </mat-label>
-                  <span class="account-detail-text">{{
-                    account.data.region
-                  }}</span>
-                </div>
-              </div>
-            </mat-card-subtitle>
-          </div>
-        </mat-card-content>
-      </mat-card>
-      <div class="account-footer">
-        <div class="account-sidebar-footer-btns">
-          <button
-            mat-flat-button
-            color="primary"
-            (click)="showAccountOptions = false"
-            cdkFocusInitial
-          >
-            Add
-          </button>
-          <button
-            mat-button
-            color="primary"
-            (click)="showAccountOptions = false"
-            class="left-margin-1em"
-          >
-            Cancel
-          </button>
-        </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div class="account-footer">
+      <div class="account-sidebar-footer-btns">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="showAccountOptions = false; addAccounts()"
+          cdkFocusInitial
+        >
+          Add
+        </button>
+        <button
+          mat-button
+          color="primary"
+          (click)="showAccountOptions = false"
+          class="left-margin-1em"
+        >
+          Cancel
+        </button>
       </div>
     </div>
   </div>
@@ -427,7 +455,7 @@
     <mat-divider></mat-divider>
     <!-- tag edit body -->
     <app-edit-tag
-      [tags]="currWaveTags"
+      [tags]="waveData?.tags"
       (newTags)="updateTags($event)"
     ></app-edit-tag>
     <!-- end of tag edit body -->
@@ -437,9 +465,10 @@
     >
       <div class="import-btns-1">
         <button
+          [disabled]="isTagsFormValid"
           mat-flat-button
           color="primary"
-          (click)="showTagOptions = false"
+          (click)="showTagOptions = false; saveTags()"
           cdkFocusInitial
         >
           Save

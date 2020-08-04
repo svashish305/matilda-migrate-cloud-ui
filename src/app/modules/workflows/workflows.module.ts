@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { WorkflowsRoutingModule } from './workflows-routing.module';
 import { WorkflowsComponent } from './workflows.component';
-import { MaterialModule } from '../material.module';
+import { MaterialModule } from '../material/material.module';
 import { AvatarModule, AvatarSource } from 'ngx-avatar';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ResizableModule } from 'angular-resizable-element';

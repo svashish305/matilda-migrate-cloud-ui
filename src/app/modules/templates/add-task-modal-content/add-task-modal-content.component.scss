@@ -33,3 +33,7 @@ mat-form-field {
   line-height: 1.063rem;
   letter-spacing: 0.41px;
 }
+::ng-deep .mat-tab-body-content {
+  height: 100%;
+  overflow: hidden; 
+}

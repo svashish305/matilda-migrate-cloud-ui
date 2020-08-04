@@ -1,4 +1,4 @@
-<div *ngIf="mobileDevice" class="navbar-toggle">
+<div *ngIf="mobileDevice && isCollapsed" class="navbar-toggle">
   <button
     mat-button
     class="navbar-toggle-btn"
@@ -63,7 +63,7 @@
         (click)="
           hubSelected = true; templateSelected = false; workflowSelected = false
         "
-        class="logo__wrapper padding-14"
+        class="logo__wrapper"
         [routerLink]="['/hub']"
         [ngStyle]="addActiveInd(hubSelected)"
       >
@@ -77,9 +77,9 @@
           alt=""
           [ngStyle]="isSelected(hubSelected)"
         />
-        <div class="migrate-section">
+        <button mat-button class="migrate-section">
           <img
-            class="logo icon-extra"
+            class="logo icon-extra hub-mob-icon"
             [src]="
               hubSelected
                 ? 'assets/imgs/white-hub.svg'
@@ -93,7 +93,7 @@
             [ngStyle]="setActiveColor(hubSelected)"
             >Hub</span
           >
-        </div>
+        </button>
       </div>
       <div
         (click)="
@@ -102,7 +102,7 @@
           workflowSelected = false;
           addTemplate()
         "
-        class="logo__wrapper padding-14"
+        class="logo__wrapper"
         [ngStyle]="addActiveInd(templateSelected)"
       >
         <img
@@ -115,7 +115,7 @@
           alt=""
           [ngStyle]="isSelected(templateSelected)"
         />
-        <div class="migrate-section">
+        <button mat-button class="migrate-section">
           <img
             class="logo img-size"
             [src]="
@@ -129,7 +129,7 @@
           <span class="menu-text" [ngStyle]="setActiveColor(templateSelected)"
             >Template</span
           >
-        </div>
+        </button>
       </div>
       <div
         (click)="
@@ -138,7 +138,7 @@
           templateSelected = false;
           addWorkflow()
         "
-        class="logo__wrapper padding-14"
+        class="logo__wrapper"
         [ngStyle]="addActiveInd(workflowSelected)"
       >
         <img
@@ -151,7 +151,7 @@
           alt=""
           [ngStyle]="workflowIsSelected()"
         />
-        <div class="migrate-section">
+        <button mat-button class="migrate-section">
           <img
             class="logo img-size"
             [src]="
@@ -165,7 +165,7 @@
           <span class="menu-text" [ngStyle]="setActiveColor(workflowSelected)"
             >Workflow</span
           >
-        </div>
+        </button>
       </div>
     </div>
     <!-- remaining logos in left sidebar end -->
@@ -248,7 +248,7 @@
           alt=""
           [ngStyle]="isSelected(hubSelected)"
         />
-        <div class="migrate-section">
+        <button mat-button class="migrate-section">
           <img
             class="logo icon-extra"
             [src]="
@@ -264,6 +264,9 @@
             [ngStyle]="setActiveColor(hubSelected)"
             >Hub</span
           >
+        </button>
+        <div *ngIf="hubSelected" class="active-bar-ind">
+          <img src="assets/imgs/active-bar-ind.svg" alt="" />
         </div>
       </div>
       <div
@@ -286,7 +289,7 @@
           alt=""
           [ngStyle]="isSelected(templateSelected)"
         />
-        <div class="migrate-section">
+        <button mat-button class="migrate-section">
           <img
             class="logo img-size"
             [src]="
@@ -300,6 +303,9 @@
           <span class="menu-text" [ngStyle]="setActiveColor(templateSelected)"
             >Template</span
           >
+        </button>
+        <div *ngIf="templateSelected" class="active-bar-ind">
+          <img src="assets/imgs/active-bar-ind.svg" alt="" />
         </div>
       </div>
       <div
@@ -322,7 +328,7 @@
           alt=""
           [ngStyle]="workflowIsSelected()"
         />
-        <div class="migrate-section">
+        <button mat-button class="migrate-section">
           <img
             class="logo img-size"
             [src]="
@@ -336,15 +342,18 @@
           <span class="menu-text" [ngStyle]="setActiveColor(workflowSelected)"
             >Workflow</span
           >
+        </button>
+        <div *ngIf="workflowSelected" class="active-bar-ind">
+          <img src="assets/imgs/active-bar-ind.svg" alt="" />
         </div>
       </div>
     </div>
 
     <!-- remaining logos in left sidebar end -->
 
-    <!-- <mat-divider class="divider-bottom"></mat-divider> -->
+    <!-- <mat-divider class="divider-bottom"></mat-divider>
 
-    <!-- <div class="logo__wrapper padding-17 logout-icon">
+    <div class="logo__wrapper padding-17 logout-icon">
       <img class="logo logout-pos" src="assets/imgs/group-8.svg" alt="" />
     </div> -->
   </div>

@@ -4,7 +4,7 @@ import { TemplateComponent } from './templates/template/template.component';
 import { TemplateListComponent } from './templates/template-list/template-list.component';
 import { AvatarModule, AvatarSource } from 'ngx-avatar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './material/material.module';
 import { ResizableModule } from 'angular-resizable-element';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
