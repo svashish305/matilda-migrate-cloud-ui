@@ -11,18 +11,6 @@ const routes: Routes = [
     path: ':id',
     component: WorkflowsComponent,
   },
-  // {
-  //   path: ':workflowId/templates/:id',
-  //   component: TemplatesComponent,
-  //   data: { breadcrumb: 'Templates' },
-  //   children: [
-  //     {
-  //       path: 'discover',
-  //       component: TemplateDiscoverComponent,
-  //       data: { breadcrumb: 'Discover' },
-  //     },
-  //   ]
-  // },
   {
     path: ':workflowId/templates/:id',
     component: TemplatesComponent,
@@ -30,16 +18,10 @@ const routes: Routes = [
     children: [
       {
         path: 'discover',
-        // component: TemplateDiscoverComponent,
-        redirectTo: './discover',
+        component: TemplateDiscoverComponent,
         data: { breadcrumb: 'Discover' },
       },
     ]
-  },
-  {
-    path: ':workflowId/templates/:id/discover',
-    component: TemplateDiscoverComponent,
-    data: { breadcrumb: 'Discover' },
   }
 ];
 

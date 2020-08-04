@@ -287,3 +287,7 @@
   </div>
   <!-- end of task options -->
 </div>
+
+<div *ngIf="showDiscover" class="discover-container">
+  <app-template-discover [templateId]="templateId"></app-template-discover>
+</div>
