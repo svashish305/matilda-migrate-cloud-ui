@@ -24,7 +24,7 @@ export class BreadcrumbComponent implements OnInit {
       )
       .subscribe(() => {
         this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
-        // console.log('breadcrumbs ', this.breadcrumbs);
+        console.log('breadcrumbs ', this.breadcrumbs);
       });
   }
 

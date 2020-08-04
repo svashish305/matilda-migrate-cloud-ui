@@ -1,5 +1,5 @@
 import { TemplateService } from './../services/template.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common';
 import { DataService } from 'src/services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,6 +20,7 @@ export interface checkedID {
   styleUrls: ['./template-discover.component.scss'],
 })
 export class TemplateDiscoverComponent implements OnInit {
+  @Input() templateId: any;
   imgHovered = false;
   searchKey;
   accountClicked = false;
@@ -36,7 +37,6 @@ export class TemplateDiscoverComponent implements OnInit {
   MAXN = 10000000;
   showSidebar = false;
   isMobile = false;
-  templateId: any;
   currTemplate: any;
   itemCountInGroup: any[] = [];
   checkedIDs: checkedID[] = [];
@@ -59,27 +59,14 @@ export class TemplateDiscoverComponent implements OnInit {
   ngOnInit() {
     this.isMobile = this.deviceService.isMobile();
 
-    this.route.params.subscribe((params: any) => {
-      this.templateId = params.id;
+    this.dataService.getTemplate(this.templateId).subscribe((template: any) => {
+      this.currTemplate = template;
     });
-
-    // this.dataService.getTemplate(this.templateId).subscribe((template: any) => {
-    //   this.currTemplate = template;
-    // });
-
-    this.templateService
-      .getTemplateById(this.templateId)
-      .subscribe((template: any) => {
-        this.currTemplate = template;
-      });
 
     this.getApps();
   }
 
   getApps() {
-    // this.dataService.getApps().subscribe((res: any) => {
-    //   this.apps = res;
-    // });
     this.dataService.getApps().subscribe((res: any) => {
       this.apps = res;
     });

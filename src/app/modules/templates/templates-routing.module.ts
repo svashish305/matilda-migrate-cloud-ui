@@ -6,11 +6,12 @@ import { TemplateDiscoverComponent } from './template-discover/template-discover
 
 const routes: Routes = [
   { path: '', component: TemplatesComponent },
-  { path: ':id', component: TemplatesComponent },
-  {
-    path: ':id/discover',
-    component: TemplateDiscoverComponent,
-    data: { breadcrumb: 'Discover' },
+  { path: ':id', component: TemplatesComponent,
+    children: [{
+      path: 'discover',
+      component: TemplateDiscoverComponent,
+      data: { breadcrumb: 'Discover' },
+    }]
   },
   {
     path: 'add-task-modal-content',

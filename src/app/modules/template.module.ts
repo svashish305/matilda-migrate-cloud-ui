@@ -17,12 +17,13 @@ import {
   DeviceDetectorService,
   DeviceDetectorModule,
 } from 'ngx-device-detector';
+import { TemplateDiscoverComponent } from './templates/template-discover/template-discover.component';
 
 const avatarSourcesOrder = [AvatarSource.CUSTOM, AvatarSource.INITIALS];
 const avatarColors = ['#5fb8f1', '#012b7a'];
 
 @NgModule({
-  declarations: [TemplateComponent, TemplateListComponent],
+  declarations: [TemplateComponent, TemplateListComponent, TemplateDiscoverComponent],
   imports: [
     CommonModule,
     HttpClientModule,

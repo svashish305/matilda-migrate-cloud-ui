@@ -114,22 +114,22 @@ export class WaveComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   getAccounts() {
-    this._workflowService.getAllAccounts().subscribe((data: any[]) => {
-      this.accounts = data;
-      this.selectedAccounts = this.waveData.keyVault;
-      this.accounts.map(_account => {
-        _account.accountId = _account.accountId,
-        _account.accountName = _account.accountName,
-        _account.cpId = _account.cpId,
-        _account.cpName = _account.cpName,
-        _account.selected =  (this.waveData.keyVault.filter(_keyVault => _keyVault.accountId === _account.accountId).length === 0 ? false : true);
-      
-      });
-    });
-
-    // this.dataService.getAccounts().subscribe((data: any[]) => {
+    // this._workflowService.getAllAccounts().subscribe((data: any[]) => {
     //   this.accounts = data;
+    //   this.selectedAccounts = this.waveData.keyVault;
+    //   this.accounts.map(_account => {
+    //     _account.accountId = _account.accountId,
+    //     _account.accountName = _account.accountName,
+    //     _account.cpId = _account.cpId,
+    //     _account.cpName = _account.cpName,
+    //     _account.selected =  (this.waveData.keyVault.filter(_keyVault => _keyVault.accountId === _account.accountId).length === 0 ? false : true);
+      
+    //   });
     // });
+
+    this.dataService.getAccounts().subscribe((data: any[]) => {
+      this.accounts = data;
+    });
   }
 
  

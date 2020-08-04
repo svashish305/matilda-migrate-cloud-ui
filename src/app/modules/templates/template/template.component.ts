@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { DataService } from 'src/services/data.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 import * as uuid from 'uuid';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -76,6 +76,8 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   taskImgHover = false;
   isEventNameUnique;
 
+  showDiscover = false;
+
   public currentTemplate: Template;
 
   constructor(
@@ -87,7 +89,11 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
     public snackBar: MatSnackBar,
     private sanitizer: DomSanitizer,
     private _templateService: TemplateService
-  ) {}
+  ) {
+    router.events.subscribe((val: any) => {
+      this.showDiscover = val.url && val.url.includes('discover');
+    });
+  }
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
@@ -222,13 +228,8 @@ export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   goToDiscover() {
-    // this.router.navigate(['./discover'], { relativeTo: this.route, queryParamsHandling: 'merge' });
     if (this.router.url.includes('workflows')) {
-      this.router.navigate(['./discover'], {
-        relativeTo: this.route,
-        queryParamsHandling: 'merge',
-      });
-      // this.router.navigate([`workflows/${this.workflowId}/templates/${this.templateId}/discover`]);
+      this.router.navigate([`/workflows/${this.workflowId}/templates/${this.templateId}/discover`], {queryParamsHandling: 'merge'});
     } else {
       this.router.navigate([`templates/${this.templateId}/discover`]);
     }
