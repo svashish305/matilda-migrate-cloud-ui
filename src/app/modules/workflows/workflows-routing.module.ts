@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { WorkflowsComponent } from './workflows.component';
 import { TemplatesComponent } from '../templates/templates.component';
+import { TemplateDiscoverComponent } from '../templates/template-discover/template-discover.component';
 
 const routes: Routes = [
   { path: '', component: WorkflowsComponent },
@@ -14,7 +15,14 @@ const routes: Routes = [
     path: ':workflowId/templates/:id',
     component: TemplatesComponent,
     data: { breadcrumb: 'Templates' },
-  },
+    children: [
+      {
+        path: 'discover',
+        component: TemplateDiscoverComponent,
+        data: { breadcrumb: 'Discover' },
+      },
+    ]
+  }
 ];
 
 @NgModule({

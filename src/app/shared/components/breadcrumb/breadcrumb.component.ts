@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { IBreadCrumb } from './breadcrumb.interface';
-import { filter, distinctUntilChanged, map } from 'rxjs/operators';
+import { filter, distinctUntilChanged, ignoreElements } from 'rxjs/operators';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -11,7 +12,7 @@ import { filter, distinctUntilChanged, map } from 'rxjs/operators';
 export class BreadcrumbComponent implements OnInit {
   public breadcrumbs: IBreadCrumb[];
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private location: Location, private router: Router, private activatedRoute: ActivatedRoute) {
     this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
   }
 
@@ -85,5 +86,22 @@ export class BreadcrumbComponent implements OnInit {
 
   setInactiveUrl(label) {
     return `assets/imgs/bc-${label.toLowerCase()}-gray.svg`;
+  }
+
+  navigateToRoute(bcs: IBreadCrumb[], bc: IBreadCrumb) {
+    if(bcs.length === 2 && bc.label === 'Workflows') {
+      this.location.back();
+    }
+    else if(bcs.length === 2 && bc.label === 'Templates') {
+      this.location.back();
+    }
+    else if(bcs.length === 3) {
+      if(bc.label === 'Templates') {
+        this.location.back();
+      } else if(bc.label === 'Workflows') {
+        this.location.back();
+        this.location.back();
+      }
+    }
   }
 }

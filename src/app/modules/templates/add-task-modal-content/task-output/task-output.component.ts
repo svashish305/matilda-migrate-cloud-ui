@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Item } from 'src/app/utils/models/data.model';
 
 @Component({
   selector: 'app-task-output',
@@ -7,14 +8,17 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class TaskOutputComponent implements OnInit {
-  @Input() task: any
+  @Input() task: Item;
   dataMap = new Map()
-  output = {"console_output": "{'PublicIp': '3.14.14.178', 'InstanceID': 'i-0a7f83e5b4cff3543', 'PublicDnsName': 'ec2-3-14-14-178.us-east-2.compute.amazonaws.com'}"}
+  public output : any;
+  // {"console_output": "{'PublicIp': '3.14.14.178', 'InstanceID': 'i-0a7f83e5b4cff3543', 'PublicDnsName': 'ec2-3-14-14-178.us-east-2.compute.amazonaws.com'}"}
   constructor() { }
 
   ngOnInit() {
-    this.mapData();
-    
+    if(this.task.output){
+      this.output = this.task.output;
+      this.mapData();
+    }
   }
 
   innerExists(value: any) {

@@ -8,7 +8,7 @@
         (closeWindow)="closeWindow($event)"
       ></app-task-general-config>
     </mat-tab>
-    <mat-tab label="Input">
+    <mat-tab label="Input" [disabled]="!task?.actionId">
       <app-task-input
         [task]="task"
         [dataSource]="pluginFields"
@@ -17,7 +17,7 @@
       ></app-task-input>
     </mat-tab>
     <mat-tab label="Output">
-      <app-task-output></app-task-output>
+      <app-task-output [task]="task"></app-task-output>
     </mat-tab>
     <mat-tab label="Stack">
       <app-edit-task-template

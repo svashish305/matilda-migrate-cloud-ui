@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AddTaskModalContentRoutingModule } from './add-task-modal-content-routing.module';
 import { AddTaskModalContentComponent } from './add-task-modal-content.component';
-import { MaterialModule } from '../../material.module';
+import { MaterialModule } from '../../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TaskGeneralConfigComponent } from './task-general-config/task-general-config.component';
 import { TaskInputComponent } from './task-input/task-input.component';

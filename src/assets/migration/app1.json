@@ -1,0 +1,252 @@
+{
+  "id": 1,
+  "name": "SMR Toolkit",
+  "IP": [
+    {
+      "address": "192.168.10.10",
+      "sources": [
+        {
+          "id": 10,
+          "name": "NGINX",
+          "desc": "Source Description",
+          "groups": [
+            {
+              "id": 100,
+              "name": "NGINX Ansible",
+              "items": [
+                {
+                  "id": 1000,
+                  "type": "folder",
+                  "name": "Version 1"
+                },
+                {
+                  "id": 1001,
+                  "type": "file",
+                  "name": "config.yaml"
+                }
+              ]
+            },
+            {
+              "id": 101,
+              "name": "NGINX Container",
+              "items": [
+                {
+                  "id": 1002,
+                  "type": "folder",
+                  "name": "Version 1"
+                },
+                {
+                  "id": 1003,
+                  "type": "file",
+                  "name": "config.yaml"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "name": "Tomcat",
+          "desc": "Source Description",
+          "groups": [
+            {
+              "id": 102,
+              "name": "Tomcat Ansible",
+              "items": [
+                {
+                  "id": 1004,
+                  "type": "folder",
+                  "name": "Version 1"
+                },
+                {
+                  "id": 1005,
+                  "type": "file",
+                  "name": "config.yaml"
+                }
+              ]
+            },
+            {
+              "id": 103,
+              "name": "Tomcat Container",
+              "items": [
+                {
+                  "id": 1006,
+                  "type": "folder",
+                  "name": "Version 1"
+                },
+                {
+                  "id": 1007,
+                  "type": "file",
+                  "name": "config.yaml"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "address": "192.168.10.11",
+      "sources": [
+        {
+          "id": 12,
+          "name": "NGINX",
+          "desc": "Source Description",
+          "groups": [
+            {
+              "id": 104,
+              "name": "NGINX Ansible",
+              "items": [
+                {
+                  "id": 1008,
+                  "type": "folder",
+                  "name": "Version 1"
+                },
+                {
+                  "id": 1009,
+                  "type": "file",
+                  "name": "config.yaml"
+                }
+              ]
+            },
+            {
+              "id": 105,
+              "name": "NGINX Container",
+              "items": [
+                {
+                  "id": 1010,
+                  "type": "folder",
+                  "name": "Version 1"
+                },
+                {
+                  "id": 1011,
+                  "type": "file",
+                  "name": "config.yaml"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "Tomcat",
+          "desc": "Source Description",
+          "groups": [
+            {
+              "id": 106,
+              "name": "Tomcat Ansible",
+              "items": [
+                {
+                  "id": 1012,
+                  "type": "folder",
+                  "name": "Version 1"
+                },
+                {
+                  "id": 1013,
+                  "type": "file",
+                  "name": "config.yaml"
+                }
+              ]
+            },
+            {
+              "id": 107,
+              "name": "Tomcat Container",
+              "items": [
+                {
+                  "id": 1014,
+                  "type": "folder",
+                  "name": "Version 1"
+                },
+                {
+                  "id": 1015,
+                  "type": "file",
+                  "name": "config.yaml"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": 14,
+      "name": "NGINX",
+      "desc": "Source Description",
+      "groups": [
+        {
+          "id": 108,
+          "name": "NGINX Ansible",
+          "items": [
+            {
+              "id": 1016,
+              "type": "folder",
+              "name": "Version 1"
+            },
+            {
+              "id": 1017,
+              "type": "file",
+              "name": "config.yaml"
+            }
+          ]
+        },
+        {
+          "id": 109,
+          "name": "NGINX Container",
+          "items": [
+            {
+              "id": 1018,
+              "type": "folder",
+              "name": "Version 1"
+            },
+            {
+              "id": 1019,
+              "type": "file",
+              "name": "config.yaml"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Tomcat",
+      "desc": "Source Description",
+      "groups": [
+        {
+          "id": 110,
+          "name": "Tomcat Ansible",
+          "items": [
+            {
+              "id": 1020,
+              "type": "folder",
+              "name": "Version 1"
+            },
+            {
+              "id": 1021,
+              "type": "file",
+              "name": "config.yaml"
+            }
+          ]
+        },
+        {
+          "id": 111,
+          "name": "Tomcat Container",
+          "items": [
+            {
+              "id": 1022,
+              "type": "folder",
+              "name": "Version 1"
+            },
+            {
+              "id": 1023,
+              "type": "file",
+              "name": "config.yaml"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

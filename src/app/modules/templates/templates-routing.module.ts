@@ -2,10 +2,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { TemplatesComponent } from './templates.component';
+import { TemplateDiscoverComponent } from './template-discover/template-discover.component';
 
 const routes: Routes = [
   { path: '', component: TemplatesComponent },
-  { path: ':id', component: TemplatesComponent },
+  { path: ':id', component: TemplatesComponent,
+    children: [{
+      path: 'discover',
+      component: TemplateDiscoverComponent,
+      data: { breadcrumb: 'Discover' },
+    }]
+  },
   {
     path: 'add-task-modal-content',
     loadChildren: () =>

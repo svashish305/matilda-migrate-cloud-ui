@@ -4,15 +4,21 @@ import {
   Input,
   ViewChild,
   AfterViewInit,
+  OnChanges,
+  SimpleChanges,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { DataService } from 'src/services/data.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 import * as uuid from 'uuid';
-import { Group } from 'src/app/models/data.model';
-import { MatSnackBarConfig, MatSnackBar } from '@angular/material/snack-bar';
-import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Template, Item, Group } from 'src/app/utils/models/data.model';
+import { DomSanitizer } from '@angular/platform-browser';
+import { TemplateService } from '../services/template.service';
+import { SnackbarComponent } from '../../material/snackbar/snackbar.component';
 
 interface SelectInterface {
   value: string;
@@ -24,16 +30,23 @@ interface SelectInterface {
   templateUrl: './template.component.html',
   styleUrls: ['./template.component.scss'],
 })
-export class TemplateComponent implements OnInit, AfterViewInit {
-  @Input() templateData: any;
+export class TemplateComponent implements OnInit, OnChanges, AfterViewInit {
+  @Input() templateData: Template;
+  @Output() updateTemplate = new EventEmitter();
+  @Output() cloneTemplates = new EventEmitter();
+  @Output() onTagsUpdate = new EventEmitter();
+
+  public isTagsFormValid: boolean;
+  public selectedTabIndex: number = 1;
+
   searchKey;
   edit;
   showBackdrop;
-  @ViewChild('templateList', { static: false }) templateList;
 
   favourite = false;
   templateId: any;
-  currTemplate: any;
+  workflowId: any;
+  currTemplate: Template;
   currTemplateTags: any[];
   templatesToImport: any[] = [];
   selectedTemplatesToImport: any[] = [];
@@ -44,7 +57,7 @@ export class TemplateComponent implements OnInit, AfterViewInit {
   descriptionState = 'idle';
   oldDescription: string;
   newDescription: string;
-  
+
   isMobile = false;
   isTablet = false;
   isDesktop = false;
@@ -58,27 +71,37 @@ export class TemplateComponent implements OnInit, AfterViewInit {
 
   templateImgHover = false;
   templateAvatarUrl: any;
+  taskAvatarUrl: any;
 
   taskImgHover = false;
-  taskAvatarUrl: any;
+  isEventNameUnique;
+
+  showDiscover = false;
+
+  public currentTemplate: Template;
+
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private dataService: DataService,
     private deviceService: DeviceDetectorService,
-    private location: Location,public snackBar: MatSnackBar
-  ) {}
+    private location: Location,
+    public snackBar: MatSnackBar,
+    private sanitizer: DomSanitizer,
+    private _templateService: TemplateService
+  ) {
+    router.events.subscribe((val: any) => {
+      this.showDiscover = val.url && val.url.includes('discover');
+    });
+  }
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
+      if (params.workflowId) {
+        this.workflowId = params.workflowId;
+      }
       this.templateId = params.id;
     });
-
-    this.dataService
-      .getTemplate(this.templateId)
-      .subscribe((currentTemplate: any) => {
-        this.currTemplate = currentTemplate;
-        this.currTemplateTags = currentTemplate.tags;
-      });
 
     this.isMobile = this.deviceService.isMobile();
     this.isTablet = this.deviceService.isTablet();
@@ -87,11 +110,17 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     this.getTemplates();
   }
 
+  ngOnChanges(changes: SimpleChanges) {}
+
   ngAfterViewInit() {
     this.appyResize();
   }
 
   getTemplates() {
+    // this._templateService.getAllTemplates().subscribe((data: any[]) => {
+    //   this.templatesToImport = data.filter((d) => d.id !== this.templateId);
+    // });
+
     this.dataService.getTemplates().subscribe((data: any[]) => {
       this.templatesToImport = data.filter((d) => d.id !== this.templateId);
     });
@@ -105,72 +134,70 @@ export class TemplateComponent implements OnInit, AfterViewInit {
 
       reader.onload = (event: any) => {
         // called once readAsDataURL is completed
-        this.templateAvatarUrl = event.target.result;
+        this.templateData.image = event.target.result;
+        this.updateTemplate.emit({
+          payload: this.templateData,
+          message: 'Template Icon Updated Successfully',
+          type: 'success',
+        });
       };
-
-      this.uploadFile(event.target.files[0]);
     }
   }
-  uploadFile(file) {
-    this.dataService.upload(file).subscribe(
-      (res: any) => {
-        console.log('file uploaded as', res);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+
+  removeAvatar() {
+    this.templateData.image = null;
+    this.updateTemplate.emit({
+      payload: this.templateData,
+      message: 'Template Icon Deleted Successfully',
+      type: 'error',
+    });
   }
-  
+
   changeTaskAvatar(event: any) {
-       if (event.target.files && event.target.files[0]) {
+    if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
 
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
       reader.onload = (event: any) => {
         // called once readAsDataURL is completed
-        this.taskAvatarUrl = event.target.result;
+        this.selectedTask.image = event.target.result;
+
+        this.templateData.groups.forEach((_group: Group) => {
+          if (_group.id === this.selectedTask.groupId) {
+            _group.items.forEach((_item: Item) => {
+              if (_item.id === this.selectedTask.id) {
+                _item.image = this.selectedTask.image;
+              }
+            });
+          }
+        });
+        this.updateTemplate.emit({
+          payload: this.templateData,
+          message: 'Task Icon Updated Successfully',
+          type: 'success',
+        });
       };
-      this.uploadTaskFile(event.target.files[0]);
     }
   }
-  uploadTaskFile(uploadFile:File){
-    const formData = new FormData();
-    let groupList = this.templateData.groups;
-    let filteredGroupList = groupList.filter(it=>{
-        return it.id === this.selectedTask.groupId;
-    })
-    let groupItems = filteredGroupList[0].items;
-    groupItems.forEach(it=>{
-      if(it.id == this.selectedTask.id){
-        this.fileToBase64(uploadFile).then(result => {
-          it.image= result;
-          //  API Task Avatar Update  
-   // this.dataService.updateTemplate(this.templateData).subscribe(res=>{
-   //   if(res){        
-   //   }
-   // })
+
+  removeTaskAvatar(currentTask: Item) {
+    this.templateData.groups.forEach((_group) => {
+      if (_group.id === currentTask.groupId) {
+        _group.items.forEach((_item) => {
+          _item.image = null;
         });
-   
       }
-    })     
-  }    
-  fileToBase64 = (filename:File) => {
-    return new Promise(resolve => {
-    
-      var reader = new FileReader();
-      // Read file content on file loaded event
-      reader.onload = function(event:any) {
-        resolve(event.target.result);
-      };
-      
-      // Convert data to base64 
-      reader.readAsDataURL(filename);
     });
-  };
-  setBadgeBgColor(stageState = "Defined") {
-    let backgroundColor = "#99a1a9";
+    this.updateTemplate.emit({
+      payload: this.templateData,
+      message: 'Task Icon Deleted Successfully',
+      type: 'error',
+    });
+  }
+
+  setBadgeBgColor(stageState = 'Defined') {
+    let backgroundColor = '#99a1a9';
     switch (stageState) {
       case 'Defined':
         backgroundColor = '#99a1a9';
@@ -200,64 +227,53 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     this.location.back();
   }
 
-  updateTags(event: any) {
-    this.currTemplate.tags = event;
-    this.dataService
-      .updateTemplate(this.templateId, this.currTemplate)
-      .subscribe((newTemplate: any) => {
-        console.log('updated template ', newTemplate);
-        this.templateData = newTemplate;
-        this.currTemplate = newTemplate;
-      });
+  goToDiscover() {
+    if (this.router.url.includes('workflows')) {
+      this.router.navigate([`/workflows/${this.workflowId}/templates/${this.templateId}/discover`], {queryParamsHandling: 'merge'});
+    } else {
+      this.router.navigate([`templates/${this.templateId}/discover`]);
+    }
   }
 
-  addStage() {
-    const id = uuid.v4();
-    let newStage = { id, ...new Group() };
+  updateTags(event: any) {
+    this.isTagsFormValid = !event.valid;
+    this.templateData.tags = event.tags;
+  }
 
-    this.currTemplate.groups.push(newStage);
-    this.templateData = this.currTemplate;
-    console.log(newStage);
+  saveTags() {
+    this.onTagsUpdate.emit({
+      tags: this.templateData.tags,
+      message: 'Tags Updated Successfully',
+      type: 'success',
+    });
   }
 
   onCheck(event, template) {
-    event.stopPropagation();
+    //event.stopPropagation();
     if (!this.selectedTemplatesToImport.includes(template)) {
       this.selectedTemplatesToImport.push(template);
     }
   }
 
   importTemplates() {
-    let newStagesAndTasks = [];
-    this.selectedTemplatesToImport.forEach((selectedTemplate: any) => {
-      if (selectedTemplate.groups && selectedTemplate.groups.length) {
-        selectedTemplate.groups.forEach((group) => {
-          newStagesAndTasks.push(group);
-        });
-      }
-    });
-    // console.log('new stuff to copy ', newStagesAndTasks);
-    newStagesAndTasks.forEach((newStageTask: any) => {
-      this.currTemplate.groups.push(newStageTask);
-    });
-    // console.log('updated ', this.currTemplate);
-    this.templateData = this.currTemplate;
+    const selectedTemplates = this.selectedTemplatesToImport.map(
+      (_template: Template) => _template.id
+    );
+
     this.selectedTemplatesToImport = [];
+
+    this.cloneTemplates.emit({
+      source: selectedTemplates,
+      destination: this.templateData.id,
+      message: 'Template(s) Imported Successfully',
+      type: 'success',
+    });
   }
 
-  /**
-   *
-   * @description triggers when resize is released
-   */
   onResizeEnd(event) {
-    console.log(event);
     this.appyResize(event);
   }
 
-  /**
-   *
-   * @description resizes the template details container
-   */
   appyResize(event?) {
     const wrapperWidth = document.getElementById('wave-content-id').offsetWidth;
     const templateHolder = document.getElementById('resizable-holder');
@@ -272,80 +288,76 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     }
   }
 
-  /**
-   *
-   * @param edit - edit specifies whether user is editing or not
-   * @description opens or closes the template details
-   */
   openDetails(edit) {
     this.edit = edit;
-    if (!edit) {
-      this.showBackdrop = false;
-      this.templateData.waveTypes.forEach((waveType) => {
-        waveType.templates.forEach((template) => {
-          template.selected = false;
-        });
-      });
-    }
+    // if (!edit) {
+    //   this.showBackdrop = false;
+    //   this.templateData.waveTypes.forEach((waveType) => {
+    //     waveType.templates.forEach((template) => {
+    //       template.selected = false;
+    //     });
+    //   });
+    // }
     setTimeout(() => {
       this.appyResize();
     }, 0);
   }
 
-  openTaskDetails(task) {
+  openTaskDetails(payload: any) {
+    let task: Item = payload.task;
+    let group: Group = payload.group;
+
     if (task) {
       this.selectedTask = task;
+
+      this.templateData.groups.forEach((_group: Group) => {
+        if (_group.id === this.selectedTask.groupId) {
+          _group.items.forEach((_item: Item) => {
+            if (_item.id === this.selectedTask.id) {
+              _item = this.selectedTask;
+            }
+          });
+        }
+      });
+
+      this.showTaskOptions = true;
     } else {
-      this.selectedTask = {
-        id: 123,
-        name: 'Untitled Task',
-        description: 'Task Description',
-        order: 100,
-        pluginName: 'AWS',
-        pluginId: 1,
-        serviceId: '1',
-        actionId: '1',
-        serviceName: 'vm',
-        actionName: 'Create',
-        status: 'Configured',
-        progress: 10,
-        keyVault: {
-          id: 1,
-          name: 'AWS',
-        },
-        input:
-          '{"select_account":"1","stackname":"fgjdgfhg","instance_name":"ghh","keyname":"gghgh","instance":"hhkvh","zone":"hgjh","vpc":"hg","subnet":"ghg","security":"ghgjhhgh","security_allowed":"hgj","ami":"hg"}',
-        output: null,
-        startDate: '6/1/2020',
-        endDate: '12/11/2020',
-        duration: null,
-        dependencies: [
-          {
-            groupId: 1234,
-            taskId: 345345,
-            mode: 'before',
-          },
-        ],
-        notification: '{"type":"email/hook","id":"1","payload":"emailid/url"}',
-        image:'assets/imgs/favourite.svg'
-      };
+      let _task = new Item();
+      _task.id = uuid.v4();
+      _task.name = 'Untitled Task' + '_' + _task.id;
+      _task.groupId = group.id;
+      _task.order =
+        group.items.length >= 1
+          ? group.items[group.items.length - 1].order + 100
+          : 100;
+
+      this.selectedTask = _task;
+
+      this.templateData.groups.forEach((_group: Group) => {
+        if (_group.id === this.selectedTask.groupId) {
+          _group.items.push(this.selectedTask);
+        }
+      });
+      // this.currTemplate = Object.assign({}, this.templateData);
+      // this.currTemplate.groups.forEach((_group: Group) => {
+      //   if (_group.id === this.selectedTask.groupId) {
+      //     _group.items.push(this.selectedTask);
+      //   }
+      // });
+
+      //this.openSnackBar('Please Wait.. While we are waiting for the server to respond', 'info');
+      this.updateTemplate.emit({
+        payload: this.templateData,
+        message: 'Task Added Successfully',
+        type: 'success',
+      });
+
+      this.showTaskOptions = true;
     }
-    this.showTaskOptions = true;
   }
 
-  /**
-   *
-   * @description Adds new group to wave
-   */
-  addNewGroup() {
-    const id = Math.random().toString(6);
-    this.templateData.waveTypes.unshift({
-      id: id,
-      name: 'New group',
-      theme: this.templateList.getRandomColor(),
-      edit: true,
-      templates: [],
-    });
+  sanitizeUrl(image) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(image);
   }
 
   onFocusTitle() {
@@ -360,10 +372,12 @@ export class TemplateComponent implements OnInit, AfterViewInit {
         title: this.newTitle,
         ...this.templateData,
       };
-      // this.dataService
-      //   .updateTemplate(newTemplate)
-      //   .subscribe((res: any) => console.log(res));
     }
+    this.updateTemplate.emit({
+      payload: this.templateData,
+      message: 'Template Updated Successfully',
+      type: 'success',
+    });
   }
 
   onFocusDescription() {
@@ -378,46 +392,96 @@ export class TemplateComponent implements OnInit, AfterViewInit {
         description: this.newDescription,
         ...this.templateData,
       };
-      // this.dataService
-      //   .updateTemplate(newTemplate)
-      //   .subscribe((res: any) => console.log(res));
     }
+
+    this.updateTemplate.emit({
+      payload: this.templateData,
+      message: 'Template Updated Successfully',
+      type: 'success',
+    });
   }
 
-  onSaveConfig(payload: any) {}
+  onSaveConfig(task: Item) {
+    this.templateData.groups.forEach((_group) => {
+      if ((_group.id = task.groupId)) {
+        _group.items.forEach((_task) => {
+          if (_task.id === task.id) {
+            _task.input = task.input;
+            _task.itemFields = task.itemFields;
+          }
+        });
+      }
+    });
+
+    this.templateData.groups = [...this.templateData.groups];
+    this.updateTemplate.emit({
+      payload: this.templateData,
+      message: 'Task Configuration Updated Successfully',
+      type: 'success',
+    });
+  }
+
+  onSaveGeneralConfig(task: Item) {
+    this.templateData.groups.forEach((_group) => {
+      if (_group.id === task.groupId) {
+        _group.items.forEach((_task) => {
+          if (_task.id === task.id) {
+            _task.pluginId = task.pluginId;
+            _task.pluginName = task.pluginName;
+            _task.serviceId = task.serviceId;
+            _task.serviceName = task.serviceName;
+            _task.actionId = task.actionId;
+            _task.actionName = task.actionName;
+            _task.input = task.input;
+            _task.itemFields = task.itemFields;
+            console.log(_task);
+          }
+        });
+      }
+    });
+    this.updateTemplate.emit({
+      payload: this.templateData,
+      message: 'Task Updated Successfully',
+      type: 'success',
+    });
+  }
+
+  updateGroupInfo(payload: Template) {
+    this.updateTemplate.emit(payload);
+  }
 
   onClose(event: any) {
     this.showTaskOptions = !event;
   }
-  onSaveTemplateFormat(formatPaylod:any){
-    this.openSnackBar('Task Template Updated Successful','success');
+  onSaveTemplateFormat(formatPaylod: any) {
+    this.openSnackBar('Task Template Updated Successful', 'success');
   }
   openSnackBar(message: string, snackType: string) {
     this.snackBar.openFromComponent(SnackbarComponent, {
-      data: { message: message, snackType: snackType, snackBar: this.snackBar },      
-      panelClass: [snackType]       
+      data: { message: message, snackType: snackType, snackBar: this.snackBar },
+      panelClass: [snackType],
     });
   }
-  updateTaskTitle(taskName){
-  //  API Task Name Update  
-    // this.dataService.updateTaskName(taskName).subscribe(res=>{
-    //   if(res){        
-    //   }
-    // })
+
+  updateTaskTitle(task: Item) {
+    this.updateTemplate.emit({
+      payload: this.templateData,
+      message: 'Task Updated Successfully',
+      type: 'success',
+    });
   }
-  uniqueTaskTitle(taskName){    
-    let groupList = this.templateData.groups;
-    let filteredGroupList = groupList.filter(it=>{
-        return it.id === this.selectedTask.groupId;
-    })
-    let groupItems = filteredGroupList.items;
+  uniqueTaskTitle(taskName) {
+    let groupList: Group[] = this.templateData.groups;
+    let filteredGroupList = groupList.filter((it) => {
+      return it.id === this.selectedTask.groupId;
+    });
+    let groupItems = filteredGroupList[0].items;
     let keyExists;
     for (let key of groupItems) {
       if (key.name.toLowerCase() === taskName.toLowerCase()) {
         keyExists = { isEventTaskUnique: true };
         break;
-      }
-      else {
+      } else {
         keyExists = null;
       }
     }
@@ -425,18 +489,29 @@ export class TemplateComponent implements OnInit, AfterViewInit {
     // API Logic
     // this.dataService.taskTitileValid(taskName).subscribe(res=>{
     //   if(res == true){
-    //     this.isEventTaskUnique = true 
+    //     this.isEventTaskUnique = true
     //   }
     //   else{
     //     this.isEventTaskUnique =  false
     //   }
-    // })  
-  }
-  updateTaskDescription(taskDescription){
-    //  API Task Descripiton Update  
-    // this.dataService.updateTaskDescription(taskDescription).subscribe(res=>{
-    //   if(res){        
-    //   }
     // })
-  }  
+  }
+  updateTaskDescription(task: Item) {
+    this.updateTemplate.emit({
+      payload: this.templateData,
+      message: 'Task Updated Successfully',
+      type: 'success',
+    });
+  }
+  getTemplateName(templateName) {
+    let initialLetter;
+    let letterArray = [];
+    let stringArr = templateName.split(/(?<=^\S+)\s/);
+    stringArr.forEach((it) => {
+      initialLetter = it.substring(1, 0);
+      letterArray.push(initialLetter);
+    });
+    let tempName = letterArray[0] + ' ' + letterArray[1];
+    return tempName;
+  }
 }

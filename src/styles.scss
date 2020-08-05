@@ -1,3 +1,4 @@
+
 @font-face {
   font-family: "LatoRegular";
   src: url("assets/fonts/LatoRegular.eot"),
@@ -31,6 +32,7 @@
 }
 
 :root {
+  --light-blue: #3998e5;
   --primary-light: #006bd4;
   --primary-light-bg: #f0f6fd;
   --dark-blue: #012b7a;
@@ -110,6 +112,12 @@ body {
   cursor: move;
 }
 
+.handle-text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .common-text {
   font-family: LatoRegular;
   font-size: 0.875em;
@@ -173,6 +181,11 @@ body {
   top: 5px;
 }
 
+.relative-left-4 {
+  position: relative;
+  left: 4px;
+}
+
 .relative-bottom-4 {
   position: relative;
   bottom: 4px;
@@ -219,6 +232,10 @@ body {
 .right-margin-8 {
   margin-right: 8px !important;
 }
+
+.right-margin-12-half-rem {
+  margin-right: 12.5rem;
+}
 // end of custom margins
 
 // custom paddings
@@ -248,6 +265,10 @@ body {
   padding: 12px 0 12px 0;
 }
 
+.tb-padding-half-rem {
+  padding: 0.5rem 0;
+}
+
 .left-padding-24 {
   padding-left: 24px;
 }
@@ -255,9 +276,38 @@ body {
 .bottom-padding-12 {
   padding-bottom: 12px;
 }
+
+.left-padding-one-fourth-rem {
+  padding-left: 0.25rem;
+}
+
+.left-padding-half-rem {
+  padding-left: 0.5rem;
+}
+
+.right-padding-one-fourth-rem {
+  padding-right: 0.25rem;
+}
+
+.right-padding-half-rem {
+  padding-right: 0.5rem;
+}
 // end of custom paddings
 
 // misc common styles
+.img-right {
+  position: absolute;
+  right: 1rem;
+}
+
+.make-it-blue {
+  color: var(--primary-light) !important;
+}
+
+.gray-text {
+  color: var(--alt-gray-text);
+}
+
 .back-not-hover {
   transform: rotate(90deg);
   display: flex;
@@ -271,6 +321,7 @@ body {
 // end of misc common styles
 
 .task-config {
+ // min-height: 56vh;
   max-height: 56vh;
   overflow-y: auto;
   overflow-x: auto;
@@ -316,5 +367,32 @@ body {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  height: 6vh;
+}
+.edit-tag-footer-btns {
+  position: absolute;
+  width: calc(100% - 120px);
+  top: 89vh; //42.25em;
+}
+
+.modal-footer-mobile {
+  position: absolute !important;
+  top: 91vh !important;
+  display: flex;
+  width: 100%;
+}
+
+.modal-footer {
+  position: relative;
+  top: 4.688em;
+}
+
+.flex-container {
+
+	display: flex !important;
+	flex-wrap: wrap !important;
+	overflow-x: auto; 
+	overflow-y: auto;
+}
+.list-item {
+  margin: 8px !important;
 }

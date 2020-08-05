@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewEncapsulation, 
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
 import { PluginService } from '../services/plugin.service';
 import { FormBase, Validator } from './dynamic-forms/models/form-base';
+import { Item } from 'src/app/utils/models/data.model';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { FormBase, Validator } from './dynamic-forms/models/form-base';
 })
 export class TaskInputComponent implements OnInit, OnChanges {
   @Input('dataSource') dataSource: FormBase[] = [];
-  @Input() task: any;
+  @Input() task: Item;
   @Output('saveConfig') saveConfig = new EventEmitter();
   @Output('closeWidget') closeWidget = new EventEmitter();
 
@@ -24,6 +25,10 @@ export class TaskInputComponent implements OnInit, OnChanges {
       this.form = this.toFormGroup(this.dataSource);
     } else {
       this.form = this.toFormGroup([]);
+    }
+
+    if(this.task.input) {
+      this.form.patchValue(this.task.input);
     }
   }
 
@@ -37,7 +42,7 @@ export class TaskInputComponent implements OnInit, OnChanges {
     let group: any = {};
 
     data.forEach(field => {
-      group[field.key] = new FormControl(field.value, this.bindValidations(field.validations));
+      group[field.key] = new FormControl(field.value, field.validations ? this.bindValidations(field.validations) : Validators.nullValidator);
 
     });
     return new FormGroup(group);
@@ -128,7 +133,9 @@ export class TaskInputComponent implements OnInit, OnChanges {
   }
 
   onSubmit(form: any, testForm?:any) {
-    this.saveConfig.emit({configuration: form, itemFields: this.dataSource});
+    this.task.input = form;
+    this.task.itemFields = this.dataSource;
+    this.saveConfig.emit(this.task);
   }
 
   close() {
